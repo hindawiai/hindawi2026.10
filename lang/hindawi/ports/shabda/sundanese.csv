@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+sundanese,shabda,Lex,yadi,yadi,if,keyword-table-only
+sundanese,shabda,Lex,anyathaa,anyathaa,else,keyword-table-only
+sundanese,shabda,Lex,yaavat,yaavat,while,keyword-table-only
+sundanese,shabda,Lex,kuru,kuru,do,keyword-table-only
+sundanese,shabda,Lex,prati,prati,for,keyword-table-only
+sundanese,shabda,Lex,bha_nga,bha_nga,break,keyword-table-only
+sundanese,shabda,Lex,anuvarta,anuvarta,continue,keyword-table-only
+sundanese,shabda,Lex,vikalpa,vikalpa,switch,keyword-table-only
+sundanese,shabda,Lex,pak_sa,pak_sa,case,keyword-table-only
+sundanese,shabda,Lex,svabhaava,svabhaava,default,keyword-table-only

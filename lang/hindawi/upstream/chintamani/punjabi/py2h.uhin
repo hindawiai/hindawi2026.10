@@ -1,0 +1,33 @@
+%{
+/* punjabi py2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("ਜੇ");}
+else                 {printf("ਨਹੀਂਤਾਂ");}
+while                {printf("ਜਦਤੱਕ");}
+do                   {printf("ਕਰੋ");}
+for                  {printf("ਲਈ");}
+break                {printf("ਰੋਕੋ");}
+continue             {printf("ਜਾਰੀ");}
+switch               {printf("ਚੋਣ");}
+case                 {printf("ਹਾਲਤ");}
+default              {printf("ਮੂਲ");}
+return               {printf("ਵਾਪਸ");}
+const                {printf("ਅਚਲ");}
+int                  {printf("ਪੂਰਨਅੰਕ");}
+float                {printf("ਦਸ਼ਮਲਵ");}
+double               {printf("ਦੁੱਗਣਾ");}
+char                 {printf("ਅੱਖਰ");}
+void                 {printf("ਖਾਲੀ");}
+void                 {printf("ਕਾਰਜ");}
+class                {printf("ਵਰਗ");}
+new                  {printf("ਨਵਾਂ");}
+public               {printf("ਜਨਤਕ");}
+private              {printf("ਨਿਜੀ");}
+static               {printf("ਸਥਿਰ");}
+virtual              {printf("ਆਭਾਸੀ");}
+case                 {printf("ਜਦੋਂ");}
+struct               {printf("ਬਣਤਰ");}
+.  {printf("%s", yytext);}
+%%

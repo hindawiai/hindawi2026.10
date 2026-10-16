@@ -1,0 +1,11 @@
+%{
+/* khmer c2h */
+%}
+%%
+បើ  {printf("KW_IF");}
+បើមិន  {printf("KW_ELSE");}
+ខណៈ  {printf("KW_WHILE");}
+សម្រាប់  {printf("KW_FOR");}
+ត្រឡប់  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

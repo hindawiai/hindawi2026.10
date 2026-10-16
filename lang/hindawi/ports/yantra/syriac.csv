@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+syriac,yantra,Assembly,ܐܢ,ana,if,keyword-table-only
+syriac,yantra,Assembly,ܐܚܪܢܐ,aharanaa,else,keyword-table-only
+syriac,yantra,Assembly,ܟܡܐ,kamaa,while,keyword-table-only
+syriac,yantra,Assembly,ܥܒܕ,aebada,do,keyword-table-only
+syriac,yantra,Assembly,لكل,likulli,for,keyword-table-only
+syriac,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+syriac,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+syriac,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+syriac,yantra,Assembly,حالة,haalah,case,keyword-table-only
+syriac,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

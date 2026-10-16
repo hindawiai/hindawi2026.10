@@ -1,0 +1,15 @@
+%{
+/* pali c2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("सचे");}
+else                 {printf("अञ्ञथा");}
+while                {printf("याव");}
+do                   {printf("करोहि");}
+for                  {printf("अत्थाय");}
+return               {printf("पटिनिवत्त");}
+void                 {printf("किच्च");}
+class                {printf("वग्ग");}
+.  {printf("%s", yytext);}
+%%

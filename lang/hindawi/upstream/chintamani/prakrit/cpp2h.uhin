@@ -1,0 +1,11 @@
+%{
+/* prakrit cpp2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("जइ");}
+else                 {printf("अण्णहा");}
+while                {printf("जाव");}
+do                   {printf("करेहि");}
+.  {printf("%s", yytext);}
+%%

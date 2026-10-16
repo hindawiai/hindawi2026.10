@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+dzongkha,wyaaka,Yacc,yadi,yadi,if,keyword-table-only
+dzongkha,wyaaka,Yacc,anyathaa,anyathaa,else,keyword-table-only
+dzongkha,wyaaka,Yacc,yaavat,yaavat,while,keyword-table-only
+dzongkha,wyaaka,Yacc,kuru,kuru,do,keyword-table-only
+dzongkha,wyaaka,Yacc,prati,prati,for,keyword-table-only
+dzongkha,wyaaka,Yacc,bha_nga,bha_nga,break,keyword-table-only
+dzongkha,wyaaka,Yacc,anuvarta,anuvarta,continue,keyword-table-only
+dzongkha,wyaaka,Yacc,vikalpa,vikalpa,switch,keyword-table-only
+dzongkha,wyaaka,Yacc,pak_sa,pak_sa,case,keyword-table-only
+dzongkha,wyaaka,Yacc,svabhaava,svabhaava,default,keyword-table-only

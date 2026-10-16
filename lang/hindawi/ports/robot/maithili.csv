@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+maithili,robot,LOGO,यदि,yadi,if,keyword-table-only
+maithili,robot,LOGO,अन्यथा,anyathaa,else,keyword-table-only
+maithili,robot,LOGO,यावत्,yaavat,while,keyword-table-only
+maithili,robot,LOGO,कुरु,kuru,do,keyword-table-only
+maithili,robot,LOGO,प्रति,prati,for,keyword-table-only
+maithili,robot,LOGO,भङ्ग,bha_nga,break,keyword-table-only
+maithili,robot,LOGO,अनुवर्त,anuvarta,continue,keyword-table-only
+maithili,robot,LOGO,विकल्प,vikalpa,switch,keyword-table-only
+maithili,robot,LOGO,पक्ष,pak_sa,case,keyword-table-only
+maithili,robot,LOGO,स्वभाव,svabhaava,default,keyword-table-only

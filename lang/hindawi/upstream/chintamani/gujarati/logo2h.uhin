@@ -1,0 +1,33 @@
+%{
+/* gujarati logo2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("જો");}
+else                 {printf("નહીંતર");}
+while                {printf("જ્યાંસુધી");}
+do                   {printf("કરો");}
+for                  {printf("માટે");}
+break                {printf("તોડો");}
+continue             {printf("ચાલુ");}
+switch               {printf("પસંદગી");}
+case                 {printf("સ્થિતિ");}
+default              {printf("મૂળભૂત");}
+return               {printf("પાછા");}
+const                {printf("અચલ");}
+int                  {printf("પૂર્ણાંક");}
+float                {printf("દશાંશ");}
+double               {printf("દ્વિગુણ");}
+char                 {printf("અક્ષર");}
+void                 {printf("શૂન્ય");}
+void                 {printf("વિધેય");}
+class                {printf("વર્ગ");}
+new                  {printf("નવું");}
+public               {printf("જાહેર");}
+private              {printf("ખાનગી");}
+static               {printf("સ્થિર");}
+virtual              {printf("આભાસી");}
+case                 {printf("જ્યારે");}
+struct               {printf("સંરચના");}
+.  {printf("%s", yytext);}
+%%

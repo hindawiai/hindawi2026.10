@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+marathi,praatha,BASIC,जर,jara,if,keyword-table-only
+marathi,praatha,BASIC,अन्यथा,anyathaa,else,keyword-table-only
+marathi,praatha,BASIC,पर्यंत,parya_nta,while,keyword-table-only
+marathi,praatha,BASIC,करा,karaa,do,keyword-table-only
+marathi,praatha,BASIC,साठी,saathii,for,keyword-table-only
+marathi,praatha,BASIC,थांबा,thaa_mbaa,break,keyword-table-only
+marathi,praatha,BASIC,सुरूठेवा,suruutheevaa,continue,keyword-table-only
+marathi,praatha,BASIC,निवड,nivada,switch,keyword-table-only
+marathi,praatha,BASIC,स्थिती,sthitii,case,keyword-table-only
+marathi,praatha,BASIC,पूर्वनिर्धारित,puurvanirdhaarita,default,keyword-table-only

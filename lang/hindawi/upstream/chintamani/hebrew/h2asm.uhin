@@ -1,0 +1,15 @@
+%{
+/* hebrew h2asm.uhin */
+%}
+%%
+native               {printf("c");}
+אם                   {printf("if");}
+אחרת                 {printf("else");}
+כלעוד                {printf("while");}
+עשה                  {printf("do");}
+עבור                 {printf("for");}
+החזר                 {printf("return");}
+פונקציה              {printf("void");}
+מחלקה                {printf("class");}
+.  {printf("%s", yytext);}
+%%

@@ -1,0 +1,12 @@
+%{
+/* korean b2h */
+%}
+%%
+만약  {printf("if");}
+아니면  {printf("else");}
+동안  {printf("while");}
+위해  {printf("for");}
+반환  {printf("return");}
+정수  {printf("int");}
+.  {printf("%s", yytext);}
+%%

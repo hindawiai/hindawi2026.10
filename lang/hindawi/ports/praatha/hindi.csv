@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hindi,praatha,BASIC,अगर,agar,if,keyword-table-only
+hindi,praatha,BASIC,अन्यथा,anya_thaa,else,keyword-table-only
+hindi,praatha,BASIC,जबतक,jabataka,while,keyword-table-only
+hindi,praatha,BASIC,करो,karau,do,keyword-table-only
+hindi,praatha,BASIC,क्रम,krama,for,keyword-table-only
+hindi,praatha,BASIC,तोड़ो,toa_rdoa,break,keyword-table-only
+hindi,praatha,BASIC,जारी,jaarii,continue,keyword-table-only
+hindi,praatha,BASIC,चयन,cayana,switch,keyword-table-only
+hindi,praatha,BASIC,स्थिति,sthiti,case,keyword-table-only
+hindi,praatha,BASIC,मूल,muula,default,keyword-table-only

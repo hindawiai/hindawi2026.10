@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+pashto,yantra,Assembly,إذا,izaa,if,keyword-table-only
+pashto,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+pashto,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+pashto,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+pashto,yantra,Assembly,لكل,likulli,for,keyword-table-only
+pashto,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+pashto,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+pashto,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+pashto,yantra,Assembly,حالة,haalah,case,keyword-table-only
+pashto,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

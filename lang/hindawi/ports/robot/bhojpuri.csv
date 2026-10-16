@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+bhojpuri,robot,LOGO,यदि,yadi,if,keyword-table-only
+bhojpuri,robot,LOGO,अन्यथा,anyathaa,else,keyword-table-only
+bhojpuri,robot,LOGO,यावत्,yaavat,while,keyword-table-only
+bhojpuri,robot,LOGO,कुरु,kuru,do,keyword-table-only
+bhojpuri,robot,LOGO,प्रति,prati,for,keyword-table-only
+bhojpuri,robot,LOGO,भङ्ग,bha_nga,break,keyword-table-only
+bhojpuri,robot,LOGO,अनुवर्त,anuvarta,continue,keyword-table-only
+bhojpuri,robot,LOGO,विकल्प,vikalpa,switch,keyword-table-only
+bhojpuri,robot,LOGO,पक्ष,pak_sa,case,keyword-table-only
+bhojpuri,robot,LOGO,स्वभाव,svabhaava,default,keyword-table-only

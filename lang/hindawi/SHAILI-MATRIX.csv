@@ -1,0 +1,784 @@
+profile,shaili,paradigm,status,implementation,backend,test
+#,guru,C,no-keyword-data,none,not-built,not-run
+#,shraeni,C++,no-keyword-data,none,not-built,not-run
+#,yantra,Assembly,no-keyword-data,none,not-built,not-run
+#,kritrima,Java,no-keyword-data,none,not-built,not-run
+#,praatha,BASIC,no-keyword-data,none,not-built,not-run
+#,soochee,Python,no-keyword-data,none,not-built,not-run
+#,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+#,robot,LOGO,no-keyword-data,none,not-built,not-run
+#,shabda,Lex,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,guru,C,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,shraeni,C++,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,yantra,Assembly,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,kritrima,Java,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,praatha,BASIC,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,soochee,Python,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,robot,LOGO,no-keyword-data,none,not-built,not-run
+#   (sanskrit for Brahmi/Indic,shabda,Lex,no-keyword-data,none,not-built,not-run
+#   code,guru,C,no-keyword-data,none,not-built,not-run
+#   code,shraeni,C++,no-keyword-data,none,not-built,not-run
+#   code,yantra,Assembly,no-keyword-data,none,not-built,not-run
+#   code,kritrima,Java,no-keyword-data,none,not-built,not-run
+#   code,praatha,BASIC,no-keyword-data,none,not-built,not-run
+#   code,soochee,Python,no-keyword-data,none,not-built,not-run
+#   code,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+#   code,robot,LOGO,no-keyword-data,none,not-built,not-run
+#   code,shabda,Lex,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,guru,C,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,shraeni,C++,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,yantra,Assembly,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,kritrima,Java,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,praatha,BASIC,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,soochee,Python,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,robot,LOGO,no-keyword-data,none,not-built,not-run
+#   transliterate Devanagari tatsama into the native script (or 'arabic'/'self').,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — CLASSICAL/LITURGICAL ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — DRAVIDIAN ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INDO-ARYAN ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — INSULAR SE ASIAN ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — PHILIPPINE ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — SOUTHEAST ASIAN ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ BRAHMI FAMILY — TIBETO-BURMAN / HIMALAYAN ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ NORTHWEST SEMITIC FAMILY ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,guru,C,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,shraeni,C++,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,kritrima,Java,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,soochee,Python,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,robot,LOGO,no-keyword-data,none,not-built,not-run
+# ============ PERSO-ARABIC FAMILY ============,shabda,Lex,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,guru,C,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,shraeni,C++,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,kritrima,Java,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,soochee,Python,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,robot,LOGO,no-keyword-data,none,not-built,not-run
+# Copyright (c) 1993-2026 Abhishek Choudhary,shabda,Lex,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,guru,C,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,shraeni,C++,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,kritrima,Java,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,soochee,Python,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,robot,LOGO,no-keyword-data,none,not-built,not-run
+# Every language that can be written in a target-family script and thus,shabda,Lex,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,guru,C,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,shraeni,C++,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,kritrima,Java,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,soochee,Python,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,robot,LOGO,no-keyword-data,none,not-built,not-run
+# served by ILM. Columns:,shabda,Lex,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,guru,C,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,shraeni,C++,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,kritrima,Java,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,soochee,Python,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,robot,LOGO,no-keyword-data,none,not-built,not-run
+# source_lang = which language's keyword set this borrows technical vocab from,shabda,Lex,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,guru,C,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,shraeni,C++,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,yantra,Assembly,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,kritrima,Java,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,praatha,BASIC,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,soochee,Python,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,robot,LOGO,no-keyword-data,none,not-built,not-run
+# target_script_for_dev_offset = the script key the derivation engine uses to,shabda,Lex,no-keyword-data,none,not-built,not-run
+arabic,guru,C,keyword-table-only,data,not-built,not-run
+arabic,shraeni,C++,keyword-table-only,data,not-built,not-run
+arabic,yantra,Assembly,keyword-table-only,data,not-built,not-run
+arabic,kritrima,Java,keyword-table-only,data,not-built,not-run
+arabic,praatha,BASIC,keyword-table-only,data,not-built,not-run
+arabic,soochee,Python,keyword-table-only,data,not-built,not-run
+arabic,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+arabic,robot,LOGO,keyword-table-only,data,not-built,not-run
+arabic,shabda,Lex,keyword-table-only,data,not-built,not-run
+aramaic,guru,C,keyword-table-only,data,not-built,not-run
+aramaic,shraeni,C++,keyword-table-only,data,not-built,not-run
+aramaic,yantra,Assembly,keyword-table-only,data,not-built,not-run
+aramaic,kritrima,Java,keyword-table-only,data,not-built,not-run
+aramaic,praatha,BASIC,keyword-table-only,data,not-built,not-run
+aramaic,soochee,Python,keyword-table-only,data,not-built,not-run
+aramaic,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+aramaic,robot,LOGO,keyword-table-only,data,not-built,not-run
+aramaic,shabda,Lex,keyword-table-only,data,not-built,not-run
+assamese,guru,C,keyword-table-only,data,not-built,not-run
+assamese,shraeni,C++,keyword-table-only,data,not-built,not-run
+assamese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+assamese,kritrima,Java,keyword-table-only,data,not-built,not-run
+assamese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+assamese,soochee,Python,keyword-table-only,data,not-built,not-run
+assamese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+assamese,robot,LOGO,keyword-table-only,data,not-built,not-run
+assamese,shabda,Lex,keyword-table-only,data,not-built,not-run
+awadhi,guru,C,keyword-table-only,data,not-built,not-run
+awadhi,shraeni,C++,keyword-table-only,data,not-built,not-run
+awadhi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+awadhi,kritrima,Java,keyword-table-only,data,not-built,not-run
+awadhi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+awadhi,soochee,Python,keyword-table-only,data,not-built,not-run
+awadhi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+awadhi,robot,LOGO,keyword-table-only,data,not-built,not-run
+awadhi,shabda,Lex,keyword-table-only,data,not-built,not-run
+balinese,guru,C,keyword-table-only,data,not-built,not-run
+balinese,shraeni,C++,keyword-table-only,data,not-built,not-run
+balinese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+balinese,kritrima,Java,keyword-table-only,data,not-built,not-run
+balinese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+balinese,soochee,Python,keyword-table-only,data,not-built,not-run
+balinese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+balinese,robot,LOGO,keyword-table-only,data,not-built,not-run
+balinese,shabda,Lex,keyword-table-only,data,not-built,not-run
+balochi,guru,C,keyword-table-only,data,not-built,not-run
+balochi,shraeni,C++,keyword-table-only,data,not-built,not-run
+balochi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+balochi,kritrima,Java,keyword-table-only,data,not-built,not-run
+balochi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+balochi,soochee,Python,keyword-table-only,data,not-built,not-run
+balochi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+balochi,robot,LOGO,keyword-table-only,data,not-built,not-run
+balochi,shabda,Lex,keyword-table-only,data,not-built,not-run
+batak,guru,C,keyword-table-only,data,not-built,not-run
+batak,shraeni,C++,keyword-table-only,data,not-built,not-run
+batak,yantra,Assembly,keyword-table-only,data,not-built,not-run
+batak,kritrima,Java,keyword-table-only,data,not-built,not-run
+batak,praatha,BASIC,keyword-table-only,data,not-built,not-run
+batak,soochee,Python,keyword-table-only,data,not-built,not-run
+batak,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+batak,robot,LOGO,keyword-table-only,data,not-built,not-run
+batak,shabda,Lex,keyword-table-only,data,not-built,not-run
+bengali,guru,C,keyword-table-only,data,not-built,not-run
+bengali,shraeni,C++,keyword-table-only,data,not-built,not-run
+bengali,yantra,Assembly,keyword-table-only,data,not-built,not-run
+bengali,kritrima,Java,keyword-table-only,data,not-built,not-run
+bengali,praatha,BASIC,keyword-table-only,data,not-built,not-run
+bengali,soochee,Python,keyword-table-only,data,not-built,not-run
+bengali,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+bengali,robot,LOGO,keyword-table-only,data,not-built,not-run
+bengali,shabda,Lex,keyword-table-only,data,not-built,not-run
+bhojpuri,guru,C,keyword-table-only,data,not-built,not-run
+bhojpuri,shraeni,C++,keyword-table-only,data,not-built,not-run
+bhojpuri,yantra,Assembly,keyword-table-only,data,not-built,not-run
+bhojpuri,kritrima,Java,keyword-table-only,data,not-built,not-run
+bhojpuri,praatha,BASIC,keyword-table-only,data,not-built,not-run
+bhojpuri,soochee,Python,keyword-table-only,data,not-built,not-run
+bhojpuri,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+bhojpuri,robot,LOGO,keyword-table-only,data,not-built,not-run
+bhojpuri,shabda,Lex,keyword-table-only,data,not-built,not-run
+bodo,guru,C,keyword-table-only,data,not-built,not-run
+bodo,shraeni,C++,keyword-table-only,data,not-built,not-run
+bodo,yantra,Assembly,keyword-table-only,data,not-built,not-run
+bodo,kritrima,Java,keyword-table-only,data,not-built,not-run
+bodo,praatha,BASIC,keyword-table-only,data,not-built,not-run
+bodo,soochee,Python,keyword-table-only,data,not-built,not-run
+bodo,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+bodo,robot,LOGO,keyword-table-only,data,not-built,not-run
+bodo,shabda,Lex,keyword-table-only,data,not-built,not-run
+buginese,guru,C,keyword-table-only,data,not-built,not-run
+buginese,shraeni,C++,keyword-table-only,data,not-built,not-run
+buginese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+buginese,kritrima,Java,keyword-table-only,data,not-built,not-run
+buginese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+buginese,soochee,Python,keyword-table-only,data,not-built,not-run
+buginese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+buginese,robot,LOGO,keyword-table-only,data,not-built,not-run
+buginese,shabda,Lex,keyword-table-only,data,not-built,not-run
+burmese,guru,C,keyword-table-only,data,not-built,not-run
+burmese,shraeni,C++,keyword-table-only,data,not-built,not-run
+burmese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+burmese,kritrima,Java,keyword-table-only,data,not-built,not-run
+burmese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+burmese,soochee,Python,keyword-table-only,data,not-built,not-run
+burmese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+burmese,robot,LOGO,keyword-table-only,data,not-built,not-run
+burmese,shabda,Lex,keyword-table-only,data,not-built,not-run
+chhattisgarhi,guru,C,keyword-table-only,data,not-built,not-run
+chhattisgarhi,shraeni,C++,keyword-table-only,data,not-built,not-run
+chhattisgarhi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+chhattisgarhi,kritrima,Java,keyword-table-only,data,not-built,not-run
+chhattisgarhi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+chhattisgarhi,soochee,Python,keyword-table-only,data,not-built,not-run
+chhattisgarhi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+chhattisgarhi,robot,LOGO,keyword-table-only,data,not-built,not-run
+chhattisgarhi,shabda,Lex,keyword-table-only,data,not-built,not-run
+code,guru,C,no-keyword-data,none,not-built,not-run
+code,shraeni,C++,no-keyword-data,none,not-built,not-run
+code,yantra,Assembly,no-keyword-data,none,not-built,not-run
+code,kritrima,Java,no-keyword-data,none,not-built,not-run
+code,praatha,BASIC,no-keyword-data,none,not-built,not-run
+code,soochee,Python,no-keyword-data,none,not-built,not-run
+code,wyaaka,Yacc,no-keyword-data,none,not-built,not-run
+code,robot,LOGO,no-keyword-data,none,not-built,not-run
+code,shabda,Lex,no-keyword-data,none,not-built,not-run
+dari,guru,C,keyword-table-only,data,not-built,not-run
+dari,shraeni,C++,keyword-table-only,data,not-built,not-run
+dari,yantra,Assembly,keyword-table-only,data,not-built,not-run
+dari,kritrima,Java,keyword-table-only,data,not-built,not-run
+dari,praatha,BASIC,keyword-table-only,data,not-built,not-run
+dari,soochee,Python,keyword-table-only,data,not-built,not-run
+dari,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+dari,robot,LOGO,keyword-table-only,data,not-built,not-run
+dari,shabda,Lex,keyword-table-only,data,not-built,not-run
+dogri,guru,C,keyword-table-only,data,not-built,not-run
+dogri,shraeni,C++,keyword-table-only,data,not-built,not-run
+dogri,yantra,Assembly,keyword-table-only,data,not-built,not-run
+dogri,kritrima,Java,keyword-table-only,data,not-built,not-run
+dogri,praatha,BASIC,keyword-table-only,data,not-built,not-run
+dogri,soochee,Python,keyword-table-only,data,not-built,not-run
+dogri,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+dogri,robot,LOGO,keyword-table-only,data,not-built,not-run
+dogri,shabda,Lex,keyword-table-only,data,not-built,not-run
+dzongkha,guru,C,keyword-table-only,data,not-built,not-run
+dzongkha,shraeni,C++,keyword-table-only,data,not-built,not-run
+dzongkha,yantra,Assembly,keyword-table-only,data,not-built,not-run
+dzongkha,kritrima,Java,keyword-table-only,data,not-built,not-run
+dzongkha,praatha,BASIC,keyword-table-only,data,not-built,not-run
+dzongkha,soochee,Python,keyword-table-only,data,not-built,not-run
+dzongkha,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+dzongkha,robot,LOGO,keyword-table-only,data,not-built,not-run
+dzongkha,shabda,Lex,keyword-table-only,data,not-built,not-run
+gujarati,guru,C,keyword-table-only,data,not-built,not-run
+gujarati,shraeni,C++,keyword-table-only,data,not-built,not-run
+gujarati,yantra,Assembly,keyword-table-only,data,not-built,not-run
+gujarati,kritrima,Java,keyword-table-only,data,not-built,not-run
+gujarati,praatha,BASIC,keyword-table-only,data,not-built,not-run
+gujarati,soochee,Python,keyword-table-only,data,not-built,not-run
+gujarati,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+gujarati,robot,LOGO,keyword-table-only,data,not-built,not-run
+gujarati,shabda,Lex,keyword-table-only,data,not-built,not-run
+hausa_ajami,guru,C,keyword-table-only,data,not-built,not-run
+hausa_ajami,shraeni,C++,keyword-table-only,data,not-built,not-run
+hausa_ajami,yantra,Assembly,keyword-table-only,data,not-built,not-run
+hausa_ajami,kritrima,Java,keyword-table-only,data,not-built,not-run
+hausa_ajami,praatha,BASIC,keyword-table-only,data,not-built,not-run
+hausa_ajami,soochee,Python,keyword-table-only,data,not-built,not-run
+hausa_ajami,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+hausa_ajami,robot,LOGO,keyword-table-only,data,not-built,not-run
+hausa_ajami,shabda,Lex,keyword-table-only,data,not-built,not-run
+hebrew,guru,C,keyword-table-only,data,not-built,not-run
+hebrew,shraeni,C++,keyword-table-only,data,not-built,not-run
+hebrew,yantra,Assembly,keyword-table-only,data,not-built,not-run
+hebrew,kritrima,Java,keyword-table-only,data,not-built,not-run
+hebrew,praatha,BASIC,keyword-table-only,data,not-built,not-run
+hebrew,soochee,Python,keyword-table-only,data,not-built,not-run
+hebrew,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+hebrew,robot,LOGO,keyword-table-only,data,not-built,not-run
+hebrew,shabda,Lex,keyword-table-only,data,not-built,not-run
+hindi,guru,C,uhin-exists,uhin,not-built,not-run
+hindi,shraeni,C++,uhin-exists,uhin,not-built,not-run
+hindi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+hindi,kritrima,Java,keyword-table-only,data,not-built,not-run
+hindi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+hindi,soochee,Python,uhin-exists,uhin,not-built,not-run
+hindi,wyaaka,Yacc,uhin-exists,uhin,not-built,not-run
+hindi,robot,LOGO,keyword-table-only,data,not-built,not-run
+hindi,shabda,Lex,keyword-table-only,data,not-built,not-run
+javanese,guru,C,keyword-table-only,data,not-built,not-run
+javanese,shraeni,C++,keyword-table-only,data,not-built,not-run
+javanese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+javanese,kritrima,Java,keyword-table-only,data,not-built,not-run
+javanese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+javanese,soochee,Python,keyword-table-only,data,not-built,not-run
+javanese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+javanese,robot,LOGO,keyword-table-only,data,not-built,not-run
+javanese,shabda,Lex,keyword-table-only,data,not-built,not-run
+kannada,guru,C,keyword-table-only,data,not-built,not-run
+kannada,shraeni,C++,keyword-table-only,data,not-built,not-run
+kannada,yantra,Assembly,keyword-table-only,data,not-built,not-run
+kannada,kritrima,Java,keyword-table-only,data,not-built,not-run
+kannada,praatha,BASIC,keyword-table-only,data,not-built,not-run
+kannada,soochee,Python,keyword-table-only,data,not-built,not-run
+kannada,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+kannada,robot,LOGO,keyword-table-only,data,not-built,not-run
+kannada,shabda,Lex,keyword-table-only,data,not-built,not-run
+kashmiri,guru,C,keyword-table-only,data,not-built,not-run
+kashmiri,shraeni,C++,keyword-table-only,data,not-built,not-run
+kashmiri,yantra,Assembly,keyword-table-only,data,not-built,not-run
+kashmiri,kritrima,Java,keyword-table-only,data,not-built,not-run
+kashmiri,praatha,BASIC,keyword-table-only,data,not-built,not-run
+kashmiri,soochee,Python,keyword-table-only,data,not-built,not-run
+kashmiri,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+kashmiri,robot,LOGO,keyword-table-only,data,not-built,not-run
+kashmiri,shabda,Lex,keyword-table-only,data,not-built,not-run
+kashmiri_dev,guru,C,keyword-table-only,data,not-built,not-run
+kashmiri_dev,shraeni,C++,keyword-table-only,data,not-built,not-run
+kashmiri_dev,yantra,Assembly,keyword-table-only,data,not-built,not-run
+kashmiri_dev,kritrima,Java,keyword-table-only,data,not-built,not-run
+kashmiri_dev,praatha,BASIC,keyword-table-only,data,not-built,not-run
+kashmiri_dev,soochee,Python,keyword-table-only,data,not-built,not-run
+kashmiri_dev,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+kashmiri_dev,robot,LOGO,keyword-table-only,data,not-built,not-run
+kashmiri_dev,shabda,Lex,keyword-table-only,data,not-built,not-run
+khmer,guru,C,keyword-table-only,data,not-built,not-run
+khmer,shraeni,C++,keyword-table-only,data,not-built,not-run
+khmer,yantra,Assembly,keyword-table-only,data,not-built,not-run
+khmer,kritrima,Java,keyword-table-only,data,not-built,not-run
+khmer,praatha,BASIC,keyword-table-only,data,not-built,not-run
+khmer,soochee,Python,keyword-table-only,data,not-built,not-run
+khmer,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+khmer,robot,LOGO,keyword-table-only,data,not-built,not-run
+khmer,shabda,Lex,keyword-table-only,data,not-built,not-run
+konkani,guru,C,keyword-table-only,data,not-built,not-run
+konkani,shraeni,C++,keyword-table-only,data,not-built,not-run
+konkani,yantra,Assembly,keyword-table-only,data,not-built,not-run
+konkani,kritrima,Java,keyword-table-only,data,not-built,not-run
+konkani,praatha,BASIC,keyword-table-only,data,not-built,not-run
+konkani,soochee,Python,keyword-table-only,data,not-built,not-run
+konkani,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+konkani,robot,LOGO,keyword-table-only,data,not-built,not-run
+konkani,shabda,Lex,keyword-table-only,data,not-built,not-run
+kurdish_sorani,guru,C,keyword-table-only,data,not-built,not-run
+kurdish_sorani,shraeni,C++,keyword-table-only,data,not-built,not-run
+kurdish_sorani,yantra,Assembly,keyword-table-only,data,not-built,not-run
+kurdish_sorani,kritrima,Java,keyword-table-only,data,not-built,not-run
+kurdish_sorani,praatha,BASIC,keyword-table-only,data,not-built,not-run
+kurdish_sorani,soochee,Python,keyword-table-only,data,not-built,not-run
+kurdish_sorani,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+kurdish_sorani,robot,LOGO,keyword-table-only,data,not-built,not-run
+kurdish_sorani,shabda,Lex,keyword-table-only,data,not-built,not-run
+lao,guru,C,keyword-table-only,data,not-built,not-run
+lao,shraeni,C++,keyword-table-only,data,not-built,not-run
+lao,yantra,Assembly,keyword-table-only,data,not-built,not-run
+lao,kritrima,Java,keyword-table-only,data,not-built,not-run
+lao,praatha,BASIC,keyword-table-only,data,not-built,not-run
+lao,soochee,Python,keyword-table-only,data,not-built,not-run
+lao,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+lao,robot,LOGO,keyword-table-only,data,not-built,not-run
+lao,shabda,Lex,keyword-table-only,data,not-built,not-run
+lepcha,guru,C,keyword-table-only,data,not-built,not-run
+lepcha,shraeni,C++,keyword-table-only,data,not-built,not-run
+lepcha,yantra,Assembly,keyword-table-only,data,not-built,not-run
+lepcha,kritrima,Java,keyword-table-only,data,not-built,not-run
+lepcha,praatha,BASIC,keyword-table-only,data,not-built,not-run
+lepcha,soochee,Python,keyword-table-only,data,not-built,not-run
+lepcha,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+lepcha,robot,LOGO,keyword-table-only,data,not-built,not-run
+lepcha,shabda,Lex,keyword-table-only,data,not-built,not-run
+limbu,guru,C,keyword-table-only,data,not-built,not-run
+limbu,shraeni,C++,keyword-table-only,data,not-built,not-run
+limbu,yantra,Assembly,keyword-table-only,data,not-built,not-run
+limbu,kritrima,Java,keyword-table-only,data,not-built,not-run
+limbu,praatha,BASIC,keyword-table-only,data,not-built,not-run
+limbu,soochee,Python,keyword-table-only,data,not-built,not-run
+limbu,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+limbu,robot,LOGO,keyword-table-only,data,not-built,not-run
+limbu,shabda,Lex,keyword-table-only,data,not-built,not-run
+magahi,guru,C,keyword-table-only,data,not-built,not-run
+magahi,shraeni,C++,keyword-table-only,data,not-built,not-run
+magahi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+magahi,kritrima,Java,keyword-table-only,data,not-built,not-run
+magahi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+magahi,soochee,Python,keyword-table-only,data,not-built,not-run
+magahi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+magahi,robot,LOGO,keyword-table-only,data,not-built,not-run
+magahi,shabda,Lex,keyword-table-only,data,not-built,not-run
+maithili,guru,C,keyword-table-only,data,not-built,not-run
+maithili,shraeni,C++,keyword-table-only,data,not-built,not-run
+maithili,yantra,Assembly,keyword-table-only,data,not-built,not-run
+maithili,kritrima,Java,keyword-table-only,data,not-built,not-run
+maithili,praatha,BASIC,keyword-table-only,data,not-built,not-run
+maithili,soochee,Python,keyword-table-only,data,not-built,not-run
+maithili,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+maithili,robot,LOGO,keyword-table-only,data,not-built,not-run
+maithili,shabda,Lex,keyword-table-only,data,not-built,not-run
+malay_jawi,guru,C,keyword-table-only,data,not-built,not-run
+malay_jawi,shraeni,C++,keyword-table-only,data,not-built,not-run
+malay_jawi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+malay_jawi,kritrima,Java,keyword-table-only,data,not-built,not-run
+malay_jawi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+malay_jawi,soochee,Python,keyword-table-only,data,not-built,not-run
+malay_jawi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+malay_jawi,robot,LOGO,keyword-table-only,data,not-built,not-run
+malay_jawi,shabda,Lex,keyword-table-only,data,not-built,not-run
+malayalam,guru,C,keyword-table-only,data,not-built,not-run
+malayalam,shraeni,C++,keyword-table-only,data,not-built,not-run
+malayalam,yantra,Assembly,keyword-table-only,data,not-built,not-run
+malayalam,kritrima,Java,keyword-table-only,data,not-built,not-run
+malayalam,praatha,BASIC,keyword-table-only,data,not-built,not-run
+malayalam,soochee,Python,keyword-table-only,data,not-built,not-run
+malayalam,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+malayalam,robot,LOGO,keyword-table-only,data,not-built,not-run
+malayalam,shabda,Lex,keyword-table-only,data,not-built,not-run
+mandaic,guru,C,keyword-table-only,data,not-built,not-run
+mandaic,shraeni,C++,keyword-table-only,data,not-built,not-run
+mandaic,yantra,Assembly,keyword-table-only,data,not-built,not-run
+mandaic,kritrima,Java,keyword-table-only,data,not-built,not-run
+mandaic,praatha,BASIC,keyword-table-only,data,not-built,not-run
+mandaic,soochee,Python,keyword-table-only,data,not-built,not-run
+mandaic,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+mandaic,robot,LOGO,keyword-table-only,data,not-built,not-run
+mandaic,shabda,Lex,keyword-table-only,data,not-built,not-run
+manipuri_beng,guru,C,keyword-table-only,data,not-built,not-run
+manipuri_beng,shraeni,C++,keyword-table-only,data,not-built,not-run
+manipuri_beng,yantra,Assembly,keyword-table-only,data,not-built,not-run
+manipuri_beng,kritrima,Java,keyword-table-only,data,not-built,not-run
+manipuri_beng,praatha,BASIC,keyword-table-only,data,not-built,not-run
+manipuri_beng,soochee,Python,keyword-table-only,data,not-built,not-run
+manipuri_beng,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+manipuri_beng,robot,LOGO,keyword-table-only,data,not-built,not-run
+manipuri_beng,shabda,Lex,keyword-table-only,data,not-built,not-run
+marathi,guru,C,keyword-table-only,data,not-built,not-run
+marathi,shraeni,C++,keyword-table-only,data,not-built,not-run
+marathi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+marathi,kritrima,Java,keyword-table-only,data,not-built,not-run
+marathi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+marathi,soochee,Python,keyword-table-only,data,not-built,not-run
+marathi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+marathi,robot,LOGO,keyword-table-only,data,not-built,not-run
+marathi,shabda,Lex,keyword-table-only,data,not-built,not-run
+marwari,guru,C,keyword-table-only,data,not-built,not-run
+marwari,shraeni,C++,keyword-table-only,data,not-built,not-run
+marwari,yantra,Assembly,keyword-table-only,data,not-built,not-run
+marwari,kritrima,Java,keyword-table-only,data,not-built,not-run
+marwari,praatha,BASIC,keyword-table-only,data,not-built,not-run
+marwari,soochee,Python,keyword-table-only,data,not-built,not-run
+marwari,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+marwari,robot,LOGO,keyword-table-only,data,not-built,not-run
+marwari,shabda,Lex,keyword-table-only,data,not-built,not-run
+nabataean,guru,C,keyword-table-only,data,not-built,not-run
+nabataean,shraeni,C++,keyword-table-only,data,not-built,not-run
+nabataean,yantra,Assembly,keyword-table-only,data,not-built,not-run
+nabataean,kritrima,Java,keyword-table-only,data,not-built,not-run
+nabataean,praatha,BASIC,keyword-table-only,data,not-built,not-run
+nabataean,soochee,Python,keyword-table-only,data,not-built,not-run
+nabataean,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+nabataean,robot,LOGO,keyword-table-only,data,not-built,not-run
+nabataean,shabda,Lex,keyword-table-only,data,not-built,not-run
+nepali,guru,C,keyword-table-only,data,not-built,not-run
+nepali,shraeni,C++,keyword-table-only,data,not-built,not-run
+nepali,yantra,Assembly,keyword-table-only,data,not-built,not-run
+nepali,kritrima,Java,keyword-table-only,data,not-built,not-run
+nepali,praatha,BASIC,keyword-table-only,data,not-built,not-run
+nepali,soochee,Python,keyword-table-only,data,not-built,not-run
+nepali,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+nepali,robot,LOGO,keyword-table-only,data,not-built,not-run
+nepali,shabda,Lex,keyword-table-only,data,not-built,not-run
+newari,guru,C,keyword-table-only,data,not-built,not-run
+newari,shraeni,C++,keyword-table-only,data,not-built,not-run
+newari,yantra,Assembly,keyword-table-only,data,not-built,not-run
+newari,kritrima,Java,keyword-table-only,data,not-built,not-run
+newari,praatha,BASIC,keyword-table-only,data,not-built,not-run
+newari,soochee,Python,keyword-table-only,data,not-built,not-run
+newari,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+newari,robot,LOGO,keyword-table-only,data,not-built,not-run
+newari,shabda,Lex,keyword-table-only,data,not-built,not-run
+odia,guru,C,keyword-table-only,data,not-built,not-run
+odia,shraeni,C++,keyword-table-only,data,not-built,not-run
+odia,yantra,Assembly,keyword-table-only,data,not-built,not-run
+odia,kritrima,Java,keyword-table-only,data,not-built,not-run
+odia,praatha,BASIC,keyword-table-only,data,not-built,not-run
+odia,soochee,Python,keyword-table-only,data,not-built,not-run
+odia,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+odia,robot,LOGO,keyword-table-only,data,not-built,not-run
+odia,shabda,Lex,keyword-table-only,data,not-built,not-run
+pali,guru,C,keyword-table-only,data,not-built,not-run
+pali,shraeni,C++,keyword-table-only,data,not-built,not-run
+pali,yantra,Assembly,keyword-table-only,data,not-built,not-run
+pali,kritrima,Java,keyword-table-only,data,not-built,not-run
+pali,praatha,BASIC,keyword-table-only,data,not-built,not-run
+pali,soochee,Python,keyword-table-only,data,not-built,not-run
+pali,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+pali,robot,LOGO,keyword-table-only,data,not-built,not-run
+pali,shabda,Lex,keyword-table-only,data,not-built,not-run
+pashto,guru,C,keyword-table-only,data,not-built,not-run
+pashto,shraeni,C++,keyword-table-only,data,not-built,not-run
+pashto,yantra,Assembly,keyword-table-only,data,not-built,not-run
+pashto,kritrima,Java,keyword-table-only,data,not-built,not-run
+pashto,praatha,BASIC,keyword-table-only,data,not-built,not-run
+pashto,soochee,Python,keyword-table-only,data,not-built,not-run
+pashto,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+pashto,robot,LOGO,keyword-table-only,data,not-built,not-run
+pashto,shabda,Lex,keyword-table-only,data,not-built,not-run
+persian,guru,C,keyword-table-only,data,not-built,not-run
+persian,shraeni,C++,keyword-table-only,data,not-built,not-run
+persian,yantra,Assembly,keyword-table-only,data,not-built,not-run
+persian,kritrima,Java,keyword-table-only,data,not-built,not-run
+persian,praatha,BASIC,keyword-table-only,data,not-built,not-run
+persian,soochee,Python,keyword-table-only,data,not-built,not-run
+persian,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+persian,robot,LOGO,keyword-table-only,data,not-built,not-run
+persian,shabda,Lex,keyword-table-only,data,not-built,not-run
+phoenician,guru,C,keyword-table-only,data,not-built,not-run
+phoenician,shraeni,C++,keyword-table-only,data,not-built,not-run
+phoenician,yantra,Assembly,keyword-table-only,data,not-built,not-run
+phoenician,kritrima,Java,keyword-table-only,data,not-built,not-run
+phoenician,praatha,BASIC,keyword-table-only,data,not-built,not-run
+phoenician,soochee,Python,keyword-table-only,data,not-built,not-run
+phoenician,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+phoenician,robot,LOGO,keyword-table-only,data,not-built,not-run
+phoenician,shabda,Lex,keyword-table-only,data,not-built,not-run
+prakrit,guru,C,keyword-table-only,data,not-built,not-run
+prakrit,shraeni,C++,keyword-table-only,data,not-built,not-run
+prakrit,yantra,Assembly,keyword-table-only,data,not-built,not-run
+prakrit,kritrima,Java,keyword-table-only,data,not-built,not-run
+prakrit,praatha,BASIC,keyword-table-only,data,not-built,not-run
+prakrit,soochee,Python,keyword-table-only,data,not-built,not-run
+prakrit,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+prakrit,robot,LOGO,keyword-table-only,data,not-built,not-run
+prakrit,shabda,Lex,keyword-table-only,data,not-built,not-run
+punjabi,guru,C,keyword-table-only,data,not-built,not-run
+punjabi,shraeni,C++,keyword-table-only,data,not-built,not-run
+punjabi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+punjabi,kritrima,Java,keyword-table-only,data,not-built,not-run
+punjabi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+punjabi,soochee,Python,keyword-table-only,data,not-built,not-run
+punjabi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+punjabi,robot,LOGO,keyword-table-only,data,not-built,not-run
+punjabi,shabda,Lex,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,guru,C,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,shraeni,C++,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,kritrima,Java,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,soochee,Python,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,robot,LOGO,keyword-table-only,data,not-built,not-run
+punjabi_shahmukhi,shabda,Lex,keyword-table-only,data,not-built,not-run
+rajasthani,guru,C,keyword-table-only,data,not-built,not-run
+rajasthani,shraeni,C++,keyword-table-only,data,not-built,not-run
+rajasthani,yantra,Assembly,keyword-table-only,data,not-built,not-run
+rajasthani,kritrima,Java,keyword-table-only,data,not-built,not-run
+rajasthani,praatha,BASIC,keyword-table-only,data,not-built,not-run
+rajasthani,soochee,Python,keyword-table-only,data,not-built,not-run
+rajasthani,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+rajasthani,robot,LOGO,keyword-table-only,data,not-built,not-run
+rajasthani,shabda,Lex,keyword-table-only,data,not-built,not-run
+samaritan,guru,C,keyword-table-only,data,not-built,not-run
+samaritan,shraeni,C++,keyword-table-only,data,not-built,not-run
+samaritan,yantra,Assembly,keyword-table-only,data,not-built,not-run
+samaritan,kritrima,Java,keyword-table-only,data,not-built,not-run
+samaritan,praatha,BASIC,keyword-table-only,data,not-built,not-run
+samaritan,soochee,Python,keyword-table-only,data,not-built,not-run
+samaritan,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+samaritan,robot,LOGO,keyword-table-only,data,not-built,not-run
+samaritan,shabda,Lex,keyword-table-only,data,not-built,not-run
+sanskrit,guru,C,keyword-table-only,data,not-built,not-run
+sanskrit,shraeni,C++,keyword-table-only,data,not-built,not-run
+sanskrit,yantra,Assembly,keyword-table-only,data,not-built,not-run
+sanskrit,kritrima,Java,keyword-table-only,data,not-built,not-run
+sanskrit,praatha,BASIC,keyword-table-only,data,not-built,not-run
+sanskrit,soochee,Python,keyword-table-only,data,not-built,not-run
+sanskrit,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+sanskrit,robot,LOGO,keyword-table-only,data,not-built,not-run
+sanskrit,shabda,Lex,keyword-table-only,data,not-built,not-run
+santali,guru,C,keyword-table-only,data,not-built,not-run
+santali,shraeni,C++,keyword-table-only,data,not-built,not-run
+santali,yantra,Assembly,keyword-table-only,data,not-built,not-run
+santali,kritrima,Java,keyword-table-only,data,not-built,not-run
+santali,praatha,BASIC,keyword-table-only,data,not-built,not-run
+santali,soochee,Python,keyword-table-only,data,not-built,not-run
+santali,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+santali,robot,LOGO,keyword-table-only,data,not-built,not-run
+santali,shabda,Lex,keyword-table-only,data,not-built,not-run
+saraiki,guru,C,keyword-table-only,data,not-built,not-run
+saraiki,shraeni,C++,keyword-table-only,data,not-built,not-run
+saraiki,yantra,Assembly,keyword-table-only,data,not-built,not-run
+saraiki,kritrima,Java,keyword-table-only,data,not-built,not-run
+saraiki,praatha,BASIC,keyword-table-only,data,not-built,not-run
+saraiki,soochee,Python,keyword-table-only,data,not-built,not-run
+saraiki,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+saraiki,robot,LOGO,keyword-table-only,data,not-built,not-run
+saraiki,shabda,Lex,keyword-table-only,data,not-built,not-run
+shan,guru,C,keyword-table-only,data,not-built,not-run
+shan,shraeni,C++,keyword-table-only,data,not-built,not-run
+shan,yantra,Assembly,keyword-table-only,data,not-built,not-run
+shan,kritrima,Java,keyword-table-only,data,not-built,not-run
+shan,praatha,BASIC,keyword-table-only,data,not-built,not-run
+shan,soochee,Python,keyword-table-only,data,not-built,not-run
+shan,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+shan,robot,LOGO,keyword-table-only,data,not-built,not-run
+shan,shabda,Lex,keyword-table-only,data,not-built,not-run
+sindhi,guru,C,keyword-table-only,data,not-built,not-run
+sindhi,shraeni,C++,keyword-table-only,data,not-built,not-run
+sindhi,yantra,Assembly,keyword-table-only,data,not-built,not-run
+sindhi,kritrima,Java,keyword-table-only,data,not-built,not-run
+sindhi,praatha,BASIC,keyword-table-only,data,not-built,not-run
+sindhi,soochee,Python,keyword-table-only,data,not-built,not-run
+sindhi,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+sindhi,robot,LOGO,keyword-table-only,data,not-built,not-run
+sindhi,shabda,Lex,keyword-table-only,data,not-built,not-run
+sindhi_dev,guru,C,keyword-table-only,data,not-built,not-run
+sindhi_dev,shraeni,C++,keyword-table-only,data,not-built,not-run
+sindhi_dev,yantra,Assembly,keyword-table-only,data,not-built,not-run
+sindhi_dev,kritrima,Java,keyword-table-only,data,not-built,not-run
+sindhi_dev,praatha,BASIC,keyword-table-only,data,not-built,not-run
+sindhi_dev,soochee,Python,keyword-table-only,data,not-built,not-run
+sindhi_dev,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+sindhi_dev,robot,LOGO,keyword-table-only,data,not-built,not-run
+sindhi_dev,shabda,Lex,keyword-table-only,data,not-built,not-run
+sinhala,guru,C,keyword-table-only,data,not-built,not-run
+sinhala,shraeni,C++,keyword-table-only,data,not-built,not-run
+sinhala,yantra,Assembly,keyword-table-only,data,not-built,not-run
+sinhala,kritrima,Java,keyword-table-only,data,not-built,not-run
+sinhala,praatha,BASIC,keyword-table-only,data,not-built,not-run
+sinhala,soochee,Python,keyword-table-only,data,not-built,not-run
+sinhala,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+sinhala,robot,LOGO,keyword-table-only,data,not-built,not-run
+sinhala,shabda,Lex,keyword-table-only,data,not-built,not-run
+sundanese,guru,C,keyword-table-only,data,not-built,not-run
+sundanese,shraeni,C++,keyword-table-only,data,not-built,not-run
+sundanese,yantra,Assembly,keyword-table-only,data,not-built,not-run
+sundanese,kritrima,Java,keyword-table-only,data,not-built,not-run
+sundanese,praatha,BASIC,keyword-table-only,data,not-built,not-run
+sundanese,soochee,Python,keyword-table-only,data,not-built,not-run
+sundanese,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+sundanese,robot,LOGO,keyword-table-only,data,not-built,not-run
+sundanese,shabda,Lex,keyword-table-only,data,not-built,not-run
+syriac,guru,C,keyword-table-only,data,not-built,not-run
+syriac,shraeni,C++,keyword-table-only,data,not-built,not-run
+syriac,yantra,Assembly,keyword-table-only,data,not-built,not-run
+syriac,kritrima,Java,keyword-table-only,data,not-built,not-run
+syriac,praatha,BASIC,keyword-table-only,data,not-built,not-run
+syriac,soochee,Python,keyword-table-only,data,not-built,not-run
+syriac,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+syriac,robot,LOGO,keyword-table-only,data,not-built,not-run
+syriac,shabda,Lex,keyword-table-only,data,not-built,not-run
+tagalog,guru,C,keyword-table-only,data,not-built,not-run
+tagalog,shraeni,C++,keyword-table-only,data,not-built,not-run
+tagalog,yantra,Assembly,keyword-table-only,data,not-built,not-run
+tagalog,kritrima,Java,keyword-table-only,data,not-built,not-run
+tagalog,praatha,BASIC,keyword-table-only,data,not-built,not-run
+tagalog,soochee,Python,keyword-table-only,data,not-built,not-run
+tagalog,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+tagalog,robot,LOGO,keyword-table-only,data,not-built,not-run
+tagalog,shabda,Lex,keyword-table-only,data,not-built,not-run
+tamil,guru,C,keyword-table-only,data,not-built,not-run
+tamil,shraeni,C++,keyword-table-only,data,not-built,not-run
+tamil,yantra,Assembly,keyword-table-only,data,not-built,not-run
+tamil,kritrima,Java,keyword-table-only,data,not-built,not-run
+tamil,praatha,BASIC,keyword-table-only,data,not-built,not-run
+tamil,soochee,Python,keyword-table-only,data,not-built,not-run
+tamil,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+tamil,robot,LOGO,keyword-table-only,data,not-built,not-run
+tamil,shabda,Lex,keyword-table-only,data,not-built,not-run
+telugu,guru,C,keyword-table-only,data,not-built,not-run
+telugu,shraeni,C++,keyword-table-only,data,not-built,not-run
+telugu,yantra,Assembly,keyword-table-only,data,not-built,not-run
+telugu,kritrima,Java,keyword-table-only,data,not-built,not-run
+telugu,praatha,BASIC,keyword-table-only,data,not-built,not-run
+telugu,soochee,Python,keyword-table-only,data,not-built,not-run
+telugu,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+telugu,robot,LOGO,keyword-table-only,data,not-built,not-run
+telugu,shabda,Lex,keyword-table-only,data,not-built,not-run
+thai,guru,C,keyword-table-only,data,not-built,not-run
+thai,shraeni,C++,keyword-table-only,data,not-built,not-run
+thai,yantra,Assembly,keyword-table-only,data,not-built,not-run
+thai,kritrima,Java,keyword-table-only,data,not-built,not-run
+thai,praatha,BASIC,keyword-table-only,data,not-built,not-run
+thai,soochee,Python,keyword-table-only,data,not-built,not-run
+thai,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+thai,robot,LOGO,keyword-table-only,data,not-built,not-run
+thai,shabda,Lex,keyword-table-only,data,not-built,not-run
+tibetan,guru,C,keyword-table-only,data,not-built,not-run
+tibetan,shraeni,C++,keyword-table-only,data,not-built,not-run
+tibetan,yantra,Assembly,keyword-table-only,data,not-built,not-run
+tibetan,kritrima,Java,keyword-table-only,data,not-built,not-run
+tibetan,praatha,BASIC,keyword-table-only,data,not-built,not-run
+tibetan,soochee,Python,keyword-table-only,data,not-built,not-run
+tibetan,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+tibetan,robot,LOGO,keyword-table-only,data,not-built,not-run
+tibetan,shabda,Lex,keyword-table-only,data,not-built,not-run
+tulu,guru,C,keyword-table-only,data,not-built,not-run
+tulu,shraeni,C++,keyword-table-only,data,not-built,not-run
+tulu,yantra,Assembly,keyword-table-only,data,not-built,not-run
+tulu,kritrima,Java,keyword-table-only,data,not-built,not-run
+tulu,praatha,BASIC,keyword-table-only,data,not-built,not-run
+tulu,soochee,Python,keyword-table-only,data,not-built,not-run
+tulu,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+tulu,robot,LOGO,keyword-table-only,data,not-built,not-run
+tulu,shabda,Lex,keyword-table-only,data,not-built,not-run
+urdu,guru,C,keyword-table-only,data,not-built,not-run
+urdu,shraeni,C++,keyword-table-only,data,not-built,not-run
+urdu,yantra,Assembly,keyword-table-only,data,not-built,not-run
+urdu,kritrima,Java,keyword-table-only,data,not-built,not-run
+urdu,praatha,BASIC,keyword-table-only,data,not-built,not-run
+urdu,soochee,Python,keyword-table-only,data,not-built,not-run
+urdu,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+urdu,robot,LOGO,keyword-table-only,data,not-built,not-run
+urdu,shabda,Lex,keyword-table-only,data,not-built,not-run
+uyghur,guru,C,keyword-table-only,data,not-built,not-run
+uyghur,shraeni,C++,keyword-table-only,data,not-built,not-run
+uyghur,yantra,Assembly,keyword-table-only,data,not-built,not-run
+uyghur,kritrima,Java,keyword-table-only,data,not-built,not-run
+uyghur,praatha,BASIC,keyword-table-only,data,not-built,not-run
+uyghur,soochee,Python,keyword-table-only,data,not-built,not-run
+uyghur,wyaaka,Yacc,keyword-table-only,data,not-built,not-run
+uyghur,robot,LOGO,keyword-table-only,data,not-built,not-run
+uyghur,shabda,Lex,keyword-table-only,data,not-built,not-run

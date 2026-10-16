@@ -1,0 +1,11 @@
+%{
+/* dzongkha c2h */
+%}
+%%
+གལ་ཏེ  {printf("KW_IF");}
+མིན་ན  {printf("KW_ELSE");}
+སྐབས  {printf("KW_WHILE");}
+དོན  {printf("KW_FOR");}
+ཕྱིར  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

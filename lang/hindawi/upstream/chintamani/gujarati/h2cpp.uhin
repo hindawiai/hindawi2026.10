@@ -1,0 +1,33 @@
+%{
+/* gujarati h2cpp.uhin */
+%}
+%%
+native               {printf("c");}
+જો                   {printf("if");}
+નહીંતર               {printf("else");}
+જ્યાંસુધી            {printf("while");}
+કરો                  {printf("do");}
+માટે                 {printf("for");}
+તોડો                 {printf("break");}
+ચાલુ                 {printf("continue");}
+પસંદગી               {printf("switch");}
+સ્થિતિ               {printf("case");}
+મૂળભૂત               {printf("default");}
+પાછા                 {printf("return");}
+અચલ                  {printf("const");}
+પૂર્ણાંક             {printf("int");}
+દશાંશ                {printf("float");}
+દ્વિગુણ              {printf("double");}
+અક્ષર                {printf("char");}
+શૂન્ય                {printf("void");}
+વિધેય                {printf("void");}
+વર્ગ                 {printf("class");}
+નવું                 {printf("new");}
+જાહેર                {printf("public");}
+ખાનગી                {printf("private");}
+સ્થિર                {printf("static");}
+આભાસી                {printf("virtual");}
+જ્યારે               {printf("case");}
+સંરચના               {printf("struct");}
+.  {printf("%s", yytext);}
+%%

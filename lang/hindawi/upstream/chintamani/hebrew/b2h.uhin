@@ -1,0 +1,15 @@
+%{
+/* hebrew b2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("אם");}
+else                 {printf("אחרת");}
+while                {printf("כלעוד");}
+do                   {printf("עשה");}
+for                  {printf("עבור");}
+return               {printf("החזר");}
+void                 {printf("פונקציה");}
+class                {printf("מחלקה");}
+.  {printf("%s", yytext);}
+%%

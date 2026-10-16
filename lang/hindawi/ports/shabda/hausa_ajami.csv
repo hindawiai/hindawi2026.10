@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hausa_ajami,shabda,Lex,إذا,izaa,if,keyword-table-only
+hausa_ajami,shabda,Lex,وإلا,vaillaa,else,keyword-table-only
+hausa_ajami,shabda,Lex,طالما,taalamaa,while,keyword-table-only
+hausa_ajami,shabda,Lex,افعل,ifaela,do,keyword-table-only
+hausa_ajami,shabda,Lex,لكل,likulli,for,keyword-table-only
+hausa_ajami,shabda,Lex,اكسر,iksira,break,keyword-table-only
+hausa_ajami,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+hausa_ajami,shabda,Lex,بدل,baddila,switch,keyword-table-only
+hausa_ajami,shabda,Lex,حالة,haalah,case,keyword-table-only
+hausa_ajami,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

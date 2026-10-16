@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+newari,robot,LOGO,यदि,yadi,if,keyword-table-only
+newari,robot,LOGO,अन्यथा,anyathaa,else,keyword-table-only
+newari,robot,LOGO,यावत्,yaavat,while,keyword-table-only
+newari,robot,LOGO,कुरु,kuru,do,keyword-table-only
+newari,robot,LOGO,प्रति,prati,for,keyword-table-only
+newari,robot,LOGO,भङ्ग,bha_nga,break,keyword-table-only
+newari,robot,LOGO,अनुवर्त,anuvarta,continue,keyword-table-only
+newari,robot,LOGO,विकल्प,vikalpa,switch,keyword-table-only
+newari,robot,LOGO,पक्ष,pak_sa,case,keyword-table-only
+newari,robot,LOGO,स्वभाव,svabhaava,default,keyword-table-only

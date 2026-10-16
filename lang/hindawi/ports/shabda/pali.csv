@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+pali,shabda,Lex,सचे,sacee,if,keyword-table-only
+pali,shabda,Lex,अञ्ञथा,anyanyathaa,else,keyword-table-only
+pali,shabda,Lex,याव,yaava,while,keyword-table-only
+pali,shabda,Lex,करोहि,karauhi,do,keyword-table-only
+pali,shabda,Lex,अत्थाय,atthaaya,for,keyword-table-only
+pali,shabda,Lex,भङ्ग,bha_nga,break,keyword-table-only
+pali,shabda,Lex,अनुवर्त,anuvarta,continue,keyword-table-only
+pali,shabda,Lex,विकल्प,vikalpa,switch,keyword-table-only
+pali,shabda,Lex,पक्ष,pak_sa,case,keyword-table-only
+pali,shabda,Lex,स्वभाव,svabhaava,default,keyword-table-only

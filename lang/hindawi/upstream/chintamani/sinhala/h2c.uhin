@@ -1,0 +1,11 @@
+%{
+/* sinhala h2c */
+%}
+%%
+නම්  {printf("KW_IF");}
+නැත්නම්  {printf("KW_ELSE");}
+අතර  {printf("KW_WHILE");}
+සඳහා  {printf("KW_FOR");}
+ආපසු  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

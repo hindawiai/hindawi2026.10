@@ -1,0 +1,36 @@
+%{
+/* uyghur h2cpp */
+%}
+%%
+إذا  {printf("KW_IF");}
+وإلا  {printf("KW_ELSE");}
+وإلاإذا  {printf("KW_ELIF");}
+طالما  {printf("KW_WHILE");}
+افعل  {printf("KW_DO");}
+لكل  {printf("KW_FOR");}
+اكسر  {printf("KW_BREAK");}
+استمر  {printf("KW_CONTINUE");}
+بدل  {printf("KW_SWITCH");}
+حالة  {printf("KW_CASE");}
+افتراضي  {printf("KW_DEFAULT");}
+أرجع  {printf("KW_RETURN");}
+اذهب  {printf("KW_GOTO");}
+متغير  {printf("KW_VAR");}
+ثابت  {printf("KW_CONST");}
+ليكن  {printf("KW_LET");}
+صحيح  {printf("KW_INT");}
+عائم  {printf("KW_FLOAT");}
+مزدوج  {printf("KW_DOUBLE");}
+حرف  {printf("KW_CHAR");}
+منطقي  {printf("KW_BOOL");}
+نص  {printf("KW_STRING");}
+فراغ  {printf("KW_VOID");}
+صحيح  {printf("KW_TRUE");}
+خطأ  {printf("KW_FALSE");}
+عدم  {printf("KW_NULL");}
+دالة  {printf("KW_FUNC");}
+إجراء  {printf("KW_PROC");}
+نادي  {printf("KW_CALL");}
+معامل  {printf("KW_PARAM");}
+.  {printf("%s", yytext);}
+%%

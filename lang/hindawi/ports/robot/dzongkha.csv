@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+dzongkha,robot,LOGO,yadi,yadi,if,keyword-table-only
+dzongkha,robot,LOGO,anyathaa,anyathaa,else,keyword-table-only
+dzongkha,robot,LOGO,yaavat,yaavat,while,keyword-table-only
+dzongkha,robot,LOGO,kuru,kuru,do,keyword-table-only
+dzongkha,robot,LOGO,prati,prati,for,keyword-table-only
+dzongkha,robot,LOGO,bha_nga,bha_nga,break,keyword-table-only
+dzongkha,robot,LOGO,anuvarta,anuvarta,continue,keyword-table-only
+dzongkha,robot,LOGO,vikalpa,vikalpa,switch,keyword-table-only
+dzongkha,robot,LOGO,pak_sa,pak_sa,case,keyword-table-only
+dzongkha,robot,LOGO,svabhaava,svabhaava,default,keyword-table-only

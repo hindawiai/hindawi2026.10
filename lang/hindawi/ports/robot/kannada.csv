@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+kannada,robot,LOGO,ಆದರೆ,aadaree,if,keyword-table-only
+kannada,robot,LOGO,ಇಲ್ಲದಿದ್ದರೆ,illadiddaree,else,keyword-table-only
+kannada,robot,LOGO,ತನಕ,tanaka,while,keyword-table-only
+kannada,robot,LOGO,ಮಾಡು,maadu,do,keyword-table-only
+kannada,robot,LOGO,ಗಾಗಿ,gaagi,for,keyword-table-only
+kannada,robot,LOGO,ನಿಲ್ಲಿಸು,nillisu,break,keyword-table-only
+kannada,robot,LOGO,ಮುಂದುವರಿ,mu_nduvari,continue,keyword-table-only
+kannada,robot,LOGO,ಆಯ್ಕೆ,aayke,switch,keyword-table-only
+kannada,robot,LOGO,ಸ್ಥಿತಿ,sthiti,case,keyword-table-only
+kannada,robot,LOGO,ಪೂರ್ವನಿಯೋಜಿತ,puurvaniyaujita,default,keyword-table-only

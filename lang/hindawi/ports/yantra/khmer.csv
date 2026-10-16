@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+khmer,yantra,Assembly,yadi,yadi,if,keyword-table-only
+khmer,yantra,Assembly,anyathaa,anyathaa,else,keyword-table-only
+khmer,yantra,Assembly,yaavat,yaavat,while,keyword-table-only
+khmer,yantra,Assembly,kuru,kuru,do,keyword-table-only
+khmer,yantra,Assembly,prati,prati,for,keyword-table-only
+khmer,yantra,Assembly,bha_nga,bha_nga,break,keyword-table-only
+khmer,yantra,Assembly,anuvarta,anuvarta,continue,keyword-table-only
+khmer,yantra,Assembly,vikalpa,vikalpa,switch,keyword-table-only
+khmer,yantra,Assembly,pak_sa,pak_sa,case,keyword-table-only
+khmer,yantra,Assembly,svabhaava,svabhaava,default,keyword-table-only

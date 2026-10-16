@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+assamese,wyaaka,Yacc,যদি,yadi,if,keyword-table-only
+assamese,wyaaka,Yacc,অন্যথা,anyathaa,else,keyword-table-only
+assamese,wyaaka,Yacc,যেতিয়ালৈ,yeetiyaalai,while,keyword-table-only
+assamese,wyaaka,Yacc,কৰা,karaa,do,keyword-table-only
+assamese,wyaaka,Yacc,বাবে,baabee,for,keyword-table-only
+assamese,wyaaka,Yacc,ভঙ্গ,bha_nga,break,keyword-table-only
+assamese,wyaaka,Yacc,অনু঵র্ত,anuvarta,continue,keyword-table-only
+assamese,wyaaka,Yacc,঵িকল্প,vikalpa,switch,keyword-table-only
+assamese,wyaaka,Yacc,পক্ষ,pak_sa,case,keyword-table-only
+assamese,wyaaka,Yacc,স্঵ভা঵,svabhaava,default,keyword-table-only

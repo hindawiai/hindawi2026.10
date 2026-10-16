@@ -1,0 +1,11 @@
+%{
+/* thai c2h */
+%}
+%%
+ถ้า  {printf("KW_IF");}
+มิฉะนั้น  {printf("KW_ELSE");}
+ขณะ  {printf("KW_WHILE");}
+สำหรับ  {printf("KW_FOR");}
+คืน  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

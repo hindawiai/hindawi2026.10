@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+syriac,praatha,BASIC,ܐܢ,ana,if,keyword-table-only
+syriac,praatha,BASIC,ܐܚܪܢܐ,aharanaa,else,keyword-table-only
+syriac,praatha,BASIC,ܟܡܐ,kamaa,while,keyword-table-only
+syriac,praatha,BASIC,ܥܒܕ,aebada,do,keyword-table-only
+syriac,praatha,BASIC,لكل,likulli,for,keyword-table-only
+syriac,praatha,BASIC,اكسر,iksira,break,keyword-table-only
+syriac,praatha,BASIC,استمر,istamirra,continue,keyword-table-only
+syriac,praatha,BASIC,بدل,baddila,switch,keyword-table-only
+syriac,praatha,BASIC,حالة,haalah,case,keyword-table-only
+syriac,praatha,BASIC,افتراضي,iftiraadii,default,keyword-table-only

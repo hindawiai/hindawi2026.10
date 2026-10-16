@@ -1,0 +1,36 @@
+%{
+/* tulu h2c */
+%}
+%%
+ಯದಿ  {printf("KW_IF");}
+ಅನ್ಯಥಾ  {printf("KW_ELSE");}
+ನೋಚೇದ್ಯದಿ  {printf("KW_ELIF");}
+ಯಾವತ್  {printf("KW_WHILE");}
+ಕುರು  {printf("KW_DO");}
+ಪ್ರತಿ  {printf("KW_FOR");}
+ಭಙ್ಗ  {printf("KW_BREAK");}
+ಅನುವರ್ತ  {printf("KW_CONTINUE");}
+ವಿಕಲ್ಪ  {printf("KW_SWITCH");}
+ಪಕ್ಷ  {printf("KW_CASE");}
+ಸ್ವಭಾವ  {printf("KW_DEFAULT");}
+ಪ್ರತ್ಯಾಗಮ  {printf("KW_RETURN");}
+ಗಚ್ಛ  {printf("KW_GOTO");}
+ಚರ  {printf("KW_VAR");}
+ಧ್ರುವ  {printf("KW_CONST");}
+ಅಸ್ತು  {printf("KW_LET");}
+ಪೂರ್ಣಾಙ್ಕ  {printf("KW_INT");}
+ಭಿನ್ನ  {printf("KW_FLOAT");}
+ದ್ವಿಗುಣ  {printf("KW_DOUBLE");}
+ವರ್ಣ  {printf("KW_CHAR");}
+ತಾರ್ಕಿಕ  {printf("KW_BOOL");}
+ಪದಾವಲೀ  {printf("KW_STRING");}
+ಶೂನ್ಯ  {printf("KW_VOID");}
+ಸತ್ಯ  {printf("KW_TRUE");}
+ಅಸತ್ಯ  {printf("KW_FALSE");}
+ರಿಕ್ತ  {printf("KW_NULL");}
+ಕ್ರಿಯಾ  {printf("KW_FUNC");}
+ವಿಧಿ  {printf("KW_PROC");}
+ಆಹ್ವಾನ  {printf("KW_CALL");}
+ಪ್ರಾಚಲ  {printf("KW_PARAM");}
+.  {printf("%s", yytext);}
+%%

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+bengali,praatha,BASIC,যদি,yadi,if,keyword-table-only
+bengali,praatha,BASIC,অন্যথা,anyathaa,else,keyword-table-only
+bengali,praatha,BASIC,যতক্ষণ,yatak_sa_na,while,keyword-table-only
+bengali,praatha,BASIC,করো,karau,do,keyword-table-only
+bengali,praatha,BASIC,জন্য,janya,for,keyword-table-only
+bengali,praatha,BASIC,বিরতি,birati,break,keyword-table-only
+bengali,praatha,BASIC,চালু,caalu,continue,keyword-table-only
+bengali,praatha,BASIC,নির্বাচন,nirbaacana,switch,keyword-table-only
+bengali,praatha,BASIC,ক্ষেত্র,k_seetra,case,keyword-table-only
+bengali,praatha,BASIC,পূর্বনির্ধারিত,puurbanirdhaarita,default,keyword-table-only

@@ -1,0 +1,11 @@
+%{
+/* javanese c2h */
+%}
+%%
+ꦪꦼꦤ꧀  {printf("KW_IF");}
+ꦭꦶꦪ  {printf("KW_ELSE");}
+ꦱꦼꦢꦼꦭ  {printf("KW_WHILE");}
+ꦏꦁꦒꦺꦴ  {printf("KW_FOR");}
+ꦮꦭꦶ  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

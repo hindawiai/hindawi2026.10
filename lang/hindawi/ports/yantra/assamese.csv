@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+assamese,yantra,Assembly,যদি,yadi,if,keyword-table-only
+assamese,yantra,Assembly,অন্যথা,anyathaa,else,keyword-table-only
+assamese,yantra,Assembly,যেতিয়ালৈ,yeetiyaalai,while,keyword-table-only
+assamese,yantra,Assembly,কৰা,karaa,do,keyword-table-only
+assamese,yantra,Assembly,বাবে,baabee,for,keyword-table-only
+assamese,yantra,Assembly,ভঙ্গ,bha_nga,break,keyword-table-only
+assamese,yantra,Assembly,অনু঵র্ত,anuvarta,continue,keyword-table-only
+assamese,yantra,Assembly,঵িকল্প,vikalpa,switch,keyword-table-only
+assamese,yantra,Assembly,পক্ষ,pak_sa,case,keyword-table-only
+assamese,yantra,Assembly,স্঵ভা঵,svabhaava,default,keyword-table-only

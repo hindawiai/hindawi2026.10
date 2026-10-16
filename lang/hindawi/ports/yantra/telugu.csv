@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+telugu,yantra,Assembly,ఒకవేళ,okaveela,if,keyword-table-only
+telugu,yantra,Assembly,లేకపోతే,leekapootee,else,keyword-table-only
+telugu,yantra,Assembly,వరకు,varaku,while,keyword-table-only
+telugu,yantra,Assembly,చేయి,ceeyi,do,keyword-table-only
+telugu,yantra,Assembly,కొరకు,koraku,for,keyword-table-only
+telugu,yantra,Assembly,ఆపు,aapu,break,keyword-table-only
+telugu,yantra,Assembly,కొనసాగు,konasaagu,continue,keyword-table-only
+telugu,yantra,Assembly,ఎంపిక,empika,switch,keyword-table-only
+telugu,yantra,Assembly,స్థితి,sthiti,case,keyword-table-only
+telugu,yantra,Assembly,అప్రమేయ,aprameeya,default,keyword-table-only

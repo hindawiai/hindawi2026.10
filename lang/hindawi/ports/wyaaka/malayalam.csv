@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malayalam,wyaaka,Yacc,എങ്കിൽ,e_nkila,if,keyword-table-only
+malayalam,wyaaka,Yacc,അല്ലെങ്കിൽ,alle_nkila,else,keyword-table-only
+malayalam,wyaaka,Yacc,വരെ,vare,while,keyword-table-only
+malayalam,wyaaka,Yacc,ചെയ്യുക,ceyyuka,do,keyword-table-only
+malayalam,wyaaka,Yacc,വേണ്ടി,ve_ndi,for,keyword-table-only
+malayalam,wyaaka,Yacc,നിർത്തുക,nirttuka,break,keyword-table-only
+malayalam,wyaaka,Yacc,തുടരുക,tudaruka,continue,keyword-table-only
+malayalam,wyaaka,Yacc,തിരഞ്ഞെടുപ്പ്,tira_nyedupp,switch,keyword-table-only
+malayalam,wyaaka,Yacc,അവസ്ഥ,avastha,case,keyword-table-only
+malayalam,wyaaka,Yacc,സ്ഥിരസ്ഥിതി,sthirasthiti,default,keyword-table-only

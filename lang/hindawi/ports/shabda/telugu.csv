@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+telugu,shabda,Lex,ఒకవేళ,okaveela,if,keyword-table-only
+telugu,shabda,Lex,లేకపోతే,leekapootee,else,keyword-table-only
+telugu,shabda,Lex,వరకు,varaku,while,keyword-table-only
+telugu,shabda,Lex,చేయి,ceeyi,do,keyword-table-only
+telugu,shabda,Lex,కొరకు,koraku,for,keyword-table-only
+telugu,shabda,Lex,ఆపు,aapu,break,keyword-table-only
+telugu,shabda,Lex,కొనసాగు,konasaagu,continue,keyword-table-only
+telugu,shabda,Lex,ఎంపిక,empika,switch,keyword-table-only
+telugu,shabda,Lex,స్థితి,sthiti,case,keyword-table-only
+telugu,shabda,Lex,అప్రమేయ,aprameeya,default,keyword-table-only

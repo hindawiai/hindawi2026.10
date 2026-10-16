@@ -1,0 +1,33 @@
+%{
+/* punjabi h2l.uhin */
+%}
+%%
+native               {printf("c");}
+ਜੇ                   {printf("if");}
+ਨਹੀਂਤਾਂ              {printf("else");}
+ਜਦਤੱਕ                {printf("while");}
+ਕਰੋ                  {printf("do");}
+ਲਈ                   {printf("for");}
+ਰੋਕੋ                 {printf("break");}
+ਜਾਰੀ                 {printf("continue");}
+ਚੋਣ                  {printf("switch");}
+ਹਾਲਤ                 {printf("case");}
+ਮੂਲ                  {printf("default");}
+ਵਾਪਸ                 {printf("return");}
+ਅਚਲ                  {printf("const");}
+ਪੂਰਨਅੰਕ              {printf("int");}
+ਦਸ਼ਮਲਵ               {printf("float");}
+ਦੁੱਗਣਾ               {printf("double");}
+ਅੱਖਰ                 {printf("char");}
+ਖਾਲੀ                 {printf("void");}
+ਕਾਰਜ                 {printf("void");}
+ਵਰਗ                  {printf("class");}
+ਨਵਾਂ                 {printf("new");}
+ਜਨਤਕ                 {printf("public");}
+ਨਿਜੀ                 {printf("private");}
+ਸਥਿਰ                 {printf("static");}
+ਆਭਾਸੀ                {printf("virtual");}
+ਜਦੋਂ                 {printf("case");}
+ਬਣਤਰ                 {printf("struct");}
+.  {printf("%s", yytext);}
+%%

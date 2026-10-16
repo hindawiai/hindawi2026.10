@@ -1,0 +1,12 @@
+%{
+/* vietnamese logo2h */
+%}
+%%
+nếu  {printf("if");}
+không  {printf("else");}
+trong  {printf("while");}
+cho  {printf("for");}
+trả  {printf("return");}
+số  {printf("int");}
+.  {printf("%s", yytext);}
+%%

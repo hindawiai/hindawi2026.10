@@ -1,0 +1,12 @@
+%{
+/* russian l2h */
+%}
+%%
+если  {printf("if");}
+иначе  {printf("else");}
+пока  {printf("while");}
+для  {printf("for");}
+вернуть  {printf("return");}
+целое  {printf("int");}
+.  {printf("%s", yytext);}
+%%

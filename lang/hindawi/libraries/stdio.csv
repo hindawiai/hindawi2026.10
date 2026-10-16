@@ -1,0 +1,6 @@
+# stdio.h functions — native name per language
+# format: construct,hindi,sanskrit,bengali,urdu,c_function
+write,म_लिखो,लेखय,লেখো,لکھو,printf
+read,म_पढ़ो,पठ,পড়ো,پڑھو,scanf
+open,म_खोलो,उद्घाटय,খোলো,کھولو,fopen
+close,म_बंद,पिधाय,বন্ধ,بند,fclose

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+persian,praatha,BASIC,اگر,agar,if,keyword-table-only
+persian,praatha,BASIC,وگرنه,vagarnah,else,keyword-table-only
+persian,praatha,BASIC,تازمانیکه,taazamaaniikah,while,keyword-table-only
+persian,praatha,BASIC,انجامبده,anjaamabdah,do,keyword-table-only
+persian,praatha,BASIC,برای,baraaya,for,keyword-table-only
+persian,praatha,BASIC,بشکن,bishkan,break,keyword-table-only
+persian,praatha,BASIC,ادامه,adaamah,continue,keyword-table-only
+persian,praatha,BASIC,انتخاب,intikhaaba,switch,keyword-table-only
+persian,praatha,BASIC,حالت,haalata,case,keyword-table-only
+persian,praatha,BASIC,پیشفرض,piishfarza,default,keyword-table-only

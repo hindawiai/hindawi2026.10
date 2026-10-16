@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+marathi,yantra,Assembly,जर,jara,if,keyword-table-only
+marathi,yantra,Assembly,अन्यथा,anyathaa,else,keyword-table-only
+marathi,yantra,Assembly,पर्यंत,parya_nta,while,keyword-table-only
+marathi,yantra,Assembly,करा,karaa,do,keyword-table-only
+marathi,yantra,Assembly,साठी,saathii,for,keyword-table-only
+marathi,yantra,Assembly,थांबा,thaa_mbaa,break,keyword-table-only
+marathi,yantra,Assembly,सुरूठेवा,suruutheevaa,continue,keyword-table-only
+marathi,yantra,Assembly,निवड,nivada,switch,keyword-table-only
+marathi,yantra,Assembly,स्थिती,sthitii,case,keyword-table-only
+marathi,yantra,Assembly,पूर्वनिर्धारित,puurvanirdhaarita,default,keyword-table-only

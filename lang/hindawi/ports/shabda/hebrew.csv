@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hebrew,shabda,Lex,אם,ama,if,keyword-table-only
+hebrew,shabda,Lex,אחרת,aharata,else,keyword-table-only
+hebrew,shabda,Lex,כלעוד,kalaeauda,while,keyword-table-only
+hebrew,shabda,Lex,עשה,aeshah,do,keyword-table-only
+hebrew,shabda,Lex,עבור,aebuura,for,keyword-table-only
+hebrew,shabda,Lex,اكسر,iksira,break,keyword-table-only
+hebrew,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+hebrew,shabda,Lex,بدل,baddila,switch,keyword-table-only
+hebrew,shabda,Lex,حالة,haalah,case,keyword-table-only
+hebrew,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

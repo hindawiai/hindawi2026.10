@@ -1,0 +1,15 @@
+#!/bin/bash
+#Copyright (C) 2026 Abhishek Choudhary
+#Compiler wrapper for Hindawi marathi — structure matches gurucc
+
+DIR="$(dirname "$0")"
+export PATH="/tmp/flexroot/usr/bin:$PATH"
+export LD_LIBRARY_PATH="/tmp/flexroot/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+ROMENAGRI=/tmp/chintamani/Romenagri
+
+echo संकलन के परिणाम > tempfil0123.tmphin
+echo ============ >> tempfil0123.tmphin
+cat "$1" | $ROMENAGRI/acii2uni | iconv -f UTF-16 -t UTF-8 | $DIR/h2c > tempfil0123.tmphin.c
+sed -i 's/\\न/\\n/g; s/\%भ/\%f/g; s/\%प/\%d/g;' tempfil0123.tmphin.c
+gcc tempfil0123.tmphin.c -o hin.exe -lm 2>> tempfil0123.tmphin
+cat tempfil0123.tmphin

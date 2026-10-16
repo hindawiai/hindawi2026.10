@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+arabic,shabda,Lex,إذا,izaa,if,keyword-table-only
+arabic,shabda,Lex,وإلا,vaillaa,else,keyword-table-only
+arabic,shabda,Lex,طالما,taalamaa,while,keyword-table-only
+arabic,shabda,Lex,افعل,ifaela,do,keyword-table-only
+arabic,shabda,Lex,لكل,likulli,for,keyword-table-only
+arabic,shabda,Lex,اكسر,iksira,break,keyword-table-only
+arabic,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+arabic,shabda,Lex,بدل,baddila,switch,keyword-table-only
+arabic,shabda,Lex,حالة,haalah,case,keyword-table-only
+arabic,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

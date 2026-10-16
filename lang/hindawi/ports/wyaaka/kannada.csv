@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+kannada,wyaaka,Yacc,ಆದರೆ,aadaree,if,keyword-table-only
+kannada,wyaaka,Yacc,ಇಲ್ಲದಿದ್ದರೆ,illadiddaree,else,keyword-table-only
+kannada,wyaaka,Yacc,ತನಕ,tanaka,while,keyword-table-only
+kannada,wyaaka,Yacc,ಮಾಡು,maadu,do,keyword-table-only
+kannada,wyaaka,Yacc,ಗಾಗಿ,gaagi,for,keyword-table-only
+kannada,wyaaka,Yacc,ನಿಲ್ಲಿಸು,nillisu,break,keyword-table-only
+kannada,wyaaka,Yacc,ಮುಂದುವರಿ,mu_nduvari,continue,keyword-table-only
+kannada,wyaaka,Yacc,ಆಯ್ಕೆ,aayke,switch,keyword-table-only
+kannada,wyaaka,Yacc,ಸ್ಥಿತಿ,sthiti,case,keyword-table-only
+kannada,wyaaka,Yacc,ಪೂರ್ವನಿಯೋಜಿತ,puurvaniyaujita,default,keyword-table-only

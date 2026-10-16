@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+manipuri_beng,praatha,BASIC,যদি,yadi,if,keyword-table-only
+manipuri_beng,praatha,BASIC,অন্যথা,anyathaa,else,keyword-table-only
+manipuri_beng,praatha,BASIC,যা঵ত্,yaavat,while,keyword-table-only
+manipuri_beng,praatha,BASIC,কুরু,kuru,do,keyword-table-only
+manipuri_beng,praatha,BASIC,প্রতি,prati,for,keyword-table-only
+manipuri_beng,praatha,BASIC,ভঙ্গ,bha_nga,break,keyword-table-only
+manipuri_beng,praatha,BASIC,অনু঵র্ত,anuvarta,continue,keyword-table-only
+manipuri_beng,praatha,BASIC,঵িকল্প,vikalpa,switch,keyword-table-only
+manipuri_beng,praatha,BASIC,পক্ষ,pak_sa,case,keyword-table-only
+manipuri_beng,praatha,BASIC,স্঵ভা঵,svabhaava,default,keyword-table-only

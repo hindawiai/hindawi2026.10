@@ -1,0 +1,11 @@
+%{
+/* burmese h2c */
+%}
+%%
+အကယ်၍  {printf("KW_IF");}
+မဟုတ်လျှင်  {printf("KW_ELSE");}
+နေစဉ်  {printf("KW_WHILE");}
+အတွက်  {printf("KW_FOR");}
+ပြန်  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

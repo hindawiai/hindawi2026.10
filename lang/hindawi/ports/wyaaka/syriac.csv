@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+syriac,wyaaka,Yacc,ܐܢ,ana,if,keyword-table-only
+syriac,wyaaka,Yacc,ܐܚܪܢܐ,aharanaa,else,keyword-table-only
+syriac,wyaaka,Yacc,ܟܡܐ,kamaa,while,keyword-table-only
+syriac,wyaaka,Yacc,ܥܒܕ,aebada,do,keyword-table-only
+syriac,wyaaka,Yacc,لكل,likulli,for,keyword-table-only
+syriac,wyaaka,Yacc,اكسر,iksira,break,keyword-table-only
+syriac,wyaaka,Yacc,استمر,istamirra,continue,keyword-table-only
+syriac,wyaaka,Yacc,بدل,baddila,switch,keyword-table-only
+syriac,wyaaka,Yacc,حالة,haalah,case,keyword-table-only
+syriac,wyaaka,Yacc,افتراضي,iftiraadii,default,keyword-table-only

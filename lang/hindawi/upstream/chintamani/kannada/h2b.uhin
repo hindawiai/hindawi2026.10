@@ -1,0 +1,33 @@
+%{
+/* kannada h2b.uhin */
+%}
+%%
+native               {printf("c");}
+ಆದರೆ                 {printf("if");}
+ಇಲ್ಲದಿದ್ದರೆ          {printf("else");}
+ತನಕ                  {printf("while");}
+ಮಾಡು                 {printf("do");}
+ಗಾಗಿ                 {printf("for");}
+ನಿಲ್ಲಿಸು             {printf("break");}
+ಮುಂದುವರಿ             {printf("continue");}
+ಆಯ್ಕೆ                {printf("switch");}
+ಸ್ಥಿತಿ               {printf("case");}
+ಪೂರ್ವನಿಯೋಜಿತ         {printf("default");}
+ಹಿಂತಿರುಗಿಸು          {printf("return");}
+ಸ್ಥಿರಾಂಕ             {printf("const");}
+ಪೂರ್ಣಾಂಕ             {printf("int");}
+ದಶಮಾಂಶ               {printf("float");}
+ದ್ವಿಗುಣ              {printf("double");}
+ಅಕ್ಷರ                {printf("char");}
+ಶೂನ್ಯ                {printf("void");}
+ಕಾರ್ಯ                {printf("void");}
+ವರ್ಗ                 {printf("class");}
+ಹೊಸ                  {printf("new");}
+ಸಾರ್ವಜನಿಕ            {printf("public");}
+ಖಾಸಗಿ                {printf("private");}
+ಸ್ಥಿರ                {printf("static");}
+ವಾಸ್ತವಿಕ             {printf("virtual");}
+ಯಾವಾಗ                {printf("case");}
+ರಚನೆ                 {printf("struct");}
+.  {printf("%s", yytext);}
+%%

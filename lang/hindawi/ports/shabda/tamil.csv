@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+tamil,shabda,Lex,எனில்,enila,if,keyword-table-only
+tamil,shabda,Lex,இல்லையெனில்,illaiyenila,else,keyword-table-only
+tamil,shabda,Lex,வரை,varai,while,keyword-table-only
+tamil,shabda,Lex,செய்,sey,do,keyword-table-only
+tamil,shabda,Lex,க்கு,kku,for,keyword-table-only
+tamil,shabda,Lex,நிறுத்து,niruttu,break,keyword-table-only
+tamil,shabda,Lex,தொடர்,todara,continue,keyword-table-only
+tamil,shabda,Lex,தேர்வு,teervu,switch,keyword-table-only
+tamil,shabda,Lex,நிலை,nilai,case,keyword-table-only
+tamil,shabda,Lex,இயல்பு,iyalpu,default,keyword-table-only

@@ -1,0 +1,33 @@
+%{
+/* malayalam h2cpp.uhin */
+%}
+%%
+native               {printf("c");}
+എങ്കിൽ               {printf("if");}
+അല്ലെങ്കിൽ           {printf("else");}
+വരെ                  {printf("while");}
+ചെയ്യുക              {printf("do");}
+വേണ്ടി               {printf("for");}
+നിർത്തുക             {printf("break");}
+തുടരുക               {printf("continue");}
+തിരഞ്ഞെടുപ്പ്        {printf("switch");}
+അവസ്ഥ                {printf("case");}
+സ്ഥിരസ്ഥിതി          {printf("default");}
+മടക്കുക              {printf("return");}
+സ്ഥിരം               {printf("const");}
+പൂർണ്ണസംഖ്യ          {printf("int");}
+ദശാംശം               {printf("float");}
+ഇരട്ട                {printf("double");}
+അക്ഷരം               {printf("char");}
+ശൂന്യം               {printf("void");}
+ധർമ്മം               {printf("void");}
+വർഗ്ഗം               {printf("class");}
+പുതിയ                {printf("new");}
+പൊതു                 {printf("public");}
+സ്വകാര്യ             {printf("private");}
+സ്ഥിതം               {printf("static");}
+മായാ                 {printf("virtual");}
+എപ്പോൾ               {printf("case");}
+ഘടന                  {printf("struct");}
+.  {printf("%s", yytext);}
+%%

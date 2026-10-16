@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malay_jawi,yantra,Assembly,إذا,izaa,if,keyword-table-only
+malay_jawi,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+malay_jawi,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+malay_jawi,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+malay_jawi,yantra,Assembly,لكل,likulli,for,keyword-table-only
+malay_jawi,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+malay_jawi,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+malay_jawi,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+malay_jawi,yantra,Assembly,حالة,haalah,case,keyword-table-only
+malay_jawi,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

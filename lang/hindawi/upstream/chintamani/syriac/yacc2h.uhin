@@ -1,0 +1,12 @@
+%{
+/* syriac yacc2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("ܐܢ");}
+else                 {printf("ܐܚܪܢܐ");}
+while                {printf("ܟܡܐ");}
+do                   {printf("ܥܒܕ");}
+return               {printf("ܦܢܐ");}
+.  {printf("%s", yytext);}
+%%

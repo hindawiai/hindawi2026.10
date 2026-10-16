@@ -1,0 +1,33 @@
+%{
+/* telugu h2cpp.uhin */
+%}
+%%
+native               {printf("c");}
+ఒకవేళ                {printf("if");}
+లేకపోతే              {printf("else");}
+వరకు                 {printf("while");}
+చేయి                 {printf("do");}
+కొరకు                {printf("for");}
+ఆపు                  {printf("break");}
+కొనసాగు              {printf("continue");}
+ఎంపిక                {printf("switch");}
+స్థితి               {printf("case");}
+అప్రమేయ              {printf("default");}
+తిరిగి               {printf("return");}
+స్థిరరాశి            {printf("const");}
+పూర్ణాంకం            {printf("int");}
+దశాంశం               {printf("float");}
+ద్విగుణ              {printf("double");}
+అక్షరం               {printf("char");}
+శూన్య                {printf("void");}
+ప్రమేయం              {printf("void");}
+తరగతి                {printf("class");}
+కొత్త                {printf("new");}
+బహిరంగ               {printf("public");}
+అంతరంగ               {printf("private");}
+స్థిర                {printf("static");}
+మాయా                 {printf("virtual");}
+ఎప్పుడు              {printf("case");}
+నిర్మాణం             {printf("struct");}
+.  {printf("%s", yytext);}
+%%

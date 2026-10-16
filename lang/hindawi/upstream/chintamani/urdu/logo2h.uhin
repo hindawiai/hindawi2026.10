@@ -1,0 +1,34 @@
+%{
+/* urdu logo2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("اگر");}
+else                 {printf("ورنہ");}
+while                {printf("جبتک");}
+do                   {printf("کرو");}
+for                  {printf("برائے");}
+break                {printf("توڑو");}
+continue             {printf("جاری");}
+switch               {printf("انتخاب");}
+case                 {printf("حالت");}
+default              {printf("طےشدہ");}
+return               {printf("واپس");}
+const                {printf("ثابت");}
+int                  {printf("صحیح");}
+float                {printf("اعشاری");}
+double               {printf("دوہرا");}
+char                 {printf("حرف");}
+void                 {printf("خالی");}
+void                 {printf("تابع");}
+class                {printf("جماعت");}
+new                  {printf("نیا");}
+public               {printf("عوامی");}
+private              {printf("نجی");}
+static               {printf("ساکن");}
+virtual              {printf("مجازی");}
+case                 {printf("جب");}
+struct               {printf("ساخت");}
+include              {printf("شامل");}
+.  {printf("%s", yytext);}
+%%

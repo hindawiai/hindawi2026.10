@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+tulu,shabda,Lex,ಯದಿ,yadi,if,keyword-table-only
+tulu,shabda,Lex,ಅನ್ಯಥಾ,anyathaa,else,keyword-table-only
+tulu,shabda,Lex,ಯಾವತ್,yaavat,while,keyword-table-only
+tulu,shabda,Lex,ಕುರು,kuru,do,keyword-table-only
+tulu,shabda,Lex,ಪ್ರತಿ,prati,for,keyword-table-only
+tulu,shabda,Lex,ಭಙ್ಗ,bha_nga,break,keyword-table-only
+tulu,shabda,Lex,ಅನುವರ್ತ,anuvarta,continue,keyword-table-only
+tulu,shabda,Lex,ವಿಕಲ್ಪ,vikalpa,switch,keyword-table-only
+tulu,shabda,Lex,ಪಕ್ಷ,pak_sa,case,keyword-table-only
+tulu,shabda,Lex,ಸ್ವಭಾವ,svabhaava,default,keyword-table-only

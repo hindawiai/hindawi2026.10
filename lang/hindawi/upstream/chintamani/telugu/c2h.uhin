@@ -1,0 +1,33 @@
+%{
+/* telugu c2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("ఒకవేళ");}
+else                 {printf("లేకపోతే");}
+while                {printf("వరకు");}
+do                   {printf("చేయి");}
+for                  {printf("కొరకు");}
+break                {printf("ఆపు");}
+continue             {printf("కొనసాగు");}
+switch               {printf("ఎంపిక");}
+case                 {printf("స్థితి");}
+default              {printf("అప్రమేయ");}
+return               {printf("తిరిగి");}
+const                {printf("స్థిరరాశి");}
+int                  {printf("పూర్ణాంకం");}
+float                {printf("దశాంశం");}
+double               {printf("ద్విగుణ");}
+char                 {printf("అక్షరం");}
+void                 {printf("శూన్య");}
+void                 {printf("ప్రమేయం");}
+class                {printf("తరగతి");}
+new                  {printf("కొత్త");}
+public               {printf("బహిరంగ");}
+private              {printf("అంతరంగ");}
+static               {printf("స్థిర");}
+virtual              {printf("మాయా");}
+case                 {printf("ఎప్పుడు");}
+struct               {printf("నిర్మాణం");}
+.  {printf("%s", yytext);}
+%%

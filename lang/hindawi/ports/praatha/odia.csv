@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+odia,praatha,BASIC,ଯଦି,yadi,if,keyword-table-only
+odia,praatha,BASIC,ଅନ୍ୟଥା,anyathaa,else,keyword-table-only
+odia,praatha,BASIC,ଯେପର୍ଯ୍ୟନ୍ତ,yeeparyyanta,while,keyword-table-only
+odia,praatha,BASIC,କର,kara,do,keyword-table-only
+odia,praatha,BASIC,ପାଇଁ,paaii_n,for,keyword-table-only
+odia,praatha,BASIC,ଭାଙ୍ଗ,bhaa_nga,break,keyword-table-only
+odia,praatha,BASIC,ଜାରି,jaari,continue,keyword-table-only
+odia,praatha,BASIC,ବାଛ,baacha,switch,keyword-table-only
+odia,praatha,BASIC,ସ୍ଥିତି,sthiti,case,keyword-table-only
+odia,praatha,BASIC,ପୂର୍ବନିର୍ଦ୍ଧାରିତ,puurbanirddhaarita,default,keyword-table-only

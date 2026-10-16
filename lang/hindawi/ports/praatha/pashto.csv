@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+pashto,praatha,BASIC,إذا,izaa,if,keyword-table-only
+pashto,praatha,BASIC,وإلا,vaillaa,else,keyword-table-only
+pashto,praatha,BASIC,طالما,taalamaa,while,keyword-table-only
+pashto,praatha,BASIC,افعل,ifaela,do,keyword-table-only
+pashto,praatha,BASIC,لكل,likulli,for,keyword-table-only
+pashto,praatha,BASIC,اكسر,iksira,break,keyword-table-only
+pashto,praatha,BASIC,استمر,istamirra,continue,keyword-table-only
+pashto,praatha,BASIC,بدل,baddila,switch,keyword-table-only
+pashto,praatha,BASIC,حالة,haalah,case,keyword-table-only
+pashto,praatha,BASIC,افتراضي,iftiraadii,default,keyword-table-only

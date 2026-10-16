@@ -1,0 +1,33 @@
+%{
+/* kannada logo2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("ಆದರೆ");}
+else                 {printf("ಇಲ್ಲದಿದ್ದರೆ");}
+while                {printf("ತನಕ");}
+do                   {printf("ಮಾಡು");}
+for                  {printf("ಗಾಗಿ");}
+break                {printf("ನಿಲ್ಲಿಸು");}
+continue             {printf("ಮುಂದುವರಿ");}
+switch               {printf("ಆಯ್ಕೆ");}
+case                 {printf("ಸ್ಥಿತಿ");}
+default              {printf("ಪೂರ್ವನಿಯೋಜಿತ");}
+return               {printf("ಹಿಂತಿರುಗಿಸು");}
+const                {printf("ಸ್ಥಿರಾಂಕ");}
+int                  {printf("ಪೂರ್ಣಾಂಕ");}
+float                {printf("ದಶಮಾಂಶ");}
+double               {printf("ದ್ವಿಗುಣ");}
+char                 {printf("ಅಕ್ಷರ");}
+void                 {printf("ಶೂನ್ಯ");}
+void                 {printf("ಕಾರ್ಯ");}
+class                {printf("ವರ್ಗ");}
+new                  {printf("ಹೊಸ");}
+public               {printf("ಸಾರ್ವಜನಿಕ");}
+private              {printf("ಖಾಸಗಿ");}
+static               {printf("ಸ್ಥಿರ");}
+virtual              {printf("ವಾಸ್ತವಿಕ");}
+case                 {printf("ಯಾವಾಗ");}
+struct               {printf("ರಚನೆ");}
+.  {printf("%s", yytext);}
+%%

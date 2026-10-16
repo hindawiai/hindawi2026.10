@@ -1,0 +1,9 @@
+%{
+/* aramaic py2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("𐡄𐡍");}
+do                   {printf("𐡏𐡁𐡃");}
+.  {printf("%s", yytext);}
+%%

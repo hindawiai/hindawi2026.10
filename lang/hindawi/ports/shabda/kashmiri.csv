@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+kashmiri,shabda,Lex,إذا,izaa,if,keyword-table-only
+kashmiri,shabda,Lex,وإلا,vaillaa,else,keyword-table-only
+kashmiri,shabda,Lex,طالما,taalamaa,while,keyword-table-only
+kashmiri,shabda,Lex,افعل,ifaela,do,keyword-table-only
+kashmiri,shabda,Lex,لكل,likulli,for,keyword-table-only
+kashmiri,shabda,Lex,اكسر,iksira,break,keyword-table-only
+kashmiri,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+kashmiri,shabda,Lex,بدل,baddila,switch,keyword-table-only
+kashmiri,shabda,Lex,حالة,haalah,case,keyword-table-only
+kashmiri,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

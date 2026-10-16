@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malay_jawi,shabda,Lex,إذا,izaa,if,keyword-table-only
+malay_jawi,shabda,Lex,وإلا,vaillaa,else,keyword-table-only
+malay_jawi,shabda,Lex,طالما,taalamaa,while,keyword-table-only
+malay_jawi,shabda,Lex,افعل,ifaela,do,keyword-table-only
+malay_jawi,shabda,Lex,لكل,likulli,for,keyword-table-only
+malay_jawi,shabda,Lex,اكسر,iksira,break,keyword-table-only
+malay_jawi,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+malay_jawi,shabda,Lex,بدل,baddila,switch,keyword-table-only
+malay_jawi,shabda,Lex,حالة,haalah,case,keyword-table-only
+malay_jawi,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

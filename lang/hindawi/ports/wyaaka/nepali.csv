@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+nepali,wyaaka,Yacc,यदि,yadi,if,keyword-table-only
+nepali,wyaaka,Yacc,अन्यथा,anyathaa,else,keyword-table-only
+nepali,wyaaka,Yacc,जबसम्म,jabasamma,while,keyword-table-only
+nepali,wyaaka,Yacc,गर,gara,do,keyword-table-only
+nepali,wyaaka,Yacc,लागि,laagi,for,keyword-table-only
+nepali,wyaaka,Yacc,रोक,rauka,break,keyword-table-only
+nepali,wyaaka,Yacc,जारी,jaarii,continue,keyword-table-only
+nepali,wyaaka,Yacc,विकल्प,vikalpa,switch,keyword-table-only
+nepali,wyaaka,Yacc,पक्ष,pak_sa,case,keyword-table-only
+nepali,wyaaka,Yacc,स्वभाव,svabhaava,default,keyword-table-only

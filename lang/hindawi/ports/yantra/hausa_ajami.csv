@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hausa_ajami,yantra,Assembly,إذا,izaa,if,keyword-table-only
+hausa_ajami,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+hausa_ajami,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+hausa_ajami,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+hausa_ajami,yantra,Assembly,لكل,likulli,for,keyword-table-only
+hausa_ajami,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+hausa_ajami,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+hausa_ajami,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+hausa_ajami,yantra,Assembly,حالة,haalah,case,keyword-table-only
+hausa_ajami,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

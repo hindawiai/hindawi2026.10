@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+marathi,robot,LOGO,जर,jara,if,keyword-table-only
+marathi,robot,LOGO,अन्यथा,anyathaa,else,keyword-table-only
+marathi,robot,LOGO,पर्यंत,parya_nta,while,keyword-table-only
+marathi,robot,LOGO,करा,karaa,do,keyword-table-only
+marathi,robot,LOGO,साठी,saathii,for,keyword-table-only
+marathi,robot,LOGO,थांबा,thaa_mbaa,break,keyword-table-only
+marathi,robot,LOGO,सुरूठेवा,suruutheevaa,continue,keyword-table-only
+marathi,robot,LOGO,निवड,nivada,switch,keyword-table-only
+marathi,robot,LOGO,स्थिती,sthitii,case,keyword-table-only
+marathi,robot,LOGO,पूर्वनिर्धारित,puurvanirdhaarita,default,keyword-table-only

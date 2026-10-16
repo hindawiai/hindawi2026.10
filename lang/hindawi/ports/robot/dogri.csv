@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+dogri,robot,LOGO,यदि,yadi,if,keyword-table-only
+dogri,robot,LOGO,अन्यथा,anyathaa,else,keyword-table-only
+dogri,robot,LOGO,यावत्,yaavat,while,keyword-table-only
+dogri,robot,LOGO,कुरु,kuru,do,keyword-table-only
+dogri,robot,LOGO,प्रति,prati,for,keyword-table-only
+dogri,robot,LOGO,भङ्ग,bha_nga,break,keyword-table-only
+dogri,robot,LOGO,अनुवर्त,anuvarta,continue,keyword-table-only
+dogri,robot,LOGO,विकल्प,vikalpa,switch,keyword-table-only
+dogri,robot,LOGO,पक्ष,pak_sa,case,keyword-table-only
+dogri,robot,LOGO,स्वभाव,svabhaava,default,keyword-table-only

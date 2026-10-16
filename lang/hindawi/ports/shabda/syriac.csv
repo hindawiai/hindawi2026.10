@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+syriac,shabda,Lex,ܐܢ,ana,if,keyword-table-only
+syriac,shabda,Lex,ܐܚܪܢܐ,aharanaa,else,keyword-table-only
+syriac,shabda,Lex,ܟܡܐ,kamaa,while,keyword-table-only
+syriac,shabda,Lex,ܥܒܕ,aebada,do,keyword-table-only
+syriac,shabda,Lex,لكل,likulli,for,keyword-table-only
+syriac,shabda,Lex,اكسر,iksira,break,keyword-table-only
+syriac,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+syriac,shabda,Lex,بدل,baddila,switch,keyword-table-only
+syriac,shabda,Lex,حالة,haalah,case,keyword-table-only
+syriac,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

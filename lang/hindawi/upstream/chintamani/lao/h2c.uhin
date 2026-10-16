@@ -1,0 +1,11 @@
+%{
+/* lao h2c */
+%}
+%%
+ຖ້າ  {printf("KW_IF");}
+ບໍ່ງັ້ນ  {printf("KW_ELSE");}
+ຂະນະ  {printf("KW_WHILE");}
+ສຳລັບ  {printf("KW_FOR");}
+ຄືນ  {printf("KW_RETURN");}
+.  {printf("%s", yytext);}
+%%

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+balinese,yantra,Assembly,yadi,yadi,if,keyword-table-only
+balinese,yantra,Assembly,anyathaa,anyathaa,else,keyword-table-only
+balinese,yantra,Assembly,yaavat,yaavat,while,keyword-table-only
+balinese,yantra,Assembly,kuru,kuru,do,keyword-table-only
+balinese,yantra,Assembly,prati,prati,for,keyword-table-only
+balinese,yantra,Assembly,bha_nga,bha_nga,break,keyword-table-only
+balinese,yantra,Assembly,anuvarta,anuvarta,continue,keyword-table-only
+balinese,yantra,Assembly,vikalpa,vikalpa,switch,keyword-table-only
+balinese,yantra,Assembly,pak_sa,pak_sa,case,keyword-table-only
+balinese,yantra,Assembly,svabhaava,svabhaava,default,keyword-table-only

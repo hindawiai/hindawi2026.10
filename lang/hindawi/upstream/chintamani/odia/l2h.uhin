@@ -1,0 +1,33 @@
+%{
+/* odia l2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("ଯଦି");}
+else                 {printf("ଅନ୍ୟଥା");}
+while                {printf("ଯେପର୍ଯ୍ୟନ୍ତ");}
+do                   {printf("କର");}
+for                  {printf("ପାଇଁ");}
+break                {printf("ଭାଙ୍ଗ");}
+continue             {printf("ଜାରି");}
+switch               {printf("ବାଛ");}
+case                 {printf("ସ୍ଥିତି");}
+default              {printf("ପୂର୍ବନିର୍ଦ୍ଧାରିତ");}
+return               {printf("ଫେରାଅ");}
+const                {printf("ଅଚଳ");}
+int                  {printf("ପୂର୍ଣ୍ଣସଂଖ୍ୟା");}
+float                {printf("ଦଶମିକ");}
+double               {printf("ଦ୍ୱିଗୁଣ");}
+char                 {printf("ଅକ୍ଷର");}
+void                 {printf("ଶୂନ୍ୟ");}
+void                 {printf("କାର୍ଯ୍ୟ");}
+class                {printf("ଶ୍ରେଣୀ");}
+new                  {printf("ନୂତନ");}
+public               {printf("ସର୍ବସାଧାରଣ");}
+private              {printf("ବ୍ୟକ୍ତିଗତ");}
+static               {printf("ସ୍ଥିର");}
+virtual              {printf("ଆଭାସୀ");}
+case                 {printf("ଯେତେବେଳେ");}
+struct               {printf("ସଂରଚନା");}
+.  {printf("%s", yytext);}
+%%

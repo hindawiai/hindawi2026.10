@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hebrew,wyaaka,Yacc,אם,ama,if,keyword-table-only
+hebrew,wyaaka,Yacc,אחרת,aharata,else,keyword-table-only
+hebrew,wyaaka,Yacc,כלעוד,kalaeauda,while,keyword-table-only
+hebrew,wyaaka,Yacc,עשה,aeshah,do,keyword-table-only
+hebrew,wyaaka,Yacc,עבור,aebuura,for,keyword-table-only
+hebrew,wyaaka,Yacc,اكسر,iksira,break,keyword-table-only
+hebrew,wyaaka,Yacc,استمر,istamirra,continue,keyword-table-only
+hebrew,wyaaka,Yacc,بدل,baddila,switch,keyword-table-only
+hebrew,wyaaka,Yacc,حالة,haalah,case,keyword-table-only
+hebrew,wyaaka,Yacc,افتراضي,iftiraadii,default,keyword-table-only

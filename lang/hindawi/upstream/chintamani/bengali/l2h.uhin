@@ -1,0 +1,33 @@
+%{
+/* bengali l2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("যদি");}
+else                 {printf("অন্যথা");}
+while                {printf("যতক্ষণ");}
+do                   {printf("করো");}
+for                  {printf("জন্য");}
+break                {printf("বিরতি");}
+continue             {printf("চালু");}
+switch               {printf("নির্বাচন");}
+case                 {printf("ক্ষেত্র");}
+default              {printf("পূর্বনির্ধারিত");}
+return               {printf("ফেরত");}
+const                {printf("ধ্রুবক");}
+int                  {printf("পূর্ণসংখ্যা");}
+float                {printf("দশমিক");}
+double               {printf("দ্বিগুণ");}
+char                 {printf("অক্ষর");}
+void                 {printf("শূন্য");}
+void                 {printf("কাজ");}
+class                {printf("শ্রেণী");}
+new                  {printf("নতুন");}
+public               {printf("সর্বজনীন");}
+private              {printf("ব্যক্তিগত");}
+static               {printf("স্থির");}
+virtual              {printf("আভাসী");}
+case                 {printf("যখন");}
+struct               {printf("কাঠামো");}
+.  {printf("%s", yytext);}
+%%

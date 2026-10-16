@@ -1,0 +1,9 @@
+%{
+/* phoenician asm2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("𐤀𐤌");}
+do                   {printf("𐤐𐤏𐤋");}
+.  {printf("%s", yytext);}
+%%

@@ -1,0 +1,41 @@
+%{
+/* arabic h2c.uhin */
+%}
+%%
+native               {printf("c");}
+إذا                  {printf("if");}
+وإلا                 {printf("else");}
+طالما                {printf("while");}
+افعل                 {printf("do");}
+لكل                  {printf("for");}
+اكسر                 {printf("break");}
+استمر                {printf("continue");}
+بدل                  {printf("switch");}
+حالة                 {printf("case");}
+افتراضي              {printf("virtual");}
+أرجع                 {printf("return");}
+ثابت                 {printf("const");}
+صحيح                 {printf("int");}
+عائم                 {printf("float");}
+مزدوج                {printf("double");}
+حرف                  {printf("char");}
+فراغ                 {printf("void");}
+دالة                 {printf("void");}
+صنف                  {printf("class");}
+جديد                 {printf("new");}
+عام                  {printf("public");}
+خاص                  {printf("private");}
+ساكن                 {printf("static");}
+عندما                {printf("case");}
+بنية                 {printf("struct");}
+ضمن                  {printf("include");}
+اقرأ                 {printf("scanf");}
+اكتب                 {printf("printf");}
+.  {printf("%s", yytext);}
+اطبع                     {printf("printf");}
+اقرأ                     {printf("scanf");}
+خصص                      {printf("malloc");}
+حرر                      {printf("free");}
+کھولو                    {printf("{");}
+بند                      {printf("}");}
+%%

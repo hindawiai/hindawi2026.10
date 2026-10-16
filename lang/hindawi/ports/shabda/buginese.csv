@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+buginese,shabda,Lex,yadi,yadi,if,keyword-table-only
+buginese,shabda,Lex,anyathaa,anyathaa,else,keyword-table-only
+buginese,shabda,Lex,yaavat,yaavat,while,keyword-table-only
+buginese,shabda,Lex,kuru,kuru,do,keyword-table-only
+buginese,shabda,Lex,prati,prati,for,keyword-table-only
+buginese,shabda,Lex,bha_nga,bha_nga,break,keyword-table-only
+buginese,shabda,Lex,anuvarta,anuvarta,continue,keyword-table-only
+buginese,shabda,Lex,vikalpa,vikalpa,switch,keyword-table-only
+buginese,shabda,Lex,pak_sa,pak_sa,case,keyword-table-only
+buginese,shabda,Lex,svabhaava,svabhaava,default,keyword-table-only

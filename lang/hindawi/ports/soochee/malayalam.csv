@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malayalam,soochee,Python,എങ്കിൽ,e_nkila,if,keyword-table-only
+malayalam,soochee,Python,അല്ലെങ്കിൽ,alle_nkila,else,keyword-table-only
+malayalam,soochee,Python,വരെ,vare,while,keyword-table-only
+malayalam,soochee,Python,ചെയ്യുക,ceyyuka,do,keyword-table-only
+malayalam,soochee,Python,വേണ്ടി,ve_ndi,for,keyword-table-only
+malayalam,soochee,Python,നിർത്തുക,nirttuka,break,keyword-table-only
+malayalam,soochee,Python,തുടരുക,tudaruka,continue,keyword-table-only
+malayalam,soochee,Python,തിരഞ്ഞെടുപ്പ്,tira_nyedupp,switch,keyword-table-only
+malayalam,soochee,Python,അവസ്ഥ,avastha,case,keyword-table-only
+malayalam,soochee,Python,സ്ഥിരസ്ഥിതി,sthirasthiti,default,keyword-table-only

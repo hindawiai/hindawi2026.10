@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+burmese,shabda,Lex,yadi,yadi,if,keyword-table-only
+burmese,shabda,Lex,anyathaa,anyathaa,else,keyword-table-only
+burmese,shabda,Lex,yaavat,yaavat,while,keyword-table-only
+burmese,shabda,Lex,kuru,kuru,do,keyword-table-only
+burmese,shabda,Lex,prati,prati,for,keyword-table-only
+burmese,shabda,Lex,bha_nga,bha_nga,break,keyword-table-only
+burmese,shabda,Lex,anuvarta,anuvarta,continue,keyword-table-only
+burmese,shabda,Lex,vikalpa,vikalpa,switch,keyword-table-only
+burmese,shabda,Lex,pak_sa,pak_sa,case,keyword-table-only
+burmese,shabda,Lex,svabhaava,svabhaava,default,keyword-table-only

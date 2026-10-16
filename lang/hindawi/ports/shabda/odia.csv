@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+odia,shabda,Lex,ଯଦି,yadi,if,keyword-table-only
+odia,shabda,Lex,ଅନ୍ୟଥା,anyathaa,else,keyword-table-only
+odia,shabda,Lex,ଯେପର୍ଯ୍ୟନ୍ତ,yeeparyyanta,while,keyword-table-only
+odia,shabda,Lex,କର,kara,do,keyword-table-only
+odia,shabda,Lex,ପାଇଁ,paaii_n,for,keyword-table-only
+odia,shabda,Lex,ଭାଙ୍ଗ,bhaa_nga,break,keyword-table-only
+odia,shabda,Lex,ଜାରି,jaari,continue,keyword-table-only
+odia,shabda,Lex,ବାଛ,baacha,switch,keyword-table-only
+odia,shabda,Lex,ସ୍ଥିତି,sthiti,case,keyword-table-only
+odia,shabda,Lex,ପୂର୍ବନିର୍ଦ୍ଧାରିତ,puurbanirddhaarita,default,keyword-table-only

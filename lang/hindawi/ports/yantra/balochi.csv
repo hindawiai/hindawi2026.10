@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+balochi,yantra,Assembly,إذا,izaa,if,keyword-table-only
+balochi,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+balochi,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+balochi,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+balochi,yantra,Assembly,لكل,likulli,for,keyword-table-only
+balochi,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+balochi,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+balochi,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+balochi,yantra,Assembly,حالة,haalah,case,keyword-table-only
+balochi,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

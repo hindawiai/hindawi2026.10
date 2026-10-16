@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+kurdish_sorani,praatha,BASIC,إذا,izaa,if,keyword-table-only
+kurdish_sorani,praatha,BASIC,وإلا,vaillaa,else,keyword-table-only
+kurdish_sorani,praatha,BASIC,طالما,taalamaa,while,keyword-table-only
+kurdish_sorani,praatha,BASIC,افعل,ifaela,do,keyword-table-only
+kurdish_sorani,praatha,BASIC,لكل,likulli,for,keyword-table-only
+kurdish_sorani,praatha,BASIC,اكسر,iksira,break,keyword-table-only
+kurdish_sorani,praatha,BASIC,استمر,istamirra,continue,keyword-table-only
+kurdish_sorani,praatha,BASIC,بدل,baddila,switch,keyword-table-only
+kurdish_sorani,praatha,BASIC,حالة,haalah,case,keyword-table-only
+kurdish_sorani,praatha,BASIC,افتراضي,iftiraadii,default,keyword-table-only

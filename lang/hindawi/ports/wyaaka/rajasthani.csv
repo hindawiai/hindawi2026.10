@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+rajasthani,wyaaka,Yacc,यदि,yadi,if,keyword-table-only
+rajasthani,wyaaka,Yacc,अन्यथा,anyathaa,else,keyword-table-only
+rajasthani,wyaaka,Yacc,यावत्,yaavat,while,keyword-table-only
+rajasthani,wyaaka,Yacc,कुरु,kuru,do,keyword-table-only
+rajasthani,wyaaka,Yacc,प्रति,prati,for,keyword-table-only
+rajasthani,wyaaka,Yacc,भङ्ग,bha_nga,break,keyword-table-only
+rajasthani,wyaaka,Yacc,अनुवर्त,anuvarta,continue,keyword-table-only
+rajasthani,wyaaka,Yacc,विकल्प,vikalpa,switch,keyword-table-only
+rajasthani,wyaaka,Yacc,पक्ष,pak_sa,case,keyword-table-only
+rajasthani,wyaaka,Yacc,स्वभाव,svabhaava,default,keyword-table-only

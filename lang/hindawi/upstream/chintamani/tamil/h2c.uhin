@@ -1,0 +1,37 @@
+%{
+/* tamil h2c.uhin */
+%}
+%%
+native               {printf("c");}
+எனில்                {printf("if");}
+இல்லையெனில்          {printf("else");}
+வரை                  {printf("while");}
+செய்                 {printf("do");}
+க்கு                 {printf("for");}
+நிறுத்து             {printf("break");}
+தொடர்                {printf("continue");}
+தேர்வு               {printf("switch");}
+நிலை                 {printf("case");}
+இயல்பு               {printf("default");}
+திரும்பு             {printf("return");}
+மாறிலி               {printf("const");}
+முழு                 {printf("int");}
+தசம                  {printf("float");}
+இரட்டை               {printf("double");}
+எழுத்து              {printf("char");}
+வெறுமை               {printf("void");}
+செயல்                {printf("void");}
+வகுப்பு              {printf("class");}
+புதிய                {printf("new");}
+பொது                 {printf("public");}
+தனிப்பட்ட            {printf("private");}
+நிலையான              {printf("static");}
+மெய்நிகர்            {printf("virtual");}
+போது                 {printf("case");}
+கட்டமைப்பு           {printf("struct");}
+.  {printf("%s", yytext);}
+எழுது                    {printf("printf");}
+படி                      {printf("scanf");}
+ஒதுக்கு                  {printf("malloc");}
+விடுவி                   {printf("free");}
+%%

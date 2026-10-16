@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+persian,wyaaka,Yacc,اگر,agar,if,keyword-table-only
+persian,wyaaka,Yacc,وگرنه,vagarnah,else,keyword-table-only
+persian,wyaaka,Yacc,تازمانیکه,taazamaaniikah,while,keyword-table-only
+persian,wyaaka,Yacc,انجامبده,anjaamabdah,do,keyword-table-only
+persian,wyaaka,Yacc,برای,baraaya,for,keyword-table-only
+persian,wyaaka,Yacc,بشکن,bishkan,break,keyword-table-only
+persian,wyaaka,Yacc,ادامه,adaamah,continue,keyword-table-only
+persian,wyaaka,Yacc,انتخاب,intikhaaba,switch,keyword-table-only
+persian,wyaaka,Yacc,حالت,haalata,case,keyword-table-only
+persian,wyaaka,Yacc,پیشفرض,piishfarza,default,keyword-table-only

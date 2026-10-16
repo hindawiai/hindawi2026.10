@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+sindhi_dev,yantra,Assembly,यदि,yadi,if,keyword-table-only
+sindhi_dev,yantra,Assembly,अन्यथा,anyathaa,else,keyword-table-only
+sindhi_dev,yantra,Assembly,यावत्,yaavat,while,keyword-table-only
+sindhi_dev,yantra,Assembly,कुरु,kuru,do,keyword-table-only
+sindhi_dev,yantra,Assembly,प्रति,prati,for,keyword-table-only
+sindhi_dev,yantra,Assembly,भङ्ग,bha_nga,break,keyword-table-only
+sindhi_dev,yantra,Assembly,अनुवर्त,anuvarta,continue,keyword-table-only
+sindhi_dev,yantra,Assembly,विकल्प,vikalpa,switch,keyword-table-only
+sindhi_dev,yantra,Assembly,पक्ष,pak_sa,case,keyword-table-only
+sindhi_dev,yantra,Assembly,स्वभाव,svabhaava,default,keyword-table-only

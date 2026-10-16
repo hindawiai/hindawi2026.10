@@ -1,0 +1,9 @@
+%{
+/* aramaic h2b.uhin */
+%}
+%%
+native               {printf("c");}
+𐡄𐡍                   {printf("if");}
+𐡏𐡁𐡃                  {printf("do");}
+.  {printf("%s", yytext);}
+%%

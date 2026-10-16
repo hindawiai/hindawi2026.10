@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+tamil,wyaaka,Yacc,எனில்,enila,if,keyword-table-only
+tamil,wyaaka,Yacc,இல்லையெனில்,illaiyenila,else,keyword-table-only
+tamil,wyaaka,Yacc,வரை,varai,while,keyword-table-only
+tamil,wyaaka,Yacc,செய்,sey,do,keyword-table-only
+tamil,wyaaka,Yacc,க்கு,kku,for,keyword-table-only
+tamil,wyaaka,Yacc,நிறுத்து,niruttu,break,keyword-table-only
+tamil,wyaaka,Yacc,தொடர்,todara,continue,keyword-table-only
+tamil,wyaaka,Yacc,தேர்வு,teervu,switch,keyword-table-only
+tamil,wyaaka,Yacc,நிலை,nilai,case,keyword-table-only
+tamil,wyaaka,Yacc,இயல்பு,iyalpu,default,keyword-table-only

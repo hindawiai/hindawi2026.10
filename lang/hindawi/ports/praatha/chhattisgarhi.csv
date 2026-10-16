@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+chhattisgarhi,praatha,BASIC,यदि,yadi,if,keyword-table-only
+chhattisgarhi,praatha,BASIC,अन्यथा,anyathaa,else,keyword-table-only
+chhattisgarhi,praatha,BASIC,यावत्,yaavat,while,keyword-table-only
+chhattisgarhi,praatha,BASIC,कुरु,kuru,do,keyword-table-only
+chhattisgarhi,praatha,BASIC,प्रति,prati,for,keyword-table-only
+chhattisgarhi,praatha,BASIC,भङ्ग,bha_nga,break,keyword-table-only
+chhattisgarhi,praatha,BASIC,अनुवर्त,anuvarta,continue,keyword-table-only
+chhattisgarhi,praatha,BASIC,विकल्प,vikalpa,switch,keyword-table-only
+chhattisgarhi,praatha,BASIC,पक्ष,pak_sa,case,keyword-table-only
+chhattisgarhi,praatha,BASIC,स्वभाव,svabhaava,default,keyword-table-only

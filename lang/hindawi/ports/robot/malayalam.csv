@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malayalam,robot,LOGO,എങ്കിൽ,e_nkila,if,keyword-table-only
+malayalam,robot,LOGO,അല്ലെങ്കിൽ,alle_nkila,else,keyword-table-only
+malayalam,robot,LOGO,വരെ,vare,while,keyword-table-only
+malayalam,robot,LOGO,ചെയ്യുക,ceyyuka,do,keyword-table-only
+malayalam,robot,LOGO,വേണ്ടി,ve_ndi,for,keyword-table-only
+malayalam,robot,LOGO,നിർത്തുക,nirttuka,break,keyword-table-only
+malayalam,robot,LOGO,തുടരുക,tudaruka,continue,keyword-table-only
+malayalam,robot,LOGO,തിരഞ്ഞെടുപ്പ്,tira_nyedupp,switch,keyword-table-only
+malayalam,robot,LOGO,അവസ്ഥ,avastha,case,keyword-table-only
+malayalam,robot,LOGO,സ്ഥിരസ്ഥിതി,sthirasthiti,default,keyword-table-only

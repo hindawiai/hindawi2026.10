@@ -1,0 +1,33 @@
+%{
+/* malayalam l2h.uhin */
+%}
+%%
+c                    {printf("native");}
+if                   {printf("എങ്കിൽ");}
+else                 {printf("അല്ലെങ്കിൽ");}
+while                {printf("വരെ");}
+do                   {printf("ചെയ്യുക");}
+for                  {printf("വേണ്ടി");}
+break                {printf("നിർത്തുക");}
+continue             {printf("തുടരുക");}
+switch               {printf("തിരഞ്ഞെടുപ്പ്");}
+case                 {printf("അവസ്ഥ");}
+default              {printf("സ്ഥിരസ്ഥിതി");}
+return               {printf("മടക്കുക");}
+const                {printf("സ്ഥിരം");}
+int                  {printf("പൂർണ്ണസംഖ്യ");}
+float                {printf("ദശാംശം");}
+double               {printf("ഇരട്ട");}
+char                 {printf("അക്ഷരം");}
+void                 {printf("ശൂന്യം");}
+void                 {printf("ധർമ്മം");}
+class                {printf("വർഗ്ഗം");}
+new                  {printf("പുതിയ");}
+public               {printf("പൊതു");}
+private              {printf("സ്വകാര്യ");}
+static               {printf("സ്ഥിതം");}
+virtual              {printf("മായാ");}
+case                 {printf("എപ്പോൾ");}
+struct               {printf("ഘടന");}
+.  {printf("%s", yytext);}
+%%

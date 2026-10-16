@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+tamil,yantra,Assembly,எனில்,enila,if,keyword-table-only
+tamil,yantra,Assembly,இல்லையெனில்,illaiyenila,else,keyword-table-only
+tamil,yantra,Assembly,வரை,varai,while,keyword-table-only
+tamil,yantra,Assembly,செய்,sey,do,keyword-table-only
+tamil,yantra,Assembly,க்கு,kku,for,keyword-table-only
+tamil,yantra,Assembly,நிறுத்து,niruttu,break,keyword-table-only
+tamil,yantra,Assembly,தொடர்,todara,continue,keyword-table-only
+tamil,yantra,Assembly,தேர்வு,teervu,switch,keyword-table-only
+tamil,yantra,Assembly,நிலை,nilai,case,keyword-table-only
+tamil,yantra,Assembly,இயல்பு,iyalpu,default,keyword-table-only

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+newari,shabda,Lex,यदि,yadi,if,keyword-table-only
+newari,shabda,Lex,अन्यथा,anyathaa,else,keyword-table-only
+newari,shabda,Lex,यावत्,yaavat,while,keyword-table-only
+newari,shabda,Lex,कुरु,kuru,do,keyword-table-only
+newari,shabda,Lex,प्रति,prati,for,keyword-table-only
+newari,shabda,Lex,भङ्ग,bha_nga,break,keyword-table-only
+newari,shabda,Lex,अनुवर्त,anuvarta,continue,keyword-table-only
+newari,shabda,Lex,विकल्प,vikalpa,switch,keyword-table-only
+newari,shabda,Lex,पक्ष,pak_sa,case,keyword-table-only
+newari,shabda,Lex,स्वभाव,svabhaava,default,keyword-table-only

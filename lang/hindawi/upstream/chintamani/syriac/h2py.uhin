@@ -1,0 +1,12 @@
+%{
+/* syriac h2py.uhin */
+%}
+%%
+native               {printf("c");}
+ܐܢ                   {printf("if");}
+ܐܚܪܢܐ                {printf("else");}
+ܟܡܐ                  {printf("while");}
+ܥܒܕ                  {printf("do");}
+ܦܢܐ                  {printf("return");}
+.  {printf("%s", yytext);}
+%%

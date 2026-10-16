@@ -1,0 +1,12 @@
+%{
+/* bulgarian h2asm */
+%}
+%%
+ако  {printf("if");}
+иначе  {printf("else");}
+докато  {printf("while");}
+за  {printf("for");}
+върни  {printf("return");}
+цяло  {printf("int");}
+.  {printf("%s", yytext);}
+%%

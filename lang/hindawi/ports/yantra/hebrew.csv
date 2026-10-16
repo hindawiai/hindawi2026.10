@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hebrew,yantra,Assembly,אם,ama,if,keyword-table-only
+hebrew,yantra,Assembly,אחרת,aharata,else,keyword-table-only
+hebrew,yantra,Assembly,כלעוד,kalaeauda,while,keyword-table-only
+hebrew,yantra,Assembly,עשה,aeshah,do,keyword-table-only
+hebrew,yantra,Assembly,עבור,aebuura,for,keyword-table-only
+hebrew,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+hebrew,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+hebrew,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+hebrew,yantra,Assembly,حالة,haalah,case,keyword-table-only
+hebrew,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

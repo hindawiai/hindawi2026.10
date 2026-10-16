@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+punjabi,praatha,BASIC,ਜੇ,jee,if,keyword-table-only
+punjabi,praatha,BASIC,ਨਹੀਂਤਾਂ,nahii_ntaa_n,else,keyword-table-only
+punjabi,praatha,BASIC,ਜਦਤੱਕ,jadatakka,while,keyword-table-only
+punjabi,praatha,BASIC,ਕਰੋ,karau,do,keyword-table-only
+punjabi,praatha,BASIC,ਲਈ,laii,for,keyword-table-only
+punjabi,praatha,BASIC,ਰੋਕੋ,raukau,break,keyword-table-only
+punjabi,praatha,BASIC,ਜਾਰੀ,jaarii,continue,keyword-table-only
+punjabi,praatha,BASIC,ਚੋਣ,cau_na,switch,keyword-table-only
+punjabi,praatha,BASIC,ਹਾਲਤ,haalata,case,keyword-table-only
+punjabi,praatha,BASIC,ਮੂਲ,muula,default,keyword-table-only

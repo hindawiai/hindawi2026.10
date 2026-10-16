@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+sindhi,shabda,Lex,إذا,izaa,if,keyword-table-only
+sindhi,shabda,Lex,وإلا,vaillaa,else,keyword-table-only
+sindhi,shabda,Lex,طالما,taalamaa,while,keyword-table-only
+sindhi,shabda,Lex,افعل,ifaela,do,keyword-table-only
+sindhi,shabda,Lex,لكل,likulli,for,keyword-table-only
+sindhi,shabda,Lex,اكسر,iksira,break,keyword-table-only
+sindhi,shabda,Lex,استمر,istamirra,continue,keyword-table-only
+sindhi,shabda,Lex,بدل,baddila,switch,keyword-table-only
+sindhi,shabda,Lex,حالة,haalah,case,keyword-table-only
+sindhi,shabda,Lex,افتراضي,iftiraadii,default,keyword-table-only

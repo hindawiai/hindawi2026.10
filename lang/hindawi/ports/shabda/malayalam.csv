@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malayalam,shabda,Lex,എങ്കിൽ,e_nkila,if,keyword-table-only
+malayalam,shabda,Lex,അല്ലെങ്കിൽ,alle_nkila,else,keyword-table-only
+malayalam,shabda,Lex,വരെ,vare,while,keyword-table-only
+malayalam,shabda,Lex,ചെയ്യുക,ceyyuka,do,keyword-table-only
+malayalam,shabda,Lex,വേണ്ടി,ve_ndi,for,keyword-table-only
+malayalam,shabda,Lex,നിർത്തുക,nirttuka,break,keyword-table-only
+malayalam,shabda,Lex,തുടരുക,tudaruka,continue,keyword-table-only
+malayalam,shabda,Lex,തിരഞ്ഞെടുപ്പ്,tira_nyedupp,switch,keyword-table-only
+malayalam,shabda,Lex,അവസ്ഥ,avastha,case,keyword-table-only
+malayalam,shabda,Lex,സ്ഥിരസ്ഥിതി,sthirasthiti,default,keyword-table-only

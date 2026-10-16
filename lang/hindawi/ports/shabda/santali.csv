@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+santali,shabda,Lex,yadi,yadi,if,keyword-table-only
+santali,shabda,Lex,anyathaa,anyathaa,else,keyword-table-only
+santali,shabda,Lex,yaavat,yaavat,while,keyword-table-only
+santali,shabda,Lex,kuru,kuru,do,keyword-table-only
+santali,shabda,Lex,prati,prati,for,keyword-table-only
+santali,shabda,Lex,bha_nga,bha_nga,break,keyword-table-only
+santali,shabda,Lex,anuvarta,anuvarta,continue,keyword-table-only
+santali,shabda,Lex,vikalpa,vikalpa,switch,keyword-table-only
+santali,shabda,Lex,pak_sa,pak_sa,case,keyword-table-only
+santali,shabda,Lex,svabhaava,svabhaava,default,keyword-table-only

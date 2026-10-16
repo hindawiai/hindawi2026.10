@@ -1,0 +1,33 @@
+%{
+/* odia h2b.uhin */
+%}
+%%
+native               {printf("c");}
+ଯଦି                  {printf("if");}
+ଅନ୍ୟଥା               {printf("else");}
+ଯେପର୍ଯ୍ୟନ୍ତ          {printf("while");}
+କର                   {printf("do");}
+ପାଇଁ                 {printf("for");}
+ଭାଙ୍ଗ                {printf("break");}
+ଜାରି                 {printf("continue");}
+ବାଛ                  {printf("switch");}
+ସ୍ଥିତି               {printf("case");}
+ପୂର୍ବନିର୍ଦ୍ଧାରିତ     {printf("default");}
+ଫେରାଅ                {printf("return");}
+ଅଚଳ                  {printf("const");}
+ପୂର୍ଣ୍ଣସଂଖ୍ୟା        {printf("int");}
+ଦଶମିକ                {printf("float");}
+ଦ୍ୱିଗୁଣ              {printf("double");}
+ଅକ୍ଷର                {printf("char");}
+ଶୂନ୍ୟ                {printf("void");}
+କାର୍ଯ୍ୟ              {printf("void");}
+ଶ୍ରେଣୀ               {printf("class");}
+ନୂତନ                 {printf("new");}
+ସର୍ବସାଧାରଣ           {printf("public");}
+ବ୍ୟକ୍ତିଗତ            {printf("private");}
+ସ୍ଥିର                {printf("static");}
+ଆଭାସୀ                {printf("virtual");}
+ଯେତେବେଳେ             {printf("case");}
+ସଂରଚନା               {printf("struct");}
+.  {printf("%s", yytext);}
+%%

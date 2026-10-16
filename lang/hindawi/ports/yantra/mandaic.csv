@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+mandaic,yantra,Assembly,إذا,izaa,if,keyword-table-only
+mandaic,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+mandaic,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+mandaic,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+mandaic,yantra,Assembly,لكل,likulli,for,keyword-table-only
+mandaic,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+mandaic,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+mandaic,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+mandaic,yantra,Assembly,حالة,haalah,case,keyword-table-only
+mandaic,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

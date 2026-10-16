@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+kannada,praatha,BASIC,ಆದರೆ,aadaree,if,keyword-table-only
+kannada,praatha,BASIC,ಇಲ್ಲದಿದ್ದರೆ,illadiddaree,else,keyword-table-only
+kannada,praatha,BASIC,ತನಕ,tanaka,while,keyword-table-only
+kannada,praatha,BASIC,ಮಾಡು,maadu,do,keyword-table-only
+kannada,praatha,BASIC,ಗಾಗಿ,gaagi,for,keyword-table-only
+kannada,praatha,BASIC,ನಿಲ್ಲಿಸು,nillisu,break,keyword-table-only
+kannada,praatha,BASIC,ಮುಂದುವರಿ,mu_nduvari,continue,keyword-table-only
+kannada,praatha,BASIC,ಆಯ್ಕೆ,aayke,switch,keyword-table-only
+kannada,praatha,BASIC,ಸ್ಥಿತಿ,sthiti,case,keyword-table-only
+kannada,praatha,BASIC,ಪೂರ್ವನಿಯೋಜಿತ,puurvaniyaujita,default,keyword-table-only

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+persian,shabda,Lex,اگر,agar,if,keyword-table-only
+persian,shabda,Lex,وگرنه,vagarnah,else,keyword-table-only
+persian,shabda,Lex,تازمانیکه,taazamaaniikah,while,keyword-table-only
+persian,shabda,Lex,انجامبده,anjaamabdah,do,keyword-table-only
+persian,shabda,Lex,برای,baraaya,for,keyword-table-only
+persian,shabda,Lex,بشکن,bishkan,break,keyword-table-only
+persian,shabda,Lex,ادامه,adaamah,continue,keyword-table-only
+persian,shabda,Lex,انتخاب,intikhaaba,switch,keyword-table-only
+persian,shabda,Lex,حالت,haalata,case,keyword-table-only
+persian,shabda,Lex,پیشفرض,piishfarza,default,keyword-table-only

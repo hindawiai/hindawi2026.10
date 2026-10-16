@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+limbu,yantra,Assembly,yadi,yadi,if,keyword-table-only
+limbu,yantra,Assembly,anyathaa,anyathaa,else,keyword-table-only
+limbu,yantra,Assembly,yaavat,yaavat,while,keyword-table-only
+limbu,yantra,Assembly,kuru,kuru,do,keyword-table-only
+limbu,yantra,Assembly,prati,prati,for,keyword-table-only
+limbu,yantra,Assembly,bha_nga,bha_nga,break,keyword-table-only
+limbu,yantra,Assembly,anuvarta,anuvarta,continue,keyword-table-only
+limbu,yantra,Assembly,vikalpa,vikalpa,switch,keyword-table-only
+limbu,yantra,Assembly,pak_sa,pak_sa,case,keyword-table-only
+limbu,yantra,Assembly,svabhaava,svabhaava,default,keyword-table-only

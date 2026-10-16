@@ -1,0 +1,15 @@
+%{
+/* pali h2py.uhin */
+%}
+%%
+native               {printf("c");}
+सचे                  {printf("if");}
+अञ्ञथा               {printf("else");}
+याव                  {printf("while");}
+करोहि                {printf("do");}
+अत्थाय               {printf("for");}
+पटिनिवत्त            {printf("return");}
+किच्च                {printf("void");}
+वग्ग                 {printf("class");}
+.  {printf("%s", yytext);}
+%%

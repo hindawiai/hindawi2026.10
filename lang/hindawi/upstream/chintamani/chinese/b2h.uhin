@@ -1,0 +1,12 @@
+%{
+/* chinese b2h */
+%}
+%%
+如果  {printf("if");}
+否则  {printf("else");}
+当  {printf("while");}
+为  {printf("for");}
+返回  {printf("return");}
+整数  {printf("int");}
+.  {printf("%s", yytext);}
+%%

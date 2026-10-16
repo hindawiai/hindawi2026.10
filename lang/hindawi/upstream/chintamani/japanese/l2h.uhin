@@ -1,0 +1,12 @@
+%{
+/* japanese l2h */
+%}
+%%
+もし  {printf("if");}
+否则  {printf("else");}
+ながら  {printf("while");}
+ために  {printf("for");}
+戻る  {printf("return");}
+整数  {printf("int");}
+.  {printf("%s", yytext);}
+%%

@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+konkani,yantra,Assembly,यदि,yadi,if,keyword-table-only
+konkani,yantra,Assembly,अन्यथा,anyathaa,else,keyword-table-only
+konkani,yantra,Assembly,यावत्,yaavat,while,keyword-table-only
+konkani,yantra,Assembly,कुरु,kuru,do,keyword-table-only
+konkani,yantra,Assembly,प्रति,prati,for,keyword-table-only
+konkani,yantra,Assembly,भङ्ग,bha_nga,break,keyword-table-only
+konkani,yantra,Assembly,अनुवर्त,anuvarta,continue,keyword-table-only
+konkani,yantra,Assembly,विकल्प,vikalpa,switch,keyword-table-only
+konkani,yantra,Assembly,पक्ष,pak_sa,case,keyword-table-only
+konkani,yantra,Assembly,स्वभाव,svabhaava,default,keyword-table-only

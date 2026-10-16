@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+sindhi_dev,shabda,Lex,यदि,yadi,if,keyword-table-only
+sindhi_dev,shabda,Lex,अन्यथा,anyathaa,else,keyword-table-only
+sindhi_dev,shabda,Lex,यावत्,yaavat,while,keyword-table-only
+sindhi_dev,shabda,Lex,कुरु,kuru,do,keyword-table-only
+sindhi_dev,shabda,Lex,प्रति,prati,for,keyword-table-only
+sindhi_dev,shabda,Lex,भङ्ग,bha_nga,break,keyword-table-only
+sindhi_dev,shabda,Lex,अनुवर्त,anuvarta,continue,keyword-table-only
+sindhi_dev,shabda,Lex,विकल्प,vikalpa,switch,keyword-table-only
+sindhi_dev,shabda,Lex,पक्ष,pak_sa,case,keyword-table-only
+sindhi_dev,shabda,Lex,स्वभाव,svabhaava,default,keyword-table-only

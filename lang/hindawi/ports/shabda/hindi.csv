@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hindi,shabda,Lex,अगर,agar,if,keyword-table-only
+hindi,shabda,Lex,अन्यथा,anya_thaa,else,keyword-table-only
+hindi,shabda,Lex,जबतक,jabataka,while,keyword-table-only
+hindi,shabda,Lex,करो,karau,do,keyword-table-only
+hindi,shabda,Lex,क्रम,krama,for,keyword-table-only
+hindi,shabda,Lex,तोड़ो,toa_rdoa,break,keyword-table-only
+hindi,shabda,Lex,जारी,jaarii,continue,keyword-table-only
+hindi,shabda,Lex,चयन,cayana,switch,keyword-table-only
+hindi,shabda,Lex,स्थिति,sthiti,case,keyword-table-only
+hindi,shabda,Lex,मूल,muula,default,keyword-table-only

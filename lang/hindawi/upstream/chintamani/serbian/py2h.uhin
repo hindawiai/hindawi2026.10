@@ -1,0 +1,12 @@
+%{
+/* serbian py2h */
+%}
+%%
+ако  {printf("if");}
+инако  {printf("else");}
+док  {printf("while");}
+за  {printf("for");}
+врати  {printf("return");}
+цео  {printf("int");}
+.  {printf("%s", yytext);}
+%%

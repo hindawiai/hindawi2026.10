@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+chhattisgarhi,wyaaka,Yacc,यदि,yadi,if,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,अन्यथा,anyathaa,else,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,यावत्,yaavat,while,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,कुरु,kuru,do,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,प्रति,prati,for,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,भङ्ग,bha_nga,break,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,अनुवर्त,anuvarta,continue,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,विकल्प,vikalpa,switch,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,पक्ष,pak_sa,case,keyword-table-only
+chhattisgarhi,wyaaka,Yacc,स्वभाव,svabhaava,default,keyword-table-only

@@ -1,0 +1,11 @@
+%{
+/* prakrit h2java.uhin */
+%}
+%%
+native               {printf("c");}
+जइ                   {printf("if");}
+अण्णहा               {printf("else");}
+जाव                  {printf("while");}
+करेहि                {printf("do");}
+.  {printf("%s", yytext);}
+%%

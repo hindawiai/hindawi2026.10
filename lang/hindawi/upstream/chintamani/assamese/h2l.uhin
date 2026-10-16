@@ -1,0 +1,15 @@
+%{
+/* assamese h2l.uhin */
+%}
+%%
+native               {printf("c");}
+যদি                  {printf("if");}
+অন্যথা               {printf("else");}
+যেতিয়ালৈ            {printf("while");}
+কৰা                  {printf("do");}
+বাবে                 {printf("for");}
+ঘূৰাই                {printf("return");}
+কাৰ্য                {printf("void");}
+শ্ৰেণী               {printf("class");}
+.  {printf("%s", yytext);}
+%%

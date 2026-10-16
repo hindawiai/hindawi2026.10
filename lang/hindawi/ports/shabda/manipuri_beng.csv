@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+manipuri_beng,shabda,Lex,যদি,yadi,if,keyword-table-only
+manipuri_beng,shabda,Lex,অন্যথা,anyathaa,else,keyword-table-only
+manipuri_beng,shabda,Lex,যা঵ত্,yaavat,while,keyword-table-only
+manipuri_beng,shabda,Lex,কুরু,kuru,do,keyword-table-only
+manipuri_beng,shabda,Lex,প্রতি,prati,for,keyword-table-only
+manipuri_beng,shabda,Lex,ভঙ্গ,bha_nga,break,keyword-table-only
+manipuri_beng,shabda,Lex,অনু঵র্ত,anuvarta,continue,keyword-table-only
+manipuri_beng,shabda,Lex,঵িকল্প,vikalpa,switch,keyword-table-only
+manipuri_beng,shabda,Lex,পক্ষ,pak_sa,case,keyword-table-only
+manipuri_beng,shabda,Lex,স্঵ভা঵,svabhaava,default,keyword-table-only

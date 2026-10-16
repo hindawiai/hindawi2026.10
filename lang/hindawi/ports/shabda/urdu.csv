@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+urdu,shabda,Lex,اگر,agara,if,keyword-table-only
+urdu,shabda,Lex,ورنہ,varnah,else,keyword-table-only
+urdu,shabda,Lex,جبتک,jabataka,while,keyword-table-only
+urdu,shabda,Lex,کرو,karau,do,keyword-table-only
+urdu,shabda,Lex,برائے,baraae,for,keyword-table-only
+urdu,shabda,Lex,توڑو,taudau,break,keyword-table-only
+urdu,shabda,Lex,جاری,jaarii,continue,keyword-table-only
+urdu,shabda,Lex,انتخاب,inatikhaaba,switch,keyword-table-only
+urdu,shabda,Lex,حالت,haalata,case,keyword-table-only
+urdu,shabda,Lex,طےشدہ,taeshudah,default,keyword-table-only

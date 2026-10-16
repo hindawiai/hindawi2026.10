@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+malayalam,kritrima,Java,എങ്കിൽ,e_nkila,if,keyword-table-only
+malayalam,kritrima,Java,അല്ലെങ്കിൽ,alle_nkila,else,keyword-table-only
+malayalam,kritrima,Java,വരെ,vare,while,keyword-table-only
+malayalam,kritrima,Java,ചെയ്യുക,ceyyuka,do,keyword-table-only
+malayalam,kritrima,Java,വേണ്ടി,ve_ndi,for,keyword-table-only
+malayalam,kritrima,Java,നിർത്തുക,nirttuka,break,keyword-table-only
+malayalam,kritrima,Java,തുടരുക,tudaruka,continue,keyword-table-only
+malayalam,kritrima,Java,തിരഞ്ഞെടുപ്പ്,tira_nyedupp,switch,keyword-table-only
+malayalam,kritrima,Java,അവസ്ഥ,avastha,case,keyword-table-only
+malayalam,kritrima,Java,സ്ഥിരസ്ഥിതി,sthirasthiti,default,keyword-table-only

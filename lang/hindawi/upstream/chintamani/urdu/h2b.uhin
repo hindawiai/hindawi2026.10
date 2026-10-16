@@ -1,0 +1,34 @@
+%{
+/* urdu h2b.uhin */
+%}
+%%
+native               {printf("c");}
+اگر                  {printf("if");}
+ورنہ                 {printf("else");}
+جبتک                 {printf("while");}
+کرو                  {printf("do");}
+برائے                {printf("for");}
+توڑو                 {printf("break");}
+جاری                 {printf("continue");}
+انتخاب               {printf("switch");}
+حالت                 {printf("case");}
+طےشدہ                {printf("default");}
+واپس                 {printf("return");}
+ثابت                 {printf("const");}
+صحیح                 {printf("int");}
+اعشاری               {printf("float");}
+دوہرا                {printf("double");}
+حرف                  {printf("char");}
+خالی                 {printf("void");}
+تابع                 {printf("void");}
+جماعت                {printf("class");}
+نیا                  {printf("new");}
+عوامی                {printf("public");}
+نجی                  {printf("private");}
+ساکن                 {printf("static");}
+مجازی                {printf("virtual");}
+جب                   {printf("case");}
+ساخت                 {printf("struct");}
+شامل                 {printf("include");}
+.  {printf("%s", yytext);}
+%%

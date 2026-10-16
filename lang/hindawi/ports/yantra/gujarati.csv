@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+gujarati,yantra,Assembly,જો,jau,if,keyword-table-only
+gujarati,yantra,Assembly,નહીંતર,nahii_ntara,else,keyword-table-only
+gujarati,yantra,Assembly,જ્યાંસુધી,jyaa_nsudhii,while,keyword-table-only
+gujarati,yantra,Assembly,કરો,karau,do,keyword-table-only
+gujarati,yantra,Assembly,માટે,maatee,for,keyword-table-only
+gujarati,yantra,Assembly,તોડો,taudau,break,keyword-table-only
+gujarati,yantra,Assembly,ચાલુ,caalu,continue,keyword-table-only
+gujarati,yantra,Assembly,પસંદગી,pasa_ndagii,switch,keyword-table-only
+gujarati,yantra,Assembly,સ્થિતિ,sthiti,case,keyword-table-only
+gujarati,yantra,Assembly,મૂળભૂત,muulabhuuta,default,keyword-table-only

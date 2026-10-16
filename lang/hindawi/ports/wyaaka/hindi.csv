@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hindi,wyaaka,Yacc,अगर,agar,if,keyword-table-only
+hindi,wyaaka,Yacc,अन्यथा,anya_thaa,else,keyword-table-only
+hindi,wyaaka,Yacc,जबतक,jabataka,while,keyword-table-only
+hindi,wyaaka,Yacc,करो,karau,do,keyword-table-only
+hindi,wyaaka,Yacc,क्रम,krama,for,keyword-table-only
+hindi,wyaaka,Yacc,तोड़ो,toa_rdoa,break,keyword-table-only
+hindi,wyaaka,Yacc,जारी,jaarii,continue,keyword-table-only
+hindi,wyaaka,Yacc,चयन,cayana,switch,keyword-table-only
+hindi,wyaaka,Yacc,स्थिति,sthiti,case,keyword-table-only
+hindi,wyaaka,Yacc,मूल,muula,default,keyword-table-only

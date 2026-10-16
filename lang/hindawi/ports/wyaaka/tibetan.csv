@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+tibetan,wyaaka,Yacc,yadi,yadi,if,keyword-table-only
+tibetan,wyaaka,Yacc,anyathaa,anyathaa,else,keyword-table-only
+tibetan,wyaaka,Yacc,yaavat,yaavat,while,keyword-table-only
+tibetan,wyaaka,Yacc,kuru,kuru,do,keyword-table-only
+tibetan,wyaaka,Yacc,prati,prati,for,keyword-table-only
+tibetan,wyaaka,Yacc,bha_nga,bha_nga,break,keyword-table-only
+tibetan,wyaaka,Yacc,anuvarta,anuvarta,continue,keyword-table-only
+tibetan,wyaaka,Yacc,vikalpa,vikalpa,switch,keyword-table-only
+tibetan,wyaaka,Yacc,pak_sa,pak_sa,case,keyword-table-only
+tibetan,wyaaka,Yacc,svabhaava,svabhaava,default,keyword-table-only

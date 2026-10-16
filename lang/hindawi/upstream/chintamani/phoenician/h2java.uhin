@@ -1,0 +1,9 @@
+%{
+/* phoenician h2java.uhin */
+%}
+%%
+native               {printf("c");}
+𐤀𐤌                   {printf("if");}
+𐤐𐤏𐤋                  {printf("do");}
+.  {printf("%s", yytext);}
+%%

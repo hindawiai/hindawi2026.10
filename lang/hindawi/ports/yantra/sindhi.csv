@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+sindhi,yantra,Assembly,إذا,izaa,if,keyword-table-only
+sindhi,yantra,Assembly,وإلا,vaillaa,else,keyword-table-only
+sindhi,yantra,Assembly,طالما,taalamaa,while,keyword-table-only
+sindhi,yantra,Assembly,افعل,ifaela,do,keyword-table-only
+sindhi,yantra,Assembly,لكل,likulli,for,keyword-table-only
+sindhi,yantra,Assembly,اكسر,iksira,break,keyword-table-only
+sindhi,yantra,Assembly,استمر,istamirra,continue,keyword-table-only
+sindhi,yantra,Assembly,بدل,baddila,switch,keyword-table-only
+sindhi,yantra,Assembly,حالة,haalah,case,keyword-table-only
+sindhi,yantra,Assembly,افتراضي,iftiraadii,default,keyword-table-only

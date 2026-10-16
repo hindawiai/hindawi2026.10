@@ -1,0 +1,36 @@
+%{
+/* chhattisgarhi h2java */
+%}
+%%
+यदि  {printf("KW_IF");}
+अन्यथा  {printf("KW_ELSE");}
+नोचेद्यदि  {printf("KW_ELIF");}
+यावत्  {printf("KW_WHILE");}
+कुरु  {printf("KW_DO");}
+प्रति  {printf("KW_FOR");}
+भङ्ग  {printf("KW_BREAK");}
+अनुवर्त  {printf("KW_CONTINUE");}
+विकल्प  {printf("KW_SWITCH");}
+पक्ष  {printf("KW_CASE");}
+स्वभाव  {printf("KW_DEFAULT");}
+प्रत्यागम  {printf("KW_RETURN");}
+गच्छ  {printf("KW_GOTO");}
+चर  {printf("KW_VAR");}
+ध्रुव  {printf("KW_CONST");}
+अस्तु  {printf("KW_LET");}
+पूर्णाङ्क  {printf("KW_INT");}
+भिन्न  {printf("KW_FLOAT");}
+द्विगुण  {printf("KW_DOUBLE");}
+वर्ण  {printf("KW_CHAR");}
+तार्किक  {printf("KW_BOOL");}
+पदावली  {printf("KW_STRING");}
+शून्य  {printf("KW_VOID");}
+सत्य  {printf("KW_TRUE");}
+असत्य  {printf("KW_FALSE");}
+रिक्त  {printf("KW_NULL");}
+क्रिया  {printf("KW_FUNC");}
+विधि  {printf("KW_PROC");}
+आह्वान  {printf("KW_CALL");}
+प्राचल  {printf("KW_PARAM");}
+.  {printf("%s", yytext);}
+%%

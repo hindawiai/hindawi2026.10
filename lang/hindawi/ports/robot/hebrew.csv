@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+hebrew,robot,LOGO,אם,ama,if,keyword-table-only
+hebrew,robot,LOGO,אחרת,aharata,else,keyword-table-only
+hebrew,robot,LOGO,כלעוד,kalaeauda,while,keyword-table-only
+hebrew,robot,LOGO,עשה,aeshah,do,keyword-table-only
+hebrew,robot,LOGO,עבור,aebuura,for,keyword-table-only
+hebrew,robot,LOGO,اكسر,iksira,break,keyword-table-only
+hebrew,robot,LOGO,استمر,istamirra,continue,keyword-table-only
+hebrew,robot,LOGO,بدل,baddila,switch,keyword-table-only
+hebrew,robot,LOGO,حالة,haalah,case,keyword-table-only
+hebrew,robot,LOGO,افتراضي,iftiraadii,default,keyword-table-only

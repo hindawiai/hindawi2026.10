@@ -1,0 +1,11 @@
+profile,shaili,paradigm,native,romenagri,token,status
+persian,yantra,Assembly,اگر,agar,if,keyword-table-only
+persian,yantra,Assembly,وگرنه,vagarnah,else,keyword-table-only
+persian,yantra,Assembly,تازمانیکه,taazamaaniikah,while,keyword-table-only
+persian,yantra,Assembly,انجامبده,anjaamabdah,do,keyword-table-only
+persian,yantra,Assembly,برای,baraaya,for,keyword-table-only
+persian,yantra,Assembly,بشکن,bishkan,break,keyword-table-only
+persian,yantra,Assembly,ادامه,adaamah,continue,keyword-table-only
+persian,yantra,Assembly,انتخاب,intikhaaba,switch,keyword-table-only
+persian,yantra,Assembly,حالت,haalata,case,keyword-table-only
+persian,yantra,Assembly,پیشفرض,piishfarza,default,keyword-table-only
