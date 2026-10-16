@@ -2,10 +2,11 @@
 """Ingest and reverse using original c2h/h2c and identifier dictionary.
 Dictionary reversal is separate from transliteration round-trip.
 """
-import argparse, json, re, subprocess, sys
+import argparse, json, os, re, subprocess, sys
 from pathlib import Path
 
-DICT_PATH = Path(__file__).parent / "identifier_dict.json"
+# One dictionary per ingestion (a file or a project); HINDAWI_DICT names it, so a project shares one map.
+DICT_PATH = Path(os.environ.get("HINDAWI_DICT", Path(__file__).parent / "identifier_dict.json"))
 C2H = Path(__file__).resolve().parents[1] / "upstream/chintamani/guru/c2h"
 H2C = Path(__file__).resolve().parents[1] / "upstream/chintamani/guru/h2c"
 
@@ -42,6 +43,9 @@ def get_native(ident, dictionary, target="hi"):
     if ident in fwd:
         return fwd[ident]
     native = transliterate_char(ident) if len(ident) == 1 else translate_word(ident, target)
+    base, k = native, 1
+    while native in rev and rev[native] != ident:   # one native name per identifier, or reversal is ambiguous
+        k += 1; native = f"{base}_{k}"
     fwd[ident] = native
     rev[native] = ident
     return native
@@ -51,37 +55,64 @@ def get_original(native, dictionary):
     rev = dictionary.get("reverse", {})
     return rev.get(native, native)
 
+# String and character literals and comments are not code: identifiers are taken, and replaced, outside them only.
+LEXEME = re.compile(r'("(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'|/\*.*?\*/|//[^\n]*)|\b([A-Za-z_][A-Za-z0-9_]*)\b', re.S)
+KEYWORDS = {"int", "char", "float", "double", "void", "if", "else", "while", "for", "return", "break", "continue",
+            "switch", "case", "default", "struct", "typedef", "const", "static", "extern", "sizeof", "main",
+            "unsigned", "signed", "long", "short", "union", "enum", "do", "goto", "volatile", "register", "auto"}
+
 def extract_identifiers(src):
-    keywords = {"int", "char", "float", "double", "void", "if", "else", "while",
-                "for", "return", "break", "continue", "switch", "case", "default",
-                "struct", "typedef", "const", "static", "extern", "sizeof", "main"}
-    return set(re.findall(r'\b([a-zA-Z_][a-zA-Z0-9_]*)\b', src)) - keywords
+    return {m.group(2) for m in LEXEME.finditer(src) if m.group(2)} - KEYWORDS
+
+def replace_code(text, mapping):
+    """Replace whole identifiers outside literals and comments."""
+    return LEXEME.sub(lambda m: m.group(0) if m.group(1) else mapping.get(m.group(2), m.group(2)), text)
+
+ROMENAGRI = os.environ.get("ROMENAGRI", "")
+# The original chain, as Chintamani's drivers run it. C to the language: Romenagri's encoding in, c2h, back to
+# Unicode. The language to C: fixuninum, Romenagri (uni2acii | acii2cf | acii2uni), h2c. A lexer that is missing,
+# or a chain that fails, stops the ingestion: nothing passes through unconverted.
+CHAIN = {"c2h": "fixuninum | iconv -f utf-8 -t utf-16 | uni2acii | '{lx}' | acii2uni | iconv -f UTF-16 -t UTF-8",
+         "h2c": "fixuninum | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf | acii2uni | iconv -f UTF-16 -t UTF-8 | '{lx}'"}
 
 def run_lexer(lexer, src):
     if not lexer.exists():
-        return src
-    r = subprocess.run([str(lexer)], input=src.encode(), capture_output=True)
-    return r.stdout.decode() if r.returncode == 0 else src
+        sys.exit(f"ingest: {lexer} is not built (make it, with Romenagri on the PATH)")
+    if not ROMENAGRI:
+        sys.exit("ingest: set ROMENAGRI to a built Romenagri folder; the lexers read Romenagri's encoding")
+    env = dict(os.environ, PATH=f"{ROMENAGRI}:" + os.environ.get("PATH", ""))
+    r = subprocess.run(CHAIN[lexer.name].format(lx=lexer), shell=True, input=src.encode(), capture_output=True, env=env)
+    if r.returncode != 0:
+        sys.exit(f"ingest: {lexer.name} failed: {r.stderr.decode('utf-8', 'replace')[:200]}")
+    return r.stdout.decode("utf-8").replace("\r", "")
 
 def ingest(src, target_lang="hi"):
     dictionary = load_dict()
     converted = run_lexer(C2H, src)
-    for ident in sorted(extract_identifiers(src), key=len, reverse=True):
-        native = get_native(ident, dictionary, target_lang)
-        if native != ident:
-            converted = re.sub(rf'\b{re.escape(ident)}\b', native, converted)
+    mapping = {ident: get_native(ident, dictionary, target_lang) for ident in extract_identifiers(src)}
+    converted = replace_code(converted, mapping)
     save_dict(dictionary)
     return converted
 
+def c_names(natives):
+    """The C-level name of each native identifier: its Romenagri form, which is what h2c's chain leaves in the C
+    (the name ABI: योगफल becomes yoagaphala). Computed by the same chain, so the reversal cannot drift from it."""
+    if not natives:
+        return {}
+    env = dict(os.environ, PATH=f"{ROMENAGRI}:" + os.environ.get("PATH", ""))
+    chain = "fixuninum | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf | acii2uni | iconv -f UTF-16 -t UTF-8"
+    out = subprocess.run(chain, shell=True, input="\n".join(natives).encode(), capture_output=True, env=env)
+    forms = out.stdout.decode("utf-8").replace("\r", "").split("\n")
+    return dict(zip(natives, forms))
+
 def reverse(src):
-    """Reverse identifiers using dictionary. Not transliteration reversal."""
+    """Native to original: keywords through h2c's chain, then each identifier's C-level name back to the
+    original through this ingestion's dictionary. Dictionary reversal, not transliteration reversal."""
     dictionary = load_dict()
     converted = run_lexer(H2C, src)
     rev = dictionary.get("reverse", {})
-    for native in sorted(rev.keys(), key=len, reverse=True):
-        original = rev[native]
-        converted = converted.replace(native, original)
-    return converted
+    forms = c_names(sorted(rev))
+    return replace_code(converted, {forms[n]: rev[n] for n in rev if forms.get(n)})
 
 def main():
     ap = argparse.ArgumentParser()

@@ -27,3 +27,10 @@ lang/hindawi/languages/*/*.lex
 # what lang/hindawi/hindawicc builds into the Chintamani copy and writes beside its sources
 lang/hindawi/upstream/chintamani/guru/h2c
 *_deva.uhin
+# pinned upstreams fetched and built by scripts/fetch.sh and scripts/build.sh
+.build/
+# Chintamani guru, built in place for ingest.py and hindawicc
+lang/hindawi/upstream/chintamani/guru/h2c
+lang/hindawi/upstream/chintamani/guru/c2h
+lang/hindawi/upstream/chintamani/guru/*.lex
+lang/hindawi/upstream/chintamani/guru/lexyy.c

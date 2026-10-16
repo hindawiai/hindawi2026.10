@@ -311,3 +311,16 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - added `tests/regression.sh` (sha256 `ae1182e27b3dd8e7`)
 
 **Verified.** Byte-identical to the files in HINDAWI2026_10-best.zip.
+
+## C11. Ingestion, the multi-file driver and the fundamental regression, on the original chain
+
+**Why.** hindawicc compiled with Hindi's transducer for every language, bypassed Romenagri, skipped the original driver's escape repairs and, when a source did not transduce, quietly compiled the raw source. ingest.py fed the lexers raw UTF-8 although they read Romenagri's encoding, translated identifiers inside string literals (so %d became %द) and could give two identifiers one native name. Both now run the chain Chintamani's own drivers run: fixuninum, iconv, uni2acii, acii2cf, acii2uni, iconv, h2c, and, for C to the language, Romenagri's encoding in before c2h. hindawicc passes every other argument to gcc, takes the language's cell from HINDAWI_CELL, and stops on any failure. ingest.py keeps one dictionary per ingestion (HINDAWI_DICT), one native name per identifier, touches only code, and reverses through each identifier's C-level Romenagri name, which is the name ABI. scripts/fetch.sh and scripts/build.sh fetch Chintamani at its pinned commit and build Romenagri and every shaili with their own Makefiles; tests/fundamental.py is the regression that must hold.
+
+- changed `lang/hindawi/hindawicc` (sha256 `e201dbc6522923a3`)
+- changed `lang/hindawi/tools/ingest.py` (sha256 `fbb5e9b28f49e598`)
+- added `tests/fundamental.py` (sha256 `4f0bbdc1fc38ae49`)
+- added `scripts/fetch.sh` (sha256 `8d49aabe76a174ba`)
+- added `scripts/build.sh` (sha256 `081b60b412661b76`)
+- changed `.gitignore` (sha256 `d77bfbcc63bc34ca`)
+
+**Verified.** tests/fundamental.py: the Chintamani copy unchanged; Wave 0 eight of eight; guru, shraeni, kritrima, praatha, wyaaka and shabda stable to host and back (yantra recorded as Chintamani's own behaviour); a two-file project ingested with one dictionary, compiled by hindawicc with -DVALUE=40 -O2 -Wall -g into a program printing 42, and reversed to its original C; योगफल becomes the ELF symbol yoagaphala and returns through Romenagri. 12 passed, 0 failed.

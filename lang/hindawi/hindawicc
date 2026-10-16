@@ -1,64 +1,30 @@
-#!/bin/bash
-# hindawicc — drop-in gcc replacement
-# Pipeline: native script → transliterate → Devanagari → h2c.uhin → C → gcc
-
-set -e
-FLEX_PATH="${FLEX_PATH:-/tmp/flexroot/usr/bin}"
-ROMENAGRI="${ROMENAGRI:-/tmp/chintamani/Romenagri}"
-export PATH="$FLEX_PATH:$PATH"
-export LD_LIBRARY_PATH="/tmp/flexroot/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}"
-
-SCRIPT_DIR="$(dirname "$0")"
-CHINT="$SCRIPT_DIR/upstream/chintamani"
-TRANS="$SCRIPT_DIR/pipeline/transliterate.py"
-H2C="$CHINT/guru/h2c"
-
-# ensure scanner exists
-if [ ! -x "$H2C" ]; then
-    if [ -f "$CHINT/guru/h2c.uhin" ]; then
-        flex -o /tmp/h2c_lex.c "$CHINT/guru/h2c.uhin" 2>/dev/null
-        gcc -o "$H2C" /tmp/h2c_lex.c -L/tmp/flexroot/usr/lib/x86_64-linux-gnu -lfl 2>/dev/null || true
-    fi
-fi
-
-GCC_ARGS=()
-SOURCES=()
-OUT_NAME="a.out"
-
-while [ $# -gt 0 ]; do
-    case "$1" in
-        -o) OUT_NAME="$2"; shift 2 ;;
-        -o*) OUT_NAME="${1#-o}"; shift ;;
-        *.uhin|*.hin)
-            SOURCES+=("$1"); shift ;;
-        *)
-            GCC_ARGS+=("$1"); shift ;;
-    esac
+#!/usr/bin/env bash
+# hindawicc: a gcc front end for Hindawi sources. Every .uhin goes through the original chain, exactly as
+# Chintamani's hincc and gurucc run it: fixuninum | iconv | uni2acii | acii2cf | acii2uni | iconv | <cell>/h2c,
+# then the driver's own escape repairs. Everything else on the command line goes to gcc untouched (-O, -D, -I,
+# -L, -l, -c, -g, -o ...). Nothing falls back: if a source does not transduce, hindawicc stops and says so.
+# © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+#   ROMENAGRI   a built Romenagri folder (required)
+#   HINDAWI_CELL the folder holding the language's built h2c (default: Chintamani's own guru, Hindi)
+#   HINDAWI_KEEP=1 keeps the generated .c beside each source
+set -euo pipefail
+ROMENAGRI="${ROMENAGRI:?set ROMENAGRI to a built Romenagri folder}"
+CELL="${HINDAWI_CELL:-$(cd "$(dirname "$0")" && pwd)/upstream/chintamani/guru}"
+[ -x "$CELL/h2c" ] || { echo "hindawicc: no built h2c in $CELL (run make there, with Romenagri on the PATH)" >&2; exit 2; }
+export PATH="$ROMENAGRI:$PATH"
+work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
+args=(); n=0
+for a in "$@"; do
+  case "$a" in
+    *.uhin|*.hin)
+      [ -f "$a" ] || { echo "hindawicc: no such source $a" >&2; exit 2; }
+      n=$((n+1)); c="$work/$n-$(basename "${a%.*}").c"
+      fixuninum < "$a" | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf | acii2uni | iconv -f UTF-16 -t UTF-8 \
+        | "$CELL/h2c" > "$c" || { echo "hindawicc: $a did not transduce" >&2; exit 1; }
+      sed -i 's/\\न/\\n/g; s/\%भ/\%f/g; s/\%प/\%d/g;' "$c"
+      [ "${HINDAWI_KEEP:-0}" = 1 ] && cp "$c" "${a%.*}.c"
+      args+=("$c") ;;
+    *) args+=("$a") ;;
+  esac
 done
-
-C_FILES=()
-for src in "${SOURCES[@]}"; do
-    base="${src%.*}"
-    deva_out="${base}_deva.uhin"
-    c_out="${base}.c"
-    # transliterate to Devanagari
-    if [ -f "$TRANS" ]; then
-        python3 "$TRANS" < "$src" > "$deva_out" 2>/dev/null || cp "$src" "$deva_out"
-    else
-        cp "$src" "$deva_out"
-    fi
-    # run through Hindi h2c
-    if [ -x "$H2C" ]; then
-        "$H2C" < "$deva_out" > "$c_out" 2>/dev/null || cp "$deva_out" "$c_out"
-    else
-        cp "$deva_out" "$c_out"
-    fi
-    C_FILES+=("$c_out")
-done
-
-# compile
-if [ ${#C_FILES[@]} -gt 0 ]; then
-    gcc "${GCC_ARGS[@]}" -o "$OUT_NAME" "${C_FILES[@]}" 2>/dev/null || gcc "${GCC_ARGS[@]}" -o "$OUT_NAME" "${SOURCES[@]}"
-else
-    gcc "${GCC_ARGS[@]}" -o "$OUT_NAME"
-fi
+exec gcc "${args[@]}"
