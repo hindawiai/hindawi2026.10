@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 PARAMS = ROOT / "lang/hindawi/pipeline/language_params.json"
 CHINT = ROOT / "lang/hindawi/upstream/chintamani"
+LANGS = ROOT / "lang/hindawi/languages"
 FLEX = "/tmp/flexroot/usr/bin/flex"
 FLIB = "-L/tmp/flexroot/usr/lib/x86_64-linux-gnu -lfl"
 
@@ -45,7 +46,7 @@ def generate_localized(lang, params):
 
 def test_language(lang):
     """Test if language uhin compiles."""
-    uhin = CHINT / lang / "h2c.uhin"
+    uhin = LANGS / lang / "h2c.uhin"
     if not uhin.exists():
         return "NO_UHIN"
     c_out = f"/tmp/test_{lang}.c"

@@ -7,6 +7,7 @@ from collections import Counter
 ROOT = Path(__file__).resolve().parents[4]
 PARAMS = ROOT / "lang/hindawi/pipeline/language_params.json"
 CHINT = ROOT / "lang/hindawi/upstream/chintamani"
+LANGS = ROOT / "lang/hindawi/languages"
 TOOLS = ROOT / "lang/hindawi/tools"
 FLEX = "/tmp/flexroot/usr/bin/flex"
 
@@ -41,7 +42,7 @@ int sum(int n) {
 }
 
 def test_uhin_compiles(lang, shaili):
-    uhin = CHINT / lang / f"{shaili}.uhin"
+    uhin = LANGS / lang / f"{shaili}.uhin"
     if not uhin.exists():
         return "NO_UHIN"
     r = subprocess.run([FLEX, "-o", f"/tmp/t_{lang}_{shaili}.c", str(uhin)], capture_output=True)

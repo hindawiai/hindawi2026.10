@@ -84,3 +84,89 @@ The previous builds carried no git history. This repository's history starts at 
 - added `.github/workflows/pages.yml`, byte for byte from BUILD-0024 (sha256 `e54dbada5fced646f4a488cc2ae692ab4d4788a47c552f0dab6d8c1377ea6cf6`)
 
 **Verified.** `tests/test_static_pages.sh` passes.
+
+## C3. Generated language cells moved out of the Chintamani copy
+
+**Why.** `lang/hindawi/upstream/chintamani/` must hold Chintamani as it is. Its seven original folders are byte-identical to hindawiai/chintamani; the other 76 folders were generated for this build and were mixed in beside them. They now live in `lang/hindawi/languages/`, beside its `registry.csv`.
+
+- moved `lang/hindawi/upstream/chintamani/arabic/` to `lang/hindawi/languages/arabic/`
+- moved `lang/hindawi/upstream/chintamani/aramaic/` to `lang/hindawi/languages/aramaic/`
+- moved `lang/hindawi/upstream/chintamani/assamese/` to `lang/hindawi/languages/assamese/`
+- moved `lang/hindawi/upstream/chintamani/awadhi/` to `lang/hindawi/languages/awadhi/`
+- moved `lang/hindawi/upstream/chintamani/balinese/` to `lang/hindawi/languages/balinese/`
+- moved `lang/hindawi/upstream/chintamani/balochi/` to `lang/hindawi/languages/balochi/`
+- moved `lang/hindawi/upstream/chintamani/batak/` to `lang/hindawi/languages/batak/`
+- moved `lang/hindawi/upstream/chintamani/bengali/` to `lang/hindawi/languages/bengali/`
+- moved `lang/hindawi/upstream/chintamani/bhojpuri/` to `lang/hindawi/languages/bhojpuri/`
+- moved `lang/hindawi/upstream/chintamani/bodo/` to `lang/hindawi/languages/bodo/`
+- moved `lang/hindawi/upstream/chintamani/buginese/` to `lang/hindawi/languages/buginese/`
+- moved `lang/hindawi/upstream/chintamani/bulgarian/` to `lang/hindawi/languages/bulgarian/`
+- moved `lang/hindawi/upstream/chintamani/burmese/` to `lang/hindawi/languages/burmese/`
+- moved `lang/hindawi/upstream/chintamani/chhattisgarhi/` to `lang/hindawi/languages/chhattisgarhi/`
+- moved `lang/hindawi/upstream/chintamani/chinese/` to `lang/hindawi/languages/chinese/`
+- moved `lang/hindawi/upstream/chintamani/dari/` to `lang/hindawi/languages/dari/`
+- moved `lang/hindawi/upstream/chintamani/dogri/` to `lang/hindawi/languages/dogri/`
+- moved `lang/hindawi/upstream/chintamani/dzongkha/` to `lang/hindawi/languages/dzongkha/`
+- moved `lang/hindawi/upstream/chintamani/gujarati/` to `lang/hindawi/languages/gujarati/`
+- moved `lang/hindawi/upstream/chintamani/hausa_ajami/` to `lang/hindawi/languages/hausa_ajami/`
+- moved `lang/hindawi/upstream/chintamani/hebrew/` to `lang/hindawi/languages/hebrew/`
+- moved `lang/hindawi/upstream/chintamani/hindi/` to `lang/hindawi/languages/hindi/`
+- moved `lang/hindawi/upstream/chintamani/japanese/` to `lang/hindawi/languages/japanese/`
+- moved `lang/hindawi/upstream/chintamani/javanese/` to `lang/hindawi/languages/javanese/`
+- moved `lang/hindawi/upstream/chintamani/kannada/` to `lang/hindawi/languages/kannada/`
+- moved `lang/hindawi/upstream/chintamani/kashmiri/` to `lang/hindawi/languages/kashmiri/`
+- moved `lang/hindawi/upstream/chintamani/kashmiri_dev/` to `lang/hindawi/languages/kashmiri_dev/`
+- moved `lang/hindawi/upstream/chintamani/khmer/` to `lang/hindawi/languages/khmer/`
+- moved `lang/hindawi/upstream/chintamani/konkani/` to `lang/hindawi/languages/konkani/`
+- moved `lang/hindawi/upstream/chintamani/korean/` to `lang/hindawi/languages/korean/`
+- moved `lang/hindawi/upstream/chintamani/kurdish_sorani/` to `lang/hindawi/languages/kurdish_sorani/`
+- moved `lang/hindawi/upstream/chintamani/lao/` to `lang/hindawi/languages/lao/`
+- moved `lang/hindawi/upstream/chintamani/lepcha/` to `lang/hindawi/languages/lepcha/`
+- moved `lang/hindawi/upstream/chintamani/limbu/` to `lang/hindawi/languages/limbu/`
+- moved `lang/hindawi/upstream/chintamani/magahi/` to `lang/hindawi/languages/magahi/`
+- moved `lang/hindawi/upstream/chintamani/maithili/` to `lang/hindawi/languages/maithili/`
+- moved `lang/hindawi/upstream/chintamani/malay_jawi/` to `lang/hindawi/languages/malay_jawi/`
+- moved `lang/hindawi/upstream/chintamani/malayalam/` to `lang/hindawi/languages/malayalam/`
+- moved `lang/hindawi/upstream/chintamani/mandaic/` to `lang/hindawi/languages/mandaic/`
+- moved `lang/hindawi/upstream/chintamani/manipuri_beng/` to `lang/hindawi/languages/manipuri_beng/`
+- moved `lang/hindawi/upstream/chintamani/marathi/` to `lang/hindawi/languages/marathi/`
+- moved `lang/hindawi/upstream/chintamani/marwari/` to `lang/hindawi/languages/marwari/`
+- moved `lang/hindawi/upstream/chintamani/nabataean/` to `lang/hindawi/languages/nabataean/`
+- moved `lang/hindawi/upstream/chintamani/nepali/` to `lang/hindawi/languages/nepali/`
+- moved `lang/hindawi/upstream/chintamani/newari/` to `lang/hindawi/languages/newari/`
+- moved `lang/hindawi/upstream/chintamani/odia/` to `lang/hindawi/languages/odia/`
+- moved `lang/hindawi/upstream/chintamani/pali/` to `lang/hindawi/languages/pali/`
+- moved `lang/hindawi/upstream/chintamani/pashto/` to `lang/hindawi/languages/pashto/`
+- moved `lang/hindawi/upstream/chintamani/persian/` to `lang/hindawi/languages/persian/`
+- moved `lang/hindawi/upstream/chintamani/phoenician/` to `lang/hindawi/languages/phoenician/`
+- moved `lang/hindawi/upstream/chintamani/prakrit/` to `lang/hindawi/languages/prakrit/`
+- moved `lang/hindawi/upstream/chintamani/punjabi/` to `lang/hindawi/languages/punjabi/`
+- moved `lang/hindawi/upstream/chintamani/punjabi_shahmukhi/` to `lang/hindawi/languages/punjabi_shahmukhi/`
+- moved `lang/hindawi/upstream/chintamani/rajasthani/` to `lang/hindawi/languages/rajasthani/`
+- moved `lang/hindawi/upstream/chintamani/russian/` to `lang/hindawi/languages/russian/`
+- moved `lang/hindawi/upstream/chintamani/samaritan/` to `lang/hindawi/languages/samaritan/`
+- moved `lang/hindawi/upstream/chintamani/sanskrit/` to `lang/hindawi/languages/sanskrit/`
+- moved `lang/hindawi/upstream/chintamani/santali/` to `lang/hindawi/languages/santali/`
+- moved `lang/hindawi/upstream/chintamani/saraiki/` to `lang/hindawi/languages/saraiki/`
+- moved `lang/hindawi/upstream/chintamani/serbian/` to `lang/hindawi/languages/serbian/`
+- moved `lang/hindawi/upstream/chintamani/shan/` to `lang/hindawi/languages/shan/`
+- moved `lang/hindawi/upstream/chintamani/sindhi/` to `lang/hindawi/languages/sindhi/`
+- moved `lang/hindawi/upstream/chintamani/sindhi_dev/` to `lang/hindawi/languages/sindhi_dev/`
+- moved `lang/hindawi/upstream/chintamani/sinhala/` to `lang/hindawi/languages/sinhala/`
+- moved `lang/hindawi/upstream/chintamani/sundanese/` to `lang/hindawi/languages/sundanese/`
+- moved `lang/hindawi/upstream/chintamani/syriac/` to `lang/hindawi/languages/syriac/`
+- moved `lang/hindawi/upstream/chintamani/tagalog/` to `lang/hindawi/languages/tagalog/`
+- moved `lang/hindawi/upstream/chintamani/tamil/` to `lang/hindawi/languages/tamil/`
+- moved `lang/hindawi/upstream/chintamani/telugu/` to `lang/hindawi/languages/telugu/`
+- moved `lang/hindawi/upstream/chintamani/thai/` to `lang/hindawi/languages/thai/`
+- moved `lang/hindawi/upstream/chintamani/tibetan/` to `lang/hindawi/languages/tibetan/`
+- moved `lang/hindawi/upstream/chintamani/tulu/` to `lang/hindawi/languages/tulu/`
+- moved `lang/hindawi/upstream/chintamani/ukrainian/` to `lang/hindawi/languages/ukrainian/`
+- moved `lang/hindawi/upstream/chintamani/urdu/` to `lang/hindawi/languages/urdu/`
+- moved `lang/hindawi/upstream/chintamani/uyghur/` to `lang/hindawi/languages/uyghur/`
+- moved `lang/hindawi/upstream/chintamani/vietnamese/` to `lang/hindawi/languages/vietnamese/`
+- `lang/hindawi/tests/comprehensive/test_all.py`: language folders read from `LANGS` (sha256 `e2c1565fb8db` to `60dbd42a595f`)
+- `lang/hindawi/tests/suite/run_tests.py`: language folders read from `LANGS` (sha256 `b20154a81613` to `10191d29ae48`)
+- `lang/hindawi/tools/to_upstream.py`: language folders read from `LANGS` (sha256 `32a767a9cd9e` to `06d1414acf96`)
+
+**Verified.** Both Hindawi suites give the same counts as before the move (C8).

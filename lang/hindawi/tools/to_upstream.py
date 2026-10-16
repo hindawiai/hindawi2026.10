@@ -7,6 +7,7 @@ from pathlib import Path
 
 TABLES = Path(__file__).parent / "tables"
 CHINT = Path(__file__).resolve().parents[1] / "upstream/chintamani"
+LANGS = Path(__file__).resolve().parents[1] / "languages"
 
 def load_idents_reverse(lang):
     m = {}
@@ -20,7 +21,7 @@ def load_idents_reverse(lang):
 
 def load_keywords(lang):
     """Load native -> c_token from forward uhin."""
-    uhin = CHINT / lang / "h2c.uhin"
+    uhin = LANGS / lang / "h2c.uhin"
     if not uhin.exists():
         return {}
     m = {}
