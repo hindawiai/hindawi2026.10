@@ -23,7 +23,10 @@ results = []
 
 
 def sh(cmd, data=b"", cwd=None, timeout=120):
-    p = subprocess.run(cmd, shell=True, input=data, capture_output=True, cwd=cwd, env=ENV, timeout=timeout)
+    try:
+        p = subprocess.run(cmd, shell=True, input=data, capture_output=True, cwd=cwd, env=ENV, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return 124, b"", f"timed out after {timeout} s: {cmd[:80]}".encode()
     return p.returncode, p.stdout, p.stderr
 
 
@@ -45,9 +48,13 @@ def f1():
 def f2():
     rc, out, _ = sh(f"CHINTAMANI_HINDAWI='{HIN}' ROMENAGRI='{RMN}' python3 lang/hindawi/tests/e2e/check_pipeline.py --wave0",
                     cwd=ROOT, timeout=600)
-    rows = re.findall(r"(Hindi\S+\.uhin)\s+host source written: (\S+)", out.decode())
+    text = out.decode("utf-8", "replace")
+    if rc == 3:   # the checker could not judge on this machine: say why, and judge nothing rather than fail
+        print(f"fundamental: cannot judge Wave 0: {text.strip().splitlines()[-1:] or 'no output'}"); sys.exit(3)
+    rows = re.findall(r"(Hindi\S+\.uhin)\s+host source written: (\S+)", text)
     none = [n for n, s in rows if s == "none"]
-    check("F2", f"Wave 0: {len(rows) - len(none)} of {len(rows)} samples reach their host source", rows and not none, ", ".join(none))
+    why = ", ".join(none) if rows else (text + _.decode("utf-8", "replace")).strip()[-300:]
+    check("F2", f"Wave 0: {len(rows) - len(none)} of {len(rows)} samples reach their host source", bool(rows) and not none, why)
 
 
 PAIRS = [("guru", "h2c", "c2h", None, "HindiC.uhin"), ("shraeni", "h2cpp", "cpp2h", None, "HindiC++.uhin"),

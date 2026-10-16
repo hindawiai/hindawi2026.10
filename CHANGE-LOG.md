@@ -360,3 +360,12 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - added `lang/hindawi/tools/ingest_dir.py` (sha256 `aba4eea8d849941c`)
 
 **Verified.** #include <sys/io_port.h> and #include "my_lib.h" give no dictionary entries; tests/fundamental.py 12 passed, 0 failed.
+
+## C15. The fundamental regression made safe on any machine
+
+**Why.** On his machine the seed's gate stopped with TypeError in tests/fundamental.py: Wave 0 returned no rows, and the check counted an empty list. Wave 0 now builds only the nine original Chintamani folders (not every folder with a Makefile), reads nothing from the terminal, and bounds every step, so a step that hangs or fails is reported, not a crash. When the checker cannot judge on a machine, fundamental.py says why and exits 3 (unjudged); when Wave 0 yields nothing, the failure shows the checker's own output.
+
+- changed `tests/fundamental.py` (sha256 `8c09bbcd0e1b9b6f`)
+- changed `lang/hindawi/tests/e2e/check_pipeline.py` (sha256 `b4bc7bd6058b4dd5`)
+
+**Verified.** tests/fundamental.py 12 passed, 0 failed.

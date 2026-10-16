@@ -36,15 +36,26 @@ def wave0():
     work = tempfile.mkdtemp(prefix="wave0-")
     hin = Path(work, "Hindawi")
     shutil.copytree(HIN, hin, symlinks=True)
-    shailis = [d for d in sorted(hin.iterdir()) if d.is_dir() and (d / "Makefile").exists()]
-    built = {d.name: sh(f"make -C '{d}'", timeout=300)[0] == 0 for d in shailis}
+    # only the nine original folders the samples need; every step is bounded and reads nothing from the terminal
+    wanted = ("hindrv", "guru", "shraeni", "yantra", "kritrima", "praatha", "soochee", "wyaaka", "shabda")
+    shailis = [hin / n for n in wanted if (hin / n / "Makefile").exists()]
+    def make(d):
+        try:
+            return subprocess.run(f"make -C '{d}'", shell=True, capture_output=True, stdin=subprocess.DEVNULL,
+                                  env=ENV, timeout=300).returncode == 0
+        except subprocess.TimeoutExpired:
+            return False
+    built = {d.name: make(d) for d in shailis}
     env_path = f"{RMN}:{hin}/hindrv:" + ":".join(str(d) for d in shailis) + ":" + os.environ.get("PATH", "")
     for sample in sorted(Path(HIN, "samples").glob("Hindi*.uhin")):
         with tempfile.TemporaryDirectory() as d:
             shutil.copy(sample, d)
-            p = subprocess.run(f"bash {hin}/hindrv/hincc {sample.name}", shell=True, capture_output=True, cwd=d,
-                               env=dict(ENV, PATH=env_path), timeout=120)
-            rc = p.returncode
+            try:
+                p = subprocess.run(f"bash {hin}/hindrv/hincc {sample.name}", shell=True, capture_output=True, cwd=d,
+                                   stdin=subprocess.DEVNULL, env=dict(ENV, PATH=env_path), timeout=120)
+                rc = p.returncode
+            except subprocess.TimeoutExpired:
+                rc = 124
             # hincc writes the host source as tempfil0123.tmphin.<ext>: .c, .cpp, .asm, .bas, .lex, .yacc ...
             made = [p for p in Path(d).glob("tempfil0123.tmphin.*") if p.stat().st_size > 0]
             ran = Path(d, "hin.exe").exists() and sh("./hin.exe < /dev/null", cwd=d, timeout=10)[0] == 0
