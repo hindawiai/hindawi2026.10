@@ -21,3 +21,58 @@ The previous builds carried no git history. This repository's history starts at 
 - `.gitignore`: those outputs and the flex build products of the language cells are ignored
 
 **Verified.** `scripts/test_all.sh` regenerates the outputs; see C8 for the full run.
+
+## C1. Executable bits restored
+
+**Why.** The archive stored no permissions, so `scripts/test_all.sh` stopped at its first script with "Permission denied" (exit 126). Contents are unchanged.
+
+- `benchmarks/local_inverse.js`: mode 755
+- `docs/source-stages/BUILD_PIPELINE.sh`: mode 755
+- `docs/vendor-packs/nirgundi-source-attribution-pack/scripts/download_csl_mw.py`: mode 755
+- `lang/hindawi/filters/fltr_hi_he.py`: mode 755
+- `lang/hindawi/pipeline/transliterate.py`: mode 755
+- `lang/hindawi/test_ports.py`: mode 755
+- `lang/hindawi/test_sanchalan_ports.py`: mode 755
+- `lang/hindawi/upstream/chintamani/guru/gurucc`: mode 755
+- `lang/hindawi/upstream/chintamani/praatha/praathacc`: mode 755
+- `lang/hindawi/upstream/chintamani/shabda/shabdacc`: mode 755
+- `lang/hindawi/upstream/chintamani/shraeni/shraenicc`: mode 755
+- `lang/hindawi/upstream/chintamani/soochee/fixpy.awk`: mode 755
+- `lang/hindawi/upstream/chintamani/soochee/soocheecc`: mode 755
+- `lang/hindawi/upstream/chintamani/wyaaka/wyaakacc`: mode 755
+- `lang/js/backend.js`: mode 755
+- `lang/js/raise.js`: mode 755
+- `lang/js/run.js`: mode 755
+- `lang/js/run_bootstrap.js`: mode 755
+- `lang/js/test_backend.js`: mode 755
+- `lang/suktam/hindawi/build.sh`: mode 755
+- `lang/suktam/kernel/run-first-login.sh`: mode 755
+- `lang/suktam/run-qemu.sh`: mode 755
+- `lang/suktam/test/suktam.test.js`: mode 755
+- `scripts/build_docs_catalog.py`: mode 755
+- `scripts/build_romenagri.sh`: mode 755
+- `scripts/generate_hindawi_ports.py`: mode 755
+- `scripts/hindawi_language_port_audit.py`: mode 755
+- `scripts/nirgundi/expand_all_sutras.py`: mode 755
+- `scripts/nirgundi/extract_mw_k1.py`: mode 755
+- `scripts/nirgundi/observed_form_bootstrap.py`: mode 755
+- `scripts/nirgundi/run_experiment.py`: mode 755
+- `scripts/romenagri_perso_arabic_filter.sh`: mode 755
+- `scripts/test_all.sh`: mode 755
+- `scripts/vendor_romenagri.sh`: mode 755
+- `tests/test_browser_labs.js`: mode 755
+- `tests/test_pages_http.py`: mode 755
+- `tests/test_romenagri_integration.sh`: mode 755
+- `tests/test_static_pages.sh`: mode 755
+- `tools/pushkalavati-compiler/src/cli.js`: mode 755
+- `tools/pushkalavati-compiler/src/inverse-cli.js`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/filters/perso2deva_heur.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/filters/rom2deva_heur.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/ilm-living-standards/src/living_standards_generator.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/ilm-living-standards/src/review_tool.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/langspec/generator/autoseed_from_registry.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/langspec/generator/derive_keywords.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/langspec/generator/langspec_generator.py`: mode 755
+- `tools/pushkalavati-compiler/vendor/romenagri/upstream/langspec/tools/langspec_gen.py`: mode 755
+
+**Verified.** `scripts/test_all.sh` gets past the step that failed.
