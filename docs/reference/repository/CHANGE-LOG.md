@@ -381,3 +381,19 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - changed `lang/hindawi/tools/ingest.py` (sha256 `ef51de309782ac10`)
 
 **Verified.** tests/fundamental.py 12 passed, 0 failed; scripts/test_all.sh passes.
+
+## C17. BURP, the Bidirectional Universal Resource Parser
+
+**Why.** His ingestion pipeline, named by him: any project, in every paradigm by file type, into any number of languages at once and back exactly. Keywords come from each language's own reverse transducers (Chintamani's for Hindi), applied per token outside literals, comments and #include names; identifiers and comments go through a dictionary built during ingestion by pluggable translators (glossary, Argos, any command); externals found by the preprocessor stay; -D and -U names in build files follow the dictionary; files are renamed only on request; Brahmi-script languages can be rendered in the other Brahmi scripts. Its dictionary sits where build_project.py and hindawicc read it. transliterate.py finds its tables inside the repository, and, where a table is only a header, projects by Unicode name as the tables' headers say. docs/hindawi/BURP.md, DEVIATIONS.md (every deviation from legacy Hindawi, changing nothing), TRANSLATION-TOOLS.md and docs/TERMINOLOGY.md, the terminology book, begin here.
+
+- added `lang/hindawi/burp/burp.py` (sha256 `fc6d7d5f019079b6`)
+- changed `lang/hindawi/pipeline/transliterate.py` (sha256 `ea92d310f6442b49`)
+- added `tests/burp/sample/Makefile` (sha256 `1a67f16ec278b92e`)
+- added `tests/burp/sample/src/main.c` (sha256 `7106a1b3fcc15629`)
+- added `docs/hindawi/BURP.md` (sha256 `89f0033391a6e148`)
+- added `docs/hindawi/DEVIATIONS.md` (sha256 `d1f69de3dc560ba3`)
+- added `docs/hindawi/TRANSLATION-TOOLS.md` (sha256 `c3cdb10665bbecc5`)
+- added `docs/hindawi/burp-status.tsv` (sha256 `7bb2cd610a2d0bdc`)
+- added `docs/TERMINOLOGY.md` (sha256 `0efc9ef8cb44c8e8`)
+
+**Verified.** burp.py check over the sample project: 355 ingestions (76 languages and 279 renderings) reverse byte for byte; the sample built through hindawicc prints 42 in 30 of 76 languages (docs/hindawi/burp-status.tsv); scripts/test_all.sh passes; tests/fundamental.py 12 passed.

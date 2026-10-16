@@ -5,8 +5,10 @@ All scripts → Devanagari → original Hindi .uhin → C
 import sys
 from pathlib import Path
 
-TABLES = Path("/tmp/spt/tables")
-PERSO = Path("/tmp/pk19/pushkalavati-integrated/tools/pushkalavati-compiler/vendor/romenagri/upstream/filters")
+import os
+_VENDOR = Path(__file__).resolve().parents[3] / "tools/pushkalavati-compiler/vendor/romenagri/upstream"
+TABLES = Path(os.environ.get("HINDAWI_SCRIPT_TABLES", _VENDOR / "tables"))
+PERSO = Path(os.environ.get("HINDAWI_PERSO_FILTERS", _VENDOR / "filters"))
 
 # script detection by unicode block
 SCRIPTS = {
@@ -85,7 +87,24 @@ def project(text, script):
         return cjk_to_deva(text)
     if script in SCRIPTS:
         table = load_table(SCRIPTS[script][2])
-        return "".join(table.get(c, c) for c in text)
+        if table:
+            return "".join(table.get(c, c) for c in text)
+        # The vendored tables carry only their headers ("Unicode name-projection"), so project by name here:
+        # BENGALI LETTER KA becomes DEVANAGARI LETTER KA, and only where the name round-trips.
+        import unicodedata
+        out = []
+        for c in text:
+            n = unicodedata.name(c, "")
+            head = n.split(" ")[0]
+            if head and head != "DEVANAGARI" and ord(c) > 0x7F:
+                try:
+                    t = unicodedata.lookup("DEVANAGARI" + n[len(head):])
+                    if unicodedata.name(t, "") == "DEVANAGARI" + n[len(head):]:
+                        out.append(t); continue
+                except KeyError:
+                    pass
+            out.append(c)
+        return "".join(out)
     return text
 
 def main():
