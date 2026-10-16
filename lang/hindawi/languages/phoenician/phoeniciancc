@@ -5,7 +5,7 @@
 DIR="$(dirname "$0")"
 export PATH="/tmp/flexroot/usr/bin:$PATH"
 export LD_LIBRARY_PATH="/tmp/flexroot/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-ROMENAGRI=/tmp/chintamani/Romenagri
+ROMENAGRI="${ROMENAGRI:-/tmp/chintamani/Romenagri}"
 
 echo संकलन के परिणाम > tempfil0123.tmphin
 echo ============ >> tempfil0123.tmphin

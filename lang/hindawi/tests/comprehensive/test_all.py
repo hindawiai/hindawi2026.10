@@ -9,7 +9,7 @@ PARAMS = ROOT / "lang/hindawi/pipeline/language_params.json"
 CHINT = ROOT / "lang/hindawi/upstream/chintamani"
 LANGS = ROOT / "lang/hindawi/languages"
 TOOLS = ROOT / "lang/hindawi/tools"
-FLEX = "/tmp/flexroot/usr/bin/flex"
+FLEX = __import__("os").environ.get("FLEX") or __import__("shutil").which("flex") or "/tmp/flexroot/usr/bin/flex"
 
 SHAILIS = ["h2c", "h2cpp", "h2asm", "h2java", "h2b", "h2py", "h2yacc", "h2logo", "h2l"]
 

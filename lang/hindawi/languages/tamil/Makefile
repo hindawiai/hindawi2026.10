@@ -1,9 +1,9 @@
 #Copyright (C) 2026 Abhishek Choudhary
 #Makefile for Hindawi tamil — structure matches guru/Makefile
 
-FLEX = /tmp/flexroot/usr/bin/flex
-FLIB = -L/tmp/flexroot/usr/lib/x86_64-linux-gnu -lfl
-ROMENAGRI = /tmp/chintamani/Romenagri
+FLEX ?= $(or $(shell command -v flex 2>/dev/null),/tmp/flexroot/usr/bin/flex)
+FLIB ?= -L/tmp/flexroot/usr/lib/x86_64-linux-gnu -lfl
+ROMENAGRI ?= /tmp/chintamani/Romenagri
 
 all: h2c c2h
 

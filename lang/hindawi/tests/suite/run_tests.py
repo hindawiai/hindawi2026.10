@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[4]
 PARAMS = ROOT / "lang/hindawi/pipeline/language_params.json"
 CHINT = ROOT / "lang/hindawi/upstream/chintamani"
 LANGS = ROOT / "lang/hindawi/languages"
-FLEX = "/tmp/flexroot/usr/bin/flex"
+FLEX = __import__("os").environ.get("FLEX") or __import__("shutil").which("flex") or "/tmp/flexroot/usr/bin/flex"
 FLIB = "-L/tmp/flexroot/usr/lib/x86_64-linux-gnu -lfl"
 
 # canonical test: fibonacci
