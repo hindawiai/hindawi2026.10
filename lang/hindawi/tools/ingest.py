@@ -55,11 +55,14 @@ def get_original(native, dictionary):
     rev = dictionary.get("reverse", {})
     return rev.get(native, native)
 
-# String and character literals and comments are not code: identifiers are taken, and replaced, outside them only.
-LEXEME = re.compile(r'("(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'|/\*.*?\*/|//[^\n]*)|\b([A-Za-z_][A-Za-z0-9_]*)\b', re.S)
+# String and character literals, comments and #include <file> names are not code: identifiers are taken,
+# and replaced, outside them only, so a file name never enters the dictionary.
+LEXEME = re.compile(r'(#\s*include\s*<[^>\n]*>|"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\'|/\*.*?\*/|//[^\n]*)|\b([A-Za-z_][A-Za-z0-9_]*)\b', re.S)
 KEYWORDS = {"int", "char", "float", "double", "void", "if", "else", "while", "for", "return", "break", "continue",
             "switch", "case", "default", "struct", "typedef", "const", "static", "extern", "sizeof", "main",
-            "unsigned", "signed", "long", "short", "union", "enum", "do", "goto", "volatile", "register", "auto"}
+            "unsigned", "signed", "long", "short", "union", "enum", "do", "goto", "volatile", "register", "auto",
+            "include", "define", "ifdef", "ifndef", "endif", "pragma", "undef",
+            "printf", "scanf", "malloc", "free", "NULL", "true", "false"}
 
 def extract_identifiers(src):
     return {m.group(2) for m in LEXEME.finditer(src) if m.group(2)} - KEYWORDS

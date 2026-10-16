@@ -351,3 +351,12 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - added `docs/reference/repository/docs/hindawi/SOVEREIGN-STACK.md` (sha256 `b1e6cf8dcb8a7d81`)
 
 **Verified.** scripts/test_all.sh passes on the tree with them.
+
+## C14. File names kept out of the ingestion dictionary (HINDAWI2026_10-ingest)
+
+**Why.** Ingesting an upstream project put #include file names into the dictionary. Grok's fix in HINDAWI2026_10-ingest is merged into the original-chain ingest.py of C11 rather than replacing it: #include <file> names are skipped like string literals and comments, and preprocessor words and printf, scanf, malloc, free, NULL, true and false are reserved, as Grok's version reserves them. Grok's lang/hindawi/tools/ingest_dir.py is added as delivered.
+
+- changed `lang/hindawi/tools/ingest.py` (sha256 `28e1cdfb2e05eeef`)
+- added `lang/hindawi/tools/ingest_dir.py` (sha256 `aba4eea8d849941c`)
+
+**Verified.** #include <sys/io_port.h> and #include "my_lib.h" give no dictionary entries; tests/fundamental.py 12 passed, 0 failed.
