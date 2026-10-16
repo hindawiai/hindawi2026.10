@@ -258,3 +258,11 @@ The previous builds carried no git history. This repository's history starts at 
 - `docs/documentation-catalog.html` regenerated (sha256 `89361c1f1799` to `1fa8dc4d99af`)
 
 **Verified.** `tests/test_static_pages.sh` passes.
+
+## C7. Unreferenced Romenagri text dump removed
+
+**Why.** A 2.9 MB concatenation of Romenagri's sources prepared for a language model. Nothing reads it, and Romenagri's source of record is hindawiai/chintamani.
+
+- removed `tools/pushkalavati-compiler/vendor/romenagri/upstream/romenagri_llm_dump.txt` (2,927,972 bytes, sha256 `acc19cba9a4531a04c94922bb7df791760d8b00a38ad821c49958b4e78b35b8d`)
+
+**Verified.** No file in the tree refers to it.
