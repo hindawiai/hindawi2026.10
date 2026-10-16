@@ -24,3 +24,6 @@ tools/pushkalavati-compiler/out/
 # flex build products of the language cells
 lang/hindawi/languages/*/lexyy.c
 lang/hindawi/languages/*/*.lex
+# what lang/hindawi/hindawicc builds into the Chintamani copy and writes beside its sources
+lang/hindawi/upstream/chintamani/guru/h2c
+*_deva.uhin

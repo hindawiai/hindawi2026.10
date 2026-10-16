@@ -289,3 +289,14 @@ gates: it prints status, because coverage is published as status.
 - Guru cells: 2,108 of 2,512 declared Guru keywords are recognised by their own lexer, built the original way;
   Hindi, Sanskrit, Nepali, Awadhi and Bhojpuri 278 of 321 each, Bengali 12 of 34, Tamil 12 of 30, and 0 for
   Arabic, Persian, Urdu, Punjabi, Telugu, Malayalam and Odia.
+
+## C9. Build number, and what the multi-file driver leaves behind
+
+**Why.** This tree is BUILD-0103. `lang/hindawi/hindawicc` compiles the Guru transducer into the Chintamani copy
+(`lang/hindawi/upstream/chintamani/guru/h2c`) and writes `<name>_deva.uhin` beside each source; neither may
+ever be committed, and the first would make the Chintamani copy differ from Chintamani.
+
+- `BUILD-NUMBER.txt`: BUILD-0102 to BUILD-0103 (sha256 `805397fc75ee` to `1cfc9ef6a155`)
+- `.gitignore`: those two outputs ignored (sha256 `c83998c70246` to `ec1f72f584ce`)
+
+**Verified.** `scripts/test_all.sh` passes on the tree at this commit (see the record below C9's commit).
