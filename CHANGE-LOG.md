@@ -300,3 +300,14 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - `.gitignore`: those two outputs ignored (sha256 `c83998c70246` to `ec1f72f584ce`)
 
 **Verified.** `scripts/test_all.sh` passes on the tree at this commit (see the record below C9's commit).
+
+## C10. Grok's ingestion tools, as delivered in HINDAWI2026_10-best
+
+**Why.** HINDAWI2026_10-best is BUILD-0102 plus these four files and nothing else; HINDAWI2026_10-regression adds only the dictionary one ingestion run wrote. They are taken exactly as delivered, so C11 shows every change made to them.
+
+- added `lang/hindawi/tools/ingest.py` (sha256 `853b88c200a241ee`)
+- added `lang/hindawi/tools/import_project.py` (sha256 `845f22d1dd8f207a`)
+- added `lang/hindawi/tools/identifier_map.py` (sha256 `89c9881ba0141b9e`)
+- added `tests/regression.sh` (sha256 `ae1182e27b3dd8e7`)
+
+**Verified.** Byte-identical to the files in HINDAWI2026_10-best.zip.
