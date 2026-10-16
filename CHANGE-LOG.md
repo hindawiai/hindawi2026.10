@@ -266,3 +266,26 @@ The previous builds carried no git history. This repository's history starts at 
 - removed `tools/pushkalavati-compiler/vendor/romenagri/upstream/romenagri_llm_dump.txt` (2,927,972 bytes, sha256 `acc19cba9a4531a04c94922bb7df791760d8b00a38ad821c49958b4e78b35b8d`)
 
 **Verified.** No file in the tree refers to it.
+
+## C8. An end-to-end check of the pipeline, by execution
+
+**Why.** The build's own suites test its Python and JavaScript tools; none runs a program through the original
+Hindawi chain, and none checks that a language's keywords survive Romenagri. This check reports both. It never
+gates: it prints status, because coverage is published as status.
+
+- added `lang/hindawi/tests/e2e/check_pipeline.py` (sha256 `7aee7fc8c3f483945987f69a9c9e75c4d1f03f3eca7488105c85fe8ed95e207d`). It needs a built Romenagri and a
+  Chintamani checkout (`ROMENAGRI`, `CHINTAMANI_HINDAWI`), flex, gcc and gawk; `--wave0` runs only Wave 0.
+
+**Verified, 16 October 2026.**
+
+- Wave 0: every Chintamani shaili builds with its own Makefile (guru, shraeni, yantra, kritrima, praatha,
+  soochee, wyaaka, shabda, and hindrv). All eight Chintamani samples are transduced to their host source
+  (.c, .cpp, .asm, .bas twice, .java, .lex, .yacc). The C, C++ and lex samples compile and run; the others need
+  a host toolchain this machine lacks (fasm, a BASIC compiler, javac, yacc) and were not run.
+- Script axis: of 11,483 native keywords across the 76 language folders, 3,746 survive
+  `uni2acii | acii2cf` and back unchanged. The Devanagari-script languages pass (203 of 204 each); every
+  other script fails (0 to 2 of 204), because the cells' Makefiles feed non-Devanagari text straight to
+  `uni2acii`, which reads Devanagari only, without first passing it through a script filter.
+- Guru cells: 2,108 of 2,512 declared Guru keywords are recognised by their own lexer, built the original way;
+  Hindi, Sanskrit, Nepali, Awadhi and Bhojpuri 278 of 321 each, Bengali 12 of 34, Tamil 12 of 30, and 0 for
+  Arabic, Persian, Urdu, Punjabi, Telugu, Malayalam and Odia.
