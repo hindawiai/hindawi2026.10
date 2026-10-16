@@ -324,3 +324,20 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - changed `.gitignore` (sha256 `d77bfbcc63bc34ca`)
 
 **Verified.** tests/fundamental.py: the Chintamani copy unchanged; Wave 0 eight of eight; guru, shraeni, kritrima, praatha, wyaaka and shabda stable to host and back (yantra recorded as Chintamani's own behaviour); a two-file project ingested with one dictionary, compiled by hindawicc with -DVALUE=40 -O2 -Wall -g into a program printing 42, and reversed to its original C; योगफल becomes the ELF symbol yoagaphala and returns through Romenagri. 12 passed, 0 failed.
+
+## C12. The upstream checks, the cell harness, the two documents and the localisation page
+
+**Why.** He asked for firmware, a Shakti-class bootstrap and the kernel to be brought in, pass or fail; for instructions on adding a human language, a script or a programming language without breaking the pipeline; for the sovereign stack; and for a web page where speakers localise the keywords. scripts/upstream/seabios.sh builds SeaBIOS as is and through a language's Guru pair and boots both under qemu-system-x86_64; scripts/upstream/riscv.sh runs a Hindi program on RV64IMAC under qemu-system-riscv64; scripts/upstream/linux.sh does the same for the Linux kernel's tinyconfig and is never part of the gate. lang/hindawi/tests/cells/cells.py measures every language cell by execution. docs/hindawi/localize.html reads docs/hindawi/data/keywords.json, generated from the language parameters without their romanised column. BUILD-NUMBER.txt names the release.
+
+- added `scripts/upstream/seabios.sh` (sha256 `3213e222dcd8ad59`)
+- added `scripts/upstream/riscv.sh` (sha256 `48c71961c3c77589`)
+- added `scripts/upstream/linux.sh` (sha256 `690d60bc87587cfe`)
+- added `lang/hindawi/tests/cells/cells.py` (sha256 `e1e89c24fcd5a516`)
+- added `docs/hindawi/ADDING-LANGUAGES.md` (sha256 `ee58b12220b61994`)
+- added `docs/hindawi/SOVEREIGN-STACK.md` (sha256 `b1e6cf8dcb8a7d81`)
+- added `docs/hindawi/localize.html` (sha256 `b32a8bd06852e1e1`)
+- added `docs/hindawi/data/keywords.json` (sha256 `af9182807ca2516d`)
+- changed `docs/index.html` (sha256 `567ee2618ab7a18e`)
+- changed `BUILD-NUMBER.txt` (sha256 `40417b9239623158`)
+
+**Verified.** scripts/test_all.sh passes (ALL AVAILABLE TESTS PASSED); tests/fundamental.py 12 passed, 0 failed; scripts/upstream/riscv.sh PASS; scripts/upstream/seabios.sh: SeaBIOS rel-1.16.3 builds and boots as is, and fails to build through the Hindi pair because acii2cf doubles underscores in identifiers, recorded in docs/hindawi/ADDING-LANGUAGES.md.

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindawi: localise the keywords into your language</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#666;--line:#ddd;--bad:#b3261e;--acc:#1f4e79}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--bad:#ff8a80;--acc:#8ab4f8}}
+body{font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1100px;margin:0 auto;padding:16px}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
+input{width:100%;font-size:16px;background:transparent;color:var(--fg);border:1px solid var(--line);padding:3px}
+.bad{outline:2px solid var(--bad)}.mut{color:var(--mut)}button,select{font-size:15px;margin:4px 4px 4px 0}a{color:var(--acc)}
+</style></head><body>
+<h1>Localise Hindawi's keywords into your language</h1>
+<p class="mut">One construct, one keyword, in your language's own script only. Nothing here is romanised; rendering into
+another script is Romenagri's job. Your work stays in this page until you download it; send the file as an issue
+or pull request on <a href="https://github.com/hindawiai/hindawi2026.10">hindawiai/hindawi2026.10</a>.</p>
+<label>Language <select id="lang"></select></label>
+<button id="dl">Download TSV</button><label>Load TSV <input type="file" id="ul" accept=".tsv,.txt" style="width:auto"></label>
+<p id="stat" class="mut"></p>
+<table><thead><tr><th>Construct</th><th>Keyword in your script</th><th>Provenance</th></tr></thead><tbody id="rows"></tbody></table>
+<script>
+let D, L;
+const scriptOf = s => { const m = {}; for (const c of s) if (c.codePointAt(0) > 127 && /\p{L}/u.test(c)) { const b = c.codePointAt(0) >> 7; m[b] = (m[b] || 0) + 1; }
+  const k = Object.keys(m).sort((a, b) => m[b] - m[a])[0]; return k === undefined ? null : +k; };
+function draw() {
+  L = document.getElementById("lang").value; const kw = D.languages[L] || {}, blk = scriptOf(Object.values(kw).join(""));
+  const tb = document.getElementById("rows"); tb.innerHTML = "";
+  for (const id of D.constructs) {
+    const tr = document.createElement("tr"), v = kw[id] || "";
+    tr.innerHTML = `<td><code>${id}</code></td><td><input data-id="${id}" value="${v.replace(/"/g, "&quot;")}"></td>
+      <td><select data-p="${id}"><option>${v ? "retrieved" : "to fill"}</option><option>reviewed by a speaker</option>
+      <option>inherited</option><option>projected</option></select></td>`;
+    tb.appendChild(tr);
+  }
+  const check = () => { let filled = 0, off = 0; tb.querySelectorAll("input").forEach(i => { const s = scriptOf(i.value);
+      const bad = blk !== null && i.value && ([...i.value].some(c => c.codePointAt(0) > 127 && /\p{L}/u.test(c) && (c.codePointAt(0) >> 7) !== blk) || /[A-Za-z]/.test(i.value));
+      i.classList.toggle("bad", bad); filled += !!i.value; off += bad; });
+    document.getElementById("stat").textContent = `${filled} of ${D.constructs.length} constructs filled; ${off} outside the language's script.`; };
+  tb.oninput = check; check();
+}
+document.getElementById("dl").onclick = () => {
+  const rows = [...document.querySelectorAll("#rows tr")].map(tr => [tr.querySelector("input").dataset.id, tr.querySelector("input").value,
+    tr.querySelector("select").value].join("\t"));
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["construct_id\tnative_keyword\tprovenance\n" + rows.join("\n") + "\n"], {type: "text/tab-separated-values"}));
+  a.download = `${L}-keywords.tsv`; a.click(); };
+document.getElementById("ul").onchange = async e => { const t = await e.target.files[0].text();
+  for (const line of t.split("\n").slice(1)) { const [id, v] = line.split("\t"); const i = document.querySelector(`input[data-id="${id}"]`); if (i) i.value = v || ""; }
+  document.getElementById("rows").oninput(); };
+fetch("data/keywords.json").then(r => r.json()).then(d => { D = d; const s = document.getElementById("lang");
+  for (const l of Object.keys(d.languages).sort()) s.add(new Option(l, l)); s.onchange = draw; draw(); });
+</script></body></html>
