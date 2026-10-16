@@ -7,7 +7,7 @@ This status update supersedes older progress snapshots where they conflict. The 
 - Source inventory: 3,983 records, preserved in `data/sutras.json`.
 - Data-driven Pushkalāvatī classifier and operation tables integrated; category labels are overlapping functional categories, not a sequential pipeline.
 - Batch anuvṛtti expansion with provenance and generated classification/IR/ledger reports.
-- 11 rule-local operations are `executable_tested`; 3 remain derivable but untested; the rest are not thereby executable.
+- 20 rule-local operations are `executable_tested` as of BUILD-0010; 3 remain derivable but untested; the rest are not thereby executable.
 - Sūtram JavaScript rewrite engine, `.su` front end, interpreter, Śivasūtra primitives, padārtha/OOP prototype, conversion/bootstrap prototypes, and paradigm demonstrations included.
 - Nirgundi literal baseline, structural cycle, full-sūtra conversion, and observed-form bootstrap included.
 - `./scripts/test_all.sh` passed: JavaScript Sūtram/compiler tests, 13 Python tests passed, 1 legacy test skipped because external MW/RV experiment artifacts are absent, and Python rule-IR parity passed across 3,983 records.
