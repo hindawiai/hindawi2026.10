@@ -76,3 +76,11 @@ The previous builds carried no git history. This repository's history starts at 
 - `tools/pushkalavati-compiler/vendor/romenagri/upstream/langspec/tools/langspec_gen.py`: mode 755
 
 **Verified.** `scripts/test_all.sh` gets past the step that failed.
+
+## C2. Pages workflow restored from BUILD-0024
+
+**Why.** `tests/test_static_pages.sh` requires `.github/workflows/pages.yml`; BUILD-0102 does not carry it, so its own test script failed (exit 1) at the Pages step.
+
+- added `.github/workflows/pages.yml`, byte for byte from BUILD-0024 (sha256 `e54dbada5fced646f4a488cc2ae692ab4d4788a47c552f0dab6d8c1377ea6cf6`)
+
+**Verified.** `tests/test_static_pages.sh` passes.
