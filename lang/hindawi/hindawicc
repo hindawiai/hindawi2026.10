@@ -1,29 +1,46 @@
 #!/usr/bin/env bash
-# hindawicc: a gcc front end for Hindawi sources. Every .uhin goes through the original chain, exactly as
-# Chintamani's hincc and gurucc run it: fixuninum | iconv | uni2acii | acii2cf | acii2uni | iconv | <cell>/h2c,
-# then the driver's own escape repairs. Everything else on the command line goes to gcc untouched (-O, -D, -I,
-# -L, -l, -c, -g, -o ...). Nothing falls back: if a source does not transduce, hindawicc stops and says so.
+# hindawicc: a drop-in gcc for Hindawi. Each native source (.uhin, .hin, and .c/.h when HINDAWI_NATIVE_SOURCE=1)
+# goes through the compilation path of tools/hindawi_chain.py: script filter, Romenagri, the language's h2c, the
+# original driver's repairs. -D and -U names go through the build's dictionary to their C-level form, so a
+# Makefile's definitions meet the names the sources now carry. Every other argument goes to gcc untouched.
+# Nothing falls back: a source that does not transduce stops the build.
 # © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
-#   ROMENAGRI   a built Romenagri folder (required)
-#   HINDAWI_CELL the folder holding the language's built h2c (default: Chintamani's own guru, Hindi)
-#   HINDAWI_KEEP=1 keeps the generated .c beside each source
+#   ROMENAGRI             a built Romenagri folder (required)
+#   HINDAWI_LANG          the language (default hindi)
+#   HINDAWI_DICT          the ingestion's dictionary, for -D and -U names
+#   HINDAWI_NATIVE_SOURCE 1 when .c and .h files hold native code
+#   HINDAWI_KEEP=1        keeps each generated C file beside its source
 set -euo pipefail
-ROMENAGRI="${ROMENAGRI:?set ROMENAGRI to a built Romenagri folder}"
-CELL="${HINDAWI_CELL:-$(cd "$(dirname "$0")" && pwd)/upstream/chintamani/guru}"
-[ -x "$CELL/h2c" ] || { echo "hindawicc: no built h2c in $CELL (run make there, with Romenagri on the PATH)" >&2; exit 2; }
-export PATH="$ROMENAGRI:$PATH"
+HERE="$(cd "$(dirname "$0")" && pwd)"; CHAIN="$HERE/tools/hindawi_chain.py"
+: "${ROMENAGRI:?set ROMENAGRI to a built Romenagri folder}"
+L="${HINDAWI_LANG:-hindi}"; DICT="${HINDAWI_DICT:-}"; NATIVE_C="${HINDAWI_NATIVE_SOURCE:-0}"
 work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT
-args=(); n=0
+macro() {   # -DNAME[=value] or -UNAME: NAME to its C-level form through the dictionary
+  [ -n "$DICT" ] && [ -f "$DICT" ] || { printf '%s' "$1"; return; }
+  python3 - "$DICT" "$L" "$1" "$CHAIN" <<'PY'
+import json, re, sys
+dpath, lang, arg, chain = sys.argv[1:]
+sys.path.insert(0, chain.rsplit("/", 1)[0]); import hindawi_chain as c
+m = re.match(r"^(-[DU])([^=\s]+)(=.*)?$", arg)
+if not m: print(arg, end=""); raise SystemExit
+pre, name, tail = m.groups()
+native = json.load(open(dpath, encoding="utf-8")).get("forward", {}).get(name, name)
+print(pre + c.c_names([native], lang)[native] + (tail or ""), end="")
+PY
+}
+args=(); n=0; pending=""
 for a in "$@"; do
+  if [ -n "$pending" ]; then args+=("$(macro "$pending$a" | cut -c3-)"); pending=""; continue; fi
   case "$a" in
-    *.uhin|*.hin)
-      [ -f "$a" ] || { echo "hindawicc: no such source $a" >&2; exit 2; }
-      n=$((n+1)); c="$work/$n-$(basename "${a%.*}").c"
-      fixuninum < "$a" | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf | acii2uni | iconv -f UTF-16 -t UTF-8 \
-        | "$CELL/h2c" > "$c" || { echo "hindawicc: $a did not transduce" >&2; exit 1; }
-      sed -i 's/\\न/\\n/g; s/\%भ/\%f/g; s/\%प/\%d/g;' "$c"
-      [ "${HINDAWI_KEEP:-0}" = 1 ] && cp "$c" "${a%.*}.c"
-      args+=("$c") ;;
+    -D|-U) args+=("$a"); pending="$a" ;;
+    -D*|-U*) args+=("$(macro "$a")") ;;
+    *.uhin|*.hin|*.c|*.h|*.cc|*.cpp|*.cxx)
+      if [[ "$a" == *.uhin || "$a" == *.hin || "$NATIVE_C" == 1 ]] && [ -f "$a" ]; then
+        n=$((n+1)); base="$(basename "$a")"; c="$work/$n-${base%.*}.c"
+        python3 "$CHAIN" to-c --lang "$L" < "$a" > "$c" || { echo "hindawicc: $a did not transduce" >&2; exit 1; }
+        [ "${HINDAWI_KEEP:-0}" = 1 ] && cp "$c" "${a%.*}.c"
+        args+=("$c")
+      else args+=("$a"); fi ;;
     *) args+=("$a") ;;
   esac
 done

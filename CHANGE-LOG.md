@@ -369,3 +369,15 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - changed `lang/hindawi/tests/e2e/check_pipeline.py` (sha256 `b4bc7bd6058b4dd5`)
 
 **Verified.** tests/fundamental.py 12 passed, 0 failed.
+
+## C16. The compilation-path tools for ingested projects
+
+**Why.** An earlier run, interrupted before it could commit, built the compilation path for whole projects on the regression-fixed drop's design: tools/hindawi_chain.py holds both paths in one place (ingestion: C to the language; compilation: the language to C through the script filter, Romenagri and the language's h2c, with ASCII names held aside so CONFIG_X and memcpy keep their identity); tools/ingest_project.py ingests a tree into several languages with one dictionary per language; tools/build_project.py builds a native tree with its own Makefile and CC=hindawicc; hindawicc maps every -D and -U name through the dictionary to its C-level form; tools/ingest.py uses the shared chain.
+
+- changed `lang/hindawi/hindawicc` (sha256 `d2ced1a1bae5dee8`)
+- added `lang/hindawi/tools/hindawi_chain.py` (sha256 `34e6ede10a35ea22`)
+- added `lang/hindawi/tools/ingest_project.py` (sha256 `f1f8c0bf4f202ea9`)
+- added `lang/hindawi/tools/build_project.py` (sha256 `918ac57787fb7e9d`)
+- changed `lang/hindawi/tools/ingest.py` (sha256 `ef51de309782ac10`)
+
+**Verified.** tests/fundamental.py 12 passed, 0 failed; scripts/test_all.sh passes.
