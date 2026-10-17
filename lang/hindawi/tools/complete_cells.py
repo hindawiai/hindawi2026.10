@@ -143,8 +143,23 @@ def main():
             key = {"{": "BRACE_OPEN", "}": "BRACE_CLOSE"}.get(t, "KW_" + t.lstrip("#").upper())
             if key in lex:   # a directive keeps its #, so #if and if stay two words, as #समावेश and समावेश do
                 word[t], prov[t] = ("#" if t.startswith("#") else "") + lex[key], "lexicon"
+        overlay, drop_delivered = {}, False          # lang/hindawi/lexicons/<lang>.tsv: proposed words for the gaps
+        ov = HIN / "lexicons" / f"{lang}.tsv"
+        if ov.exists():
+            for line in ov.read_text(encoding="utf-8").splitlines():
+                if line.strip() == "!drop-delivered":
+                    drop_delivered = True
+                elif line and not line.startswith("# ") and "\t" in line:
+                    t, w = line.split("\t")[:2]
+                    if WORD_OK.fullmatch(w.lstrip("#")) and w not in host:
+                        overlay[t] = w
+        for t, w in overlay.items():
+            if t not in word:
+                word[t], prov[t] = w, f"proposed in lexicons/{lang}.tsv, unreviewed"
         d = CELLS / lang
         for s, (fwd, rev, _, _) in SHAILIS.items():          # what the delivered cells knew, where the lexicon is silent
+            if drop_delivered:
+                break
             for k, v in cell_rules(d / f"{rev}.uhin").items():
                 if k in tokens[s] and k not in word and len(k) > 1 and WORD_OK.fullmatch(v) and v not in host:
                     word[k], prov[k] = v, "delivered cell"

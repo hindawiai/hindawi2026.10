@@ -465,3 +465,18 @@ Keywords localised on the sample: 82.9% for Urdu, Sindhi, Punjabi in both script
 languages, among them Urdu, Sindhi, Punjabi (Gurmukhi and Shahmukhi), Arabic, Persian, Pashto, Dari, Kashmiri, Bengali,
 Tamil, Telugu, Gujarati, Odia and Kannada; 5 do not compile and 24 have no script filter yet. tests/fundamental.py 12
 passed; scripts/test_all.sh passes.
+
+## C21. Sanskrit made complete, and the GATE programs in every language
+
+**Why.** He asked for a complete Sanskrit version and for the sample programs that teach every programming domain GATE covers. The Sanskrit lexicon held genuine Sanskrit words for most constructs, but its cell had carried Hindi's transducer; lang/hindawi/lexicons/sanskrit.tsv adds proposed Sanskrit words, unreviewed, for every construct the lexicon lacks across C, C++, Java, Python, BASIC, LOGO, yacc and lex, assembly, VHDL, Arduino, robotics and AI, and the C library calls the programs use, and drops the Hindi words copied into the cell; lang/hindawi/burp/glossary/sanskrit.tsv names the identifiers the programs use. samples/gate holds 43 C programs across algorithms (sorting, searching, greedy, dynamic programming, graphs, divide and conquer, backtracking), data structures, programming, discrete mathematics, theory of computation, compiler design, operating systems, networks, digital logic and databases, plus Python, Java, C++ and BASIC programs; tests/gate/run.py ingests them into any language, compiles each C program from that language through the original pipeline and compares its output with the English one. BURP now reads numeric literals as single tokens, leaves untranslated names exactly as they were, and reads back a native keyword written as several words, as Chintamani's BASIC THEN is. The Sanskrit set is on the site beside the English one.
+
+- added `samples/gate/algorithms/sorting/quick_sort.c` (sha256 `9d91d2b16ad5d7de`)
+- added `lang/hindawi/lexicons/sanskrit.tsv` (sha256 `ab7d559398072c78`)
+- added `lang/hindawi/burp/glossary/sanskrit.tsv` (sha256 `53d52af85d127866`)
+- changed `lang/hindawi/burp/burp.py` (sha256 `eda23b4c35eb31de`)
+- changed `lang/hindawi/tools/complete_cells.py` (sha256 `e29d738602a48fc8`)
+- added `tests/gate/run.py` (sha256 `cab9f76434054d5b`)
+- added `docs/hindawi/samples/index.html` (sha256 `0f5d40e5b3646a71`)
+- changed `README.md` (sha256 `94e420450aabc689`)
+
+**Verified.** Sanskrit: 43 of 43 C programs compile from Sanskrit and print exactly what the English originals print; all 47 files reverse byte for byte. The same holds in Hindi, Urdu, Sindhi, Punjabi in Shahmukhi and Gurmukhi, Bengali, Tamil, Telugu, Arabic, Persian, Marathi, Nepali, Gujarati, Odia and Kannada. All 355 ingestions of the BURP sample still reverse byte for byte; scripts/test_all.sh passes.

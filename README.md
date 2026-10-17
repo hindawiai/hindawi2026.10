@@ -17,6 +17,10 @@ ingests any existing project into any number of languages at once and reverses i
   layers.
 - **Editors.** The Arduino IDE (`ide/arduino/install.sh`: students program their boards in their own language),
   Eclipse (`ide/eclipse/`), Geany, and gdb with native names (`ide/gdbinit`). See `docs/hindawi/IDE.md`.
+- **Samples.** `samples/gate/`: programs for every programming domain GATE covers, in C with Python, Java, C++ and
+  BASIC beside them. `python3 tests/gate/run.py --langs sanskrit` ingests them into a language, compiles each C program
+  from that language through the original pipeline and checks it prints what the English one prints. The Sanskrit
+  set is on the site beside the English one: `docs/hindawi/samples/index.html`.
 - **Your language's standard.** Review it construct by construct and paradigm by paradigm, from hardware description
   to robots and AI, on `docs/hindawi/review.html`; each proposal is an issue here. Each language's gaps are in its
   cell's `STATUS.tsv`.

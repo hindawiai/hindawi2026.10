@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindawi: the GATE programs in your language</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#666;--line:#ddd;--acc:#1f4e79;--code:#f6f6f6}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#8ab4f8;--code:#1e1e1e}}
+body{font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1300px;margin:0 auto;padding:16px}
+a{color:var(--acc)}.mut{color:var(--mut)}select{font-size:16px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:800px){.pair{grid-template-columns:1fr}}
+pre{background:var(--code);border:1px solid var(--line);padding:10px;overflow-x:auto;font-size:14px;line-height:1.45;margin:0}
+</style></head><body>
+<h1>The GATE programs, in your language</h1>
+<p class="mut">Programs for every programming domain GATE covers, written once in English and ingested by BURP. Each one,
+in the language shown, compiles through Hindawi's original pipeline and prints exactly what the English one prints.
+Names are translated through the language's dictionary (proposed words, open to review).</p>
+<label>Language <select id="lang"></select></label> <label>Program <select id="prog"></select></label>
+<div class="pair"><div><h3 id="lt"></h3><pre id="native"></pre></div><div><h3>English</h3><pre id="eng"></pre></div></div>
+<script>
+let M;
+async function show() {
+  const f = prog.value, l = lang.value; lt.textContent = l;
+  native.textContent = await (await fetch(`${l}/${f}`)).text();
+  eng.textContent = await (await fetch(`english/${f}`)).text();
+}
+fetch("manifest.json").then(r => r.json()).then(m => {
+  M = m; for (const l of m.languages) lang.add(new Option(l, l));
+  for (const f of m.files) prog.add(new Option(f, f));
+  lang.onchange = prog.onchange = show; show();
+});
+</script></body></html>

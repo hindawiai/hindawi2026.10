@@ -78,7 +78,9 @@ def scanner(style):
         parts += [f"(?P<com>{COMMENTS[style]})", f"(?P<str>{STRINGS})"]
     else:
         parts += [f"(?P<str>{STRINGS})", f"(?P<com>{COMMENTS[style]})"]
-    return re.compile("|".join(parts + [f"(?P<word>{WORD})"]))
+    # a number is one token, so 0xFFu or 1e-3f is never read as a name
+    number = r"(?P<num>\b0[xX][0-9A-Fa-f]+[uUlL]*\b|\b\d+(?:\.\d+)?(?:[eE][+-]?\d+)?[uUlLfF]*\b)"
+    return re.compile("|".join(parts + [number, f"(?P<word>{WORD})"]))
 
 
 def load_rules(path):
@@ -196,6 +198,8 @@ class Translator:
         words = [w for w in re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", ident).split("_") if w]
         whole = self.phrase(" ".join(words))
         parts = [whole] if whole else [self.phrase(w) or w for w in words]
+        if not whole and parts == words:   # nothing translated: the name stays exactly as it was
+            return ident
         native = re.sub(r"[^\w\u0300-\u036F\u0900-\u0DFF\u0E00-\u0FFF\u1000-\u109F\u1780-\u18AF\uA800-\uABFF]+", "_",
                         "_".join(parts)).strip("_")
         return native if native and not native[0].isdigit() else ident
@@ -384,7 +388,13 @@ def reverse_tree(native, out):
             inverse.setdefault(v, []).append(k)
         seq = list(d["sequences"].get(orig, []))
 
+        # a native written as several words (Chintamani's BASIC has "हो तो" for THEN) is read back as one
+        multi = sorted((k for k in inverse if re.search(r"\s", k)), key=len, reverse=True)
+        scan = re.compile("(?P<multi>" + "|".join(re.escape(k) for k in multi) + ")|" + scanner(style).pattern) if multi else scanner(style)
+
         def sub(m):
+            if m.lastgroup == "multi":
+                return seq.pop(0) if seq else inverse[m.group(0)][0]
             if m.group("word") is None:
                 if m.lastgroup == "com":
                     return d["comments"].get(m.group(0), m.group(0))
@@ -395,7 +405,7 @@ def reverse_tree(native, out):
             if w in inverse:
                 return seq.pop(0) if seq else inverse[w][0]
             return ids.get(w, w)
-        dst.write_text(scanner(style).sub(sub, text), encoding="utf-8", errors="surrogateescape")
+        dst.write_text(scan.sub(sub, text), encoding="utf-8", errors="surrogateescape")
     return out
 
 
