@@ -1,6 +1,6 @@
 # Project Pushkalāvatī / Nirgundi
 
-DOI: [10.5281/zenodo.23424411](https://doi.org/10.5281/zenodo.23424411)
+DOI: [10.5281/zenodo.23429255](https://doi.org/10.5281/zenodo.23429255)
 
 Integrated research repository for the Sanskrit source inventory, data-driven rule compiler, observed-form bootstrap, Sūtram rule-rewrite language, and Sanskrit analysis pipeline.
 
