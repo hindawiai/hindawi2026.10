@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Hindawi build (make through hindawicc). Eclipse: Run > External Tools > External Tools Configurations > Import, or copy into .metadata/.plugins/org.eclipse.debug.core/.launches -->
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="/usr/bin/make"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="CC=${env_var:HINDAWI_ROOT}/lang/hindawi/hindawicc"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${project_loc}"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="ROMENAGRI" value="${env_var:HINDAWI_ROOT}/.build/chintamani/Romenagri"/>
+<mapEntry key="HINDAWI_LANG" value="${string_prompt:Language:hindi}"/>
+<mapEntry key="HINDAWI_NATIVE_SOURCE" value="1"/>
+</mapAttribute>
+</launchConfiguration>

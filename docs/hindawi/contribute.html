@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindawi: help write your language's standard</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#666;--line:#ddd;--acc:#1f4e79}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#8ab4f8}}
+body{font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;padding:16px}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
+a{color:var(--acc)}.mut{color:var(--mut)}select,input{font-size:16px}
+</style></head><body>
+<h1>Help write your language's standard</h1>
+<p class="mut">Every language's keywords are open to its speakers. Pick your language, find the construct, and propose a
+word: the link opens an issue on <a href="https://github.com/hindawiai/hindawi2026.10/issues">hindawiai/hindawi2026.10</a> with
+everything filled in. Reviewed proposals become the language's transducers. Words go in the language's own script only.</p>
+<label>Language <select id="lang"></select></label> <label>Find <input id="q" placeholder="KW_IF"></label>
+<p id="stat" class="mut"></p>
+<table><thead><tr><th>Construct</th><th>Keyword now</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+<script>
+const REPO = "https://github.com/hindawiai/hindawi2026.10/issues/new";
+let D;
+function draw() {
+  const L = document.getElementById("lang").value, q = document.getElementById("q").value.toLowerCase();
+  const kw = D.languages[L] || {}, tb = document.getElementById("rows"); tb.innerHTML = ""; let missing = 0;
+  for (const id of D.constructs) {
+    if (q && !id.toLowerCase().includes(q)) continue;
+    const v = kw[id] || ""; missing += !v;
+    const p = new URLSearchParams({template: "keyword.yml", title: `[keyword] ${L} ${id}`, language: L, construct: id, current: v});
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><code>${id}</code></td><td>${v || '<span class="mut">none yet</span>'}</td>
+      <td><a href="${REPO}?${p}" target="_blank" rel="noopener">${v ? "Propose a correction" : "Propose a word"}</a></td>`;
+    tb.appendChild(tr);
+  }
+  document.getElementById("stat").textContent = `${L}: ${D.constructs.length - missing} of ${D.constructs.length} constructs have a word.`;
+}
+fetch("data/keywords.json").then(r => r.json()).then(d => { D = d; const s = document.getElementById("lang");
+  for (const l of Object.keys(d.languages).sort()) s.add(new Option(l, l)); s.onchange = draw; document.getElementById("q").oninput = draw; draw(); });
+</script></body></html>

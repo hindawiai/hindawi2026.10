@@ -413,3 +413,24 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - changed `docs/hindawi/DEVIATIONS.md` (sha256 `ec2d119b5fa3c46a`)
 
 **Verified.** A VHDL file ingests into Hindi and reverses byte for byte. A Tamil view's edit reaches the canonical tree and the Gujarati view. measure.py on the sample: keywords localised 65.9% Hindi, 70.7% Urdu, 70.7% Punjabi (Gurmukhi), 58.5% Punjabi (Shahmukhi); identifiers 18.2% and comments 0% with only the glossary as translator. stack.sh not run, as asked.
+
+## C19. Ingestion completed further, the whole stack list, real IDE integrations, the contribution page, and a Hindawi README
+
+**Why.** He asked that the ingestion pipeline be completed first, since application work needs no transliteration; that the sovereign-stack test cover his whole list, generic across architectures, one stage at a time, with the GATE programming domains; configuration for existing IDEs rather than a home-made one, the Arduino IDE first so students program their boards in their own language, with a professional IDE besides; a page where speakers contribute to each language's standard through issues; and a README about Hindawi, not the Sūtram tree it inherited. BURP now takes Hindi's assembly and Java keywords from the pinned Chintamani, matches BASIC and VHDL keywords in any case with the original spelling kept for the reverse, and can use a local language model (any OpenAI-compatible endpoint) to translate names and comments. stack.sh now runs 53 projects in 15 stages plus the GATE domains from Rosetta Code, checks the reversed RTL with GHDL, Yosys and Verilator where installed, and reads the self-hosting table from its report. ide/arduino hooks every installed Arduino core's build; ide/eclipse holds External Tools launches and ide/gdbinit native names in gdb.
+
+- added `.github/ISSUE_TEMPLATE/keyword.yml` (sha256 `5572ceab27b78746`)
+- added `.github/ISSUE_TEMPLATE/config.yml` (sha256 `13064e7bea658e01`)
+- changed `README.md` (sha256 `d89ae1ebd2dc86b4`)
+- added `docs/history/README-BUILD-0102.md` (sha256 `7f3ed52e986a2df3`)
+- added `docs/hindawi/contribute.html` (sha256 `8bfbb0a96f031d6c`)
+- changed `docs/hindawi/IDE.md` (sha256 `5bf9c5caf3355fd2`)
+- added `ide/arduino/install.sh` (sha256 `e9a4b630c59c812b`)
+- added `ide/arduino/transduce.sh` (sha256 `98b603f612902490`)
+- added `ide/gdbinit` (sha256 `0f952630ced6d2cf`)
+- added `ide/eclipse/Hindawi_make.launch` (sha256 `8f9cc974a5280a4b`)
+- changed `lang/hindawi/burp/burp.py` (sha256 `adb4f29be1fddfa0`)
+- changed `scripts/sovereign/stack.sh` (sha256 `c3177beb3a125f9a`)
+- added `ide/eclipse/Hindawi_view.launch` (sha256 `c813c66087dbc972`)
+- added `ide/eclipse/Hindawi_save.launch` (sha256 `6b2fc52931f48e25`)
+
+**Verified.** All 355 ingestions of the sample still reverse byte for byte; Hindi keywords localised rise from 65.9% to 82.9%. A Hindi blink sketch passed through the Arduino hook becomes C++ that compiles (देरी becomes _daeeree). scripts/test_all.sh passes. stack.sh is not run here.

@@ -33,6 +33,7 @@ CELLS, LEGACY = HIN / "languages", HIN / "upstream/chintamani"
 DICT_NAME = ".hindawi/dictionary.json"   # where tools/build_project.py and hindawicc read it
 
 # extension: (shaili, reverse transducers in order, comment style); lex and yacc compose with c2h, as in Chintamani
+CASELESS = ("basic", "vhdl")   # paradigms whose keywords are matched in any case
 PARADIGMS = {}
 for exts, shaili, rev, style in [((".c", ".h"), "guru", ["c2h"], "c"),
                                  ((".cpp", ".cc", ".cxx", ".hpp", ".hh"), "shraeni", ["cpp2h"], "c"),
@@ -44,7 +45,7 @@ for exts, shaili, rev, style in [((".c", ".h"), "guru", ["c2h"], "c"),
     for e in exts:
         PARADIGMS[e] = (shaili, rev, style)
 # Chintamani's own reverse transducers, used for Hindi wherever the legacy has them
-LEGACY_REV = {"c2h": "guru/c2h.uhin", "cpp2h": "shraeni/cpp2h.uhin", "b2h": "praatha/b2h.uhin",
+LEGACY_REV = {"asm2h": "yantra/y2h.uhin", "java2h": "kritrima/j2h.uhin", "c2h": "guru/c2h.uhin", "cpp2h": "shraeni/cpp2h.uhin", "b2h": "praatha/b2h.uhin",
               "py2h": "soochee/py2h.uhin", "yacc2h": "wyaaka/yacc2h.uhin", "l2h": "shabda/l2h.uhin"}
 BUILD_FILES = re.compile(r"^(GNUmakefile|[Mm]akefile.*|.*\.mk|CMakeLists\.txt|.*\.cmake|meson\.build)$")
 ISO = {"hindi": "hi", "bengali": "bn", "urdu": "ur", "tamil": "ta", "telugu": "te", "marathi": "mr", "gujarati": "gu",
@@ -101,7 +102,8 @@ def load_rules(path):
 def keyword_table(lang, rev):
     table = {}
     for r in rev:
-        legacy = LEGACY / LEGACY_REV.get(r, "-")
+        legacy = next((b / LEGACY_REV.get(r, "-") for b in (LEGACY, HIN.parents[1] / ".build/chintamani/Hindawi")
+                       if (b / LEGACY_REV.get(r, "-")).exists()), LEGACY / "-")
         src = legacy if lang == "hindi" and legacy.exists() else CELLS / lang / f"{r}.uhin"
         if src.exists():
             for k, v in load_rules(src).items():
@@ -163,6 +165,10 @@ class Translator:
                         return r
                 except Exception:
                     pass
+            if how == "llm" and os.environ.get("HINDAWI_LLM_URL"):
+                r = self.llm(t)
+                if r and r != t:
+                    return r
             if how == "cmd" and os.environ.get("HINDAWI_TRANSLATE_CMD"):
                 p = subprocess.run(os.environ["HINDAWI_TRANSLATE_CMD"].format(lang=self.code), shell=True,
                                    input=t.encode(), capture_output=True)
@@ -170,6 +176,21 @@ class Translator:
                 if p.returncode == 0 and r and r != t:
                     return r
         return None
+
+    def llm(self, text):
+        """One call to a local model through an OpenAI-compatible endpoint; the answer is the translation only."""
+        import urllib.request
+        body = {"model": os.environ.get("HINDAWI_LLM_MODEL", "local"), "temperature": 0,
+                "messages": [{"role": "system", "content": f"Translate from English into {self.lang.replace('_', ' ')}, "
+                              "in that language's own script. Reply with the translation only, nothing else."},
+                             {"role": "user", "content": text}]}
+        try:
+            req = urllib.request.Request(os.environ["HINDAWI_LLM_URL"], json.dumps(body).encode(),
+                                         {"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)["choices"][0]["message"]["content"].strip().splitlines()[0].strip()
+        except Exception:
+            return None
 
     def identifier(self, ident):
         words = [w for w in re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", ident).split("_") if w]
@@ -237,6 +258,9 @@ class Ingestion:
     def source(self, rel, text):
         shaili, rev, style = PARADIGMS[Path(rel).suffix]
         table, seq, ambiguous = self.table(rev), [], {}
+        caseless = style in CASELESS
+        if caseless:
+            table = {k.lower(): v for k, v in table.items()}
         for k, v in table.items():
             ambiguous.setdefault(v, []).append(k)
 
@@ -248,10 +272,11 @@ class Ingestion:
                     return re.sub(r'"([^"]+)"', lambda q: '"' + self.renamed(rel, q.group(1)) + '"', m.group(0))
                 return m.group(0)
             w = m.group("word")
-            if w in table:
-                if len(ambiguous[table[w]]) > 1:
+            key = w.lower() if caseless else w
+            if key in table:
+                if caseless or len(ambiguous[table[key]]) > 1:
                     seq.append(w)
-                return table[w]
+                return table[key]
             if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external \
                     or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
                 return w
@@ -366,7 +391,7 @@ def reverse_tree(native, out):
                 return m.group(0)
             w = m.group("word")
             if w in inverse:
-                return seq.pop(0) if len(inverse[w]) > 1 and seq else inverse[w][0]
+                return seq.pop(0) if (style in CASELESS or len(inverse[w]) > 1) and seq else inverse[w][0]
             return ids.get(w, w)
         dst.write_text(scanner(style).sub(sub, text), encoding="utf-8", errors="surrogateescape")
     return out
@@ -432,7 +457,7 @@ if __name__ == "__main__":
     for name in ("ingest", "check"):
         s = sub.add_parser(name); s.add_argument("src"); s.add_argument("--langs", default="all")
         s.add_argument("--out", required=(name == "ingest")); s.add_argument("--scripts")
-        s.add_argument("--rename-files", action="store_true"); s.add_argument("--translators", default="glossary,argos,cmd")
+        s.add_argument("--rename-files", action="store_true"); s.add_argument("--translators", default="glossary,argos,llm,cmd")
         s.add_argument("--keep", action="append", default=[r"^__"]); s.add_argument("-I", action="append", default=[])
         s.add_argument("-D", action="append", default=[]); s.add_argument("--jobs", type=int, default=os.cpu_count() or 2)
         if name == "check":

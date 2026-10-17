@@ -1,0 +1,26 @@
+name: A keyword in my language
+description: Propose or correct one keyword of a language's Hindawi standard
+title: "[keyword] "
+labels: [keyword, standard]
+body:
+  - type: input
+    id: language
+    attributes: {label: Language, description: "As the cells name it, e.g. sindhi, punjabi_shahmukhi, urdu"}
+    validations: {required: true}
+  - type: input
+    id: construct
+    attributes: {label: Construct, description: "The construct id, e.g. KW_IF"}
+    validations: {required: true}
+  - type: input
+    id: current
+    attributes: {label: Current keyword}
+  - type: input
+    id: proposed
+    attributes: {label: Proposed keyword, description: "In the language's own script only"}
+    validations: {required: true}
+  - type: dropdown
+    id: provenance
+    attributes: {label: Basis, options: [I am a speaker, A dictionary or standard, Usage in schools or textbooks, Other]}
+  - type: textarea
+    id: evidence
+    attributes: {label: Why, description: "Where this word is used, and why it fits the construct"}

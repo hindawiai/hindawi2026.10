@@ -1,0 +1,5 @@
+# Hindawi: native names in gdb. Set HINDAWI_ROOT, ROMENAGRI and BURP_DICT, then use burp-bt and burp-locals.
+python
+import os
+gdb.execute("source " + os.path.join(os.environ.get("HINDAWI_ROOT", "."), "ide/burp_gdb.py"))
+end

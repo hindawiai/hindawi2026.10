@@ -7,7 +7,24 @@ works in a **view** of the same canonical tree, rendered in their own language b
 BURP's reverse to the canonical tree, from which every other view is refreshed. The canonical tree stays what the
 project's repository holds, so git, review, CI and upstream contribution are unchanged.
 
-## The editor: Geany
+## The Arduino IDE: students program their boards in their own language
+
+    bash ide/arduino/install.sh --lang hindi
+
+Every Arduino core on the machine (AVR, ESP32, RP2040, STM32 and any other) gets a sketch pre-build hook in its
+`platform.local.txt`. When the IDE builds, the hook carries each sketch file holding native text through Hindawi's
+compilation path in the build folder, and the core's own compiler takes it from there; the student's sketch is never
+changed. Arduino IDE 2 debugs the boards whose cores support it. Two things to know: the IDE generates prototypes
+only for functions it recognises, so a function written in the language must be declared before it is used; and on
+the compilation path, text inside strings is transliterated like everything else.
+
+## Eclipse CDT
+
+`ide/eclipse/*.launch` are External Tools configurations (build through hindawicc, open a view in my language, save
+my view). Set `HINDAWI_ROOT` to this repository in Eclipse's environment. For debugging, give the CDT debug
+configuration `ide/gdbinit` as its GDB command file.
+
+## Geany
 
 Geany is light, installs from the distribution (`apt install geany geany-plugin-debugger`), and runs offline. It
 takes a filetype per language with its own keywords, build commands per filetype, and GDB debugging through its
