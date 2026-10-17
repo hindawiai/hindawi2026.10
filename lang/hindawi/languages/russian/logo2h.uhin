@@ -1,12 +1,11 @@
 %{
-/* russian logo2h */
+/* russian logo2h.uhin: generated from the russian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-если  {printf("if");}
-иначе  {printf("else");}
-пока  {printf("while");}
-для  {printf("for");}
-вернуть  {printf("return");}
-целое  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+if                          {printf("если");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

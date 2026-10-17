@@ -1,15 +1,51 @@
 %{
-/* assamese h2c.uhin */
+/* assamese h2c.uhin: generated from the assamese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-যদি                  {printf("if");}
-অন্যথা               {printf("else");}
-যেতিয়ালৈ            {printf("while");}
-কৰা                  {printf("do");}
-বাবে                 {printf("for");}
-ঘূৰাই                {printf("return");}
-কাৰ্য                {printf("void");}
-শ্ৰেণী               {printf("class");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+প্রকারনির্দেশ               {printf("typedef");}
+\#অন্তর্ভা঵                 {printf("#include");}
+\#নোচেদ্যদি                 {printf("#elif");}
+পূর্ণাঙ্ক                   {printf("int");}
+প্রতিজ্ঞা                   {printf("assert");}
+যেতিয়ালৈ                   {printf("while");}
+সার্঵জনিক                   {printf("public");}
+অন্তঃস্থ                    {printf("inline");}
+\#অন্যথা                    {printf("#else");}
+অনু঵র্ত                     {printf("continue");}
+উত্থাপয                     {printf("raise");}
+দ্঵িগুণ                     {printf("double");}
+পঞ্জিকা                     {printf("register");}
+অন্যথা                      {printf("else");}
+পরিমাণ                      {printf("sizeof");}
+রক্ষিত                      {printf("protected");}
+সংরচনা                      {printf("struct");}
+সঙ্কেত                      {printf("signal");}
+স্঵ভা঵                      {printf("default");}
+গুপ্ত                       {printf("private");}
+ঘূৰাই                       {printf("return");}
+চঞ্চল                       {printf("volatile");}
+ধ্রু঵                       {printf("const");}
+বাহ্য                       {printf("extern");}
+ভিন্ন                       {printf("float");}
+মুক্ত                       {printf("free");}
+রিক্ত                       {printf("NULL");}
+শূন্য                       {printf("void");}
+স্থির                       {printf("static");}
+\#যদি                       {printf("#if");}
+আভাস                        {printf("virtual");}
+গচ্ছ                        {printf("goto");}
+গণনা                        {printf("enum");}
+পক্ষ                        {printf("case");}
+বাবে                        {printf("for");}
+ভঙ্গ                        {printf("break");}
+সঙ্ঘ                        {printf("union");}
+কৰা                         {printf("do");}
+যদি                         {printf("if");}
+লিখ                         {printf("write");}
+পঠ                          {printf("read");}
+
 %%

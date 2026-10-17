@@ -1,33 +1,69 @@
 %{
-/* odia h2py.uhin */
+/* odia h2py.uhin: generated from the odia lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-ଯଦି                  {printf("if");}
-ଅନ୍ୟଥା               {printf("else");}
-ଯେପର୍ଯ୍ୟନ୍ତ          {printf("while");}
-କର                   {printf("do");}
-ପାଇଁ                 {printf("for");}
-ଭାଙ୍ଗ                {printf("break");}
-ଜାରି                 {printf("continue");}
-ବାଛ                  {printf("switch");}
-ସ୍ଥିତି               {printf("case");}
-ପୂର୍ବନିର୍ଦ୍ଧାରିତ     {printf("default");}
-ଫେରାଅ                {printf("return");}
-ଅଚଳ                  {printf("const");}
-ପୂର୍ଣ୍ଣସଂଖ୍ୟା        {printf("int");}
-ଦଶମିକ                {printf("float");}
-ଦ୍ୱିଗୁଣ              {printf("double");}
-ଅକ୍ଷର                {printf("char");}
-ଶୂନ୍ୟ                {printf("void");}
-କାର୍ଯ୍ୟ              {printf("void");}
-ଶ୍ରେଣୀ               {printf("class");}
-ନୂତନ                 {printf("new");}
-ସର୍ବସାଧାରଣ           {printf("public");}
-ବ୍ୟକ୍ତିଗତ            {printf("private");}
-ସ୍ଥିର                {printf("static");}
-ଆଭାସୀ                {printf("virtual");}
-ଯେତେବେଳେ             {printf("case");}
-ସଂରଚନା               {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+ପୂର୍ବନିର୍ଦ୍ଧାରିତ            {printf("default");}
+ପୂର୍ଣ୍ଣସଂଖ୍ୟା               {printf("int");}
+କାର୍ଯ୍ୟକାରୀ                 {printf("implements");}
+ସର୍ବସାଧାରଣ                  {printf("public");}
+ପ୍ରତିଜ୍ଞା                   {printf("assert");}
+ବ୍ୟକ୍ତିଗତ                   {printf("private");}
+ବ୍ୟତିକ୍ରମ                   {printf("except");}
+ଅନ୍ତରମୁଖ                    {printf("interface");}
+ଯେତେବେଳେ                    {printf("while");}
+ସୁରକ୍ଷିତ                    {printf("protected");}
+ସୁଷୁପ୍ତି                    {printf("sleep");}
+ଦ୍ୱିଗୁଣ                     {printf("double");}
+ନଚେତଯଦି                     {printf("elif");}
+ପ୍ୟାକେଜ                     {printf("package");}
+ଫେରନ୍ତୁ                     {printf("return");}
+ବିସ୍ତାର                     {printf("extends");}
+ଵୈଶ୍ଵିକ                     {printf("global");}
+ଅନ୍ୟଥା                      {printf("else");}
+ଅମୂର୍ତ                      {printf("abstract");}
+ଅସ୍ଥିର                      {printf("volatile");}
+ଆମଦାନୀ                      {printf("import");}
+କିମ୍ବା                      {printf("or");}
+ଚେଷ୍ଟା                      {printf("try");}
+ମିଥ୍ୟା                      {printf("False");}
+ଶ୍ରେଣୀ                      {printf("class");}
+ସ୍ଥିତି                      {printf("case");}
+ଅକ୍ଷର                       {printf("char");}
+ଦଶମିକ                       {printf("float");}
+ନୁହେଁ                       {printf("not");}
+ଫିଙ୍ଗ                       {printf("throw");}
+ବସ୍ତୁ                       {printf("Object");}
+ବାକ୍ୟ                       {printf("String");}
+ଭାଙ୍ଗ                       {printf("break");}
+ଭିତରେ                       {printf("in");}
+ମୁଖ୍ୟ                       {printf("main");}
+ଶୂନ୍ୟ                       {printf("void");}
+ଶେଷରେ                       {printf("finally");}
+ସ୍ଥିର                       {printf("static");}
+ଅନାମ                        {printf("lambda");}
+ଉଠାଅ                        {printf("raise");}
+ଜାରି                        {printf("continue");}
+ନୂତନ                        {printf("new");}
+ପାଇଁ                        {printf("for");}
+ସତ୍ୟ                        {printf("True");}
+ସୂତା                        {printf("Thread");}
+ଅଚଳ                         {printf("const");}
+ଏବଂ                         {printf("and");}
+ଏହି                         {printf("this");}
+ଦିଅ                         {printf("yield");}
+ପରମ                         {printf("super");}
+ବାଛ                         {printf("switch");}
+ଯଦି                         {printf("if");}
+ଯାଅ                         {printf("goto");}
+ଲିଖ                         {printf("write");}
+ଇଵ                          {printf("as");}
+କର                          {printf("do");}
+ତଃ                          {printf("from");}
+ଧର                          {printf("catch");}
+ପଠ                          {printf("read");}
+
 %%

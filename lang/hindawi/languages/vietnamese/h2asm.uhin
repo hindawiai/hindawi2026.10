@@ -1,12 +1,14 @@
 %{
-/* vietnamese h2asm */
+/* vietnamese h2asm.uhin: generated from the vietnamese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-nếu  {printf("if");}
-không  {printf("else");}
-trong  {printf("while");}
-cho  {printf("for");}
-trả  {printf("return");}
-số  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+không_thì                   {printf("ELSE");}
+số_nguyên                   {printf("INT");}
+trong_khi                   {printf("WHILE");}
+nếu                         {printf("IF");}
+
 %%

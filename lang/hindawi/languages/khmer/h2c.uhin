@@ -1,11 +1,31 @@
 %{
-/* khmer h2c */
+/* khmer h2c.uhin: generated from the khmer lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-បើ  {printf("KW_IF");}
-បើមិន  {printf("KW_ELSE");}
-ខណៈ  {printf("KW_WHILE");}
-សម្រាប់  {printf("KW_FOR");}
-ត្រឡប់  {printf("KW_RETURN");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+\#បើមិនដូច្នេះ              {printf("#else");}
+បើមិនដូច្នេះ                {printf("else");}
+sa_nracanaa                 {printf("struct");}
+anta_hstha                  {printf("inline");}
+parimaa_na                  {printf("sizeof");}
+\#ប្រសិនបើ                  {printf("#if");}
+dviguu_na                   {printf("double");}
+pa_njikaa                   {printf("register");}
+sa_nkeeta                   {printf("signal");}
+ca_ncala                    {printf("volatile");}
+ga_nanaa                    {printf("enum");}
+rak_sita                    {printf("protected");}
+ចំនួនគត់                    {printf("int");}
+ប្រសិនបើ                    {printf("if");}
+bha_nga                     {printf("break");}
+sa_ngha                     {printf("union");}
+សម្រាប់                     {printf("for");}
+pak_sa                      {printf("case");}
+var_na                      {printf("char");}
+ខណៈពេល                      {printf("while");}
+ត្រឡប់                      {printf("return");}
+
 %%

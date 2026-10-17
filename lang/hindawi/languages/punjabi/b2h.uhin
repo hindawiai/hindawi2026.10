@@ -1,33 +1,37 @@
 %{
-/* punjabi b2h.uhin */
+/* punjabi b2h.uhin: generated from the punjabi lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("ਜੇ");}
-else                 {printf("ਨਹੀਂਤਾਂ");}
-while                {printf("ਜਦਤੱਕ");}
-do                   {printf("ਕਰੋ");}
-for                  {printf("ਲਈ");}
-break                {printf("ਰੋਕੋ");}
-continue             {printf("ਜਾਰੀ");}
-switch               {printf("ਚੋਣ");}
-case                 {printf("ਹਾਲਤ");}
-default              {printf("ਮੂਲ");}
-return               {printf("ਵਾਪਸ");}
-const                {printf("ਅਚਲ");}
-int                  {printf("ਪੂਰਨਅੰਕ");}
-float                {printf("ਦਸ਼ਮਲਵ");}
-double               {printf("ਦੁੱਗਣਾ");}
-char                 {printf("ਅੱਖਰ");}
-void                 {printf("ਖਾਲੀ");}
-void                 {printf("ਕਾਰਜ");}
-class                {printf("ਵਰਗ");}
-new                  {printf("ਨਵਾਂ");}
-public               {printf("ਜਨਤਕ");}
-private              {printf("ਨਿਜੀ");}
-static               {printf("ਸਥਿਰ");}
-virtual              {printf("ਆਭਾਸੀ");}
-case                 {printf("ਜਦੋਂ");}
-struct               {printf("ਬਣਤਰ");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("ਵਾਪਸ");}
+SHARED                      {printf("ਸਹਭਾਜਿਤ");}
+STATIC                      {printf("ਸਥਿਰ");}
+STRING                      {printf("ਸ਼ਬਦਮਾਲਾ");}
+return                      {printf("ਵਾਪਸ");}
+CONST                       {printf("ਅਚਲ");}
+TIMER                       {printf("ਕਾਲਯਨ੍ਤ੍ਰ");}
+WHILE                       {printf("ਜਦੋਂ");}
+while                       {printf("ਜਦੋਂ");}
+CALL                        {printf("ਬੁਲਾਓ");}
+ELSE                        {printf("ਨਹੀਂਤਾਂ");}
+GOTO                        {printf("ਜਾਓ");}
+goto                        {printf("ਜਾਓ");}
+AND                         {printf("ਅਤੇ");}
+END                         {printf("ਅੰਤ");}
+FOR                         {printf("ਲਈ");}
+INT                         {printf("ਪੂਰਨ");}
+LET                         {printf("ਮੰਨੋ");}
+NOT                         {printf("ਨਹੀਂ");}
+end                         {printf("ਅੰਤ");}
+for                         {printf("ਲਈ");}
+let                         {printf("ਮੰਨੋ");}
+AS                          {printf("ਇਵ");}
+DO                          {printf("ਕਰੋ");}
+IF                          {printf("ਜੇ");}
+OR                          {printf("ਜਾਂ");}
+if                          {printf("ਜੇ");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

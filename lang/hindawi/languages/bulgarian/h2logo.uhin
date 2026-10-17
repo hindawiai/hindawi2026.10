@@ -1,12 +1,11 @@
 %{
-/* bulgarian h2logo */
+/* bulgarian h2logo.uhin: generated from the bulgarian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-ако  {printf("if");}
-иначе  {printf("else");}
-докато  {printf("while");}
-за  {printf("for");}
-върни  {printf("return");}
-цяло  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+ако                         {printf("if");}
+
 %%

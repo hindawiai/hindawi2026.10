@@ -1,0 +1,7 @@
+# The Hindawi linguistics lab. From the repository root:  docker compose -f lab/docker-compose.yml up --build
+services:
+  lab:
+    build: {context: .., dockerfile: lab/Dockerfile}
+    image: hindawi-lab:2026.10
+    ports: ["8888:8888", "8000:8000"]
+    volumes: ["./work:/lab/work"]

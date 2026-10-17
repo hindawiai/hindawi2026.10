@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindawi: review your language's standard, paradigm by paradigm</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#666;--line:#ddd;--acc:#1f4e79;--miss:#b3261e;--mach:#8a5a00}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#8ab4f8;--miss:#ff8a80;--mach:#ffcc80}}
+body{font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1100px;margin:0 auto;padding:16px}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+a{color:var(--acc)}.mut{color:var(--mut)}.miss{color:var(--miss)}.mach{color:var(--mach)}select,input{font-size:16px;margin:2px 6px 6px 0}
+</style></head><body>
+<h1>Review your language's standard</h1>
+<p class="mut">A language's standard is its word for every construct, in its own script, from the processor's hardware
+description up through programs, devices, robots and AI. Choose your language and a paradigm. Every construct shows the
+word the standard holds now and where it came from; <b>Review</b> or <b>Propose</b> opens an issue on
+<a href="https://github.com/hindawiai/hindawi2026.10/issues">hindawiai/hindawi2026.10</a> with everything filled in.
+Accepted words regenerate the language's transducers (<code>lang/hindawi/tools/complete_cells.py</code>).</p>
+<label>Language <select id="lang"></select></label><label>Paradigm <select id="par"></select></label>
+<label><input type="checkbox" id="gaps"> only constructs without a word</label>
+<p id="stat" class="mut"></p>
+<table><thead><tr><th>Construct</th><th>Word in the standard</th><th>Source</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+<script>
+const REPO = "https://github.com/hindawiai/hindawi2026.10/issues/new";
+const NAMES = {guru: "C (Guru)", shraeni: "C++ (Shraeni)", yantra: "assembly (Yantra)", kritrima: "Java (Kritrima)",
+  praatha: "BASIC (Praatha)", soochee: "Python (Soochee)", wyaaka: "yacc (Wyaaka)", shabda: "lex (Shabda)", robot: "LOGO and robots (Robot)"};
+let D;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+function draw() {
+  const L = lang.value, P = par.value, only = gaps.checked, Lg = D.languages[L] || {words: {}, provenance: {}};
+  const toks = D.constructs[P] || [], tb = document.getElementById("rows"); tb.innerHTML = ""; let have = 0;
+  for (const t of toks) {
+    const w = Lg.words[t], src = Lg.provenance[t] || "none yet"; have += !!w;
+    if (only && w) continue;
+    const q = new URLSearchParams({template: "keyword.yml", title: `[keyword] ${L} ${NAMES[P] || P} ${t}`, language: L,
+      paradigm: NAMES[P] || P, construct: t, current: w || ""});
+    const cls = !w ? "miss" : src.startsWith("machine") ? "mach" : "";
+    tb.insertAdjacentHTML("beforeend", `<tr><td><code>${esc(t)}</code></td><td>${w ? esc(w) : "&nbsp;"}</td>
+      <td class="${cls}">${esc(src)}</td><td><a href="${REPO}?${q}" target="_blank" rel="noopener">${w ? "Review" : "Propose"}</a></td></tr>`);
+  }
+  stat.textContent = `${L}, ${NAMES[P] || P}: ${have} of ${toks.length} constructs have a word.`;
+}
+fetch("data/standards.json").then(r => r.json()).then(d => {
+  D = d;
+  for (const l of Object.keys(d.languages).sort()) lang.add(new Option(l, l));
+  for (const p of Object.keys(d.constructs)) par.add(new Option(NAMES[p] || p, p));
+  lang.onchange = par.onchange = gaps.onchange = draw; draw();
+});
+</script></body></html>

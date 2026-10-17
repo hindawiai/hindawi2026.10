@@ -1,12 +1,20 @@
 %{
-/* ukrainian b2h */
+/* ukrainian b2h.uhin: generated from the ukrainian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-якщо  {printf("if");}
-інакше  {printf("else");}
-поки  {printf("while");}
-для  {printf("for");}
-повернути  {printf("return");}
-ціле  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("повернути");}
+return                      {printf("повернути");}
+WHILE                       {printf("поки");}
+while                       {printf("поки");}
+ELSE                        {printf("інакше");}
+FOR                         {printf("для");}
+INT                         {printf("ціле");}
+for                         {printf("для");}
+IF                          {printf("якщо");}
+if                          {printf("якщо");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

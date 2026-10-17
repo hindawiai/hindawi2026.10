@@ -1,36 +1,53 @@
 %{
-/* balochi c2h */
+/* balochi c2h.uhin: generated from the balochi lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-إذا  {printf("KW_IF");}
-وإلا  {printf("KW_ELSE");}
-وإلاإذا  {printf("KW_ELIF");}
-طالما  {printf("KW_WHILE");}
-افعل  {printf("KW_DO");}
-لكل  {printf("KW_FOR");}
-اكسر  {printf("KW_BREAK");}
-استمر  {printf("KW_CONTINUE");}
-بدل  {printf("KW_SWITCH");}
-حالة  {printf("KW_CASE");}
-افتراضي  {printf("KW_DEFAULT");}
-أرجع  {printf("KW_RETURN");}
-اذهب  {printf("KW_GOTO");}
-متغير  {printf("KW_VAR");}
-ثابت  {printf("KW_CONST");}
-ليكن  {printf("KW_LET");}
-صحيح  {printf("KW_INT");}
-عائم  {printf("KW_FLOAT");}
-مزدوج  {printf("KW_DOUBLE");}
-حرف  {printf("KW_CHAR");}
-منطقي  {printf("KW_BOOL");}
-نص  {printf("KW_STRING");}
-فراغ  {printf("KW_VOID");}
-صحيح  {printf("KW_TRUE");}
-خطأ  {printf("KW_FALSE");}
-عدم  {printf("KW_NULL");}
-دالة  {printf("KW_FUNC");}
-إجراء  {printf("KW_PROC");}
-نادي  {printf("KW_CALL");}
-معامل  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("محمي");}
+\#include                   {printf("#ضمن");}
+continue                    {printf("استمر");}
+register                    {printf("سجل");}
+volatile                    {printf("متطاير");}
+default                     {printf("افتراضي");}
+private                     {printf("خاص");}
+typedef                     {printf("تعريفنوع");}
+virtual                     {printf("افتراضي");}
+assert                      {printf("أكد");}
+double                      {printf("مزدوج");}
+extern                      {printf("خارجي");}
+inline                      {printf("مضمن");}
+public                      {printf("عام");}
+return                      {printf("أرجع");}
+signal                      {printf("إشارة");}
+sizeof                      {printf("حجم");}
+static                      {printf("ساكن");}
+struct                      {printf("بنية");}
+switch                      {printf("بدل");}
+\#elif                      {printf("#وإلاإذا");}
+\#else                      {printf("#وإلا");}
+break                       {printf("اكسر");}
+const                       {printf("ثابت");}
+float                       {printf("عائم");}
+raise                       {printf("ارفع");}
+union                       {printf("اتحاد");}
+while                       {printf("طالما");}
+write                       {printf("اكتب");}
+NULL                        {printf("عدم");}
+case                        {printf("حالة");}
+char                        {printf("حرف");}
+else                        {printf("وإلا");}
+enum                        {printf("تعداد");}
+free                        {printf("حرر");}
+goto                        {printf("اذهب");}
+read                        {printf("اقرأ");}
+void                        {printf("فراغ");}
+\#if                        {printf("#إذا");}
+for                         {printf("لكل");}
+int                         {printf("صحيح");}
+do                          {printf("افعل");}
+if                          {printf("إذا");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

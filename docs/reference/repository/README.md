@@ -15,8 +15,11 @@ ingests any existing project into any number of languages at once and reverses i
   layers.
 - **Editors.** The Arduino IDE (`ide/arduino/install.sh`: students program their boards in their own language),
   Eclipse (`ide/eclipse/`), Geany, and gdb with native names (`ide/gdbinit`). See `docs/hindawi/IDE.md`.
-- **Your language's standard.** Propose and correct keywords on `docs/hindawi/contribute.html`; each proposal is an
-  issue here.
+- **Your language's standard.** Review it construct by construct and paradigm by paradigm, from hardware description
+  to robots and AI, on `docs/hindawi/review.html`; each proposal is an issue here. Each language's gaps are in its
+  cell's `STATUS.tsv`.
+- **The linguistics lab.** `docker compose -f lab/docker-compose.yml up --build`: JupyterLab, the review pages, Praat
+  and Argos Translate, with Hindawi built inside. See `lab/README.md`.
 - **The sovereign stack.** `scripts/sovereign/stack.sh --list`, then one stage at a time.
 - **What changed, and where this departs from earlier Hindawi.** `CHANGE-LOG.md`, `docs/hindawi/DEVIATIONS.md`.
 

@@ -1,36 +1,37 @@
 %{
-/* konkani b2h */
+/* konkani b2h.uhin: generated from the konkani lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-यदि  {printf("KW_IF");}
-अन्यथा  {printf("KW_ELSE");}
-नोचेद्यदि  {printf("KW_ELIF");}
-यावत्  {printf("KW_WHILE");}
-कुरु  {printf("KW_DO");}
-प्रति  {printf("KW_FOR");}
-भङ्ग  {printf("KW_BREAK");}
-अनुवर्त  {printf("KW_CONTINUE");}
-विकल्प  {printf("KW_SWITCH");}
-पक्ष  {printf("KW_CASE");}
-स्वभाव  {printf("KW_DEFAULT");}
-प्रत्यागम  {printf("KW_RETURN");}
-गच्छ  {printf("KW_GOTO");}
-चर  {printf("KW_VAR");}
-ध्रुव  {printf("KW_CONST");}
-अस्तु  {printf("KW_LET");}
-पूर्णाङ्क  {printf("KW_INT");}
-भिन्न  {printf("KW_FLOAT");}
-द्विगुण  {printf("KW_DOUBLE");}
-वर्ण  {printf("KW_CHAR");}
-तार्किक  {printf("KW_BOOL");}
-पदावली  {printf("KW_STRING");}
-शून्य  {printf("KW_VOID");}
-सत्य  {printf("KW_TRUE");}
-असत्य  {printf("KW_FALSE");}
-रिक्त  {printf("KW_NULL");}
-क्रिया  {printf("KW_FUNC");}
-विधि  {printf("KW_PROC");}
-आह्वान  {printf("KW_CALL");}
-प्राचल  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("प्रत्यागम");}
+SHARED                      {printf("सहभाजित");}
+STATIC                      {printf("स्थिर");}
+STRING                      {printf("पदावली");}
+return                      {printf("प्रत्यागम");}
+CONST                       {printf("ध्रुव");}
+TIMER                       {printf("कालयन्त्र");}
+WHILE                       {printf("यावत्");}
+while                       {printf("यावत्");}
+CALL                        {printf("आह्वान");}
+ELSE                        {printf("अन्यथा");}
+GOTO                        {printf("गच्छ");}
+goto                        {printf("गच्छ");}
+AND                         {printf("च");}
+END                         {printf("अन्त");}
+FOR                         {printf("प्रति");}
+INT                         {printf("पूर्णाङ्क");}
+LET                         {printf("अस्तु");}
+NOT                         {printf("न");}
+end                         {printf("अन्त");}
+for                         {printf("प्रति");}
+let                         {printf("अस्तु");}
+AS                          {printf("इव");}
+DO                          {printf("कुरु");}
+IF                          {printf("यदि");}
+OR                          {printf("वा");}
+if                          {printf("यदि");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

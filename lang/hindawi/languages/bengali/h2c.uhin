@@ -1,47 +1,54 @@
 %{
-/* bengali h2c.uhin */
+/* bengali h2c.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-যদি                  {printf("if");}
-অন্যথা               {printf("else");}
-যতক্ষণ               {printf("while");}
-করো                  {printf("do");}
-জন্য                 {printf("for");}
-বিরতি                {printf("break");}
-চালু                 {printf("continue");}
-নির্বাচন             {printf("switch");}
-ক্ষেত্র              {printf("case");}
-পূর্বনির্ধারিত       {printf("default");}
-ফেরত                 {printf("return");}
-ধ্রুবক               {printf("const");}
-পূর্ণসংখ্যা          {printf("int");}
-দশমিক                {printf("float");}
-দ্বিগুণ              {printf("double");}
-অক্ষর                {printf("char");}
-শূন্য                {printf("void");}
-কাজ                  {printf("void");}
-শ্রেণী               {printf("class");}
-নতুন                 {printf("new");}
-সর্বজনীন             {printf("public");}
-ব্যক্তিগত            {printf("private");}
-স্থির                {printf("static");}
-আভাসী                {printf("virtual");}
-যখন                  {printf("case");}
-কাঠামো               {printf("struct");}
-.  {printf("%s", yytext);}
-লেখো                     {printf("printf");}
-পড়ো                     {printf("scanf");}
-স্মৃতিভাগ                {printf("malloc");}
-স্মৃতিমুক্ত              {printf("free");}
-খোলো                    {printf("{");}
-বন্ধ                     {printf("}");}
-লেখো                     {printf("printf");}
-পড়ো                     {printf("scanf");}
-স্মৃতিভাগ                {printf("malloc");}
-স্মৃতিমুক্ত              {printf("free");}
-খোলো                     {printf("fopen");}
-বন্ধ                     {printf("fclose");}
-শুরু                     {printf("{");}
-শেষ                      {printf("}");}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+পূর্বনির্ধারিত              {printf("default");}
+পূর্ণসংখ্যা                 {printf("int");}
+\#অন্তর্ভা঵                 {printf("#include");}
+\#নতুবা_যদি                 {printf("#elif");}
+প্রকারলেখ                   {printf("typedef");}
+প্রতিজ্ঞা                   {printf("assert");}
+ব্যক্তিগত                   {printf("private");}
+অন্তঃরেখ                    {printf("inline");}
+নির্বাচন                    {printf("switch");}
+সর্বজনীন                    {printf("public");}
+সুরক্ষিত                    {printf("protected");}
+\#অন্যথা                    {printf("#else");}
+ক্ষেত্র                     {printf("case");}
+দ্বিগুণ                     {printf("double");}
+বাহ্যিক                     {printf("extern");}
+অন্যথা                      {printf("else");}
+অস্থির                      {printf("volatile");}
+কাঠামো                      {printf("struct");}
+ধ্রুবক                      {printf("const");}
+নিবন্ধ                      {printf("register");}
+প্রধান                      {printf("main");}
+অক্ষর                       {printf("char");}
+আভাসী                       {printf("virtual");}
+দশমিক                       {printf("float");}
+ফাঁকা                       {printf("NULL");}
+বিরতি                       {printf("break");}
+মুক্ত                       {printf("free");}
+শূন্য                       {printf("void");}
+সংকেত                       {printf("signal");}
+স্থির                       {printf("static");}
+\#যদি                       {printf("#if");}
+আকার                        {printf("sizeof");}
+গণনা                        {printf("enum");}
+চালু                        {printf("continue");}
+জন্য                        {printf("for");}
+তোলো                        {printf("raise");}
+ফেরত                        {printf("return");}
+করো                         {printf("do");}
+যখন                         {printf("while");}
+যদি                         {printf("if");}
+যাও                         {printf("goto");}
+লিখ                         {printf("write");}
+সংঘ                         {printf("union");}
+পঠ                          {printf("read");}
+
 %%

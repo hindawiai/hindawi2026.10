@@ -1,33 +1,30 @@
 %{
-/* telugu h2b.uhin */
+/* telugu h2b.uhin: generated from the telugu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-ఒకవేళ                {printf("if");}
-లేకపోతే              {printf("else");}
-వరకు                 {printf("while");}
-చేయి                 {printf("do");}
-కొరకు                {printf("for");}
-ఆపు                  {printf("break");}
-కొనసాగు              {printf("continue");}
-ఎంపిక                {printf("switch");}
-స్థితి               {printf("case");}
-అప్రమేయ              {printf("default");}
-తిరిగి               {printf("return");}
-స్థిరరాశి            {printf("const");}
-పూర్ణాంకం            {printf("int");}
-దశాంశం               {printf("float");}
-ద్విగుణ              {printf("double");}
-అక్షరం               {printf("char");}
-శూన్య                {printf("void");}
-ప్రమేయం              {printf("void");}
-తరగతి                {printf("class");}
-కొత్త                {printf("new");}
-బహిరంగ               {printf("public");}
-అంతరంగ               {printf("private");}
-స్థిర                {printf("static");}
-మాయా                 {printf("virtual");}
-ఎప్పుడు              {printf("case");}
-నిర్మాణం             {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+కాలయన్త్ర                   {printf("TIMER");}
+పూర్ణాంకం                   {printf("INT");}
+స్థిరరాశి                   {printf("CONST");}
+ముగింపు                     {printf("END");}
+లేకపోతే                     {printf("ELSE");}
+సహభాజిత                     {printf("SHARED");}
+తిరిగి                      {printf("RETURN");}
+పదబంధం                      {printf("STRING");}
+పిలువు                      {printf("CALL");}
+వెళ్ళు                      {printf("GOTO");}
+అనుకో                       {printf("LET");}
+అయితే                       {printf("WHILE");}
+ఒకవేళ                       {printf("IF");}
+కొరకు                       {printf("FOR");}
+మరియు                       {printf("AND");}
+స్థిర                       {printf("STATIC");}
+కాదు                        {printf("NOT");}
+చేయి                        {printf("DO");}
+లేదా                        {printf("OR");}
+ఇవ                          {printf("AS");}
+
 %%

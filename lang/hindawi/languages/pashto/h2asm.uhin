@@ -1,56 +1,29 @@
 %{
-/* pashto h2asm */
+/* pashto h2asm.uhin: generated from the pashto lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-إذا  {printf("إذا");}
-وإلا  {printf("وإلا");}
-وإلاإذا  {printf("وإلاإذا");}
-طالما  {printf("طالما");}
-افعل  {printf("افعل");}
-لكل  {printf("لكل");}
-اكسر  {printf("اكسر");}
-استمر  {printf("استمر");}
-بدل  {printf("بدل");}
-حالة  {printf("حالة");}
-افتراضي  {printf("افتراضي");}
-أرجع  {printf("أرجع");}
-اذهب  {printf("اذهب");}
-متغير  {printf("متغير");}
-ثابت  {printf("ثابت");}
-ليكن  {printf("ليكن");}
-صحيح  {printf("صحيح");}
-عائم  {printf("عائم");}
-مزدوج  {printf("مزدوج");}
-حرف  {printf("حرف");}
-منطقي  {printf("منطقي");}
-نص  {printf("نص");}
-فراغ  {printf("فراغ");}
-صحيح  {printf("صحيح");}
-خطأ  {printf("خطأ");}
-عدم  {printf("عدم");}
-دالة  {printf("دالة");}
-إجراء  {printf("إجراء");}
-نادي  {printf("نادي");}
-معامل  {printf("معامل");}
-مجهول  {printf("مجهول");}
-أنتج  {printf("أنتج");}
-انتظر  {printf("انتظر");}
-غيرمتزامن  {printf("غيرمتزامن");}
-صنف  {printf("صنف");}
-كائن  {printf("كائن");}
-واجهة  {printf("واجهة");}
-يمتد  {printf("يمتد");}
-ينفذ  {printf("ينفذ");}
-جديد  {printf("جديد");}
-هذا  {printf("هذا");}
-أعلى  {printf("أعلى");}
-عام  {printf("عام");}
-خاص  {printf("خاص");}
-محمي  {printf("محمي");}
-ساكن  {printf("ساكن");}
-مجرد  {printf("مجرد");}
-افتراضي  {printf("افتراضي");}
-تجاوز  {printf("تجاوز");}
-طابق  {printf("طابق");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+إجراء                       {printf("PROC");}
+افترض                       {printf("ASSUME");}
+خارجي                       {printf("EXTERN");}
+طالما                       {printf("WHILE");}
+انته                        {printf("END");}
+صحيح                        {printf("INT");}
+مؤشر                        {printf("PTR");}
+نادي                        {printf("CALL");}
+وإلا                        {printf("ELSE");}
+إذا                         {printf("IF");}
+ضمن                         {printf("INCLUDE");}
+عام                         {printf("PUBLIC");}
+قفل                         {printf("LOCK");}
+ليس                         {printf("NOT");}
+نوع                         {printf("TYPE");}
+هذا                         {printf("THIS");}
+أو                          {printf("OR");}
+في                          {printf("IN");}
+و                           {printf("AND");}
+
 %%

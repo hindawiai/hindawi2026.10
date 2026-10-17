@@ -1,34 +1,68 @@
 %{
-/* urdu h2py.uhin */
+/* urdu h2py.uhin: generated from the urdu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-اگر                  {printf("if");}
-ورنہ                 {printf("else");}
-جبتک                 {printf("while");}
-کرو                  {printf("do");}
-برائے                {printf("for");}
-توڑو                 {printf("break");}
-جاری                 {printf("continue");}
-انتخاب               {printf("switch");}
-حالت                 {printf("case");}
-طےشدہ                {printf("default");}
-واپس                 {printf("return");}
-ثابت                 {printf("const");}
-صحیح                 {printf("int");}
-اعشاری               {printf("float");}
-دوہرا                {printf("double");}
-حرف                  {printf("char");}
-خالی                 {printf("void");}
-تابع                 {printf("void");}
-جماعت                {printf("class");}
-نیا                  {printf("new");}
-عوامی                {printf("public");}
-نجی                  {printf("private");}
-ساکن                 {printf("static");}
-مجازی                {printf("virtual");}
-جب                   {printf("case");}
-ساخت                 {printf("struct");}
-شامل                 {printf("include");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+وگرنہ_اگر                   {printf("elif");}
+سطحرابطہ                    {printf("interface");}
+آخرکار                      {printf("finally");}
+استثنا                      {printf("except");}
+اعشاری                      {printf("float");}
+انتخاب                      {printf("switch");}
+تجریدی                      {printf("abstract");}
+پھینکو                      {printf("throw");}
+اٹھاؤ                       {printf("raise");}
+برائے                       {printf("for");}
+بےنام                       {printf("lambda");}
+توسیع                       {printf("extends");}
+جماعت                       {printf("class");}
+درآمد                       {printf("import");}
+دوہرا                       {printf("double");}
+دھاگہ                       {printf("Thread");}
+طےشدہ                       {printf("default");}
+عوامی                       {printf("public");}
+متلون                       {printf("volatile");}
+محفوظ                       {printf("protected");}
+اقرأ                        {printf("read");}
+اكتب                        {printf("write");}
+بستہ                        {printf("package");}
+بطور                        {printf("as");}
+توڑو                        {printf("break");}
+ثابت                        {printf("const");}
+جاری                        {printf("continue");}
+جملہ                        {printf("String");}
+جھوٹ                        {printf("False");}
+حالت                        {printf("case");}
+خالی                        {printf("void");}
+ساکن                        {printf("static");}
+صحیح                        {printf("int");}
+نافذ                        {printf("implements");}
+نہیں                        {printf("not");}
+واپس                        {printf("return");}
+ورنہ                        {printf("else");}
+پکڑو                        {printf("catch");}
+کوشش                        {printf("try");}
+أكد                         {printf("assert");}
+اور                         {printf("and");}
+اگر                         {printf("if");}
+جاؤ                         {printf("goto");}
+حرف                         {printf("char");}
+عام                         {printf("global");}
+مین                         {printf("main");}
+میں                         {printf("in");}
+نجی                         {printf("private");}
+نوم                         {printf("sleep");}
+نیا                         {printf("new");}
+کرو                         {printf("do");}
+جب                          {printf("while");}
+دو                          {printf("yield");}
+سچ                          {printf("True");}
+سے                          {printf("from");}
+شے                          {printf("Object");}
+یا                          {printf("or");}
+یہ                          {printf("this");}
+
 %%

@@ -1,15 +1,52 @@
 %{
-/* assamese yacc2h.uhin */
+/* assamese yacc2h.uhin: generated from the assamese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("যদি");}
-else                 {printf("অন্যথা");}
-while                {printf("যেতিয়ালৈ");}
-do                   {printf("কৰা");}
-for                  {printf("বাবে");}
-return               {printf("ঘূৰাই");}
-void                 {printf("কাৰ্য");}
-class                {printf("শ্ৰেণী");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("রক্ষিত");}
+\#include                   {printf("#অন্তর্ভা঵");}
+continue                    {printf("অনু঵র্ত");}
+register                    {printf("পঞ্জিকা");}
+volatile                    {printf("চঞ্চল");}
+default                     {printf("স্঵ভা঵");}
+private                     {printf("গুপ্ত");}
+typedef                     {printf("প্রকারনির্দেশ");}
+virtual                     {printf("আভাস");}
+assert                      {printf("প্রতিজ্ঞা");}
+double                      {printf("দ্঵িগুণ");}
+extern                      {printf("বাহ্য");}
+inline                      {printf("অন্তঃস্থ");}
+public                      {printf("সার্঵জনিক");}
+return                      {printf("ঘূৰাই");}
+signal                      {printf("সঙ্কেত");}
+sizeof                      {printf("পরিমাণ");}
+static                      {printf("স্থির");}
+struct                      {printf("সংরচনা");}
+\#elif                      {printf("#নোচেদ্যদি");}
+\#else                      {printf("#অন্যথা");}
+break                       {printf("ভঙ্গ");}
+const                       {printf("ধ্রু঵");}
+float                       {printf("ভিন্ন");}
+raise                       {printf("উত্থাপয");}
+union                       {printf("সঙ্ঘ");}
+while                       {printf("যেতিয়ালৈ");}
+write                       {printf("লিখ");}
+NULL                        {printf("রিক্ত");}
+case                        {printf("পক্ষ");}
+else                        {printf("অন্যথা");}
+enum                        {printf("গণনা");}
+free                        {printf("মুক্ত");}
+goto                        {printf("গচ্ছ");}
+read                        {printf("পঠ");}
+type                        {printf("প্রকার");}
+void                        {printf("শূন্য");}
+\#if                        {printf("#যদি");}
+for                         {printf("বাবে");}
+int                         {printf("পূর্ণাঙ্ক");}
+do                          {printf("কৰা");}
+if                          {printf("যদি");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

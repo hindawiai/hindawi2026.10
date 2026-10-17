@@ -1,34 +1,37 @@
 %{
-/* urdu b2h.uhin */
+/* urdu b2h.uhin: generated from the urdu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("اگر");}
-else                 {printf("ورنہ");}
-while                {printf("جبتک");}
-do                   {printf("کرو");}
-for                  {printf("برائے");}
-break                {printf("توڑو");}
-continue             {printf("جاری");}
-switch               {printf("انتخاب");}
-case                 {printf("حالت");}
-default              {printf("طےشدہ");}
-return               {printf("واپس");}
-const                {printf("ثابت");}
-int                  {printf("صحیح");}
-float                {printf("اعشاری");}
-double               {printf("دوہرا");}
-char                 {printf("حرف");}
-void                 {printf("خالی");}
-void                 {printf("تابع");}
-class                {printf("جماعت");}
-new                  {printf("نیا");}
-public               {printf("عوامی");}
-private              {printf("نجی");}
-static               {printf("ساکن");}
-virtual              {printf("مجازی");}
-case                 {printf("جب");}
-struct               {printf("ساخت");}
-include              {printf("شامل");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("واپس");}
+SHARED                      {printf("مشترك");}
+STATIC                      {printf("ساکن");}
+STRING                      {printf("جملہ");}
+return                      {printf("واپس");}
+CONST                       {printf("ثابت");}
+TIMER                       {printf("مؤقت");}
+WHILE                       {printf("جب");}
+while                       {printf("جب");}
+CALL                        {printf("بلاؤ");}
+ELSE                        {printf("ورنہ");}
+GOTO                        {printf("جاؤ");}
+goto                        {printf("جاؤ");}
+AND                         {printf("اور");}
+END                         {printf("اختتام");}
+FOR                         {printf("برائے");}
+INT                         {printf("صحیح");}
+LET                         {printf("مانو");}
+NOT                         {printf("نہیں");}
+end                         {printf("اختتام");}
+for                         {printf("برائے");}
+let                         {printf("مانو");}
+AS                          {printf("بطور");}
+DO                          {printf("کرو");}
+IF                          {printf("اگر");}
+OR                          {printf("یا");}
+if                          {printf("اگر");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

@@ -1,33 +1,30 @@
 %{
-/* bengali asm2h.uhin */
+/* bengali asm2h.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("যদি");}
-else                 {printf("অন্যথা");}
-while                {printf("যতক্ষণ");}
-do                   {printf("করো");}
-for                  {printf("জন্য");}
-break                {printf("বিরতি");}
-continue             {printf("চালু");}
-switch               {printf("নির্বাচন");}
-case                 {printf("ক্ষেত্র");}
-default              {printf("পূর্বনির্ধারিত");}
-return               {printf("ফেরত");}
-const                {printf("ধ্রুবক");}
-int                  {printf("পূর্ণসংখ্যা");}
-float                {printf("দশমিক");}
-double               {printf("দ্বিগুণ");}
-char                 {printf("অক্ষর");}
-void                 {printf("শূন্য");}
-void                 {printf("কাজ");}
-class                {printf("শ্রেণী");}
-new                  {printf("নতুন");}
-public               {printf("সর্বজনীন");}
-private              {printf("ব্যক্তিগত");}
-static               {printf("স্থির");}
-virtual              {printf("আভাসী");}
-case                 {printf("যখন");}
-struct               {printf("কাঠামো");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+INCLUDE                     {printf("অন্তর্ভা঵");}
+ASSUME                      {printf("অধ্য঵স্যতি");}
+EXTERN                      {printf("বাহ্যিক");}
+PUBLIC                      {printf("সর্বজনীন");}
+WHILE                       {printf("যখন");}
+CALL                        {printf("ডাকো");}
+ELSE                        {printf("অন্যথা");}
+LOCK                        {printf("তালা");}
+PROC                        {printf("প্রক্রিয়া");}
+THIS                        {printf("এই");}
+TYPE                        {printf("প্রকার");}
+call                        {printf("ডাকো");}
+AND                         {printf("এবং");}
+END                         {printf("শেষ");}
+INT                         {printf("পূর্ণসংখ্যা");}
+NOT                         {printf("নয়");}
+PTR                         {printf("নির্দেশক");}
+IF                          {printf("যদি");}
+IN                          {printf("মধ্যে");}
+OR                          {printf("অথবা");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

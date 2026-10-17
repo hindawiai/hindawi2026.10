@@ -1,15 +1,30 @@
 %{
-/* hebrew h2b.uhin */
+/* hebrew h2b.uhin: generated from the hebrew lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-אם                   {printf("if");}
-אחרת                 {printf("else");}
-כלעוד                {printf("while");}
-עשה                  {printf("do");}
-עבור                 {printf("for");}
-החזר                 {printf("return");}
-פונקציה              {printf("void");}
-מחלקה                {printf("class");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+כלעוד                       {printf("WHILE");}
+مشترك                       {printf("SHARED");}
+אחרת                        {printf("ELSE");}
+החזר                        {printf("RETURN");}
+עבור                        {printf("FOR");}
+اذهب                        {printf("GOTO");}
+ثابت                        {printf("CONST");}
+ساكن                        {printf("STATIC");}
+صحيح                        {printf("INT");}
+ليكن                        {printf("LET");}
+مؤقت                        {printf("TIMER");}
+نادي                        {printf("CALL");}
+וגם                         {printf("AND");}
+סוף                         {printf("END");}
+עשה                         {printf("DO");}
+או                          {printf("OR");}
+אם                          {printf("IF");}
+לא                          {printf("NOT");}
+كـ                          {printf("AS");}
+نص                          {printf("STRING");}
+
 %%

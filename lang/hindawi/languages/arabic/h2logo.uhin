@@ -1,35 +1,13 @@
 %{
-/* arabic h2logo.uhin */
+/* arabic h2logo.uhin: generated from the arabic lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-إذا                  {printf("if");}
-وإلا                 {printf("else");}
-طالما                {printf("while");}
-افعل                 {printf("do");}
-لكل                  {printf("for");}
-اكسر                 {printf("break");}
-استمر                {printf("continue");}
-بدل                  {printf("switch");}
-حالة                 {printf("case");}
-افتراضي              {printf("virtual");}
-أرجع                 {printf("return");}
-ثابت                 {printf("const");}
-صحيح                 {printf("int");}
-عائم                 {printf("float");}
-مزدوج                {printf("double");}
-حرف                  {printf("char");}
-فراغ                 {printf("void");}
-دالة                 {printf("void");}
-صنف                  {printf("class");}
-جديد                 {printf("new");}
-عام                  {printf("public");}
-خاص                  {printf("private");}
-ساكن                 {printf("static");}
-عندما                {printf("case");}
-بنية                 {printf("struct");}
-ضمن                  {printf("include");}
-اقرأ                 {printf("scanf");}
-اكتب                 {printf("printf");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+أمامي                       {printf("forward");}
+انته                        {printf("end");}
+إذا                         {printf("if");}
+
 %%

@@ -1,9 +1,37 @@
 %{
-/* phoenician b2h.uhin */
+/* phoenician b2h.uhin: generated from the phoenician lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("𐤀𐤌");}
-do                   {printf("𐤐𐤏𐤋");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("أرجع");}
+SHARED                      {printf("مشترك");}
+STATIC                      {printf("ساكن");}
+STRING                      {printf("نص");}
+return                      {printf("أرجع");}
+CONST                       {printf("ثابت");}
+TIMER                       {printf("مؤقت");}
+WHILE                       {printf("طالما");}
+while                       {printf("طالما");}
+CALL                        {printf("نادي");}
+ELSE                        {printf("وإلا");}
+GOTO                        {printf("اذهب");}
+goto                        {printf("اذهب");}
+AND                         {printf("𐤅");}
+END                         {printf("𐤒𐤑");}
+FOR                         {printf("لكل");}
+INT                         {printf("صحيح");}
+LET                         {printf("ليكن");}
+NOT                         {printf("𐤋𐤀");}
+end                         {printf("𐤒𐤑");}
+for                         {printf("لكل");}
+let                         {printf("ليكن");}
+AS                          {printf("كـ");}
+DO                          {printf("𐤐𐤏𐤋");}
+IF                          {printf("𐤀𐤌");}
+OR                          {printf("𐤀𐤅");}
+if                          {printf("𐤀𐤌");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

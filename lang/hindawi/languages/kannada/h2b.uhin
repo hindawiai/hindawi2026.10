@@ -1,33 +1,30 @@
 %{
-/* kannada h2b.uhin */
+/* kannada h2b.uhin: generated from the kannada lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-ಆದರೆ                 {printf("if");}
-ಇಲ್ಲದಿದ್ದರೆ          {printf("else");}
-ತನಕ                  {printf("while");}
-ಮಾಡು                 {printf("do");}
-ಗಾಗಿ                 {printf("for");}
-ನಿಲ್ಲಿಸು             {printf("break");}
-ಮುಂದುವರಿ             {printf("continue");}
-ಆಯ್ಕೆ                {printf("switch");}
-ಸ್ಥಿತಿ               {printf("case");}
-ಪೂರ್ವನಿಯೋಜಿತ         {printf("default");}
-ಹಿಂತಿರುಗಿಸು          {printf("return");}
-ಸ್ಥಿರಾಂಕ             {printf("const");}
-ಪೂರ್ಣಾಂಕ             {printf("int");}
-ದಶಮಾಂಶ               {printf("float");}
-ದ್ವಿಗುಣ              {printf("double");}
-ಅಕ್ಷರ                {printf("char");}
-ಶೂನ್ಯ                {printf("void");}
-ಕಾರ್ಯ                {printf("void");}
-ವರ್ಗ                 {printf("class");}
-ಹೊಸ                  {printf("new");}
-ಸಾರ್ವಜನಿಕ            {printf("public");}
-ಖಾಸಗಿ                {printf("private");}
-ಸ್ಥಿರ                {printf("static");}
-ವಾಸ್ತವಿಕ             {printf("virtual");}
-ಯಾವಾಗ                {printf("case");}
-ರಚನೆ                 {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+ಇಲ್ಲದಿದ್ದರೆ                 {printf("ELSE");}
+ಕಾಲಯನ್ತ್ರ                   {printf("TIMER");}
+ಹಿಂತಿರುಗಿ                   {printf("RETURN");}
+ಪೂರ್ಣಾಂಕ                    {printf("INT");}
+ಸ್ಥಿರಾಂಕ                    {printf("CONST");}
+ಸಹಭಾಜಿತ                     {printf("SHARED");}
+ಪದಪುಂಜ                      {printf("STRING");}
+ಅಂತ್ಯ                       {printf("END");}
+ಮತ್ತು                       {printf("AND");}
+ಸ್ಥಿರ                       {printf("STATIC");}
+ಅಥವಾ                        {printf("OR");}
+ಅಲ್ಲ                        {printf("NOT");}
+ಆದರೆ                        {printf("IF");}
+ಇರಲಿ                        {printf("LET");}
+ಗಾಗಿ                        {printf("FOR");}
+ಮಾಡು                        {printf("DO");}
+ಹೋಗು                        {printf("GOTO");}
+ಕರೆ                         {printf("CALL");}
+ಆಗ                          {printf("WHILE");}
+ಇವ                          {printf("AS");}
+
 %%

@@ -1,11 +1,13 @@
 %{
-/* prakrit h2logo.uhin */
+/* prakrit h2logo.uhin: generated from the prakrit lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-जइ                   {printf("if");}
-अण्णहा               {printf("else");}
-जाव                  {printf("while");}
-करेहि                {printf("do");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+अग्रप्रसार                  {printf("forward");}
+अन्त                        {printf("end");}
+जइ                          {printf("if");}
+
 %%

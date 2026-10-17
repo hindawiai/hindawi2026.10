@@ -1,33 +1,69 @@
 %{
-/* gujarati h2py.uhin */
+/* gujarati h2py.uhin: generated from the gujarati lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-જો                   {printf("if");}
-નહીંતર               {printf("else");}
-જ્યાંસુધી            {printf("while");}
-કરો                  {printf("do");}
-માટે                 {printf("for");}
-તોડો                 {printf("break");}
-ચાલુ                 {printf("continue");}
-પસંદગી               {printf("switch");}
-સ્થિતિ               {printf("case");}
-મૂળભૂત               {printf("default");}
-પાછા                 {printf("return");}
-અચલ                  {printf("const");}
-પૂર્ણાંક             {printf("int");}
-દશાંશ                {printf("float");}
-દ્વિગુણ              {printf("double");}
-અક્ષર                {printf("char");}
-શૂન્ય                {printf("void");}
-વિધેય                {printf("void");}
-વર્ગ                 {printf("class");}
-નવું                 {printf("new");}
-જાહેર                {printf("public");}
-ખાનગી                {printf("private");}
-સ્થિર                {printf("static");}
-આભાસી                {printf("virtual");}
-જ્યારે               {printf("case");}
-સંરચના               {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+પ્રતિજ્ઞા                   {printf("assert");}
+પૂર્ણાંક                    {printf("int");}
+શબ્દમાળા                    {printf("String");}
+સુરક્ષિત                    {printf("protected");}
+સુષુપ્તિ                    {printf("sleep");}
+આંતરફલક                     {printf("interface");}
+દ્વિગુણ                     {printf("double");}
+વિસ્તરે                     {printf("extends");}
+વૈશ્વિક                     {printf("global");}
+અથવાજો                      {printf("elif");}
+અમૂર્ત                      {printf("abstract");}
+અસ્થિર                      {printf("volatile");}
+જ્યારે                      {printf("while");}
+નહીંતર                      {printf("else");}
+પસંદગી                      {printf("switch");}
+પ્રયાસ                      {printf("try");}
+મૂળભૂત                      {printf("default");}
+સ્થિતિ                      {printf("case");}
+અક્ષર                       {printf("char");}
+અનામી                       {printf("lambda");}
+અપવાદ                       {printf("except");}
+ઉઠાવો                       {printf("raise");}
+ખાનગી                       {printf("private");}
+ખોટું                       {printf("False");}
+છેવટે                       {printf("finally");}
+જાહેર                       {printf("public");}
+દશાંશ                       {printf("float");}
+પૅકેજ                       {printf("package");}
+ફેંકો                       {printf("throw");}
+મુખ્ય                       {printf("main");}
+વસ્તુ                       {printf("Object");}
+શૂન્ય                       {printf("void");}
+સાચું                       {printf("True");}
+સ્થિર                       {printf("static");}
+અથવા                        {printf("or");}
+આયાત                        {printf("import");}
+ચાલુ                        {printf("continue");}
+તંતુ                        {printf("Thread");}
+તોડો                        {printf("break");}
+નવું                        {printf("new");}
+નહીં                        {printf("not");}
+પકડો                        {printf("catch");}
+પાછા                        {printf("return");}
+માટે                        {printf("for");}
+વર્ગ                        {printf("class");}
+અચલ                         {printf("const");}
+અને                         {printf("and");}
+અમલ                         {printf("implements");}
+આપો                         {printf("yield");}
+કરો                         {printf("do");}
+જાઓ                         {printf("goto");}
+પરમ                         {printf("super");}
+માં                         {printf("in");}
+લિખ                         {printf("write");}
+ઇવ                          {printf("as");}
+જો                          {printf("if");}
+તઃ                          {printf("from");}
+પઠ                          {printf("read");}
+આ                           {printf("this");}
+
 %%

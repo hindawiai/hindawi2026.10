@@ -1,34 +1,13 @@
 %{
-/* persian logo2h.uhin */
+/* persian logo2h.uhin: generated from the persian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("اگر");}
-else                 {printf("وگرنه");}
-while                {printf("تازمانیکه");}
-do                   {printf("انجامبده");}
-for                  {printf("برای");}
-break                {printf("بشکن");}
-continue             {printf("ادامه");}
-switch               {printf("انتخاب");}
-case                 {printf("حالت");}
-default              {printf("پیشفرض");}
-return               {printf("بازگرد");}
-const                {printf("ثابت");}
-int                  {printf("صحیح");}
-float                {printf("اعشاری");}
-double               {printf("دوگانه");}
-char                 {printf("نویسه");}
-void                 {printf("تهی");}
-void                 {printf("تابع");}
-class                {printf("رده");}
-new                  {printf("جدید");}
-public               {printf("عمومی");}
-private              {printf("خصوصی");}
-static               {printf("ایستا");}
-virtual              {printf("مجازی");}
-case                 {printf("هنگامیکه");}
-struct               {printf("ساختار");}
-include              {printf("شامل");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+forward                     {printf("أمامي");}
+end                         {printf("پایان");}
+if                          {printf("اگر");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

@@ -1,12 +1,31 @@
 %{
-/* syriac asm2h.uhin */
+/* syriac asm2h.uhin: generated from the syriac lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("ܐܢ");}
-else                 {printf("ܐܚܪܢܐ");}
-while                {printf("ܟܡܐ");}
-do                   {printf("ܥܒܕ");}
-return               {printf("ܦܢܐ");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+INCLUDE                     {printf("ضمن");}
+ASSUME                      {printf("افترض");}
+EXTERN                      {printf("خارجي");}
+PUBLIC                      {printf("عام");}
+global                      {printf("عام");}
+WHILE                       {printf("ܟܡܐ");}
+CALL                        {printf("نادي");}
+ELSE                        {printf("ܐܚܪܢܐ");}
+LOCK                        {printf("قفل");}
+PROC                        {printf("إجراء");}
+THIS                        {printf("هذا");}
+TYPE                        {printf("نوع");}
+call                        {printf("نادي");}
+AND                         {printf("ܘ");}
+END                         {printf("ܫܠܡ");}
+INT                         {printf("صحيح");}
+NOT                         {printf("ܠܐ");}
+PTR                         {printf("مؤشر");}
+IF                          {printf("ܐܢ");}
+IN                          {printf("في");}
+OR                          {printf("ܐܘ");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

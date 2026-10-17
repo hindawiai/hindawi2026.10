@@ -1,15 +1,13 @@
 %{
-/* pali h2logo.uhin */
+/* pali h2logo.uhin: generated from the pali lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-सचे                  {printf("if");}
-अञ्ञथा               {printf("else");}
-याव                  {printf("while");}
-करोहि                {printf("do");}
-अत्थाय               {printf("for");}
-पटिनिवत्त            {printf("return");}
-किच्च                {printf("void");}
-वग्ग                 {printf("class");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+अग्रप्रसार                  {printf("forward");}
+अन्त                        {printf("end");}
+सचे                         {printf("if");}
+
 %%

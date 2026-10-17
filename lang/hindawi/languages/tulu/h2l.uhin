@@ -1,36 +1,53 @@
 %{
-/* tulu h2l */
+/* tulu h2l.uhin: generated from the tulu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-ಯದಿ  {printf("KW_IF");}
-ಅನ್ಯಥಾ  {printf("KW_ELSE");}
-ನೋಚೇದ್ಯದಿ  {printf("KW_ELIF");}
-ಯಾವತ್  {printf("KW_WHILE");}
-ಕುರು  {printf("KW_DO");}
-ಪ್ರತಿ  {printf("KW_FOR");}
-ಭಙ್ಗ  {printf("KW_BREAK");}
-ಅನುವರ್ತ  {printf("KW_CONTINUE");}
-ವಿಕಲ್ಪ  {printf("KW_SWITCH");}
-ಪಕ್ಷ  {printf("KW_CASE");}
-ಸ್ವಭಾವ  {printf("KW_DEFAULT");}
-ಪ್ರತ್ಯಾಗಮ  {printf("KW_RETURN");}
-ಗಚ್ಛ  {printf("KW_GOTO");}
-ಚರ  {printf("KW_VAR");}
-ಧ್ರುವ  {printf("KW_CONST");}
-ಅಸ್ತು  {printf("KW_LET");}
-ಪೂರ್ಣಾಙ್ಕ  {printf("KW_INT");}
-ಭಿನ್ನ  {printf("KW_FLOAT");}
-ದ್ವಿಗುಣ  {printf("KW_DOUBLE");}
-ವರ್ಣ  {printf("KW_CHAR");}
-ತಾರ್ಕಿಕ  {printf("KW_BOOL");}
-ಪದಾವಲೀ  {printf("KW_STRING");}
-ಶೂನ್ಯ  {printf("KW_VOID");}
-ಸತ್ಯ  {printf("KW_TRUE");}
-ಅಸತ್ಯ  {printf("KW_FALSE");}
-ರಿಕ್ತ  {printf("KW_NULL");}
-ಕ್ರಿಯಾ  {printf("KW_FUNC");}
-ವಿಧಿ  {printf("KW_PROC");}
-ಆಹ್ವಾನ  {printf("KW_CALL");}
-ಪ್ರಾಚಲ  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+ಪ್ರಕಾರನಿರ್ದೇಶ               {printf("typedef");}
+\#ಅನ್ತರ್ಭಾವ                 {printf("#include");}
+\#ನೋಚೇದ್ಯದಿ                 {printf("#elif");}
+ಪೂರ್ಣಾಙ್ಕ                   {printf("int");}
+ಪ್ರತಿಜ್ಞಾ                   {printf("assert");}
+ಪ್ರತ್ಯಾಗಮ                   {printf("return");}
+ಸಾರ್ವಜನಿಕ                   {printf("public");}
+ಅನ್ತಃಸ್ಥ                    {printf("inline");}
+\#ಅನ್ಯಥಾ                    {printf("#else");}
+ಅನುವರ್ತ                     {printf("continue");}
+ಉತ್ಥಾಪಯ                     {printf("raise");}
+ದ್ವಿಗುಣ                     {printf("double");}
+ಪಞ್ಜಿಕಾ                     {printf("register");}
+ಅನ್ಯಥಾ                      {printf("else");}
+ಪರಿಮಾಣ                      {printf("sizeof");}
+ರಕ್ಷಿತ                      {printf("protected");}
+ವಿಕಲ್ಪ                      {printf("switch");}
+ಸಂರಚನಾ                      {printf("struct");}
+ಸಙ್ಕೇತ                      {printf("signal");}
+ಸ್ವಭಾವ                      {printf("default");}
+ಗುಪ್ತ                       {printf("private");}
+ಚಞ್ಚಲ                       {printf("volatile");}
+ಧ್ರುವ                       {printf("const");}
+ಪ್ರತಿ                       {printf("for");}
+ಬಾಹ್ಯ                       {printf("extern");}
+ಭಿನ್ನ                       {printf("float");}
+ಮುಕ್ತ                       {printf("free");}
+ಯಾವತ್                       {printf("while");}
+ರಿಕ್ತ                       {printf("NULL");}
+ಶೂನ್ಯ                       {printf("void");}
+ಸ್ಥಿರ                       {printf("static");}
+\#ಯದಿ                       {printf("#if");}
+ಆಭಾಸ                        {printf("virtual");}
+ಕುರು                        {printf("do");}
+ಗಚ್ಛ                        {printf("goto");}
+ಗಣನಾ                        {printf("enum");}
+ಪಕ್ಷ                        {printf("case");}
+ಭಙ್ಗ                        {printf("break");}
+ವರ್ಣ                        {printf("char");}
+ಸಙ್ಘ                        {printf("union");}
+ಯದಿ                         {printf("if");}
+ಲಿಖ                         {printf("write");}
+ಪಠ                          {printf("read");}
+
 %%

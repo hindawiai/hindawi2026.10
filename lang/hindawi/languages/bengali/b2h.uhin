@@ -1,33 +1,37 @@
 %{
-/* bengali b2h.uhin */
+/* bengali b2h.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("যদি");}
-else                 {printf("অন্যথা");}
-while                {printf("যতক্ষণ");}
-do                   {printf("করো");}
-for                  {printf("জন্য");}
-break                {printf("বিরতি");}
-continue             {printf("চালু");}
-switch               {printf("নির্বাচন");}
-case                 {printf("ক্ষেত্র");}
-default              {printf("পূর্বনির্ধারিত");}
-return               {printf("ফেরত");}
-const                {printf("ধ্রুবক");}
-int                  {printf("পূর্ণসংখ্যা");}
-float                {printf("দশমিক");}
-double               {printf("দ্বিগুণ");}
-char                 {printf("অক্ষর");}
-void                 {printf("শূন্য");}
-void                 {printf("কাজ");}
-class                {printf("শ্রেণী");}
-new                  {printf("নতুন");}
-public               {printf("সর্বজনীন");}
-private              {printf("ব্যক্তিগত");}
-static               {printf("স্থির");}
-virtual              {printf("আভাসী");}
-case                 {printf("যখন");}
-struct               {printf("কাঠামো");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("ফেরত");}
+SHARED                      {printf("সহভাজিত");}
+STATIC                      {printf("স্থির");}
+STRING                      {printf("বাক্য");}
+return                      {printf("ফেরত");}
+CONST                       {printf("ধ্রুবক");}
+TIMER                       {printf("কালযন্ত্র");}
+WHILE                       {printf("যখন");}
+while                       {printf("যখন");}
+CALL                        {printf("ডাকো");}
+ELSE                        {printf("অন্যথা");}
+GOTO                        {printf("যাও");}
+goto                        {printf("যাও");}
+AND                         {printf("এবং");}
+END                         {printf("শেষ");}
+FOR                         {printf("জন্য");}
+INT                         {printf("পূর্ণসংখ্যা");}
+LET                         {printf("ধরি");}
+NOT                         {printf("নয়");}
+end                         {printf("শেষ");}
+for                         {printf("জন্য");}
+let                         {printf("ধরি");}
+AS                          {printf("ই঵");}
+DO                          {printf("করো");}
+IF                          {printf("যদি");}
+OR                          {printf("অথবা");}
+if                          {printf("যদি");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

@@ -1,36 +1,68 @@
 %{
-/* dogri h2py */
+/* dogri h2py.uhin: generated from the dogri lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-यदि  {printf("KW_IF");}
-अन्यथा  {printf("KW_ELSE");}
-नोचेद्यदि  {printf("KW_ELIF");}
-यावत्  {printf("KW_WHILE");}
-कुरु  {printf("KW_DO");}
-प्रति  {printf("KW_FOR");}
-भङ्ग  {printf("KW_BREAK");}
-अनुवर्त  {printf("KW_CONTINUE");}
-विकल्प  {printf("KW_SWITCH");}
-पक्ष  {printf("KW_CASE");}
-स्वभाव  {printf("KW_DEFAULT");}
-प्रत्यागम  {printf("KW_RETURN");}
-गच्छ  {printf("KW_GOTO");}
-चर  {printf("KW_VAR");}
-ध्रुव  {printf("KW_CONST");}
-अस्तु  {printf("KW_LET");}
-पूर्णाङ्क  {printf("KW_INT");}
-भिन्न  {printf("KW_FLOAT");}
-द्विगुण  {printf("KW_DOUBLE");}
-वर्ण  {printf("KW_CHAR");}
-तार्किक  {printf("KW_BOOL");}
-पदावली  {printf("KW_STRING");}
-शून्य  {printf("KW_VOID");}
-सत्य  {printf("KW_TRUE");}
-असत्य  {printf("KW_FALSE");}
-रिक्त  {printf("KW_NULL");}
-क्रिया  {printf("KW_FUNC");}
-विधि  {printf("KW_PROC");}
-आह्वान  {printf("KW_CALL");}
-प्राचल  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+निष्पादित                   {printf("implements");}
+नोचेद्यदि                   {printf("elif");}
+पूर्णाङ्क                   {printf("int");}
+प्रतिज्ञा                   {printf("assert");}
+प्रत्यागम                   {printf("return");}
+सार्वजनिक                   {printf("public");}
+सुषुप्ति                    {printf("sleep");}
+अनुवर्त                     {printf("continue");}
+उत्थापय                     {printf("raise");}
+द्विगुण                     {printf("double");}
+विस्तृत                     {printf("extends");}
+वैश्विक                     {printf("global");}
+अनामन्                      {printf("lambda");}
+अन्ततः                      {printf("finally");}
+अन्यथा                      {printf("else");}
+अमूर्त                      {printf("abstract");}
+पदावली                      {printf("String");}
+रक्षित                      {printf("protected");}
+विकल्प                      {printf("switch");}
+स्वभाव                      {printf("default");}
+अन्तः                       {printf("in");}
+अपवाद                       {printf("except");}
+असत्य                       {printf("False");}
+क्षिप                       {printf("throw");}
+गुप्त                       {printf("private");}
+गृहाण                       {printf("catch");}
+चञ्चल                       {printf("volatile");}
+तन्तु                       {printf("Thread");}
+ध्रुव                       {printf("const");}
+प्रति                       {printf("for");}
+भिन्न                       {printf("float");}
+यावत्                       {printf("while");}
+वस्तु                       {printf("Object");}
+शून्य                       {printf("void");}
+सन्धि                       {printf("interface");}
+स्थिर                       {printf("static");}
+आनयन                        {printf("import");}
+एतत्                        {printf("this");}
+कुरु                        {printf("do");}
+गच्छ                        {printf("goto");}
+नूतन                        {printf("new");}
+पक्ष                        {printf("case");}
+पुटक                        {printf("package");}
+भङ्ग                        {printf("break");}
+यत्न                        {printf("try");}
+वर्ग                        {printf("class");}
+वर्ण                        {printf("char");}
+सत्य                        {printf("True");}
+यदि                         {printf("if");}
+लिख                         {printf("write");}
+इव                          {printf("as");}
+तः                          {printf("from");}
+दा                          {printf("yield");}
+पठ                          {printf("read");}
+पर                          {printf("super");}
+वा                          {printf("or");}
+च                           {printf("and");}
+न                           {printf("not");}
+
 %%

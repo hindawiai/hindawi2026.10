@@ -1,33 +1,30 @@
 %{
-/* malayalam h2asm.uhin */
+/* malayalam h2asm.uhin: generated from the malayalam lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-എങ്കിൽ               {printf("if");}
-അല്ലെങ്കിൽ           {printf("else");}
-വരെ                  {printf("while");}
-ചെയ്യുക              {printf("do");}
-വേണ്ടി               {printf("for");}
-നിർത്തുക             {printf("break");}
-തുടരുക               {printf("continue");}
-തിരഞ്ഞെടുപ്പ്        {printf("switch");}
-അവസ്ഥ                {printf("case");}
-സ്ഥിരസ്ഥിതി          {printf("default");}
-മടക്കുക              {printf("return");}
-സ്ഥിരം               {printf("const");}
-പൂർണ്ണസംഖ്യ          {printf("int");}
-ദശാംശം               {printf("float");}
-ഇരട്ട                {printf("double");}
-അക്ഷരം               {printf("char");}
-ശൂന്യം               {printf("void");}
-ധർമ്മം               {printf("void");}
-വർഗ്ഗം               {printf("class");}
-പുതിയ                {printf("new");}
-പൊതു                 {printf("public");}
-സ്വകാര്യ             {printf("private");}
-സ്ഥിതം               {printf("static");}
-മായാ                 {printf("virtual");}
-എപ്പോൾ               {printf("case");}
-ഘടന                  {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+പൂർണ്ണസംഖ്യ                 {printf("INT");}
+അധ്യവസ്യതി                  {printf("ASSUME");}
+അല്ലെങ്കിൽ                  {printf("ELSE");}
+അന്തര്ഭാവ                   {printf("INCLUDE");}
+വിളിക്കുക                   {printf("CALL");}
+ആകുമ്പോൾ                    {printf("WHILE");}
+വൈശ്വിക                     {printf("global");}
+അവസാനം                      {printf("END");}
+എങ്കിൽ                      {printf("IF");}
+പൂട്ട്                      {printf("LOCK");}
+ഒപ്പം                       {printf("AND");}
+നടപടി                       {printf("PROC");}
+ബാഹ്യ                       {printf("EXTERN");}
+സൂചകം                       {printf("PTR");}
+അഥവാ                        {printf("OR");}
+അല്ല                        {printf("NOT");}
+പൊതു                        {printf("PUBLIC");}
+ഇത്                         {printf("THIS");}
+തരം                         {printf("TYPE");}
+ഇൽ                          {printf("IN");}
+
 %%

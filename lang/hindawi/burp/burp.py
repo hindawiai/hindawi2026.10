@@ -64,7 +64,7 @@ print len range self""".split())
 WORD = r"#?[A-Za-z_\u00C0-\u024F\u0300-\u036F\u0370-\u03FF\u0400-\u04FF\u0590-\u06FF\u0700-\u08FF\u0900-\u0DFF" \
        r"\u0E00-\u0FFF\u1000-\u109F\u1780-\u18AF\u1900-\u1CFF\u3040-\u30FF\u3400-\u9FFF\uA800-\uABFF\uAC00-\uD7AF" \
        r"\U00010000-\U0001FFFF][\w\u0300-\u036F\u0900-\u0DFF\u0E00-\u0FFF\u1000-\u109F\u1780-\u18AF\u1A00-\u1CFF" \
-       r"\uA800-\uABFF\U00010000-\U0001FFFF]*"
+       r"\uA800-\uABFF\U00010000-\U0001FFFF\u200C\u200D\uAC00-\uD7AF\u1100-\u11FF\u1900-\u19FF\u3130-\u318F]*"
 COMMENTS = {"vhdl": r"--[^\n]*", "c": r"//[^\n]*|/\*[\s\S]*?\*/", "py": r"#[^\n]*", "asm": r";[^\n]*", "logo": r";[^\n]*",
             "basic": r"(?im:^[ \t]*REM\b[^\n]*)|'[^\n]*"}
 STRINGS = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\''
@@ -261,6 +261,7 @@ class Ingestion:
         caseless = style in CASELESS
         if caseless:
             table = {k.lower(): v for k, v in table.items()}
+        natives = set(table.values())   # every word the reverse could read as a keyword is recorded, so it reads it right
         for k, v in table.items():
             ambiguous.setdefault(v, []).append(k)
 
@@ -274,9 +275,10 @@ class Ingestion:
             w = m.group("word")
             key = w.lower() if caseless else w
             if key in table:
-                if caseless or len(ambiguous[table[key]]) > 1:
-                    seq.append(w)
+                seq.append(w)
                 return table[key]
+            if w in natives:            # a name spelled like one of the language's keywords stays itself on the way back
+                seq.append(w)
             if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external \
                     or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
                 return w
@@ -391,7 +393,7 @@ def reverse_tree(native, out):
                 return m.group(0)
             w = m.group("word")
             if w in inverse:
-                return seq.pop(0) if (style in CASELESS or len(inverse[w]) > 1) and seq else inverse[w][0]
+                return seq.pop(0) if seq else inverse[w][0]
             return ids.get(w, w)
         dst.write_text(scanner(style).sub(sub, text), encoding="utf-8", errors="surrogateescape")
     return out

@@ -6,8 +6,8 @@ Ingestion path (for people): C to the language. Keywords become the language's o
   Hindi runs Chintamani's own c2h through Romenagri, as C11 established; every other language runs its cell's
   c2h directly on Unicode text. No transliteration is needed here.
 Compilation path (for the machine): the language to C. Transliteration is essential here, so names survive to
-  the lowest layer. A non-Devanagari source is first carried to Devanagari by pipeline/transliterate.py (the
-  150 script tables), then: fixuninum | iconv | uni2acii | acii2cf | acii2uni | iconv | the language's h2c,
+  the lowest layer. A non-Devanagari source first goes through its script filter, as in the original pipeline
+  (Chintamani's fltr_te_hi and fltr_ur_hi; generated filters of the same kind for the other Brahmi scripts), then: fixuninum | iconv | uni2acii | acii2cf | acii2uni | iconv | the language's h2c,
   built from its h2c.uhin through the same filter. Then the original driver's escape repairs. Names already
   in ASCII are held aside and put back unchanged (CONFIG_X, memcpy, __malloc keep their identity); native names
   take their Romenagri form, which is the name ABI.
@@ -24,7 +24,8 @@ HERE = Path(__file__).resolve().parent
 HINDAWI = HERE.parent
 REPO = HINDAWI.parents[1]
 CACHE = Path(os.environ.get("HINDAWI_CACHE", REPO / ".build/cells"))
-TRANSLIT = HINDAWI / "pipeline/transliterate.py"
+sys.path.insert(0, str(HERE))
+import script_filters  # noqa: E402  the original pipeline's script filter, in front of Romenagri
 DEVANAGARI_LANGS = {"hindi", "sanskrit", "marathi", "nepali", "awadhi", "bhojpuri", "maithili", "bodo", "dogri",
                     "konkani", "chhattisgarhi", "magahi", "rajasthani", "braj", "haryanvi"}
 ROMENAGRI_CHAIN = "fixuninum | iconv -f utf-8 -t utf-16 | uni2acii | acii2cf | acii2uni | iconv -f UTF-16 -t UTF-8"
@@ -58,8 +59,16 @@ def cell_dir(lang):
     return d
 
 
-def needs_translit(lang):
-    return lang not in DEVANAGARI_LANGS
+def script_filter(lang):
+    """The shell fragment for the language's script filter: Chintamani's own (Telugu, Perso-Arabic), a generated one of
+    the same kind (other Brahmi scripts), nothing for Devanagari. A script with no filter has no compilation path yet."""
+    if lang in DEVANAGARI_LANGS:
+        return ""
+    f = script_filters.which(lang)
+    if f is None:
+        sys.exit(f"hindawi_chain: {lang} ({script_filters.script_of_language(lang)}) has no script filter yet, so no "
+                 "compilation path; it ingests and reads in full")
+    return f"'{f}' | " if f else ""
 
 
 def lexers(lang):
@@ -78,8 +87,8 @@ def lexers(lang):
     # ingestion: the cell's c2h straight on Unicode, so keywords come out in the language's own script
     sh(f"flex -8 -o '{out}/c2h_lex.c' '{src}/c2h.uhin' && gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -lfl")
     # compilation: the cell's h2c through the script filter and Romenagri, as the original Makefiles build h2c
-    filt = f"python3 '{TRANSLIT}' |" if needs_translit(lang) else ""
-    sh(f"cat '{src}/h2c.uhin' | {filt} iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex' && "
+    filt = script_filter(lang) and f"python3 '{HERE / 'script_filters.py'}' prepare {lang} | "
+    sh(f"cat '{src}/h2c.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex' && "
        f"flex -8 -o '{out}/h2c_lex.c' '{out}/h2c.lex' && gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -lfl")
     return c2h, h2c
 
@@ -105,7 +114,7 @@ def to_c(text, lang):
             return t   # underscores alone belong to native words (अगर_घोषित, म_लिखो)
         held.append(t); return f"QZXQ{len(held) - 1:07d}QXZQ"
     guarded = ASCII_RUN.sub(hold, text)
-    filt = f"python3 '{TRANSLIT}' | " if needs_translit(lang) else ""
+    filt = script_filter(lang)
     c = sh(f"{filt}{ROMENAGRI_CHAIN} | '{h2c}'", guarded.encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
     for a, b in REPAIRS:
         c = c.replace(a, b)

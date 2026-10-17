@@ -1,34 +1,68 @@
 %{
-/* urdu py2h.uhin */
+/* urdu py2h.uhin: generated from the urdu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("اگر");}
-else                 {printf("ورنہ");}
-while                {printf("جبتک");}
-do                   {printf("کرو");}
-for                  {printf("برائے");}
-break                {printf("توڑو");}
-continue             {printf("جاری");}
-switch               {printf("انتخاب");}
-case                 {printf("حالت");}
-default              {printf("طےشدہ");}
-return               {printf("واپس");}
-const                {printf("ثابت");}
-int                  {printf("صحیح");}
-float                {printf("اعشاری");}
-double               {printf("دوہرا");}
-char                 {printf("حرف");}
-void                 {printf("خالی");}
-void                 {printf("تابع");}
-class                {printf("جماعت");}
-new                  {printf("نیا");}
-public               {printf("عوامی");}
-private              {printf("نجی");}
-static               {printf("ساکن");}
-virtual              {printf("مجازی");}
-case                 {printf("جب");}
-struct               {printf("ساخت");}
-include              {printf("شامل");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+implements                  {printf("نافذ");}
+interface                   {printf("سطحرابطہ");}
+protected                   {printf("محفوظ");}
+abstract                    {printf("تجریدی");}
+continue                    {printf("جاری");}
+volatile                    {printf("متلون");}
+default                     {printf("طےشدہ");}
+extends                     {printf("توسیع");}
+finally                     {printf("آخرکار");}
+package                     {printf("بستہ");}
+private                     {printf("نجی");}
+Object                      {printf("شے");}
+String                      {printf("جملہ");}
+Thread                      {printf("دھاگہ");}
+assert                      {printf("أكد");}
+double                      {printf("دوہرا");}
+except                      {printf("استثنا");}
+global                      {printf("عام");}
+import                      {printf("درآمد");}
+lambda                      {printf("بےنام");}
+public                      {printf("عوامی");}
+return                      {printf("واپس");}
+static                      {printf("ساکن");}
+switch                      {printf("انتخاب");}
+False                       {printf("جھوٹ");}
+break                       {printf("توڑو");}
+catch                       {printf("پکڑو");}
+class                       {printf("جماعت");}
+const                       {printf("ثابت");}
+float                       {printf("اعشاری");}
+raise                       {printf("اٹھاؤ");}
+sleep                       {printf("نوم");}
+throw                       {printf("پھینکو");}
+while                       {printf("جب");}
+write                       {printf("اكتب");}
+yield                       {printf("دو");}
+True                        {printf("سچ");}
+case                        {printf("حالت");}
+char                        {printf("حرف");}
+elif                        {printf("وگرنہ_اگر");}
+else                        {printf("ورنہ");}
+from                        {printf("سے");}
+goto                        {printf("جاؤ");}
+main                        {printf("مین");}
+read                        {printf("اقرأ");}
+this                        {printf("یہ");}
+void                        {printf("خالی");}
+and                         {printf("اور");}
+for                         {printf("برائے");}
+int                         {printf("صحیح");}
+new                         {printf("نیا");}
+not                         {printf("نہیں");}
+try                         {printf("کوشش");}
+as                          {printf("بطور");}
+do                          {printf("کرو");}
+if                          {printf("اگر");}
+in                          {printf("میں");}
+or                          {printf("یا");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

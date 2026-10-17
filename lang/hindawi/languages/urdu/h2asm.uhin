@@ -1,34 +1,30 @@
 %{
-/* urdu h2asm.uhin */
+/* urdu h2asm.uhin: generated from the urdu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-اگر                  {printf("if");}
-ورنہ                 {printf("else");}
-جبتک                 {printf("while");}
-کرو                  {printf("do");}
-برائے                {printf("for");}
-توڑو                 {printf("break");}
-جاری                 {printf("continue");}
-انتخاب               {printf("switch");}
-حالت                 {printf("case");}
-طےشدہ                {printf("default");}
-واپس                 {printf("return");}
-ثابت                 {printf("const");}
-صحیح                 {printf("int");}
-اعشاری               {printf("float");}
-دوہرا                {printf("double");}
-حرف                  {printf("char");}
-خالی                 {printf("void");}
-تابع                 {printf("void");}
-جماعت                {printf("class");}
-نیا                  {printf("new");}
-عوامی                {printf("public");}
-نجی                  {printf("private");}
-ساکن                 {printf("static");}
-مجازی                {printf("virtual");}
-جب                   {printf("case");}
-ساخت                 {printf("struct");}
-شامل                 {printf("include");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+اختتام                      {printf("END");}
+اشارہ                       {printf("PTR");}
+افترض                       {printf("ASSUME");}
+خارجی                       {printf("EXTERN");}
+طریقہ                       {printf("PROC");}
+عوامی                       {printf("PUBLIC");}
+بلاؤ                        {printf("CALL");}
+تالا                        {printf("LOCK");}
+شامل                        {printf("INCLUDE");}
+صحیح                        {printf("INT");}
+نہیں                        {printf("NOT");}
+ورنہ                        {printf("ELSE");}
+اور                         {printf("AND");}
+اگر                         {printf("IF");}
+عام                         {printf("global");}
+قسم                         {printf("TYPE");}
+میں                         {printf("IN");}
+جب                          {printf("WHILE");}
+یا                          {printf("OR");}
+یہ                          {printf("THIS");}
+
 %%

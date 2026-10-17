@@ -1,77 +1,77 @@
-language	compilation path (sample ingested by BURP, built with its own Makefile through hindawicc)
-arabic	runs-42
-aramaic	runs-42
-assamese	runs-42
-awadhi	runs-42
-balinese	runs-42
-balochi	fails
-batak	runs-42
-bengali	fails
-bhojpuri	runs-42
-bodo	fails
-buginese	runs-42
-bulgarian	runs-42
-burmese	fails
-chhattisgarhi	fails
-chinese	fails
-dari	fails
-dogri	fails
-dzongkha	fails
-gujarati	runs-42
-hausa_ajami	fails
-hebrew	fails
-hindi	runs-42
-japanese	fails
-javanese	fails
-kannada	runs-42
-kashmiri	fails
-kashmiri_dev	fails
-khmer	fails
-konkani	fails
-korean	fails
-kurdish_sorani	fails
-lao	fails
-lepcha	runs-42
-limbu	runs-42
-magahi	fails
-maithili	fails
-malay_jawi	fails
-malayalam	fails
-mandaic	fails
-manipuri_beng	fails
-marathi	runs-42
-marwari	fails
-nabataean	fails
-nepali	runs-42
-newari	fails
-odia	runs-42
-pali	runs-42
-pashto	runs-42
-persian	runs-42
-phoenician	fails
-prakrit	runs-42
-punjabi	runs-42
-punjabi_shahmukhi	fails
-rajasthani	fails
-russian	fails
-samaritan	fails
-sanskrit	runs-42
-santali	runs-42
-saraiki	fails
-serbian	runs-42
-shan	runs-42
-sindhi	fails
-sindhi_dev	fails
-sinhala	fails
-sundanese	runs-42
-syriac	fails
-tagalog	runs-42
-tamil	fails
-telugu	runs-42
-thai	fails
-tibetan	fails
-tulu	fails
-ukrainian	fails
-urdu	runs-42
-uyghur	fails
-vietnamese	fails
+language	script	filter	result
+arabic	ARABIC	fltr_ur_hi	runs, same output
+aramaic	ARABIC	fltr_ur_hi	runs, same output
+assamese	BENGALI	fltr_bengali_hi	runs, same output
+awadhi	DEVANAGARI	none needed	runs, same output
+balinese	BALINESE	none yet	no filter yet
+balochi	ARABIC	fltr_ur_hi	runs, same output
+batak	BATAK	none yet	no filter yet
+bengali	BENGALI	fltr_bengali_hi	runs, same output
+bhojpuri	DEVANAGARI	none needed	runs, same output
+bodo	DEVANAGARI	none needed	runs, same output
+buginese	BUGINESE	none yet	no filter yet
+bulgarian	CYRILLIC	none yet	no filter yet
+burmese	MYANMAR	none yet	no filter yet
+chhattisgarhi	DEVANAGARI	none needed	runs, same output
+chinese	CJK	none yet	no filter yet
+dari	ARABIC	fltr_ur_hi	runs, same output
+dogri	DEVANAGARI	none needed	runs, same output
+dzongkha	TIBETAN	none yet	no filter yet
+gujarati	GUJARATI	fltr_gujarati_hi	runs, same output
+hausa_ajami	ARABIC	fltr_ur_hi	runs, same output
+hebrew	ARABIC	fltr_ur_hi	does not compile
+hindi	DEVANAGARI	none needed	runs, same output
+japanese	HIRAGANA	none yet	no filter yet
+javanese	JAVANESE	none yet	no filter yet
+kannada	KANNADA	fltr_kannada_hi	runs, same output
+kashmiri	ARABIC	fltr_ur_hi	runs, same output
+kashmiri_dev	DEVANAGARI	none needed	runs, same output
+khmer	KHMER	none yet	no filter yet
+konkani	DEVANAGARI	none needed	runs, same output
+korean	HANGUL	none yet	no filter yet
+kurdish_sorani	ARABIC	fltr_ur_hi	runs, same output
+lao	LAO	none yet	no filter yet
+lepcha	LEPCHA	none yet	no filter yet
+limbu	LIMBU	none yet	no filter yet
+magahi	DEVANAGARI	none needed	runs, same output
+maithili	DEVANAGARI	none needed	runs, same output
+malay_jawi	ARABIC	fltr_ur_hi	runs, same output
+malayalam	MALAYALAM	fltr_malayalam_hi	does not compile
+mandaic	ARABIC	fltr_ur_hi	runs, same output
+manipuri_beng	BENGALI	fltr_bengali_hi	runs, same output
+marathi	DEVANAGARI	none needed	runs, same output
+marwari	DEVANAGARI	none needed	runs, same output
+nabataean	ARABIC	fltr_ur_hi	runs, same output
+nepali	DEVANAGARI	none needed	runs, same output
+newari	DEVANAGARI	none needed	runs, same output
+odia	ORIYA	fltr_oriya_hi	runs, same output
+pali	DEVANAGARI	none needed	runs, same output
+pashto	ARABIC	fltr_ur_hi	runs, same output
+persian	ARABIC	fltr_ur_hi	runs, same output
+phoenician	ARABIC	fltr_ur_hi	does not compile
+prakrit	DEVANAGARI	none needed	runs, same output
+punjabi	GURMUKHI	fltr_gurmukhi_hi	runs, same output
+punjabi_shahmukhi	ARABIC	fltr_ur_hi	runs, same output
+rajasthani	DEVANAGARI	none needed	runs, same output
+russian	CYRILLIC	none yet	no filter yet
+samaritan	ARABIC	fltr_ur_hi	runs, same output
+sanskrit	DEVANAGARI	none needed	runs, same output
+santali	OL	none yet	no filter yet
+saraiki	ARABIC	fltr_ur_hi	runs, same output
+serbian	CYRILLIC	none yet	no filter yet
+shan	MYANMAR	none yet	no filter yet
+sindhi	ARABIC	fltr_ur_hi	runs, same output
+sindhi_dev	DEVANAGARI	none needed	runs, same output
+sinhala	SINHALA	none yet	no filter yet
+sundanese	SUNDANESE	none yet	no filter yet
+syriac	ARABIC	fltr_ur_hi	does not compile
+tagalog	DEVANAGARI	none needed	does not compile
+tamil	TAMIL	fltr_tamil_hi	runs, same output
+telugu	TELUGU	fltr_te_hi	runs, same output
+thai	THAI	none yet	no filter yet
+tibetan	TIBETAN	none yet	no filter yet
+tulu	KANNADA	fltr_kannada_hi	runs, same output
+ukrainian	CYRILLIC	none yet	no filter yet
+urdu	ARABIC	fltr_ur_hi	runs, same output
+uyghur	ARABIC	fltr_ur_hi	runs, same output
+vietnamese	LATIN	none yet	no filter yet

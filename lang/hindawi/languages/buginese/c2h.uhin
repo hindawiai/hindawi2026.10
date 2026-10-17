@@ -1,36 +1,30 @@
 %{
-/* buginese c2h */
+/* buginese c2h.uhin: generated from the buginese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-yadi  {printf("KW_IF");}
-anyathaa  {printf("KW_ELSE");}
-naucheedyadi  {printf("KW_ELIF");}
-yaavat  {printf("KW_WHILE");}
-kuru  {printf("KW_DO");}
-prati  {printf("KW_FOR");}
-bha_nga  {printf("KW_BREAK");}
-anuvarta  {printf("KW_CONTINUE");}
-vikalpa  {printf("KW_SWITCH");}
-pak_sa  {printf("KW_CASE");}
-svabhaava  {printf("KW_DEFAULT");}
-pratyaagama  {printf("KW_RETURN");}
-gaccha  {printf("KW_GOTO");}
-cara  {printf("KW_VAR");}
-dhruva  {printf("KW_CONST");}
-astu  {printf("KW_LET");}
-puur_naa_nka  {printf("KW_INT");}
-bhinna  {printf("KW_FLOAT");}
-dviguu_na  {printf("KW_DOUBLE");}
-var_na  {printf("KW_CHAR");}
-taarkika  {printf("KW_BOOL");}
-padaavalii  {printf("KW_STRING");}
-shuunya  {printf("KW_VOID");}
-satya  {printf("KW_TRUE");}
-asatya  {printf("KW_FALSE");}
-rikta  {printf("KW_NULL");}
-kriyaa  {printf("KW_FUNC");}
-vidhi  {printf("KW_PROC");}
-aahvaana  {printf("KW_CALL");}
-praacala  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("rak_sita");}
+register                    {printf("pa_njikaa");}
+volatile                    {printf("ca_ncala");}
+double                      {printf("dviguu_na");}
+inline                      {printf("anta_hstha");}
+return                      {printf("ᨀᨘᨒ");}
+signal                      {printf("sa_nkeeta");}
+sizeof                      {printf("parimaa_na");}
+struct                      {printf("sa_nracanaa");}
+\#else                      {printf("#ᨀᨘᨁ");}
+break                       {printf("bha_nga");}
+union                       {printf("sa_ngha");}
+while                       {printf("ᨀᨛ");}
+case                        {printf("pak_sa");}
+char                        {printf("var_na");}
+else                        {printf("ᨀᨘᨁ");}
+enum                        {printf("ga_nanaa");}
+\#if                        {printf("#ᨀᨘ");}
+int                         {printf("puur_naa_nka");}
+if                          {printf("ᨀᨘ");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

@@ -1,33 +1,13 @@
 %{
-/* tamil logo2h.uhin */
+/* tamil logo2h.uhin: generated from the tamil lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("எனில்");}
-else                 {printf("இல்லையெனில்");}
-while                {printf("வரை");}
-do                   {printf("செய்");}
-for                  {printf("க்கு");}
-break                {printf("நிறுத்து");}
-continue             {printf("தொடர்");}
-switch               {printf("தேர்வு");}
-case                 {printf("நிலை");}
-default              {printf("இயல்பு");}
-return               {printf("திரும்பு");}
-const                {printf("மாறிலி");}
-int                  {printf("முழு");}
-float                {printf("தசம");}
-double               {printf("இரட்டை");}
-char                 {printf("எழுத்து");}
-void                 {printf("வெறுமை");}
-void                 {printf("செயல்");}
-class                {printf("வகுப்பு");}
-new                  {printf("புதிய");}
-public               {printf("பொது");}
-private              {printf("தனிப்பட்ட");}
-static               {printf("நிலையான");}
-virtual              {printf("மெய்நிகர்");}
-case                 {printf("போது");}
-struct               {printf("கட்டமைப்பு");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+forward                     {printf("அ஗்ரப்ரஸார");}
+end                         {printf("முடி");}
+if                          {printf("எனில்");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

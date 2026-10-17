@@ -1,33 +1,37 @@
 %{
-/* gujarati b2h.uhin */
+/* gujarati b2h.uhin: generated from the gujarati lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("જો");}
-else                 {printf("નહીંતર");}
-while                {printf("જ્યાંસુધી");}
-do                   {printf("કરો");}
-for                  {printf("માટે");}
-break                {printf("તોડો");}
-continue             {printf("ચાલુ");}
-switch               {printf("પસંદગી");}
-case                 {printf("સ્થિતિ");}
-default              {printf("મૂળભૂત");}
-return               {printf("પાછા");}
-const                {printf("અચલ");}
-int                  {printf("પૂર્ણાંક");}
-float                {printf("દશાંશ");}
-double               {printf("દ્વિગુણ");}
-char                 {printf("અક્ષર");}
-void                 {printf("શૂન્ય");}
-void                 {printf("વિધેય");}
-class                {printf("વર્ગ");}
-new                  {printf("નવું");}
-public               {printf("જાહેર");}
-private              {printf("ખાનગી");}
-static               {printf("સ્થિર");}
-virtual              {printf("આભાસી");}
-case                 {printf("જ્યારે");}
-struct               {printf("સંરચના");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+RETURN                      {printf("પાછા");}
+SHARED                      {printf("સહભાજિત");}
+STATIC                      {printf("સ્થિર");}
+STRING                      {printf("શબ્દમાળા");}
+return                      {printf("પાછા");}
+CONST                       {printf("અચલ");}
+TIMER                       {printf("કાલયન્ત્ર");}
+WHILE                       {printf("જ્યારે");}
+while                       {printf("જ્યારે");}
+CALL                        {printf("બોલાવો");}
+ELSE                        {printf("નહીંતર");}
+GOTO                        {printf("જાઓ");}
+goto                        {printf("જાઓ");}
+AND                         {printf("અને");}
+END                         {printf("અંત");}
+FOR                         {printf("માટે");}
+INT                         {printf("પૂર્ણાંક");}
+LET                         {printf("ધારો");}
+NOT                         {printf("નહીં");}
+end                         {printf("અંત");}
+for                         {printf("માટે");}
+let                         {printf("ધારો");}
+AS                          {printf("ઇવ");}
+DO                          {printf("કરો");}
+IF                          {printf("જો");}
+OR                          {printf("અથવા");}
+if                          {printf("જો");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

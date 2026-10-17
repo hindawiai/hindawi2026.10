@@ -1,11 +1,31 @@
 %{
-/* dzongkha h2c */
+/* dzongkha h2c.uhin: generated from the dzongkha lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-གལ་ཏེ  {printf("KW_IF");}
-མིན་ན  {printf("KW_ELSE");}
-སྐབས  {printf("KW_WHILE");}
-དོན  {printf("KW_FOR");}
-ཕྱིར  {printf("KW_RETURN");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+sa_nracanaa                 {printf("struct");}
+anta_hstha                  {printf("inline");}
+parimaa_na                  {printf("sizeof");}
+dviguu_na                   {printf("double");}
+pa_njikaa                   {printf("register");}
+sa_nkeeta                   {printf("signal");}
+\#གལ་སྲིད                   {printf("#if");}
+ca_ncala                    {printf("volatile");}
+ga_nanaa                    {printf("enum");}
+rak_sita                    {printf("protected");}
+\#དེ་མིན                    {printf("#else");}
+bha_nga                     {printf("break");}
+sa_ngha                     {printf("union");}
+གལ་སྲིད                     {printf("if");}
+pak_sa                      {printf("case");}
+var_na                      {printf("char");}
+དེ་མིན                      {printf("else");}
+དོན་ལུ                      {printf("for");}
+སྐབས                        {printf("while");}
+ཧྲིལ                        {printf("int");}
+ལོག                         {printf("return");}
+
 %%

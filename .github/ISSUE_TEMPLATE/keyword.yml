@@ -7,6 +7,9 @@ body:
     id: language
     attributes: {label: Language, description: "As the cells name it, e.g. sindhi, punjabi_shahmukhi, urdu"}
     validations: {required: true}
+  - type: dropdown
+    id: paradigm
+    attributes: {label: Paradigm, options: [C (Guru), C++ (Shraeni), assembly (Yantra), Java (Kritrima), BASIC (Praatha), Python (Soochee), yacc (Wyaaka), lex (Shabda), LOGO and robots (Robot), "hardware (VHDL, Verilog)", IoT and Arduino, robotics, AI and numerics]}
   - type: input
     id: construct
     attributes: {label: Construct, description: "The construct id, e.g. KW_IF"}

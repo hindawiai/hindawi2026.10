@@ -1,12 +1,11 @@
 %{
-/* korean h2logo */
+/* korean h2logo.uhin: generated from the korean lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-만약  {printf("if");}
-아니면  {printf("else");}
-동안  {printf("while");}
-위해  {printf("for");}
-반환  {printf("return");}
-정수  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+만약                          {printf("if");}
+
 %%

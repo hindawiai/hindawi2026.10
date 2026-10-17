@@ -1,33 +1,69 @@
 %{
-/* kannada h2py.uhin */
+/* kannada h2py.uhin: generated from the kannada lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-ಆದರೆ                 {printf("if");}
-ಇಲ್ಲದಿದ್ದರೆ          {printf("else");}
-ತನಕ                  {printf("while");}
-ಮಾಡು                 {printf("do");}
-ಗಾಗಿ                 {printf("for");}
-ನಿಲ್ಲಿಸು             {printf("break");}
-ಮುಂದುವರಿ             {printf("continue");}
-ಆಯ್ಕೆ                {printf("switch");}
-ಸ್ಥಿತಿ               {printf("case");}
-ಪೂರ್ವನಿಯೋಜಿತ         {printf("default");}
-ಹಿಂತಿರುಗಿಸು          {printf("return");}
-ಸ್ಥಿರಾಂಕ             {printf("const");}
-ಪೂರ್ಣಾಂಕ             {printf("int");}
-ದಶಮಾಂಶ               {printf("float");}
-ದ್ವಿಗುಣ              {printf("double");}
-ಅಕ್ಷರ                {printf("char");}
-ಶೂನ್ಯ                {printf("void");}
-ಕಾರ್ಯ                {printf("void");}
-ವರ್ಗ                 {printf("class");}
-ಹೊಸ                  {printf("new");}
-ಸಾರ್ವಜನಿಕ            {printf("public");}
-ಖಾಸಗಿ                {printf("private");}
-ಸ್ಥಿರ                {printf("static");}
-ವಾಸ್ತವಿಕ             {printf("virtual");}
-ಯಾವಾಗ                {printf("case");}
-ರಚನೆ                 {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+ಪೂರ್ವನಿಯೋಜಿತ                {printf("default");}
+ಇಲ್ಲದಿದ್ದರೆ                 {printf("else");}
+ಪ್ರಯತ್ನಿಸು                  {printf("try");}
+ಪ್ರತಿಜ್ಞಾ                   {printf("assert");}
+ವಿಸ್ತರಿಸು                   {printf("extends");}
+ಸಂಪರ್ಕಮುಖ                   {printf("interface");}
+ಸಾರ್ವಜನಿಕ                   {printf("public");}
+ಹಿಂತಿರುಗಿ                   {printf("return");}
+ಅಥವಾಆದರೆ                    {printf("elif");}
+ಅನುಷ್ಠಾನ                    {printf("implements");}
+ನಿಲ್ಲಿಸು                    {printf("break");}
+ಪೂರ್ಣಾಂಕ                    {printf("int");}
+ಮುಂದುವರಿ                    {printf("continue");}
+ಸಂರಕ್ಷಿತ                    {printf("protected");}
+ಸುಷುಪ್ತಿ                    {printf("sleep");}
+ಸ್ಥಿರಾಂಕ                    {printf("const");}
+ದ್ವಿಗುಣ                     {printf("double");}
+ವೈಶ್ವಿಕ                     {printf("global");}
+ಅನಾಮಿಕ                      {printf("lambda");}
+ಅಮೂರ್ತ                      {printf("abstract");}
+ಅಸ್ಥಿರ                      {printf("volatile");}
+ಕೊನೆಗೆ                      {printf("finally");}
+ದಶಮಾಂಶ                      {printf("float");}
+ಪದಪುಂಜ                      {printf("String");}
+ಪೊಟ್ಟಣ                      {printf("package");}
+ಸುಳ್ಳು                      {printf("False");}
+ಸ್ಥಿತಿ                      {printf("case");}
+ಅಕ್ಷರ                       {printf("char");}
+ಅಪವಾದ                       {printf("except");}
+ಆಯ್ಕೆ                       {printf("switch");}
+ಎತ್ತು                       {printf("raise");}
+ಖಾಸಗಿ                       {printf("private");}
+ಮತ್ತು                       {printf("and");}
+ಮುಖ್ಯ                       {printf("main");}
+ವಸ್ತು                       {printf("Object");}
+ಶೂನ್ಯ                       {printf("void");}
+ಸ್ಥಿರ                       {printf("static");}
+ಅಥವಾ                        {printf("or");}
+ಅಲ್ಲ                        {printf("not");}
+ಆದರೆ                        {printf("if");}
+ಆಮದು                        {printf("import");}
+ಒಳಗೆ                        {printf("in");}
+ಗಾಗಿ                        {printf("for");}
+ನೀಡು                        {printf("yield");}
+ಮಾಡು                        {printf("do");}
+ವರ್ಗ                        {printf("class");}
+ಹಿಡಿ                        {printf("catch");}
+ಹೋಗು                        {printf("goto");}
+ಇದು                         {printf("this");}
+ಎಳೆ                         {printf("Thread");}
+ಎಸೆ                         {printf("throw");}
+ನಿಜ                         {printf("True");}
+ಲಿಖ                         {printf("write");}
+ಹೊಸ                         {printf("new");}
+ಆಗ                          {printf("while");}
+ಇವ                          {printf("as");}
+ತಃ                          {printf("from");}
+ಪಠ                          {printf("read");}
+ಪರ                          {printf("super");}
+
 %%

@@ -1,9 +1,13 @@
 %{
-/* aramaic logo2h.uhin */
+/* aramaic logo2h.uhin: generated from the aramaic lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("𐡄𐡍");}
-do                   {printf("𐡏𐡁𐡃");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+forward                     {printf("أمامي");}
+end                         {printf("𐡎𐡅𐡐");}
+if                          {printf("𐡄𐡍");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

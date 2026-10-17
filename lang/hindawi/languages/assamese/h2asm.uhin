@@ -1,15 +1,28 @@
 %{
-/* assamese h2asm.uhin */
+/* assamese h2asm.uhin: generated from the assamese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-যদি                  {printf("if");}
-অন্যথা               {printf("else");}
-যেতিয়ালৈ            {printf("while");}
-কৰা                  {printf("do");}
-বাবে                 {printf("for");}
-ঘূৰাই                {printf("return");}
-কাৰ্য                {printf("void");}
-শ্ৰেণী               {printf("class");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+অধ্য঵স্যতি                  {printf("ASSUME");}
+অন্তর্ভা঵                   {printf("INCLUDE");}
+পূর্ণাঙ্ক                   {printf("INT");}
+যেতিয়ালৈ                   {printf("WHILE");}
+সার্঵জনিক                   {printf("PUBLIC");}
+নির্দেশক                    {printf("PTR");}
+অন্যথা                      {printf("ELSE");}
+আহ্঵ান                      {printf("CALL");}
+প্রকার                      {printf("TYPE");}
+অন্তঃ                       {printf("IN");}
+বাহ্য                       {printf("EXTERN");}
+এতত্                        {printf("THIS");}
+তালক                        {printf("LOCK");}
+নহয়                        {printf("NOT");}
+আৰু                         {printf("AND");}
+যদি                         {printf("IF");}
+শেষ                         {printf("END");}
+বা                          {printf("OR");}
+
 %%

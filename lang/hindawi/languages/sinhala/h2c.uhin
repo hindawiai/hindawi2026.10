@@ -1,11 +1,31 @@
 %{
-/* sinhala h2c */
+/* sinhala h2c.uhin: generated from the sinhala lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-නම්  {printf("KW_IF");}
-නැත්නම්  {printf("KW_ELSE");}
-අතර  {printf("KW_WHILE");}
-සඳහා  {printf("KW_FOR");}
-ආපසු  {printf("KW_RETURN");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+පූර්ණ_සංඛ්‍යා               {printf("int");}
+sa_nracanaa                 {printf("struct");}
+anta_hstha                  {printf("inline");}
+parimaa_na                  {printf("sizeof");}
+dviguu_na                   {printf("double");}
+pa_njikaa                   {printf("register");}
+sa_nkeeta                   {printf("signal");}
+\#නැතහොත්                   {printf("#else");}
+ca_ncala                    {printf("volatile");}
+ga_nanaa                    {printf("enum");}
+rak_sita                    {printf("protected");}
+bha_nga                     {printf("break");}
+sa_ngha                     {printf("union");}
+නැතහොත්                     {printf("else");}
+pak_sa                      {printf("case");}
+var_na                      {printf("char");}
+අතරතුර                      {printf("while");}
+\#නම්                       {printf("#if");}
+ආපසු                        {printf("return");}
+සඳහා                        {printf("for");}
+නම්                         {printf("if");}
+
 %%

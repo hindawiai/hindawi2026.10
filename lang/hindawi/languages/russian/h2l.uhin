@@ -1,12 +1,19 @@
 %{
-/* russian h2l */
+/* russian h2l.uhin: generated from the russian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-если  {printf("if");}
-иначе  {printf("else");}
-пока  {printf("while");}
-для  {printf("for");}
-вернуть  {printf("return");}
-целое  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+основной                    {printf("main");}
+вернуть                     {printf("return");}
+\#иначе                     {printf("#else");}
+\#если                      {printf("#if");}
+иначе                       {printf("else");}
+целое                       {printf("int");}
+если                        {printf("if");}
+пока                        {printf("while");}
+для                         {printf("for");}
+
 %%

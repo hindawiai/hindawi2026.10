@@ -1,36 +1,63 @@
 %{
-/* manipuri_beng cpp2h */
+/* manipuri_beng cpp2h.uhin: generated from the manipuri_beng lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-যদি  {printf("KW_IF");}
-অন্যথা  {printf("KW_ELSE");}
-নোচেদ্যদি  {printf("KW_ELIF");}
-যা঵ত্  {printf("KW_WHILE");}
-কুরু  {printf("KW_DO");}
-প্রতি  {printf("KW_FOR");}
-ভঙ্গ  {printf("KW_BREAK");}
-অনু঵র্ত  {printf("KW_CONTINUE");}
-঵িকল্প  {printf("KW_SWITCH");}
-পক্ষ  {printf("KW_CASE");}
-স্঵ভা঵  {printf("KW_DEFAULT");}
-প্রত্যাগম  {printf("KW_RETURN");}
-গচ্ছ  {printf("KW_GOTO");}
-চর  {printf("KW_VAR");}
-ধ্রু঵  {printf("KW_CONST");}
-অস্তু  {printf("KW_LET");}
-পূর্ণাঙ্ক  {printf("KW_INT");}
-ভিন্ন  {printf("KW_FLOAT");}
-দ্঵িগুণ  {printf("KW_DOUBLE");}
-঵র্ণ  {printf("KW_CHAR");}
-তার্কিক  {printf("KW_BOOL");}
-পদা঵লী  {printf("KW_STRING");}
-শূন্য  {printf("KW_VOID");}
-সত্য  {printf("KW_TRUE");}
-অসত্য  {printf("KW_FALSE");}
-রিক্ত  {printf("KW_NULL");}
-ক্রিযা  {printf("KW_FUNC");}
-঵িধি  {printf("KW_PROC");}
-আহ্঵ান  {printf("KW_CALL");}
-প্রাচল  {printf("KW_PARAM");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+namespace                   {printf("নামাকাশ");}
+protected                   {printf("রক্ষিত");}
+\#include                   {printf("#অন্তর্ভা঵");}
+continue                    {printf("অনু঵র্ত");}
+register                    {printf("পঞ্জিকা");}
+volatile                    {printf("চঞ্চল");}
+default                     {printf("স্঵ভা঵");}
+private                     {printf("গুপ্ত");}
+typedef                     {printf("প্রকারনির্দেশ");}
+virtual                     {printf("আভাস");}
+assert                      {printf("প্রতিজ্ঞা");}
+double                      {printf("দ্঵িগুণ");}
+extern                      {printf("বাহ্য");}
+inline                      {printf("অন্তঃস্থ");}
+public                      {printf("সার্঵জনিক");}
+return                      {printf("প্রত্যাগম");}
+signal                      {printf("সঙ্কেত");}
+sizeof                      {printf("পরিমাণ");}
+static                      {printf("স্থির");}
+struct                      {printf("সংরচনা");}
+\#elif                      {printf("#নোচেদ্যদি");}
+\#else                      {printf("#অন্যথা");}
+break                       {printf("ভঙ্গ");}
+catch                       {printf("গৃহাণ");}
+const                       {printf("ধ্রু঵");}
+false                       {printf("অসত্য");}
+float                       {printf("ভিন্ন");}
+raise                       {printf("উত্থাপয");}
+sleep                       {printf("সুষুপ্তি");}
+throw                       {printf("ক্ষিপ");}
+union                       {printf("সঙ্ঘ");}
+while                       {printf("যা঵ত্");}
+write                       {printf("লিখ");}
+NULL                        {printf("রিক্ত");}
+bool                        {printf("তার্কিক");}
+case                        {printf("পক্ষ");}
+else                        {printf("অন্যথা");}
+enum                        {printf("গণনা");}
+free                        {printf("মুক্ত");}
+goto                        {printf("গচ্ছ");}
+pipe                        {printf("প্রণাল");}
+read                        {printf("পঠ");}
+sync                        {printf("সমকাল");}
+this                        {printf("এতত্");}
+true                        {printf("সত্য");}
+void                        {printf("শূন্য");}
+\#if                        {printf("#যদি");}
+for                         {printf("প্রতি");}
+int                         {printf("পূর্ণাঙ্ক");}
+new                         {printf("নূতন");}
+try                         {printf("যত্ন");}
+do                          {printf("কুরু");}
+if                          {printf("যদি");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

@@ -1,34 +1,67 @@
 %{
-/* persian cpp2h.uhin */
+/* persian cpp2h.uhin: generated from the persian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("اگر");}
-else                 {printf("وگرنه");}
-while                {printf("تازمانیکه");}
-do                   {printf("انجامبده");}
-for                  {printf("برای");}
-break                {printf("بشکن");}
-continue             {printf("ادامه");}
-switch               {printf("انتخاب");}
-case                 {printf("حالت");}
-default              {printf("پیشفرض");}
-return               {printf("بازگرد");}
-const                {printf("ثابت");}
-int                  {printf("صحیح");}
-float                {printf("اعشاری");}
-double               {printf("دوگانه");}
-char                 {printf("نویسه");}
-void                 {printf("تهی");}
-void                 {printf("تابع");}
-class                {printf("رده");}
-new                  {printf("جدید");}
-public               {printf("عمومی");}
-private              {printf("خصوصی");}
-static               {printf("ایستا");}
-virtual              {printf("مجازی");}
-case                 {printf("هنگامیکه");}
-struct               {printf("ساختار");}
-include              {printf("شامل");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+namespace                   {printf("فضاینام");}
+protected                   {printf("محافظتشده");}
+\#include                   {printf("#شامل");}
+continue                    {printf("ادامه");}
+register                    {printf("ثبات");}
+volatile                    {printf("فرار");}
+default                     {printf("پیشفرض");}
+private                     {printf("خصوصی");}
+typedef                     {printf("تعریفنوع");}
+virtual                     {printf("مجازی");}
+assert                      {printf("أكد");}
+double                      {printf("دوگانه");}
+extern                      {printf("بیرونی");}
+inline                      {printf("درونخطی");}
+public                      {printf("عمومی");}
+return                      {printf("بازگشت");}
+signal                      {printf("سیگنال");}
+sizeof                      {printf("اندازه");}
+static                      {printf("ایستا");}
+struct                      {printf("ساختار");}
+switch                      {printf("انتخاب");}
+\#elif                      {printf("#وگرنهاگر");}
+\#else                      {printf("#وگرنه");}
+break                       {printf("بشکن");}
+catch                       {printf("بگیر");}
+class                       {printf("رده");}
+const                       {printf("ثابت");}
+false                       {printf("نادرست");}
+float                       {printf("اعشاری");}
+raise                       {printf("بالاببر");}
+sleep                       {printf("نوم");}
+throw                       {printf("پرتابکن");}
+union                       {printf("اجتماع");}
+while                       {printf("وقتی");}
+write                       {printf("اكتب");}
+NULL                        {printf("پوچ");}
+bool                        {printf("منطقی");}
+case                        {printf("حالت");}
+char                        {printf("نویسه");}
+else                        {printf("وگرنه");}
+enum                        {printf("شمارش");}
+free                        {printf("آزاد");}
+goto                        {printf("برو");}
+main                        {printf("اصلی");}
+pipe                        {printf("أنبوب");}
+read                        {printf("اقرأ");}
+sync                        {printf("همگام");}
+this                        {printf("این");}
+true                        {printf("درست");}
+void                        {printf("تهی");}
+\#if                        {printf("#اگر");}
+for                         {printf("برای");}
+int                         {printf("صحیح");}
+new                         {printf("جدید");}
+try                         {printf("تلاش");}
+do                          {printf("انجامبده");}
+if                          {printf("اگر");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

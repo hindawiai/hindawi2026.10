@@ -1,11 +1,30 @@
 %{
-/* prakrit h2asm.uhin */
+/* prakrit h2asm.uhin: generated from the prakrit lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-जइ                   {printf("if");}
-अण्णहा               {printf("else");}
-जाव                  {printf("while");}
-करेहि                {printf("do");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+अध्यवस्यति                  {printf("ASSUME");}
+अन्तर्भाव                   {printf("INCLUDE");}
+पूर्णाङ्क                   {printf("INT");}
+सार्वजनिक                   {printf("PUBLIC");}
+निर्देशक                    {printf("PTR");}
+वैश्विक                     {printf("global");}
+अण्णहा                      {printf("ELSE");}
+आह्वान                      {printf("CALL");}
+प्रकार                      {printf("TYPE");}
+अन्तः                       {printf("IN");}
+बाह्य                       {printf("EXTERN");}
+अन्त                        {printf("END");}
+एतत्                        {printf("THIS");}
+तालक                        {printf("LOCK");}
+विधि                        {printf("PROC");}
+जाव                         {printf("WHILE");}
+जइ                          {printf("IF");}
+वा                          {printf("OR");}
+ण                           {printf("NOT");}
+य                           {printf("AND");}
+
 %%

@@ -1,33 +1,54 @@
 %{
-/* kannada l2h.uhin */
+/* kannada l2h.uhin: generated from the kannada lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("ಆದರೆ");}
-else                 {printf("ಇಲ್ಲದಿದ್ದರೆ");}
-while                {printf("ತನಕ");}
-do                   {printf("ಮಾಡು");}
-for                  {printf("ಗಾಗಿ");}
-break                {printf("ನಿಲ್ಲಿಸು");}
-continue             {printf("ಮುಂದುವರಿ");}
-switch               {printf("ಆಯ್ಕೆ");}
-case                 {printf("ಸ್ಥಿತಿ");}
-default              {printf("ಪೂರ್ವನಿಯೋಜಿತ");}
-return               {printf("ಹಿಂತಿರುಗಿಸು");}
-const                {printf("ಸ್ಥಿರಾಂಕ");}
-int                  {printf("ಪೂರ್ಣಾಂಕ");}
-float                {printf("ದಶಮಾಂಶ");}
-double               {printf("ದ್ವಿಗುಣ");}
-char                 {printf("ಅಕ್ಷರ");}
-void                 {printf("ಶೂನ್ಯ");}
-void                 {printf("ಕಾರ್ಯ");}
-class                {printf("ವರ್ಗ");}
-new                  {printf("ಹೊಸ");}
-public               {printf("ಸಾರ್ವಜನಿಕ");}
-private              {printf("ಖಾಸಗಿ");}
-static               {printf("ಸ್ಥಿರ");}
-virtual              {printf("ವಾಸ್ತವಿಕ");}
-case                 {printf("ಯಾವಾಗ");}
-struct               {printf("ರಚನೆ");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("ಸಂರಕ್ಷಿತ");}
+\#include                   {printf("#ಅನ್ತರ್ಭಾವ");}
+continue                    {printf("ಮುಂದುವರಿ");}
+register                    {printf("ನೋಂದಣಿ");}
+volatile                    {printf("ಅಸ್ಥಿರ");}
+default                     {printf("ಪೂರ್ವನಿಯೋಜಿತ");}
+private                     {printf("ಖಾಸಗಿ");}
+typedef                     {printf("ಪ್ರಕಾರವ್ಯಾಖ್ಯೆ");}
+virtual                     {printf("ವಾಸ್ತವಿಕ");}
+assert                      {printf("ಪ್ರತಿಜ್ಞಾ");}
+double                      {printf("ದ್ವಿಗುಣ");}
+extern                      {printf("ಬಾಹ್ಯ");}
+inline                      {printf("ಸಾಲೊಳಗೆ");}
+public                      {printf("ಸಾರ್ವಜನಿಕ");}
+return                      {printf("ಹಿಂತಿರುಗಿ");}
+signal                      {printf("ಸಂಕೇತ");}
+sizeof                      {printf("ಗಾತ್ರ");}
+static                      {printf("ಸ್ಥಿರ");}
+struct                      {printf("ರಚನೆ");}
+switch                      {printf("ಆಯ್ಕೆ");}
+\#elif                      {printf("#ಅಥವಾಆದರೆ");}
+\#else                      {printf("#ಇಲ್ಲದಿದ್ದರೆ");}
+break                       {printf("ನಿಲ್ಲಿಸು");}
+const                       {printf("ಸ್ಥಿರಾಂಕ");}
+float                       {printf("ದಶಮಾಂಶ");}
+raise                       {printf("ಎತ್ತು");}
+union                       {printf("ಒಕ್ಕೂಟ");}
+while                       {printf("ಆಗ");}
+write                       {printf("ಲಿಖ");}
+NULL                        {printf("ಖಾಲಿ");}
+case                        {printf("ಸ್ಥಿತಿ");}
+char                        {printf("ಅಕ್ಷರ");}
+else                        {printf("ಇಲ್ಲದಿದ್ದರೆ");}
+enum                        {printf("ಎಣಿಕೆ");}
+free                        {printf("ಬಿಡುಗಡೆ");}
+goto                        {printf("ಹೋಗು");}
+main                        {printf("ಮುಖ್ಯ");}
+read                        {printf("ಪಠ");}
+void                        {printf("ಶೂನ್ಯ");}
+\#if                        {printf("#ಆದರೆ");}
+for                         {printf("ಗಾಗಿ");}
+int                         {printf("ಪೂರ್ಣಾಂಕ");}
+do                          {printf("ಮಾಡು");}
+if                          {printf("ಆದರೆ");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

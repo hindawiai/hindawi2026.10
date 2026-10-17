@@ -1,56 +1,37 @@
 %{
-/* dzongkha java2h */
+/* dzongkha java2h.uhin: generated from the dzongkha lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-yadi  {printf("yadi");}
-anyathaa  {printf("anyathaa");}
-naucheedyadi  {printf("naucheedyadi");}
-yaavat  {printf("yaavat");}
-kuru  {printf("kuru");}
-prati  {printf("prati");}
-bha_nga  {printf("bha_nga");}
-anuvarta  {printf("anuvarta");}
-vikalpa  {printf("vikalpa");}
-pak_sa  {printf("pak_sa");}
-svabhaava  {printf("svabhaava");}
-pratyaagama  {printf("pratyaagama");}
-gaccha  {printf("gaccha");}
-cara  {printf("cara");}
-dhruva  {printf("dhruva");}
-astu  {printf("astu");}
-puur_naa_nka  {printf("puur_naa_nka");}
-bhinna  {printf("bhinna");}
-dviguu_na  {printf("dviguu_na");}
-var_na  {printf("var_na");}
-taarkika  {printf("taarkika");}
-padaavalii  {printf("padaavalii");}
-shuunya  {printf("shuunya");}
-satya  {printf("satya");}
-asatya  {printf("asatya");}
-rikta  {printf("rikta");}
-kriyaa  {printf("kriyaa");}
-vidhi  {printf("vidhi");}
-aahvaana  {printf("aahvaana");}
-praacala  {printf("praacala");}
-anaaman  {printf("anaaman");}
-daa  {printf("daa");}
-pratiik_sa  {printf("pratiik_sa");}
-asamakaala  {printf("asamakaala");}
-varga  {printf("varga");}
-vastu  {printf("vastu");}
-sandhi  {printf("sandhi");}
-vistr_ta  {printf("vistr_ta");}
-ni_spaadita  {printf("ni_spaadita");}
-nuutana  {printf("nuutana");}
-eetat  {printf("eetat");}
-para  {printf("para");}
-saarvajanika  {printf("saarvajanika");}
-gupta  {printf("gupta");}
-rak_sita  {printf("rak_sita");}
-sthira  {printf("sthira");}
-amuurta  {printf("amuurta");}
-aabhaasa  {printf("aabhaasa");}
-adhirauha  {printf("adhirauha");}
-meela  {printf("meela");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+implements                  {printf("ni_spaadita");}
+protected                   {printf("rak_sita");}
+register                    {printf("pa_njikaa");}
+volatile                    {printf("ca_ncala");}
+extends                     {printf("vistr_ta");}
+finally                     {printf("antata_h");}
+double                      {printf("dviguu_na");}
+inline                      {printf("anta_hstha");}
+return                      {printf("ལོག");}
+signal                      {printf("sa_nkeeta");}
+sizeof                      {printf("parimaa_na");}
+struct                      {printf("sa_nracanaa");}
+\#else                      {printf("#དེ་མིན");}
+break                       {printf("bha_nga");}
+catch                       {printf("gr_haa_na");}
+sleep                       {printf("su_supti");}
+throw                       {printf("k_sipa");}
+union                       {printf("sa_ngha");}
+while                       {printf("སྐབས");}
+case                        {printf("pak_sa");}
+char                        {printf("var_na");}
+else                        {printf("དེ་མིན");}
+enum                        {printf("ga_nanaa");}
+\#if                        {printf("#གལ་སྲིད");}
+for                         {printf("དོན་ལུ");}
+int                         {printf("ཧྲིལ");}
+if                          {printf("གལ་སྲིད");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

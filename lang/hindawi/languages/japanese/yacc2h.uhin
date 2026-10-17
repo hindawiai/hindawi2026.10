@@ -1,12 +1,19 @@
 %{
-/* japanese yacc2h */
+/* japanese yacc2h.uhin: generated from the japanese lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-もし  {printf("if");}
-否则  {printf("else");}
-ながら  {printf("while");}
-ために  {printf("for");}
-戻る  {printf("return");}
-整数  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+return                      {printf("戻る");}
+\#else                      {printf("#否则");}
+while                       {printf("ながら");}
+else                        {printf("否则");}
+main                        {printf("メインページ");}
+\#if                        {printf("#もし");}
+for                         {printf("ために");}
+int                         {printf("整数");}
+if                          {printf("もし");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

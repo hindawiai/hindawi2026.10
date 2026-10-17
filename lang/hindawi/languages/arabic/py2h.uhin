@@ -1,35 +1,69 @@
 %{
-/* arabic py2h.uhin */
+/* arabic py2h.uhin: generated from the arabic lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("إذا");}
-else                 {printf("وإلا");}
-while                {printf("طالما");}
-do                   {printf("افعل");}
-for                  {printf("لكل");}
-break                {printf("اكسر");}
-continue             {printf("استمر");}
-switch               {printf("بدل");}
-case                 {printf("حالة");}
-virtual              {printf("افتراضي");}
-return               {printf("أرجع");}
-const                {printf("ثابت");}
-int                  {printf("صحيح");}
-float                {printf("عائم");}
-double               {printf("مزدوج");}
-char                 {printf("حرف");}
-void                 {printf("فراغ");}
-void                 {printf("دالة");}
-class                {printf("صنف");}
-new                  {printf("جديد");}
-public               {printf("عام");}
-private              {printf("خاص");}
-static               {printf("ساكن");}
-case                 {printf("عندما");}
-struct               {printf("بنية");}
-include              {printf("ضمن");}
-scanf                {printf("اقرأ");}
-printf               {printf("اكتب");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+implements                  {printf("ينفذ");}
+interface                   {printf("واجهة");}
+protected                   {printf("محمي");}
+abstract                    {printf("مجرد");}
+continue                    {printf("استمر");}
+volatile                    {printf("متطاير");}
+default                     {printf("افتراضي");}
+extends                     {printf("يمتد");}
+finally                     {printf("أخيرا");}
+package                     {printf("حزمة");}
+private                     {printf("خاص");}
+Object                      {printf("كائن");}
+String                      {printf("نص");}
+Thread                      {printf("خيط");}
+assert                      {printf("أكد");}
+double                      {printf("مزدوج");}
+except                      {printf("استثناء");}
+global                      {printf("عام");}
+import                      {printf("استورد");}
+lambda                      {printf("مجهول");}
+public                      {printf("عام");}
+return                      {printf("إرجاع");}
+static                      {printf("ساكن");}
+switch                      {printf("بدل");}
+False                       {printf("خطأ");}
+break                       {printf("اكسر");}
+catch                       {printf("امسك");}
+class                       {printf("صنف");}
+const                       {printf("ثابت");}
+float                       {printf("عائم");}
+raise                       {printf("ارفع");}
+sleep                       {printf("نوم");}
+super                       {printf("أعلى");}
+throw                       {printf("ارم");}
+while                       {printf("بينما");}
+write                       {printf("اكتب");}
+yield                       {printf("أنتج");}
+True                        {printf("صحيح");}
+case                        {printf("حالة");}
+char                        {printf("حرف");}
+elif                        {printf("وإلاإذا");}
+else                        {printf("وإلا");}
+from                        {printf("من");}
+goto                        {printf("اذهب");}
+main                        {printf("الرئيسية");}
+read                        {printf("اقرأ");}
+this                        {printf("هذا");}
+void                        {printf("فراغ");}
+and                         {printf("و");}
+for                         {printf("لكل");}
+int                         {printf("صحيح");}
+new                         {printf("جديد");}
+not                         {printf("ليس");}
+try                         {printf("حاول");}
+as                          {printf("كـ");}
+do                          {printf("افعل");}
+if                          {printf("إذا");}
+in                          {printf("في");}
+or                          {printf("أو");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

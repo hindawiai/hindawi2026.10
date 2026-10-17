@@ -1,15 +1,13 @@
 %{
-/* hebrew h2logo.uhin */
+/* hebrew h2logo.uhin: generated from the hebrew lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-אם                   {printf("if");}
-אחרת                 {printf("else");}
-כלעוד                {printf("while");}
-עשה                  {printf("do");}
-עבור                 {printf("for");}
-החזר                 {printf("return");}
-פונקציה              {printf("void");}
-מחלקה                {printf("class");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+أمامي                       {printf("forward");}
+סוף                         {printf("end");}
+אם                          {printf("if");}
+
 %%

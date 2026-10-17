@@ -1,34 +1,54 @@
 %{
-/* urdu h2l.uhin */
+/* urdu h2l.uhin: generated from the urdu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-اگر                  {printf("if");}
-ورنہ                 {printf("else");}
-جبتک                 {printf("while");}
-کرو                  {printf("do");}
-برائے                {printf("for");}
-توڑو                 {printf("break");}
-جاری                 {printf("continue");}
-انتخاب               {printf("switch");}
-حالت                 {printf("case");}
-طےشدہ                {printf("default");}
-واپس                 {printf("return");}
-ثابت                 {printf("const");}
-صحیح                 {printf("int");}
-اعشاری               {printf("float");}
-دوہرا                {printf("double");}
-حرف                  {printf("char");}
-خالی                 {printf("void");}
-تابع                 {printf("void");}
-جماعت                {printf("class");}
-نیا                  {printf("new");}
-عوامی                {printf("public");}
-نجی                  {printf("private");}
-ساکن                 {printf("static");}
-مجازی                {printf("virtual");}
-جب                   {printf("case");}
-ساخت                 {printf("struct");}
-شامل                 {printf("include");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+\#وگرنہ_اگر                 {printf("#elif");}
+قسمتعریف                    {printf("typedef");}
+اندرونی                     {printf("inline");}
+اعشاری                      {printf("float");}
+انتخاب                      {printf("switch");}
+اندراج                      {printf("register");}
+\#شامل                      {printf("#include");}
+\#ورنہ                      {printf("#else");}
+اتحاد                       {printf("union");}
+اشارہ                       {printf("signal");}
+اٹھاؤ                       {printf("raise");}
+برائے                       {printf("for");}
+خارجی                       {printf("extern");}
+دوہرا                       {printf("double");}
+طےشدہ                       {printf("default");}
+عوامی                       {printf("public");}
+متلون                       {printf("volatile");}
+مجازی                       {printf("virtual");}
+محفوظ                       {printf("protected");}
+\#اگر                       {printf("#if");}
+آزاد                        {printf("free");}
+اقرأ                        {printf("read");}
+اكتب                        {printf("write");}
+توڑو                        {printf("break");}
+ثابت                        {printf("const");}
+جاری                        {printf("continue");}
+حالت                        {printf("case");}
+خالی                        {printf("void");}
+ساخت                        {printf("struct");}
+ساکن                        {printf("static");}
+شمار                        {printf("enum");}
+صحیح                        {printf("int");}
+واپس                        {printf("return");}
+ورنہ                        {printf("else");}
+أكد                         {printf("assert");}
+اگر                         {printf("if");}
+تہی                         {printf("NULL");}
+جاؤ                         {printf("goto");}
+حجم                         {printf("sizeof");}
+حرف                         {printf("char");}
+مین                         {printf("main");}
+نجی                         {printf("private");}
+کرو                         {printf("do");}
+جب                          {printf("while");}
+
 %%

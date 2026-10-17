@@ -1,12 +1,14 @@
 %{
-/* ukrainian h2asm */
+/* ukrainian h2asm.uhin: generated from the ukrainian lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-якщо  {printf("if");}
-інакше  {printf("else");}
-поки  {printf("while");}
-для  {printf("for");}
-повернути  {printf("return");}
-ціле  {printf("int");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+інакше                      {printf("ELSE");}
+поки                        {printf("WHILE");}
+ціле                        {printf("INT");}
+якщо                        {printf("IF");}
+
 %%

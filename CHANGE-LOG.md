@@ -434,3 +434,34 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - added `ide/eclipse/Hindawi_save.launch` (sha256 `6b2fc52931f48e25`)
 
 **Verified.** All 355 ingestions of the sample still reverse byte for byte; Hindi keywords localised rise from 65.9% to 82.9%. A Hindi blink sketch passed through the Arduino hook becomes C++ that compiles (देरी becomes _daeeree). scripts/test_all.sh passes. stack.sh is not run here.
+
+## C20. The compilation path on the original pipeline, every cell completed from its lexicon, review templates per paradigm, and the linguistics lab
+
+**Why.** He asked for the compilation path to go back to the original pipeline rather than move acii2uni; for the
+languages' transducers to be complete, since the delivered cells carried the same 28 rules in all eighteen files of
+every language while each language's lexicon holds a word for about 204 constructs; for review templates through which
+each language's community reviews its standard paradigm by paradigm, from hardware description to IoT, robotics and AI,
+as the Aṣṭādhyāyī's sūtras are reviewed in tajziya; and for the Dockerised linguistics lab for collaborators.
+
+- **Pipeline.** `lang/hindawi/tools/script_filters.py` (Chintamani's own fltr_te_hi and fltr_ur_hi; generated filters of
+  the same flex form for the other Brahmi scripts; each lexer keyword filtered in both contexts); `hindawi_chain.py` no
+  longer calls `pipeline/transliterate.py`.
+- **Cells.** `lang/hindawi/tools/complete_cells.py` regenerates all 75 cells (Hindi stays Chintamani's): eighteen
+  transducers each in Chintamani's form, from the language's lexicon, keywords never replaced inside longer names,
+  directives distinct from words (#if, if), multi-word keywords joined with underscores, invalid words rejected and
+  listed; a Makefile and driver on the original pipeline; `STATUS.tsv` listing every construct without a word.
+- **Review.** `docs/hindawi/review.html` over `docs/hindawi/data/standards.json`: per language and paradigm (the nine
+  shailis; hardware, IoT and Arduino, robotics, AI), every construct, its word and source, and a prefilled issue; the
+  issue form gains a paradigm field.
+- **Lab.** `lab/Dockerfile`, `lab/docker-compose.yml`, `lab/README.md`: JupyterLab, the review pages, Praat, Argos
+  Translate, and Hindawi built inside.
+- **BURP.** Words carry zero-width joiners and the Limbu and Hangul ranges; a name spelled like a keyword is recorded
+  so the reverse stays exact.
+- **Status.** `tests/burp/compile_status.py` and its output `docs/hindawi/burp-status.tsv`.
+
+**Verified.** All 355 ingestions of the sample (76 languages and their Brahmi renderings) reverse byte for byte.
+Keywords localised on the sample: 82.9% for Urdu, Sindhi, Punjabi in both scripts, Arabic, Persian, Bengali and Tamil
+(Urdu was 70.7%, Sindhi and Shahmukhi 58.5%). The sample builds and runs through the original pipeline in 47 of 76
+languages, among them Urdu, Sindhi, Punjabi (Gurmukhi and Shahmukhi), Arabic, Persian, Pashto, Dari, Kashmiri, Bengali,
+Tamil, Telugu, Gujarati, Odia and Kannada; 5 do not compile and 24 have no script filter yet. tests/fundamental.py 12
+passed; scripts/test_all.sh passes.

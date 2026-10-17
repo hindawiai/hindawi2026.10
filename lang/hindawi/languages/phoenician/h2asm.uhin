@@ -1,9 +1,29 @@
 %{
-/* phoenician h2asm.uhin */
+/* phoenician h2asm.uhin: generated from the phoenician lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-𐤀𐤌                   {printf("if");}
-𐤐𐤏𐤋                  {printf("do");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+إجراء                       {printf("PROC");}
+افترض                       {printf("ASSUME");}
+خارجي                       {printf("EXTERN");}
+طالما                       {printf("WHILE");}
+صحيح                        {printf("INT");}
+مؤشر                        {printf("PTR");}
+نادي                        {printf("CALL");}
+وإلا                        {printf("ELSE");}
+ضمن                         {printf("INCLUDE");}
+عام                         {printf("PUBLIC");}
+قفل                         {printf("LOCK");}
+نوع                         {printf("TYPE");}
+هذا                         {printf("THIS");}
+في                          {printf("IN");}
+𐤀𐤅                          {printf("OR");}
+𐤀𐤌                          {printf("IF");}
+𐤋𐤀                          {printf("NOT");}
+𐤒𐤑                          {printf("END");}
+𐤅                           {printf("AND");}
+
 %%

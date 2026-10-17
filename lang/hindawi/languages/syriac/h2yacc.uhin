@@ -1,12 +1,53 @@
 %{
-/* syriac h2yacc.uhin */
+/* syriac h2yacc.uhin: generated from the syriac lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-ܐܢ                   {printf("if");}
-ܐܚܪܢܐ                {printf("else");}
-ܟܡܐ                  {printf("while");}
-ܥܒܕ                  {printf("do");}
-ܦܢܐ                  {printf("return");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+\#وإلاإذا                   {printf("#elif");}
+تعريفنوع                    {printf("typedef");}
+افتراضي                     {printf("default");}
+\#ܐܚܪܢܐ                     {printf("#else");}
+متطاير                      {printf("volatile");}
+إشارة                       {printf("signal");}
+اتحاد                       {printf("union");}
+استمر                       {printf("continue");}
+تعداد                       {printf("enum");}
+خارجي                       {printf("extern");}
+مزدوج                       {printf("double");}
+ܐܚܪܢܐ                       {printf("else");}
+\#ضمن                       {printf("#include");}
+اذهب                        {printf("goto");}
+ارفع                        {printf("raise");}
+اقرأ                        {printf("read");}
+اكتب                        {printf("write");}
+اكسر                        {printf("break");}
+بنية                        {printf("struct");}
+ثابت                        {printf("const");}
+حالة                        {printf("case");}
+ساكن                        {printf("static");}
+صحيح                        {printf("int");}
+عائم                        {printf("float");}
+فراغ                        {printf("void");}
+محمي                        {printf("protected");}
+مضمن                        {printf("inline");}
+\#ܐܢ                        {printf("#if");}
+أكد                         {printf("assert");}
+بدل                         {printf("switch");}
+حجم                         {printf("sizeof");}
+حرر                         {printf("free");}
+حرف                         {printf("char");}
+خاص                         {printf("private");}
+سجل                         {printf("register");}
+عام                         {printf("public");}
+عدم                         {printf("NULL");}
+لكل                         {printf("for");}
+نوع                         {printf("type");}
+ܟܡܐ                         {printf("while");}
+ܥܒܕ                         {printf("do");}
+ܦܢܐ                         {printf("return");}
+ܐܢ                          {printf("if");}
+
 %%

@@ -1,56 +1,32 @@
 %{
-/* thai h2yacc */
+/* thai h2yacc.uhin: generated from the thai lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-yadi  {printf("yadi");}
-anyathaa  {printf("anyathaa");}
-naucheedyadi  {printf("naucheedyadi");}
-yaavat  {printf("yaavat");}
-kuru  {printf("kuru");}
-prati  {printf("prati");}
-bha_nga  {printf("bha_nga");}
-anuvarta  {printf("anuvarta");}
-vikalpa  {printf("vikalpa");}
-pak_sa  {printf("pak_sa");}
-svabhaava  {printf("svabhaava");}
-pratyaagama  {printf("pratyaagama");}
-gaccha  {printf("gaccha");}
-cara  {printf("cara");}
-dhruva  {printf("dhruva");}
-astu  {printf("astu");}
-puur_naa_nka  {printf("puur_naa_nka");}
-bhinna  {printf("bhinna");}
-dviguu_na  {printf("dviguu_na");}
-var_na  {printf("var_na");}
-taarkika  {printf("taarkika");}
-padaavalii  {printf("padaavalii");}
-shuunya  {printf("shuunya");}
-satya  {printf("satya");}
-asatya  {printf("asatya");}
-rikta  {printf("rikta");}
-kriyaa  {printf("kriyaa");}
-vidhi  {printf("vidhi");}
-aahvaana  {printf("aahvaana");}
-praacala  {printf("praacala");}
-anaaman  {printf("anaaman");}
-daa  {printf("daa");}
-pratiik_sa  {printf("pratiik_sa");}
-asamakaala  {printf("asamakaala");}
-varga  {printf("varga");}
-vastu  {printf("vastu");}
-sandhi  {printf("sandhi");}
-vistr_ta  {printf("vistr_ta");}
-ni_spaadita  {printf("ni_spaadita");}
-nuutana  {printf("nuutana");}
-eetat  {printf("eetat");}
-para  {printf("para");}
-saarvajanika  {printf("saarvajanika");}
-gupta  {printf("gupta");}
-rak_sita  {printf("rak_sita");}
-sthira  {printf("sthira");}
-amuurta  {printf("amuurta");}
-aabhaasa  {printf("aabhaasa");}
-adhirauha  {printf("adhirauha");}
-meela  {printf("meela");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+sa_nracanaa                 {printf("struct");}
+anta_hstha                  {printf("inline");}
+parimaa_na                  {printf("sizeof");}
+\#มิฉะนั้น                  {printf("#else");}
+dviguu_na                   {printf("double");}
+pa_njikaa                   {printf("register");}
+sa_nkeeta                   {printf("signal");}
+จำนวนเต็ม                   {printf("int");}
+ca_ncala                    {printf("volatile");}
+ga_nanaa                    {printf("enum");}
+rak_sita                    {printf("protected");}
+มิฉะนั้น                    {printf("else");}
+bha_nga                     {printf("break");}
+sa_ngha                     {printf("union");}
+pak_sa                      {printf("case");}
+var_na                      {printf("char");}
+สำหรับ                      {printf("for");}
+\#ถ้า                       {printf("#if");}
+หลัก                        {printf("main");}
+ขณะ                         {printf("while");}
+คืน                         {printf("return");}
+ถ้า                         {printf("if");}
+
 %%

@@ -1,56 +1,53 @@
 %{
-/* pashto l2h */
+/* pashto l2h.uhin: generated from the pashto lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-إذا  {printf("إذا");}
-وإلا  {printf("وإلا");}
-وإلاإذا  {printf("وإلاإذا");}
-طالما  {printf("طالما");}
-افعل  {printf("افعل");}
-لكل  {printf("لكل");}
-اكسر  {printf("اكسر");}
-استمر  {printf("استمر");}
-بدل  {printf("بدل");}
-حالة  {printf("حالة");}
-افتراضي  {printf("افتراضي");}
-أرجع  {printf("أرجع");}
-اذهب  {printf("اذهب");}
-متغير  {printf("متغير");}
-ثابت  {printf("ثابت");}
-ليكن  {printf("ليكن");}
-صحيح  {printf("صحيح");}
-عائم  {printf("عائم");}
-مزدوج  {printf("مزدوج");}
-حرف  {printf("حرف");}
-منطقي  {printf("منطقي");}
-نص  {printf("نص");}
-فراغ  {printf("فراغ");}
-صحيح  {printf("صحيح");}
-خطأ  {printf("خطأ");}
-عدم  {printf("عدم");}
-دالة  {printf("دالة");}
-إجراء  {printf("إجراء");}
-نادي  {printf("نادي");}
-معامل  {printf("معامل");}
-مجهول  {printf("مجهول");}
-أنتج  {printf("أنتج");}
-انتظر  {printf("انتظر");}
-غيرمتزامن  {printf("غيرمتزامن");}
-صنف  {printf("صنف");}
-كائن  {printf("كائن");}
-واجهة  {printf("واجهة");}
-يمتد  {printf("يمتد");}
-ينفذ  {printf("ينفذ");}
-جديد  {printf("جديد");}
-هذا  {printf("هذا");}
-أعلى  {printf("أعلى");}
-عام  {printf("عام");}
-خاص  {printf("خاص");}
-محمي  {printf("محمي");}
-ساكن  {printf("ساكن");}
-مجرد  {printf("مجرد");}
-افتراضي  {printf("افتراضي");}
-تجاوز  {printf("تجاوز");}
-طابق  {printf("طابق");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("محمي");}
+\#include                   {printf("#ضمن");}
+continue                    {printf("استمر");}
+register                    {printf("سجل");}
+volatile                    {printf("متطاير");}
+default                     {printf("افتراضي");}
+private                     {printf("خاص");}
+typedef                     {printf("تعريفنوع");}
+virtual                     {printf("افتراضي");}
+assert                      {printf("أكد");}
+double                      {printf("مزدوج");}
+extern                      {printf("خارجي");}
+inline                      {printf("مضمن");}
+public                      {printf("عام");}
+return                      {printf("أرجع");}
+signal                      {printf("إشارة");}
+sizeof                      {printf("حجم");}
+static                      {printf("ساكن");}
+struct                      {printf("بنية");}
+switch                      {printf("بدل");}
+\#elif                      {printf("#وإلاإذا");}
+\#else                      {printf("#وإلا");}
+break                       {printf("اكسر");}
+const                       {printf("ثابت");}
+float                       {printf("عائم");}
+raise                       {printf("ارفع");}
+union                       {printf("اتحاد");}
+while                       {printf("طالما");}
+write                       {printf("اكتب");}
+NULL                        {printf("عدم");}
+case                        {printf("حالة");}
+char                        {printf("حرف");}
+else                        {printf("وإلا");}
+enum                        {printf("تعداد");}
+free                        {printf("حرر");}
+goto                        {printf("اذهب");}
+read                        {printf("اقرأ");}
+void                        {printf("فراغ");}
+\#if                        {printf("#إذا");}
+for                         {printf("لكل");}
+int                         {printf("صحيح");}
+do                          {printf("افعل");}
+if                          {printf("إذا");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

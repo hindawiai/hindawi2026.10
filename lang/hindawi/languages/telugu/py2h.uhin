@@ -1,33 +1,69 @@
 %{
-/* telugu py2h.uhin */
+/* telugu py2h.uhin: generated from the telugu lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("ఒకవేళ");}
-else                 {printf("లేకపోతే");}
-while                {printf("వరకు");}
-do                   {printf("చేయి");}
-for                  {printf("కొరకు");}
-break                {printf("ఆపు");}
-continue             {printf("కొనసాగు");}
-switch               {printf("ఎంపిక");}
-case                 {printf("స్థితి");}
-default              {printf("అప్రమేయ");}
-return               {printf("తిరిగి");}
-const                {printf("స్థిరరాశి");}
-int                  {printf("పూర్ణాంకం");}
-float                {printf("దశాంశం");}
-double               {printf("ద్విగుణ");}
-char                 {printf("అక్షరం");}
-void                 {printf("శూన్య");}
-void                 {printf("ప్రమేయం");}
-class                {printf("తరగతి");}
-new                  {printf("కొత్త");}
-public               {printf("బహిరంగ");}
-private              {printf("అంతరంగ");}
-static               {printf("స్థిర");}
-virtual              {printf("మాయా");}
-case                 {printf("ఎప్పుడు");}
-struct               {printf("నిర్మాణం");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+implements                  {printf("అమలుచేయు");}
+interface                   {printf("అంతరముఖం");}
+protected                   {printf("రక్షిత");}
+abstract                    {printf("నైరూప్య");}
+continue                    {printf("కొనసాగు");}
+volatile                    {printf("అస్థిర");}
+default                     {printf("అప్రమేయ");}
+extends                     {printf("విస్తరించు");}
+finally                     {printf("చివరగా");}
+package                     {printf("సంచి");}
+private                     {printf("అంతరంగ");}
+Object                      {printf("వస్తువు");}
+String                      {printf("పదబంధం");}
+Thread                      {printf("తంతువు");}
+assert                      {printf("ప్రతిజ్ఞా");}
+double                      {printf("ద్విగుణ");}
+except                      {printf("మినహాయింపు");}
+global                      {printf("వైశ్విక");}
+import                      {printf("దిగుమతి");}
+lambda                      {printf("అజ్ఞాత");}
+public                      {printf("బహిరంగ");}
+return                      {printf("తిరిగి");}
+static                      {printf("స్థిర");}
+switch                      {printf("ఎంపిక");}
+False                       {printf("అబద్ధం");}
+break                       {printf("ఆపు");}
+catch                       {printf("పట్టుకో");}
+class                       {printf("తరగతి");}
+const                       {printf("స్థిరరాశి");}
+float                       {printf("దశాంశం");}
+raise                       {printf("లేపు");}
+sleep                       {printf("సుషుప్తి");}
+super                       {printf("పర");}
+throw                       {printf("విసురు");}
+while                       {printf("అయితే");}
+write                       {printf("లిఖ");}
+yield                       {printf("ఇవ్వు");}
+True                        {printf("నిజం");}
+case                        {printf("స్థితి");}
+char                        {printf("అక్షరం");}
+elif                        {printf("లేదావేళ");}
+else                        {printf("లేకపోతే");}
+from                        {printf("తః");}
+goto                        {printf("వెళ్ళు");}
+main                        {printf("ప్రధాన");}
+read                        {printf("పఠ");}
+this                        {printf("ఇది");}
+void                        {printf("శూన్య");}
+and                         {printf("మరియు");}
+for                         {printf("కొరకు");}
+int                         {printf("పూర్ణాంకం");}
+new                         {printf("కొత్త");}
+not                         {printf("కాదు");}
+try                         {printf("ప్రయత్నించు");}
+as                          {printf("ఇవ");}
+do                          {printf("చేయి");}
+if                          {printf("ఒకవేళ");}
+in                          {printf("లో");}
+or                          {printf("లేదా");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%

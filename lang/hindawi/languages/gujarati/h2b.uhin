@@ -1,33 +1,30 @@
 %{
-/* gujarati h2b.uhin */
+/* gujarati h2b.uhin: generated from the gujarati lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-native               {printf("c");}
-જો                   {printf("if");}
-નહીંતર               {printf("else");}
-જ્યાંસુધી            {printf("while");}
-કરો                  {printf("do");}
-માટે                 {printf("for");}
-તોડો                 {printf("break");}
-ચાલુ                 {printf("continue");}
-પસંદગી               {printf("switch");}
-સ્થિતિ               {printf("case");}
-મૂળભૂત               {printf("default");}
-પાછા                 {printf("return");}
-અચલ                  {printf("const");}
-પૂર્ણાંક             {printf("int");}
-દશાંશ                {printf("float");}
-દ્વિગુણ              {printf("double");}
-અક્ષર                {printf("char");}
-શૂન્ય                {printf("void");}
-વિધેય                {printf("void");}
-વર્ગ                 {printf("class");}
-નવું                 {printf("new");}
-જાહેર                {printf("public");}
-ખાનગી                {printf("private");}
-સ્થિર                {printf("static");}
-આભાસી                {printf("virtual");}
-જ્યારે               {printf("case");}
-સંરચના               {printf("struct");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+કાલયન્ત્ર                   {printf("TIMER");}
+પૂર્ણાંક                    {printf("INT");}
+શબ્દમાળા                    {printf("STRING");}
+સહભાજિત                     {printf("SHARED");}
+જ્યારે                      {printf("WHILE");}
+નહીંતર                      {printf("ELSE");}
+બોલાવો                      {printf("CALL");}
+સ્થિર                       {printf("STATIC");}
+અથવા                        {printf("OR");}
+ધારો                        {printf("LET");}
+નહીં                        {printf("NOT");}
+પાછા                        {printf("RETURN");}
+માટે                        {printf("FOR");}
+અંત                         {printf("END");}
+અચલ                         {printf("CONST");}
+અને                         {printf("AND");}
+કરો                         {printf("DO");}
+જાઓ                         {printf("GOTO");}
+ઇવ                          {printf("AS");}
+જો                          {printf("IF");}
+
 %%

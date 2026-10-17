@@ -1,33 +1,55 @@
 %{
-/* punjabi yacc2h.uhin */
+/* punjabi yacc2h.uhin: generated from the punjabi lexicon by lang/hindawi/tools/complete_cells.py,
+   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-c                    {printf("native");}
-if                   {printf("ਜੇ");}
-else                 {printf("ਨਹੀਂਤਾਂ");}
-while                {printf("ਜਦਤੱਕ");}
-do                   {printf("ਕਰੋ");}
-for                  {printf("ਲਈ");}
-break                {printf("ਰੋਕੋ");}
-continue             {printf("ਜਾਰੀ");}
-switch               {printf("ਚੋਣ");}
-case                 {printf("ਹਾਲਤ");}
-default              {printf("ਮੂਲ");}
-return               {printf("ਵਾਪਸ");}
-const                {printf("ਅਚਲ");}
-int                  {printf("ਪੂਰਨਅੰਕ");}
-float                {printf("ਦਸ਼ਮਲਵ");}
-double               {printf("ਦੁੱਗਣਾ");}
-char                 {printf("ਅੱਖਰ");}
-void                 {printf("ਖਾਲੀ");}
-void                 {printf("ਕਾਰਜ");}
-class                {printf("ਵਰਗ");}
-new                  {printf("ਨਵਾਂ");}
-public               {printf("ਜਨਤਕ");}
-private              {printf("ਨਿਜੀ");}
-static               {printf("ਸਥਿਰ");}
-virtual              {printf("ਆਭਾਸੀ");}
-case                 {printf("ਜਦੋਂ");}
-struct               {printf("ਬਣਤਰ");}
-.  {printf("%s", yytext);}
+\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
+\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+
+protected                   {printf("ਸੁਰੱਖਿਅਤ");}
+\#include                   {printf("#ਅਨ੍ਤਰ੍ਭਾਵ");}
+continue                    {printf("ਜਾਰੀ");}
+register                    {printf("ਰਜਿਸਟਰ");}
+volatile                    {printf("ਅਸਥਿਰ");}
+default                     {printf("ਮੂਲ");}
+private                     {printf("ਨਿਜੀ");}
+typedef                     {printf("ਕਿਸਮਪਰਿਭਾਸ਼ਾ");}
+virtual                     {printf("ਆਭਾਸੀ");}
+assert                      {printf("ਪ੍ਰਤਿਜ੍ਞਾ");}
+double                      {printf("ਦੁੱਗਣਾ");}
+extern                      {printf("ਬਾਹਰੀ");}
+inline                      {printf("ਸਤਰਅੰਦਰ");}
+public                      {printf("ਜਨਤਕ");}
+return                      {printf("ਵਾਪਸ");}
+signal                      {printf("ਸੰਕੇਤ");}
+sizeof                      {printf("ਆਕਾਰ");}
+static                      {printf("ਸਥਿਰ");}
+struct                      {printf("ਬਣਤਰ");}
+switch                      {printf("ਚੋਣ");}
+\#elif                      {printf("#ਜਾਂਜੇ");}
+\#else                      {printf("#ਨਹੀਂਤਾਂ");}
+break                       {printf("ਰੋਕੋ");}
+const                       {printf("ਅਚਲ");}
+float                       {printf("ਦਸ਼ਮਲਵ");}
+raise                       {printf("ਉਠਾਓ");}
+union                       {printf("ਸੰਘ");}
+while                       {printf("ਜਦੋਂ");}
+write                       {printf("ਲਿਖ");}
+NULL                        {printf("ਨਿਰਾ");}
+case                        {printf("ਹਾਲਤ");}
+char                        {printf("ਅੱਖਰ");}
+else                        {printf("ਨਹੀਂਤਾਂ");}
+enum                        {printf("ਗਿਣਤੀ");}
+free                        {printf("ਮੁਕਤ");}
+goto                        {printf("ਜਾਓ");}
+main                        {printf("ਮੁੱਖ");}
+read                        {printf("ਪਠ");}
+type                        {printf("ਕਿਸਮ");}
+void                        {printf("ਖਾਲੀ");}
+\#if                        {printf("#ਜੇ");}
+for                         {printf("ਲਈ");}
+int                         {printf("ਪੂਰਨ");}
+do                          {printf("ਕਰੋ");}
+if                          {printf("ਜੇ");}
+[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}
 %%
