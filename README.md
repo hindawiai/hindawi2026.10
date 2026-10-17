@@ -1,5 +1,7 @@
 # Hindawi 2026.10
 
+DOI: [10.5281/zenodo.23434990](https://doi.org/10.5281/zenodo.23434990)
+
 © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 
 Hindawi lets people program in their own language and script, from application code down to firmware. This release
