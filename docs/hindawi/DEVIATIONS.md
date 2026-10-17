@@ -1,4 +1,10 @@
-# Where this repository deviates from legacy Hindawi (Chintamani)
+# Where this repository deviates from legacy Hindawi
+
+**The baseline.** Every comparison below is against hindawiai/chintamani, which is not Hindawi's source architecture. Hindawi
+was released in 2004 and went through several iterations; Chintamani is a recent one, about four or five years old,
+made for the Telugu implementation (hence its Telugu filters), whose Python Telugu went as far as a face-recognition
+program in a notebook. A comparison with the 2004 releases, reconstructed in hindawiai/hindawi-legacy, has not
+been made yet.
 
 © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 

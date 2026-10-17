@@ -39,7 +39,8 @@ for exts, shaili, rev, style in [((".c", ".h"), "guru", ["c2h"], "c"),
                                  ((".s", ".S", ".asm"), "yantra", ["asm2h"], "asm"),
                                  ((".java",), "kritrima", ["java2h"], "c"), ((".bas",), "praatha", ["b2h"], "basic"),
                                  ((".py",), "soochee", ["py2h"], "py"), ((".y",), "wyaaka", ["yacc2h", "c2h"], "c"),
-                                 ((".l",), "shabda", ["l2h", "c2h"], "c"), ((".logo", ".lg"), "robot", ["logo2h"], "logo")]:
+                                 ((".l",), "shabda", ["l2h", "c2h"], "c"), ((".logo", ".lg"), "robot", ["logo2h"], "logo"),
+                                 ((".vhd", ".vhdl"), "vhdl", ["vhdl2h"], "vhdl")]:
     for e in exts:
         PARADIGMS[e] = (shaili, rev, style)
 # Chintamani's own reverse transducers, used for Hindi wherever the legacy has them
@@ -50,6 +51,9 @@ ISO = {"hindi": "hi", "bengali": "bn", "urdu": "ur", "tamil": "ta", "telugu": "t
        "punjabi": "pa", "kannada": "kn", "malayalam": "ml", "nepali": "ne", "sanskrit": "sa", "odia": "or", "assamese": "as",
        "arabic": "ar", "persian": "fa", "farsi": "fa", "russian": "ru", "chinese": "zh", "japanese": "ja", "korean": "ko",
        "hebrew": "he", "sinhala": "si", "thai": "th", "tibetan": "bo", "burmese": "my", "khmer": "km", "lao": "lo"}
+# VHDL's reserved words stay untranslated as identifiers until a language provides its vhdl2h.uhin
+VHDL_WORDS = {w for l in (HERE / "paradigms/vhdl_keywords.txt").read_text(encoding="utf-8").splitlines()
+              if not l.startswith("#") for w in l.split()} if (HERE / "paradigms/vhdl_keywords.txt").exists() else set()
 HOST_WORDS = set("""auto break case char const continue default do double else enum extern float for goto if inline int
 long register restrict return short signed sizeof static struct switch typedef union unsigned void volatile while
 _Bool _Complex bool true false NULL main class public private protected virtual namespace template typename this new
@@ -60,7 +64,7 @@ WORD = r"#?[A-Za-z_\u00C0-\u024F\u0300-\u036F\u0370-\u03FF\u0400-\u04FF\u0590-\u
        r"\u0E00-\u0FFF\u1000-\u109F\u1780-\u18AF\u1900-\u1CFF\u3040-\u30FF\u3400-\u9FFF\uA800-\uABFF\uAC00-\uD7AF" \
        r"\U00010000-\U0001FFFF][\w\u0300-\u036F\u0900-\u0DFF\u0E00-\u0FFF\u1000-\u109F\u1780-\u18AF\u1A00-\u1CFF" \
        r"\uA800-\uABFF\U00010000-\U0001FFFF]*"
-COMMENTS = {"c": r"//[^\n]*|/\*[\s\S]*?\*/", "py": r"#[^\n]*", "asm": r";[^\n]*", "logo": r";[^\n]*",
+COMMENTS = {"vhdl": r"--[^\n]*", "c": r"//[^\n]*|/\*[\s\S]*?\*/", "py": r"#[^\n]*", "asm": r";[^\n]*", "logo": r";[^\n]*",
             "basic": r"(?im:^[ \t]*REM\b[^\n]*)|'[^\n]*"}
 STRINGS = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|"(?:\\.|[^"\\\n])*"|\'(?:\\.|[^\'\\\n])*\''
 INCLUDE = r'#[ \t]*include[ \t]*[<"][^>"\n]*[>"]'
@@ -248,7 +252,7 @@ class Ingestion:
                 if len(ambiguous[table[w]]) > 1:
                     seq.append(w)
                 return table[w]
-            if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or w in self.external \
+            if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external \
                     or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
                 return w
             return self.name(w)

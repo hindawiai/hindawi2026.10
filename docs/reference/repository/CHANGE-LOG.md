@@ -397,3 +397,19 @@ ever be committed, and the first would make the Chintamani copy differ from Chin
 - added `docs/TERMINOLOGY.md` (sha256 `0efc9ef8cb44c8e8`)
 
 **Verified.** burp.py check over the sample project: 355 ingestions (76 languages and 279 renderings) reverse byte for byte; the sample built through hindawicc prints 42 in 30 of 76 languages (docs/hindawi/burp-status.tsv); scripts/test_all.sh passes; tests/fundamental.py 12 passed.
+
+## C18. The sovereign-stack test, VHDL in BURP, the IDE working mechanism, and the strategy note
+
+**Why.** He asked for a script to run on his own machine that takes the open-source stack layer by layer, from a processor in VHDL through firmware, kernel, C library, binutils and the compiler to libraries, ingests each into every language, measures how much becomes localised (target 100%), reverses it, builds it, and tests TinyCC rebuilding itself (the T-diagram); for a basic VHDL keyword list; for a lightweight, locally installable IDE where each person works in their own language through the dictionary, with highlighting and debugging; for a comparison with tree-sitter from a market-strategy view; and for the deviations to be noted against the true baseline. scripts/sovereign/stack.sh and measure.py do the first and are not run here; BURP gains a VHDL paradigm (IEEE 1076-2008 reserved words, kept untranslated until a language has vhdl2h tables); ide/burp_ide.py gives views per language with saves back to the canonical tree and Geany filetypes, and ide/burp_gdb.py native names in gdb; DEVIATIONS.md now says its baseline is Chintamani, a Telugu-era iteration, not the 2004 Hindawi.
+
+- changed `lang/hindawi/burp/burp.py` (sha256 `032bb5ca45a675dd`)
+- added `lang/hindawi/burp/paradigms/vhdl_keywords.txt` (sha256 `67c13b9808f4060c`)
+- added `scripts/sovereign/stack.sh` (sha256 `4d1291c4d83a8db7`)
+- added `scripts/sovereign/measure.py` (sha256 `1b67789e122b16ec`)
+- added `ide/burp_ide.py` (sha256 `6b73da74101312df`)
+- added `ide/burp_gdb.py` (sha256 `fec5f03ba7413fb4`)
+- added `docs/hindawi/IDE.md` (sha256 `a5ab0e9c4fa51f06`)
+- added `docs/hindawi/TREE-SITTER-AND-STRATEGY.md` (sha256 `94108d6e207b2aa7`)
+- changed `docs/hindawi/DEVIATIONS.md` (sha256 `ec2d119b5fa3c46a`)
+
+**Verified.** A VHDL file ingests into Hindi and reverses byte for byte. A Tamil view's edit reaches the canonical tree and the Gujarati view. measure.py on the sample: keywords localised 65.9% Hindi, 70.7% Urdu, 70.7% Punjabi (Gurmukhi), 58.5% Punjabi (Shahmukhi); identifiers 18.2% and comments 0% with only the glossary as translator. stack.sh not run, as asked.
