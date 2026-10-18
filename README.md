@@ -1,6 +1,6 @@
 # Hindawi 2026.10
 
-DOI: [10.5281/zenodo.23437358](https://doi.org/10.5281/zenodo.23437358)
+DOI: [10.5281/zenodo.23446805](https://doi.org/10.5281/zenodo.23446805)
 
 © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 
