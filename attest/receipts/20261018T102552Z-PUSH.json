@@ -1,0 +1,18 @@
+{
+    "_type": "https://in-toto.io/Statement/v1",
+    "predicateType": "https://project-ilm.org/attestations/candor/v1",
+    "subject": [
+        {
+            "name": "hindawiai/hindawi2026.10",
+            "digest": {
+                "gitCommit": "2dd3d8299c1f1f73c30c5d803517083a9cd2e1ec"
+            }
+        }
+    ],
+    "predicate": {
+        "action": "PUSH",
+        "reason": "updates",
+        "utc": "20261018T102552Z",
+        "host": "ilm01-lin"
+    }
+}
