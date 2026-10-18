@@ -1,43 +1,45 @@
 %{
 /* assamese h2java.uhin: generated from the assamese lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 প্রকারনির্দেশ               {printf("typedef");}
-\#অন্তর্ভা঵                 {printf("#include");}
+\#অন্তর্ভাৱ                 {printf("#include");}
 \#নোচেদ্যদি                 {printf("#elif");}
 নিষ্পাদিত                   {printf("implements");}
 পূর্ণাঙ্ক                   {printf("int");}
 প্রতিজ্ঞা                   {printf("assert");}
 যেতিয়ালৈ                   {printf("while");}
-সার্঵জনিক                   {printf("public");}
+সার্ৱজনিক                   {printf("public");}
 অন্তঃস্থ                    {printf("inline");}
 সুষুপ্তি                    {printf("sleep");}
 \#অন্যথা                    {printf("#else");}
-অনু঵র্ত                     {printf("continue");}
+অনুৱর্ত                     {printf("continue");}
 উত্থাপয                     {printf("raise");}
-দ্঵িগুণ                     {printf("double");}
+দ্ৱিগুণ                     {printf("double");}
 পঞ্জিকা                     {printf("register");}
+ৱিস্তৃত                     {printf("extends");}
 অন্ততঃ                      {printf("finally");}
 অন্যথা                      {printf("else");}
 অমূর্ত                      {printf("abstract");}
-পদা঵লী                      {printf("String");}
+পদাৱলী                      {printf("String");}
 পরিমাণ                      {printf("sizeof");}
 রক্ষিত                      {printf("protected");}
 শ্ৰেণী                      {printf("class");}
 সংরচনা                      {printf("struct");}
 সঙ্কেত                      {printf("signal");}
-স্঵ভা঵                      {printf("default");}
+স্ৱভাৱ                      {printf("default");}
+ৱিকল্প                      {printf("switch");}
 ক্ষিপ                       {printf("throw");}
 গুপ্ত                       {printf("private");}
 গৃহাণ                       {printf("catch");}
 ঘূৰাই                       {printf("return");}
 চঞ্চল                       {printf("volatile");}
 তন্তু                       {printf("Thread");}
-ধ্রু঵                       {printf("const");}
+ধ্রুৱ                       {printf("const");}
 বাহ্য                       {printf("extern");}
 ভিন্ন                       {printf("float");}
 মুক্ত                       {printf("free");}
@@ -45,6 +47,7 @@
 শূন্য                       {printf("void");}
 সন্ধি                       {printf("interface");}
 স্থির                       {printf("static");}
+ৱস্তু                       {printf("Object");}
 \#যদি                       {printf("#if");}
 আনযন                        {printf("import");}
 আভাস                        {printf("virtual");}
@@ -60,6 +63,7 @@
 যত্ন                        {printf("try");}
 সঁচা                        {printf("true");}
 সঙ্ঘ                        {printf("union");}
+ৱর্ণ                        {printf("char");}
 কৰা                         {printf("do");}
 যদি                         {printf("if");}
 লিখ                         {printf("write");}

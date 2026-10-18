@@ -61,7 +61,7 @@ def compile_status(lang):
 
 def status_word(p):
     if p == "legacy":
-        return "Chintamani"
+        return "original Hindawi"
     if p == "lexicon":
         return "lexicon"
     if p.startswith("proposed"):
@@ -144,12 +144,12 @@ def model(lang):
         rows = []
         for host in host_words:
             native = table.get(host) or table.get(host.lower())
-            src = "Chintamani" if lang == "hindi" else status_word(prov.get(host, ""))
+            src = "original Hindawi" if lang == "hindi" else status_word(prov.get(host, ""))
             provcount[src] = provcount.get(src, 0) + 1
             rows.append([host, native, src])
         extra = [] if title == "C preprocessor" else sorted(
             k for k in table if k not in host_words and k.lower() not in host_words and not k.startswith("#"))
-        lib = [[k, table[k], "Chintamani" if lang == "hindi" else status_word(prov.get(k, ""))] for k in extra]
+        lib = [[k, table[k], "original Hindawi" if lang == "hindi" else status_word(prov.get(k, ""))] for k in extra]
         counts.append((title, len(rows), len(lib)))
         tables.append((title, ref, ids, rows, lib))
     ds = digits(script)
@@ -391,7 +391,7 @@ REVIEW_SHAILI = {"guru": "C", "shraeni": "C++", "kritrima": "Java", "soochee": "
 
 
 def review_data():
-    """The review page's data, made whole: Hindi added from Chintamani's own tables, and in every paradigm the host
+    """The review page's data, made whole: Hindi added from the original Hindawi tables, and in every paradigm the host
     keywords listed first, then the library names, so a reviewer meets if and break before BUFSIZ."""
     f = R / "docs/hindawi/data/standards.json"
     d = json.loads(f.read_text(encoding="utf-8"))

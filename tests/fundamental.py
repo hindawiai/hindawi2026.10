@@ -63,7 +63,7 @@ PAIRS = [("guru", "h2c", "c2h", None, "HindiC.uhin"), ("shraeni", "h2cpp", "cpp2
          ("shabda", "h2l", "l2h", "guru", "HindiLEX.uhin")]
 
 
-KNOWN = {"yantra": "Chintamani's own h2y and y2h are not round-trip stable on its own assembly sample"}
+KNOWN = {"yantra": "the original Hindawi h2y and y2h are not round-trip stable on its own assembly sample"}
 
 
 def f3():
@@ -75,7 +75,7 @@ def f3():
         _, host2, _ = sh(TO_HOST.format(lx=f), native)
         norm = lambda b: b.replace(b"\r", b"").strip()
         same = bool(norm(host)) and norm(host2) == norm(host)
-        if d in KNOWN and not same:   # Chintamani's own behaviour, recorded rather than counted as a regression
+        if d in KNOWN and not same:   # the original Hindawi behaviour, recorded rather than counted as a regression
             print(f"  NOTE  F3  {d}: {sample}: {KNOWN[d]}"); continue
         check("F3", f"{d}: {sample} to host and back", same, "" if same else "host differs after the round trip")
 

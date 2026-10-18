@@ -1,6 +1,6 @@
 %{
 /* dari java2h.uhin: generated from the dari lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}

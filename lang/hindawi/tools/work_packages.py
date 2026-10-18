@@ -222,7 +222,7 @@ def tasks():
     reg = json.loads((W / "tasks.json").read_text(encoding="utf-8"))
     t = W / "tasks"; shutil.rmtree(t, ignore_errors=True); t.mkdir(parents=True); out = []
     for x in reg:
-        if x["status"] not in ("open", "in progress"):
+        if x["status"] not in ("open", "in progress", "rework required"):
             continue
         wid = f"WP-{x['id']}"
         (t / f"{wid}.md").write_text(
@@ -232,8 +232,9 @@ def tasks():
         out.append({"id": wid, "kind": "task", "title": x["title"], "size": x["status"], "path": f"work-packages/tasks/{wid}.md"})
     rows = ["# Tasks and covenants", "", CREDIT, "",
             "Every point of his requests, from the register `work-packages/tasks.json`. Covenants hold always; done means the "
-            "evidence named is in this repository; open tasks are work packages anyone can take.", ""]
-    for status, head in (("covenant", "Covenants"), ("done", "Done"), ("in progress", "In progress"), ("open", "Open")):
+            "nothing is called done until he accepts it; open tasks are work packages anyone can take.", ""]
+    for status, head in (("covenant", "Covenants"), ("delivered", "Delivered, awaiting his acceptance"),
+                         ("rework", "Rework required"), ("in progress", "In progress"), ("open", "Open")):
         sel = [x for x in reg if x["status"].startswith(status)]
         if sel:
             rows += [f"## {head}", "", "| Id | Task | Evidence | Next |", "|---|---|---|---|"]

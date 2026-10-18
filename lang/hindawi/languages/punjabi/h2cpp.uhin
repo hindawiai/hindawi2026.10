@@ -1,6 +1,6 @@
 %{
 /* punjabi h2cpp.uhin: generated from the punjabi lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -32,7 +32,7 @@
 ਕਿਸਮ_ਨਾਂ                    {printf("typename");}
 ਸਵੈਚਾਲਿਤ                    {printf("auto");}
 ਸੁਰੱਖਿਅਤ                    {printf("protected");}
-ਸੁ਷ੁਪ੍ਤਿ                    {printf("sleep");}
+ਸੁਸ਼ੁਪ੍ਤਿ                    {printf("sleep");}
 \#ਜੇ_ਅੰਤ                    {printf("#endif");}
 ਅੱਖਰ_ਹੈ                     {printf("isalpha");}
 ਕੋਸ਼ਿਸ਼                     {printf("try");}

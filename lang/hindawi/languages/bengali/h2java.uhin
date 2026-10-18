@@ -1,6 +1,6 @@
 %{
 /* bengali h2java.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -10,7 +10,7 @@
 পূর্ণসংখ্যা                 {printf("int");}
 বাস্তবায়িত                 {printf("implements");}
 সম্প্রসারিত                 {printf("extends");}
-\#অন্তর্ভা঵                 {printf("#include");}
+\#অন্তর্ভাব                 {printf("#include");}
 \#নতুবা_যদি                 {printf("#elif");}
 প্রকারলেখ                   {printf("typedef");}
 প্রতিজ্ঞা                   {printf("assert");}

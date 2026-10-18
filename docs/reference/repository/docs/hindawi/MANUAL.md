@@ -19,7 +19,7 @@ two paths, and one command, `hindawi`, reaches everything in the repository.
     bash install.sh --prefix /usr/local
     bash install.sh --uninstall
 
-It checks for python3, gcc, flex, make, iconv and git, builds Chintamani's toolchain from the pinned source (the first
+It checks for python3, gcc, flex, make, iconv and git, builds the Hindawi toolchain from the pinned source (the first
 run fetches it from GitHub), links `hindawi` and `hindawicc` into the prefix's `bin`, installs `man hindawi`, and proves
 the installation by compiling quick sort from Urdu and from Telugu. `hindawi doctor` repeats the checks at any time.
 
@@ -28,7 +28,7 @@ the installation by compiling quick sort from Urdu and from Telugu. `hindawi doc
 | Command | What it does | Behind it |
 |---|---|---|
 | `hindawi doctor` | checks prerequisites and the built toolchain | `bin/hindawi` |
-| `hindawi setup` | builds Chintamani's toolchain, the original way | `scripts/build.sh`, `scripts/fetch.sh` |
+| `hindawi setup` | builds the Hindawi toolchain, the original way | `scripts/build.sh`, `scripts/fetch.sh` |
 | `hindawi languages [--refresh]` | each language's script, and whether it compiles | `tests/burp/compile_status.py` |
 | `hindawi coverage --langs L [--missing]` | how complete a language is, paradigm by paradigm | `lang/hindawi/tools/coverage.py` |
 | `hindawi ingest SRC --langs L --out D` | puts a file or project into languages | `lang/hindawi/burp/burp.py` |

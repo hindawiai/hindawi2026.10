@@ -8,7 +8,7 @@ Hindawi lets people program in their own language and script, from application c
 carries Hindawi's shaili toolchains for 76 languages, and BURP, the Bidirectional Universal Resource Parser, which
 ingests any existing project into any number of languages at once and reverses it byte for byte.
 
-**Start here.** `bash install.sh` checks what Hindawi needs, builds Chintamani's toolchain from the pinned source,
+**Start here.** `bash install.sh` checks what Hindawi needs, builds the Hindawi toolchain from the pinned source,
 puts `hindawi` and `hindawicc` on your PATH, and proves the installation by compiling a program from Urdu and from
 Telugu. Then `hindawi --help`, `man hindawi`, and `docs/hindawi/MANUAL.md`, which says how to work on this and where
 every tool lives. `VERIFY.md` is the manual verification, step by step, with the result each step should give.
@@ -29,6 +29,9 @@ every tool lives. `VERIFY.md` is the manual verification, step by step, with the
   layers.
 - **Editors.** The Arduino IDE (`ide/arduino/install.sh`: students program their boards in their own language),
   Eclipse (`ide/eclipse/`), Geany, and gdb with native names (`ide/gdbinit`). See `docs/hindawi/IDE.md`.
+- **Notebooks, one per language.** `docs/hindawi/notebooks.html` opens each in Colab: installation, the Hindawi NB UI
+  practice area with loadable demos, and for each shaili the program, input, the whole compilation flow, execution and
+  Std2Hin, after Chintamani's notebook. 47 languages, each verified by building its demos through the original pipeline.
 - **Standards, work packages and notebooks.** `standards/` holds each language's standard in Markdown, JSON and Word;
   `work-packages/` the open work anyone can claim (`docs/hindawi/work-packages.html`); `notebooks/` the Colab notebooks
   in each language (`docs/hindawi/notebooks.html`).

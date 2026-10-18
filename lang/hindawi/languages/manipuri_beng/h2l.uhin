@@ -1,38 +1,39 @@
 %{
 /* manipuri_beng h2l.uhin: generated from the manipuri_beng lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 প্রকারনির্দেশ               {printf("typedef");}
-\#অন্তর্ভা঵                 {printf("#include");}
+\#অন্তর্ভাব                 {printf("#include");}
 \#নোচেদ্যদি                 {printf("#elif");}
 পূর্ণাঙ্ক                   {printf("int");}
 প্রতিজ্ঞা                   {printf("assert");}
 প্রত্যাগম                   {printf("return");}
-সার্঵জনিক                   {printf("public");}
+সার্বজনিক                   {printf("public");}
 অন্তঃস্থ                    {printf("inline");}
 \#অন্যথা                    {printf("#else");}
-অনু঵র্ত                     {printf("continue");}
+অনুবর্ত                     {printf("continue");}
 উত্থাপয                     {printf("raise");}
-দ্঵িগুণ                     {printf("double");}
+দ্বিগুণ                     {printf("double");}
 পঞ্জিকা                     {printf("register");}
 অন্যথা                      {printf("else");}
 পরিমাণ                      {printf("sizeof");}
+বিকল্প                      {printf("switch");}
 রক্ষিত                      {printf("protected");}
 সংরচনা                      {printf("struct");}
 সঙ্কেত                      {printf("signal");}
-স্঵ভা঵                      {printf("default");}
+স্বভাব                      {printf("default");}
 গুপ্ত                       {printf("private");}
 চঞ্চল                       {printf("volatile");}
-ধ্রু঵                       {printf("const");}
+ধ্রুব                       {printf("const");}
 প্রতি                       {printf("for");}
 বাহ্য                       {printf("extern");}
 ভিন্ন                       {printf("float");}
 মুক্ত                       {printf("free");}
-যা঵ত্                       {printf("while");}
+যাবত্                       {printf("while");}
 রিক্ত                       {printf("NULL");}
 শূন্য                       {printf("void");}
 স্থির                       {printf("static");}
@@ -42,6 +43,7 @@
 গচ্ছ                        {printf("goto");}
 গণনা                        {printf("enum");}
 পক্ষ                        {printf("case");}
+বর্ণ                        {printf("char");}
 ভঙ্গ                        {printf("break");}
 সঙ্ঘ                        {printf("union");}
 যদি                         {printf("if");}

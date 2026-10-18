@@ -1,4 +1,4 @@
-# WP-T-03: Complete Hindi: bind the keywords Chintamani's 2004-lineage transducers do not carry (C++ 10, Java 6, Python 25, LOGO 14, restrict), as a supplement composed in front of Chintamani's own, never changing its rules
+# WP-T-03: Complete Hindi: bind the keywords the original 2004-lineage Hindawi transducers do not carry (C++ 10, Java 6, Python 25, LOGO 14, restrict), as a supplement composed in front of the original Hindawi, never changing its rules
 
 Asked: 18 Oct 2026. Status: open.
 

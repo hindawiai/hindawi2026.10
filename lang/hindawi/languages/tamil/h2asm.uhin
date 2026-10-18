@@ -1,14 +1,14 @@
 %{
 /* tamil h2asm.uhin: generated from the tamil lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 இல்லையெனில்                 {printf("ELSE");}
-அ஧்யவஸ்யதி                  {printf("ASSUME");}
-அந்தர்஭ாவ                   {printf("INCLUDE");}
+அத்யவஸ்யதி                  {printf("ASSUME");}
+அந்தர்பாவ                   {printf("INCLUDE");}
 நடைமுறை                     {printf("PROC");}
 மற்றும்                     {printf("AND");}
 வைஶ்விக                     {printf("global");}

@@ -63,11 +63,20 @@ check("the retired keyword data is gone and no page reads it",
       not (R / "docs/hindawi/data/keywords.json").exists() and
       not any("data/keywords.json" in p.read_text(encoding="utf-8") for p in (R / "docs").rglob("*.html")))
 
+print("== language data: every word is made of assigned characters")
+import unicodedata
+lp = json.loads((R / "lang/hindawi/pipeline/language_params.json").read_text(encoding="utf-8"))
+cn = sorted({f"{l}:U+{ord(c):04X}" for l, e in lp.items() if isinstance(e, dict) for v in e.values() if isinstance(v, dict)
+             for c in str(v.get("native", "")) if ord(c) > 0x7f and unicodedata.category(c) == "Cn"})
+check("no lexicon word holds a code point Unicode never assigned", not cn, ", ".join(cn[:6]))
+
 print("== trademarks and credits")
 tm = (R / "legal/TRADEMARKS.md").read_text(encoding="utf-8")
 check("the three triad marks are asserted as registered in India", all(m in tm for m in ("AyeAI®", "AyeCNSe®", "AyeAM®")) and "India" in tm)
-check("licences are stated not to license the marks", "grant permissions under copyright only" in tm)
-check("credits are kept: the originator's credit is never removed", "never removed" in tm and (R / "CREDITS.md").exists())
+check("licences are stated not to license the marks", "copyright permissions only" in tm)
+check("the full statement is referred to its one central place", "zistgah/zistgah.github.io/blob/main/legal/TRADEMARKS.md" in tm)
+cr = (R / "CREDITS.md").read_text(encoding="utf-8") if (R / "CREDITS.md").exists() else ""
+check("credits are kept: the originator's credit is never removed", "originator's credit is kept" in cr)
 
 print("== task register and work packages")
 reg = json.loads((R / "work-packages/tasks.json").read_text(encoding="utf-8"))

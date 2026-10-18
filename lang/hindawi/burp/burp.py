@@ -44,7 +44,7 @@ for exts, shaili, rev, style in [((".c", ".h"), "guru", ["c2h"], "c"),
                                  ((".vhd", ".vhdl"), "vhdl", ["vhdl2h"], "vhdl")]:
     for e in exts:
         PARADIGMS[e] = (shaili, rev, style)
-# Chintamani's own reverse transducers, used for Hindi wherever the legacy has them
+# the original Hindawi reverse transducers, used for Hindi wherever the legacy has them
 LEGACY_REV = {"asm2h": "yantra/y2h.uhin", "java2h": "kritrima/j2h.uhin", "c2h": "guru/c2h.uhin", "cpp2h": "shraeni/cpp2h.uhin", "b2h": "praatha/b2h.uhin",
               "py2h": "soochee/py2h.uhin", "yacc2h": "wyaaka/yacc2h.uhin", "l2h": "shabda/l2h.uhin"}
 BUILD_FILES = re.compile(r"^(GNUmakefile|[Mm]akefile.*|.*\.mk|CMakeLists\.txt|.*\.cmake|meson\.build)$")

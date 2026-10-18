@@ -10,6 +10,7 @@
 #   HINDAWI_DICT          the ingestion's dictionary, for -D and -U names
 #   HINDAWI_NATIVE_SOURCE 1 when .c and .h files hold native code
 #   HINDAWI_KEEP=1        keeps each generated C file beside its source
+#   HINDAWI_GCC           the compiler underneath (default gcc), e.g. riscv64-linux-gnu-gcc for a cross build
 set -euo pipefail
 SRC="$0"; while [ -L "$SRC" ]; do D="$(cd "$(dirname "$SRC")" && pwd)"; SRC="$(readlink "$SRC")"; case "$SRC" in /*) ;; *) SRC="$D/$SRC" ;; esac; done
 HERE="$(cd "$(dirname "$SRC")" && pwd)"; CHAIN="$HERE/tools/hindawi_chain.py"
@@ -45,4 +46,4 @@ for a in "$@"; do
     *) args+=("$a") ;;
   esac
 done
-exec gcc "${args[@]}"
+exec "${HINDAWI_GCC:-gcc}" "${args[@]}"

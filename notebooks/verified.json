@@ -1,0 +1,472 @@
+{
+ "arabic": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "aramaic": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "assamese": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "awadhi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "balochi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "bengali": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "bhojpuri": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "bodo": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "chhattisgarhi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "dari": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "dogri": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "gujarati": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "hausa_ajami": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "hindi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "kannada": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "kashmiri": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "kashmiri_dev": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "konkani": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "kurdish_sorani": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "magahi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "maithili": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "malay_jawi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "mandaic": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "manipuri_beng": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "marathi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "marwari": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "nabataean": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "nepali": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "newari": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "odia": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "pali": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "pashto": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "persian": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "prakrit": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "punjabi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "punjabi_shahmukhi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "rajasthani": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "samaritan": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "sanskrit": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "saraiki": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "sindhi": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "sindhi_dev": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "tamil": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "telugu": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "tulu": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "urdu": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ },
+ "uyghur": {
+  "guru": [
+   true,
+   "5 -1"
+  ],
+  "soochee": [
+   true,
+   "5 -1"
+  ]
+ }
+}

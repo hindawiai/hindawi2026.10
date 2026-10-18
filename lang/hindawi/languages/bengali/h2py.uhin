@@ -1,6 +1,6 @@
 %{
 /* bengali h2py.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -22,6 +22,7 @@
 ক্ষেত্র                     {printf("case");}
 দ্বিগুণ                     {printf("double");}
 বিমূর্ত                     {printf("abstract");}
+বৈশ্বিক                     {printf("global");}
 অন্যথা                      {printf("else");}
 অবশেষে                      {printf("finally");}
 অস্থির                      {printf("volatile");}
@@ -60,7 +61,7 @@
 যদি                         {printf("if");}
 যাও                         {printf("goto");}
 লিখ                         {printf("write");}
-ই঵                          {printf("as");}
+ইব                          {printf("as");}
 এই                          {printf("this");}
 তঃ                          {printf("from");}
 পঠ                          {printf("read");}

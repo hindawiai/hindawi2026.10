@@ -1,6 +1,6 @@
 %{
 /* assamese b2h.uhin: generated from the assamese lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -9,13 +9,13 @@
 RETURN                      {printf("ঘূৰাই");}
 SHARED                      {printf("সহভাজিত");}
 STATIC                      {printf("স্থির");}
-STRING                      {printf("পদা঵লী");}
+STRING                      {printf("পদাৱলী");}
 return                      {printf("ঘূৰাই");}
-CONST                       {printf("ধ্রু঵");}
+CONST                       {printf("ধ্রুৱ");}
 TIMER                       {printf("কালযন্ত্র");}
 WHILE                       {printf("যেতিয়ালৈ");}
 while                       {printf("যেতিয়ালৈ");}
-CALL                        {printf("আহ্঵ান");}
+CALL                        {printf("আহ্ৱান");}
 ELSE                        {printf("অন্যথা");}
 GOTO                        {printf("গচ্ছ");}
 goto                        {printf("গচ্ছ");}
@@ -30,7 +30,7 @@ end                         {printf("শেষ");}
 for                         {printf("বাবে");}
 let                         {printf("অস্তু");}
 not                         {printf("নহয়");}
-AS                          {printf("ই঵");}
+AS                          {printf("ইৱ");}
 DO                          {printf("কৰা");}
 IF                          {printf("যদি");}
 OR                          {printf("বা");}

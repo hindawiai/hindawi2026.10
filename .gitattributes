@@ -10,3 +10,9 @@ bin/* text eol=lf
 lang/hindawi/hindawicc text eol=lf
 *.docx binary
 *.zip binary
+# Originals are kept byte for byte and never normalised: Chintamani's own files, the BUILD-0102 sources and the recorded
+# source stages. A line-ending rule above must never reach them (a push on 18 Oct 2026 did; tests/check_originals.sh).
+lang/hindawi/upstream/** -text
+lang/suktam/** -text
+docs/source-stages/** -text
+releases/** -text

@@ -19,7 +19,7 @@
   hindawi standard [generate|import]     the language standards (Markdown, JSON, Word); import a filled work package
   hindawi wp [list [kind]|show ID|generate]   work packages for students and AI: languages, GATE, JavaScript
   hindawi notebooks                      the Colab notebooks, written once in English and ingested into each language
-  hindawi test                           the build's own suite and the fundamental regression
+  hindawi test [--full]                  the local test harness: every suite, with a summary (TESTING.md)
   hindawi verify [--langs L]             the manual verification, step by step, with what to expect
 
 Languages are given as names (urdu,sindhi,telugu) or "all". Every subcommand takes --help.
@@ -148,9 +148,24 @@ def main(argv):
     if cmd == "lab":
         return run(["docker", "compose", "-f", ROOT / "lab/docker-compose.yml", "up", "--build"] + rest)
     if cmd == "test":
-        a = run(["bash", ROOT / "scripts/test_all.sh"])
-        b = run([PY, ROOT / "tests/fundamental.py"], env=toolchain_env())
-        return a or b
+        # the local test harness: every suite, each named, each with its result; --full adds the GATE programs in every
+        # complete language (C and Python, compiled or run from the language and compared with English)
+        suites = [("originals byte for byte", ["bash", ROOT / "tests/check_originals.sh"]),
+                  ("the build's own suite", ["bash", ROOT / "scripts/test_all.sh"]),
+                  ("standards, review data, trademarks, register, stages", [PY, ROOT / "tests/check_standards_register.py"]),
+                  ("fundamental regression", [PY, ROOT / "tests/fundamental.py"]),
+                  ("notebooks: structure, and demos built through the original pipeline", [PY, ROOT / "tests/check_notebooks.py"])]
+        if "--full" in rest:
+            suites.append(("GATE programs in every complete language", [PY, ROOT / "tests/gate/run.py", "--langs",
+                           NINE + ",hindi"]))
+        results = []
+        for name, c in suites:
+            print(f"\n== {name}", flush=True)
+            results.append((name, run(c, env=toolchain_env()) == 0))
+        print("\n== summary")
+        for name, ok in results:
+            print(f"   {'PASS' if ok else 'FAIL'}  {name}")
+        return 0 if all(ok for _, ok in results) else 1
     if cmd == "verify":
         langs = rest[rest.index("--langs") + 1] if "--langs" in rest else NINE
         return verify(langs)

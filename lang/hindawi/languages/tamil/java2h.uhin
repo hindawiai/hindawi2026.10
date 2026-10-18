@@ -1,6 +1,6 @@
 %{
 /* tamil java2h.uhin: generated from the tamil lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -9,7 +9,7 @@
 implements                  {printf("செயல்படுத்து");}
 interface                   {printf("இடைமுகம்");}
 protected                   {printf("பாதுகாக்கப்பட்ட");}
-\#include                   {printf("#அந்தர்஭ாவ");}
+\#include                   {printf("#அந்தர்பாவ");}
 abstract                    {printf("சுருக்க");}
 continue                    {printf("தொடர்");}
 register                    {printf("பதிவு");}
@@ -50,7 +50,7 @@ super                       {printf("மேல்");}
 throw                       {printf("எறி");}
 union                       {printf("ஒன்றிப்பு");}
 while                       {printf("போது");}
-write                       {printf("லி஖");}
+write                       {printf("லிக");}
 NULL                        {printf("வெற்று");}
 case                        {printf("நிலை");}
 char                        {printf("எழுத்து");}
@@ -60,7 +60,7 @@ free                        {printf("விடுவி");}
 goto                        {printf("செல்");}
 main                        {printf("முதன்மை");}
 null                        {printf("வெற்று");}
-read                        {printf("ப஠");}
+read                        {printf("பட");}
 this                        {printf("இது");}
 true                        {printf("உண்மை");}
 void                        {printf("வெறுமை");}

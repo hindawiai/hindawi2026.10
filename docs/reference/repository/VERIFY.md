@@ -14,7 +14,7 @@ NINE stands for `dari,pashto,urdu,punjabi,punjabi_shahmukhi,sindhi,telugu,kannad
    Every required tool `ok`, the Chintamani toolchain `ok`, and `doctor: ready`.
 
 3. **The regressions.** `hindawi test`
-   `ALL AVAILABLE TESTS PASSED`, then `12 passed, 0 failed`. The twelve include: Chintamani's own sources unchanged,
+   `ALL AVAILABLE TESTS PASSED`, then `12 passed, 0 failed`. The twelve include: the original Hindawi sources unchanged,
    its Hindi samples compiled and run, a two-file project ingested by BURP and built with `-DVALUE=40`, and a Hindi
    name surviving into the ELF symbol table and back through Romenagri.
 

@@ -2,6 +2,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+echo '== Originals byte for byte (Chintamani, BUILD-0102 sources, source stages) =='
+bash tests/check_originals.sh
 echo '== JavaScript / Sūtram tests =='
 node lang/js/test_shivasutras.js
 node lang/js/test_padartha.js

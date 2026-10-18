@@ -17,7 +17,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 OUT = Path(os.environ.get("HINDAWI_FILTERS", REPO / ".build/filters"))
 RMN = Path(os.environ.get("ROMENAGRI", REPO / ".build/chintamani/Romenagri"))
-ORIGINAL = {"TELUGU": "fltr_te_hi", "ARABIC": "fltr_ur_hi"}          # Chintamani's own
+ORIGINAL = {"TELUGU": "fltr_te_hi", "ARABIC": "fltr_ur_hi"}          # the original Hindawi
 PROJECTED = ["BENGALI", "GURMUKHI", "GUJARATI", "ORIYA", "TAMIL", "KANNADA", "MALAYALAM"]
 BLOCK = {"BENGALI": 0x980, "GURMUKHI": 0xA00, "GUJARATI": 0xA80, "ORIYA": 0xB00, "TAMIL": 0xB80, "KANNADA": 0xC80,
          "MALAYALAM": 0xD00}

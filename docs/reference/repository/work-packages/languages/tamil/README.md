@@ -7,7 +7,7 @@ Fill the empty `word` column of `keywords.tsv` and `names.tsv`, in Tamil and its
 The rules: one word per line; a phrase is joined with underscores; a directive keeps its `#`; no word may be an
 English keyword or repeat another word in the same file; use the word Tamil speakers and teachers would use, not a
 transliteration of the English unless that is what the community writes. Words already in the standard, for
-reference: protected = பாதுகாக்கப்பட்ட, #include = #அந்தர்஭ாவ, continue = தொடர், register = பதிவு, volatile = நிலையற்ற, default = இயல்பு.
+reference: protected = பாதுகாக்கப்பட்ட, #include = #அந்தர்பாவ, continue = தொடர், register = பதிவு, volatile = நிலையற்ற, default = இயல்பு.
 
 To have an AI fill it, give it both files and this instruction:
 

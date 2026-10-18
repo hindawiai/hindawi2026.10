@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # install.sh: install Hindawi 2026.10 for this user (default ~/.local) or system-wide (--prefix /usr/local).
-# It checks what Hindawi needs, builds Chintamani's toolchain from the pinned source the original way, puts the
+# It checks what Hindawi needs, builds the Hindawi toolchain from the pinned source the original way, puts the
 # commands hindawi and hindawicc on PATH with their manual page, and proves the installation by compiling and running
 # a GATE program from Urdu and from Telugu.
 #   bash install.sh [--prefix DIR] [--no-build] [--uninstall]
@@ -37,7 +37,7 @@ if [ -n "$missing" ]; then
   exit 1
 fi
 if [ "$BUILD" = 1 ]; then
-  echo "== Chintamani's toolchain, from the pinned source (the first run fetches it from GitHub)"
+  echo "== the Hindawi toolchain, from the pinned source (the first run fetches it from GitHub)"
   bash "$ROOT/scripts/build.sh"
 fi
 echo "== the commands"

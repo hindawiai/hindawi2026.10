@@ -1,27 +1,19 @@
 [
  {
-  "id": "WP-T-05",
+  "id": "WP-T-02",
   "kind": "task",
-  "title": "Notebooks must show the whole compilation flow",
-  "size": "in progress",
-  "path": "work-packages/tasks/WP-T-05.md",
-  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-05]+Notebooks+must+show+the+whole+compilation+flow&body=I+am+taking+WP-T-05:+work-packages/tasks/WP-T-05.md"
+  "title": "Standards of a quality a standards body can take: drafted to Indian Standard practice for LITD 15",
+  "size": "rework required",
+  "path": "work-packages/tasks/WP-T-02.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-02]+Standards+of+a+quality+a+standards+body+can+take:+drafted+to+Indian+Standard+practice+for+LITD+15&body=I+am+taking+WP-T-02:+work-packages/tasks/WP-T-02.md"
  },
  {
   "id": "WP-T-03",
   "kind": "task",
-  "title": "Complete Hindi: bind the keywords Chintamani's 2004-lineage transducers do not carry (C++ 10, Java 6, Python 25, LOGO 14, restrict), as a supplement composed in front of Chintamani's own, never changing its rules",
+  "title": "Complete Hindi: bind the keywords the original 2004-lineage Hindawi transducers do not carry (C++ 10, Java 6, Python 25, LOGO 14, restrict), as a supplement composed in front of the original Hindawi, never changing its rules",
   "size": "open",
   "path": "work-packages/tasks/WP-T-03.md",
-  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-03]+Complete+Hindi:+bind+the+keywords+Chintamani's+2004-lineage+transducers+do+not+carry+(C+++10,+Java+6,+Python+25,+LOGO+14,+restrict),+as+a+supplement+composed+in+front+of+Chintamani's+own,+never+changing+its+rules&body=I+am+taking+WP-T-03:+work-packages/tasks/WP-T-03.md"
- },
- {
-  "id": "WP-T-06",
-  "kind": "task",
-  "title": "Rebuild the notebooks on Chintamani's pattern: installation, the NB UI practice area (Build, Run, Daemon, Hin2Std, Std2Hin, New, Upload, Download), and edit, input and run cells per shaili, every stage shown",
-  "size": "open",
-  "path": "work-packages/tasks/WP-T-06.md",
-  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-06]+Rebuild+the+notebooks+on+Chintamani's+pattern:+installation,+the+NB+UI+practice+area+(Build,+Run,+Daemon,+Hin2Std,+Std2Hin,+New,+Upload,+Download),+and+edit,+input+and+run+cells+per+shaili,+every+stage+shown&body=I+am+taking+WP-T-06:+work-packages/tasks/WP-T-06.md"
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-03]+Complete+Hindi:+bind+the+keywords+the+original+2004-lineage+Hindawi+transducers+do+not+carry+(C+++10,+Java+6,+Python+25,+LOGO+14,+restrict),+as+a+supplement+composed+in+front+of+the+original+Hindawi,+never+changing+its+rules&body=I+am+taking+WP-T-03:+work-packages/tasks/WP-T-03.md"
  },
  {
   "id": "WP-T-10",
@@ -200,6 +192,70 @@
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-32]+Line-ending+rules+can+re-normalise+CRLF+files+when+a+whole+tree+is+staged&body=I+am+taking+WP-T-32:+work-packages/tasks/WP-T-32.md"
  },
  {
+  "id": "WP-T-33",
+  "kind": "task",
+  "title": "Parashakti: the complete demonstrated sovereign stack on the SHAKTI processor, packaged with the ingestion and sovereign-stack tools: cross compilers, then a self-hosted compiler (GCC, or TinyCC as the least-cost path), nothing external; in Hindi, Sanskrit, Arabic, Farsi, Tamil, Telugu, Kannada, Kashmiri, Urdu, Punjabi and every language that compiles; run on his laptop, not here",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-33.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-33]+Parashakti:+the+complete+demonstrated+sovereign+stack+on+the+SHAKTI+processor,+packaged+with+the+ingestion+and+sovereign-stack+tools:+cross+compilers,+then+a+self-hosted+compiler+(GCC,+or+TinyCC+as+the+least-cost+path),+nothing+external;+in+Hindi,+Sanskrit,+Arabic,+Farsi,+Tamil,+Telugu,+Kannada,+Kashmiri,+Urdu,+Punjabi+and+every+language+that+compiles;+run+on+his+laptop,+not+here&body=I+am+taking+WP-T-33:+work-packages/tasks/WP-T-33.md"
+ },
+ {
+  "id": "WP-T-34",
+  "kind": "task",
+  "title": "A local test harness: after seeding, one command tests every feature and function, for every project delivered",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-34.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-34]+A+local+test+harness:+after+seeding,+one+command+tests+every+feature+and+function,+for+every+project+delivered&body=I+am+taking+WP-T-34:+work-packages/tasks/WP-T-34.md"
+ },
+ {
+  "id": "WP-T-35",
+  "kind": "task",
+  "title": "Trademarks and disclaimers from one central place, referred to by every README and web page",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-35.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-35]+Trademarks+and+disclaimers+from+one+central+place,+referred+to+by+every+README+and+web+page&body=I+am+taking+WP-T-35:+work-packages/tasks/WP-T-35.md"
+ },
+ {
+  "id": "WP-T-36",
+  "kind": "task",
+  "title": "Cross-repository links for discovery and for using one component from another, so nothing is repeated",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-36.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-36]+Cross-repository+links+for+discovery+and+for+using+one+component+from+another,+so+nothing+is+repeated&body=I+am+taking+WP-T-36:+work-packages/tasks/WP-T-36.md"
+ },
+ {
+  "id": "WP-T-39",
+  "kind": "task",
+  "title": "Recollect the whole conversation; find any deviation from the original architecture; check with Rahnuma and update it",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-39.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-39]+Recollect+the+whole+conversation;+find+any+deviation+from+the+original+architecture;+check+with+Rahnuma+and+update+it&body=I+am+taking+WP-T-39:+work-packages/tasks/WP-T-39.md"
+ },
+ {
+  "id": "WP-T-40",
+  "kind": "task",
+  "title": "The software factory, built and polished with the robotics, IoT and GATE student networks, on component-based engineering, used by us first",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-40.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-40]+The+software+factory,+built+and+polished+with+the+robotics,+IoT+and+GATE+student+networks,+on+component-based+engineering,+used+by+us+first&body=I+am+taking+WP-T-40:+work-packages/tasks/WP-T-40.md"
+ },
+ {
+  "id": "WP-T-41",
+  "kind": "task",
+  "title": "The basic robot: Arduino first, then ESP32 and higher; parts under 1000 rupees; from the material behind icansee.life",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-41.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-41]+The+basic+robot:+Arduino+first,+then+ESP32+and+higher;+parts+under+1000+rupees;+from+the+material+behind+icansee.life&body=I+am+taking+WP-T-41:+work-packages/tasks/WP-T-41.md"
+ },
+ {
+  "id": "WP-T-42",
+  "kind": "task",
+  "title": "Standards for the global standards bodies (ISO/IEC JTC 1/SC 22, the Unicode Consortium, and national bodies such as BIS), not one body",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-42.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-42]+Standards+for+the+global+standards+bodies+(ISO/IEC+JTC+1/SC+22,+the+Unicode+Consortium,+and+national+bodies+such+as+BIS),+not+one+body&body=I+am+taking+WP-T-42:+work-packages/tasks/WP-T-42.md"
+ },
+ {
   "id": "WP-JS-01",
   "kind": "javascript",
   "title": "BURP in JavaScript",
@@ -315,7 +371,7 @@
   "id": "WP-LANG-assamese",
   "kind": "language",
   "title": "Complete the Assamese standard",
-  "size": "92 keywords, 342 names",
+  "size": "88 keywords, 342 names",
   "path": "work-packages/languages/assamese/",
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-LANG-assamese]+Complete+the+Assamese+standard&body=I+am+taking+WP-LANG-assamese:+work-packages/languages/assamese/"
  },
@@ -355,7 +411,7 @@
   "id": "WP-LANG-bengali",
   "kind": "language",
   "title": "Complete the Bengali standard",
-  "size": "88 keywords, 342 names",
+  "size": "87 keywords, 342 names",
   "path": "work-packages/languages/bengali/",
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-LANG-bengali]+Complete+the+Bengali+standard&body=I+am+taking+WP-LANG-bengali:+work-packages/languages/bengali/"
  },
@@ -595,7 +651,7 @@
   "id": "WP-LANG-manipuri_beng",
   "kind": "language",
   "title": "Complete the Manipuri Beng standard",
-  "size": "94 keywords, 342 names",
+  "size": "88 keywords, 342 names",
   "path": "work-packages/languages/manipuri_beng/",
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-LANG-manipuri_beng]+Complete+the+Manipuri+Beng+standard&body=I+am+taking+WP-LANG-manipuri_beng:+work-packages/languages/manipuri_beng/"
  },

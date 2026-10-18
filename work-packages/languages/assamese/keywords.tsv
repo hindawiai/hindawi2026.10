@@ -1,11 +1,9 @@
 token	meaning	word
 auto	automatic storage duration	
-char	character type	
 long	long integer type	
 restrict	the only pointer to its object	
 short	short integer type	
 signed	signed integer type	
-switch	choose by value	
 unsigned	unsigned integer type	
 main	the program's entry function	
 delete	free an object	
@@ -22,7 +20,6 @@ cin	standard input stream
 endl	end of line	
 boolean	true-or-false type	
 byte	byte type	
-extends	derives from	
 final	cannot change or be overridden	
 instanceof	is an instance of	
 native	implemented outside Java	
@@ -32,7 +29,6 @@ System	the system class
 None	no value	
 def	define a function	
 del	delete	
-global	global	
 is	is the same object	
 nonlocal	from the enclosing function	
 pass	do nothing	

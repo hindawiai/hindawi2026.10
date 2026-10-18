@@ -4,7 +4,7 @@
 
 ## The pipeline that must not change
 
-Chintamani's own drivers define it, and every addition plugs into it rather than around it:
+the original Hindawi drivers define it, and every addition plugs into it rather than around it:
 
     source in its own script
       → script filter to Devanagari (Brahmi-derived scripts; tables in tools/pushkalavati-compiler/vendor/romenagri/upstream/tables)
@@ -46,6 +46,6 @@ action or embedded code is C, compose with h2c as `shabdacc` and `wyaakacc` do. 
 - `acii2cf` doubles every underscore in ASCII identifiers (`debug_putc` becomes `debug__putc`). Inside one
   ingested project the dictionary reverses it; against existing libraries and macros it breaks names
   (`scripts/upstream/seabios.sh` builds SeaBIOS as is, and fails through the Hindi pair for this reason).
-- Chintamani's own assembly pair (`yantra`) is not round-trip stable on its own sample.
+- the original Hindawi assembly pair (`yantra`) is not round-trip stable on its own sample.
 - Comments are carried as text; their translation needs an offline translation model and must be stored in
   the ingestion's dictionary so the reverse can restore them exactly.

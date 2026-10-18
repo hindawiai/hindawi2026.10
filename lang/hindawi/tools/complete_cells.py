@@ -4,7 +4,7 @@
 
 The cells as delivered carried the same 28 rules in all eighteen files, while each language's lexicon
 (lang/hindawi/pipeline/language_params.json) holds a word for about 204 constructs. This regenerates each cell in the
-form of Chintamani's own transducers: for every shaili, the tokens Chintamani's Hindi transducer handles plus the host
+form of the original Hindawi transducers: for every shaili, the tokens Chintamani's Hindi transducer handles plus the host
 language's reserved words; for every token, the language's word for that construct (the construct is primary: one word
 per construct, shared by every shaili that has it). Rules the delivered cells carried are kept where the lexicon has no
 word. A word rule after the keywords stops a keyword from being replaced inside a longer name. Each cell gets a Makefile
@@ -48,7 +48,7 @@ DOMAINS = {"hardware (VHDL, Verilog)": (HIN / "burp/paradigms/vhdl_keywords.txt"
            "AI and numerics": "tensor matrix vector shape train infer model layer weight bias activation relu sigmoid softmax loss gradient optimizer batch epoch predict"}      # their action code and expressions are C's too
 WORD_OK = re.compile(r"[^\W\d][\w\u200c\u200d\u0300-\u036f\u0900-\u0dff\u0e00-\u0fff\u1000-\u109f\u1780-\u18af\u1900-\u1cff\ua800-\uabff]*")
 RULE = re.compile(r'^(\S+)\s+\{\s*printf\("((?:[^"\\]|\\.)*)"\);\s*\}')
-# Character and string literals pass through untouched. Chintamani's own character-literal rule, \'("\\\'"|.*)*\',
+# Character and string literals pass through untouched. the original Hindawi character-literal rule, \'("\\\'"|.*)*\',
 # is greedy: on a line with two character literals it swallows everything between them, keywords included. The cells
 # use the standard patterns instead (DEVIATIONS.md); Hindi keeps Chintamani's transducers as they are.
 STRINGS = (r"\'(\\.|[^\\\'\n])*\'" + " " * 23 + '{printf("%s",yytext);}\n'
@@ -86,7 +86,7 @@ def esc(word):
 
 def uhin(lang, name, pairs, src_is_english):
     lines = [f"%{{\n/* {lang} {name}.uhin: generated from the {lang} lexicon by lang/hindawi/tools/complete_cells.py,",
-             "   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */\n%}\n%%", STRINGS]
+             "   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */\n%}\n%%", STRINGS]
     for a, b in sorted(pairs, key=lambda p: (-len(p[0]), p[0])):
         lines.append(f'{esc(a):<28}{{printf("{b.replace(chr(92), chr(92) * 2).replace(chr(34), chr(92) + chr(34))}");}}')
     # A whole word that is not a keyword passes as it is, so a keyword is never matched inside a longer name (the

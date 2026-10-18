@@ -29,7 +29,8 @@ def main():
     fwd = {o: nv for o, nv in d.get("forward", {}).items() if o != nv}
     forms = chain.c_names(sorted(set(fwd.values())), a.lang) if fwd else {}
     sym = {o: forms[nv] for o, nv in fwd.items() if forms.get(nv)}
-    word = re.compile(r"\b[A-Za-z_][A-Za-z0-9_]*\b")
+    # a symbol in assembly or a linker script; never a piece of a path or a file name (kernel/entry.o stays itself)
+    word = re.compile(r"(?<![\w/.])[A-Za-z_][A-Za-z0-9_]*(?![\w/.])")
     n = 0
     for p in sorted(tree.rglob("*")):
         if not p.is_file() or ".hindawi" in p.parts:

@@ -3,7 +3,7 @@
 """hindawi_chain.py: the two Hindawi paths, shared by ingest.py, hindawicc and the project tools.
 
 Ingestion path (for people): C to the language. Keywords become the language's own keywords, in its own script.
-  Hindi runs Chintamani's own c2h through Romenagri, as C11 established; every other language runs its cell's
+  Hindi runs the original Hindawi c2h through Romenagri, as C11 established; every other language runs its cell's
   c2h directly on Unicode text. No transliteration is needed here.
 Compilation path (for the machine): the language to C. Transliteration is essential here, so names survive to
   the lowest layer. A non-Devanagari source first goes through its script filter, as in the original pipeline
@@ -63,7 +63,7 @@ def cell_dir(lang):
 
 
 def script_filter(lang):
-    """The shell fragment for the language's script filter: Chintamani's own (Telugu, Perso-Arabic), a generated one of
+    """The shell fragment for the language's script filter: the original Hindawi (Telugu, Perso-Arabic), a generated one of
     the same kind (other Brahmi scripts), nothing for Devanagari. A script with no filter has no compilation path yet."""
     if lang in DEVANAGARI_LANGS:
         return ""
@@ -84,10 +84,12 @@ def lexers(lang):
         return c2h, h2c                    # built, and no newer than the cell it was built from
     out.mkdir(parents=True, exist_ok=True)
     src = cell_dir(lang)
-    if lang == "hindi":   # Chintamani's own pair, built with its own Makefile through Romenagri
-        if not (src / "h2c").exists() or not (src / "c2h").exists():
-            sh(f"make -s -C '{src}'")
-        shutil.copy(src / "c2h", c2h); shutil.copy(src / "h2c", h2c)
+    if lang == "hindi":   # the original Hindawi pair, built with its own Makefile in a copy: the upstream copy is never written
+        work = CACHE / "chintamani" / "guru"
+        if not (work / "h2c").exists() or not (work / "c2h").exists():
+            shutil.rmtree(work, ignore_errors=True); shutil.copytree(src, work)
+            sh(f"make -s -C '{work}'")
+        shutil.copy(work / "c2h", c2h); shutil.copy(work / "h2c", h2c)
         return c2h, h2c
     # ingestion: the cell's c2h straight on Unicode, so keywords come out in the language's own script
     sh(f"flex -8 -o '{out}/c2h_lex.c' '{src}/c2h.uhin' && {{ gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -lfl 2>/dev/null || "
@@ -140,6 +142,10 @@ def stages(text, lang, fwd="h2c"):
     # word has one C-level form wherever it stands: Chintamani's Perso-Arabic filter reads a word-initial letter one
     # way after a space and another way after a bracket, which would give one name two forms (DEVIATIONS.md).
     words = sorted({m.group(0) for m in NATIVE_WORD.finditer(guarded)})
+    import unicodedata
+    broken = [w for w in words if any(unicodedata.category(c) == "Cn" for c in w)]
+    if broken:   # a code point Unicode never assigned cannot be transliterated; say which word, never emit stray bytes
+        sys.exit(f"hindawi_chain: {lang}: these words hold code points Unicode never assigned: {' '.join(broken[:5])}")
     if words:
         folded = script_filters.fold(lang, "\n".join(words)).encode("utf-8")
         if filt:
@@ -169,12 +175,13 @@ SHAILI_OF = {"h2c": "guru", "h2py": "soochee", "h2cpp": "shraeni", "h2java": "kr
 def fwd_lexer(lang, name):
     """A language's forward transducer for one shaili (h2py, h2cpp, ...), built as the original Makefiles build them:
     the rules through the script filter, uni2acii and acii2cf, so it works on the Romenagri form, like h2c. Hindi uses
-    Chintamani's own, built by its own Makefile."""
+    the original Hindawi, built by its own Makefile."""
     if name == "h2c":
         return lexers(lang)[1]
-    if lang == "hindi":
-        d = HINDAWI / "upstream/chintamani" / SHAILI_OF[name]
+    if lang == "hindi":     # the original Hindawi, built by its own Makefile in a copy: the upstream copy is never written
+        d = CACHE / "chintamani" / SHAILI_OF[name]
         if not (d / name).exists():
+            shutil.rmtree(d, ignore_errors=True); shutil.copytree(HINDAWI / "upstream/chintamani" / SHAILI_OF[name], d)
             sh(f"make -s -C '{d}'")
         return d / name
     src = cell_dir(lang); out = CACHE / lang; exe = out / name

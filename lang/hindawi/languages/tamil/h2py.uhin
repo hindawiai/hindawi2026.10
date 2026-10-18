@@ -1,6 +1,6 @@
 %{
 /* tamil h2py.uhin: generated from the tamil lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -60,10 +60,10 @@
 உள்                         {printf("in");}
 எறி                         {printf("throw");}
 தசம                         {printf("float");}
-லி஖                         {printf("write");}
+லிக                         {printf("write");}
 இவ                          {printf("as");}
 தஃ                          {printf("from");}
 தா                          {printf("yield");}
-ப஠                          {printf("read");}
+பட                          {printf("read");}
 ([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

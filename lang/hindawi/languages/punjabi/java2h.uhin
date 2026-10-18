@@ -1,6 +1,6 @@
 %{
 /* punjabi java2h.uhin: generated from the punjabi lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -83,7 +83,7 @@ final                       {printf("ਅੰਤਿਮ");}
 float                       {printf("ਦਸ਼ਮਲਵ");}
 raise                       {printf("ਉਠਾਓ");}
 short                       {printf("ਛੋਟਾ");}
-sleep                       {printf("ਸੁ਷ੁਪ੍ਤਿ");}
+sleep                       {printf("ਸੁਸ਼ੁਪ੍ਤਿ");}
 super                       {printf("ਪਰਮ");}
 throw                       {printf("ਸੁੱਟੋ");}
 union                       {printf("ਸੰਘ");}

@@ -28,7 +28,6 @@ System	the system class
 None	no value	
 def	define a function	
 del	delete	
-global	global	
 is	is the same object	
 nonlocal	from the enclosing function	
 pass	do nothing	

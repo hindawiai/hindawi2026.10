@@ -563,3 +563,25 @@ passed; scripts/test_all.sh passes.
 - changed `docs/hindawi/DEVIATIONS.md` (sha256 `6c1c92fb2e542b62`)
 
 **Verified.** Nine languages (Dari, Pashto, Urdu, Punjabi in Gurmukhi and Shahmukhi, Sindhi, Telugu, Kannada, Sanskrit): 113 of 113 C programs and the Python program compile or run from the language and print what the English originals print; 117 of 117 files reverse byte for byte. Hindi: 111 of 113, the two failures caused by Chintamani's greedy character-literal rule (task T-10). Nine draft standards written as Markdown, JSON and Word, each Word file opening cleanly; tests/check_standards_register.py 149 passed; tests/fundamental.py 12 passed; scripts/test_all.sh passes. The trademark kit was dry-run against three live repositories, staging only legal/TRADEMARKS.md and README.md in each.
+
+## C25. Originals restored and guarded, the lexicon's shifted code points corrected, Parashakti, robot coding, practice notebooks, and the test harness
+
+**Why.** The 2026.10.5 push re-normalised the line endings of ten of the original Hindawi transducer files (carried from hindawiai/chintamani, the Telugu version of Hindawi) and three BUILD-0102 and source-stage files, and C24 had committed seven build outputs into that copy. The originals are now excluded from every line-ending rule (.gitattributes), recorded by hash (ORIGINALS.sha256) and checked first in the test suite (tests/check_originals.sh); the build outputs are removed and Hindi's transducers build in a cache copy, never in place. 177 lexicon words in Tamil, Bengali, Assamese, Manipuri and Punjabi had been made by shifting Devanagari code points into those scripts and held code points Unicode never assigned (the Tamil xv6 failure); each is rewritten as the script writes that sound, the compilation path names any such word instead of emitting stray bytes, and the data is tested. hindawicc takes the compiler underneath from HINDAWI_GCC, for cross builds; build_project.py no longer rewrites path pieces in linker scripts. scripts/parashakti.sh ingests, lowers, cross-compiles and runs the sovereign stack on QEMU (SHAKTI C-class bare metal, xv6 on RISC-V, SeaBIOS, TinyCC), writing the evidence into its report. robot_coding/ holds the Stage 1 (Arduino UNO, L293D, USB) and Stage 3 (ESP32, L298N, WiFi) sketches for the AyeAM control interface's commands, in English and six languages, with a guide. notebooks/practice/ holds a notebook per language in the design of the Hindawi NB UI: every GATE program selectable, C and Python, Build, Run, Stages, To C, From English, New, Upload, Download, and a place per GATE section to teach it in the mother tongue. hindawi test is the local harness (TESTING.md). Terminology corrected: the transducers and toolchain are the original Hindawi ones; Chintamani is the Telugu version that carries them.
+
+- changed `.gitattributes` (sha256 `400670b7d67f7ced`)
+- added `ORIGINALS.sha256` (sha256 `bb2bdb521758a958`)
+- added `tests/check_originals.sh` (sha256 `7d7b4373058e4f98`)
+- changed `lang/hindawi/pipeline/language_params.json` (sha256 `03236948f864ca62`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `1e4fffd9b0989a5c`)
+- changed `lang/hindawi/hindawicc` (sha256 `d3733a9c5f3cc495`)
+- changed `lang/hindawi/tools/build_project.py` (sha256 `cc64bcac0e31f364`)
+- added `scripts/parashakti.sh` (sha256 `f8d26c6e9578012d`)
+- added `scripts/seed_notebooks.sh` (sha256 `d6402361a25eb900`)
+- added `robot_coding/README.md` (sha256 `81eb9d89a7d9bc7f`)
+- added `notebooks/practice/hindawi_urdu.ipynb` (sha256 `d31e9dd2d4b36534`)
+- changed `bin/hindawi` (sha256 `3b40577716866980`)
+- added `TESTING.md` (sha256 `58cec2a13911c33f`)
+- changed `work-packages/tasks.json` (sha256 `65d5bc4c9f05add2`)
+- changed `legal/TRADEMARKS.md` (sha256 `dbcf83a16bc4063b`)
+
+**Verified.** test_all passes with the originals check first; tests/fundamental.py 12 passed; GATE: Urdu and Tamil 113 of 113 C programs and the Python program, 117 of 117 files reversed. Parashakti run here: bare metal in Urdu, Tamil and Hindi printed its result on QEMU's SHAKTI C-class machine; xv6 in Urdu, Tamil, Bengali and Punjabi booted on QEMU's RISC-V machine and its shell ran echo and ls; SeaBIOS and TinyCC stages not run here. The practice notebooks were driven headless in Urdu and Hindi: Build, Run, To C, From English and the Python path each gave the expected result. The robot sketches pass a C++ syntax check against stand-in Arduino headers, also after lowering from Urdu, Tamil and Hindi; they have not been compiled against the real cores or run on a robot.

@@ -1,6 +1,6 @@
 %{
 /* bengali b2h.uhin: generated from the bengali lexicon by lang/hindawi/tools/complete_cells.py,
-   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
+   in the form of the original Hindawi transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
@@ -30,7 +30,7 @@ end                         {printf("শেষ");}
 for                         {printf("জন্য");}
 let                         {printf("ধরি");}
 not                         {printf("নয়");}
-AS                          {printf("ই঵");}
+AS                          {printf("ইব");}
 DO                          {printf("করো");}
 IF                          {printf("যদি");}
 OR                          {printf("অথবা");}
