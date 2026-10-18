@@ -51,5 +51,5 @@
 تهی                         {printf("void");}
 نوع                         {printf("type");}
 پوچ                         {printf("NULL");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

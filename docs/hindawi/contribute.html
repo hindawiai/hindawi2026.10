@@ -20,8 +20,8 @@ const REPO = "https://github.com/hindawiai/hindawi2026.10/issues/new";
 let D;
 function draw() {
   const L = document.getElementById("lang").value, q = document.getElementById("q").value.toLowerCase();
-  const kw = D.languages[L] || {}, tb = document.getElementById("rows"); tb.innerHTML = ""; let missing = 0;
-  for (const id of D.constructs) {
+  const kw = (D.languages[L] || {}).words || {}, tb = document.getElementById("rows"); tb.innerHTML = ""; let missing = 0;
+  for (const id of D.all) {
     if (q && !id.toLowerCase().includes(q)) continue;
     const v = kw[id] || ""; missing += !v;
     const p = new URLSearchParams({template: "keyword.yml", title: `[keyword] ${L} ${id}`, language: L, construct: id, current: v});
@@ -30,8 +30,10 @@ function draw() {
       <td><a href="${REPO}?${p}" target="_blank" rel="noopener">${v ? "Propose a correction" : "Propose a word"}</a></td>`;
     tb.appendChild(tr);
   }
-  document.getElementById("stat").textContent = `${L}: ${D.constructs.length - missing} of ${D.constructs.length} constructs have a word.`;
+  document.getElementById("stat").textContent = `${L}: ${D.all.length - missing} of ${D.all.length} constructs have a word.`;
 }
-fetch("data/keywords.json").then(r => r.json()).then(d => { D = d; const s = document.getElementById("lang");
+// the same data the review page and the standards use: host keywords first in every paradigm
+fetch("data/standards.json").then(r => r.json()).then(d => { D = d; D.all = [...new Set(Object.values(d.constructs).flat())];
+  const s = document.getElementById("lang");
   for (const l of Object.keys(d.languages).sort()) s.add(new Option(l, l)); s.onchange = draw; document.getElementById("q").oninput = draw; draw(); });
 </script></body></html>

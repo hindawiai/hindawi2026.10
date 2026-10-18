@@ -71,140 +71,298 @@ def status_word(p):
     return p or "lexicon"
 
 
+LITD = ("the Data Management System Sectional Committee, LITD 15, of the Bureau of Indian Standards, whose scope "
+        "includes programming languages, their environments and system software interfaces")
+COMPLETE_NOTE = "A standard is drafted only for a language whose keyword bindings are complete in every binding of Annex A."
+
+
+def digits(script):
+    """The native decimal digits of a script, from the Unicode Character Database: (code point, character, value)."""
+    names = {"ARABIC": ("ARABIC-INDIC DIGIT", "EXTENDED ARABIC-INDIC DIGIT")}.get(script, (f"{script} DIGIT",))
+    out = []
+    for cp in range(0x0600, 0x1100):
+        c = chr(cp); n = unicodedata.name(c, "")
+        if unicodedata.category(c) == "Nd" and any(n.startswith(x + " ") for x in names):
+            out.append((f"U+{cp:04X}", c, unicodedata.digit(c)))
+    return out
+
+
+def complete(lang):
+    """True when every host keyword of every binding has a native word: the condition for drafting a standard."""
+    for title, rev, _, _ in BINDINGS:
+        table = {k.lower(): v for k, v in burp.keyword_table(lang, rev).items()}
+        if any(h.lower() not in table for h in coverage.PARADIGM_WORDS[title][1]):
+            return False
+    return True
+
+
+def test_vectors(lang, limit=30):
+    """Annex B: native names from the language's GATE dictionary and the C-level form the reference implementation
+    gives each, computed here, now, by the same function the compiler uses."""
+    import hindawi_chain
+    g = R / "docs/hindawi/samples" / lang / "dictionary.json"
+    if not g.exists():
+        return []
+    names = json.loads(g.read_text(encoding="utf-8")).get("identifiers", {})
+    natives = sorted({v for k, v in names.items() if v != k and len(k) > 2 and not v.isascii()})[:limit]
+    try:
+        forms = hindawi_chain.c_names(natives, lang)
+    except SystemExit:
+        return []
+    return [[n, forms[n]] for n in natives if forms.get(n) and forms[n].isascii()]
+
+
+def example(lang):
+    """Annex E: one GATE program as the language writes it, its Romenagri form and its C, by the reference pipeline."""
+    import hindawi_chain
+    src = R / "docs/hindawi/samples" / lang / "algorithms/searching/binary_search.c"
+    if not src.exists():
+        return []
+    try:
+        return hindawi_chain.stages(src.read_text(encoding="utf-8"), lang)
+    except SystemExit:
+        return []
+
+
 def model(lang):
     script = script_filters.script_of_language(lang)
     name = lang.replace("_", " ").title()
     code = burp.ISO.get(lang, lang)
     prov = provenance(lang)
     today = date.today().isoformat()
-    B = []                                               # the document as blocks: h1, h2, p, list, table
+    B = []
     h1 = lambda t: B.append({"type": "h1", "text": t})
     h2 = lambda t: B.append({"type": "h2", "text": t})
     p = lambda t: B.append({"type": "p", "text": t})
     li = lambda items: B.append({"type": "list", "items": items})
-    tables, counts = [], []
+    note = lambda t: B.append({"type": "note", "text": t})
+    codeb = lambda t: B.append({"type": "code", "text": t})
+    tables, counts, provcount = [], [], {}
     for title, rev, ref, ids in BINDINGS:
         table = burp.keyword_table(lang, rev)
         host_words = coverage.PARADIGM_WORDS[title][1]
         rows = []
         for host in host_words:
             native = table.get(host) or table.get(host.lower())
-            src = "Chintamani" if lang == "hindi" and native else status_word(prov.get(host, "")) if native else ""
-            rows.append([host, native or host, src if native else "host form (no native word yet)"])
-        extra = [] if title == "C preprocessor" else sorted(          # directives are their own binding
+            src = "Chintamani" if lang == "hindi" else status_word(prov.get(host, ""))
+            provcount[src] = provcount.get(src, 0) + 1
+            rows.append([host, native, src])
+        extra = [] if title == "C preprocessor" else sorted(
             k for k in table if k not in host_words and k.lower() not in host_words and not k.startswith("#"))
         lib = [[k, table[k], "Chintamani" if lang == "hindi" else status_word(prov.get(k, ""))] for k in extra]
-        have = sum(1 for r in rows if r[1] != r[0])
-        counts.append((title, have, len(rows), len(lib)))
+        counts.append((title, len(rows), len(lib)))
         tables.append((title, ref, ids, rows, lib))
+    ds = digits(script)
+    gate = json.loads((R / "docs/hindawi/data/gate-results.json").read_text(encoding="utf-8")).get(lang, {}) \
+        if (R / "docs/hindawi/data/gate-results.json").exists() else {}
+    title = f"Information technology, Programming languages, {name} keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards"
     meta = {"language": name, "code": code, "script": script.title(), "direction": "right to left" if script in RTL else "left to right",
-            "edition": CONFIG["edition"], "stage": CONFIG["stage"], "date": today, "copyright": CONFIG["copyright"],
-            "identifier": f"HLS {code} {CONFIG['edition']}", "publisher": CONFIG["publisher"],
-            "title": f"{name} bindings for programming languages: lexical mapping and lowering to the host standards",
+            "edition": CONFIG["edition"], "stage": "Draft proposal", "date": today, "copyright": CONFIG["copyright"],
+            "identifier": f"HLS {code} {CONFIG['edition']}", "publisher": CONFIG["publisher"], "title": title,
             "compilation": compile_status(lang)}
 
     h1("Foreword")
-    p(f"This document was prepared by {CONFIG['publisher']}. It is generated from the {name} cell of Hindawi "
-      f"{CONFIG['edition']} by lang/hindawi/tools/standards.py, so that the published standard and the reference "
-      "implementation cannot drift apart. Its stage is a working draft: the words marked proposed in Annex A await "
-      f"review by the {name} language community, through the review pages of the Hindawi project.")
+    p(f"This draft is proposed by Abhishek Choudhary, AyeAI, for consideration by {LITD}. It is an indigenous draft: it "
+      "adopts no International Standard, binds the language it names to the host programming language standards listed "
+      "in Clause 2 by reference, and reproduces no text from them.")
+    p(f"The method it standardizes was first published as the Hindawi Programming System on 15 August 2004, and has been "
+      f"developed since through the Hindawi releases. This draft is generated from the {name} cell of Hindawi "
+      f"{CONFIG['edition']} by lang/hindawi/tools/standards.py, so that the document and its reference implementation "
+      "cannot diverge; a revision of either is a revision of both.")
+    p("Annexes A, B and C are normative. Annexes D, E and F are informative.")
+    p(f"Every binding in Annex A records its provenance. A binding recorded as proposed has not yet been reviewed by the "
+      f"{name} language community; its review is part of the work towards an Indian Standard.")
+    p(f"{CONFIG['copyright']} Hindawi™ and Romenagri™ are trademarks of Abhishek Choudhary. {CONFIG['rights']}")
+
     h1("Introduction")
-    p(f"This document lets programs be written in {name}, in the {script.title()} script, in each of the programming "
-      f"languages listed in Clause 1. Each binding is a programming language in its own right, {name} C for example, "
-      "whose programs are lowered by the function defined in Clause 6 to programs of the host language, and are then "
-      "processed by any conforming implementation of the host standard. The host standards are incorporated by reference "
-      "and are not restated. Names keep a defined form down to object code (Clause 7), so programs written in "
-      f"{name} remain debuggable at the level of firmware, kernels and libraries.")
+    p("A program has three properties that this draft keeps apart: the script it is written in, the human language its "
+      "words come from, and the programming language standard that defines its meaning. The script is handled by "
+      "transliteration, the language by the keyword bindings of Annex A, and the meaning by the host standard, which this "
+      "draft does not alter.")
+    p("A source text in the language is lowered to a source text of the host language and compiled by any conforming host "
+      "translator. Native names reach the compiled program, and the debugger, in one fixed transliterated form, so that a "
+      "program written in the language remains readable in that language at every level down to the machine.")
+
     h1("1 Scope")
-    p(f"This document specifies, for the {name} language written in the {script.title()} script, bindings to the "
-      "following host programming languages: " + ", ".join(t for t, *_ in BINDINGS) + ". For each binding it specifies "
-      "the native keywords and directives, the lowering of native programs to host programs, the treatment of names, "
-      "and the requirements for conformance.")
-    p("It does not specify the syntax or semantics of any host language beyond what is needed to define the lowering, "
-      "and it does not specify translations of comments, string literals or documentation.")
+    p(f"This draft specifies, for programs written in {name} in the {script.title()} script:")
+    li(["the encoding and character repertoire of source text (Clause 6);",
+        "the lexical structure of source text, where it differs from the host language (Clause 7);",
+        "the keyword bindings of the language for C, the C preprocessor, C++, Java, Python, BASIC and LOGO (Annex A);",
+        "the lowering of a source text to a source text of the host language (Clause 8);",
+        "the transformation of native names to identifiers of the host language (Clause 9, Annexes B and C);",
+        "the requirements for conformance of programs and of translators (Clause 5)."])
+    p("This draft does not specify the semantics of any host language, which remain those of its standard; the names of "
+      "host libraries, which are informative (Annex D); or any execution environment.")
+
     h1("2 Normative references")
     p("The following documents are referred to in the text in such a way that some or all of their content constitutes "
-      "requirements of this document. For undated references, the latest edition of the referenced document (including "
-      "any amendments) applies.")
-    li(list(dict.fromkeys(ref.split(" (")[0] for _, _, ref, _ in BINDINGS if not ref.startswith("No international"))) + UNICODE_REFS)
+      "requirements of this draft. For dated references, only the edition cited applies. For undated references, the "
+      "latest edition of the referenced document, including any amendments, applies.")
+    li([r for _, _, r, _ in BINDINGS if not r.startswith("No international")] + UNICODE_REFS + [
+        "ISO/IEC 14977, Information technology, Syntactic metalanguage, Extended BNF",
+        "IS 13194 : 1991, Indian Script Code for Information Interchange, ISCII"])
+
     h1("3 Terms and definitions")
-    for term, d in [
-        ("host language", "programming language defined by a normative reference, to which a native program is lowered"),
-        ("binding", f"programming language defined by this document whose programs are written in {name} and lowered to one host language"),
-        ("native keyword", "word of this document that stands for one keyword, directive or standard library name of a host language"),
-        ("lowering", "function from native programs to host programs defined in Clause 6"),
-        ("raising", "inverse of lowering applied to a host program with a dictionary of names, giving back the native program exactly"),
-        ("name transformation", "function from native names to host identifiers defined in Clause 7"),
-        ("C-level form", "result of the name transformation; the form a native name takes in host source and in object code")]:
-        li([f"{term}: {d}"])
-    h1("4 Conformance")
-    p(f"A conforming {name} program of a binding shall be a text that meets Clause 5 and whose lowering is a conforming "
-      "program of the host language.")
-    p("A conforming implementation of a binding shall accept every conforming program of that binding and shall behave "
-      "as the lowering of the program, processed by a conforming implementation of the host language, behaves.")
-    p("An implementation that raises host programs into a binding shall produce native programs whose lowering, with "
-      "the same dictionary of names, is identical to the host program it raised.")
-    h1("5 Character set and encoding")
-    p(f"A native program shall be encoded in UTF-8 and shall be in Normalization Form C. Native keywords and names are "
-      f"written in the {script.title()} script, whose direction is {meta['direction']}. Numeric literals are written "
-      "with the digits 0 to 9 (U+0030 to U+0039). A native keyword written as several words is one token, its words "
-      "joined by LOW LINE (U+005F).")
-    h1("6 Lowering")
-    p("A native program is lowered by the following steps, applied in order to the tokens the host language's lexical "
-      "rules yield when the letters and marks of the script are treated as identifier characters.")
-    li(["Each native keyword of the binding's table in Annex A is replaced by the host keyword, directive or name it stands for.",
-        "A host keyword for which Annex A gives no native word is written in its host form.",
-        "Every other name is lowered as the binding requires: by the name transformation of Clause 7 for C, the C "
-        "preprocessor, C++, BASIC and LOGO; unchanged for Java and Python, whose host standards accept such names.",
-        "String literals, character constants, header names in include directives, and comments are not changed.",
-        "Every other character is not changed."])
-    h1("7 Name transformation")
-    p("The C-level form of a native name is obtained by passing the name, alone, through the script filter of the "
-      "script (Annex C), then through the Romenagri transliteration (uni2acii followed by acii2cf), and writing each "
-      "circumflex accent (U+005E) that results as LOW LINE (U+005F). Names already written in the digits, Latin "
-      "letters and LOW LINE of the Basic Latin block are not transformed.")
-    p("Two names declared in the same scope shall not have the same C-level form.")
-    h1("8 Reference implementation")
-    p(f"Hindawi {CONFIG['edition']} is the reference implementation: hindawicc lowers and compiles, BURP raises and "
-      "lowers projects, and the Romenagri tools of Chintamani at commit 3ad87785a75dc2b18438a8b068807103cb920c81 give "
-      "the name transformation. Where this document and the reference implementation differ, this document governs.")
-    h1("Annex A (normative) Native keywords")
-    for title, ref, ids, rows, lib in tables:
-        h2(f"A.{len([b for b in B if b['type'] == 'h2']) + 1} {title}")
-        p(f"Host: {ref}. Names: {ids}.")
-        B.append({"type": "table", "head": ["Host", name, "Source"], "rows": rows})
-        if lib:
-            p(f"Standard library and runtime names of the {title} binding:")
-            B.append({"type": "table", "head": ["Host", name, "Source"], "rows": lib})
-    h1("Annex B (informative) Coverage and review")
-    B.append({"type": "table", "head": ["Binding", "Host keywords with a native word", "Library names"],
-              "rows": [[t, f"{h} of {n}", str(l)] for t, h, n, l in counts]})
-    p(f"The lowering of {name} programs to C is verified by the reference implementation: {meta['compilation'] or 'not yet measured'}. "
-      "Source Chintamani means a word of the original Hindawi transducers; lexicon, a word of the language's lexicon; "
-      "proposed, a word proposed by the project and not yet reviewed by the language community.")
-    h1("Annex C (normative) Script filter")
-    folds = [[a, b] for a, b in sorted(script_filters.FOLD_PAIRS.items())] if script == "ARABIC" else []
-    if script == "DEVANAGARI":
-        p("Devanagari text passes to Romenagri without a script filter.")
-    elif script in ("ARABIC", "TELUGU"):
-        p(f"The script filter is Chintamani's own ({script_filters.ORIGINAL.get(script)}).")
+    terms = [
+        ("host language", "a programming language defined by a standard listed in Clause 2, into which a source text is lowered"),
+        ("host keyword", "a reserved word or directive name of a host language"),
+        ("native keyword", f"a word of {name}, written in the {script.title()} script, bound by Annex A to a host keyword"),
+        ("binding", "the pairing of one host keyword with one native keyword, for one host language"),
+        ("construct", "the programming construct a keyword denotes, which is the same across host languages, so that one native keyword serves it in every binding"),
+        ("source text", f"a program, or part of one, written using native keywords, native names, or both"),
+        ("native name", f"an identifier of a source text written wholly or partly in the {script.title()} script"),
+        ("lowering", "the transformation of a source text into a source text of the host language"),
+        ("C-level form", "the identifier of the host language that a native name becomes by name transformation, and under which it appears in compiled programs and to debuggers"),
+        ("name transformation", "the mapping of native names to C-level forms specified in Clause 9"),
+        ("script filter", f"the mapping of the {script.title()} script to Devanagari that precedes transliteration, specified in Annex C"),
+        ("translator", "a program that performs lowering and name transformation"),
+        ("reversal", "the transformation of a host-language source text into a source text of the language, through a dictionary of names kept with the program"),
+        ("provenance", "the record of where a binding came from: the 2004 Hindawi transducers, a language lexicon, or a proposal awaiting review"),
+    ]
+    for i, (t, d) in enumerate(terms, 1):
+        p(f"3.{i} {t}: {d}.")
+
+    h1("4 Abbreviated terms")
+    li(["ACII, the eight-bit form of Indic text used by the Romenagri tools, derived from ISCII",
+        "BURP, Bidirectional Universal Resource Parser, the reference implementation of reversal",
+        "EBNF, Extended Backus-Naur Form as specified in ISO/IEC 14977",
+        "ISCII, Indian Script Code for Information Interchange, IS 13194",
+        "NFC, Normalization Form C of Unicode Standard Annex #15",
+        "UCS, the Universal Coded Character Set of ISO/IEC 10646"])
+
+    h1("5 Conformance")
+    p("5.1 A conforming program shall be a source text whose lowering according to Clause 8 is a program that conforms to "
+      "the standard of its host language.")
+    p("5.2 A conforming translator shall accept every conforming program, shall lower it as Clause 8 requires, using the "
+      "bindings of Annex A, and shall transform its native names as Clause 9 requires, giving for every name in Annex B "
+      "the C-level form that annex gives.")
+    p("5.3 A claim of conformance shall name the bindings of Annex A it covers. A translator conforming for C covers the "
+      "bindings of A.1 and A.2.")
+    p("5.4 A translator that provides reversal shall reproduce the original host-language source text byte for byte from "
+      "its lowering and the dictionary of names kept with it.")
+
+    h1("6 Source text")
+    p(f"6.1 Source text shall be encoded in UTF-8, as specified in ISO/IEC 10646, and shall be in Normalization Form C.")
+    p(f"6.2 Native letters are the characters of the {script.title()} block of ISO/IEC 10646 whose general category is a "
+      "letter or a mark. Text written right to left is stored in logical order.")
+    p(f"6.3 The {script.title()} script is written {meta['direction']}.")
+    if ds:
+        p("6.4 The native digits below are equivalent, in numerals, to the decimal digits of the host language with the "
+          "same value. A translator shall accept either.")
+        B.append({"type": "table", "head": ["Code point", "Digit", "Value"], "rows": [[a, b, str(c)] for a, b, c in ds]})
     else:
-        p("The script filter maps each letter and sign of the script to the Devanagari letter or sign of the same Unicode "
-          "name, as generated by lang/hindawi/tools/script_filters.py.")
-    if folds:
-        p("Before the filter, these letters are written as the letters that follow them:")
-        B.append({"type": "table", "head": ["Letter", "Written as"], "rows": folds})
-    h1("Annex D (informative) Rights and provenance")
-    p(CONFIG["rights"])
-    p("Single words and the keywords of the host languages are not reproduced from any copyrighted text; the native "
-      "words of Annex A were chosen by the Hindawi project, taken from the language's lexicon in the Hindawi "
-      "repository, or, for Hindi, taken from the Chintamani transducers of the original Hindawi, whose author holds "
-      "their copyright.")
+        p("6.4 Numerals are written with the decimal digits of the host language.")
+
+    h1("7 Lexical structure")
+    p("7.1 The lexical structure of a source text is that of its host language, with the additions given below in the "
+      "notation of ISO/IEC 14977.")
+    codeb("native letter    = ? a character of 6.2 ? ;\n"
+          "latin letter     = ? A to Z or a to z ? ;\n"
+          "digit            = ? 0 to 9, or a native digit of 6.4 ? ;\n"
+          "name start       = native letter | latin letter | \"_\" ;\n"
+          "identifier       = name start , { name start | digit } ;\n"
+          "native keyword   = ? an entry of the native column of Annex A ? ;\n"
+          "directive        = \"#\" , ( native keyword | host keyword ) ;\n"
+          "word             = native keyword | identifier ;")
+    p("7.2 A native keyword is recognized only as a whole word. A word of which a native keyword is a proper part is an "
+      "identifier.")
+    p("7.3 Character literals, string literals and comments are those of the host language; their content may be written "
+      "in any script and is not altered by lowering.")
+    p("7.4 A host keyword written in its host form is accepted unchanged, so that a source text may mix native and host "
+      "keywords.")
+
+    h1("8 Lowering")
+    p("8.1 Lowering shall replace each native keyword by the host keyword Annex A binds it to, for the host language of "
+      "the source text; shall leave literals and comments unaltered; shall replace each native digit by the host digit of "
+      "the same value; and shall transform each native name as Clause 9 requires.")
+    p("8.2 Lowering shall not reorder, insert or remove any other token. The lowered text shall have the same line "
+      "structure as the source text.")
+    note("The reference implementation lowers in three steps: the script filter of Annex C, transliteration by the "
+         "Romenagri tools, and the language's transducer for the host language, a lexical analyser built from the bindings "
+         "of Annex A. Lowering is performed on the transliterated form; Unicode text is never compiled directly.")
+
+    h1("9 Name transformation")
+    p("9.1 Name transformation shall be deterministic, and shall give one native name the same C-level form wherever the "
+      "name stands in a program.")
+    p("9.2 Every C-level form shall be an identifier of the host language.")
+    p("9.3 Two different native names of one program shall not be given the same C-level form; a translator shall report "
+      "such a collision as an error.")
+    p("9.4 A name written wholly in Latin letters, digits and underscores is not transformed.")
+    p("9.5 The C-level forms of the names in Annex B are normative. They are those of the Romenagri transliteration "
+      "applied, word by word, to the output of the script filter of Annex C.")
+
+    h1("10 Reversal")
+    p("Reversal is optional. A translator that provides it shall keep with each program a dictionary of its native names, "
+      "and shall satisfy 5.4.")
+
+    h1("11 Maintenance of the bindings")
+    p(f"The bindings of Annex A are maintained as a living register. A proposed binding becomes reviewed when the {name} "
+      "language community accepts it; a change to a reviewed binding is a revision of this draft. The construct, not the "
+      "host keyword, is primary: one native keyword serves one construct in every binding where that construct occurs.")
+
+    h1("Annex A (normative) Keyword bindings")
+    for i, (t, ref, ids, rows, lib) in enumerate(tables, 1):
+        h2(f"A.{i} {t}")
+        p(f"Host standard: {ref}. Names are lowered by {ids}.")
+        B.append({"type": "table", "head": ["Host keyword", name, "Provenance"], "rows": rows})
+
+    h1("Annex B (normative) Name transformation test vectors")
+    vec = test_vectors(lang)
+    if vec:
+        p("Each native name shall be given the C-level form shown. The vectors are computed by the reference implementation "
+          "when this draft is generated.")
+        B.append({"type": "table", "head": ["Native name", "C-level form"], "rows": vec})
+    else:
+        p("The test vectors are computed where the reference implementation is built; they were not computed for this edition.")
+
+    h1("Annex C (normative) Script filter")
+    filt = script_filters.which(lang)
+    if script == "DEVANAGARI":
+        p("Devanagari text needs no script filter: it is transliterated directly.")
+    elif filt and ".build/chintamani" in str(filt):
+        p(f"The {script.title()} script is mapped to Devanagari by the filter of the Hindawi tools for this script "
+          f"({Path(str(filt)).name}), unchanged since its publication in Chintamani.")
+    else:
+        p(f"The {script.title()} script is mapped to Devanagari letter by letter, by Unicode character name: each letter "
+          f"of the {script.title()} block maps to the Devanagari letter of the same name.")
+    if script == "ARABIC":
+        p("Letters of the Perso-Arabic orthographies that the filter does not distinguish are first folded to the nearest "
+          "Urdu letter: " + ", ".join(f"{a} to {b}" for a, b in sorted(script_filters.FOLD_PAIRS.items())) + ".")
+    if script == "GURMUKHI":
+        p("Gurmukhi signs named differently from Devanagari are mapped by alias: bindi and tippi to anusvara, the vowel "
+          "signs EE and OO to E and O. Addak has no Devanagari sign and is dropped.")
+
+    h1("Annex D (informative) Library names")
+    for t, ref, ids, rows, lib in tables:
+        if lib:
+            h2(f"D {t}")
+            B.append({"type": "table", "head": ["Host name", name, "Provenance"], "rows": lib})
+
+    h1("Annex E (informative) Conformance tests")
+    if gate:
+        p(f"The reference implementation is tested with the programs of samples/gate in the Hindawi repository, which "
+          f"cover the programming content of the GATE Computer Science paper. Recorded on {gate['date']}: "
+          f"{gate['c_ok']} of {gate['c_total']} C programs, written in {name}, were lowered, compiled and run, and printed "
+          f"exactly what their English originals print; {gate['py_ok']} of {gate['py_total']} Python programs did the "
+          f"same; {gate['reverse_ok']} of {gate['reverse_total']} files were reversed byte for byte.")
+    st = example(lang)
+    if st:
+        p("The program below, as written in the language, its transliterated form, and the C that the transducer gives:")
+        for nm, txt in st:
+            h2(f"E {nm}")
+            codeb("\n".join(txt.splitlines()[:16]))
+
+    h1("Annex F (informative) Provenance of the bindings")
+    B.append({"type": "table", "head": ["Provenance", "Bindings"], "rows": [[k, str(v)] for k, v in sorted(provcount.items())]})
+
     h1("Bibliography")
-    li(["Hindawi 2026.10, hindawiai/hindawi2026.10, the reference implementation",
-        "Chintamani, hindawiai/chintamani, the Hindawi transducers and the Romenagri tools",
+    li(["Hindawi Programming System, first public release 15 August 2004, savannah.nongnu.org/projects/hindawi",
+        "Chintamani, hindawiai/chintamani: the Hindawi transducers and the Romenagri tools",
+        "Hindawi 2026.10, hindawiai/hindawi2026.10, concept DOI 10.5281/zenodo.23424410",
+        "IS 12 : 2005, Guide for drafting and presentation of Indian Standards",
+        "ISO/IEC 10279, Information technology, Programming languages, Full BASIC",
         "Berkeley Logo reference manual, Brian Harvey"])
-    return {"meta": meta, "blocks": B}
+    return {"meta": meta, "blocks": [b for b in B if b]}
 
 
 def markdown(m):
@@ -217,12 +375,37 @@ def markdown(m):
             md += [f"### {b['text']}", ""]
         elif b["type"] == "p":
             md += [b["text"], ""]
+        elif b["type"] == "note":
+            md += [f"NOTE: {b['text']}", ""]
+        elif b["type"] == "code":
+            md += ["```", b["text"], "```", ""]
         elif b["type"] == "list":
             md += [f"- {i}" for i in b["items"]] + [""]
         elif b["type"] == "table":
             md += ["| " + " | ".join(b["head"]) + " |", "|" + "---|" * len(b["head"])]
             md += ["| " + " | ".join(str(c).replace("|", "\\|") for c in r) + " |" for r in b["rows"]] + [""]
     return "\n".join(md)
+
+
+REVIEW_SHAILI = {"guru": "C", "shraeni": "C++", "kritrima": "Java", "soochee": "Python", "praatha": "BASIC", "robot": "LOGO"}
+
+
+def review_data():
+    """The review page's data, made whole: Hindi added from Chintamani's own tables, and in every paradigm the host
+    keywords listed first, then the library names, so a reviewer meets if and break before BUFSIZ."""
+    f = R / "docs/hindawi/data/standards.json"
+    d = json.loads(f.read_text(encoding="utf-8"))
+    for shaili, toks in d["constructs"].items():
+        kw = coverage.PARADIGM_WORDS.get(REVIEW_SHAILI.get(shaili, ""), (None, []))[1]
+        first = [t for t in kw if t in toks] + [t for t in toks if t.startswith("#")]
+        d["constructs"][shaili] = first + [t for t in toks if t not in first]
+    words, prov = {}, {}
+    for shaili, rev in (("guru", "c2h"), ("shraeni", "cpp2h"), ("kritrima", "java2h"), ("soochee", "py2h"),
+                        ("praatha", "b2h"), ("robot", "logo2h"), ("wyaaka", "yacc2h"), ("shabda", "l2h"), ("yantra", "asm2h")):
+        for k, v in burp.keyword_table("hindi", [rev]).items():
+            words[k] = v; prov[k] = "legacy"
+    d["languages"]["hindi"] = {"words": words, "provenance": prov}
+    f.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
 def main():
@@ -235,18 +418,29 @@ def main():
     else:
         OUT.mkdir(exist_ok=True); cfg.write_text(json.dumps(CONFIG, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     langs = burp.languages(a.langs)
-    index = []
+    index, drafted = [], 0
     for lang in langs:
+        d = OUT / lang
+        if not complete(lang):
+            # no stub: an incomplete language has a work package, not a standard
+            for f in ("standard.json", "standard.md", "standard.docx"):
+                (d / f).unlink(missing_ok=True)
+            if d.exists() and not any(d.iterdir()):
+                d.rmdir()
+            index.append({"lang": lang, "status": "not drafted: keyword bindings incomplete",
+                          "work_package": f"work-packages/languages/{lang}/"})
+            continue
         m = model(lang)
-        d = OUT / lang; d.mkdir(parents=True, exist_ok=True)
+        d.mkdir(parents=True, exist_ok=True)
         (d / "standard.json").write_text(json.dumps(m, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         (d / "standard.md").write_text(markdown(m) + "\n", encoding="utf-8")
-        cov = next(b for b in m["blocks"] if b["type"] == "table" and b["head"][0] == "Binding")["rows"]
-        index.append({"lang": lang, "language": m["meta"]["language"], "script": m["meta"]["script"],
-                      "identifier": m["meta"]["identifier"], "coverage": cov, "compilation": m["meta"]["compilation"]})
+        index.append({"lang": lang, "status": "draft proposal", "identifier": m["meta"]["identifier"],
+                      "title": m["meta"]["title"], "compilation": m["meta"]["compilation"]})
+        drafted += 1
+    review_data()
     if a.langs == "all":
         (OUT / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"standards: {len(langs)} standards written to {OUT.relative_to(R)}/")
+    print(f"standards: {drafted} drafts written, {len(langs) - drafted} languages not drafted (bindings incomplete)")
 
 
 if __name__ == "__main__":

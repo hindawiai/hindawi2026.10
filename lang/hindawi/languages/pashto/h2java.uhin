@@ -119,5 +119,5 @@
 هذا                         {printf("this");}
 وتل                         {printf("exit");}
 نص                          {printf("String");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

@@ -26,5 +26,5 @@ var_na                      {printf("char");}
 ပွၵ်ႈ                       {printf("return");}
 ၶၢဝ်း                       {printf("while");}
 ပေႃး                        {printf("if");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

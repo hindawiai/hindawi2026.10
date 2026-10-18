@@ -62,5 +62,5 @@
 𐤀𐤌                          {printf("if");}
 𐤋𐤀                          {printf("not");}
 𐤅                           {printf("and");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

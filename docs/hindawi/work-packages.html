@@ -18,7 +18,7 @@ the language's community reviews it on the <a href="review.html">review page</a>
 <div id="list"></div>
 <script>
 const BLOB = "https://github.com/hindawiai/hindawi2026.10/tree/main/";
-const KINDS = {language: "Languages: the words each standard still needs", gate: "GATE programs still to write",
+const KINDS = {task: "Open tasks, from the register in TASKS.md", language: "Languages: the words each standard still needs", gate: "GATE programs still to write",
                javascript: "The tooling in JavaScript, so the site can be the installer"};
 fetch("data/work-packages.json").then(r => r.json()).then(all => {
   for (const [kind, title] of Object.entries(KINDS)) {
@@ -32,6 +32,9 @@ fetch("data/work-packages.json").then(r => r.json()).then(all => {
       const s = document.createElement("span"); s.className = "mut"; s.textContent = p.size || ""; r.appendChild(s);
       const a1 = document.createElement("a"); a1.href = BLOB + p.path; a1.textContent = "read it"; r.appendChild(a1);
       const a2 = document.createElement("a"); a2.href = p.claim; a2.textContent = "take it (opens an issue)"; r.appendChild(a2);
+      const a3 = document.createElement("a");                // share a package where people will see it
+      a3.href = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(BLOB + p.path); a3.textContent = "share";
+      a3.target = "_blank"; a3.rel = "noopener"; r.appendChild(a3);
       d.appendChild(r); list.appendChild(d);
     }
   }

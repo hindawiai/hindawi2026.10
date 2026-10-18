@@ -1,0 +1,781 @@
+{
+ "zistgah": {
+  "total": 59,
+  "repos": [
+   [
+    "tajziya",
+    ""
+   ],
+   [
+    "umhia",
+    ""
+   ],
+   [
+    "governance",
+    ""
+   ],
+   [
+    "jug2gen",
+    ""
+   ],
+   [
+    "rahnuma",
+    ""
+   ],
+   [
+    "jyotish",
+    "A Sanatan panchang and jyotisha, computed and explained; the Kaivalyik projection of CHAKRA, offline"
+   ],
+   [
+    "paniniq",
+    ""
+   ],
+   [
+    "paniniphy",
+    ""
+   ],
+   [
+    "paninib",
+    ""
+   ],
+   [
+    "zistgah.github.io",
+    "Zistgah"
+   ],
+   [
+    "ertabat",
+    "A FAKIR domain for communication engineering: one capability surface for a link whose geometry is changing, nine conformance conditions with units (two honestly…"
+   ],
+   [
+    "dhancha",
+    "The domain-invariant skeleton every FAKIR domain is built on: ten invariants, a machine-readable domain descriptor, a validator, a cross-domain vocabulary leak …"
+   ],
+   [
+    "jugaad28",
+    "Integrated circuits taped out on 28 nm: evidence-gated descriptors and a low-cost open laboratory"
+   ],
+   [
+    "urdu-ilm",
+    ""
+   ],
+   [
+    "humanesque",
+    "Humanesque merged release — PANINI, ILM, Hindawi, cyclers, Mez"
+   ],
+   [
+    "panini_by_grok_toolchain",
+    ""
+   ],
+   [
+    "panini_by_grok",
+    ""
+   ],
+   [
+    "panini_by_grok_toolchain_cgpt_fix",
+    ""
+   ],
+   [
+    "panini_by_claude",
+    ""
+   ],
+   [
+    "cycles",
+    ""
+   ],
+   [
+    "panini",
+    "PANINI — a language for prompt cycles"
+   ],
+   [
+    "mrd",
+    "Market Requirements for the Zistgah / AyeAI estate"
+   ],
+   [
+    "kitab",
+    ""
+   ],
+   [
+    "genie",
+    ""
+   ],
+   [
+    "yadein",
+    "yadein — the record. A multimodal diary, staggered, toward TransEg."
+   ],
+   [
+    "pench",
+    "pench — the embodied cycler. Robotics, cyberphysical, sim2real, real2sim."
+   ],
+   [
+    "tilasm",
+    "tilasm — the immersive cycler. AR, XR, VR."
+   ],
+   [
+    "awaz",
+    "awaz — the listening room"
+   ],
+   [
+    "khwab",
+    ""
+   ],
+   [
+    "matba",
+    "matba — the press. Posters in, book out, sealed, pushed, minted."
+   ],
+   [
+    "mez",
+    "mez — the desk. میز. Local-first, no account, no vendor."
+   ],
+   [
+    "wake",
+    ""
+   ],
+   [
+    "ztools",
+    ""
+   ],
+   [
+    "zindagi",
+    ""
+   ],
+   [
+    "zamin",
+    "Zamin — PRATIK ternary silicon: physicalizing the poised-zero substrate (PEDLER/AyeAI Triad)"
+   ],
+   [
+    "varzish",
+    ""
+   ],
+   [
+    "vakil",
+    ""
+   ],
+   [
+    "transeg-research",
+    "TransEg research — 9-benchmark framework + 7 reference experiments"
+   ],
+   [
+    "transeg-idgov",
+    "TransEg identity governance — typed layers, envelope, staged policies, audit"
+   ],
+   [
+    "transeg",
+    "Project TransEg — local digital twin reference implementation (identity continuity research platform)"
+   ],
+   [
+    "tarbiyat",
+    ""
+   ],
+   [
+    "tabdili",
+    ""
+   ],
+   [
+    "qaem",
+    ""
+   ],
+   [
+    "pratik_core_mvp",
+    "PRATIK Kernel Core — balanced-ternary, event-driven developmental kernel (PEDLER/AyeAI Triad)"
+   ],
+   [
+    "poie",
+    "Proclamation of Individual Equity"
+   ],
+   [
+    "paradox",
+    "The Paradox of Innovation"
+   ],
+   [
+    "marham",
+    ""
+   ],
+   [
+    "janapad",
+    ""
+   ],
+   [
+    "inclinations",
+    ""
+   ],
+   [
+    "genie-book",
+    ""
+   ],
+   [
+    "fiza",
+    ""
+   ],
+   [
+    "fakir",
+    ""
+   ],
+   [
+    "estate",
+    "IP estate: inventory, licensing, offerings, workspace sync"
+   ],
+   [
+    "dukedom",
+    "The Dukedom of Humanesque"
+   ],
+   [
+    "duke2",
+    "The Dukedom of Humanesque, Volume II"
+   ],
+   [
+    "dome",
+    ""
+   ],
+   [
+    "copa",
+    "COPA — Cost of Perceived Authority: a black-box behavioural methodology (measurement framework + open hypothesis)"
+   ],
+   [
+    "alam",
+    "Small work, cycled with any AI. Part of the Zistgah ecosystem."
+   ],
+   [
+    "aab",
+    ""
+   ]
+  ]
+ },
+ "hindawiai": {
+  "total": 24,
+  "repos": [
+   [
+    "hindawi2026.10",
+    ""
+   ],
+   [
+    "hindawiai.github.io",
+    "Hindawi Programming System - Programming in every person's own language"
+   ],
+   [
+    "sanskrit",
+    ""
+   ],
+   [
+    "v86",
+    "x86 virtualization in your browser, recompiling x86 to wasm on the fly"
+   ],
+   [
+    "racketscript",
+    "Racket to JavaScript Compiler"
+   ],
+   [
+    "qbjc",
+    "QBasic to JavaScript compiler"
+   ],
+   [
+    "qb.js",
+    "QBASIC implementation in JavaScript"
+   ],
+   [
+    "pyaara",
+    "BASIC Interpreter by @djinn based on Beautiful Racket by @mbutterick"
+   ],
+   [
+    "old-hindawiai.github.io",
+    "Hindawi AI Community Site"
+   ],
+   [
+    "js-py",
+    "PyPy.js website"
+   ],
+   [
+    "js-dos",
+    "The best API for running dos programs in browser"
+   ],
+   [
+    "hinlin",
+    "Linux kernel source tree"
+   ],
+   [
+    "hindawi2021",
+    "Bootstrapping Hindawi Programming System"
+   ],
+   [
+    "hindawi2020",
+    "Hindawi Programming System (Hindawi@Linux) 2008 version"
+   ],
+   [
+    "hindawi-tx",
+    ""
+   ],
+   [
+    "hindawi-legacy",
+    "Legacy files of Hindawi Programming System"
+   ],
+   [
+    "hi",
+    ""
+   ],
+   [
+    "em-dosbox",
+    "An Emscripten port of DOSBox"
+   ],
+   [
+    "chintamani",
+    "HindawiAI in Telugu"
+   ],
+   [
+    "beautiful-racket",
+    "Resources for the “Beautiful Racket” book "
+   ],
+   [
+    "autogit",
+    "git automations"
+   ],
+   [
+    "JPC",
+    "JPC - The fast x86 PC emulator in 100% pure Java"
+   ],
+   [
+    "2023.12.21",
+    "Hindawi AI - Bada Din release (Coding in all ISO supported languages by 25th Dec 2023)"
+   ],
+   [
+    "practice",
+    ""
+   ]
+  ]
+ },
+ "project-ilm": {
+  "total": 33,
+  "repos": [
+   [
+    "masi-desk",
+    ""
+   ],
+   [
+    "misty-doi",
+    "Automation-first DOI minting & research publication packaging. Muh Mitha Kijiye!"
+   ],
+   [
+    "vscode-ilm",
+    ""
+   ],
+   [
+    "tok-doi",
+    "Tok DoI"
+   ],
+   [
+    "spi-scan",
+    ""
+   ],
+   [
+    "scripts",
+    ""
+   ],
+   [
+    "romenagri",
+    "Romenagri: reversible transliteration library (Perso-Arabic seed). HPS/ILM. GPL. © 1993-2026 Abhishek Choudhary."
+   ],
+   [
+    "research-kundali",
+    ""
+   ],
+   [
+    "qedler",
+    ""
+   ],
+   [
+    "praat",
+    "Praat: Doing Phonetics By Computer"
+   ],
+   [
+    "ops",
+    ""
+   ],
+   [
+    "linguistics-labs",
+    ""
+   ],
+   [
+    "legacy",
+    "Initial fork of Project ILM from Project Hindawi"
+   ],
+   [
+    "language-specs",
+    ""
+   ],
+   [
+    "ilm.codes",
+    "ILM / Project ILM — Integrative Linguistic Multiscript (BETA)"
+   ],
+   [
+    "ilm-validation",
+    "Validation: native speaker QA, annotation tools, field instruments, crowdsourced schema, cultural-linguistic QA loops."
+   ],
+   [
+    "ilm-transliteration",
+    "Layer 1: Transliteration pivot – reversible, compiler-friendly Romanized layer with diacritics; bridges phonology and scripts."
+   ],
+   [
+    "ilm-syntax-semantics",
+    "Layer 4: Syntax-semantics – UD parsing, SRL, AMR/UCCA, discourse segmentation, code-switching awareness."
+   ],
+   [
+    "ilm-site",
+    "A layered, open-source effort for phonetically accurate, reversible, culturally respectful language tooling across world scripts."
+   ],
+   [
+    "ilm-phonology",
+    "Layer 0: Phonological base – IPA core, phonotactics, prosody, dialect normalization, audio alignment. Reversible sound mapping foundation."
+   ],
+   [
+    "ilm-orthography",
+    "Layer 2: Orthographic engine – script-specific shaping, Unicode normalization, ZWJ/ZWNJ handling, grapheme clustering."
+   ],
+   [
+    "ilm-meta",
+    "Meta repo for ILM / علم: vision docs, architecture diagrams, manifestos, research summaries, roadmap, cultural-philosophical grounding."
+   ],
+   [
+    "ilm-lsp",
+    ""
+   ],
+   [
+    "ilm-lexicon",
+    "Layer 3: Morpho-lexical layer – multilingual lexicons, WordNets, morphology analyzers, clitics, affixation, reduplication."
+   ],
+   [
+    "ilm-interface",
+    "Layer 5: Interface & application – multiscript IMEs, NLP/NLU APIs (TTS, ASR, QA), mother-tongue IDEs, educational tools."
+   ],
+   [
+    "ilm-devtools",
+    "Devtools: reversible compiler infra, script-aware IDEs, debug harnesses. Consumers of core ILM layers, not core layers themselves."
+   ],
+   [
+    "ilm-data",
+    "Data: canonical corpora, dialect maps, phoneme-audio pairs, aligned scripts, acoustic training data, lexical resources."
+   ],
+   [
+    "foundry",
+    "Canonical engineering substrate for Project ILM."
+   ],
+   [
+    "cognitive-fabric",
+    ""
+   ],
+   [
+    "chakra",
+    "CHAKRA — Temporal Cycle Observatory: offline multi-tradition astronomical/calendrical observatory, tested library, and URL→JSON API. GPL-3.0."
+   ],
+   [
+    "ai-scratch",
+    ""
+   ],
+   [
+    ".github",
+    "Org profile for project-ilm"
+   ],
+   [
+    "vgc-notes",
+    "Notes on verification-gated human-AI co-development"
+   ]
+  ]
+ },
+ "hmnsq": {
+  "total": 0,
+  "repos": []
+ },
+ "kaivalyik": {
+  "total": 0,
+  "repos": []
+ },
+ "c-polis": {
+  "total": 0,
+  "repos": []
+ },
+ "ayevdi": {
+  "total": 9,
+  "repos": [
+   [
+    "profiles",
+    "3rd party profiles for AyeVDI"
+   ],
+   [
+    "messages",
+    "messages displayed by ayevdi console on startup"
+   ],
+   [
+    "ayevdi_dummy",
+    "Virtualized Deployment IaaS (VDI) by AyeAI"
+   ],
+   [
+    "ayevdi.github.io_old",
+    ""
+   ],
+   [
+    "ayevdi.github.io",
+    "GSF VIKRAM - An inclusive rural digitalization platform by GramSheel Foundation"
+   ],
+   [
+    "ayevdi-origin",
+    ""
+   ],
+   [
+    "ayevdi-ignore-and-delete",
+    "Virtualized Deployment IaaS by AyeAI"
+   ],
+   [
+    "ayevdi",
+    ""
+   ],
+   [
+    "KodExplorer",
+    "A web based file manager,web IDE / browser based code editor"
+   ]
+  ]
+ },
+ "pvjournal": {
+  "total": 4,
+  "repos": [
+   [
+    "pvjournal.github.io",
+    "GSF VIKRAM - An inclusive rural digitalization platform by GramSheel Foundation"
+   ],
+   [
+    "pilla",
+    "PILLA — Parametric Information Layering Logic (Anatemnein). © 1993–2026 Abhishek Choudhary."
+   ],
+   [
+    "pajr",
+    "Index of PaJR case reports · CC BY-NC-SA 4.0 · not medical advice"
+   ],
+   [
+    "journal",
+    ""
+   ]
+  ]
+ },
+ "ayeai": {
+  "total": 39,
+  "repos": [
+   [
+    "xmp",
+    "CUDA accelerated(X) Multi-Precision library"
+   ],
+   [
+    "x11docker",
+    "Run GUI applications and desktops in docker. Focus on security."
+   ],
+   [
+    "util-linux",
+    ""
+   ],
+   [
+    "upload",
+    "Staggered Upload (TM)"
+   ],
+   [
+    "sway",
+    "i3-compatible Wayland compositor"
+   ],
+   [
+    "spl",
+    "AyeAI Singularity Public License"
+   ],
+   [
+    "shellinabox",
+    "AyeVDI modifications. Original is available at"
+   ],
+   [
+    "runtime-tools",
+    "OCI Runtime Tools"
+   ],
+   [
+    "runc",
+    "CLI tool for spawning and running containers according to the OCI specification"
+   ],
+   [
+    "qiskit-terra",
+    "Terra provides the foundations for Qiskit. It allows the user to write quantum circuits easily, and takes care of the constraints of real hardware."
+   ],
+   [
+    "qiskit-aer",
+    "Aer is a high performance simulator for quantum circuits that includes noise models"
+   ],
+   [
+    "qiskit",
+    "Qiskit is an open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms."
+   ],
+   [
+    "opssi",
+    "open public stack for synthetic intelligence"
+   ],
+   [
+    "ni2a2",
+    ""
+   ],
+   [
+    "kui",
+    "A hybrid command-line/UI development experience for cloud-native development"
+   ],
+   [
+    "kubernetes-cobol",
+    "A Code Pattern to teach how to run a COBOL program on Kubernetes"
+   ],
+   [
+    "join",
+    ""
+   ],
+   [
+    "insilico",
+    "Neuronal Network Simulation Library"
+   ],
+   [
+    "image-tools",
+    "OCI Image Tooling"
+   ],
+   [
+    "go-digest",
+    "Common digest package used across the container ecosystem"
+   ],
+   [
+    "dockersh",
+    "A shell which places users into individual docker containers"
+   ],
+   [
+    "dockerfiles",
+    "Various Dockerfiles I use on the desktop and on servers."
+   ],
+   [
+    "chuha",
+    "Chat Hosting Utility with Hypelink Automation"
+   ],
+   [
+    "bash2python",
+    "A tool that converts a bash script to python script"
+   ],
+   [
+    "ayevdi",
+    "Virtual Deployment IaaS (tools) for Scientific & Cognitive Computing"
+   ],
+   [
+    "ayeq",
+    ""
+   ],
+   [
+    "ayeam",
+    "AyeAI's Autonomous Metaverse - A cyber-physical autnomous metaverse... A nervous system for the Singularity"
+   ],
+   [
+    "ayeai.github.io",
+    "Aye AI ... the inclusive AI (www repo)"
+   ],
+   [
+    "ayeai.ayeam.com",
+    "AyeAI ∴ AyeAM"
+   ],
+   [
+    "athena",
+    "GSF VIKRAM - An inclusive rural digitalization platform by GramSheel Foundation"
+   ],
+   [
+    "anusaaraka",
+    "Imported from https://web.archive.org/web/20200218013006/https://sourceforge.net/p/anusaaraka/git/ci/master/tree/"
+   ],
+   [
+    "adversarial-robustness-toolbox",
+    "Python library for adversarial machine learning, attacks and defences for neural networks, logistic regression, decision trees, SVM, gradient boosted trees, Gau…"
+   ],
+   [
+    "Virtual-Studio",
+    "https://insilico.uk/virtual-studioindex"
+   ],
+   [
+    "SPL-ignore-and-delete",
+    "Singularity Public License"
+   ],
+   [
+    "KodExplorer",
+    "A web based file manager,web IDE / browser based code editor"
+   ],
+   [
+    "FHIR",
+    "The IBM FHIR® Server and related projects"
+   ],
+   [
+    "ChainOfSurvival.github.io",
+    "A public information repository on the Chain of Survival"
+   ],
+   [
+    "AIX360",
+    "Interpretability and explainability of data and machine learning models"
+   ],
+   [
+    "shadow",
+    ""
+   ]
+  ]
+ },
+ "ayecnse": {
+  "total": 14,
+  "repos": [
+   [
+    "sims",
+    ""
+   ],
+   [
+    "kaivalyik",
+    ""
+   ],
+   [
+    "icansee.life",
+    ""
+   ],
+   [
+    "forms",
+    ""
+   ],
+   [
+    "ayecnse.org",
+    ""
+   ],
+   [
+    "ayecnse.net",
+    ""
+   ],
+   [
+    "ayecnse.life",
+    ""
+   ],
+   [
+    "ayecnse.github.io",
+    "AyeCNSe - CNS for Earth is claimed as a business mark and trademark by Abhishek Choudhary"
+   ],
+   [
+    "ayecnse.com",
+    ""
+   ],
+   [
+    "ayeam-robot",
+    ""
+   ],
+   [
+    "ai4all.quest",
+    ""
+   ],
+   [
+    "ai2026.quest",
+    ""
+   ],
+   [
+    "agi2027.world",
+    ""
+   ],
+   [
+    "sct1",
+    ""
+   ]
+  ]
+ },
+ "ayeam": {
+  "total": null,
+  "repos": []
+ }
+}

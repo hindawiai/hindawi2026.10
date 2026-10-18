@@ -56,4 +56,7 @@ npm run test:logo-static
 echo '== GitHub Pages / browser smoke tests =='
 ./tests/test_static_pages.sh
 
+echo '== Standards, review data, trademarks, task register, compilation stages =='
+python3 tests/check_standards_register.py
+
 echo 'ALL AVAILABLE TESTS PASSED'

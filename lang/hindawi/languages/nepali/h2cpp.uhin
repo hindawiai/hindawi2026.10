@@ -295,5 +295,5 @@ __समय__                     {printf("__TIME__");}
 समय                         {printf("time");}
 गर                          {printf("do");}
 पठ                          {printf("read");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

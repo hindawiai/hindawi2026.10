@@ -1,5 +1,205 @@
 [
  {
+  "id": "WP-T-05",
+  "kind": "task",
+  "title": "Notebooks must show the whole compilation flow",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-05.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-05]+Notebooks+must+show+the+whole+compilation+flow&body=I+am+taking+WP-T-05:+work-packages/tasks/WP-T-05.md"
+ },
+ {
+  "id": "WP-T-03",
+  "kind": "task",
+  "title": "Complete Hindi: bind the keywords Chintamani's 2004-lineage transducers do not carry (C++ 10, Java 6, Python 25, LOGO 14, restrict), as a supplement composed in front of Chintamani's own, never changing its rules",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-03.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-03]+Complete+Hindi:+bind+the+keywords+Chintamani's+2004-lineage+transducers+do+not+carry+(C+++10,+Java+6,+Python+25,+LOGO+14,+restrict),+as+a+supplement+composed+in+front+of+Chintamani's+own,+never+changing+its+rules&body=I+am+taking+WP-T-03:+work-packages/tasks/WP-T-03.md"
+ },
+ {
+  "id": "WP-T-06",
+  "kind": "task",
+  "title": "Rebuild the notebooks on Chintamani's pattern: installation, the NB UI practice area (Build, Run, Daemon, Hin2Std, Std2Hin, New, Upload, Download), and edit, input and run cells per shaili, every stage shown",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-06.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-06]+Rebuild+the+notebooks+on+Chintamani's+pattern:+installation,+the+NB+UI+practice+area+(Build,+Run,+Daemon,+Hin2Std,+Std2Hin,+New,+Upload,+Download),+and+edit,+input+and+run+cells+per+shaili,+every+stage+shown&body=I+am+taking+WP-T-06:+work-packages/tasks/WP-T-06.md"
+ },
+ {
+  "id": "WP-T-10",
+  "kind": "task",
+  "title": "Hindi: Chintamani's character-literal rule swallows keywords on lines with two character literals (2 of 113 GATE programs)",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-10.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-10]+Hindi:+Chintamani's+character-literal+rule+swallows+keywords+on+lines+with+two+character+literals+(2+of+113+GATE+programs)&body=I+am+taking+WP-T-10:+work-packages/tasks/WP-T-10.md"
+ },
+ {
+  "id": "WP-T-11",
+  "kind": "task",
+  "title": "Names that coincide with system-header declarations (index, from glibc's strings.h) stay in English project-wide",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-11.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-11]+Names+that+coincide+with+system-header+declarations+(index,+from+glibc's+strings.h)+stay+in+English+project-wide&body=I+am+taking+WP-T-11:+work-packages/tasks/WP-T-11.md"
+ },
+ {
+  "id": "WP-T-12",
+  "kind": "task",
+  "title": "Robotics and Automation: programs for kids' two- and four-wheel robots, drones, RC boats and arms; the GATE 2027 RA paper",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-12.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-12]+Robotics+and+Automation:+programs+for+kids'+two-+and+four-wheel+robots,+drones,+RC+boats+and+arms;+the+GATE+2027+RA+paper&body=I+am+taking+WP-T-12:+work-packages/tasks/WP-T-12.md"
+ },
+ {
+  "id": "WP-T-13",
+  "kind": "task",
+  "title": "Simulator to real robot with the same ESP32 and Arduino program; IoT control from anywhere; BCI control through NeuroSky MindWave",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-13.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-13]+Simulator+to+real+robot+with+the+same+ESP32+and+Arduino+program;+IoT+control+from+anywhere;+BCI+control+through+NeuroSky+MindWave&body=I+am+taking+WP-T-13:+work-packages/tasks/WP-T-13.md"
+ },
+ {
+  "id": "WP-T-14",
+  "kind": "task",
+  "title": "PANIR: record the ChatGPT and Gemini intermediate representation as a proposal; lower it through the existing pipeline so it survives to silicon",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-14.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-14]+PANIR:+record+the+ChatGPT+and+Gemini+intermediate+representation+as+a+proposal;+lower+it+through+the+existing+pipeline+so+it+survives+to+silicon&body=I+am+taking+WP-T-14:+work-packages/tasks/WP-T-14.md"
+ },
+ {
+  "id": "WP-T-16",
+  "kind": "task",
+  "title": "All posters to Zenodo: lawh (20 plates, payload on his machine) and the ten new plates as its next version",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-16.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-16]+All+posters+to+Zenodo:+lawh+(20+plates,+payload+on+his+machine)+and+the+ten+new+plates+as+its+next+version&body=I+am+taking+WP-T-16:+work-packages/tasks/WP-T-16.md"
+ },
+ {
+  "id": "WP-T-17",
+  "kind": "task",
+  "title": "PANINI family under one architecture: the browser front ends (humanesque), PANINIphy (physical), PANINIq (quantum, 0.3.0 to package), PANINIb",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-17.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-17]+PANINI+family+under+one+architecture:+the+browser+front+ends+(humanesque),+PANINIphy+(physical),+PANINIq+(quantum,+0.3.0+to+package),+PANINIb&body=I+am+taking+WP-T-17:+work-packages/tasks/WP-T-17.md"
+ },
+ {
+  "id": "WP-T-18",
+  "kind": "task",
+  "title": "The AyeAI triad kept distinct; commercial; pointers to the libraries, not copies; separate organisations where needed",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-18.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-18]+The+AyeAI+triad+kept+distinct;+commercial;+pointers+to+the+libraries,+not+copies;+separate+organisations+where+needed&body=I+am+taking+WP-T-18:+work-packages/tasks/WP-T-18.md"
+ },
+ {
+  "id": "WP-T-19",
+  "kind": "task",
+  "title": "VARZISH: how the learning system works; a testing environment; learning and test generation",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-19.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-19]+VARZISH:+how+the+learning+system+works;+a+testing+environment;+learning+and+test+generation&body=I+am+taking+WP-T-19:+work-packages/tasks/WP-T-19.md"
+ },
+ {
+  "id": "WP-T-20",
+  "kind": "task",
+  "title": "The cyclers in the same package as VARZISH",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-20.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-20]+The+cyclers+in+the+same+package+as+VARZISH&body=I+am+taking+WP-T-20:+work-packages/tasks/WP-T-20.md"
+ },
+ {
+  "id": "WP-T-21",
+  "kind": "task",
+  "title": "Posters' theory into books written in text, through the cyclers",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-21.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-21]+Posters'+theory+into+books+written+in+text,+through+the+cyclers&body=I+am+taking+WP-T-21:+work-packages/tasks/WP-T-21.md"
+ },
+ {
+  "id": "WP-T-22",
+  "kind": "task",
+  "title": "Software factory and systems factory model: people design, architect, think critically, judge ethics; ingestion does the rest",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-22.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-22]+Software+factory+and+systems+factory+model:+people+design,+architect,+think+critically,+judge+ethics;+ingestion+does+the+rest&body=I+am+taking+WP-T-22:+work-packages/tasks/WP-T-22.md"
+ },
+ {
+  "id": "WP-T-23",
+  "kind": "task",
+  "title": "Formal definitions a government can take",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-23.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-23]+Formal+definitions+a+government+can+take&body=I+am+taking+WP-T-23:+work-packages/tasks/WP-T-23.md"
+ },
+ {
+  "id": "WP-T-24",
+  "kind": "task",
+  "title": "Requirements document",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-24.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-24]+Requirements+document&body=I+am+taking+WP-T-24:+work-packages/tasks/WP-T-24.md"
+ },
+ {
+  "id": "WP-T-25",
+  "kind": "task",
+  "title": "Project sheets and estimations",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-25.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-25]+Project+sheets+and+estimations&body=I+am+taking+WP-T-25:+work-packages/tasks/WP-T-25.md"
+ },
+ {
+  "id": "WP-T-26",
+  "kind": "task",
+  "title": "Configuration management across the estate (182 public repositories here; 400 to 500 in all)",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-26.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-26]+Configuration+management+across+the+estate+(182+public+repositories+here;+400+to+500+in+all)&body=I+am+taking+WP-T-26:+work-packages/tasks/WP-T-26.md"
+ },
+ {
+  "id": "WP-T-27",
+  "kind": "task",
+  "title": "Share work packages on social media",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-27.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-27]+Share+work+packages+on+social+media&body=I+am+taking+WP-T-27:+work-packages/tasks/WP-T-27.md"
+ },
+ {
+  "id": "WP-T-28",
+  "kind": "task",
+  "title": "Complete every other language's keyword bindings, so each can carry a standard",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-28.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-28]+Complete+every+other+language's+keyword+bindings,+so+each+can+carry+a+standard&body=I+am+taking+WP-T-28:+work-packages/tasks/WP-T-28.md"
+ },
+ {
+  "id": "WP-T-29",
+  "kind": "task",
+  "title": "Compilation path for the 29 languages without a script filter (Cyrillic, CJK, Thai, Lao, Khmer, Myanmar, Tibetan, Sinhala and others)",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-29.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-29]+Compilation+path+for+the+29+languages+without+a+script+filter+(Cyrillic,+CJK,+Thai,+Lao,+Khmer,+Myanmar,+Tibetan,+Sinhala+and+others)&body=I+am+taking+WP-T-29:+work-packages/tasks/WP-T-29.md"
+ },
+ {
+  "id": "WP-T-30",
+  "kind": "task",
+  "title": "Library-wide localisation: the C library, the C++ standard library, the Java API, x86 mnemonics",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-30.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-30]+Library-wide+localisation:+the+C+library,+the+C+++standard+library,+the+Java+API,+x86+mnemonics&body=I+am+taking+WP-T-30:+work-packages/tasks/WP-T-30.md"
+ },
+ {
+  "id": "WP-T-31",
+  "kind": "task",
+  "title": "The tools in JavaScript, so the site can be the installer",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-31.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-31]+The+tools+in+JavaScript,+so+the+site+can+be+the+installer&body=I+am+taking+WP-T-31:+work-packages/tasks/WP-T-31.md"
+ },
+ {
+  "id": "WP-T-32",
+  "kind": "task",
+  "title": "Line-ending rules can re-normalise CRLF files when a whole tree is staged",
+  "size": "open",
+  "path": "work-packages/tasks/WP-T-32.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-32]+Line-ending+rules+can+re-normalise+CRLF+files+when+a+whole+tree+is+staged&body=I+am+taking+WP-T-32:+work-packages/tasks/WP-T-32.md"
+ },
+ {
   "id": "WP-JS-01",
   "kind": "javascript",
   "title": "BURP in JavaScript",

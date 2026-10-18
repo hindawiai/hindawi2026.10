@@ -12,5 +12,5 @@
 否则                          {printf("ELSE");}
 戻る                          {printf("RETURN");}
 整数                          {printf("INT");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

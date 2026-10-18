@@ -33,5 +33,5 @@ var_na                      {printf("char");}
 နေစဉ်                       {printf("while");}
 အကယ်၍                       {printf("if");}
 အတွက်                       {printf("for");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

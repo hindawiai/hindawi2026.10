@@ -30,8 +30,9 @@ for p in programs:
     exe = w / "orig"; subprocess.run(["gcc", "-O2", "-o", str(exe), str(SRC / p), "-lm", "-lpthread"], check=True, capture_output=True)
     want[p] = run_bounded(exe)
 failed = 0
+want_py = {}
 for lang in a.langs.split(","):
-    n = w / "n" / lang; ok = 0
+    n = w / "n" / lang; ok = 0; ok_py = 0
     env = dict(ENV, HINDAWI_LANG=lang, HINDAWI_DICT=str(n / ".hindawi/dictionary.json"))
     for p in programs:
         exe = w / "native"
@@ -46,12 +47,31 @@ for lang in a.langs.split(","):
             failed += 1
             print(f"  {lang}: {p}: " + ("does not compile: " + next((l for l in c.stderr.decode("utf-8", "replace").splitlines() if "error" in l),
                                                   c.stderr.decode("utf-8", "replace").strip()[:150])[:200] if c.returncode else "prints something else"))
+    # Python: each .py program through the language's own soochee transducer (the same path as C), then run
+    for p in sorted(q.relative_to(SRC) for q in SRC.rglob("*.py")):
+        if p not in want_py:
+            want_py[p] = subprocess.run([sys.executable, str(SRC / p)], capture_output=True, timeout=20).stdout
+        py = subprocess.run([sys.executable, str(R / "lang/hindawi/tools/hindawi_chain.py"), "to-py", "--lang", lang],
+                            input=(n / p).read_bytes(), capture_output=True, env=env).stdout
+        got = subprocess.run([sys.executable, "-c", py.decode("utf-8", "replace")], capture_output=True, timeout=20).stdout
+        if got == want_py[p]:
+            ok_py += 1
+        else:
+            failed += 1
+            print(f"  {lang}: {p}: Python from {lang} prints something else")
     back = w / "back" / lang
     subprocess.run(burp + ["reverse", str(n), "--out", str(back)], check=True, capture_output=True)
     same = sum(filecmp.cmp(SRC / f, back / f, shallow=False) for f in (p.relative_to(SRC) for p in SRC.rglob("*") if p.is_file()))
     total = sum(1 for p in SRC.rglob("*") if p.is_file())
     print(f"gate: {lang}: {ok} of {len(programs)} C programs compile from {lang} and print what the originals print; "
+          f"{ok_py} Python program(s) run from {lang} through its own transducer and print what the original prints; "
           f"{same} of {total} files reverse byte for byte")
+    # the latest result per language, for the standards' conformance annex (a record, dated, never a claim)
+    rec = R / "docs/hindawi/data/gate-results.json"
+    data = json.loads(rec.read_text(encoding="utf-8")) if rec.exists() else {}
+    data[lang] = {"date": __import__("datetime").date.today().isoformat(), "c_ok": ok, "c_total": len(programs),
+                  "py_ok": ok_py, "py_total": len(want_py), "reverse_ok": same, "reverse_total": total}
+    rec.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     if a.gallery:
         dst = R / "docs/hindawi/samples" / lang
         shutil.rmtree(dst, ignore_errors=True); shutil.copytree(n, dst, ignore=shutil.ignore_patterns(".hindawi"))

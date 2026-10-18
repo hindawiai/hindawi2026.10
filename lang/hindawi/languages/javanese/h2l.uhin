@@ -27,5 +27,5 @@ var_na                      {printf("char");}
 ꦪꦼꦤ꧀                        {printf("if");}
 ꦭꦶꦪ                         {printf("else");}
 ꦮꦭꦶ                         {printf("return");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

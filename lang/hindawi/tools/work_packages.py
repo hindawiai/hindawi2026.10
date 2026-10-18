@@ -213,17 +213,46 @@ def js():
     return out
 
 
+CREDIT = ("Originator: Abhishek Choudhary, AyeAI. © 1993–2026 Abhishek Choudhary. All rights reserved. Whoever completes "
+          "this package is credited for it in CREDITS.md; the originator's credit stays on everything derived from it.")
+
+
+def tasks():
+    """The register (work-packages/tasks.json): one package per open task; covenants and done tasks go to TASKS.md."""
+    reg = json.loads((W / "tasks.json").read_text(encoding="utf-8"))
+    t = W / "tasks"; shutil.rmtree(t, ignore_errors=True); t.mkdir(parents=True); out = []
+    for x in reg:
+        if x["status"] not in ("open", "in progress"):
+            continue
+        wid = f"WP-{x['id']}"
+        (t / f"{wid}.md").write_text(
+            f"# {wid}: {x['title']}\n\nAsked: {x['source']}. Status: {x['status']}.\n\nWhat exists: {x['evidence'] or 'nothing yet'}.\n\n"
+            f"Next step: {x['next'] or 'to be set'}.\n\nDone when the change is merged with its tests, every covenant in TASKS.md "
+            f"still holds, and `hindawi test` passes.\n\n{CREDIT}\n", encoding="utf-8")
+        out.append({"id": wid, "kind": "task", "title": x["title"], "size": x["status"], "path": f"work-packages/tasks/{wid}.md"})
+    rows = ["# Tasks and covenants", "", CREDIT, "",
+            "Every point of his requests, from the register `work-packages/tasks.json`. Covenants hold always; done means the "
+            "evidence named is in this repository; open tasks are work packages anyone can take.", ""]
+    for status, head in (("covenant", "Covenants"), ("done", "Done"), ("in progress", "In progress"), ("open", "Open")):
+        sel = [x for x in reg if x["status"].startswith(status)]
+        if sel:
+            rows += [f"## {head}", "", "| Id | Task | Evidence | Next |", "|---|---|---|---|"]
+            rows += [f"| {x['id']} | {x['title']} | {x['evidence']} | {x['next']} |" for x in sel] + [""]
+    (W.parent / "TASKS.md").write_text("\n".join(rows), encoding="utf-8")
+    return out
+
+
 def main():
     W.mkdir(exist_ok=True)
-    packages = gate() + js() + languages()
+    packages = tasks() + gate() + js() + languages()
     for p in packages:
         p["claim"] = (f"https://github.com/{REPO}/issues/new?title=" + re.sub(r"\s", "+", f"[{p['id']}] {p['title']}")
                       + "&body=" + re.sub(r"\s", "+", f"I am taking {p['id']}: {p['path']}"))
     (W / "index.json").write_text(json.dumps(packages, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     # the site serves docs/ only, so the page reads its own copy
     (W.parent / "docs/hindawi/data/work-packages.json").write_text(json.dumps(packages, ensure_ascii=False) + "\n", encoding="utf-8")
-    kinds = {k: sum(1 for p in packages if p["kind"] == k) for k in ("gate", "javascript", "language")}
-    print(f"work_packages: {kinds['gate']} GATE, {kinds['javascript']} JavaScript, {kinds['language']} language packages")
+    kinds = {k: sum(1 for p in packages if p["kind"] == k) for k in ("task", "gate", "javascript", "language")}
+    print(f"work_packages: {kinds['task']} tasks, {kinds['gate']} GATE, {kinds['javascript']} JavaScript, {kinds['language']} language packages")
 
 
 if __name__ == "__main__":

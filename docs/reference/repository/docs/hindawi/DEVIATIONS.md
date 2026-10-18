@@ -106,3 +106,16 @@ original pipeline gave one name two C-level forms, or none; each is now handled,
   every such word back to only one of the two. The generator now keeps each word with one construct: the same token in
   another case (FOR, for) counts as one construct; a token with a proposed word of its own takes that word; otherwise
   the better-sourced token keeps the word and the other is listed in the cell's `STATUS.tsv` as sharing it.
+
+## 18 October 2026: stages shown, Python on the original path, whole words
+
+- **The compilation path is shown stage by stage** (`hindawi_chain.stages()`): source, the script filter's Devanagari,
+  the Romenagri form, and the host-language text. `to_c` is the last stage, so what is shown is what is compiled.
+- **Python runs on the original path.** Chintamani's Makefile builds `h2py` through `uni2acii | acii2cf`, as it builds
+  `h2c`; each language's `h2py` is now built and run the same way, so a name reaches Python in its Romenagri form, the
+  form it has in C and in the binary. Hindi uses Chintamani's own `h2py`.
+- **Whole words only.** Every generated forward transducer ends with a rule that passes a whole word through unchanged,
+  so a keyword is never matched inside a longer name; a keyword of the same length still wins by coming first.
+  Chintamani's own transducers for Hindi are unchanged and do not have this rule.
+- **Known in Hindi, not changed:** Chintamani's greedy character-literal rule makes 2 of the 113 GATE C programs fail
+  in Hindi (recursive_descent_parser.c, regex_matcher.c). It is task T-10.

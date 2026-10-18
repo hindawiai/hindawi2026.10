@@ -26,5 +26,5 @@
 ଡାକ                         {printf("CALL");}
 ଯଦି                         {printf("IF");}
 ଶେଷ                         {printf("END");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

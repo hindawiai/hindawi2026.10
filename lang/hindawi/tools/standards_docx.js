@@ -51,6 +51,9 @@ function build(m) {
     if (b.type === "h1") kids.push(new Paragraph({ heading: HeadingLevel.HEADING_1, children: [run(b.text, s, { size: 28, bold: true })] }));
     else if (b.type === "h2") kids.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [run(b.text, s, { size: 24, bold: true })] }));
     else if (b.type === "p") kids.push(new Paragraph({ spacing: { after: 120 }, alignment: AlignmentType.JUSTIFIED, children: [run(b.text, s)] }));
+    else if (b.type === "note") kids.push(new Paragraph({ spacing: { after: 120 }, children: [run("NOTE: " + b.text, s, { size: 18, italics: true })] }));
+    else if (b.type === "code") for (const line of b.text.split("\n"))
+      kids.push(new Paragraph({ spacing: { after: 0 }, children: [new TextRun({ text: line || " ", font: "Courier New", size: 17 })] }));
     else if (b.type === "list") for (const i of b.items)
       kids.push(new Paragraph({ numbering: { reference: "bullets", level: 0 }, spacing: { after: 60 }, children: [run(i, s)] }));
     else if (b.type === "table") { kids.push(table(b, s)); kids.push(new Paragraph({ children: [] })); }

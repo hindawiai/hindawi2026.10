@@ -12,5 +12,5 @@ trong_khi                   {printf("WHILE");}
 trả_về                      {printf("RETURN");}
 cho                         {printf("FOR");}
 nếu                         {printf("IF");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

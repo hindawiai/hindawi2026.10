@@ -9,5 +9,5 @@
 অগ্রপ্রসার                  {printf("forward");}
 যদি                         {printf("if");}
 শেষ                         {printf("end");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

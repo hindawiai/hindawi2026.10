@@ -9,5 +9,5 @@
 अग्रप्रसार                  {printf("forward");}
 अन्त्य                      {printf("end");}
 यदि                         {printf("if");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

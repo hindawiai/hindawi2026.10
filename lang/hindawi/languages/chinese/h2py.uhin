@@ -13,5 +13,5 @@
 返回                          {printf("return");}
 为                           {printf("for");}
 当                           {printf("while");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

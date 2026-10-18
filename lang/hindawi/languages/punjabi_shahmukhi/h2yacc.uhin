@@ -93,5 +93,5 @@
 مکھ                         {printf("main");}
 نوع                         {printf("type");}
 یار                         {printf("friend");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

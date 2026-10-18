@@ -8,7 +8,7 @@ every language. `hindawi gate --langs L` compiles each C program from language L
 it, and checks that it prints exactly what the English original prints; it also reverses every file byte for byte.
 
 The map below follows the ten sections of the GATE 2027 CS syllabus published by IIT Madras (read 18 October 2026).
-Topics are described in our own words; the syllabus text itself is not reproduced. Four sections changed for 2027
+Topics are described in our own words; the syllabus text itself is not reproduced. Three sections changed for 2027
 (Digital Logic, Computer Organisation and Architecture, Computer Networks); the map follows the 2027 version. General
 Aptitude has no programs. The new 2027 paper in Robotics and Automation needs its own set and is not started.
 

@@ -1,28 +1,46 @@
 # HLS sa 2026.10
 
-**Sanskrit bindings for programming languages: lexical mapping and lowering to the host standards**
+**Information technology, Programming languages, Sanskrit keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards**
 
-Edition 2026.10, working draft, 2026-10-18. © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+Edition 2026.10, draft proposal, 2026-10-18. © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 
 ## Foreword
 
-This document was prepared by AyeAI, Hindawi project (Project ILM). It is generated from the Sanskrit cell of Hindawi 2026.10 by lang/hindawi/tools/standards.py, so that the published standard and the reference implementation cannot drift apart. Its stage is a working draft: the words marked proposed in Annex A await review by the Sanskrit language community, through the review pages of the Hindawi project.
+This draft is proposed by Abhishek Choudhary, AyeAI, for consideration by the Data Management System Sectional Committee, LITD 15, of the Bureau of Indian Standards, whose scope includes programming languages, their environments and system software interfaces. It is an indigenous draft: it adopts no International Standard, binds the language it names to the host programming language standards listed in Clause 2 by reference, and reproduces no text from them.
+
+The method it standardizes was first published as the Hindawi Programming System on 15 August 2004, and has been developed since through the Hindawi releases. This draft is generated from the Sanskrit cell of Hindawi 2026.10 by lang/hindawi/tools/standards.py, so that the document and its reference implementation cannot diverge; a revision of either is a revision of both.
+
+Annexes A, B and C are normative. Annexes D, E and F are informative.
+
+Every binding in Annex A records its provenance. A binding recorded as proposed has not yet been reviewed by the Sanskrit language community; its review is part of the work towards an Indian Standard.
+
+© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. Hindawi™ and Romenagri™ are trademarks of Abhishek Choudhary. This document is an original work. It defines new programming languages by reference to the host language standards listed in Clause 2 and reproduces no text from them. Permission to adopt, translate or publish it as a standard is given by the copyright holder to a standards body on request.
 
 ## Introduction
 
-This document lets programs be written in Sanskrit, in the Devanagari script, in each of the programming languages listed in Clause 1. Each binding is a programming language in its own right, Sanskrit C for example, whose programs are lowered by the function defined in Clause 6 to programs of the host language, and are then processed by any conforming implementation of the host standard. The host standards are incorporated by reference and are not restated. Names keep a defined form down to object code (Clause 7), so programs written in Sanskrit remain debuggable at the level of firmware, kernels and libraries.
+A program has three properties that this draft keeps apart: the script it is written in, the human language its words come from, and the programming language standard that defines its meaning. The script is handled by transliteration, the language by the keyword bindings of Annex A, and the meaning by the host standard, which this draft does not alter.
+
+A source text in the language is lowered to a source text of the host language and compiled by any conforming host translator. Native names reach the compiled program, and the debugger, in one fixed transliterated form, so that a program written in the language remains readable in that language at every level down to the machine.
 
 ## 1 Scope
 
-This document specifies, for the Sanskrit language written in the Devanagari script, bindings to the following host programming languages: C, C preprocessor, C++, Java, Python, BASIC, LOGO. For each binding it specifies the native keywords and directives, the lowering of native programs to host programs, the treatment of names, and the requirements for conformance.
+This draft specifies, for programs written in Sanskrit in the Devanagari script:
 
-It does not specify the syntax or semantics of any host language beyond what is needed to define the lowering, and it does not specify translations of comments, string literals or documentation.
+- the encoding and character repertoire of source text (Clause 6);
+- the lexical structure of source text, where it differs from the host language (Clause 7);
+- the keyword bindings of the language for C, the C preprocessor, C++, Java, Python, BASIC and LOGO (Annex A);
+- the lowering of a source text to a source text of the host language (Clause 8);
+- the transformation of native names to identifiers of the host language (Clause 9, Annexes B and C);
+- the requirements for conformance of programs and of translators (Clause 5).
+
+This draft does not specify the semantics of any host language, which remain those of its standard; the names of host libraries, which are informative (Annex D); or any execution environment.
 
 ## 2 Normative references
 
-The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For undated references, the latest edition of the referenced document (including any amendments) applies.
+The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this draft. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document, including any amendments, applies.
 
 - ISO/IEC 9899, Information technology, Programming languages, C
+- ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives)
 - ISO/IEC 14882, Programming languages, C++
 - The Java Language Specification, Oracle, current edition
 - The Python Language Reference, Python Software Foundation, current version
@@ -30,62 +48,137 @@ The following documents are referred to in the text in such a way that some or a
 - ISO/IEC 10646, Information technology, Universal coded character set (UCS)
 - Unicode Standard Annex #15, Unicode normalization forms
 - Unicode Standard Annex #31, Unicode identifiers and syntax
+- ISO/IEC 14977, Information technology, Syntactic metalanguage, Extended BNF
+- IS 13194 : 1991, Indian Script Code for Information Interchange, ISCII
 
 ## 3 Terms and definitions
 
-- host language: programming language defined by a normative reference, to which a native program is lowered
+3.1 host language: a programming language defined by a standard listed in Clause 2, into which a source text is lowered.
 
-- binding: programming language defined by this document whose programs are written in Sanskrit and lowered to one host language
+3.2 host keyword: a reserved word or directive name of a host language.
 
-- native keyword: word of this document that stands for one keyword, directive or standard library name of a host language
+3.3 native keyword: a word of Sanskrit, written in the Devanagari script, bound by Annex A to a host keyword.
 
-- lowering: function from native programs to host programs defined in Clause 6
+3.4 binding: the pairing of one host keyword with one native keyword, for one host language.
 
-- raising: inverse of lowering applied to a host program with a dictionary of names, giving back the native program exactly
+3.5 construct: the programming construct a keyword denotes, which is the same across host languages, so that one native keyword serves it in every binding.
 
-- name transformation: function from native names to host identifiers defined in Clause 7
+3.6 source text: a program, or part of one, written using native keywords, native names, or both.
 
-- C-level form: result of the name transformation; the form a native name takes in host source and in object code
+3.7 native name: an identifier of a source text written wholly or partly in the Devanagari script.
 
-## 4 Conformance
+3.8 lowering: the transformation of a source text into a source text of the host language.
 
-A conforming Sanskrit program of a binding shall be a text that meets Clause 5 and whose lowering is a conforming program of the host language.
+3.9 C-level form: the identifier of the host language that a native name becomes by name transformation, and under which it appears in compiled programs and to debuggers.
 
-A conforming implementation of a binding shall accept every conforming program of that binding and shall behave as the lowering of the program, processed by a conforming implementation of the host language, behaves.
+3.10 name transformation: the mapping of native names to C-level forms specified in Clause 9.
 
-An implementation that raises host programs into a binding shall produce native programs whose lowering, with the same dictionary of names, is identical to the host program it raised.
+3.11 script filter: the mapping of the Devanagari script to Devanagari that precedes transliteration, specified in Annex C.
 
-## 5 Character set and encoding
+3.12 translator: a program that performs lowering and name transformation.
 
-A native program shall be encoded in UTF-8 and shall be in Normalization Form C. Native keywords and names are written in the Devanagari script, whose direction is left to right. Numeric literals are written with the digits 0 to 9 (U+0030 to U+0039). A native keyword written as several words is one token, its words joined by LOW LINE (U+005F).
+3.13 reversal: the transformation of a host-language source text into a source text of the language, through a dictionary of names kept with the program.
 
-## 6 Lowering
+3.14 provenance: the record of where a binding came from: the 2004 Hindawi transducers, a language lexicon, or a proposal awaiting review.
 
-A native program is lowered by the following steps, applied in order to the tokens the host language's lexical rules yield when the letters and marks of the script are treated as identifier characters.
+## 4 Abbreviated terms
 
-- Each native keyword of the binding's table in Annex A is replaced by the host keyword, directive or name it stands for.
-- A host keyword for which Annex A gives no native word is written in its host form.
-- Every other name is lowered as the binding requires: by the name transformation of Clause 7 for C, the C preprocessor, C++, BASIC and LOGO; unchanged for Java and Python, whose host standards accept such names.
-- String literals, character constants, header names in include directives, and comments are not changed.
-- Every other character is not changed.
+- ACII, the eight-bit form of Indic text used by the Romenagri tools, derived from ISCII
+- BURP, Bidirectional Universal Resource Parser, the reference implementation of reversal
+- EBNF, Extended Backus-Naur Form as specified in ISO/IEC 14977
+- ISCII, Indian Script Code for Information Interchange, IS 13194
+- NFC, Normalization Form C of Unicode Standard Annex #15
+- UCS, the Universal Coded Character Set of ISO/IEC 10646
 
-## 7 Name transformation
+## 5 Conformance
 
-The C-level form of a native name is obtained by passing the name, alone, through the script filter of the script (Annex C), then through the Romenagri transliteration (uni2acii followed by acii2cf), and writing each circumflex accent (U+005E) that results as LOW LINE (U+005F). Names already written in the digits, Latin letters and LOW LINE of the Basic Latin block are not transformed.
+5.1 A conforming program shall be a source text whose lowering according to Clause 8 is a program that conforms to the standard of its host language.
 
-Two names declared in the same scope shall not have the same C-level form.
+5.2 A conforming translator shall accept every conforming program, shall lower it as Clause 8 requires, using the bindings of Annex A, and shall transform its native names as Clause 9 requires, giving for every name in Annex B the C-level form that annex gives.
 
-## 8 Reference implementation
+5.3 A claim of conformance shall name the bindings of Annex A it covers. A translator conforming for C covers the bindings of A.1 and A.2.
 
-Hindawi 2026.10 is the reference implementation: hindawicc lowers and compiles, BURP raises and lowers projects, and the Romenagri tools of Chintamani at commit 3ad87785a75dc2b18438a8b068807103cb920c81 give the name transformation. Where this document and the reference implementation differ, this document governs.
+5.4 A translator that provides reversal shall reproduce the original host-language source text byte for byte from its lowering and the dictionary of names kept with it.
 
-## Annex A (normative) Native keywords
+## 6 Source text
+
+6.1 Source text shall be encoded in UTF-8, as specified in ISO/IEC 10646, and shall be in Normalization Form C.
+
+6.2 Native letters are the characters of the Devanagari block of ISO/IEC 10646 whose general category is a letter or a mark. Text written right to left is stored in logical order.
+
+6.3 The Devanagari script is written left to right.
+
+6.4 The native digits below are equivalent, in numerals, to the decimal digits of the host language with the same value. A translator shall accept either.
+
+| Code point | Digit | Value |
+|---|---|---|
+| U+0966 | ० | 0 |
+| U+0967 | १ | 1 |
+| U+0968 | २ | 2 |
+| U+0969 | ३ | 3 |
+| U+096A | ४ | 4 |
+| U+096B | ५ | 5 |
+| U+096C | ६ | 6 |
+| U+096D | ७ | 7 |
+| U+096E | ८ | 8 |
+| U+096F | ९ | 9 |
+
+## 7 Lexical structure
+
+7.1 The lexical structure of a source text is that of its host language, with the additions given below in the notation of ISO/IEC 14977.
+
+```
+native letter    = ? a character of 6.2 ? ;
+latin letter     = ? A to Z or a to z ? ;
+digit            = ? 0 to 9, or a native digit of 6.4 ? ;
+name start       = native letter | latin letter | "_" ;
+identifier       = name start , { name start | digit } ;
+native keyword   = ? an entry of the native column of Annex A ? ;
+directive        = "#" , ( native keyword | host keyword ) ;
+word             = native keyword | identifier ;
+```
+
+7.2 A native keyword is recognized only as a whole word. A word of which a native keyword is a proper part is an identifier.
+
+7.3 Character literals, string literals and comments are those of the host language; their content may be written in any script and is not altered by lowering.
+
+7.4 A host keyword written in its host form is accepted unchanged, so that a source text may mix native and host keywords.
+
+## 8 Lowering
+
+8.1 Lowering shall replace each native keyword by the host keyword Annex A binds it to, for the host language of the source text; shall leave literals and comments unaltered; shall replace each native digit by the host digit of the same value; and shall transform each native name as Clause 9 requires.
+
+8.2 Lowering shall not reorder, insert or remove any other token. The lowered text shall have the same line structure as the source text.
+
+NOTE: The reference implementation lowers in three steps: the script filter of Annex C, transliteration by the Romenagri tools, and the language's transducer for the host language, a lexical analyser built from the bindings of Annex A. Lowering is performed on the transliterated form; Unicode text is never compiled directly.
+
+## 9 Name transformation
+
+9.1 Name transformation shall be deterministic, and shall give one native name the same C-level form wherever the name stands in a program.
+
+9.2 Every C-level form shall be an identifier of the host language.
+
+9.3 Two different native names of one program shall not be given the same C-level form; a translator shall report such a collision as an error.
+
+9.4 A name written wholly in Latin letters, digits and underscores is not transformed.
+
+9.5 The C-level forms of the names in Annex B are normative. They are those of the Romenagri transliteration applied, word by word, to the output of the script filter of Annex C.
+
+## 10 Reversal
+
+Reversal is optional. A translator that provides it shall keep with each program a dictionary of its native names, and shall satisfy 5.4.
+
+## 11 Maintenance of the bindings
+
+The bindings of Annex A are maintained as a living register. A proposed binding becomes reviewed when the Sanskrit language community accepts it; a change to a reviewed binding is a revision of this draft. The construct, not the host keyword, is primary: one native keyword serves one construct in every binding where that construct occurs.
+
+## Annex A (normative) Keyword bindings
 
 ### A.1 C
 
-Host: ISO/IEC 9899, Information technology, Programming languages, C. Names: name transformation.
+Host standard: ISO/IEC 9899, Information technology, Programming languages, C. Names are lowered by name transformation.
 
-| Host | Sanskrit | Source |
+| Host keyword | Sanskrit | Provenance |
 |---|---|---|
 | auto | स्वचालित | proposed |
 | break | भङ्ग | lexicon |
@@ -123,66 +216,11 @@ Host: ISO/IEC 9899, Information technology, Programming languages, C. Names: nam
 | while | यावत् | lexicon |
 | main | मुख्यम् | proposed |
 
-Standard library and runtime names of the C binding:
-
-| Host | Sanskrit | Source |
-|---|---|---|
-| INT_MAX | अधिकतम_पूर्णाङ्कः | proposed |
-| NULL | रिक्त | lexicon |
-| abs | निरपेक्षम् | proposed |
-| assert | प्रतिज्ञा | lexicon |
-| calloc | शून्यस्मृतिं_देहि | proposed |
-| cos | कोटिज्या | proposed |
-| div | भाजय | proposed |
-| exit | निर्गच्छ | proposed |
-| exp | घातांकः | proposed |
-| free | मुक्त | lexicon |
-| friend | मित्रम् | proposed |
-| getchar | अक्षरं_पठ | proposed |
-| isalnum | अक्षरम्_अङ्कः_वा | proposed |
-| isalpha | अक्षरम्_वा | proposed |
-| isdigit | अङ्कः_वा | proposed |
-| isspace | रिक्तम्_वा | proposed |
-| log | लघुगणकः | proposed |
-| malloc | स्मृतिं_देहि | proposed |
-| memcpy | स्मृतिं_प्रतिलिख | proposed |
-| memset | स्मृतिं_पूरय | proposed |
-| open | उद्घाटय | proposed |
-| operator | संक्रियकः | proposed |
-| pow | घातः | proposed |
-| printf | प्रारूप_लिख | proposed |
-| private | गुप्त | lexicon |
-| protected | रक्षित | lexicon |
-| public | सार्वजनिक | lexicon |
-| putchar | अक्षरं_लिख | proposed |
-| puts | पङ्क्तिं_लिख | proposed |
-| qsort | शीघ्रं_क्रमय | proposed |
-| raise | उत्थापय | lexicon |
-| rand | यादृच्छिकम् | proposed |
-| read | पठ | lexicon |
-| scanf | प्रारूप_पठ | proposed |
-| signal | सङ्केत | lexicon |
-| sin | ज्या | proposed |
-| sqrt | वर्गमूलम् | proposed |
-| srand | बीजं_रोपय | proposed |
-| sscanf | वाक्यात्_पठ | proposed |
-| strcat | वाक्यं_योजय | proposed |
-| strcmp | वाक्यं_तुलय | proposed |
-| strcpy | वाक्यं_प्रतिलिख | proposed |
-| strlen | वाक्यदैर्घ्यम् | proposed |
-| strncmp | वाक्ये_तुलय | proposed |
-| strstr | वाक्ये_अन्विष | proposed |
-| template | प्रतिरूपम् | proposed |
-| toupper | महाक्षरम् | proposed |
-| virtual | आभास | lexicon |
-| wait | प्रतीक्षस्व | proposed |
-| write | लिख | lexicon |
-
 ### A.2 C preprocessor
 
-Host: ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives). Names: name transformation.
+Host standard: ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives). Names are lowered by name transformation.
 
-| Host | Sanskrit | Source |
+| Host keyword | Sanskrit | Provenance |
 |---|---|---|
 | #define | #परिभाषय | proposed |
 | #include | #अन्तर्भाव | lexicon |
@@ -199,9 +237,9 @@ Host: ISO/IEC 9899, Information technology, Programming languages, C (preprocess
 
 ### A.3 C++
 
-Host: ISO/IEC 14882, Programming languages, C++. Names: name transformation.
+Host standard: ISO/IEC 14882, Programming languages, C++. Names are lowered by name transformation.
 
-| Host | Sanskrit | Source |
+| Host keyword | Sanskrit | Provenance |
 |---|---|---|
 | auto | स्वचालित | proposed |
 | break | भङ्ग | lexicon |
@@ -265,64 +303,11 @@ Host: ISO/IEC 14882, Programming languages, C++. Names: name transformation.
 | cin | आगमः | proposed |
 | endl | पङ्क्त्यन्तः | proposed |
 
-Standard library and runtime names of the C++ binding:
-
-| Host | Sanskrit | Source |
-|---|---|---|
-| INT_MAX | अधिकतम_पूर्णाङ्कः | proposed |
-| NULL | रिक्त | lexicon |
-| abs | निरपेक्षम् | proposed |
-| assert | प्रतिज्ञा | lexicon |
-| calloc | शून्यस्मृतिं_देहि | proposed |
-| cos | कोटिज्या | proposed |
-| div | भाजय | proposed |
-| exit | निर्गच्छ | proposed |
-| exp | घातांकः | proposed |
-| free | मुक्त | lexicon |
-| getchar | अक्षरं_पठ | proposed |
-| isalnum | अक्षरम्_अङ्कः_वा | proposed |
-| isalpha | अक्षरम्_वा | proposed |
-| isdigit | अङ्कः_वा | proposed |
-| isspace | रिक्तम्_वा | proposed |
-| left | वामतः | proposed |
-| log | लघुगणकः | proposed |
-| malloc | स्मृतिं_देहि | proposed |
-| memcpy | स्मृतिं_प्रतिलिख | proposed |
-| memset | स्मृतिं_पूरय | proposed |
-| open | उद्घाटय | proposed |
-| pipe | प्रणाल | lexicon |
-| pow | घातः | proposed |
-| printf | प्रारूप_लिख | proposed |
-| putchar | अक्षरं_लिख | proposed |
-| puts | पङ्क्तिं_लिख | proposed |
-| qsort | शीघ्रं_क्रमय | proposed |
-| raise | उत्थापय | lexicon |
-| rand | यादृच्छिकम् | proposed |
-| read | पठ | lexicon |
-| right | दक्षिणतः | proposed |
-| scanf | प्रारूप_पठ | proposed |
-| signal | सङ्केत | lexicon |
-| sin | ज्या | proposed |
-| sleep | सुषुप्ति | lexicon |
-| sqrt | वर्गमूलम् | proposed |
-| srand | बीजं_रोपय | proposed |
-| sscanf | वाक्यात्_पठ | proposed |
-| strcat | वाक्यं_योजय | proposed |
-| strcmp | वाक्यं_तुलय | proposed |
-| strcpy | वाक्यं_प्रतिलिख | proposed |
-| strlen | वाक्यदैर्घ्यम् | proposed |
-| strncmp | वाक्ये_तुलय | proposed |
-| strstr | वाक्ये_अन्विष | proposed |
-| sync | समकाल | lexicon |
-| toupper | महाक्षरम् | proposed |
-| wait | प्रतीक्षस्व | proposed |
-| write | लिख | lexicon |
-
 ### A.4 Java
 
-Host: The Java Language Specification, Oracle, current edition. Names: unchanged.
+Host standard: The Java Language Specification, Oracle, current edition. Names are lowered by unchanged.
 
-| Host | Sanskrit | Source |
+| Host keyword | Sanskrit | Provenance |
 |---|---|---|
 | abstract | अमूर्त | lexicon |
 | assert | प्रतिज्ञा | lexicon |
@@ -376,9 +361,252 @@ Host: The Java Language Specification, Oracle, current edition. Names: unchanged
 | String | पदावली | lexicon |
 | System | प्रणाली | proposed |
 
-Standard library and runtime names of the Java binding:
+### A.5 Python
 
-| Host | Sanskrit | Source |
+Host standard: The Python Language Reference, Python Software Foundation, current version. Names are lowered by unchanged.
+
+| Host keyword | Sanskrit | Provenance |
+|---|---|---|
+| False | असत्य | lexicon |
+| None | किमपि_न | proposed |
+| True | सत्य | lexicon |
+| and | च | lexicon |
+| as | इव | lexicon |
+| assert | प्रतिज्ञा | lexicon |
+| break | भङ्ग | lexicon |
+| class | वर्ग | lexicon |
+| continue | अनुवर्त | lexicon |
+| def | परिभाषा | proposed |
+| del | अपनय | proposed |
+| elif | नोचेद्यदि | lexicon |
+| else | अन्यथा | lexicon |
+| except | अपवाद | lexicon |
+| finally | अन्ततः | lexicon |
+| for | प्रति | lexicon |
+| from | तः | lexicon |
+| global | वैश्विक | lexicon |
+| if | यदि | lexicon |
+| import | आनयन | lexicon |
+| in | अन्तः | lexicon |
+| is | अस्ति | proposed |
+| lambda | अनामन् | lexicon |
+| nonlocal | अस्थानीय | proposed |
+| not | न | lexicon |
+| or | वा | lexicon |
+| pass | अतिक्रम | proposed |
+| raise | उत्थापय | lexicon |
+| return | प्रत्यागम | lexicon |
+| try | यत्न | lexicon |
+| while | यावत् | lexicon |
+| with | सह | proposed |
+| yield | दा | lexicon |
+| print | मुद्रय | proposed |
+| range | परिसरः | proposed |
+| len | दीर्घता | proposed |
+
+### A.6 BASIC
+
+Host standard: ISO/IEC 10279, Information technology, Programming languages, Full BASIC. Names are lowered by name transformation.
+
+| Host keyword | Sanskrit | Provenance |
+|---|---|---|
+| dim | आयाम | proposed |
+| end | अन्त | lexicon |
+| for | प्रति | lexicon |
+| gosub | उपकार्यं_गच्छ | proposed |
+| goto | गच्छ | lexicon |
+| if | यदि | lexicon |
+| input | निवेशय | proposed |
+| let | अस्तु | lexicon |
+| next | अग्रिम | proposed |
+| print | मुद्रय | proposed |
+| rem | टिप्पणी | proposed |
+| return | प्रत्यागम | lexicon |
+| step | पदम् | proposed |
+| then | तर्हि | proposed |
+| to | पर्यन्तम् | proposed |
+| wend | यावत्_अन्तः | proposed |
+| while | यावत् | lexicon |
+| and | च | lexicon |
+| or | वा | lexicon |
+| not | न | lexicon |
+| mod | शेषः | proposed |
+
+### A.7 LOGO
+
+Host standard: No international standard; the host is the Berkeley Logo dialect (bibliography). Names are lowered by name transformation.
+
+| Host keyword | Sanskrit | Provenance |
+|---|---|---|
+| forward | अग्रप्रसार | lexicon |
+| back | पृष्ठतः | proposed |
+| left | वामतः | proposed |
+| right | दक्षिणतः | proposed |
+| penup | लेखनीम्_उद्धर | proposed |
+| pendown | लेखनीम्_स्थापय | proposed |
+| repeat | आवर्तय | proposed |
+| to | पर्यन्तम् | proposed |
+| end | अन्त | lexicon |
+| make | कुरु | proposed |
+| if | यदि | lexicon |
+| ifelse | यदि_अन्यथा | proposed |
+| home | गृहम् | proposed |
+| clearscreen | पटलं_शोधय | proposed |
+
+## Annex B (normative) Name transformation test vectors
+
+Each native name shall be given the C-level form shown. The vectors are computed by the reference implementation when this draft is generated.
+
+| Native name | C-level form |
+|---|---|
+| अग्रिमः | _agrima_hh |
+| अतिप्रवाहः | _a_tiprawaa_ha_hh |
+| अतिरिक्तः | _a_tirik_ta_hh |
+| अधः | _a_dha_hh |
+| अधस्तनम् | _a_dhas_tanam |
+| अधस्तात् | _a_dhas_taa_t |
+| अधिकतमम् | _a_dhika_tamam |
+| अधिकम् | _a_dhikam |
+| अनुक्रमः_पञ्जिकाकोशः | _anukrama_hh_pa_ynjikaakoasha_hh |
+| अनुक्रमितम् | _anukrami_tam |
+| अनुपातः | _anupaa_ta_hh |
+| अनुरोधाः | _anuroa_dhaa_hh |
+| अन्तः | _an_ta_hh |
+| अन्तःकोटिः | _an_ta_hhkoati_hh |
+| अन्तरम् | _an_taram |
+| अन्तर्_क्रमः | _an_tar_krama_hh |
+| अन्तर्भवति | _an_tarbhawa_ti |
+| अन्ताः | _an_taa_hh |
+| अन्विष | _anwixa |
+| अप्रयुक्तम् | _aprayuk_tam |
+| अलब्धानि | _alab_dhaani |
+| अल्पिष्ठम् | _alpixtham |
+| अवकाशः | _awakaasha_hh |
+| अवलोकनम् | _awaloakanam |
+| अवशिष्टम् | _awashixtam |
+| अवस्थाः | _awas_thaa_hh |
+| अष्टकानि | _axtakaani |
+| अस्थायी | _as_thaayee |
+| आकारः | _aakaara_hh |
+| आकारः_2 | _aakaara_hh_2 |
+
+## Annex C (normative) Script filter
+
+Devanagari text needs no script filter: it is transliterated directly.
+
+## Annex D (informative) Library names
+
+### D C
+
+| Host name | Sanskrit | Provenance |
+|---|---|---|
+| INT_MAX | अधिकतम_पूर्णाङ्कः | proposed |
+| NULL | रिक्त | lexicon |
+| abs | निरपेक्षम् | proposed |
+| assert | प्रतिज्ञा | lexicon |
+| calloc | शून्यस्मृतिं_देहि | proposed |
+| cos | कोटिज्या | proposed |
+| div | भाजय | proposed |
+| exit | निर्गच्छ | proposed |
+| exp | घातांकः | proposed |
+| free | मुक्त | lexicon |
+| friend | मित्रम् | proposed |
+| getchar | अक्षरं_पठ | proposed |
+| isalnum | अक्षरम्_अङ्कः_वा | proposed |
+| isalpha | अक्षरम्_वा | proposed |
+| isdigit | अङ्कः_वा | proposed |
+| isspace | रिक्तम्_वा | proposed |
+| log | लघुगणकः | proposed |
+| malloc | स्मृतिं_देहि | proposed |
+| memcpy | स्मृतिं_प्रतिलिख | proposed |
+| memset | स्मृतिं_पूरय | proposed |
+| open | उद्घाटय | proposed |
+| operator | संक्रियकः | proposed |
+| pow | घातः | proposed |
+| printf | प्रारूप_लिख | proposed |
+| private | गुप्त | lexicon |
+| protected | रक्षित | lexicon |
+| public | सार्वजनिक | lexicon |
+| putchar | अक्षरं_लिख | proposed |
+| puts | पङ्क्तिं_लिख | proposed |
+| qsort | शीघ्रं_क्रमय | proposed |
+| raise | उत्थापय | lexicon |
+| rand | यादृच्छिकम् | proposed |
+| read | पठ | lexicon |
+| scanf | प्रारूप_पठ | proposed |
+| signal | सङ्केत | lexicon |
+| sin | ज्या | proposed |
+| sqrt | वर्गमूलम् | proposed |
+| srand | बीजं_रोपय | proposed |
+| sscanf | वाक्यात्_पठ | proposed |
+| strcat | वाक्यं_योजय | proposed |
+| strcmp | वाक्यं_तुलय | proposed |
+| strcpy | वाक्यं_प्रतिलिख | proposed |
+| strlen | वाक्यदैर्घ्यम् | proposed |
+| strncmp | वाक्ये_तुलय | proposed |
+| strstr | वाक्ये_अन्विष | proposed |
+| template | प्रतिरूपम् | proposed |
+| toupper | महाक्षरम् | proposed |
+| virtual | आभास | lexicon |
+| wait | प्रतीक्षस्व | proposed |
+| write | लिख | lexicon |
+
+### D C++
+
+| Host name | Sanskrit | Provenance |
+|---|---|---|
+| INT_MAX | अधिकतम_पूर्णाङ्कः | proposed |
+| NULL | रिक्त | lexicon |
+| abs | निरपेक्षम् | proposed |
+| assert | प्रतिज्ञा | lexicon |
+| calloc | शून्यस्मृतिं_देहि | proposed |
+| cos | कोटिज्या | proposed |
+| div | भाजय | proposed |
+| exit | निर्गच्छ | proposed |
+| exp | घातांकः | proposed |
+| free | मुक्त | lexicon |
+| getchar | अक्षरं_पठ | proposed |
+| isalnum | अक्षरम्_अङ्कः_वा | proposed |
+| isalpha | अक्षरम्_वा | proposed |
+| isdigit | अङ्कः_वा | proposed |
+| isspace | रिक्तम्_वा | proposed |
+| left | वामतः | proposed |
+| log | लघुगणकः | proposed |
+| malloc | स्मृतिं_देहि | proposed |
+| memcpy | स्मृतिं_प्रतिलिख | proposed |
+| memset | स्मृतिं_पूरय | proposed |
+| open | उद्घाटय | proposed |
+| pipe | प्रणाल | lexicon |
+| pow | घातः | proposed |
+| printf | प्रारूप_लिख | proposed |
+| putchar | अक्षरं_लिख | proposed |
+| puts | पङ्क्तिं_लिख | proposed |
+| qsort | शीघ्रं_क्रमय | proposed |
+| raise | उत्थापय | lexicon |
+| rand | यादृच्छिकम् | proposed |
+| read | पठ | lexicon |
+| right | दक्षिणतः | proposed |
+| scanf | प्रारूप_पठ | proposed |
+| signal | सङ्केत | lexicon |
+| sin | ज्या | proposed |
+| sleep | सुषुप्ति | lexicon |
+| sqrt | वर्गमूलम् | proposed |
+| srand | बीजं_रोपय | proposed |
+| sscanf | वाक्यात्_पठ | proposed |
+| strcat | वाक्यं_योजय | proposed |
+| strcmp | वाक्यं_तुलय | proposed |
+| strcpy | वाक्यं_प्रतिलिख | proposed |
+| strlen | वाक्यदैर्घ्यम् | proposed |
+| strncmp | वाक्ये_तुलय | proposed |
+| strstr | वाक्ये_अन्विष | proposed |
+| sync | समकाल | lexicon |
+| toupper | महाक्षरम् | proposed |
+| wait | प्रतीक्षस्व | proposed |
+| write | लिख | lexicon |
+
+### D Java
+
+| Host name | Sanskrit | Provenance |
 |---|---|---|
 | INT_MAX | अधिकतम_पूर्णाङ्कः | proposed |
 | Object | वस्तु | lexicon |
@@ -448,52 +676,9 @@ Standard library and runtime names of the Java binding:
 | wait | प्रतीक्षस्व | proposed |
 | write | लिख | lexicon |
 
-### A.5 Python
+### D Python
 
-Host: The Python Language Reference, Python Software Foundation, current version. Names: unchanged.
-
-| Host | Sanskrit | Source |
-|---|---|---|
-| False | असत्य | lexicon |
-| None | किमपि_न | proposed |
-| True | सत्य | lexicon |
-| and | च | lexicon |
-| as | इव | lexicon |
-| assert | प्रतिज्ञा | lexicon |
-| break | भङ्ग | lexicon |
-| class | वर्ग | lexicon |
-| continue | अनुवर्त | lexicon |
-| def | परिभाषा | proposed |
-| del | अपनय | proposed |
-| elif | नोचेद्यदि | lexicon |
-| else | अन्यथा | lexicon |
-| except | अपवाद | lexicon |
-| finally | अन्ततः | lexicon |
-| for | प्रति | lexicon |
-| from | तः | lexicon |
-| global | वैश्विक | lexicon |
-| if | यदि | lexicon |
-| import | आनयन | lexicon |
-| in | अन्तः | lexicon |
-| is | अस्ति | proposed |
-| lambda | अनामन् | lexicon |
-| nonlocal | अस्थानीय | proposed |
-| not | न | lexicon |
-| or | वा | lexicon |
-| pass | अतिक्रम | proposed |
-| raise | उत्थापय | lexicon |
-| return | प्रत्यागम | lexicon |
-| try | यत्न | lexicon |
-| while | यावत् | lexicon |
-| with | सह | proposed |
-| yield | दा | lexicon |
-| print | मुद्रय | proposed |
-| range | परिसरः | proposed |
-| len | दीर्घता | proposed |
-
-Standard library and runtime names of the Python binding:
-
-| Host | Sanskrit | Source |
+| Host name | Sanskrit | Provenance |
 |---|---|---|
 | Object | वस्तु | lexicon |
 | String | पदावली | lexicon |
@@ -546,37 +731,9 @@ Standard library and runtime names of the Python binding:
 | wait | प्रतीक्षस्व | proposed |
 | write | लिख | lexicon |
 
-### A.6 BASIC
+### D BASIC
 
-Host: ISO/IEC 10279, Information technology, Programming languages, Full BASIC. Names: name transformation.
-
-| Host | Sanskrit | Source |
-|---|---|---|
-| dim | आयाम | proposed |
-| end | अन्त | lexicon |
-| for | प्रति | lexicon |
-| gosub | उपकार्यं_गच्छ | proposed |
-| goto | गच्छ | lexicon |
-| if | यदि | lexicon |
-| input | निवेशय | proposed |
-| let | अस्तु | lexicon |
-| next | अग्रिम | proposed |
-| print | मुद्रय | proposed |
-| rem | टिप्पणी | proposed |
-| return | प्रत्यागम | lexicon |
-| step | पदम् | proposed |
-| then | तर्हि | proposed |
-| to | पर्यन्तम् | proposed |
-| wend | यावत्_अन्तः | proposed |
-| while | यावत् | lexicon |
-| and | च | lexicon |
-| or | वा | lexicon |
-| not | न | lexicon |
-| mod | शेषः | proposed |
-
-Standard library and runtime names of the BASIC binding:
-
-| Host | Sanskrit | Source |
+| Host name | Sanskrit | Provenance |
 |---|---|---|
 | AS | इव | lexicon |
 | CALL | आह्वान | lexicon |
@@ -590,60 +747,94 @@ Standard library and runtime names of the BASIC binding:
 | STRING | पदावली | lexicon |
 | TIMER | कालयन्त्र | lexicon |
 
-### A.7 LOGO
+### D LOGO
 
-Host: No international standard; the host is the Berkeley Logo dialect (bibliography). Names: name transformation.
-
-| Host | Sanskrit | Source |
-|---|---|---|
-| forward | अग्रप्रसार | lexicon |
-| back | पृष्ठतः | proposed |
-| left | वामतः | proposed |
-| right | दक्षिणतः | proposed |
-| penup | लेखनीम्_उद्धर | proposed |
-| pendown | लेखनीम्_स्थापय | proposed |
-| repeat | आवर्तय | proposed |
-| to | पर्यन्तम् | proposed |
-| end | अन्त | lexicon |
-| make | कुरु | proposed |
-| if | यदि | lexicon |
-| ifelse | यदि_अन्यथा | proposed |
-| home | गृहम् | proposed |
-| clearscreen | पटलं_शोधय | proposed |
-
-Standard library and runtime names of the LOGO binding:
-
-| Host | Sanskrit | Source |
+| Host name | Sanskrit | Provenance |
 |---|---|---|
 | print | मुद्रय | proposed |
 
-## Annex B (informative) Coverage and review
+## Annex E (informative) Conformance tests
 
-| Binding | Host keywords with a native word | Library names |
-|---|---|---|
-| C | 35 of 35 | 50 |
-| C preprocessor | 12 of 12 | 0 |
-| C++ | 61 of 61 | 48 |
-| Java | 51 of 51 | 67 |
-| Python | 36 of 36 | 50 |
-| BASIC | 21 of 21 | 11 |
-| LOGO | 14 of 14 | 1 |
+The reference implementation is tested with the programs of samples/gate in the Hindawi repository, which cover the programming content of the GATE Computer Science paper. Recorded on 2026-10-18: 113 of 113 C programs, written in Sanskrit, were lowered, compiled and run, and printed exactly what their English originals print; 1 of 1 Python programs did the same; 117 of 117 files were reversed byte for byte.
 
-The lowering of Sanskrit programs to C is verified by the reference implementation: runs, same output. Source Chintamani means a word of the original Hindawi transducers; lexicon, a word of the language's lexicon; proposed, a word proposed by the project and not yet reviewed by the language community.
+The program below, as written in the language, its transliterated form, and the C that the transducer gives:
 
-## Annex C (normative) Script filter
+### E source
 
-Devanagari text passes to Romenagri without a script filter.
+```
+#अन्तर्भाव <stdio.h>
+/* binary search in a sorted array */
+पूर्णाङ्क द्विमान_अन्वेषणम्(पूर्णाङ्क मूल्यानि[], पूर्णाङ्क गणना_2, पूर्णाङ्क कुञ्जी) {
+  पूर्णाङ्क निम्नम् = 0, उच्चम् = गणना_2 - 1;
+  यावत् (निम्नम् <= उच्चम्) {
+    पूर्णाङ्क मध्यम् = निम्नम् + (उच्चम् - निम्नम्) / 2;
+    यदि (मूल्यानि[मध्यम्] == कुञ्जी) प्रत्यागम मध्यम्;
+    यदि (मूल्यानि[मध्यम्] < कुञ्जी) निम्नम् = मध्यम् + 1; अन्यथा उच्चम् = मध्यम् - 1;
+  }
+  प्रत्यागम -1;
+}
+पूर्णाङ्क मुख्यम्(शून्य) {
+  पूर्णाङ्क मूल्यानि[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+  प्रारूप_लिख("%d %d\n", द्विमान_अन्वेषणम्(मूल्यानि, 10, 23), द्विमान_अन्वेषणम्(मूल्यानि, 10, 7));
+  प्रत्यागम 0;
+}
+```
 
-## Annex D (informative) Rights and provenance
+### E Romenagri
 
-This document is an original work. It defines new programming languages by reference to the host language standards listed in Clause 2 and reproduces no text from them. Permission to adopt, translate or publish it as a standard is given by the copyright holder to a standards body on request.
+```
+#_an_tarbhaawa <stdio.h>
+/* binary search in a sorted array */
+poor_nnaa_ngka _dwimaana__anwaeexa_nnam(poor_nnaa_ngka moolyaani[], poor_nnaa_ngka ga_nnanaa_2, poor_nnaa_ngka ku_ynjee) {
+  poor_nnaa_ngka nimnam = 0, _uchcham = ga_nnanaa_2 - 1;
+  yaawa_t (nimnam <= _uchcham) {
+    poor_nnaa_ngka ma_dhyam = nimnam + (_uchcham - nimnam) / 2;
+    ya_di (moolyaani[ma_dhyam] == ku_ynjee) pra_tyaagama ma_dhyam;
+    ya_di (moolyaani[ma_dhyam] < ku_ynjee) nimnam = ma_dhyam + 1; _anya_thaa _uchcham = ma_dhyam - 1;
+  }
+  pra_tyaagama -1;
+}
+poor_nnaa_ngka mukhyam(shoonya) {
+  poor_nnaa_ngka moolyaani[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+  praaroopa_likha("%d %d\n", _dwimaana__anwaeexa_nnam(moolyaani, 10, 23), _dwimaana__anwaeexa_nnam(moolyaani, 10, 7));
+  pra_tyaagama 0;
+}
+```
 
-Single words and the keywords of the host languages are not reproduced from any copyrighted text; the native words of Annex A were chosen by the Hindawi project, taken from the language's lexicon in the Hindawi repository, or, for Hindi, taken from the Chintamani transducers of the original Hindawi, whose author holds their copyright.
+### E C
+
+```
+#include <stdio.h>
+/* binary search in a sorted array */
+int _dwimaana__anwaeexa_nnam(int moolyaani[], int ga_nnanaa_2, int ku_ynjee) {
+  int nimnam = 0, _uchcham = ga_nnanaa_2 - 1;
+  while (nimnam <= _uchcham) {
+    int ma_dhyam = nimnam + (_uchcham - nimnam) / 2;
+    if (moolyaani[ma_dhyam] == ku_ynjee) return ma_dhyam;
+    if (moolyaani[ma_dhyam] < ku_ynjee) nimnam = ma_dhyam + 1; else _uchcham = ma_dhyam - 1;
+  }
+  return -1;
+}
+int main(void) {
+  int moolyaani[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+  printf("%d %d\n", _dwimaana__anwaeexa_nnam(moolyaani, 10, 23), _dwimaana__anwaeexa_nnam(moolyaani, 10, 7));
+  return 0;
+}
+```
+
+## Annex F (informative) Provenance of the bindings
+
+| Provenance | Bindings |
+|---|---|
+| lexicon | 154 |
+| proposed | 76 |
 
 ## Bibliography
 
-- Hindawi 2026.10, hindawiai/hindawi2026.10, the reference implementation
-- Chintamani, hindawiai/chintamani, the Hindawi transducers and the Romenagri tools
+- Hindawi Programming System, first public release 15 August 2004, savannah.nongnu.org/projects/hindawi
+- Chintamani, hindawiai/chintamani: the Hindawi transducers and the Romenagri tools
+- Hindawi 2026.10, hindawiai/hindawi2026.10, concept DOI 10.5281/zenodo.23424410
+- IS 12 : 2005, Guide for drafting and presentation of Indian Standards
+- ISO/IEC 10279, Information technology, Programming languages, Full BASIC
 - Berkeley Logo reference manual, Brian Harvey
 

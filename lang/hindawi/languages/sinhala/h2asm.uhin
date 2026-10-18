@@ -13,5 +13,5 @@ anta_h                      {printf("IN");}
 නම්                         {printf("IF");}
 ca                          {printf("AND");}
 na                          {printf("NOT");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

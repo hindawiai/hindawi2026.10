@@ -11,6 +11,13 @@ puts `hindawi` and `hindawicc` on your PATH, and proves the installation by comp
 Telugu. Then `hindawi --help`, `man hindawi`, and `docs/hindawi/MANUAL.md`, which says how to work on this and where
 every tool lives. `VERIFY.md` is the manual verification, step by step, with the result each step should give.
 
+- **Trademarks, credits and the work.** `legal/TRADEMARKS.md` asserts the marks (AyeAI®, AyeCNSe® and AyeAM® are
+  registered in India); code licences grant copyright permissions only. `CREDITS.md` keeps the originator's credit.
+  `TASKS.md` is every open task and standing covenant; each open task is a work package anyone can claim from
+  `docs/hindawi/work-packages.html`.
+- **Standards.** `standards/<language>/standard.{md,docx}`: draft proposals for LITD 15 of the Bureau of Indian
+  Standards, written to Indian Standard drafting practice, only for languages whose keyword bindings are complete.
+- **Proposals.** `docs/hindawi/PANIR.md` (the intermediate representation) and `docs/hindawi/TOOLS-PROPOSED.md`.
 - **Ingestion (BURP).** `hindawi ingest SRC --langs all --out OUT`. Keywords come from each
   language's own transducers; names and comments are translated into a dictionary kept with the project, using
   whichever translators are installed (glossary, Argos Translate, a local language model, any command). Application

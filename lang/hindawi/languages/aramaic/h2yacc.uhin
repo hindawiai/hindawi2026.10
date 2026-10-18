@@ -49,5 +49,5 @@
 نوع                         {printf("type");}
 𐡏𐡁𐡃                         {printf("do");}
 𐡄𐡍                          {printf("if");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

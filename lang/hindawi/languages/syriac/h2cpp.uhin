@@ -61,5 +61,5 @@
 ܥܒܕ                         {printf("do");}
 ܦܢܐ                         {printf("return");}
 ܐܢ                          {printf("if");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

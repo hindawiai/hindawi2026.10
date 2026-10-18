@@ -27,5 +27,5 @@ pak_sa                      {printf("case");}
 var_na                      {printf("char");}
 ខណៈពេល                      {printf("while");}
 ត្រឡប់                      {printf("return");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

@@ -89,7 +89,12 @@ def uhin(lang, name, pairs, src_is_english):
              "   in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */\n%}\n%%", STRINGS]
     for a, b in sorted(pairs, key=lambda p: (-len(p[0]), p[0])):
         lines.append(f'{esc(a):<28}{{printf("{b.replace(chr(92), chr(92) * 2).replace(chr(34), chr(92) + chr(34))}");}}')
-    lines.append('[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}' if src_is_english else "")
+    # A whole word that is not a keyword passes as it is, so a keyword is never matched inside a longer name (the
+    # longest match wins, and a keyword of the same length wins by coming first). A native word is a run of UTF-8
+    # letters for the Python path, which runs on Unicode; on the C path the file is transliterated first and the
+    # ASCII half does the work.
+    lines.append('[A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}' if src_is_english else
+                 '([A-Za-z0-9_]|[\\xC2-\\xF4][\\x80-\\xBF]+)+   {printf("%s",yytext);}')
     return "\n".join(lines) + "\n%%\n"
 
 

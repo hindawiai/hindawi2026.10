@@ -1,0 +1,92 @@
+{
+ "dari": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "hindi": {
+  "c_ok": 111,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 116,
+  "reverse_total": 117
+ },
+ "kannada": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "pashto": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "punjabi": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "punjabi_shahmukhi": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "sanskrit": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "sindhi": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "telugu": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ },
+ "urdu": {
+  "c_ok": 113,
+  "c_total": 113,
+  "date": "2026-10-18",
+  "py_ok": 1,
+  "py_total": 1,
+  "reverse_ok": 117,
+  "reverse_total": 117
+ }
+}

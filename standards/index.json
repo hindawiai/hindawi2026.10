@@ -1,3346 +1,400 @@
 [
  {
   "lang": "arabic",
-  "language": "Arabic",
-  "script": "Arabic",
-  "identifier": "HLS ar 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "41 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "31"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/arabic/"
  },
  {
   "lang": "aramaic",
-  "language": "Aramaic",
-  "script": "Arabic",
-  "identifier": "HLS aramaic 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "41 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "31"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/aramaic/"
  },
  {
   "lang": "assamese",
-  "language": "Assamese",
-  "script": "Bengali",
-  "identifier": "HLS as 2026.10",
-  "coverage": [
-   [
-    "C",
-    "26 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "38 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "25 of 36",
-    "28"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/assamese/"
  },
  {
   "lang": "awadhi",
-  "language": "Awadhi",
-  "script": "Devanagari",
-  "identifier": "HLS awadhi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "33 of 35",
-    "239"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "50 of 61",
-    "235"
-   ],
-   [
-    "Java",
-    "45 of 51",
-    "249"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "38"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "11"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/awadhi/"
  },
  {
   "lang": "balinese",
-  "language": "Balinese",
-  "script": "Balinese",
-  "identifier": "HLS balinese 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/balinese/"
  },
  {
   "lang": "balochi",
-  "language": "Balochi",
-  "script": "Arabic",
-  "identifier": "HLS balochi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/balochi/"
  },
  {
   "lang": "batak",
-  "language": "Batak",
-  "script": "Batak",
-  "identifier": "HLS batak 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/batak/"
  },
  {
   "lang": "bengali",
-  "language": "Bengali",
-  "script": "Bengali",
-  "identifier": "HLS bn 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "25 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/bengali/"
  },
  {
   "lang": "bhojpuri",
-  "language": "Bhojpuri",
-  "script": "Devanagari",
-  "identifier": "HLS bhojpuri 2026.10",
-  "coverage": [
-   [
-    "C",
-    "33 of 35",
-    "239"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "50 of 61",
-    "235"
-   ],
-   [
-    "Java",
-    "45 of 51",
-    "249"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "38"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "11"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/bhojpuri/"
  },
  {
   "lang": "bodo",
-  "language": "Bodo",
-  "script": "Devanagari",
-  "identifier": "HLS bodo 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/bodo/"
  },
  {
   "lang": "buginese",
-  "language": "Buginese",
-  "script": "Buginese",
-  "identifier": "HLS buginese 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/buginese/"
  },
  {
   "lang": "bulgarian",
-  "language": "Bulgarian",
-  "script": "Cyrillic",
-  "identifier": "HLS bulgarian 2026.10",
-  "coverage": [
-   [
-    "C",
-    "6 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "6 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "0"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "1"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/bulgarian/"
  },
  {
   "lang": "burmese",
-  "language": "Burmese",
-  "script": "Myanmar",
-  "identifier": "HLS my 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/burmese/"
  },
  {
   "lang": "chhattisgarhi",
-  "language": "Chhattisgarhi",
-  "script": "Devanagari",
-  "identifier": "HLS chhattisgarhi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/chhattisgarhi/"
  },
  {
   "lang": "chinese",
-  "language": "Chinese",
-  "script": "Cjk",
-  "identifier": "HLS zh 2026.10",
-  "coverage": [
-   [
-    "C",
-    "7 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "7 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "1"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "2"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/chinese/"
  },
  {
   "lang": "dari",
-  "language": "Dari",
-  "script": "Arabic",
+  "status": "draft proposal",
   "identifier": "HLS dari 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "43"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Dari keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "dogri",
-  "language": "Dogri",
-  "script": "Devanagari",
-  "identifier": "HLS dogri 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/dogri/"
  },
  {
   "lang": "dzongkha",
-  "language": "Dzongkha",
-  "script": "Tibetan",
-  "identifier": "HLS dzongkha 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/dzongkha/"
  },
  {
   "lang": "gujarati",
-  "language": "Gujarati",
-  "script": "Gujarati",
-  "identifier": "HLS gu 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/gujarati/"
  },
  {
   "lang": "hausa_ajami",
-  "language": "Hausa Ajami",
-  "script": "Arabic",
-  "identifier": "HLS hausa_ajami 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/hausa_ajami/"
  },
  {
   "lang": "hebrew",
-  "language": "Hebrew",
-  "script": "Arabic",
-  "identifier": "HLS he 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "41 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "31"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/hebrew/"
  },
  {
   "lang": "hindi",
-  "language": "Hindi",
-  "script": "Devanagari",
-  "identifier": "HLS hi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "34 of 35",
-    "240"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "51 of 61",
-    "284"
-   ],
-   [
-    "Java",
-    "45 of 51",
-    "136"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "170"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "60"
-   ],
-   [
-    "LOGO",
-    "0 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/hindi/"
  },
  {
   "lang": "japanese",
-  "language": "Japanese",
-  "script": "Hiragana",
-  "identifier": "HLS ja 2026.10",
-  "coverage": [
-   [
-    "C",
-    "7 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "7 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "1"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "2"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/japanese/"
  },
  {
   "lang": "javanese",
-  "language": "Javanese",
-  "script": "Javanese",
-  "identifier": "HLS javanese 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/javanese/"
  },
  {
   "lang": "kannada",
-  "language": "Kannada",
-  "script": "Kannada",
+  "status": "draft proposal",
   "identifier": "HLS kn 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "44"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Kannada keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "kashmiri",
-  "language": "Kashmiri",
-  "script": "Arabic",
-  "identifier": "HLS kashmiri 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/kashmiri/"
  },
  {
   "lang": "kashmiri_dev",
-  "language": "Kashmiri Dev",
-  "script": "Devanagari",
-  "identifier": "HLS kashmiri_dev 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/kashmiri_dev/"
  },
  {
   "lang": "khmer",
-  "language": "Khmer",
-  "script": "Khmer",
-  "identifier": "HLS km 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/khmer/"
  },
  {
   "lang": "konkani",
-  "language": "Konkani",
-  "script": "Devanagari",
-  "identifier": "HLS konkani 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/konkani/"
  },
  {
   "lang": "korean",
-  "language": "Korean",
-  "script": "Hangul",
-  "identifier": "HLS ko 2026.10",
-  "coverage": [
-   [
-    "C",
-    "6 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "6 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "0"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "1"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/korean/"
  },
  {
   "lang": "kurdish_sorani",
-  "language": "Kurdish Sorani",
-  "script": "Arabic",
-  "identifier": "HLS kurdish_sorani 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/kurdish_sorani/"
  },
  {
   "lang": "lao",
-  "language": "Lao",
-  "script": "Lao",
-  "identifier": "HLS lo 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/lao/"
  },
  {
   "lang": "lepcha",
-  "language": "Lepcha",
-  "script": "Lepcha",
-  "identifier": "HLS lepcha 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/lepcha/"
  },
  {
   "lang": "limbu",
-  "language": "Limbu",
-  "script": "Devanagari",
-  "identifier": "HLS limbu 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/limbu/"
  },
  {
   "lang": "magahi",
-  "language": "Magahi",
-  "script": "Devanagari",
-  "identifier": "HLS magahi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/magahi/"
  },
  {
   "lang": "maithili",
-  "language": "Maithili",
-  "script": "Devanagari",
-  "identifier": "HLS maithili 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/maithili/"
  },
  {
   "lang": "malay_jawi",
-  "language": "Malay Jawi",
-  "script": "Arabic",
-  "identifier": "HLS malay_jawi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/malay_jawi/"
  },
  {
   "lang": "malayalam",
-  "language": "Malayalam",
-  "script": "Malayalam",
-  "identifier": "HLS ml 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/malayalam/"
  },
  {
   "lang": "mandaic",
-  "language": "Mandaic",
-  "script": "Arabic",
-  "identifier": "HLS mandaic 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/mandaic/"
  },
  {
   "lang": "manipuri_beng",
-  "language": "Manipuri Beng",
-  "script": "Bengali",
-  "identifier": "HLS manipuri_beng 2026.10",
-  "coverage": [
-   [
-    "C",
-    "26 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "39 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "37 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "23 of 36",
-    "28"
-   ],
-   [
-    "BASIC",
-    "9 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/manipuri_beng/"
  },
  {
   "lang": "marathi",
-  "language": "Marathi",
-  "script": "Devanagari",
-  "identifier": "HLS mr 2026.10",
-  "coverage": [
-   [
-    "C",
-    "33 of 35",
-    "239"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "50 of 61",
-    "235"
-   ],
-   [
-    "Java",
-    "45 of 51",
-    "249"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "38"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "11"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/marathi/"
  },
  {
   "lang": "marwari",
-  "language": "Marwari",
-  "script": "Devanagari",
-  "identifier": "HLS marwari 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/marwari/"
  },
  {
   "lang": "nabataean",
-  "language": "Nabataean",
-  "script": "Arabic",
-  "identifier": "HLS nabataean 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/nabataean/"
  },
  {
   "lang": "nepali",
-  "language": "Nepali",
-  "script": "Devanagari",
-  "identifier": "HLS ne 2026.10",
-  "coverage": [
-   [
-    "C",
-    "33 of 35",
-    "239"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "50 of 61",
-    "235"
-   ],
-   [
-    "Java",
-    "45 of 51",
-    "249"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "38"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "11"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/nepali/"
  },
  {
   "lang": "newari",
-  "language": "Newari",
-  "script": "Devanagari",
-  "identifier": "HLS newari 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/newari/"
  },
  {
   "lang": "odia",
-  "language": "Odia",
-  "script": "Oriya",
-  "identifier": "HLS or 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/odia/"
  },
  {
   "lang": "pali",
-  "language": "Pali",
-  "script": "Devanagari",
-  "identifier": "HLS pali 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/pali/"
  },
  {
   "lang": "pashto",
-  "language": "Pashto",
-  "script": "Arabic",
+  "status": "draft proposal",
   "identifier": "HLS pashto 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "43"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Pashto keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "persian",
-  "language": "Persian",
-  "script": "Arabic",
-  "identifier": "HLS fa 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/persian/"
  },
  {
   "lang": "phoenician",
-  "language": "Phoenician",
-  "script": "Arabic",
-  "identifier": "HLS phoenician 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/phoenician/"
  },
  {
   "lang": "prakrit",
-  "language": "Prakrit",
-  "script": "Devanagari",
-  "identifier": "HLS prakrit 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/prakrit/"
  },
  {
   "lang": "punjabi",
-  "language": "Punjabi",
-  "script": "Gurmukhi",
+  "status": "draft proposal",
   "identifier": "HLS pa 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "44"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Punjabi keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "punjabi_shahmukhi",
-  "language": "Punjabi Shahmukhi",
-  "script": "Arabic",
+  "status": "draft proposal",
   "identifier": "HLS punjabi_shahmukhi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "43"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Punjabi Shahmukhi keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "rajasthani",
-  "language": "Rajasthani",
-  "script": "Devanagari",
-  "identifier": "HLS rajasthani 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/rajasthani/"
  },
  {
   "lang": "russian",
-  "language": "Russian",
-  "script": "Cyrillic",
-  "identifier": "HLS ru 2026.10",
-  "coverage": [
-   [
-    "C",
-    "7 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "7 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "1"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "2"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/russian/"
  },
  {
   "lang": "samaritan",
-  "language": "Samaritan",
-  "script": "Arabic",
-  "identifier": "HLS samaritan 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/samaritan/"
  },
  {
   "lang": "sanskrit",
-  "language": "Sanskrit",
-  "script": "Devanagari",
+  "status": "draft proposal",
   "identifier": "HLS sa 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "50"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "48"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "67"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "50"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "11"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Sanskrit keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "santali",
-  "language": "Santali",
-  "script": "Ol",
-  "identifier": "HLS santali 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/santali/"
  },
  {
   "lang": "saraiki",
-  "language": "Saraiki",
-  "script": "Arabic",
-  "identifier": "HLS saraiki 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/saraiki/"
  },
  {
   "lang": "serbian",
-  "language": "Serbian",
-  "script": "Cyrillic",
-  "identifier": "HLS serbian 2026.10",
-  "coverage": [
-   [
-    "C",
-    "6 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "6 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "0"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "1"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/serbian/"
  },
  {
   "lang": "shan",
-  "language": "Shan",
-  "script": "Myanmar",
-  "identifier": "HLS shan 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/shan/"
  },
  {
   "lang": "sindhi",
-  "language": "Sindhi",
-  "script": "Arabic",
+  "status": "draft proposal",
   "identifier": "HLS sindhi 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "43"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Sindhi keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "sindhi_dev",
-  "language": "Sindhi Dev",
-  "script": "Devanagari",
-  "identifier": "HLS sindhi_dev 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/sindhi_dev/"
  },
  {
   "lang": "sinhala",
-  "language": "Sinhala",
-  "script": "Sinhala",
-  "identifier": "HLS si 2026.10",
-  "coverage": [
-   [
-    "C",
-    "17 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "20 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/sinhala/"
  },
  {
   "lang": "sundanese",
-  "language": "Sundanese",
-  "script": "Sundanese",
-  "identifier": "HLS sundanese 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/sundanese/"
  },
  {
   "lang": "syriac",
-  "language": "Syriac",
-  "script": "Arabic",
-  "identifier": "HLS syriac 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "41 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "31"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/syriac/"
  },
  {
   "lang": "tagalog",
-  "language": "Tagalog",
-  "script": "Devanagari",
-  "identifier": "HLS tagalog 2026.10",
-  "coverage": [
-   [
-    "C",
-    "16 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "19 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "17 of 51",
-    "7"
-   ],
-   [
-    "Python",
-    "10 of 36",
-    "11"
-   ],
-   [
-    "BASIC",
-    "5 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "does not compile"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/tagalog/"
  },
  {
   "lang": "tamil",
-  "language": "Tamil",
-  "script": "Tamil",
-  "identifier": "HLS ta 2026.10",
-  "coverage": [
-   [
-    "C",
-    "29 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "43 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "19"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "33"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/tamil/"
  },
  {
   "lang": "telugu",
-  "language": "Telugu",
-  "script": "Telugu",
+  "status": "draft proposal",
   "identifier": "HLS te 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "44"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Telugu keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "thai",
-  "language": "Thai",
-  "script": "Thai",
-  "identifier": "HLS th 2026.10",
-  "coverage": [
-   [
-    "C",
-    "18 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "21 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "8"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "12"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/thai/"
  },
  {
   "lang": "tibetan",
-  "language": "Tibetan",
-  "script": "Tibetan",
-  "identifier": "HLS bo 2026.10",
-  "coverage": [
-   [
-    "C",
-    "18 of 35",
-    "2"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "21 of 61",
-    "3"
-   ],
-   [
-    "Java",
-    "18 of 51",
-    "8"
-   ],
-   [
-    "Python",
-    "11 of 36",
-    "12"
-   ],
-   [
-    "BASIC",
-    "6 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/tibetan/"
  },
  {
   "lang": "tulu",
-  "language": "Tulu",
-  "script": "Kannada",
-  "identifier": "HLS tulu 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "11"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "42 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "41 of 51",
-    "18"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "32"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/tulu/"
  },
  {
   "lang": "ukrainian",
-  "language": "Ukrainian",
-  "script": "Cyrillic",
-  "identifier": "HLS ukrainian 2026.10",
-  "coverage": [
-   [
-    "C",
-    "6 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "6 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "0"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "1"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/ukrainian/"
  },
  {
   "lang": "urdu",
-  "language": "Urdu",
-  "script": "Arabic",
+  "status": "draft proposal",
   "identifier": "HLS ur 2026.10",
-  "coverage": [
-   [
-    "C",
-    "35 of 35",
-    "37"
-   ],
-   [
-    "C preprocessor",
-    "12 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "61 of 61",
-    "35"
-   ],
-   [
-    "Java",
-    "51 of 51",
-    "50"
-   ],
-   [
-    "Python",
-    "36 of 36",
-    "44"
-   ],
-   [
-    "BASIC",
-    "21 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "14 of 14",
-    "1"
-   ]
-  ],
+  "title": "Information technology, Programming languages, Urdu keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  {
   "lang": "uyghur",
-  "language": "Uyghur",
-  "script": "Arabic",
-  "identifier": "HLS uyghur 2026.10",
-  "coverage": [
-   [
-    "C",
-    "28 of 35",
-    "10"
-   ],
-   [
-    "C preprocessor",
-    "4 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "40 of 61",
-    "10"
-   ],
-   [
-    "Java",
-    "40 of 51",
-    "17"
-   ],
-   [
-    "Python",
-    "26 of 36",
-    "30"
-   ],
-   [
-    "BASIC",
-    "10 of 21",
-    "10"
-   ],
-   [
-    "LOGO",
-    "3 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "runs, same output"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/uyghur/"
  },
  {
   "lang": "vietnamese",
-  "language": "Vietnamese",
-  "script": "Latin",
-  "identifier": "HLS vietnamese 2026.10",
-  "coverage": [
-   [
-    "C",
-    "6 of 35",
-    "0"
-   ],
-   [
-    "C preprocessor",
-    "2 of 12",
-    "0"
-   ],
-   [
-    "C++",
-    "6 of 61",
-    "0"
-   ],
-   [
-    "Java",
-    "6 of 51",
-    "0"
-   ],
-   [
-    "Python",
-    "5 of 36",
-    "1"
-   ],
-   [
-    "BASIC",
-    "4 of 21",
-    "2"
-   ],
-   [
-    "LOGO",
-    "1 of 14",
-    "0"
-   ]
-  ],
-  "compilation": "no filter yet"
+  "status": "not drafted: keyword bindings incomplete",
+  "work_package": "work-packages/languages/vietnamese/"
  }
 ]

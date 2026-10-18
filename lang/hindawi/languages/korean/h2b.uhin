@@ -12,5 +12,5 @@
 반환                          {printf("RETURN");}
 위해                          {printf("FOR");}
 정수                          {printf("INT");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

@@ -537,3 +537,29 @@ passed; scripts/test_all.sh passes.
 - changed `docs/hindawi/GATE-PROGRAMS.md` (sha256 `7a798c476f8bafc3`)
 
 **Verified.** All nine languages: keywords complete in C, C++, Java, Python, BASIC, LOGO and the C preprocessor; 354 of 354 names of the GATE programs in the language; no library call left in English. In each, 113 of 113 C programs compile from the language through the original pipeline and print exactly what the English originals print, and 117 of 117 files reverse byte for byte. All 355 ingestions of the BURP sample reverse byte for byte; tests/fundamental.py 12 passed; scripts/test_all.sh passes; 47 of 76 languages build and run the sample, as before. 76 standards written as Word files that open cleanly; 77 notebooks; 79 open work packages.
+
+## C24. Trademarks asserted, standards drafted for LITD 15, every task registered, and the compilation path shown stage by stage
+
+**Why.** He ruled that code keeps its GPL and MIT licences and that every trademark be asserted, the triad's registered marks first; found the standards to be stubs and asked for drafts a standards body can take; asked that every open task be captured, completed or packaged without losing his credits; and asked for the notebooks to show the whole compilation flow. legal/TRADEMARKS.md asserts AyeAI, AyeCNSe and AyeAM as registered in India and the claimed marks, separates them from code licences, and keeps the originator's credit; CREDITS.md records contributors under the originator. lang/hindawi/tools/standards.py now writes Indian Standard drafts for LITD 15 of BIS (foreword, scope, normative references, terms, conformance, source text with the script's native digits from the Unicode database, lexical structure in ISO/IEC 14977 EBNF, lowering, name transformation, normative keyword annex, test vectors computed by the reference implementation, script filter, dated conformance record, worked example), only for languages whose keyword bindings are complete; the stubs for the other 67 are removed and each has a work package. The review and contribution pages read one source with Hindi included and host keywords first; the old localisation data is retired. work-packages/tasks.json registers every point of his requests (7 covenants, done items with evidence, open items); each open item is a work package carrying the originator's credit, listed in TASKS.md and on the work-packages page with a share link. hindawi_chain.stages() shows source, script filter, Romenagri form and host text, and to_c is its last stage; Python now runs through each language's own h2py built through Romenagri, as Chintamani's Makefile builds it; every generated forward transducer passes whole words, so a keyword is never matched inside a longer name. docs/hindawi/PANIR.md records the ChatGPT and Gemini intermediate representation as a proposal with seven defects found in it; docs/hindawi/TOOLS-PROPOSED.md lists fourteen proposed tools.
+
+- added `legal/TRADEMARKS.md` (sha256 `232415001153c4e3`)
+- added `CREDITS.md` (sha256 `41be0f0c579f3c0a`)
+- added `TASKS.md` (sha256 `1f83df82d9f3797a`)
+- added `work-packages/tasks.json` (sha256 `ae5f14a29b20f83d`)
+- changed `lang/hindawi/tools/standards.py` (sha256 `d0edbe4c0f71411e`)
+- changed `lang/hindawi/tools/standards_docx.js` (sha256 `ded628012a4e4bf0`)
+- changed `lang/hindawi/tools/work_packages.py` (sha256 `f5d82598037c43d2`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `908fccbf8da28805`)
+- changed `lang/hindawi/tools/complete_cells.py` (sha256 `e506d20cc0e656d1`)
+- changed `tests/gate/run.py` (sha256 `55140554d631d827`)
+- added `tests/check_standards_register.py` (sha256 `40ab50fcf0fc2f95`)
+- added `docs/hindawi/PANIR.md` (sha256 `1583a889b606b9a9`)
+- added `docs/hindawi/TOOLS-PROPOSED.md` (sha256 `9871cc7389a9f2fc`)
+- changed `docs/hindawi/review.html` (sha256 `ab8cad48b17a8bf9`)
+- changed `docs/hindawi/contribute.html` (sha256 `673ab9ed6fe7dbd9`)
+- changed `docs/hindawi/work-packages.html` (sha256 `07b171dd266fad75`)
+- changed `standards/urdu/standard.docx` (sha256 `0183a066d62e3979`)
+- changed `README.md` (sha256 `f8b7e836ce86e2b6`)
+- changed `docs/hindawi/DEVIATIONS.md` (sha256 `6c1c92fb2e542b62`)
+
+**Verified.** Nine languages (Dari, Pashto, Urdu, Punjabi in Gurmukhi and Shahmukhi, Sindhi, Telugu, Kannada, Sanskrit): 113 of 113 C programs and the Python program compile or run from the language and print what the English originals print; 117 of 117 files reverse byte for byte. Hindi: 111 of 113, the two failures caused by Chintamani's greedy character-literal rule (task T-10). Nine draft standards written as Markdown, JSON and Word, each Word file opening cleanly; tests/check_standards_register.py 149 passed; tests/fundamental.py 12 passed; scripts/test_all.sh passes. The trademark kit was dry-run against three live repositories, staging only legal/TRADEMARKS.md and README.md in each.

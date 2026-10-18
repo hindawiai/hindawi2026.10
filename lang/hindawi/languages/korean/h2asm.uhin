@@ -10,5 +10,5 @@
 동안                          {printf("WHILE");}
 만약                          {printf("IF");}
 정수                          {printf("INT");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

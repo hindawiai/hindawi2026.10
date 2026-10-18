@@ -26,5 +26,5 @@
 वा                          {printf("OR");}
 च                           {printf("AND");}
 न                           {printf("NOT");}
-
+([A-Za-z0-9_]|[\xC2-\xF4][\x80-\xBF]+)+   {printf("%s",yytext);}
 %%

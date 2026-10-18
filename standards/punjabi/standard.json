@@ -5,12 +5,12 @@
   "script": "Gurmukhi",
   "direction": "left to right",
   "edition": "2026.10",
-  "stage": "Working draft",
+  "stage": "Draft proposal",
   "date": "2026-10-18",
   "copyright": "© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.",
   "identifier": "HLS pa 2026.10",
   "publisher": "AyeAI, Hindawi project (Project ILM)",
-  "title": "Punjabi bindings for programming languages: lexical mapping and lowering to the host standards",
+  "title": "Information technology, Programming languages, Punjabi keyword bindings for C, C++, Java, Python, BASIC and LOGO, and their lowering to the host language standards",
   "compilation": "runs, same output"
  },
  "blocks": [
@@ -20,7 +20,23 @@
   },
   {
    "type": "p",
-   "text": "This document was prepared by AyeAI, Hindawi project (Project ILM). It is generated from the Punjabi cell of Hindawi 2026.10 by lang/hindawi/tools/standards.py, so that the published standard and the reference implementation cannot drift apart. Its stage is a working draft: the words marked proposed in Annex A await review by the Punjabi language community, through the review pages of the Hindawi project."
+   "text": "This draft is proposed by Abhishek Choudhary, AyeAI, for consideration by the Data Management System Sectional Committee, LITD 15, of the Bureau of Indian Standards, whose scope includes programming languages, their environments and system software interfaces. It is an indigenous draft: it adopts no International Standard, binds the language it names to the host programming language standards listed in Clause 2 by reference, and reproduces no text from them."
+  },
+  {
+   "type": "p",
+   "text": "The method it standardizes was first published as the Hindawi Programming System on 15 August 2004, and has been developed since through the Hindawi releases. This draft is generated from the Punjabi cell of Hindawi 2026.10 by lang/hindawi/tools/standards.py, so that the document and its reference implementation cannot diverge; a revision of either is a revision of both."
+  },
+  {
+   "type": "p",
+   "text": "Annexes A, B and C are normative. Annexes D, E and F are informative."
+  },
+  {
+   "type": "p",
+   "text": "Every binding in Annex A records its provenance. A binding recorded as proposed has not yet been reviewed by the Punjabi language community; its review is part of the work towards an Indian Standard."
+  },
+  {
+   "type": "p",
+   "text": "© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. Hindawi™ and Romenagri™ are trademarks of Abhishek Choudhary. This document is an original work. It defines new programming languages by reference to the host language standards listed in Clause 2 and reproduces no text from them. Permission to adopt, translate or publish it as a standard is given by the copyright holder to a standards body on request."
   },
   {
    "type": "h1",
@@ -28,7 +44,11 @@
   },
   {
    "type": "p",
-   "text": "This document lets programs be written in Punjabi, in the Gurmukhi script, in each of the programming languages listed in Clause 1. Each binding is a programming language in its own right, Punjabi C for example, whose programs are lowered by the function defined in Clause 6 to programs of the host language, and are then processed by any conforming implementation of the host standard. The host standards are incorporated by reference and are not restated. Names keep a defined form down to object code (Clause 7), so programs written in Punjabi remain debuggable at the level of firmware, kernels and libraries."
+   "text": "A program has three properties that this draft keeps apart: the script it is written in, the human language its words come from, and the programming language standard that defines its meaning. The script is handled by transliteration, the language by the keyword bindings of Annex A, and the meaning by the host standard, which this draft does not alter."
+  },
+  {
+   "type": "p",
+   "text": "A source text in the language is lowered to a source text of the host language and compiled by any conforming host translator. Native names reach the compiled program, and the debugger, in one fixed transliterated form, so that a program written in the language remains readable in that language at every level down to the machine."
   },
   {
    "type": "h1",
@@ -36,11 +56,22 @@
   },
   {
    "type": "p",
-   "text": "This document specifies, for the Punjabi language written in the Gurmukhi script, bindings to the following host programming languages: C, C preprocessor, C++, Java, Python, BASIC, LOGO. For each binding it specifies the native keywords and directives, the lowering of native programs to host programs, the treatment of names, and the requirements for conformance."
+   "text": "This draft specifies, for programs written in Punjabi in the Gurmukhi script:"
+  },
+  {
+   "type": "list",
+   "items": [
+    "the encoding and character repertoire of source text (Clause 6);",
+    "the lexical structure of source text, where it differs from the host language (Clause 7);",
+    "the keyword bindings of the language for C, the C preprocessor, C++, Java, Python, BASIC and LOGO (Annex A);",
+    "the lowering of a source text to a source text of the host language (Clause 8);",
+    "the transformation of native names to identifiers of the host language (Clause 9, Annexes B and C);",
+    "the requirements for conformance of programs and of translators (Clause 5)."
+   ]
   },
   {
    "type": "p",
-   "text": "It does not specify the syntax or semantics of any host language beyond what is needed to define the lowering, and it does not specify translations of comments, string literals or documentation."
+   "text": "This draft does not specify the semantics of any host language, which remain those of its standard; the names of host libraries, which are informative (Annex D); or any execution environment."
   },
   {
    "type": "h1",
@@ -48,19 +79,22 @@
   },
   {
    "type": "p",
-   "text": "The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For undated references, the latest edition of the referenced document (including any amendments) applies."
+   "text": "The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this draft. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document, including any amendments, applies."
   },
   {
    "type": "list",
    "items": [
     "ISO/IEC 9899, Information technology, Programming languages, C",
+    "ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives)",
     "ISO/IEC 14882, Programming languages, C++",
     "The Java Language Specification, Oracle, current edition",
     "The Python Language Reference, Python Software Foundation, current version",
     "ISO/IEC 10279, Information technology, Programming languages, Full BASIC",
     "ISO/IEC 10646, Information technology, Universal coded character set (UCS)",
     "Unicode Standard Annex #15, Unicode normalization forms",
-    "Unicode Standard Annex #31, Unicode identifiers and syntax"
+    "Unicode Standard Annex #31, Unicode identifiers and syntax",
+    "ISO/IEC 14977, Information technology, Syntactic metalanguage, Extended BNF",
+    "IS 13194 : 1991, Indian Script Code for Information Interchange, ISCII"
    ]
   },
   {
@@ -68,112 +102,259 @@
    "text": "3 Terms and definitions"
   },
   {
-   "type": "list",
-   "items": [
-    "host language: programming language defined by a normative reference, to which a native program is lowered"
-   ]
+   "type": "p",
+   "text": "3.1 host language: a programming language defined by a standard listed in Clause 2, into which a source text is lowered."
+  },
+  {
+   "type": "p",
+   "text": "3.2 host keyword: a reserved word or directive name of a host language."
+  },
+  {
+   "type": "p",
+   "text": "3.3 native keyword: a word of Punjabi, written in the Gurmukhi script, bound by Annex A to a host keyword."
+  },
+  {
+   "type": "p",
+   "text": "3.4 binding: the pairing of one host keyword with one native keyword, for one host language."
+  },
+  {
+   "type": "p",
+   "text": "3.5 construct: the programming construct a keyword denotes, which is the same across host languages, so that one native keyword serves it in every binding."
+  },
+  {
+   "type": "p",
+   "text": "3.6 source text: a program, or part of one, written using native keywords, native names, or both."
+  },
+  {
+   "type": "p",
+   "text": "3.7 native name: an identifier of a source text written wholly or partly in the Gurmukhi script."
+  },
+  {
+   "type": "p",
+   "text": "3.8 lowering: the transformation of a source text into a source text of the host language."
+  },
+  {
+   "type": "p",
+   "text": "3.9 C-level form: the identifier of the host language that a native name becomes by name transformation, and under which it appears in compiled programs and to debuggers."
+  },
+  {
+   "type": "p",
+   "text": "3.10 name transformation: the mapping of native names to C-level forms specified in Clause 9."
+  },
+  {
+   "type": "p",
+   "text": "3.11 script filter: the mapping of the Gurmukhi script to Devanagari that precedes transliteration, specified in Annex C."
+  },
+  {
+   "type": "p",
+   "text": "3.12 translator: a program that performs lowering and name transformation."
+  },
+  {
+   "type": "p",
+   "text": "3.13 reversal: the transformation of a host-language source text into a source text of the language, through a dictionary of names kept with the program."
+  },
+  {
+   "type": "p",
+   "text": "3.14 provenance: the record of where a binding came from: the 2004 Hindawi transducers, a language lexicon, or a proposal awaiting review."
+  },
+  {
+   "type": "h1",
+   "text": "4 Abbreviated terms"
   },
   {
    "type": "list",
    "items": [
-    "binding: programming language defined by this document whose programs are written in Punjabi and lowered to one host language"
-   ]
-  },
-  {
-   "type": "list",
-   "items": [
-    "native keyword: word of this document that stands for one keyword, directive or standard library name of a host language"
-   ]
-  },
-  {
-   "type": "list",
-   "items": [
-    "lowering: function from native programs to host programs defined in Clause 6"
-   ]
-  },
-  {
-   "type": "list",
-   "items": [
-    "raising: inverse of lowering applied to a host program with a dictionary of names, giving back the native program exactly"
-   ]
-  },
-  {
-   "type": "list",
-   "items": [
-    "name transformation: function from native names to host identifiers defined in Clause 7"
-   ]
-  },
-  {
-   "type": "list",
-   "items": [
-    "C-level form: result of the name transformation; the form a native name takes in host source and in object code"
+    "ACII, the eight-bit form of Indic text used by the Romenagri tools, derived from ISCII",
+    "BURP, Bidirectional Universal Resource Parser, the reference implementation of reversal",
+    "EBNF, Extended Backus-Naur Form as specified in ISO/IEC 14977",
+    "ISCII, Indian Script Code for Information Interchange, IS 13194",
+    "NFC, Normalization Form C of Unicode Standard Annex #15",
+    "UCS, the Universal Coded Character Set of ISO/IEC 10646"
    ]
   },
   {
    "type": "h1",
-   "text": "4 Conformance"
+   "text": "5 Conformance"
   },
   {
    "type": "p",
-   "text": "A conforming Punjabi program of a binding shall be a text that meets Clause 5 and whose lowering is a conforming program of the host language."
+   "text": "5.1 A conforming program shall be a source text whose lowering according to Clause 8 is a program that conforms to the standard of its host language."
   },
   {
    "type": "p",
-   "text": "A conforming implementation of a binding shall accept every conforming program of that binding and shall behave as the lowering of the program, processed by a conforming implementation of the host language, behaves."
+   "text": "5.2 A conforming translator shall accept every conforming program, shall lower it as Clause 8 requires, using the bindings of Annex A, and shall transform its native names as Clause 9 requires, giving for every name in Annex B the C-level form that annex gives."
   },
   {
    "type": "p",
-   "text": "An implementation that raises host programs into a binding shall produce native programs whose lowering, with the same dictionary of names, is identical to the host program it raised."
+   "text": "5.3 A claim of conformance shall name the bindings of Annex A it covers. A translator conforming for C covers the bindings of A.1 and A.2."
+  },
+  {
+   "type": "p",
+   "text": "5.4 A translator that provides reversal shall reproduce the original host-language source text byte for byte from its lowering and the dictionary of names kept with it."
   },
   {
    "type": "h1",
-   "text": "5 Character set and encoding"
+   "text": "6 Source text"
   },
   {
    "type": "p",
-   "text": "A native program shall be encoded in UTF-8 and shall be in Normalization Form C. Native keywords and names are written in the Gurmukhi script, whose direction is left to right. Numeric literals are written with the digits 0 to 9 (U+0030 to U+0039). A native keyword written as several words is one token, its words joined by LOW LINE (U+005F)."
-  },
-  {
-   "type": "h1",
-   "text": "6 Lowering"
+   "text": "6.1 Source text shall be encoded in UTF-8, as specified in ISO/IEC 10646, and shall be in Normalization Form C."
   },
   {
    "type": "p",
-   "text": "A native program is lowered by the following steps, applied in order to the tokens the host language's lexical rules yield when the letters and marks of the script are treated as identifier characters."
+   "text": "6.2 Native letters are the characters of the Gurmukhi block of ISO/IEC 10646 whose general category is a letter or a mark. Text written right to left is stored in logical order."
   },
   {
-   "type": "list",
-   "items": [
-    "Each native keyword of the binding's table in Annex A is replaced by the host keyword, directive or name it stands for.",
-    "A host keyword for which Annex A gives no native word is written in its host form.",
-    "Every other name is lowered as the binding requires: by the name transformation of Clause 7 for C, the C preprocessor, C++, BASIC and LOGO; unchanged for Java and Python, whose host standards accept such names.",
-    "String literals, character constants, header names in include directives, and comments are not changed.",
-    "Every other character is not changed."
+   "type": "p",
+   "text": "6.3 The Gurmukhi script is written left to right."
+  },
+  {
+   "type": "p",
+   "text": "6.4 The native digits below are equivalent, in numerals, to the decimal digits of the host language with the same value. A translator shall accept either."
+  },
+  {
+   "type": "table",
+   "head": [
+    "Code point",
+    "Digit",
+    "Value"
+   ],
+   "rows": [
+    [
+     "U+0A66",
+     "੦",
+     "0"
+    ],
+    [
+     "U+0A67",
+     "੧",
+     "1"
+    ],
+    [
+     "U+0A68",
+     "੨",
+     "2"
+    ],
+    [
+     "U+0A69",
+     "੩",
+     "3"
+    ],
+    [
+     "U+0A6A",
+     "੪",
+     "4"
+    ],
+    [
+     "U+0A6B",
+     "੫",
+     "5"
+    ],
+    [
+     "U+0A6C",
+     "੬",
+     "6"
+    ],
+    [
+     "U+0A6D",
+     "੭",
+     "7"
+    ],
+    [
+     "U+0A6E",
+     "੮",
+     "8"
+    ],
+    [
+     "U+0A6F",
+     "੯",
+     "9"
+    ]
    ]
   },
   {
    "type": "h1",
-   "text": "7 Name transformation"
+   "text": "7 Lexical structure"
   },
   {
    "type": "p",
-   "text": "The C-level form of a native name is obtained by passing the name, alone, through the script filter of the script (Annex C), then through the Romenagri transliteration (uni2acii followed by acii2cf), and writing each circumflex accent (U+005E) that results as LOW LINE (U+005F). Names already written in the digits, Latin letters and LOW LINE of the Basic Latin block are not transformed."
+   "text": "7.1 The lexical structure of a source text is that of its host language, with the additions given below in the notation of ISO/IEC 14977."
+  },
+  {
+   "type": "code",
+   "text": "native letter    = ? a character of 6.2 ? ;\nlatin letter     = ? A to Z or a to z ? ;\ndigit            = ? 0 to 9, or a native digit of 6.4 ? ;\nname start       = native letter | latin letter | \"_\" ;\nidentifier       = name start , { name start | digit } ;\nnative keyword   = ? an entry of the native column of Annex A ? ;\ndirective        = \"#\" , ( native keyword | host keyword ) ;\nword             = native keyword | identifier ;"
   },
   {
    "type": "p",
-   "text": "Two names declared in the same scope shall not have the same C-level form."
+   "text": "7.2 A native keyword is recognized only as a whole word. A word of which a native keyword is a proper part is an identifier."
+  },
+  {
+   "type": "p",
+   "text": "7.3 Character literals, string literals and comments are those of the host language; their content may be written in any script and is not altered by lowering."
+  },
+  {
+   "type": "p",
+   "text": "7.4 A host keyword written in its host form is accepted unchanged, so that a source text may mix native and host keywords."
   },
   {
    "type": "h1",
-   "text": "8 Reference implementation"
+   "text": "8 Lowering"
   },
   {
    "type": "p",
-   "text": "Hindawi 2026.10 is the reference implementation: hindawicc lowers and compiles, BURP raises and lowers projects, and the Romenagri tools of Chintamani at commit 3ad87785a75dc2b18438a8b068807103cb920c81 give the name transformation. Where this document and the reference implementation differ, this document governs."
+   "text": "8.1 Lowering shall replace each native keyword by the host keyword Annex A binds it to, for the host language of the source text; shall leave literals and comments unaltered; shall replace each native digit by the host digit of the same value; and shall transform each native name as Clause 9 requires."
+  },
+  {
+   "type": "p",
+   "text": "8.2 Lowering shall not reorder, insert or remove any other token. The lowered text shall have the same line structure as the source text."
+  },
+  {
+   "type": "note",
+   "text": "The reference implementation lowers in three steps: the script filter of Annex C, transliteration by the Romenagri tools, and the language's transducer for the host language, a lexical analyser built from the bindings of Annex A. Lowering is performed on the transliterated form; Unicode text is never compiled directly."
   },
   {
    "type": "h1",
-   "text": "Annex A (normative) Native keywords"
+   "text": "9 Name transformation"
+  },
+  {
+   "type": "p",
+   "text": "9.1 Name transformation shall be deterministic, and shall give one native name the same C-level form wherever the name stands in a program."
+  },
+  {
+   "type": "p",
+   "text": "9.2 Every C-level form shall be an identifier of the host language."
+  },
+  {
+   "type": "p",
+   "text": "9.3 Two different native names of one program shall not be given the same C-level form; a translator shall report such a collision as an error."
+  },
+  {
+   "type": "p",
+   "text": "9.4 A name written wholly in Latin letters, digits and underscores is not transformed."
+  },
+  {
+   "type": "p",
+   "text": "9.5 The C-level forms of the names in Annex B are normative. They are those of the Romenagri transliteration applied, word by word, to the output of the script filter of Annex C."
+  },
+  {
+   "type": "h1",
+   "text": "10 Reversal"
+  },
+  {
+   "type": "p",
+   "text": "Reversal is optional. A translator that provides it shall keep with each program a dictionary of its native names, and shall satisfy 5.4."
+  },
+  {
+   "type": "h1",
+   "text": "11 Maintenance of the bindings"
+  },
+  {
+   "type": "p",
+   "text": "The bindings of Annex A are maintained as a living register. A proposed binding becomes reviewed when the Punjabi language community accepts it; a change to a reviewed binding is a revision of this draft. The construct, not the host keyword, is primary: one native keyword serves one construct in every binding where that construct occurs."
+  },
+  {
+   "type": "h1",
+   "text": "Annex A (normative) Keyword bindings"
   },
   {
    "type": "h2",
@@ -181,14 +362,14 @@
   },
   {
    "type": "p",
-   "text": "Host: ISO/IEC 9899, Information technology, Programming languages, C. Names: name transformation."
+   "text": "Host standard: ISO/IEC 9899, Information technology, Programming languages, C. Names are lowered by name transformation."
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host keyword",
     "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -369,218 +550,19 @@
    ]
   },
   {
-   "type": "p",
-   "text": "Standard library and runtime names of the C binding:"
-  },
-  {
-   "type": "table",
-   "head": [
-    "Host",
-    "Punjabi",
-    "Source"
-   ],
-   "rows": [
-    [
-     "INT_MAX",
-     "ਵੱਧ_ਤੋਂ_ਵੱਧ_ਅੰਕ",
-     "proposed"
-    ],
-    [
-     "NULL",
-     "ਨਿਰਾ",
-     "lexicon"
-    ],
-    [
-     "abs",
-     "ਨਿਰਪੇਖ",
-     "proposed"
-    ],
-    [
-     "assert",
-     "ਪ੍ਰਤਿਜ੍ਞਾ",
-     "lexicon"
-    ],
-    [
-     "calloc",
-     "ਸਿਫਰ_ਸਮ੍ਰਿਤੀ_ਦਿਓ",
-     "proposed"
-    ],
-    [
-     "cos",
-     "ਕੋਜੀਵਾ",
-     "proposed"
-    ],
-    [
-     "exit",
-     "ਬਾਹਰ_ਨਿਕਲੋ",
-     "proposed"
-    ],
-    [
-     "exp",
-     "ਘਾਤਾਂਕ",
-     "proposed"
-    ],
-    [
-     "free",
-     "ਮੁਕਤ",
-     "lexicon"
-    ],
-    [
-     "friend",
-     "ਮਿੱਤਰ",
-     "proposed"
-    ],
-    [
-     "isalnum",
-     "ਅੱਖਰ_ਜਾਂ_ਅੰਕ",
-     "proposed"
-    ],
-    [
-     "isalpha",
-     "ਅੱਖਰ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "isdigit",
-     "ਅੰਕ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "isspace",
-     "ਖਾਲੀ_ਥਾਂ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "log",
-     "ਲਘੂਗਣਕ",
-     "proposed"
-    ],
-    [
-     "malloc",
-     "ਸਮ੍ਰਿਤੀ_ਦਿਓ",
-     "proposed"
-    ],
-    [
-     "memcpy",
-     "ਸਮ੍ਰਿਤੀ_ਨਕਲ",
-     "proposed"
-    ],
-    [
-     "operator",
-     "ਸੰਚਾਲਕ",
-     "proposed"
-    ],
-    [
-     "pow",
-     "ਘਾਤ",
-     "proposed"
-    ],
-    [
-     "printf",
-     "ਲਿਖੋ",
-     "proposed"
-    ],
-    [
-     "private",
-     "ਨਿਜੀ",
-     "lexicon"
-    ],
-    [
-     "protected",
-     "ਸੁਰੱਖਿਅਤ",
-     "lexicon"
-    ],
-    [
-     "public",
-     "ਜਨਤਕ",
-     "lexicon"
-    ],
-    [
-     "putchar",
-     "ਅੱਖਰ_ਲਿਖੋ",
-     "proposed"
-    ],
-    [
-     "raise",
-     "ਉਠਾਓ",
-     "lexicon"
-    ],
-    [
-     "read",
-     "ਪਠ",
-     "lexicon"
-    ],
-    [
-     "signal",
-     "ਸੰਕੇਤ",
-     "lexicon"
-    ],
-    [
-     "sin",
-     "ਜੀਵਾ",
-     "proposed"
-    ],
-    [
-     "sqrt",
-     "ਵਰਗਮੂਲ",
-     "proposed"
-    ],
-    [
-     "sscanf",
-     "ਲੜੀ_ਤੋਂ_ਪੜ੍ਹੋ",
-     "proposed"
-    ],
-    [
-     "strlen",
-     "ਲੜੀ_ਲੰਬਾਈ",
-     "proposed"
-    ],
-    [
-     "strncmp",
-     "ਲੜੀ_ਤੁਲਨਾ",
-     "proposed"
-    ],
-    [
-     "strstr",
-     "ਲੜੀ_ਖੋਜ",
-     "proposed"
-    ],
-    [
-     "template",
-     "ਸਾਂਚਾ",
-     "proposed"
-    ],
-    [
-     "toupper",
-     "ਵੱਡਾ_ਅੱਖਰ",
-     "proposed"
-    ],
-    [
-     "virtual",
-     "ਆਭਾਸੀ",
-     "lexicon"
-    ],
-    [
-     "write",
-     "ਲਿਖ",
-     "lexicon"
-    ]
-   ]
-  },
-  {
    "type": "h2",
    "text": "A.2 C preprocessor"
   },
   {
    "type": "p",
-   "text": "Host: ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives). Names: name transformation."
+   "text": "Host standard: ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives). Names are lowered by name transformation."
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host keyword",
     "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -651,14 +633,14 @@
   },
   {
    "type": "p",
-   "text": "Host: ISO/IEC 14882, Programming languages, C++. Names: name transformation."
+   "text": "Host standard: ISO/IEC 14882, Programming languages, C++. Names are lowered by name transformation."
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host keyword",
     "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -969,208 +951,19 @@
    ]
   },
   {
-   "type": "p",
-   "text": "Standard library and runtime names of the C++ binding:"
-  },
-  {
-   "type": "table",
-   "head": [
-    "Host",
-    "Punjabi",
-    "Source"
-   ],
-   "rows": [
-    [
-     "INT_MAX",
-     "ਵੱਧ_ਤੋਂ_ਵੱਧ_ਅੰਕ",
-     "proposed"
-    ],
-    [
-     "NULL",
-     "ਨਿਰਾ",
-     "lexicon"
-    ],
-    [
-     "abs",
-     "ਨਿਰਪੇਖ",
-     "proposed"
-    ],
-    [
-     "assert",
-     "ਪ੍ਰਤਿਜ੍ਞਾ",
-     "lexicon"
-    ],
-    [
-     "calloc",
-     "ਸਿਫਰ_ਸਮ੍ਰਿਤੀ_ਦਿਓ",
-     "proposed"
-    ],
-    [
-     "cos",
-     "ਕੋਜੀਵਾ",
-     "proposed"
-    ],
-    [
-     "exit",
-     "ਬਾਹਰ_ਨਿਕਲੋ",
-     "proposed"
-    ],
-    [
-     "exp",
-     "ਘਾਤਾਂਕ",
-     "proposed"
-    ],
-    [
-     "free",
-     "ਮੁਕਤ",
-     "lexicon"
-    ],
-    [
-     "isalnum",
-     "ਅੱਖਰ_ਜਾਂ_ਅੰਕ",
-     "proposed"
-    ],
-    [
-     "isalpha",
-     "ਅੱਖਰ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "isdigit",
-     "ਅੰਕ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "isspace",
-     "ਖਾਲੀ_ਥਾਂ_ਹੈ",
-     "proposed"
-    ],
-    [
-     "left",
-     "ਖੱਬੇ",
-     "proposed"
-    ],
-    [
-     "log",
-     "ਲਘੂਗਣਕ",
-     "proposed"
-    ],
-    [
-     "malloc",
-     "ਸਮ੍ਰਿਤੀ_ਦਿਓ",
-     "proposed"
-    ],
-    [
-     "memcpy",
-     "ਸਮ੍ਰਿਤੀ_ਨਕਲ",
-     "proposed"
-    ],
-    [
-     "pipe",
-     "ਪ੍ਰਣਾਲ",
-     "lexicon"
-    ],
-    [
-     "pow",
-     "ਘਾਤ",
-     "proposed"
-    ],
-    [
-     "printf",
-     "ਲਿਖੋ",
-     "proposed"
-    ],
-    [
-     "putchar",
-     "ਅੱਖਰ_ਲਿਖੋ",
-     "proposed"
-    ],
-    [
-     "raise",
-     "ਉਠਾਓ",
-     "lexicon"
-    ],
-    [
-     "read",
-     "ਪਠ",
-     "lexicon"
-    ],
-    [
-     "right",
-     "ਸੱਜੇ",
-     "proposed"
-    ],
-    [
-     "signal",
-     "ਸੰਕੇਤ",
-     "lexicon"
-    ],
-    [
-     "sin",
-     "ਜੀਵਾ",
-     "proposed"
-    ],
-    [
-     "sleep",
-     "ਸੁ਷ੁਪ੍ਤਿ",
-     "lexicon"
-    ],
-    [
-     "sqrt",
-     "ਵਰਗਮੂਲ",
-     "proposed"
-    ],
-    [
-     "sscanf",
-     "ਲੜੀ_ਤੋਂ_ਪੜ੍ਹੋ",
-     "proposed"
-    ],
-    [
-     "strlen",
-     "ਲੜੀ_ਲੰਬਾਈ",
-     "proposed"
-    ],
-    [
-     "strncmp",
-     "ਲੜੀ_ਤੁਲਨਾ",
-     "proposed"
-    ],
-    [
-     "strstr",
-     "ਲੜੀ_ਖੋਜ",
-     "proposed"
-    ],
-    [
-     "sync",
-     "ਸਮਕਾਲੀ",
-     "lexicon"
-    ],
-    [
-     "toupper",
-     "ਵੱਡਾ_ਅੱਖਰ",
-     "proposed"
-    ],
-    [
-     "write",
-     "ਲਿਖ",
-     "lexicon"
-    ]
-   ]
-  },
-  {
    "type": "h2",
    "text": "A.4 Java"
   },
   {
    "type": "p",
-   "text": "Host: The Java Language Specification, Oracle, current edition. Names: unchanged."
+   "text": "Host standard: The Java Language Specification, Oracle, current edition. Names are lowered by unchanged."
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host keyword",
     "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -1431,15 +1224,965 @@
    ]
   },
   {
+   "type": "h2",
+   "text": "A.5 Python"
+  },
+  {
    "type": "p",
-   "text": "Standard library and runtime names of the Java binding:"
+   "text": "Host standard: The Python Language Reference, Python Software Foundation, current version. Names are lowered by unchanged."
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host keyword",
     "Punjabi",
-    "Source"
+    "Provenance"
+   ],
+   "rows": [
+    [
+     "False",
+     "ਝੂਠ",
+     "lexicon"
+    ],
+    [
+     "None",
+     "ਕੁਝ_ਨਹੀਂ",
+     "proposed"
+    ],
+    [
+     "True",
+     "ਸੱਚ",
+     "lexicon"
+    ],
+    [
+     "and",
+     "ਅਤੇ",
+     "lexicon"
+    ],
+    [
+     "as",
+     "ਇਵ",
+     "lexicon"
+    ],
+    [
+     "assert",
+     "ਪ੍ਰਤਿਜ੍ਞਾ",
+     "lexicon"
+    ],
+    [
+     "break",
+     "ਰੋਕੋ",
+     "lexicon"
+    ],
+    [
+     "class",
+     "ਵਰਗ",
+     "lexicon"
+    ],
+    [
+     "continue",
+     "ਜਾਰੀ",
+     "lexicon"
+    ],
+    [
+     "def",
+     "ਪਰਿਭਾਸ਼ਾ",
+     "proposed"
+    ],
+    [
+     "del",
+     "ਹਟਾਓ",
+     "proposed"
+    ],
+    [
+     "elif",
+     "ਜਾਂਜੇ",
+     "lexicon"
+    ],
+    [
+     "else",
+     "ਨਹੀਂਤਾਂ",
+     "lexicon"
+    ],
+    [
+     "except",
+     "ਅਪਵਾਦ",
+     "lexicon"
+    ],
+    [
+     "finally",
+     "ਅਖੀਰ",
+     "lexicon"
+    ],
+    [
+     "for",
+     "ਲਈ",
+     "lexicon"
+    ],
+    [
+     "from",
+     "ਤਃ",
+     "lexicon"
+    ],
+    [
+     "global",
+     "ਵੈਸ਼੍ਵਿਕ",
+     "lexicon"
+    ],
+    [
+     "if",
+     "ਜੇ",
+     "lexicon"
+    ],
+    [
+     "import",
+     "ਆਯਾਤ",
+     "lexicon"
+    ],
+    [
+     "in",
+     "ਵਿੱਚ",
+     "lexicon"
+    ],
+    [
+     "is",
+     "ਹੈ",
+     "proposed"
+    ],
+    [
+     "lambda",
+     "ਅਨਾਮ",
+     "lexicon"
+    ],
+    [
+     "nonlocal",
+     "ਗੈਰਸਥਾਨਕ",
+     "proposed"
+    ],
+    [
+     "not",
+     "ਨਹੀਂ",
+     "lexicon"
+    ],
+    [
+     "or",
+     "ਜਾਂ",
+     "lexicon"
+    ],
+    [
+     "pass",
+     "ਲੰਘੋ",
+     "proposed"
+    ],
+    [
+     "raise",
+     "ਉਠਾਓ",
+     "lexicon"
+    ],
+    [
+     "return",
+     "ਵਾਪਸ",
+     "lexicon"
+    ],
+    [
+     "try",
+     "ਕੋਸ਼ਿਸ਼",
+     "lexicon"
+    ],
+    [
+     "while",
+     "ਜਦੋਂ",
+     "lexicon"
+    ],
+    [
+     "with",
+     "ਨਾਲ",
+     "proposed"
+    ],
+    [
+     "yield",
+     "ਦਿਓ",
+     "lexicon"
+    ],
+    [
+     "print",
+     "ਛਾਪੋ",
+     "proposed"
+    ],
+    [
+     "range",
+     "ਸੀਮਾ",
+     "proposed"
+    ],
+    [
+     "len",
+     "ਲੰਬਾਈ",
+     "proposed"
+    ]
+   ]
+  },
+  {
+   "type": "h2",
+   "text": "A.6 BASIC"
+  },
+  {
+   "type": "p",
+   "text": "Host standard: ISO/IEC 10279, Information technology, Programming languages, Full BASIC. Names are lowered by name transformation."
+  },
+  {
+   "type": "table",
+   "head": [
+    "Host keyword",
+    "Punjabi",
+    "Provenance"
+   ],
+   "rows": [
+    [
+     "dim",
+     "ਆਕਾਰ",
+     "proposed"
+    ],
+    [
+     "end",
+     "ਅੰਤ",
+     "lexicon"
+    ],
+    [
+     "for",
+     "ਲਈ",
+     "lexicon"
+    ],
+    [
+     "gosub",
+     "ਉਪ_ਜਾਓ",
+     "proposed"
+    ],
+    [
+     "goto",
+     "ਜਾਓ",
+     "lexicon"
+    ],
+    [
+     "if",
+     "ਜੇ",
+     "lexicon"
+    ],
+    [
+     "input",
+     "ਲਵੋ",
+     "proposed"
+    ],
+    [
+     "let",
+     "ਮੰਨੋ",
+     "lexicon"
+    ],
+    [
+     "next",
+     "ਅਗਲਾ_ਗੇੜ",
+     "proposed"
+    ],
+    [
+     "print",
+     "ਛਾਪੋ",
+     "proposed"
+    ],
+    [
+     "rem",
+     "ਟਿੱਪਣੀ",
+     "proposed"
+    ],
+    [
+     "return",
+     "ਵਾਪਸ",
+     "lexicon"
+    ],
+    [
+     "step",
+     "ਕਦਮ_ਨਾਲ",
+     "proposed"
+    ],
+    [
+     "then",
+     "ਤਾਂ",
+     "proposed"
+    ],
+    [
+     "to",
+     "ਤੱਕ",
+     "proposed"
+    ],
+    [
+     "wend",
+     "ਜਦੋਂਤੱਕ_ਅੰਤ",
+     "proposed"
+    ],
+    [
+     "while",
+     "ਜਦੋਂ",
+     "lexicon"
+    ],
+    [
+     "and",
+     "ਅਤੇ",
+     "lexicon"
+    ],
+    [
+     "or",
+     "ਜਾਂ",
+     "lexicon"
+    ],
+    [
+     "not",
+     "ਨਹੀਂ",
+     "lexicon"
+    ],
+    [
+     "mod",
+     "ਬਾਕੀ",
+     "proposed"
+    ]
+   ]
+  },
+  {
+   "type": "h2",
+   "text": "A.7 LOGO"
+  },
+  {
+   "type": "p",
+   "text": "Host standard: No international standard; the host is the Berkeley Logo dialect (bibliography). Names are lowered by name transformation."
+  },
+  {
+   "type": "table",
+   "head": [
+    "Host keyword",
+    "Punjabi",
+    "Provenance"
+   ],
+   "rows": [
+    [
+     "forward",
+     "ਅਗ੍ਰਪ੍ਰਸਾਰ",
+     "lexicon"
+    ],
+    [
+     "back",
+     "ਪਿੱਛੇ",
+     "proposed"
+    ],
+    [
+     "left",
+     "ਖੱਬੇ",
+     "proposed"
+    ],
+    [
+     "right",
+     "ਸੱਜੇ",
+     "proposed"
+    ],
+    [
+     "penup",
+     "ਕਲਮ_ਚੁੱਕੋ",
+     "proposed"
+    ],
+    [
+     "pendown",
+     "ਕਲਮ_ਰੱਖੋ",
+     "proposed"
+    ],
+    [
+     "repeat",
+     "ਦੁਹਰਾਓ",
+     "proposed"
+    ],
+    [
+     "to",
+     "ਤੱਕ",
+     "proposed"
+    ],
+    [
+     "end",
+     "ਅੰਤ",
+     "lexicon"
+    ],
+    [
+     "make",
+     "ਬਣਾਓ",
+     "proposed"
+    ],
+    [
+     "if",
+     "ਜੇ",
+     "lexicon"
+    ],
+    [
+     "ifelse",
+     "ਜੇ_ਨਹੀਂਤਾਂ",
+     "proposed"
+    ],
+    [
+     "home",
+     "ਘਰ",
+     "proposed"
+    ],
+    [
+     "clearscreen",
+     "ਪਰਦਾ_ਸਾਫ",
+     "proposed"
+    ]
+   ]
+  },
+  {
+   "type": "h1",
+   "text": "Annex B (normative) Name transformation test vectors"
+  },
+  {
+   "type": "p",
+   "text": "Each native name shall be given the C-level form shown. The vectors are computed by the reference implementation when this draft is generated."
+  },
+  {
+   "type": "table",
+   "head": [
+    "Native name",
+    "C-level form"
+   ],
+   "rows": [
+    [
+     "ਅਗਲਾ",
+     "_agalaa"
+    ],
+    [
+     "ਅਗੇਤਰ",
+     "_agaee_tara"
+    ],
+    [
+     "ਅਣਵਰਤਿਆ",
+     "_a_nnawara_ti_aa"
+    ],
+    [
+     "ਅਦਲਾ_ਬਦਲੀ",
+     "_a_dalaa_ba_dalee"
+    ],
+    [
+     "ਅਧਾਰ",
+     "_a_dhaara"
+    ],
+    [
+     "ਅਨੁਪਾਤ",
+     "_anupaa_ta"
+    ],
+    [
+     "ਅਸਿੱਧਾ",
+     "_asi_dhaa"
+    ],
+    [
+     "ਅੰਕੜੇ",
+     "_a_mka_rraee"
+    ],
+    [
+     "ਅੰਤ",
+     "_a_m_ta"
+    ],
+    [
+     "ਅੰਦਰਲੀ_ਡਿਗਰੀ",
+     "_a_m_daralee_digaree"
+    ],
+    [
+     "ਅੰਦਰੂਨੀ",
+     "_a_m_daroonee"
+    ],
+    [
+     "ਆਉਣ_ਵਾਲਾ",
+     "_aa_u_nna_waalaa"
+    ],
+    [
+     "ਆਖਰੀ",
+     "_aakharee"
+    ],
+    [
+     "ਆਮਦ",
+     "_aama_da"
+    ],
+    [
+     "ਆਰਜ਼ੀ",
+     "_aarajzee"
+    ],
+    [
+     "ਇਕਸਾਰ",
+     "_ikasaara"
+    ],
+    [
+     "ਇੰਦਰਾਜ",
+     "_i_m_daraaja"
+    ],
+    [
+     "ਇੱਕੋ_ਵੇਲੇ",
+     "_ikoa_waeelaee"
+    ],
+    [
+     "ਉਚਾਈ",
+     "_uchaa_ee"
+    ],
+    [
+     "ਉਛਾਲ",
+     "_uchhaala"
+    ],
+    [
+     "ਉਡੀਕ",
+     "_udeeka"
+    ],
+    [
+     "ਉਤਪਾਦਕ",
+     "_u_tapaa_daka"
+    ],
+    [
+     "ਉਪਲਬਧ",
+     "_upalaba_dha"
+    ],
+    [
+     "ਉਲਟ",
+     "_ulata"
+    ],
+    [
+     "ਉੱਚਾ",
+     "_uchaa"
+    ],
+    [
+     "ਉੱਤਮ",
+     "_u_tama"
+    ],
+    [
+     "ਉੱਤਮ_ਖਾਨਾਬੱਧ",
+     "_u_tama_khaanaaba_dha"
+    ],
+    [
+     "ਉੱਤਮ_ਸ਼ੁੱਧ",
+     "_u_tama_szu_dha"
+    ],
+    [
+     "ਉੱਤਰਾਧਿਕਾਰੀ",
+     "_u_taraa_dhikaaree"
+    ],
+    [
+     "ਉੱਤਲਾ",
+     "_u_talaa"
+    ]
+   ]
+  },
+  {
+   "type": "h1",
+   "text": "Annex C (normative) Script filter"
+  },
+  {
+   "type": "p",
+   "text": "The Gurmukhi script is mapped to Devanagari letter by letter, by Unicode character name: each letter of the Gurmukhi block maps to the Devanagari letter of the same name."
+  },
+  {
+   "type": "p",
+   "text": "Gurmukhi signs named differently from Devanagari are mapped by alias: bindi and tippi to anusvara, the vowel signs EE and OO to E and O. Addak has no Devanagari sign and is dropped."
+  },
+  {
+   "type": "h1",
+   "text": "Annex D (informative) Library names"
+  },
+  {
+   "type": "h2",
+   "text": "D C"
+  },
+  {
+   "type": "table",
+   "head": [
+    "Host name",
+    "Punjabi",
+    "Provenance"
+   ],
+   "rows": [
+    [
+     "INT_MAX",
+     "ਵੱਧ_ਤੋਂ_ਵੱਧ_ਅੰਕ",
+     "proposed"
+    ],
+    [
+     "NULL",
+     "ਨਿਰਾ",
+     "lexicon"
+    ],
+    [
+     "abs",
+     "ਨਿਰਪੇਖ",
+     "proposed"
+    ],
+    [
+     "assert",
+     "ਪ੍ਰਤਿਜ੍ਞਾ",
+     "lexicon"
+    ],
+    [
+     "calloc",
+     "ਸਿਫਰ_ਸਮ੍ਰਿਤੀ_ਦਿਓ",
+     "proposed"
+    ],
+    [
+     "cos",
+     "ਕੋਜੀਵਾ",
+     "proposed"
+    ],
+    [
+     "exit",
+     "ਬਾਹਰ_ਨਿਕਲੋ",
+     "proposed"
+    ],
+    [
+     "exp",
+     "ਘਾਤਾਂਕ",
+     "proposed"
+    ],
+    [
+     "free",
+     "ਮੁਕਤ",
+     "lexicon"
+    ],
+    [
+     "friend",
+     "ਮਿੱਤਰ",
+     "proposed"
+    ],
+    [
+     "isalnum",
+     "ਅੱਖਰ_ਜਾਂ_ਅੰਕ",
+     "proposed"
+    ],
+    [
+     "isalpha",
+     "ਅੱਖਰ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "isdigit",
+     "ਅੰਕ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "isspace",
+     "ਖਾਲੀ_ਥਾਂ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "log",
+     "ਲਘੂਗਣਕ",
+     "proposed"
+    ],
+    [
+     "malloc",
+     "ਸਮ੍ਰਿਤੀ_ਦਿਓ",
+     "proposed"
+    ],
+    [
+     "memcpy",
+     "ਸਮ੍ਰਿਤੀ_ਨਕਲ",
+     "proposed"
+    ],
+    [
+     "operator",
+     "ਸੰਚਾਲਕ",
+     "proposed"
+    ],
+    [
+     "pow",
+     "ਘਾਤ",
+     "proposed"
+    ],
+    [
+     "printf",
+     "ਲਿਖੋ",
+     "proposed"
+    ],
+    [
+     "private",
+     "ਨਿਜੀ",
+     "lexicon"
+    ],
+    [
+     "protected",
+     "ਸੁਰੱਖਿਅਤ",
+     "lexicon"
+    ],
+    [
+     "public",
+     "ਜਨਤਕ",
+     "lexicon"
+    ],
+    [
+     "putchar",
+     "ਅੱਖਰ_ਲਿਖੋ",
+     "proposed"
+    ],
+    [
+     "raise",
+     "ਉਠਾਓ",
+     "lexicon"
+    ],
+    [
+     "read",
+     "ਪਠ",
+     "lexicon"
+    ],
+    [
+     "signal",
+     "ਸੰਕੇਤ",
+     "lexicon"
+    ],
+    [
+     "sin",
+     "ਜੀਵਾ",
+     "proposed"
+    ],
+    [
+     "sqrt",
+     "ਵਰਗਮੂਲ",
+     "proposed"
+    ],
+    [
+     "sscanf",
+     "ਲੜੀ_ਤੋਂ_ਪੜ੍ਹੋ",
+     "proposed"
+    ],
+    [
+     "strlen",
+     "ਲੜੀ_ਲੰਬਾਈ",
+     "proposed"
+    ],
+    [
+     "strncmp",
+     "ਲੜੀ_ਤੁਲਨਾ",
+     "proposed"
+    ],
+    [
+     "strstr",
+     "ਲੜੀ_ਖੋਜ",
+     "proposed"
+    ],
+    [
+     "template",
+     "ਸਾਂਚਾ",
+     "proposed"
+    ],
+    [
+     "toupper",
+     "ਵੱਡਾ_ਅੱਖਰ",
+     "proposed"
+    ],
+    [
+     "virtual",
+     "ਆਭਾਸੀ",
+     "lexicon"
+    ],
+    [
+     "write",
+     "ਲਿਖ",
+     "lexicon"
+    ]
+   ]
+  },
+  {
+   "type": "h2",
+   "text": "D C++"
+  },
+  {
+   "type": "table",
+   "head": [
+    "Host name",
+    "Punjabi",
+    "Provenance"
+   ],
+   "rows": [
+    [
+     "INT_MAX",
+     "ਵੱਧ_ਤੋਂ_ਵੱਧ_ਅੰਕ",
+     "proposed"
+    ],
+    [
+     "NULL",
+     "ਨਿਰਾ",
+     "lexicon"
+    ],
+    [
+     "abs",
+     "ਨਿਰਪੇਖ",
+     "proposed"
+    ],
+    [
+     "assert",
+     "ਪ੍ਰਤਿਜ੍ਞਾ",
+     "lexicon"
+    ],
+    [
+     "calloc",
+     "ਸਿਫਰ_ਸਮ੍ਰਿਤੀ_ਦਿਓ",
+     "proposed"
+    ],
+    [
+     "cos",
+     "ਕੋਜੀਵਾ",
+     "proposed"
+    ],
+    [
+     "exit",
+     "ਬਾਹਰ_ਨਿਕਲੋ",
+     "proposed"
+    ],
+    [
+     "exp",
+     "ਘਾਤਾਂਕ",
+     "proposed"
+    ],
+    [
+     "free",
+     "ਮੁਕਤ",
+     "lexicon"
+    ],
+    [
+     "isalnum",
+     "ਅੱਖਰ_ਜਾਂ_ਅੰਕ",
+     "proposed"
+    ],
+    [
+     "isalpha",
+     "ਅੱਖਰ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "isdigit",
+     "ਅੰਕ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "isspace",
+     "ਖਾਲੀ_ਥਾਂ_ਹੈ",
+     "proposed"
+    ],
+    [
+     "left",
+     "ਖੱਬੇ",
+     "proposed"
+    ],
+    [
+     "log",
+     "ਲਘੂਗਣਕ",
+     "proposed"
+    ],
+    [
+     "malloc",
+     "ਸਮ੍ਰਿਤੀ_ਦਿਓ",
+     "proposed"
+    ],
+    [
+     "memcpy",
+     "ਸਮ੍ਰਿਤੀ_ਨਕਲ",
+     "proposed"
+    ],
+    [
+     "pipe",
+     "ਪ੍ਰਣਾਲ",
+     "lexicon"
+    ],
+    [
+     "pow",
+     "ਘਾਤ",
+     "proposed"
+    ],
+    [
+     "printf",
+     "ਲਿਖੋ",
+     "proposed"
+    ],
+    [
+     "putchar",
+     "ਅੱਖਰ_ਲਿਖੋ",
+     "proposed"
+    ],
+    [
+     "raise",
+     "ਉਠਾਓ",
+     "lexicon"
+    ],
+    [
+     "read",
+     "ਪਠ",
+     "lexicon"
+    ],
+    [
+     "right",
+     "ਸੱਜੇ",
+     "proposed"
+    ],
+    [
+     "signal",
+     "ਸੰਕੇਤ",
+     "lexicon"
+    ],
+    [
+     "sin",
+     "ਜੀਵਾ",
+     "proposed"
+    ],
+    [
+     "sleep",
+     "ਸੁ਷ੁਪ੍ਤਿ",
+     "lexicon"
+    ],
+    [
+     "sqrt",
+     "ਵਰਗਮੂਲ",
+     "proposed"
+    ],
+    [
+     "sscanf",
+     "ਲੜੀ_ਤੋਂ_ਪੜ੍ਹੋ",
+     "proposed"
+    ],
+    [
+     "strlen",
+     "ਲੜੀ_ਲੰਬਾਈ",
+     "proposed"
+    ],
+    [
+     "strncmp",
+     "ਲੜੀ_ਤੁਲਨਾ",
+     "proposed"
+    ],
+    [
+     "strstr",
+     "ਲੜੀ_ਖੋਜ",
+     "proposed"
+    ],
+    [
+     "sync",
+     "ਸਮਕਾਲੀ",
+     "lexicon"
+    ],
+    [
+     "toupper",
+     "ਵੱਡਾ_ਅੱਖਰ",
+     "proposed"
+    ],
+    [
+     "write",
+     "ਲਿਖ",
+     "lexicon"
+    ]
+   ]
+  },
+  {
+   "type": "h2",
+   "text": "D Java"
+  },
+  {
+   "type": "table",
+   "head": [
+    "Host name",
+    "Punjabi",
+    "Provenance"
    ],
    "rows": [
     [
@@ -1696,212 +2439,14 @@
   },
   {
    "type": "h2",
-   "text": "A.5 Python"
-  },
-  {
-   "type": "p",
-   "text": "Host: The Python Language Reference, Python Software Foundation, current version. Names: unchanged."
+   "text": "D Python"
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host name",
     "Punjabi",
-    "Source"
-   ],
-   "rows": [
-    [
-     "False",
-     "ਝੂਠ",
-     "lexicon"
-    ],
-    [
-     "None",
-     "ਕੁਝ_ਨਹੀਂ",
-     "proposed"
-    ],
-    [
-     "True",
-     "ਸੱਚ",
-     "lexicon"
-    ],
-    [
-     "and",
-     "ਅਤੇ",
-     "lexicon"
-    ],
-    [
-     "as",
-     "ਇਵ",
-     "lexicon"
-    ],
-    [
-     "assert",
-     "ਪ੍ਰਤਿਜ੍ਞਾ",
-     "lexicon"
-    ],
-    [
-     "break",
-     "ਰੋਕੋ",
-     "lexicon"
-    ],
-    [
-     "class",
-     "ਵਰਗ",
-     "lexicon"
-    ],
-    [
-     "continue",
-     "ਜਾਰੀ",
-     "lexicon"
-    ],
-    [
-     "def",
-     "ਪਰਿਭਾਸ਼ਾ",
-     "proposed"
-    ],
-    [
-     "del",
-     "ਹਟਾਓ",
-     "proposed"
-    ],
-    [
-     "elif",
-     "ਜਾਂਜੇ",
-     "lexicon"
-    ],
-    [
-     "else",
-     "ਨਹੀਂਤਾਂ",
-     "lexicon"
-    ],
-    [
-     "except",
-     "ਅਪਵਾਦ",
-     "lexicon"
-    ],
-    [
-     "finally",
-     "ਅਖੀਰ",
-     "lexicon"
-    ],
-    [
-     "for",
-     "ਲਈ",
-     "lexicon"
-    ],
-    [
-     "from",
-     "ਤਃ",
-     "lexicon"
-    ],
-    [
-     "global",
-     "ਵੈਸ਼੍ਵਿਕ",
-     "lexicon"
-    ],
-    [
-     "if",
-     "ਜੇ",
-     "lexicon"
-    ],
-    [
-     "import",
-     "ਆਯਾਤ",
-     "lexicon"
-    ],
-    [
-     "in",
-     "ਵਿੱਚ",
-     "lexicon"
-    ],
-    [
-     "is",
-     "ਹੈ",
-     "proposed"
-    ],
-    [
-     "lambda",
-     "ਅਨਾਮ",
-     "lexicon"
-    ],
-    [
-     "nonlocal",
-     "ਗੈਰਸਥਾਨਕ",
-     "proposed"
-    ],
-    [
-     "not",
-     "ਨਹੀਂ",
-     "lexicon"
-    ],
-    [
-     "or",
-     "ਜਾਂ",
-     "lexicon"
-    ],
-    [
-     "pass",
-     "ਲੰਘੋ",
-     "proposed"
-    ],
-    [
-     "raise",
-     "ਉਠਾਓ",
-     "lexicon"
-    ],
-    [
-     "return",
-     "ਵਾਪਸ",
-     "lexicon"
-    ],
-    [
-     "try",
-     "ਕੋਸ਼ਿਸ਼",
-     "lexicon"
-    ],
-    [
-     "while",
-     "ਜਦੋਂ",
-     "lexicon"
-    ],
-    [
-     "with",
-     "ਨਾਲ",
-     "proposed"
-    ],
-    [
-     "yield",
-     "ਦਿਓ",
-     "lexicon"
-    ],
-    [
-     "print",
-     "ਛਾਪੋ",
-     "proposed"
-    ],
-    [
-     "range",
-     "ਸੀਮਾ",
-     "proposed"
-    ],
-    [
-     "len",
-     "ਲੰਬਾਈ",
-     "proposed"
-    ]
-   ]
-  },
-  {
-   "type": "p",
-   "text": "Standard library and runtime names of the Python binding:"
-  },
-  {
-   "type": "table",
-   "head": [
-    "Host",
-    "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -2128,137 +2673,14 @@
   },
   {
    "type": "h2",
-   "text": "A.6 BASIC"
-  },
-  {
-   "type": "p",
-   "text": "Host: ISO/IEC 10279, Information technology, Programming languages, Full BASIC. Names: name transformation."
+   "text": "D BASIC"
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host name",
     "Punjabi",
-    "Source"
-   ],
-   "rows": [
-    [
-     "dim",
-     "ਆਕਾਰ",
-     "proposed"
-    ],
-    [
-     "end",
-     "ਅੰਤ",
-     "lexicon"
-    ],
-    [
-     "for",
-     "ਲਈ",
-     "lexicon"
-    ],
-    [
-     "gosub",
-     "ਉਪ_ਜਾਓ",
-     "proposed"
-    ],
-    [
-     "goto",
-     "ਜਾਓ",
-     "lexicon"
-    ],
-    [
-     "if",
-     "ਜੇ",
-     "lexicon"
-    ],
-    [
-     "input",
-     "ਲਵੋ",
-     "proposed"
-    ],
-    [
-     "let",
-     "ਮੰਨੋ",
-     "lexicon"
-    ],
-    [
-     "next",
-     "ਅਗਲਾ_ਗੇੜ",
-     "proposed"
-    ],
-    [
-     "print",
-     "ਛਾਪੋ",
-     "proposed"
-    ],
-    [
-     "rem",
-     "ਟਿੱਪਣੀ",
-     "proposed"
-    ],
-    [
-     "return",
-     "ਵਾਪਸ",
-     "lexicon"
-    ],
-    [
-     "step",
-     "ਕਦਮ_ਨਾਲ",
-     "proposed"
-    ],
-    [
-     "then",
-     "ਤਾਂ",
-     "proposed"
-    ],
-    [
-     "to",
-     "ਤੱਕ",
-     "proposed"
-    ],
-    [
-     "wend",
-     "ਜਦੋਂਤੱਕ_ਅੰਤ",
-     "proposed"
-    ],
-    [
-     "while",
-     "ਜਦੋਂ",
-     "lexicon"
-    ],
-    [
-     "and",
-     "ਅਤੇ",
-     "lexicon"
-    ],
-    [
-     "or",
-     "ਜਾਂ",
-     "lexicon"
-    ],
-    [
-     "not",
-     "ਨਹੀਂ",
-     "lexicon"
-    ],
-    [
-     "mod",
-     "ਬਾਕੀ",
-     "proposed"
-    ]
-   ]
-  },
-  {
-   "type": "p",
-   "text": "Standard library and runtime names of the BASIC binding:"
-  },
-  {
-   "type": "table",
-   "head": [
-    "Host",
-    "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -2315,102 +2737,14 @@
   },
   {
    "type": "h2",
-   "text": "A.7 LOGO"
-  },
-  {
-   "type": "p",
-   "text": "Host: No international standard; the host is the Berkeley Logo dialect (bibliography). Names: name transformation."
+   "text": "D LOGO"
   },
   {
    "type": "table",
    "head": [
-    "Host",
+    "Host name",
     "Punjabi",
-    "Source"
-   ],
-   "rows": [
-    [
-     "forward",
-     "ਅਗ੍ਰਪ੍ਰਸਾਰ",
-     "lexicon"
-    ],
-    [
-     "back",
-     "ਪਿੱਛੇ",
-     "proposed"
-    ],
-    [
-     "left",
-     "ਖੱਬੇ",
-     "proposed"
-    ],
-    [
-     "right",
-     "ਸੱਜੇ",
-     "proposed"
-    ],
-    [
-     "penup",
-     "ਕਲਮ_ਚੁੱਕੋ",
-     "proposed"
-    ],
-    [
-     "pendown",
-     "ਕਲਮ_ਰੱਖੋ",
-     "proposed"
-    ],
-    [
-     "repeat",
-     "ਦੁਹਰਾਓ",
-     "proposed"
-    ],
-    [
-     "to",
-     "ਤੱਕ",
-     "proposed"
-    ],
-    [
-     "end",
-     "ਅੰਤ",
-     "lexicon"
-    ],
-    [
-     "make",
-     "ਬਣਾਓ",
-     "proposed"
-    ],
-    [
-     "if",
-     "ਜੇ",
-     "lexicon"
-    ],
-    [
-     "ifelse",
-     "ਜੇ_ਨਹੀਂਤਾਂ",
-     "proposed"
-    ],
-    [
-     "home",
-     "ਘਰ",
-     "proposed"
-    ],
-    [
-     "clearscreen",
-     "ਪਰਦਾ_ਸਾਫ",
-     "proposed"
-    ]
-   ]
-  },
-  {
-   "type": "p",
-   "text": "Standard library and runtime names of the LOGO binding:"
-  },
-  {
-   "type": "table",
-   "head": [
-    "Host",
-    "Punjabi",
-    "Source"
+    "Provenance"
    ],
    "rows": [
     [
@@ -2422,76 +2756,68 @@
   },
   {
    "type": "h1",
-   "text": "Annex B (informative) Coverage and review"
+   "text": "Annex E (informative) Conformance tests"
+  },
+  {
+   "type": "p",
+   "text": "The reference implementation is tested with the programs of samples/gate in the Hindawi repository, which cover the programming content of the GATE Computer Science paper. Recorded on 2026-10-18: 113 of 113 C programs, written in Punjabi, were lowered, compiled and run, and printed exactly what their English originals print; 1 of 1 Python programs did the same; 117 of 117 files were reversed byte for byte."
+  },
+  {
+   "type": "p",
+   "text": "The program below, as written in the language, its transliterated form, and the C that the transducer gives:"
+  },
+  {
+   "type": "h2",
+   "text": "E source"
+  },
+  {
+   "type": "code",
+   "text": "#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>\n/* binary search in a sorted array */\nਪੂਰਨ ਦੁਆਧਾਰੀ_ਖੋਜ(ਪੂਰਨ ਮੁੱਲ[], ਪੂਰਨ ਗਿਣਤੀ_2, ਪੂਰਨ ਕੁੰਜੀ) {\n  ਪੂਰਨ ਨੀਵਾਂ = 0, ਉੱਚਾ = ਗਿਣਤੀ_2 - 1;\n  ਜਦੋਂ (ਨੀਵਾਂ <= ਉੱਚਾ) {\n    ਪੂਰਨ ਵਿਚਕਾਰ = ਨੀਵਾਂ + (ਉੱਚਾ - ਨੀਵਾਂ) / 2;\n    ਜੇ (ਮੁੱਲ[ਵਿਚਕਾਰ] == ਕੁੰਜੀ) ਵਾਪਸ ਵਿਚਕਾਰ;\n    ਜੇ (ਮੁੱਲ[ਵਿਚਕਾਰ] < ਕੁੰਜੀ) ਨੀਵਾਂ = ਵਿਚਕਾਰ + 1; ਨਹੀਂਤਾਂ ਉੱਚਾ = ਵਿਚਕਾਰ - 1;\n  }\n  ਵਾਪਸ -1;\n}\nਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {\n  ਪੂਰਨ ਮੁੱਲ[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};\n  ਲਿਖੋ(\"%d %d\\n\", ਦੁਆਧਾਰੀ_ਖੋਜ(ਮੁੱਲ, 10, 23), ਦੁਆਧਾਰੀ_ਖੋਜ(ਮੁੱਲ, 10, 7));\n  ਵਾਪਸ 0;\n}"
+  },
+  {
+   "type": "h2",
+   "text": "E script filter"
+  },
+  {
+   "type": "code",
+   "text": "#अन्तर्भाव <stdio.h>\n/* binary search in a sorted array */\nपूरन दुआधारी_खोज(पूरन मुल[], पूरन गिणती_2, पूरन कुंजी) {\n  पूरन नीवां = 0, उचा = गिणती_2 - 1;\n  जदों (नीवां <= उचा) {\n    पूरन विचकार = नीवां + (उचा - नीवां) / 2;\n    जे (मुल[विचकार] == कुंजी) वापस विचकार;\n    जे (मुल[विचकार] < कुंजी) नीवां = विचकार + 1; नहींतां उचा = विचकार - 1;\n  }\n  वापस -1;\n}\nपूरन मुख(खाली) {\n  पूरन मुल[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};\n  लिखो(\"%d %d\\n\", दुआधारी_खोज(मुल, 10, 23), दुआधारी_खोज(मुल, 10, 7));\n  वापस 0;\n}"
+  },
+  {
+   "type": "h2",
+   "text": "E Romenagri"
+  },
+  {
+   "type": "code",
+   "text": "#_an_tarbhaawa <stdio.h>\n/* binary search in a sorted array */\npoorana _du_aa_dhaaree_khoaja(poorana mula[], poorana gi_nna_tee_2, poorana ku_mjee) {\n  poorana neewaa_m = 0, _uchaa = gi_nna_tee_2 - 1;\n  ja_doa_m (neewaa_m <= _uchaa) {\n    poorana wichakaara = neewaa_m + (_uchaa - neewaa_m) / 2;\n    jaee (mula[wichakaara] == ku_mjee) waapasa wichakaara;\n    jaee (mula[wichakaara] < ku_mjee) neewaa_m = wichakaara + 1; na_hee_m_taa_m _uchaa = wichakaara - 1;\n  }\n  waapasa -1;\n}\npoorana mukha(khaalee) {\n  poorana mula[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};\n  likhoa(\"%d %d\\n\", _du_aa_dhaaree_khoaja(mula, 10, 23), _du_aa_dhaaree_khoaja(mula, 10, 7));\n  waapasa 0;\n}"
+  },
+  {
+   "type": "h2",
+   "text": "E C"
+  },
+  {
+   "type": "code",
+   "text": "#include <stdio.h>\n/* binary search in a sorted array */\nint _du_aa_dhaaree_khoaja(int mula[], int gi_nna_tee_2, int ku_mjee) {\n  int neewaa_m = 0, _uchaa = gi_nna_tee_2 - 1;\n  while (neewaa_m <= _uchaa) {\n    int wichakaara = neewaa_m + (_uchaa - neewaa_m) / 2;\n    if (mula[wichakaara] == ku_mjee) return wichakaara;\n    if (mula[wichakaara] < ku_mjee) neewaa_m = wichakaara + 1; else _uchaa = wichakaara - 1;\n  }\n  return -1;\n}\nint main(void) {\n  int mula[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};\n  printf(\"%d %d\\n\", _du_aa_dhaaree_khoaja(mula, 10, 23), _du_aa_dhaaree_khoaja(mula, 10, 7));\n  return 0;\n}"
+  },
+  {
+   "type": "h1",
+   "text": "Annex F (informative) Provenance of the bindings"
   },
   {
    "type": "table",
    "head": [
-    "Binding",
-    "Host keywords with a native word",
-    "Library names"
+    "Provenance",
+    "Bindings"
    ],
    "rows": [
     [
-     "C",
-     "35 of 35",
-     "37"
+     "lexicon",
+     "156"
     ],
     [
-     "C preprocessor",
-     "12 of 12",
-     "0"
-    ],
-    [
-     "C++",
-     "61 of 61",
-     "35"
-    ],
-    [
-     "Java",
-     "51 of 51",
-     "50"
-    ],
-    [
-     "Python",
-     "36 of 36",
-     "44"
-    ],
-    [
-     "BASIC",
-     "21 of 21",
-     "10"
-    ],
-    [
-     "LOGO",
-     "14 of 14",
-     "1"
+     "proposed",
+     "74"
     ]
    ]
-  },
-  {
-   "type": "p",
-   "text": "The lowering of Punjabi programs to C is verified by the reference implementation: runs, same output. Source Chintamani means a word of the original Hindawi transducers; lexicon, a word of the language's lexicon; proposed, a word proposed by the project and not yet reviewed by the language community."
-  },
-  {
-   "type": "h1",
-   "text": "Annex C (normative) Script filter"
-  },
-  {
-   "type": "p",
-   "text": "The script filter maps each letter and sign of the script to the Devanagari letter or sign of the same Unicode name, as generated by lang/hindawi/tools/script_filters.py."
-  },
-  {
-   "type": "h1",
-   "text": "Annex D (informative) Rights and provenance"
-  },
-  {
-   "type": "p",
-   "text": "This document is an original work. It defines new programming languages by reference to the host language standards listed in Clause 2 and reproduces no text from them. Permission to adopt, translate or publish it as a standard is given by the copyright holder to a standards body on request."
-  },
-  {
-   "type": "p",
-   "text": "Single words and the keywords of the host languages are not reproduced from any copyrighted text; the native words of Annex A were chosen by the Hindawi project, taken from the language's lexicon in the Hindawi repository, or, for Hindi, taken from the Chintamani transducers of the original Hindawi, whose author holds their copyright."
   },
   {
    "type": "h1",
@@ -2500,8 +2826,11 @@
   {
    "type": "list",
    "items": [
-    "Hindawi 2026.10, hindawiai/hindawi2026.10, the reference implementation",
-    "Chintamani, hindawiai/chintamani, the Hindawi transducers and the Romenagri tools",
+    "Hindawi Programming System, first public release 15 August 2004, savannah.nongnu.org/projects/hindawi",
+    "Chintamani, hindawiai/chintamani: the Hindawi transducers and the Romenagri tools",
+    "Hindawi 2026.10, hindawiai/hindawi2026.10, concept DOI 10.5281/zenodo.23424410",
+    "IS 12 : 2005, Guide for drafting and presentation of Indian Standards",
+    "ISO/IEC 10279, Information technology, Programming languages, Full BASIC",
     "Berkeley Logo reference manual, Brian Harvey"
    ]
   }
