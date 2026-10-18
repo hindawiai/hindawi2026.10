@@ -11,7 +11,7 @@
 #   HINDAWI_NATIVE_SOURCE 1 when .c and .h files hold native code
 #   HINDAWI_KEEP=1        keeps each generated C file beside its source
 set -euo pipefail
-HERE="$(cd "$(dirname "$0")" && pwd)"; CHAIN="$HERE/tools/hindawi_chain.py"
+HERE="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"; CHAIN="$HERE/tools/hindawi_chain.py"
 : "${ROMENAGRI:?set ROMENAGRI to a built Romenagri folder}"
 L="${HINDAWI_LANG:-hindi}"; DICT="${HINDAWI_DICT:-}"; NATIVE_C="${HINDAWI_NATIVE_SOURCE:-0}"
 work="$(mktemp -d)"; trap 'rm -rf "$work"' EXIT

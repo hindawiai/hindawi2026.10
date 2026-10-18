@@ -3,29 +3,45 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+సున్నా_జ్ఞాపకం_ఇవ్వు        {printf("calloc");}
+అక్షరశ్రేణి_పొడవు           {printf("strlen");}
+గరిష్ఠ_పూర్ణాంకం            {printf("INT_MAX");}
+అక్షరమా_అంకెనా              {printf("isalnum");}
+జ్ఞాపకం_ఇవ్వు               {printf("malloc");}
+జ్ఞాపకం_నకలు                {printf("memcpy");}
+క్రియాకారకం                 {printf("operator");}
 \#అన్తర్భావ                 {printf("#include");}
+గుర్తులేని                  {printf("unsigned");}
 రకనిర్వచనం                  {printf("typedef");}
 పూర్ణాంకం                   {printf("int");}
 ప్రతిజ్ఞా                   {printf("assert");}
 స్థిరరాశి                   {printf("const");}
+స్వయంచాలక                   {printf("auto");}
 \#లేకపోతే                   {printf("#else");}
 \#లేదావేళ                   {printf("#elif");}
 అంతఃవరుస                    {printf("inline");}
+గుర్తుగల                    {printf("signed");}
 నిర్మాణం                    {printf("struct");}
+వర్గమూలం                    {printf("sqrt");}
+అక్షరమా                     {printf("isalpha");}
 అప్రమేయ                     {printf("default");}
 కొనసాగు                     {printf("continue");}
 ద్విగుణ                     {printf("double");}
 పరిమాణం                     {printf("sizeof");}
 లేకపోతే                     {printf("else");}
 \#ఒకవేళ                     {printf("#if");}
+అంకెనా                      {printf("isdigit");}
 అంతరంగ                      {printf("private");}
 అక్షరం                      {printf("char");}
 అస్థిర                      {printf("volatile");}
+ఖాళీనా                      {printf("isspace");}
 తిరిగి                      {printf("return");}
 దశాంశం                      {printf("float");}
+పరిమిత                      {printf("restrict");}
+పొట్టి                      {printf("short");}
 ప్రధాన                      {printf("main");}
 బహిరంగ                      {printf("public");}
 రక్షిత                      {printf("protected");}
@@ -37,17 +53,21 @@
 ఎంపిక                       {printf("switch");}
 ఒకవేళ                       {printf("if");}
 కొరకు                       {printf("for");}
+దీర్ఘ                       {printf("long");}
 నమోదు                       {printf("register");}
 బాహ్య                       {printf("extern");}
+మిత్ర                       {printf("friend");}
 శూన్య                       {printf("void");}
 స్థిర                       {printf("static");}
 ఖాళీ                        {printf("NULL");}
 చేయి                        {printf("do");}
 మాయా                        {printf("virtual");}
+రాయి                        {printf("printf");}
 లేపు                        {printf("raise");}
 సంఘం                        {printf("union");}
 ఆపు                         {printf("break");}
 గణన                         {printf("enum");}
+మూస                         {printf("template");}
 లిఖ                         {printf("write");}
 పఠ                          {printf("read");}
 

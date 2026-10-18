@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 अच_पूर्णांक_उच्च            {printf("UINT_MAX");}
 संक_पूर्ण_प्रकार            {printf("sig_atomic_t");}

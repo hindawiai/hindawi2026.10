@@ -480,3 +480,30 @@ passed; scripts/test_all.sh passes.
 - changed `README.md` (sha256 `94e420450aabc689`)
 
 **Verified.** Sanskrit: 43 of 43 C programs compile from Sanskrit and print exactly what the English originals print; all 47 files reverse byte for byte. The same holds in Hindi, Urdu, Sindhi, Punjabi in Shahmukhi and Gurmukhi, Bengali, Tamil, Telugu, Arabic, Persian, Marathi, Nepali, Gujarati, Odia and Kannada. All 355 ingestions of the BURP sample still reverse byte for byte; scripts/test_all.sh passes.
+
+## C22. Nine languages completed, one standard tool, the GATE syllabus mapped, and native names exact on the compilation path
+
+**Why.** He asked for Dari, Pashto, Urdu, Punjabi in Gurmukhi and in Shahmukhi, Sindhi, Telugu and Kannada to be completed and verified (Sanskrit with them); for the tools scattered across the tree to become one standard tool with an installer and documentation he can verify by hand; and for the GATE syllabus to be read and mapped, with instructions another AI can follow. Words: lang/hindawi/lexicons/multi.tsv (77 host keywords and library calls) and lang/hindawi/burp/glossary/multi.tsv (202 names), one column per language, all proposed and unreviewed; the cell generator and BURP read them, the language's own files winning; every paradigm's token set now carries its host keywords; lang/hindawi/tools/coverage.py measures a language. Compiling translated names at scale exposed five faults, each fixed and recorded in DEVIATIONS.md: each native word is now transliterated on its own (the Urdu filter read a word-initial letter by its neighbour); Pashto and Sindhi letters the Urdu filter lacks are folded to Urdu letters; Romenagri's mid-word ^ is written _ in C-level names; the cells use the standard literal rules instead of Chintamani's greedy one; Gurmukhi signs named differently from Devanagari are mapped. Compiled lexers are rebuilt whenever their cell changes. BURP reads line-numbered BASIC REM lines as comments, and keeps a C++ header's names in English only in C++ files. Seventeen GATE programs added (60 in C); docs/hindawi/GATE-PROGRAMS.md maps the 2027 CS syllabus in our own words, with the program contract and instructions for another AI. The tool: bin/hindawi, install.sh, docs/man/hindawi.1, VERSION 2026.10.4, docs/hindawi/MANUAL.md, VERIFY.md; hindawicc works through a symlink; nine superseded tools retired to attic/ with what replaces each, the fundamental regression's project check moved onto BURP.
+
+- added `bin/hindawi` (sha256 `faa75fde047562f8`)
+- added `install.sh` (sha256 `879d0356fa226aa9`)
+- added `VERSION` (sha256 `8a168414a72a4872`)
+- added `docs/man/hindawi.1` (sha256 `4cf3d6dda1d8a55b`)
+- added `docs/hindawi/MANUAL.md` (sha256 `6313c1e2d2a0bc02`)
+- added `VERIFY.md` (sha256 `496df4349c1479df`)
+- added `docs/hindawi/GATE-PROGRAMS.md` (sha256 `1765a05b7c2e09c2`)
+- added `lang/hindawi/lexicons/multi.tsv` (sha256 `74c536e7e2c7523c`)
+- added `lang/hindawi/burp/glossary/multi.tsv` (sha256 `f57dba5875c90508`)
+- added `lang/hindawi/tools/coverage.py` (sha256 `ccbba2a297c7aa8e`)
+- changed `lang/hindawi/tools/complete_cells.py` (sha256 `6773e2b865c45125`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `198ae27cf61705bc`)
+- changed `lang/hindawi/tools/script_filters.py` (sha256 `200d862075f617c3`)
+- changed `lang/hindawi/burp/burp.py` (sha256 `1459e4b6878b8b2e`)
+- changed `lang/hindawi/hindawicc` (sha256 `155427da03b7ba30`)
+- changed `tests/gate/run.py` (sha256 `8af213c0948ffb95`)
+- changed `tests/fundamental.py` (sha256 `6b8cd9ddbdfcd8c8`)
+- added `attic/README.md` (sha256 `5535f8a27774a9e9`)
+- changed `docs/hindawi/DEVIATIONS.md` (sha256 `3ec51569fe6eae77`)
+- changed `README.md` (sha256 `94ea8f757af70d4f`)
+
+**Verified.** All nine languages: keywords C 35/35, C++ 61/61, Java 51/51, Python 36/36, BASIC 21/21, LOGO 14/14; every name of the GATE programs in the language (199/199, Sanskrit 198/198); no library call left in English. In each, 60 of 60 C programs compile from the language through the original pipeline and print exactly what the English originals print, and 64 of 64 files reverse byte for byte. All 355 ingestions of the BURP sample reverse byte for byte; tests/fundamental.py 12 passed; scripts/test_all.sh passes; 47 of 76 languages build and run the sample, as before. install.sh installed into a scratch prefix and compiled quick sort from Urdu and Telugu; hindawi verify passed every step.

@@ -39,6 +39,13 @@ def lex(src, dst, pairs):
             f"%option noyywrap 8bit\n%%\n{rules}\n.|\\n\t{{ ECHO; }}\n%%\nint main(void) {{ yylex(); return 0; }}\n")
 
 
+# Gurmukhi names some signs differently from Devanagari; without these, the filter passed them through raw and Romenagri
+# emitted control bytes. Addak (gemination) has no Devanagari sign and is dropped (DEVIATIONS.md).
+ALIASES = {"GURMUKHI": [(" SIGN BINDI", " SIGN ANUSVARA"), (" TIPPI", " SIGN ANUSVARA"), (" VOWEL SIGN EE", " VOWEL SIGN E"),
+                        (" VOWEL SIGN OO", " VOWEL SIGN O"), (" LETTER EE", " LETTER E"), (" LETTER OO", " LETTER O"),
+                        (" ADDAK", None)]}
+
+
 def build():
     OUT.mkdir(parents=True, exist_ok=True)
     for s in PROJECTED:
@@ -47,15 +54,38 @@ def build():
             c = chr(cp); n = unicodedata.name(c, "")
             if not n.startswith(s + " "):
                 continue
+            rest = n[len(s):]
+            for alias, to in ALIASES.get(s, ()):       # the same letter under another Unicode name
+                if rest.endswith(alias) and to is not None:
+                    rest = rest[: -len(alias)] + to
+                elif rest.endswith(alias):
+                    rest = None                            # a sign Devanagari does not write: dropped
+                    break
+            if rest is None:
+                pairs.append((c, ""))
+                continue
             try:
-                pairs.append((c, unicodedata.lookup("DEVANAGARI" + n[len(s):])))
+                pairs.append((c, unicodedata.lookup("DEVANAGARI" + rest)))
             except KeyError:
                 pass
-        for name, ps in ((f"fltr_{s.lower()}_hi", pairs), (f"fltr_hi_{s.lower()}", [(b, a) for a, b in pairs])):
+        back = list({b: (b, a) for a, b in reversed(pairs) if b}.values())     # one source per Devanagari letter
+        for name, ps in ((f"fltr_{s.lower()}_hi", pairs), (f"fltr_hi_{s.lower()}", back)):
             (OUT / f"{name}.lex").write_bytes(lex(s.lower(), "hi", ps).replace(f"fltr_{s.lower()}_hi", name).encode("latin-1"))
             r = subprocess.run(f"flex -8 -o '{OUT}/{name}.c' '{OUT}/{name}.lex' && gcc -O1 -o '{OUT}/{name}' '{OUT}/{name}.c'",
                                shell=True, capture_output=True, text=True)
             print(f"script_filters: {name} {'built' if r.returncode == 0 else 'FAILED ' + r.stderr[-200:]} ({len(ps)} characters)")
+
+
+# Letters of Pashto, Sindhi and other Perso-Arabic orthographies that Chintamani's Urdu filter does not know, folded
+# to the nearest Urdu letter before it; without this the filter emits control bytes for them (DEVIATIONS.md).
+FOLD = str.maketrans({"ټ": "ٹ", "ډ": "ڈ", "ړ": "ڑ", "ږ": "ژ", "ښ": "ش", "ګ": "گ", "ڼ": "ن", "ې": "ی", "ۍ": "ی", "ځ": "ز",
+                      "څ": "س", "ڪ": "ک", "ڳ": "گ", "ڱ": "نگ", "ڄ": "ج", "ٻ": "ب", "ڀ": "بھ", "ٽ": "ٹ", "ٿ": "تھ", "ڊ": "ڈ",
+                      "ڏ": "د", "ڍ": "ڈھ", "ڙ": "ڑ", "ڦ": "پھ", "ڻ": "ن", "ڇ": "چھ", "ڌ": "دھ", "ۀ": "ہ"})
+
+
+def fold(lang, text):
+    """The text as Chintamani's Urdu filter can read it, for Perso-Arabic languages; unchanged for every other script."""
+    return text.translate(FOLD) if script_of_language(lang) == "ARABIC" else text
 
 
 def which(lang):
@@ -79,7 +109,7 @@ def prepare(lang, text):
     f = which(lang)
     if not f:
         return text
-    run = lambda t: subprocess.run(f"'{f}'", shell=True, input=t.encode("utf-8"), capture_output=True).stdout.decode("utf-8", "replace")
+    run = lambda t: subprocess.run(f"'{f}'", shell=True, input=fold(lang, t).encode("utf-8"), capture_output=True).stdout.decode("utf-8", "replace")
     rule = re.compile(r'^(\S+)(\s+)(\{\s*printf\("(?:[^"\\]|\\.)*"\);\s*\})\s*$')
     out = []
     for line in text.split("\n"):

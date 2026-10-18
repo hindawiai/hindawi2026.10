@@ -3,12 +3,21 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+جب_تک_ختم                   {printf("wend");}
+اگلا_چکر                    {printf("next");}
+حاصل_کرو                    {printf("input");}
+ذیلی_جاؤ                    {printf("gosub");}
 اختتام                      {printf("END");}
+قدم_سے                      {printf("step");}
+ابعاد                       {printf("dim");}
 برائے                       {printf("FOR");}
+تبصرہ                       {printf("rem");}
 مشترك                       {printf("SHARED");}
+چھاپو                       {printf("print");}
+باقی                        {printf("mod");}
 بطور                        {printf("AS");}
 بلاؤ                        {printf("CALL");}
 ثابت                        {printf("CONST");}
@@ -24,6 +33,8 @@
 اگر                         {printf("IF");}
 جاؤ                         {printf("GOTO");}
 کرو                         {printf("DO");}
+تو                          {printf("then");}
+تک                          {printf("to");}
 جب                          {printf("WHILE");}
 یا                          {printf("OR");}
 

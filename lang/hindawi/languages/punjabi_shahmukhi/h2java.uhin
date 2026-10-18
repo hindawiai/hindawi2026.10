@@ -3,14 +3,29 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ودھ_توں_ودھ_عدد             {printf("INT_MAX");}
+صفر_حافظہ_دیو               {printf("calloc");}
+حرف_یا_ہندسہ                {printf("isalnum");}
+لڑی_لمبائی                  {printf("strlen");}
+حافظہ_دیو                   {printf("malloc");}
+حافظہ_نقل                   {printf("memcpy");}
+سطر_چھاپو                   {printf("println");}
+نشانیوالا                   {printf("signed");}
 \#وإلاإذا                   {printf("#elif");}
+بنانشانی                    {printf("unsigned");}
 تعريفنوع                    {printf("typedef");}
+نمونہ_اے                    {printf("instanceof");}
+ہندسہ_اے                    {printf("isdigit");}
 افتراضي                     {printf("default");}
 استورد                      {printf("import");}
+حرف_اے                      {printf("isalpha");}
+خلا_اے                      {printf("isspace");}
+خودکار                      {printf("auto");}
 متطاير                      {printf("volatile");}
+ہمزمان                      {printf("synchronized");}
 \#وإلا                      {printf("#else");}
 أخيرا                       {printf("finally");}
 إشارة                       {printf("signal");}
@@ -18,9 +33,14 @@
 استمر                       {printf("continue");}
 تعداد                       {printf("enum");}
 خارجي                       {printf("extern");}
+سانچا                       {printf("template");}
 طالما                       {printf("while");}
+محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
+مقامی                       {printf("native");}
+منطقی                       {printf("boolean");}
 واجهة                       {printf("interface");}
+چھوٹا                       {printf("short");}
 \#إذا                       {printf("#if");}
 \#ضمن                       {printf("#include");}
 أرجع                        {printf("return");}
@@ -32,20 +52,26 @@
 اكتب                        {printf("write");}
 اكسر                        {printf("break");}
 امسك                        {printf("catch");}
+بائٹ                        {printf("byte");}
 بنية                        {printf("struct");}
 ثابت                        {printf("const");}
 جديد                        {printf("new");}
 حالة                        {printf("case");}
 حاول                        {printf("try");}
+حتمی                        {printf("final");}
 حزمة                        {printf("package");}
 ساكن                        {printf("static");}
+سٹدا                        {printf("throws");}
 صحيح                        {printf("int");}
 عائم                        {printf("float");}
+عامل                        {printf("operator");}
 فراغ                        {printf("void");}
 كائن                        {printf("Object");}
+لکھو                        {printf("printf");}
 مجرد                        {printf("abstract");}
 محمي                        {printf("protected");}
 مضمن                        {printf("inline");}
+نظام                        {printf("System");}
 وإلا                        {printf("else");}
 يمتد                        {printf("extends");}
 ينفذ                        {printf("implements");}
@@ -53,18 +79,23 @@
 إذا                         {printf("if");}
 ارم                         {printf("throw");}
 بدل                         {printf("switch");}
+جذر                         {printf("sqrt");}
 حجم                         {printf("sizeof");}
 حرر                         {printf("free");}
 حرف                         {printf("char");}
 خاص                         {printf("private");}
+خطأ                         {printf("false");}
 خيط                         {printf("Thread");}
 سجل                         {printf("register");}
 صنف                         {printf("class");}
 عام                         {printf("public");}
 عدم                         {printf("NULL");}
 لكل                         {printf("for");}
+لما                         {printf("long");}
+مکھ                         {printf("main");}
 نوم                         {printf("sleep");}
 هذا                         {printf("this");}
+یار                         {printf("friend");}
 نص                          {printf("String");}
 
 %%

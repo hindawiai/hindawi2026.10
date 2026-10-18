@@ -3,30 +3,49 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ਸਿਫਰ_ਸਮ੍ਰਿਤੀ_ਦਿਓ            {printf("calloc");}
+ਵੱਧ_ਤੋਂ_ਵੱਧ_ਅੰਕ             {printf("INT_MAX");}
+ਅੱਖਰ_ਜਾਂ_ਅੰਕ                {printf("isalnum");}
 ਕਿਸਮਪਰਿਭਾਸ਼ਾ                {printf("typedef");}
+ਖਾਲੀ_ਥਾਂ_ਹੈ                 {printf("isspace");}
+ਨਿਸ਼ਾਨੀਵਾਲਾ                 {printf("signed");}
+ਬਿਨਾਨਿਸ਼ਾਨੀ                 {printf("unsigned");}
+ਸਮ੍ਰਿਤੀ_ਦਿਓ                 {printf("malloc");}
+ਸਮ੍ਰਿਤੀ_ਨਕਲ                 {printf("memcpy");}
 \#ਅਨ੍ਤਰ੍ਭਾਵ                 {printf("#include");}
 ਪ੍ਰਤਿਜ੍ਞਾ                   {printf("assert");}
+ਲੜੀ_ਲੰਬਾਈ                   {printf("strlen");}
 \#ਨਹੀਂਤਾਂ                   {printf("#else");}
+ਸਵੈਚਾਲਿਤ                    {printf("auto");}
 ਸੁਰੱਖਿਅਤ                    {printf("protected");}
+ਅੱਖਰ_ਹੈ                     {printf("isalpha");}
 ਨਹੀਂਤਾਂ                     {printf("else");}
 ਸਤਰਅੰਦਰ                     {printf("inline");}
 \#ਜਾਂਜੇ                     {printf("#elif");}
+ਅੰਕ_ਹੈ                      {printf("isdigit");}
 ਦਸ਼ਮਲਵ                      {printf("float");}
 ਦੁੱਗਣਾ                      {printf("double");}
 ਰਜਿਸਟਰ                      {printf("register");}
+ਵਰਗਮੂਲ                      {printf("sqrt");}
+ਸੰਚਾਲਕ                      {printf("operator");}
 ਅਸਥਿਰ                       {printf("volatile");}
 ਆਭਾਸੀ                       {printf("virtual");}
 ਗਿਣਤੀ                       {printf("enum");}
 ਬਾਹਰੀ                       {printf("extern");}
+ਮਿੱਤਰ                       {printf("friend");}
+ਸਾਂਚਾ                       {printf("template");}
+ਸੀਮਿਤ                       {printf("restrict");}
 ਸੰਕੇਤ                       {printf("signal");}
 ਅੱਖਰ                        {printf("char");}
 ਆਕਾਰ                        {printf("sizeof");}
 ਉਠਾਓ                        {printf("raise");}
 ਕਿਸਮ                        {printf("type");}
 ਖਾਲੀ                        {printf("void");}
+ਖੱਬੇ                        {printf("left");}
+ਛੋਟਾ                        {printf("short");}
 ਜਦੋਂ                        {printf("while");}
 ਜਨਤਕ                        {printf("public");}
 ਜਾਰੀ                        {printf("continue");}
@@ -37,8 +56,11 @@
 ਮੁਕਤ                        {printf("free");}
 ਮੁੱਖ                        {printf("main");}
 ਰੋਕੋ                        {printf("break");}
+ਲਿਖੋ                        {printf("printf");}
+ਲੰਮਾ                        {printf("long");}
 ਵਾਪਸ                        {printf("return");}
 ਸਥਿਰ                        {printf("static");}
+ਸੱਜੇ                        {printf("right");}
 ਹਾਲਤ                        {printf("case");}
 \#ਜੇ                        {printf("#if");}
 ਅਚਲ                         {printf("const");}

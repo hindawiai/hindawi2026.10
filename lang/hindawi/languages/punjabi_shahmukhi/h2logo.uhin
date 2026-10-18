@@ -3,11 +3,23 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+جے_نئیں_تے                  {printf("ifelse");}
+قلم_رکھو                    {printf("pendown");}
+پردہ_صاف                    {printf("clearscreen");}
+قلم_چکو                     {printf("penup");}
 أمامي                       {printf("forward");}
+دہراؤ                       {printf("repeat");}
+چھاپو                       {printf("print");}
 انته                        {printf("end");}
+بناؤ                        {printf("make");}
+پچھے                        {printf("back");}
+کھبے                        {printf("left");}
 إذا                         {printf("if");}
+سجے                         {printf("right");}
+گھر                         {printf("home");}
+تک                          {printf("to");}
 
 %%

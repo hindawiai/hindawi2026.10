@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 अच_पूर्णांक_उच्च            {printf("UINT_MAX");}
 संक_पूर्ण_प्रकार            {printf("sig_atomic_t");}
@@ -221,6 +221,7 @@ __समय__                     {printf("__TIME__");}
 अक्रम                       {printf("rand");}
 अक्षर                       {printf("char");}
 अनन्त                       {printf("INFINITY");}
+असत्य                       {printf("false");}
 आभासी                       {printf("virtual");}
 क्विक                       {printf("qsort");}
 ख_जाओ                       {printf("fseek");}
@@ -279,6 +280,7 @@ __समय__                     {printf("__TIME__");}
 बड़े                        {printf("toupper");}
 रुको                        {printf("wait");}
 वर्ग                        {printf("class");}
+सत्य                        {printf("true");}
 साठी                        {printf("for");}
 सूची                        {printf("DIR");}
 हटाओ                        {printf("remove");}

@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 পূর্বনির্ধারিত              {printf("default");}
 পূর্ণসংখ্যা                 {printf("int");}
@@ -35,6 +35,7 @@
 ধ্রুবক                      {printf("const");}
 নিবন্ধ                      {printf("register");}
 প্রধান                      {printf("main");}
+মিথ্যা                      {printf("false");}
 শ্রেণী                      {printf("class");}
 অক্ষর                       {printf("char");}
 আভাসী                       {printf("virtual");}
@@ -57,6 +58,7 @@
 তোলো                        {printf("raise");}
 নতুন                        {printf("new");}
 ফেরত                        {printf("return");}
+সত্য                        {printf("true");}
 সুতা                        {printf("Thread");}
 করো                         {printf("do");}
 ধরো                         {printf("catch");}

@@ -3,14 +3,24 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ಸೊನ್ನೆ_ಸ್ಮರಣೆ_ಕೊಡು          {printf("calloc");}
+ಗರಿಷ್ಠ_ಪೂರ್ಣಾಂಕ             {printf("INT_MAX");}
+ಅಕ್ಷರವೇ_ಅಂಕಿಯೇ              {printf("isalnum");}
+ಅಕ್ಷರಸರಣಿ_ಉದ್ದ              {printf("strlen");}
 ಪ್ರಕಾರವ್ಯಾಖ್ಯೆ              {printf("typedef");}
 \#ಇಲ್ಲದಿದ್ದರೆ               {printf("#else");}
 ಪೂರ್ವನಿಯೋಜಿತ                {printf("default");}
 ಇಲ್ಲದಿದ್ದರೆ                 {printf("else");}
+ಚಿಹ್ನೆಯುಳ್ಳ                 {printf("signed");}
+ಸ್ಮರಣೆ_ಕೊಡು                 {printf("malloc");}
+ಸ್ಮರಣೆ_ನಕಲು                 {printf("memcpy");}
 \#ಅನ್ತರ್ಭಾವ                 {printf("#include");}
+ಕ್ರಿಯಾಕಾರಕ                  {printf("operator");}
+ಚಿಹ್ನೆರಹಿತ                  {printf("unsigned");}
+ಸ್ವಯಂಚಾಲಿತ                  {printf("auto");}
 \#ಅಥವಾಆದರೆ                  {printf("#elif");}
 ಪ್ರತಿಜ್ಞಾ                   {printf("assert");}
 ಸಾರ್ವಜನಿಕ                   {printf("public");}
@@ -21,11 +31,15 @@
 ವಾಸ್ತವಿಕ                    {printf("virtual");}
 ಸಂರಕ್ಷಿತ                    {printf("protected");}
 ಸ್ಥಿರಾಂಕ                    {printf("const");}
+ಅಕ್ಷರವೇ                     {printf("isalpha");}
 ದ್ವಿಗುಣ                     {printf("double");}
 ಬಿಡುಗಡೆ                     {printf("free");}
+ವರ್ಗಮೂಲ                     {printf("sqrt");}
 ಸಾಲೊಳಗೆ                     {printf("inline");}
+ಅಂಕಿಯೇ                      {printf("isdigit");}
 ಅಸ್ಥಿರ                      {printf("volatile");}
 ಒಕ್ಕೂಟ                      {printf("union");}
+ಖಾಲಿಯೇ                      {printf("isspace");}
 ದಶಮಾಂಶ                      {printf("float");}
 ನೋಂದಣಿ                      {printf("register");}
 ಪ್ರಕಾರ                      {printf("type");}
@@ -37,10 +51,15 @@
 ಎತ್ತು                       {printf("raise");}
 ಖಾಸಗಿ                       {printf("private");}
 ಗಾತ್ರ                       {printf("sizeof");}
+ಗಿಡ್ಡ                       {printf("short");}
+ದೀರ್ಘ                       {printf("long");}
 ಬಾಹ್ಯ                       {printf("extern");}
+ಮಾದರಿ                       {printf("template");}
+ಮಿತ್ರ                       {printf("friend");}
 ಮುಖ್ಯ                       {printf("main");}
 ಶೂನ್ಯ                       {printf("void");}
 ಸಂಕೇತ                       {printf("signal");}
+ಸೀಮಿತ                       {printf("restrict");}
 ಸ್ಥಿರ                       {printf("static");}
 ಆದರೆ                        {printf("if");}
 ಖಾಲಿ                        {printf("NULL");}
@@ -48,8 +67,11 @@
 ಮಾಡು                        {printf("do");}
 ರಚನೆ                        {printf("struct");}
 ಹೋಗು                        {printf("goto");}
+ಬರೆ                         {printf("printf");}
 ಲಿಖ                         {printf("write");}
 ಆಗ                          {printf("while");}
+ಎಡ                          {printf("left");}
 ಪಠ                          {printf("read");}
+ಬಲ                          {printf("right");}
 
 %%

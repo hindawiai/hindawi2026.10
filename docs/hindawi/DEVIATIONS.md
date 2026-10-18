@@ -68,3 +68,31 @@ recorded here and nothing in it has been changed.
   files; `lang/hindawi/tools/complete_cells.py` regenerates each from the language's lexicon, in Chintamani's form, with
   a word rule so a keyword is never replaced inside a longer name. Every construct still without a word is listed in
   the cell's `STATUS.tsv`, and offered for review on `docs/hindawi/review.html`.
+
+## 17 October 2026, later: nine languages completed, and native names made exact on the compilation path
+
+Translating the GATE programs' names into Dari, Pashto, Urdu, Punjabi (Gurmukhi and Shahmukhi), Sindhi, Telugu,
+Kannada and Sanskrit put native names through the compilation path at scale for the first time. Four things in the
+original pipeline gave one name two C-level forms, or none; each is now handled, and each is recorded here.
+
+- **Each native word is transliterated on its own.** Chintamani's Perso-Arabic filter reads a word-initial letter by
+  what precedes it, so the same name came out one way after a space and another after a bracket, and the program did
+  not link. The compilation path now sends each native word through the script filter and Romenagri separately, exactly
+  as the cell's rules are built, so a word has one form wherever it stands. The text around the words never passes
+  through the filter. Hindi output is unchanged (`tests/fundamental.py`, 12 checks).
+- **Pashto and Sindhi letters are folded for the Urdu filter.** `fltr_ur_hi` does not know ټ ډ ړ ږ ښ ګ ڼ ې ۍ ځ څ or
+  ڪ ڳ ڱ ڄ ٻ ڀ ٽ ٿ ڊ ڏ ڍ ڙ ڦ ڻ ڇ ڌ ۀ, and emitted control bytes for them. They are folded to the nearest Urdu letter
+  before the filter (`script_filters.FOLD`), on the rules and the words alike. Two names that differ only in such a
+  letter would share a C-level form; the source, the dictionary and ingestion keep them apart.
+- **Romenagri's mid-word vowel marker is written `_`.** `acii2cf` marks a vowel-initial syllable inside a word with `^`,
+  which no C identifier may contain. It is written `_`, as Romenagri itself writes a vowel at the start of a word, in
+  the compiled rules and in the words alike (`hindawi_chain.cform`).
+- **The cells' literal rules are the standard ones.** Chintamani's character-literal rule `\'("\\\'"|.*)*\'` is greedy:
+  on a line with two character literals it swallows everything between them, keywords included, and its string rule
+  excludes `^`. The generated cells use the standard patterns. Hindi keeps Chintamani's transducers as they are, so
+  the greedy rule is still there for Hindi; it is a defect of the original, recorded rather than changed.
+- **Gurmukhi signs under other Unicode names are mapped.** The generated Gurmukhi filter maps letters to Devanagari by
+  Unicode name, and Gurmukhi names some signs differently (bindi and tippi for anusvara, the vowel signs EE and OO for
+  E and O); those passed through raw and Romenagri emitted control bytes. They are now mapped by alias. Addak, which
+  doubles the next consonant, has no Devanagari sign and is dropped on the compilation path, so two names differing
+  only by addak share a C-level form; the source, the dictionary and ingestion keep them apart.

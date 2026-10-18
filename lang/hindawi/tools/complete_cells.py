@@ -34,6 +34,10 @@ SHAILIS = {
     "shabda": ("h2l", "l2h", "shabda/h2l.uhin", "option noyywrap yytext yyleng yylex"),
     "robot": ("h2logo", "logo2h", None, "forward back left right repeat to end make if ifelse print penup pendown home clearscreen"),
 }
+# host words every language's standard needs beyond what the legacy tables list
+EXTRA = {"shraeni": "nullptr cout cin endl auto", "kritrima": "true false null String System super synchronized throws println",
+         "soochee": "None True False print range len", "praatha": "mod and or not"}
+SHAILIS = {s: v[:3] + (v[3] + " " + EXTRA.get(s, ""),) for s, v in SHAILIS.items()}
 C_SHARED = {"shraeni", "kritrima", "wyaaka", "shabda"}
 # vocabularies beyond the shailis, offered to each language's community for review alongside them
 DOMAINS = {"hardware (VHDL, Verilog)": (HIN / "burp/paradigms/vhdl_keywords.txt"),
@@ -42,8 +46,11 @@ DOMAINS = {"hardware (VHDL, Verilog)": (HIN / "burp/paradigms/vhdl_keywords.txt"
            "AI and numerics": "tensor matrix vector shape train infer model layer weight bias activation relu sigmoid softmax loss gradient optimizer batch epoch predict"}      # their action code and expressions are C's too
 WORD_OK = re.compile(r"[^\W\d][\w\u200c\u200d\u0300-\u036f\u0900-\u0dff\u0e00-\u0fff\u1000-\u109f\u1780-\u18af\u1900-\u1cff\ua800-\uabff]*")
 RULE = re.compile(r'^(\S+)\s+\{\s*printf\("((?:[^"\\]|\\.)*)"\);\s*\}')
-STRINGS = ('\\\'("\\\\\\\'"|.*)*\\\'                       {printf("%s",yytext);}\n'
-           '\\"("\\\\\\""|[^\\"^\\n]*)*\\"                {printf("%s",yytext);}\n')
+# Character and string literals pass through untouched. Chintamani's own character-literal rule, \'("\\\'"|.*)*\',
+# is greedy: on a line with two character literals it swallows everything between them, keywords included. The cells
+# use the standard patterns instead (DEVIATIONS.md); Hindi keeps Chintamani's transducers as they are.
+STRINGS = (r"\'(\\.|[^\\\'\n])*\'" + " " * 23 + '{printf("%s",yytext);}\n'
+           + r'\"(\\.|[^\\\"\n])*\"' + " " * 23 + '{printf("%s",yytext);}\n')
 
 
 def chintamani_tokens(rel):
@@ -153,9 +160,18 @@ def main():
                     t, w = line.split("\t")[:2]
                     if WORD_OK.fullmatch(w.lstrip("#")) and w not in host:
                         overlay[t] = w
+        src = {t: f"lexicons/{lang}.tsv" for t in overlay}
+        multi = HIN / "lexicons" / "multi.tsv"           # one table, a column per language; the language's own file wins
+        if multi.exists():
+            rows = [l.split("\t") for l in multi.read_text(encoding="utf-8").splitlines() if l and not l.startswith("# ")]
+            col = rows[0].index(lang) if lang in rows[0] else None
+            for r in rows[1:] if col else []:
+                w = r[col].strip() if col < len(r) else ""
+                if w and r[0] not in overlay and WORD_OK.fullmatch(w.lstrip("#")) and w not in host:
+                    overlay[r[0]], src[r[0]] = w, "lexicons/multi.tsv"
         for t, w in overlay.items():
             if t not in word:
-                word[t], prov[t] = w, f"proposed in lexicons/{lang}.tsv, unreviewed"
+                word[t], prov[t] = w, f"proposed in {src[t]}, unreviewed"
         d = CELLS / lang
         for s, (fwd, rev, _, _) in SHAILIS.items():          # what the delivered cells knew, where the lexicon is silent
             if drop_delivered:

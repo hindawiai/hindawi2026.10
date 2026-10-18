@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 \#وگرنهاگر                  {printf("#elif");}
 محافظتشده                   {printf("protected");}
@@ -26,6 +26,7 @@
 دوگانه                      {printf("double");}
 ساختار                      {printf("struct");}
 سیگنال                      {printf("signal");}
+نادرست                      {printf("false");}
 واردکن                      {printf("import");}
 پیشفرض                      {printf("default");}
 \#شامل                      {printf("#include");}
@@ -52,6 +53,7 @@
 ثبات                        {printf("register");}
 جدید                        {printf("new");}
 حالت                        {printf("case");}
+درست                        {printf("true");}
 رشته                        {printf("String");}
 صحیح                        {printf("int");}
 فرار                        {printf("volatile");}

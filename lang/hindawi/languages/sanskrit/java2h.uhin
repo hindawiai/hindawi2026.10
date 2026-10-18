@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 synchronized                {printf("समकालिक");}
 implements                  {printf("निष्पादित");}
@@ -18,15 +18,21 @@ operator                    {printf("संक्रियकः");}
 register                    {printf("पञ्जिका");}
 restrict                    {printf("सीमित");}
 template                    {printf("प्रतिरूपम्");}
+unsigned                    {printf("अचिह्नित");}
 volatile                    {printf("चञ्चल");}
 \#define                    {printf("#परिभाषय");}
 \#ifndef                    {printf("#यदि_अपरिभाषितम्");}
 \#pragma                    {printf("#निर्देशः");}
+INT_MAX                     {printf("अधिकतम_पूर्णाङ्कः");}
 boolean                     {printf("तार्किकम्");}
 default                     {printf("स्वभाव");}
 extends                     {printf("विस्तृत");}
 finally                     {printf("अन्ततः");}
 getchar                     {printf("अक्षरं_पठ");}
+isalnum                     {printf("अक्षरम्_अङ्कः_वा");}
+isalpha                     {printf("अक्षरम्_वा");}
+isdigit                     {printf("अङ्कः_वा");}
+isspace                     {printf("रिक्तम्_वा");}
 package                     {printf("पुटक");}
 println                     {printf("पङ्क्तिं_मुद्रय");}
 private                     {printf("गुप्त");}
@@ -56,6 +62,7 @@ printf                      {printf("लिख");}
 public                      {printf("सार्वजनिक");}
 return                      {printf("प्रत्यागम");}
 signal                      {printf("सङ्केत");}
+signed                      {printf("चिह्नित");}
 sizeof                      {printf("परिमाण");}
 static                      {printf("स्थिर");}
 strcat                      {printf("वाक्यं_योजय");}
@@ -72,11 +79,13 @@ break                       {printf("भङ्ग");}
 catch                       {printf("गृहाण");}
 class                       {printf("वर्ग");}
 const                       {printf("ध्रुव");}
+false                       {printf("असत्य");}
 final                       {printf("अन्तिम");}
 float                       {printf("भिन्न");}
 qsort                       {printf("शीघ्रं_क्रमय");}
 raise                       {printf("उत्थापय");}
 scanf                       {printf("पठ");}
+short                       {printf("ह्रस्व");}
 sleep                       {printf("सुषुप्ति");}
 srand                       {printf("बीजं_रोपय");}
 start                       {printf("आरम्भः");}
@@ -86,6 +95,7 @@ union                       {printf("सङ्घ");}
 while                       {printf("यावत्");}
 write                       {printf("लिख");}
 NULL                        {printf("रिक्त");}
+auto                        {printf("स्वचालित");}
 byte                        {printf("अष्टकम्");}
 case                        {printf("पक्ष");}
 char                        {printf("वर्ण");}
@@ -94,8 +104,10 @@ enum                        {printf("गणना");}
 exit                        {printf("निर्गच्छ");}
 free                        {printf("मुक्त");}
 goto                        {printf("गच्छ");}
+long                        {printf("दीर्घ");}
 loop                        {printf("चक्रम्");}
 main                        {printf("मुख्यम्");}
+null                        {printf("रिक्त");}
 open                        {printf("उद्घाटय");}
 puts                        {printf("पङ्क्तिं_लिख");}
 rand                        {printf("यादृच्छिकम्");}
@@ -103,6 +115,7 @@ read                        {printf("पठ");}
 sqrt                        {printf("वर्गमूलम्");}
 stop                        {printf("तिष्ठ");}
 this                        {printf("एतत्");}
+true                        {printf("सत्य");}
 void                        {printf("शून्य");}
 wait                        {printf("प्रतीक्षस्व");}
 \#if                        {printf("#यदि");}

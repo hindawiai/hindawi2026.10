@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 \#وإلاإذا                   {printf("#elif");}
 تعريفنوع                    {printf("typedef");}
@@ -50,7 +50,9 @@
 يمتد                        {printf("extends");}
 ينفذ                        {printf("implements");}
 \#אם                        {printf("#if");}
+אמת                         {printf("true");}
 עשה                         {printf("do");}
+שקר                         {printf("false");}
 أكد                         {printf("assert");}
 ارم                         {printf("throw");}
 بدل                         {printf("switch");}

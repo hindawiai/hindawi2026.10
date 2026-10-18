@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 LDBL_MANT_DIG               {printf("द_द्वि_पूर्ण");}
 DBL_MANT_DIG                {printf("द्विग_पूर्ण");}
@@ -223,6 +223,7 @@ const                       {printf("स्थिरांक");}
 ctime                       {printf("स_समय");}
 div_t                       {printf("भाग_प्रकार");}
 errno                       {printf("त्रुटि_सं");}
+false                       {printf("असत्य");}
 fgetc                       {printf("ख_अक्षर_लो");}
 fgets                       {printf("ख_माला_लो");}
 float                       {printf("दशांश");}
@@ -276,6 +277,7 @@ kill                        {printf("समाप्त");}
 labs                        {printf("द_असल");}
 ldiv                        {printf("द_भाग");}
 long                        {printf("दीर्घ");}
+null                        {printf("रिक्त");}
 open                        {printf("खोलो");}
 putc                        {printf("अ_दो");}
 puts                        {printf("माला_दो");}
@@ -284,6 +286,7 @@ read                        {printf("पठ");}
 sqrt                        {printf("वर्ग_मूल");}
 this                        {printf("हे");}
 time                        {printf("समय");}
+true                        {printf("सत्य");}
 void                        {printf("शून्य");}
 wait                        {printf("रुको");}
 \#if                        {printf("#जर");}

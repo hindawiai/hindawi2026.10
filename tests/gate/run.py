@@ -32,7 +32,8 @@ for lang in a.langs.split(","):
             ok += 1
         else:
             failed += 1
-            print(f"  {lang}: {p}: " + ("does not compile: " + c.stderr.decode("utf-8", "replace").strip().splitlines()[0][:150] if c.returncode else "prints something else"))
+            print(f"  {lang}: {p}: " + ("does not compile: " + next((l for l in c.stderr.decode("utf-8", "replace").splitlines() if "error" in l),
+                                                  c.stderr.decode("utf-8", "replace").strip()[:150])[:200] if c.returncode else "prints something else"))
     back = w / "back" / lang
     subprocess.run(burp + ["reverse", str(n), "--out", str(back)], check=True, capture_output=True)
     same = sum(filecmp.cmp(SRC / f, back / f, shallow=False) for f in (p.relative_to(SRC) for p in SRC.rglob("*") if p.is_file()))

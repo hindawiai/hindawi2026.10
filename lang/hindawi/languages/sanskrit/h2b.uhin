@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 उपकार्यं_गच्छ               {printf("gosub");}
 यावत्_अन्तः                 {printf("wend");}
@@ -33,6 +33,7 @@
 कुरु                        {printf("DO");}
 गच्छ                        {printf("GOTO");}
 पदम्                        {printf("step");}
+शेषः                        {printf("mod");}
 यदि                         {printf("IF");}
 इव                          {printf("AS");}
 वा                          {printf("OR");}

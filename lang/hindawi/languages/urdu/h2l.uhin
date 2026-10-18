@@ -3,15 +3,27 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+زیادہ_سے_زیادہ_عدد          {printf("INT_MAX");}
+حرف_یا_ہندسہ                {printf("isalnum");}
+صفر_حافظہ_دو                {printf("calloc");}
 \#وگرنہ_اگر                 {printf("#elif");}
+لڑی_لمبائی                  {printf("strlen");}
+حافظہ_نقل                   {printf("memcpy");}
+غیرعلامتی                   {printf("unsigned");}
+حافظہ_دو                    {printf("malloc");}
 قسمتعریف                    {printf("typedef");}
+ہندسہ_ہے                    {printf("isdigit");}
 اندرونی                     {printf("inline");}
 اعشاری                      {printf("float");}
 انتخاب                      {printf("switch");}
 اندراج                      {printf("register");}
+حرف_ہے                      {printf("isalpha");}
+خلا_ہے                      {printf("isspace");}
+خودکار                      {printf("auto");}
+علامتی                      {printf("signed");}
 \#شامل                      {printf("#include");}
 \#ورنہ                      {printf("#else");}
 اتحاد                       {printf("union");}
@@ -20,11 +32,14 @@
 برائے                       {printf("for");}
 خارجی                       {printf("extern");}
 دوہرا                       {printf("double");}
+سانچہ                       {printf("template");}
 طےشدہ                       {printf("default");}
 عوامی                       {printf("public");}
 متلون                       {printf("volatile");}
 مجازی                       {printf("virtual");}
+محدود                       {printf("restrict");}
 محفوظ                       {printf("protected");}
+مختصر                       {printf("short");}
 \#اگر                       {printf("#if");}
 آزاد                        {printf("free");}
 اقرأ                        {printf("read");}
@@ -34,16 +49,21 @@
 جاری                        {printf("continue");}
 حالت                        {printf("case");}
 خالی                        {printf("void");}
+دوست                        {printf("friend");}
 ساخت                        {printf("struct");}
 ساکن                        {printf("static");}
 شمار                        {printf("enum");}
 صحیح                        {printf("int");}
+طویل                        {printf("long");}
+عامل                        {printf("operator");}
+لکھو                        {printf("printf");}
 واپس                        {printf("return");}
 ورنہ                        {printf("else");}
 أكد                         {printf("assert");}
 اگر                         {printf("if");}
 تہی                         {printf("NULL");}
 جاؤ                         {printf("goto");}
+جذر                         {printf("sqrt");}
 حجم                         {printf("sizeof");}
 حرف                         {printf("char");}
 مین                         {printf("main");}

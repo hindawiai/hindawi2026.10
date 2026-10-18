@@ -32,7 +32,7 @@ korean	HANGUL	none yet	no filter yet
 kurdish_sorani	ARABIC	fltr_ur_hi	runs, same output
 lao	LAO	none yet	no filter yet
 lepcha	LEPCHA	none yet	no filter yet
-limbu	LIMBU	none yet	no filter yet
+limbu	DEVANAGARI	none needed	does not compile
 magahi	DEVANAGARI	none needed	runs, same output
 maithili	DEVANAGARI	none needed	runs, same output
 malay_jawi	ARABIC	fltr_ur_hi	runs, same output

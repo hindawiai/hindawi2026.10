@@ -3,12 +3,24 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ودھ_توں_ودھ_عدد             {printf("INT_MAX");}
+صفر_حافظہ_دیو               {printf("calloc");}
+حرف_یا_ہندسہ                {printf("isalnum");}
+لڑی_لمبائی                  {printf("strlen");}
+حافظہ_دیو                   {printf("malloc");}
+حافظہ_نقل                   {printf("memcpy");}
+نشانیوالا                   {printf("signed");}
 \#وإلاإذا                   {printf("#elif");}
+بنانشانی                    {printf("unsigned");}
 تعريفنوع                    {printf("typedef");}
+ہندسہ_اے                    {printf("isdigit");}
 افتراضي                     {printf("default");}
+حرف_اے                      {printf("isalpha");}
+خلا_اے                      {printf("isspace");}
+خودکار                      {printf("auto");}
 متطاير                      {printf("volatile");}
 \#وإلا                      {printf("#else");}
 إشارة                       {printf("signal");}
@@ -16,8 +28,11 @@
 استمر                       {printf("continue");}
 تعداد                       {printf("enum");}
 خارجي                       {printf("extern");}
+سانچا                       {printf("template");}
 طالما                       {printf("while");}
+محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
+چھوٹا                       {printf("short");}
 \#إذا                       {printf("#if");}
 \#ضمن                       {printf("#include");}
 أرجع                        {printf("return");}
@@ -33,21 +48,29 @@
 ساكن                        {printf("static");}
 صحيح                        {printf("int");}
 عائم                        {printf("float");}
+عامل                        {printf("operator");}
 فراغ                        {printf("void");}
+لکھو                        {printf("printf");}
 محمي                        {printf("protected");}
 مضمن                        {printf("inline");}
 وإلا                        {printf("else");}
+کھبے                        {printf("left");}
 أكد                         {printf("assert");}
 إذا                         {printf("if");}
 بدل                         {printf("switch");}
+جذر                         {printf("sqrt");}
 حجم                         {printf("sizeof");}
 حرر                         {printf("free");}
 حرف                         {printf("char");}
 خاص                         {printf("private");}
 سجل                         {printf("register");}
+سجے                         {printf("right");}
 عام                         {printf("public");}
 عدم                         {printf("NULL");}
 لكل                         {printf("for");}
+لما                         {printf("long");}
+مکھ                         {printf("main");}
 نوع                         {printf("type");}
+یار                         {printf("friend");}
 
 %%

@@ -1,0 +1,59 @@
+.TH HINDAWI 1 "October 2026" "Hindawi 2026.10" "User Commands"
+.SH NAME
+hindawi \- write, read and compile programs in your own language and script
+.SH SYNOPSIS
+.B hindawi
+.I command
+[\fIoptions\fR]
+.br
+.B hindawicc
+[\fIgcc options\fR] \fIfiles\fR
+.SH DESCRIPTION
+Hindawi lets a program be written in a human language and its own script, and compiled by the ordinary toolchain.
+It has two paths. Ingestion (BURP) puts any project into any number of languages and brings it back byte for byte.
+Compilation takes source written in a language through the script filter and Romenagri, and the language's
+transducer turns it into the host language, which gcc compiles; names survive into the binary through Romenagri.
+.SH COMMANDS
+.TP
+.B doctor
+Check prerequisites and the built toolchain.
+.TP
+.B setup
+Build Chintamani's toolchain (Romenagri and the shailis) from the pinned source.
+.TP
+.B languages
+List the languages with their script and whether they compile.
+.TP
+.BI "coverage --langs " L
+How complete a language is: host keywords per paradigm, and the names of the GATE programs.
+.TP
+.BI "ingest " SRC " --langs " L
+Put a file or a project into languages. \fBreverse\fR brings it back; \fBcheck\fR does both and compares.
+.TP
+.BI "cc --lang " L
+gcc for sources written in a language; every gcc option passes through. The same as \fBhindawicc\fR with HINDAWI_LANG set.
+.TP
+.BI "build " TREE " --lang " L
+Build a project with its own Makefile through hindawicc.
+.TP
+.BI "gate [--langs " L "] [--gallery]"
+Compile every GATE program from each language, run it, and compare with the English original.
+.TP
+.B cells
+Regenerate the language cells from the lexicons.
+.TP
+.B stack, arduino, lab
+The sovereign-stack test, the Arduino IDE drop-in, and the linguistics lab.
+.TP
+.B test
+The build's own test suite and the fundamental regression.
+.TP
+.B verify
+The manual verification, step by step, with the result each step should give.
+.SH ENVIRONMENT
+HINDAWI_LANG (the language of the sources), HINDAWI_DICT (a project's dictionary from ingestion),
+HINDAWI_NATIVE_SOURCE=1 (sources ending in .c are native), ROMENAGRI (the Romenagri tools).
+.SH FILES
+docs/hindawi/MANUAL.md, VERIFY.md, docs/hindawi/GATE-PROGRAMS.md in the repository.
+.SH AUTHOR
+Abhishek Choudhary, AyeAI.

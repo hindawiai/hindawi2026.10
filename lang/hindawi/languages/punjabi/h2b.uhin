@@ -3,17 +3,25 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ਜਦੋਂਤੱਕ_ਅੰਤ                 {printf("wend");}
 ਕਾਲਯਨ੍ਤ੍ਰ                   {printf("TIMER");}
+ਅਗਲਾ_ਗੇੜ                    {printf("next");}
 ਸ਼ਬਦਮਾਲਾ                    {printf("STRING");}
+ਕਦਮ_ਨਾਲ                     {printf("step");}
 ਨਹੀਂਤਾਂ                     {printf("ELSE");}
 ਸਹਭਾਜਿਤ                     {printf("SHARED");}
+ਉਪ_ਜਾਓ                      {printf("gosub");}
+ਟਿੱਪਣੀ                      {printf("rem");}
 ਬੁਲਾਓ                       {printf("CALL");}
+ਆਕਾਰ                        {printf("dim");}
+ਛਾਪੋ                        {printf("print");}
 ਜਦੋਂ                        {printf("WHILE");}
 ਨਹੀਂ                        {printf("NOT");}
 ਪੂਰਨ                        {printf("INT");}
+ਬਾਕੀ                        {printf("mod");}
 ਮੰਨੋ                        {printf("LET");}
 ਵਾਪਸ                        {printf("RETURN");}
 ਸਥਿਰ                        {printf("STATIC");}
@@ -23,6 +31,9 @@
 ਕਰੋ                         {printf("DO");}
 ਜਾਂ                         {printf("OR");}
 ਜਾਓ                         {printf("GOTO");}
+ਤਾਂ                         {printf("then");}
+ਤੱਕ                         {printf("to");}
+ਲਵੋ                         {printf("input");}
 ਇਵ                          {printf("AS");}
 ਜੇ                          {printf("IF");}
 ਲਈ                          {printf("FOR");}

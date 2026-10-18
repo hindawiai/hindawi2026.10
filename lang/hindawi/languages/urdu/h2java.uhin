@@ -3,19 +3,35 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+زیادہ_سے_زیادہ_عدد          {printf("INT_MAX");}
+حرف_یا_ہندسہ                {printf("isalnum");}
+صفر_حافظہ_دو                {printf("calloc");}
 \#وگرنہ_اگر                 {printf("#elif");}
+لڑی_لمبائی                  {printf("strlen");}
+حافظہ_نقل                   {printf("memcpy");}
+سطر_چھاپو                   {printf("println");}
+غیرعلامتی                   {printf("unsigned");}
+حافظہ_دو                    {printf("malloc");}
 سطحرابطہ                    {printf("interface");}
 قسمتعریف                    {printf("typedef");}
+نمونہ_ہے                    {printf("instanceof");}
+ہندسہ_ہے                    {printf("isdigit");}
 اندرونی                     {printf("inline");}
+پھینکتا                     {printf("throws");}
 آخرکار                      {printf("finally");}
 اعشاری                      {printf("float");}
 انتخاب                      {printf("switch");}
 اندراج                      {printf("register");}
 تجریدی                      {printf("abstract");}
+حرف_ہے                      {printf("isalpha");}
+خلا_ہے                      {printf("isspace");}
+خودکار                      {printf("auto");}
+علامتی                      {printf("signed");}
 پھینکو                      {printf("throw");}
+ہمزمان                      {printf("synchronized");}
 \#شامل                      {printf("#include");}
 \#ورنہ                      {printf("#else");}
 اتحاد                       {printf("union");}
@@ -28,27 +44,41 @@
 درآمد                       {printf("import");}
 دوہرا                       {printf("double");}
 دھاگہ                       {printf("Thread");}
+سانچہ                       {printf("template");}
 طےشدہ                       {printf("default");}
 عوامی                       {printf("public");}
 متلون                       {printf("volatile");}
 مجازی                       {printf("virtual");}
+محدود                       {printf("restrict");}
 محفوظ                       {printf("protected");}
+مختصر                       {printf("short");}
+مقامی                       {printf("native");}
+منطقی                       {printf("boolean");}
 \#اگر                       {printf("#if");}
 آزاد                        {printf("free");}
 اقرأ                        {printf("read");}
 اكتب                        {printf("write");}
+بائٹ                        {printf("byte");}
+بالا                        {printf("super");}
 بستہ                        {printf("package");}
 توڑو                        {printf("break");}
 ثابت                        {printf("const");}
 جاری                        {printf("continue");}
 جملہ                        {printf("String");}
+جھوٹ                        {printf("false");}
 حالت                        {printf("case");}
+حتمی                        {printf("final");}
 خالی                        {printf("void");}
+دوست                        {printf("friend");}
 ساخت                        {printf("struct");}
 ساکن                        {printf("static");}
 شمار                        {printf("enum");}
 صحیح                        {printf("int");}
+طویل                        {printf("long");}
+عامل                        {printf("operator");}
+لکھو                        {printf("printf");}
 نافذ                        {printf("implements");}
+نظام                        {printf("System");}
 واپس                        {printf("return");}
 ورنہ                        {printf("else");}
 پکڑو                        {printf("catch");}
@@ -57,6 +87,7 @@
 اگر                         {printf("if");}
 تہی                         {printf("NULL");}
 جاؤ                         {printf("goto");}
+جذر                         {printf("sqrt");}
 حجم                         {printf("sizeof");}
 حرف                         {printf("char");}
 مین                         {printf("main");}
@@ -65,6 +96,7 @@
 نیا                         {printf("new");}
 کرو                         {printf("do");}
 جب                          {printf("while");}
+سچ                          {printf("true");}
 شے                          {printf("Object");}
 یہ                          {printf("this");}
 

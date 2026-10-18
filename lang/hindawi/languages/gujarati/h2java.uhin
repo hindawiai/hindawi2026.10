@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 પ્રકારવ્યાખ્યા              {printf("typedef");}
 \#અન્તર્ભાવ                 {printf("#include");}
@@ -33,6 +33,7 @@
 આભાસી                       {printf("virtual");}
 ઉઠાવો                       {printf("raise");}
 ખાનગી                       {printf("private");}
+ખોટું                       {printf("false");}
 છેવટે                       {printf("finally");}
 જાહેર                       {printf("public");}
 દશાંશ                       {printf("float");}
@@ -44,6 +45,7 @@
 વસ્તુ                       {printf("Object");}
 શૂન્ય                       {printf("void");}
 સંકેત                       {printf("signal");}
+સાચું                       {printf("true");}
 સ્થિર                       {printf("static");}
 આયાત                        {printf("import");}
 ખાલી                        {printf("NULL");}

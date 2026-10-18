@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 RETURN                      {printf("คืน");}
 return                      {printf("คืน");}
@@ -15,7 +15,9 @@ AND                         {printf("ca");}
 FOR                         {printf("สำหรับ");}
 INT                         {printf("จำนวนเต็ม");}
 NOT                         {printf("na");}
+and                         {printf("ca");}
 for                         {printf("สำหรับ");}
+not                         {printf("na");}
 IF                          {printf("ถ้า");}
 if                          {printf("ถ้า");}
 [A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}

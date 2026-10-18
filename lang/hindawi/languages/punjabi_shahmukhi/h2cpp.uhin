@@ -3,12 +3,28 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+ودھ_توں_ودھ_عدد             {printf("INT_MAX");}
+صفر_حافظہ_دیو               {printf("calloc");}
+حرف_یا_ہندسہ                {printf("isalnum");}
+لڑی_لمبائی                  {printf("strlen");}
+حافظہ_دیو                   {printf("malloc");}
+حافظہ_نقل                   {printf("memcpy");}
+خالی_سوچک                   {printf("nullptr");}
+نشانیوالا                   {printf("signed");}
 \#وإلاإذا                   {printf("#elif");}
+بنانشانی                    {printf("unsigned");}
 تعريفنوع                    {printf("typedef");}
+ہندسہ_اے                    {printf("isdigit");}
 افتراضي                     {printf("default");}
+بدلنجوگ                     {printf("mutable");}
+سطر_انت                     {printf("endl");}
+قسم_ناں                     {printf("typename");}
+حرف_اے                      {printf("isalpha");}
+خلا_اے                      {printf("isspace");}
+خودکار                      {printf("auto");}
 متزامن                      {printf("sync");}
 متطاير                      {printf("volatile");}
 \#وإلا                      {printf("#else");}
@@ -18,9 +34,13 @@
 استمر                       {printf("continue");}
 تعداد                       {printf("enum");}
 خارجي                       {printf("extern");}
+سانچا                       {printf("template");}
 طالما                       {printf("while");}
+محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
 منطقي                       {printf("bool");}
+ورتوں                       {printf("using");}
+چھوٹا                       {printf("short");}
 \#إذا                       {printf("#if");}
 \#ضمن                       {printf("#include");}
 أرجع                        {printf("return");}
@@ -31,6 +51,8 @@
 اكتب                        {printf("write");}
 اكسر                        {printf("break");}
 امسك                        {printf("catch");}
+اندر                        {printf("cin");}
+باہر                        {printf("cout");}
 بنية                        {printf("struct");}
 ثابت                        {printf("const");}
 جديد                        {printf("new");}
@@ -39,26 +61,36 @@
 ساكن                        {printf("static");}
 صحيح                        {printf("int");}
 عائم                        {printf("float");}
+عامل                        {printf("operator");}
 فراغ                        {printf("void");}
+لکھو                        {printf("printf");}
 محمي                        {printf("protected");}
 مضمن                        {printf("inline");}
+مٹاؤ                        {printf("delete");}
 نطاق                        {printf("namespace");}
 وإلا                        {printf("else");}
+واضح                        {printf("explicit");}
+کھبے                        {printf("left");}
 أكد                         {printf("assert");}
 إذا                         {printf("if");}
 ارم                         {printf("throw");}
 بدل                         {printf("switch");}
+جذر                         {printf("sqrt");}
 حجم                         {printf("sizeof");}
 حرر                         {printf("free");}
 حرف                         {printf("char");}
 خاص                         {printf("private");}
 خطأ                         {printf("false");}
 سجل                         {printf("register");}
+سجے                         {printf("right");}
 صنف                         {printf("class");}
 عام                         {printf("public");}
 عدم                         {printf("NULL");}
 لكل                         {printf("for");}
+لما                         {printf("long");}
+مکھ                         {printf("main");}
 نوم                         {printf("sleep");}
 هذا                         {printf("this");}
+یار                         {printf("friend");}
 
 %%

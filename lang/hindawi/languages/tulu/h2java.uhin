@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 ಪ್ರಕಾರನಿರ್ದೇಶ               {printf("typedef");}
 \#ಅನ್ತರ್ಭಾವ                 {printf("#include");}
@@ -32,6 +32,7 @@
 ಸಂರಚನಾ                      {printf("struct");}
 ಸಙ್ಕೇತ                      {printf("signal");}
 ಸ್ವಭಾವ                      {printf("default");}
+ಅಸತ್ಯ                       {printf("false");}
 ಕ್ಷಿಪ                       {printf("throw");}
 ಗುಪ್ತ                       {printf("private");}
 ಗೃಹಾಣ                       {printf("catch");}
@@ -63,6 +64,7 @@
 ವರ್ಗ                        {printf("class");}
 ವರ್ಣ                        {printf("char");}
 ಸಙ್ಘ                        {printf("union");}
+ಸತ್ಯ                        {printf("true");}
 ಯದಿ                         {printf("if");}
 ಲಿಖ                         {printf("write");}
 ಪಠ                          {printf("read");}

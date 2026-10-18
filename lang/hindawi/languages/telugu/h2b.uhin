@@ -3,16 +3,25 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+అంతవరకు_ముగింపు             {printf("wend");}
+తదుపరి_చక్రం                {printf("next");}
+ఉప_వెళ్ళు                   {printf("gosub");}
 కాలయన్త్ర                   {printf("TIMER");}
 పూర్ణాంకం                   {printf("INT");}
+ముద్రించు                   {printf("print");}
 స్థిరరాశి                   {printf("CONST");}
+అడుగుతో                     {printf("step");}
+అప్పుడు                     {printf("then");}
+పరిమాణం                     {printf("dim");}
 ముగింపు                     {printf("END");}
 లేకపోతే                     {printf("ELSE");}
+వ్యాఖ్య                     {printf("rem");}
 సహభాజిత                     {printf("SHARED");}
 తిరిగి                      {printf("RETURN");}
+తీసుకో                      {printf("input");}
 పదబంధం                      {printf("STRING");}
 పిలువు                      {printf("CALL");}
 వెళ్ళు                      {printf("GOTO");}
@@ -25,6 +34,8 @@
 కాదు                        {printf("NOT");}
 చేయి                        {printf("DO");}
 లేదా                        {printf("OR");}
+వరకు                        {printf("to");}
+శేషం                        {printf("mod");}
 ఇవ                          {printf("AS");}
 
 %%

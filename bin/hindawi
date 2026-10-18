@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+# © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+"""hindawi: the one command for Hindawi 2026.10. Every tool in the repository is reached through it.
+
+  hindawi doctor                         is everything needed installed and built?
+  hindawi setup                          build Chintamani's toolchain (Romenagri and the shailis), the original way
+  hindawi languages                      every language: script, and whether it compiles
+  hindawi coverage --langs L [--missing] how complete a language is, paradigm by paradigm
+  hindawi ingest SRC --langs L [--out D] put a file or a whole project into languages (BURP)
+  hindawi reverse DIR [--out D]          bring an ingested project back, byte for byte
+  hindawi check SRC --langs L            ingest and reverse, and compare
+  hindawi cc --lang L [gcc arguments]    gcc for sources written in a language (hindawicc)
+  hindawi build TREE --lang L            build a project with its own Makefile through hindawicc
+  hindawi gate [--langs L] [--gallery]   the GATE programs in languages: compile, run, compare with English
+  hindawi cells [--langs L]              regenerate language cells from the lexicons
+  hindawi stack [--stage Lnn]            the sovereign-stack test (network, Docker and system tools)
+  hindawi arduino install|transduce ...  the Arduino IDE drop-in
+  hindawi lab                            the linguistics lab, in Docker
+  hindawi test                           the build's own suite and the fundamental regression
+  hindawi verify [--langs L]             the manual verification, step by step, with what to expect
+
+Languages are given as names (urdu,sindhi,telugu) or "all". Every subcommand takes --help.
+"""
+import os, subprocess, shutil, sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+HIN = ROOT / "lang/hindawi"
+PY = sys.executable
+NINE = "dari,pashto,urdu,punjabi,punjabi_shahmukhi,sindhi,telugu,kannada,sanskrit"
+
+
+def version():
+    v = (ROOT / "VERSION").read_text().strip() if (ROOT / "VERSION").exists() else "2026.10"
+    b = (ROOT / "BUILD").read_text().strip() if (ROOT / "BUILD").exists() else ""
+    return f"hindawi {v}" + (f" ({b})" if b else "")
+
+
+def run(cmd, env=None, check=False):
+    print("+ " + " ".join(str(c) for c in cmd), file=sys.stderr)
+    r = subprocess.run([str(c) for c in cmd], env=env, cwd=os.getcwd())
+    if check and r.returncode:
+        sys.exit(r.returncode)
+    return r.returncode
+
+
+def toolchain_env(lang=None):
+    env = dict(os.environ)
+    env.setdefault("ROMENAGRI", str(ROOT / ".build/chintamani/Romenagri"))
+    env["PATH"] = str(ROOT / ".build/chintamani/Romenagri") + os.pathsep + env.get("PATH", "")
+    if lang:
+        env["HINDAWI_LANG"] = lang
+    return env
+
+
+def doctor():
+    ok = True
+    print(version())
+    for tool, need in [("python3", True), ("gcc", True), ("g++", False), ("flex", True), ("make", True), ("iconv", True),
+                       ("git", True), ("bison", False), ("docker", False), ("arduino-cli", False)]:
+        have = shutil.which(tool)
+        ok &= bool(have) or not need
+        print(f"  {'ok  ' if have else ('MISSING' if need else 'absent')}  {tool:12} {'' if have or need else '(optional)'}")
+    built = (ROOT / ".build/chintamani/Romenagri/rmn2acii").exists()
+    print(f"  {'ok  ' if built else 'MISSING'}  Chintamani toolchain in .build/chintamani {'' if built else '(run: hindawi setup)'}")
+    ok &= built
+    print("doctor: " + ("ready" if ok else "not ready"))
+    return 0 if ok else 1
+
+
+def main(argv):
+    if not argv or argv[0] in ("-h", "--help", "help"):
+        print(__doc__); return 0
+    if argv[0] in ("-V", "--version", "version"):
+        print(version()); return 0
+    cmd, rest = argv[0], argv[1:]
+    if cmd == "doctor":
+        return doctor()
+    if cmd == "setup":
+        return run(["bash", ROOT / "scripts/build.sh"])
+    if cmd in ("ingest", "reverse", "check"):
+        return run([PY, HIN / "burp/burp.py", cmd] + rest)
+    if cmd == "cc":
+        lang = None
+        if "--lang" in rest:
+            i = rest.index("--lang"); lang = rest[i + 1]; rest = rest[:i] + rest[i + 2:]
+        return run([HIN / "hindawicc"] + rest, env=toolchain_env(lang))
+    if cmd == "build":
+        return run([PY, HIN / "tools/build_project.py"] + rest, env=toolchain_env())
+    if cmd == "gate":
+        return run([PY, ROOT / "tests/gate/run.py"] + rest, env=toolchain_env())
+    if cmd == "coverage":
+        return run([PY, HIN / "tools/coverage.py"] + rest)
+    if cmd == "cells":
+        return run([PY, HIN / "tools/complete_cells.py"] + rest)
+    if cmd == "languages":
+        t = ROOT / "docs/hindawi/burp-status.tsv"
+        if "--refresh" in rest or not t.exists():
+            run([PY, ROOT / "tests/burp/compile_status.py"], env=toolchain_env())
+        rows = [l.split("\t") for l in t.read_text(encoding="utf-8").splitlines()[1:]]
+        for r in rows:
+            print(f"{r[0]:20} {r[1]:12} {r[3] if len(r) > 3 else ''}")
+        print(f"{sum(1 for r in rows if len(r) > 3 and r[3].startswith('runs'))} of {len(rows)} languages compile and run")
+        return 0
+    if cmd == "stack":
+        return run(["bash", ROOT / "scripts/sovereign/stack.sh"] + rest)
+    if cmd == "arduino":
+        what = rest[0] if rest else "install"
+        return run(["bash", ROOT / f"ide/arduino/{what}.sh"] + rest[1:])
+    if cmd == "lab":
+        return run(["docker", "compose", "-f", ROOT / "lab/docker-compose.yml", "up", "--build"] + rest)
+    if cmd == "test":
+        a = run(["bash", ROOT / "scripts/test_all.sh"])
+        b = run([PY, ROOT / "tests/fundamental.py"], env=toolchain_env())
+        return a or b
+    if cmd == "verify":
+        langs = rest[rest.index("--langs") + 1] if "--langs" in rest else NINE
+        return verify(langs)
+    print(f"hindawi: no such command: {cmd}\n" + __doc__, file=sys.stderr)
+    return 2
+
+
+def verify(langs):
+    """Each step prints its command, what to expect, and PASS or FAIL. The same steps are in VERIFY.md, to run by hand."""
+    steps = [
+        ("prerequisites and toolchain", ["doctor"], "doctor: ready"),
+        ("the fundamental regression: Chintamani untouched, its samples compile, Wave 0, shailis, multi-file, ELF symbol",
+         [PY, ROOT / "tests/fundamental.py"], "passed"),
+        ("keywords of six paradigms and every name of the GATE programs, in each language",
+         [PY, HIN / "tools/coverage.py", "--langs", langs], "C 35/35, C++ 61/61, Java 51/51, Python 36/36, BASIC 21/21, LOGO 14/14"),
+        ("the BURP sample, every paradigm, ingested into each language and reversed",
+         [PY, HIN / "burp/burp.py", "check", ROOT / "tests/burp/sample", "--langs", langs], "reverse to the original byte for byte"),
+        ("every GATE C program compiled from each language through the original pipeline, run, and compared with English",
+         [PY, ROOT / "tests/gate/run.py", "--langs", langs], "of 60 C programs compile"),
+    ]
+    results = []
+    for title, cmd, expect in steps:
+        print(f"\n== {title}\n   expect: {expect}")
+        if cmd == ["doctor"]:
+            rc = doctor(); out = ""
+        else:
+            p = subprocess.run([str(c) for c in cmd], capture_output=True, text=True, env=toolchain_env())
+            out = p.stdout + p.stderr; rc = p.returncode
+            print("\n".join("   " + l for l in out.strip().splitlines()[-12:]))
+        good = rc == 0
+        if good and "C 35/35" in expect:        # complete means every line says so, not merely that the tool ran
+            lines = [l for l in out.splitlines() if ": C " in l]
+            good = bool(lines) and all(expect in l and "left in English: none" in l and
+                                       l.split("GATE programs: ")[1].split(" ")[0].split("/")[0] ==
+                                       l.split("GATE programs: ")[1].split(" ")[0].split("/")[1] for l in lines)
+        results.append((title, good))
+    print("\n== summary")
+    for title, good in results:
+        print(f"   {'PASS' if good else 'FAIL'}  {title}")
+    return 0 if all(g for _, g in results) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

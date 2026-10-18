@@ -85,21 +85,19 @@ def f4_f5():
     (w / "lib.c").write_text("int add(int a, int b)\n{\n  return a + b;\n}\n")
     (w / "main.c").write_text('#include <stdio.h>\nint add(int a, int b);\nint main(void)\n{\n  int total = add(VALUE, 2);\n'
                               '  printf("%d\\n", total);\n  return 0;\n}\n')
-    env = dict(ENV, HINDAWI_DICT=str(w / "project_dict.json"))
-    ing = ROOT / "lang/hindawi/tools/ingest.py"
-    for f in ("lib", "main"):
-        p = subprocess.run([sys.executable, str(ing), str(w / f"{f}.c")], capture_output=True, env=env)
-        (w / f"{f}.uhin").write_bytes(p.stdout)
-    native = (w / "main.uhin").read_text(encoding="utf-8", errors="replace")
+    (w / "proj").mkdir(); shutil.move(str(w / "lib.c"), w / "proj/lib.c"); shutil.move(str(w / "main.c"), w / "proj/main.c")
+    burp = [sys.executable, str(ROOT / "lang/hindawi/burp/burp.py")]
+    subprocess.run(burp + ["ingest", str(w / "proj"), "--langs", "hindi", "--out", str(w / "n")], capture_output=True, env=ENV)
+    n = w / "n/hindi"
+    native = (n / "main.c").read_text(encoding="utf-8", errors="replace")
     localized = "पूर्णांक" in native and "वापस" in native and not re.search(r"\b(int|return)\b", native)
-    check("F4", "ingestion puts the project's keywords in Hindi, with one dictionary for both files", localized)
-    rc, out, err = sh(f"'{ROOT}/lang/hindawi/hindawicc' main.uhin lib.uhin -DVALUE=40 -O2 -Wall -g -o prog && ./prog", cwd=w)
+    check("F4", "ingestion (BURP) puts the project's keywords in Hindi, with one dictionary for both files", localized)
+    rc, out, err = sh(f"HINDAWI_LANG=hindi HINDAWI_NATIVE_SOURCE=1 HINDAWI_DICT='{n}/.hindawi/dictionary.json' "
+                      f"'{ROOT}/lang/hindawi/hindawicc' main.c lib.c -DVALUE=40 -O2 -Wall -g -o prog && ./prog", cwd=n)
     check("F4", "hindawicc compiles both native files with gcc's flags passed through", out.strip() == b"42",
           err.decode("utf-8", "replace").strip()[:160])
-    back_ok = True
-    for f in ("lib", "main"):
-        p = subprocess.run([sys.executable, str(ing), "--reverse", str(w / f"{f}.uhin")], capture_output=True, env=env)
-        back_ok &= p.stdout.decode().split() == (w / f"{f}.c").read_text().split()
+    subprocess.run(burp + ["reverse", str(n), "--out", str(w / "back")], capture_output=True, env=ENV)
+    back_ok = all((w / "back" / f).read_bytes() == (w / "proj" / f).read_bytes() for f in ("lib.c", "main.c"))
     check("F4", "the project comes back to its original C through the same dictionary", back_ok)
     (w / "naam.uhin").write_text("पूर्णांक योगफल(पूर्णांक क, पूर्णांक ख)\nअणु\n  वापस क + ख;\nपूर्ण\n", encoding="utf-8")
     rc, _, err = sh(f"'{ROOT}/lang/hindawi/hindawicc' -c -g naam.uhin -o naam.o", cwd=w)

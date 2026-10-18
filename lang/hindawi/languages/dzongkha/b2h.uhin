@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 RETURN                      {printf("ལོག");}
 return                      {printf("ལོག");}
@@ -15,7 +15,9 @@ AND                         {printf("ca");}
 FOR                         {printf("དོན་ལུ");}
 INT                         {printf("ཧྲིལ");}
 NOT                         {printf("na");}
+and                         {printf("ca");}
 for                         {printf("དོན་ལུ");}
+not                         {printf("na");}
 IF                          {printf("གལ་སྲིད");}
 if                          {printf("གལ་སྲིད");}
 [A-Za-z_][A-Za-z0-9_]*      {printf("%s",yytext);}

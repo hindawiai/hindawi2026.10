@@ -3,11 +3,13 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+अधिकतम_पूर्णाङ्कः           {printf("INT_MAX");}
 शून्यस्मृतिं_देहि           {printf("calloc");}
 \#यदि_अपरिभाषितम्           {printf("#ifndef");}
+अक्षरम्_अङ्कः_वा            {printf("isalnum");}
 स्मृतिं_प्रतिलिख            {printf("memcpy");}
 \#यदि_परिभाषितम्            {printf("#ifdef");}
 वाक्यं_प्रतिलिख             {printf("strcpy");}
@@ -25,8 +27,10 @@
 \#नोचेद्यदि                 {printf("#elif");}
 \#यदि_अन्तः                 {printf("#endif");}
 अक्षरं_लिख                  {printf("putchar");}
+अक्षरम्_वा                  {printf("isalpha");}
 निरपेक्षम्                  {printf("abs");}
 प्रतिरूपम्                  {printf("template");}
+रिक्तम्_वा                  {printf("isspace");}
 \#अपरिभाषय                  {printf("#undef");}
 \#निर्देशः                  {printf("#pragma");}
 \#पङ्क्तिः                  {printf("#line");}
@@ -39,15 +43,19 @@
 संक्रियकः                   {printf("operator");}
 सार्वजनिक                   {printf("public");}
 \#परिभाषय                   {printf("#define");}
+अङ्कः_वा                    {printf("isdigit");}
+अचिह्नित                    {printf("unsigned");}
 अन्तःस्थ                    {printf("inline");}
 असाहचर्य                    {printf("nonassoc");}
 दक्षिणतः                    {printf("right");}
 निर्गच्छ                    {printf("exit");}
 शब्दांशः                    {printf("token");}
+स्वचालित                    {printf("auto");}
 \#अन्यथा                    {printf("#else");}
 अनुवर्त                     {printf("continue");}
 उत्थापय                     {printf("raise");}
 उद्घाटय                     {printf("open");}
+चिह्नित                     {printf("signed");}
 द्विगुण                     {printf("double");}
 पञ्जिका                     {printf("register");}
 मित्रम्                     {printf("friend");}
@@ -61,9 +69,11 @@
 संरचना                      {printf("struct");}
 सङ्केत                      {printf("signal");}
 स्वभाव                      {printf("default");}
+ह्रस्व                      {printf("short");}
 \#दोषः                      {printf("#error");}
 गुप्त                       {printf("private");}
 चञ्चल                       {printf("volatile");}
+दीर्घ                       {printf("long");}
 ध्रुव                       {printf("const");}
 प्रति                       {printf("for");}
 बाह्य                       {printf("extern");}

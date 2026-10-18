@@ -24,7 +24,7 @@ stays byte for byte Chintamani; `tests/fundamental.py` F1 fails the moment it do
    Makefile using the original commands, and a driver copied from Chintamani's with the language's cell.
 3. Build it with Romenagri on the PATH, then measure it: `python3 lang/hindawi/tests/cells/cells.py roundtrip
    --cells lang/hindawi/languages --corpus <C sources> --langs <language>`. Coverage is published as status.
-4. Identifiers: `lang/hindawi/tools/ingest.py --lang <code>` names them in the language through its dictionary
+4. Identifiers: `hindawi ingest <project> --langs <code>` names them in the language through its dictionary (`lang/hindawi/burp/glossary/`)
    (one per ingestion, `HINDAWI_DICT`), and reverses through each name's Romenagri form.
 
 ## A new script

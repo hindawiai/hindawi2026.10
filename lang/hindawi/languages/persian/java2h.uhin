@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 implements                  {printf("پیادهسازی");}
 interface                   {printf("واسط");}
@@ -42,6 +42,7 @@ break                       {printf("بشکن");}
 catch                       {printf("بگیر");}
 class                       {printf("رده");}
 const                       {printf("ثابت");}
+false                       {printf("نادرست");}
 float                       {printf("اعشاری");}
 raise                       {printf("بالاببر");}
 sleep                       {printf("نوم");}
@@ -58,8 +59,10 @@ enum                        {printf("شمارش");}
 free                        {printf("آزاد");}
 goto                        {printf("برو");}
 main                        {printf("اصلی");}
+null                        {printf("پوچ");}
 read                        {printf("اقرأ");}
 this                        {printf("این");}
+true                        {printf("درست");}
 void                        {printf("تهی");}
 \#if                        {printf("#اگر");}
 for                         {printf("برای");}

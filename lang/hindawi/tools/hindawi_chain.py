@@ -33,6 +33,9 @@ REPAIRS = [("\\न", "\\n"), ("%भ", "%f"), ("%प", "%d"), ("%द", "%d")]   #
 ASCII_ID = re.compile(r"\b[A-Za-z_][A-Za-z0-9_]*\b")
 NAME_RUN = re.compile(r"[\w\u0300-\u036f\u0900-\u0dff\u0e00-\u0fff\u1000-\u109f]+")   # a name, marks included
 ASCII_WHOLE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
+# a word in a native script, marks and joining underscores included
+_NW = r"(?:(?![\x00-\x7f])[\w\u0300-\u036f\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed\u0900-\u0dff\u0e00-\u0fff\u1000-\u109f\u200c\u200d])"
+NATIVE_WORD = re.compile(_NW + r"(?:" + _NW + r"|_)*")
 ASCII_RUN = re.compile(r"(?<![A-Za-z0-9_])[A-Za-z_][A-Za-z0-9_]*(?![A-Za-z0-9_])")   # ASCII boundaries only
 
 
@@ -75,8 +78,10 @@ def lexers(lang):
     """Build (once) the language's ingestion c2h and compilation h2c; return their paths."""
     out = CACHE / lang
     c2h, h2c = out / "c2h", out / "h2c"
-    if c2h.exists() and h2c.exists():
-        return c2h, h2c
+    src = cell_dir(lang)
+    sources = [src / "h2c.uhin", src / "c2h.uhin", HERE / "script_filters.py"]
+    if c2h.exists() and h2c.exists() and all(p.stat().st_mtime <= h2c.stat().st_mtime for p in sources if p.exists()):
+        return c2h, h2c                    # built, and no newer than the cell it was built from
     out.mkdir(parents=True, exist_ok=True)
     src = cell_dir(lang)
     if lang == "hindi":   # Chintamani's own pair, built with its own Makefile through Romenagri
@@ -88,8 +93,11 @@ def lexers(lang):
     sh(f"flex -8 -o '{out}/c2h_lex.c' '{src}/c2h.uhin' && gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -lfl")
     # compilation: the cell's h2c through the script filter and Romenagri, as the original Makefiles build h2c
     filt = script_filter(lang) and f"python3 '{HERE / 'script_filters.py'}' prepare {lang} | "
-    sh(f"cat '{src}/h2c.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex' && "
-       f"flex -8 -o '{out}/h2c_lex.c' '{out}/h2c.lex' && gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -lfl")
+    sh(f"cat '{src}/h2c.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex'")
+    lex = (out / "h2c.lex").read_bytes().split(b"\n")      # a word's C-level form, as to_c gives it (cform)
+    lex = [re.sub(rb"^[A-Za-z0-9_^]+(?=\s+\{)", lambda m: cform(m.group(0).decode()).encode(), l) for l in lex]
+    (out / "h2c.lex").write_bytes(b"\n".join(lex))
+    sh(f"flex -8 -o '{out}/h2c_lex.c' '{out}/h2c.lex' && gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -lfl")
     return c2h, h2c
 
 
@@ -100,6 +108,12 @@ def to_native(text, lang):
     else:
         cmd = f"'{c2h}'"
     return sh(cmd, text.encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
+
+
+def cform(form):
+    """Romenagri marks a vowel-initial syllable inside a word with ^, which no C identifier may contain; it is written _
+    instead, as Romenagri itself writes a vowel at the start of a word (DEVIATIONS.md)."""
+    return form.replace("^", "_")
 
 
 def to_c(text, lang):
@@ -115,7 +129,15 @@ def to_c(text, lang):
         held.append(t); return f"QZXQ{len(held) - 1:07d}QXZQ"
     guarded = ASCII_RUN.sub(hold, text)
     filt = script_filter(lang)
-    c = sh(f"{filt}{ROMENAGRI_CHAIN} | '{h2c}'", guarded.encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
+    # Each native word goes through the script filter and Romenagri on its own, the way the cell's rules were, so a
+    # word has one C-level form wherever it stands: Chintamani's Perso-Arabic filter reads a word-initial letter one
+    # way after a space and another way after a bracket, which would give one name two forms (DEVIATIONS.md).
+    words = sorted({m.group(0) for m in NATIVE_WORD.finditer(guarded)})
+    if words:
+        forms = sh(f"{filt}{ROMENAGRI_CHAIN}", script_filters.fold(lang, "\n".join(words)).encode("utf-8")).decode("utf-8", "replace").replace("\r", "").split("\n")
+        table = {w: cform(f.strip() or w) for w, f in zip(words, forms)}
+        guarded = NATIVE_WORD.sub(lambda m: table[m.group(0)], guarded)
+    c = sh(f"'{h2c}'", guarded.encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
     for a, b in REPAIRS:
         c = c.replace(a, b)
     return re.sub(r"QZXQ(\d{7})QXZQ", lambda m: held[int(m.group(1))], c)

@@ -8,7 +8,12 @@ Hindawi lets people program in their own language and script, from application c
 carries Hindawi's shaili toolchains for 76 languages, and BURP, the Bidirectional Universal Resource Parser, which
 ingests any existing project into any number of languages at once and reverses it byte for byte.
 
-- **Ingestion (BURP).** `python3 lang/hindawi/burp/burp.py ingest SRC --langs all --out OUT`. Keywords come from each
+**Start here.** `bash install.sh` checks what Hindawi needs, builds Chintamani's toolchain from the pinned source,
+puts `hindawi` and `hindawicc` on your PATH, and proves the installation by compiling a program from Urdu and from
+Telugu. Then `hindawi --help`, `man hindawi`, and `docs/hindawi/MANUAL.md`, which says how to work on this and where
+every tool lives. `VERIFY.md` is the manual verification, step by step, with the result each step should give.
+
+- **Ingestion (BURP).** `hindawi ingest SRC --langs all --out OUT`. Keywords come from each
   language's own transducers; names and comments are translated into a dictionary kept with the project, using
   whichever translators are installed (glossary, Argos Translate, a local language model, any command). Application
   work needs nothing more. See `docs/hindawi/BURP.md`.
@@ -18,9 +23,9 @@ ingests any existing project into any number of languages at once and reverses i
 - **Editors.** The Arduino IDE (`ide/arduino/install.sh`: students program their boards in their own language),
   Eclipse (`ide/eclipse/`), Geany, and gdb with native names (`ide/gdbinit`). See `docs/hindawi/IDE.md`.
 - **Samples.** `samples/gate/`: programs for every programming domain GATE covers, in C with Python, Java, C++ and
-  BASIC beside them. `python3 tests/gate/run.py --langs sanskrit` ingests them into a language, compiles each C program
-  from that language through the original pipeline and checks it prints what the English one prints. The Sanskrit
-  set is on the site beside the English one: `docs/hindawi/samples/index.html`.
+  BASIC beside them. `hindawi gate --langs sanskrit` ingests them into a language, compiles each C program
+  from that language through the original pipeline and checks it prints what the English one prints. What each
+  program teaches, against the GATE syllabus, is in `docs/hindawi/GATE-PROGRAMS.md`. The sets are on the site beside the English one: `docs/hindawi/samples/index.html`.
 - **Your language's standard.** Review it construct by construct and paradigm by paradigm, from hardware description
   to robots and AI, on `docs/hindawi/review.html`; each proposal is an issue here. Each language's gaps are in its
   cell's `STATUS.tsv`.

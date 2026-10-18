@@ -3,8 +3,8 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 \#അല്ലെങ്കിലെങ്കിൽ          {printf("#elif");}
 വിപുലീകരിക്കുക              {printf("extends");}
@@ -35,6 +35,7 @@
 ചെയ്യുക                     {printf("do");}
 വലുപ്പം                     {printf("sizeof");}
 അക്ഷരം                      {printf("char");}
+അസത്യം                      {printf("false");}
 അസ്ഥിര                      {printf("volatile");}
 എങ്കിൽ                      {printf("if");}
 എറിയുക                      {printf("throw");}
@@ -57,6 +58,7 @@
 ബാഹ്യ                       {printf("extern");}
 വസ്തു                       {printf("Object");}
 ശൂന്യ                       {printf("NULL");}
+സത്യം                       {printf("true");}
 പൊതി                        {printf("package");}
 പൊതു                        {printf("public");}
 മായാ                        {printf("virtual");}

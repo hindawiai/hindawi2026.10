@@ -75,7 +75,8 @@ RULE = re.compile(r'^(\S+)\s+\{\s*printf\("((?:[^"\\]|\\.)*)"\);\s*\}')
 def scanner(style):
     parts = [f"(?P<inc>{INCLUDE})"] if style == "c" else []
     if style == "basic":
-        parts += [f"(?P<com>{COMMENTS[style]})", f"(?P<str>{STRINGS})"]
+        # the text after REM is a comment; REM itself is a keyword and is translated like any other
+        parts += [f"(?P<com>{COMMENTS[style]}|(?<=[Rr][Ee][Mm])[ \t][^\n]*)", f"(?P<str>{STRINGS})"]
     else:
         parts += [f"(?P<str>{STRINGS})", f"(?P<com>{COMMENTS[style]})"]
     # a number is one token, so 0xFFu or 1e-3f is never read as a name
@@ -138,6 +139,12 @@ class Translator:
     def __init__(self, lang, order):
         self.lang, self.code, self.order, self.gloss = lang, ISO.get(lang, lang), order, {}
         rows = []
+        m = HERE / "glossary/multi.tsv"           # one table, a column per language; identifiers.csv and <lang>.tsv win
+        if m.exists():
+            t = [l.rstrip("\n").split("\t") for l in open(m, encoding="utf-8") if l.strip() and not l.startswith("# ")]
+            if lang in t[0]:
+                c = t[0].index(lang)
+                rows += [(r[0], r[c]) for r in t[1:] if c < len(r) and r[c]]
         g = HIN / "tools/tables/identifiers.csv"
         if g.exists():
             rows += [(r["english"], r.get(lang)) for r in csv.DictReader(l for l in open(g, encoding="utf-8") if l.strip())]
@@ -206,8 +213,9 @@ class Translator:
 
 
 def externals(src, includes, defines):
-    """Names the project does not define: whatever the system headers declare, by the preprocessor."""
-    names = set()
+    """Names the project does not define: whatever the system headers declare, by the preprocessor. Kept apart by
+    language, so a C++ header's names (swap, first, second, sort) stay English only in C++ files, not in C files."""
+    names = {"c": set(), "c++": set()}
     for f in sorted(p for p in Path(src).rglob("*") if p.suffix in (".c", ".h", ".cpp", ".cc", ".hpp")):
         cmd = ["gcc", "-E", "-x", "c++" if f.suffix in (".cpp", ".cc", ".hpp") else "c", str(f)]
         cmd += [f"-I{d}" for d in [str(f.parent), str(src)] + includes] + [f"-D{d}" for d in defines]
@@ -218,7 +226,8 @@ def externals(src, includes, defines):
             if m:
                 system = " 3" in m.group(2) or m.group(1).startswith("/usr/"); continue
             if system:
-                names.update(re.findall(r"\b[A-Za-z_]\w*\b", line))
+                names["c++" if f.suffix in (".cpp", ".cc", ".hpp") else "c"].update(re.findall(r"\b[A-Za-z_]\w*\b", line))
+    names["c++"] |= names["c"]
     return names
 
 
@@ -283,7 +292,7 @@ class Ingestion:
                 return table[key]
             if w in natives:            # a name spelled like one of the language's keywords stays itself on the way back
                 seq.append(w)
-            if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external \
+            if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external["c++" if Path(rel).suffix in (".cpp", ".cc", ".cxx", ".hpp", ".hh") else "c"] \
                     or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
                 return w
             return self.name(w)

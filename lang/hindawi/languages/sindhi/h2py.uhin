@@ -3,20 +3,34 @@
    in the form of Chintamani's own transducers. Constructs without a word are in STATUS.tsv. */
 %}
 %%
-\'("\\\'"|.*)*\'                       {printf("%s",yytext);}
-\"("\\\""|[^\"^\n]*)*\"                {printf("%s",yytext);}
+\'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
+\"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+نمونو_آهي                   {printf("instanceof");}
+سٽ_ڇاپيو                    {printf("println");}
+غيرمقامي                    {printf("nonlocal");}
 استثناء                     {printf("except");}
 افتراضي                     {printf("default");}
 وإلاإذا                     {printf("elif");}
+ڪجهه_نه                     {printf("None");}
 استورد                      {printf("import");}
+اڇلائي                      {printf("throws");}
 متطاير                      {printf("volatile");}
 أخيرا                       {printf("finally");}
 استمر                       {printf("continue");}
+بائيٽ                       {printf("byte");}
+سرشتو                       {printf("System");}
+سلسلو                       {printf("range");}
 طالما                       {printf("while");}
+لنگهه                       {printf("pass");}
 مجهول                       {printf("lambda");}
 مزدوج                       {printf("double");}
+مقامي                       {printf("native");}
+منطقي                       {printf("boolean");}
+هٽايو                       {printf("del");}
 واجهة                       {printf("interface");}
+ڇاپيو                       {printf("print");}
+ڊيگهه                       {printf("len");}
 أرجع                        {printf("return");}
 أعلى                        {printf("super");}
 أنتج                        {printf("yield");}
@@ -31,6 +45,7 @@
 جديد                        {printf("new");}
 حالة                        {printf("case");}
 حاول                        {printf("try");}
+حتمي                        {printf("final");}
 حزمة                        {printf("package");}
 ساكن                        {printf("static");}
 صحيح                        {printf("True");}
@@ -39,23 +54,30 @@
 كائن                        {printf("Object");}
 مجرد                        {printf("abstract");}
 محمي                        {printf("protected");}
+مکيه                        {printf("main");}
+ننڍو                        {printf("short");}
 وإلا                        {printf("else");}
 يمتد                        {printf("extends");}
 ينفذ                        {printf("implements");}
+ڊگهو                        {printf("long");}
+آهي                         {printf("is");}
 أكد                         {printf("assert");}
 إذا                         {printf("if");}
 ارم                         {printf("throw");}
 بدل                         {printf("switch");}
+جذر                         {printf("sqrt");}
 حرف                         {printf("char");}
 خاص                         {printf("private");}
 خطأ                         {printf("False");}
 خيط                         {printf("Thread");}
+سان                         {printf("with");}
 صنف                         {printf("class");}
 عام                         {printf("global");}
 لكل                         {printf("for");}
 ليس                         {printf("not");}
 نوم                         {printf("sleep");}
 هذا                         {printf("this");}
+وصف                         {printf("def");}
 أو                          {printf("or");}
 في                          {printf("in");}
 كـ                          {printf("as");}
