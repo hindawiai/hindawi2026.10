@@ -20,6 +20,9 @@ every tool lives. `VERIFY.md` is the manual verification, step by step, with the
   layers.
 - **Editors.** The Arduino IDE (`ide/arduino/install.sh`: students program their boards in their own language),
   Eclipse (`ide/eclipse/`), Geany, and gdb with native names (`ide/gdbinit`). See `docs/hindawi/IDE.md`.
+- **Standards, work packages and notebooks.** `standards/` holds each language's standard in Markdown, JSON and Word;
+  `work-packages/` the open work anyone can claim (`docs/hindawi/work-packages.html`); `notebooks/` the Colab notebooks
+  in each language (`docs/hindawi/notebooks.html`).
 - **Samples.** `samples/gate/`: programs for every programming domain GATE covers, in C with Python, Java, C++ and
   BASIC beside them. `hindawi gate --langs sanskrit` ingests them into a language, compiles each C program
   from that language through the original pipeline and checks it prints what the English one prints. What each

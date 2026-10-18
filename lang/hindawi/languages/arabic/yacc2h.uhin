@@ -14,12 +14,10 @@ volatile                    {printf("متطاير");}
 default                     {printf("افتراضي");}
 private                     {printf("خاص");}
 typedef                     {printf("تعريفنوع");}
-virtual                     {printf("افتراضي");}
 assert                      {printf("أكد");}
 double                      {printf("مزدوج");}
 extern                      {printf("خارجي");}
 inline                      {printf("مضمن");}
-printf                      {printf("اكتب");}
 public                      {printf("عام");}
 return                      {printf("إرجاع");}
 signal                      {printf("إشارة");}
@@ -33,7 +31,6 @@ break                       {printf("اكسر");}
 const                       {printf("ثابت");}
 float                       {printf("عائم");}
 raise                       {printf("ارفع");}
-scanf                       {printf("اقرأ");}
 union                       {printf("اتحاد");}
 while                       {printf("بينما");}
 write                       {printf("اكتب");}

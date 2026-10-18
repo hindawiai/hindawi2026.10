@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಎಡಭಾಗ[] = {1 | 2, 2 | 4, 8, 16}, ಬಲಭಾಗ[] = {4, 8, 16, 32}, ಆವರಣ = 1 | 2, ಬದಲಾಯಿತು = 1;   /* AB->C, BC->D, D->E, E->F */

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* stack: balanced brackets */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಅಕ್ಷರ ಪಠ್ಯ[] = "{[()()]}", ಅಟ್ಟಿ[32];

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 ಚಿಹ್ನೆರಹಿತ ಚಕ್ರೀಯ_ಪರೀಕ್ಷೆ_32(ಸ್ಥಿರಾಂಕ ಅಕ್ಷರ *ಪಠ್ಯ) {
   ಚಿಹ್ನೆರಹಿತ ಚಕ್ರೀಯ_ಪರೀಕ್ಷೆ = 0xFFFFFFFFu;

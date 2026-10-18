@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* memory hierarchy: a direct-mapped cache of four lines, block size 4 words; count hits and misses */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం చిరునామాలు[] = {0, 4, 8, 0, 16, 4, 32, 0, 8, 48}, ట్యాగులు[4], వాడిన[4] = {0}, తగిలినవి = 0, తప్పినవి = 0;

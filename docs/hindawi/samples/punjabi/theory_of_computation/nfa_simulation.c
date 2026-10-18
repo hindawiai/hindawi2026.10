@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* an NFA, simulated on sets of states, accepting binary strings whose second-last symbol is 1 */
 ਪੂਰਨ ਮੰਨਦਾ(ਅਚਲ ਅੱਖਰ *ਸ਼ਬਦ) {
   ਪੂਰਨ ਹਾਲਤਾਂ = 1;                                /* bit k set means state k is active */

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* binary min-heap as a priority queue */
 ਪੂਰਨ ਢੇਰ[32], ਮਾਪ = 0;
 ਖਾਲੀ ਦਾਖਲ_ਕਰੋ(ਪੂਰਨ ਮੁੱਲ_ਇਕ) {

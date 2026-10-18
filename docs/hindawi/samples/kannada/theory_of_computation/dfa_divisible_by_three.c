@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* a DFA over binary strings that accepts multiples of three */
 ಪೂರ್ಣಾಂಕ ಸ್ವೀಕರಿಸು(ಸ್ಥಿರಾಂಕ ಅಕ್ಷರ *ಶಬ್ದ) {
   ಪೂರ್ಣಾಂಕ state = 0;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* N queens: count the solutions for N = 6 */
 صحيح ستنه[8], اندازه = 6, حلونه = 0;
 صحيح خوندي(صحيح لیکه, صحيح ستون) {

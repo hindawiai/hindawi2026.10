@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਖੱਬਾ[] = {1 | 2, 2 | 4, 8, 16}, ਸੱਜਾ[] = {4, 8, 16, 32}, ਘੇਰਾ = 1 | 2, ਬਦਲਿਆ = 1;   /* AB->C, BC->D, D->E, E->F */

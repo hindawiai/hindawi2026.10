@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindawi: work packages</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#666;--line:#ddd;--acc:#1f4e79;--card:#f7f7f7}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#8ab4f8;--card:#1e1e1e}}
+body{font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;padding:16px}
+a{color:var(--acc)}.mut{color:var(--mut)}
+.p{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0}
+.p b{display:block}.row{display:flex;gap:12px;flex-wrap:wrap;font-size:14px}
+</style></head><body>
+<h1>Work packages</h1>
+<p class="mut">Pieces of Hindawi anyone can take: a student, a linguist, or an AI working for one. Claiming a package opens
+an issue on <a href="https://github.com/hindawiai/hindawi2026.10/issues">hindawiai/hindawi2026.10</a>, so two people do not
+take the same one. A language package is the words that language's standard still needs; when it is filled,
+<code>hindawi standard import</code> checks every word and puts it into the language. Every word stays proposed until
+the language's community reviews it on the <a href="review.html">review page</a>.</p>
+<div id="list"></div>
+<script>
+const BLOB = "https://github.com/hindawiai/hindawi2026.10/tree/main/";
+const KINDS = {language: "Languages: the words each standard still needs", gate: "GATE programs still to write",
+               javascript: "The tooling in JavaScript, so the site can be the installer"};
+fetch("data/work-packages.json").then(r => r.json()).then(all => {
+  for (const [kind, title] of Object.entries(KINDS)) {
+    const items = all.filter(p => p.kind === kind);
+    const h = document.createElement("h2"); h.textContent = `${title} (${items.length})`; list.appendChild(h);
+    if (!items.length) { const p = document.createElement("p"); p.className = "mut"; p.textContent = "None open."; list.appendChild(p); }
+    for (const p of items) {
+      const d = document.createElement("div"); d.className = "p";
+      const b = document.createElement("b"); b.textContent = `${p.id}: ${p.title}`; d.appendChild(b);
+      const r = document.createElement("div"); r.className = "row";
+      const s = document.createElement("span"); s.className = "mut"; s.textContent = p.size || ""; r.appendChild(s);
+      const a1 = document.createElement("a"); a1.href = BLOB + p.path; a1.textContent = "read it"; r.appendChild(a1);
+      const a2 = document.createElement("a"); a2.href = p.claim; a2.textContent = "take it (opens an issue)"; r.appendChild(a2);
+      d.appendChild(r); list.appendChild(d);
+    }
+  }
+});
+</script></body></html>

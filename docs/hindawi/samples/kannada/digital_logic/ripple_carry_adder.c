@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಮೊದಲ = 11, ಎರಡನೇ = 6, ವಾಹಕ = 0, ಮೊತ್ತ = 0;

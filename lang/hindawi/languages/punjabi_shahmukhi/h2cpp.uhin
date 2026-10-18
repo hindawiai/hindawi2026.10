@@ -7,9 +7,16 @@
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
 ودھ_توں_ودھ_عدد             {printf("INT_MAX");}
+\#جے_بنا_تعریف              {printf("#ifndef");}
+\#جے_تعریف_شدہ              {printf("#ifdef");}
 صفر_حافظہ_دیو               {printf("calloc");}
 حرف_یا_ہندسہ                {printf("isalnum");}
+لڑی_توں_پڑھو                {printf("sscanf");}
+\#تعریف_کرو                 {printf("#define");}
 لڑی_لمبائی                  {printf("strlen");}
+لڑی_مقابلہ                  {printf("strncmp");}
+\#تعریف_رد                  {printf("#undef");}
+باہر_نکلو                   {printf("exit");}
 حافظہ_دیو                   {printf("malloc");}
 حافظہ_نقل                   {printf("memcpy");}
 خالی_سوچک                   {printf("nullptr");}
@@ -17,16 +24,26 @@
 \#وإلاإذا                   {printf("#elif");}
 بنانشانی                    {printf("unsigned");}
 تعريفنوع                    {printf("typedef");}
+جیب_تمام                    {printf("cos");}
+حرف_لکھو                    {printf("putchar");}
+لوگارتھم                    {printf("log");}
+لڑی_کھوج                    {printf("strstr");}
+مطلق_قدر                    {printf("abs");}
 ہندسہ_اے                    {printf("isdigit");}
+\#جے_انت                    {printf("#endif");}
 افتراضي                     {printf("default");}
 بدلنجوگ                     {printf("mutable");}
 سطر_انت                     {printf("endl");}
 قسم_ناں                     {printf("typename");}
+قوت_نما                     {printf("exp");}
+وڈا_حرف                     {printf("toupper");}
+\#ہدایت                     {printf("#pragma");}
 حرف_اے                      {printf("isalpha");}
 خلا_اے                      {printf("isspace");}
 خودکار                      {printf("auto");}
 متزامن                      {printf("sync");}
 متطاير                      {printf("volatile");}
+\#غلطی                      {printf("#error");}
 \#وإلا                      {printf("#else");}
 أنبوب                       {printf("pipe");}
 إشارة                       {printf("signal");}
@@ -36,12 +53,14 @@
 خارجي                       {printf("extern");}
 سانچا                       {printf("template");}
 طالما                       {printf("while");}
+مجازی                       {printf("virtual");}
 محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
 منطقي                       {printf("bool");}
 ورتوں                       {printf("using");}
 چھوٹا                       {printf("short");}
 \#إذا                       {printf("#if");}
+\#سطر                       {printf("#line");}
 \#ضمن                       {printf("#include");}
 أرجع                        {printf("return");}
 اذهب                        {printf("goto");}
@@ -76,6 +95,7 @@
 ارم                         {printf("throw");}
 بدل                         {printf("switch");}
 جذر                         {printf("sqrt");}
+جیب                         {printf("sin");}
 حجم                         {printf("sizeof");}
 حرر                         {printf("free");}
 حرف                         {printf("char");}
@@ -86,11 +106,13 @@
 صنف                         {printf("class");}
 عام                         {printf("public");}
 عدم                         {printf("NULL");}
+قوت                         {printf("pow");}
 لكل                         {printf("for");}
 لما                         {printf("long");}
 مکھ                         {printf("main");}
 نوم                         {printf("sleep");}
 هذا                         {printf("this");}
 یار                         {printf("friend");}
+سچ                          {printf("true");}
 
 %%

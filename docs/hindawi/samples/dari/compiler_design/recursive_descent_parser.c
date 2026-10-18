@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ضمن <stdio.h>
+#ضمن <ctype.h>
 /* parsing: a recursive-descent parser that evaluates  expression -> term {+|- term},  term -> factor {*|/ factor} */
 ثابت حرف *متن;
 صحيح عبارت(فراغ);

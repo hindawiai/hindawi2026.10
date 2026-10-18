@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <math.h>
 /* probability and statistics: mean, median, mode and standard deviation of sorted values */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਮੁੱਲ[] = {2, 3, 3, 5, 7, 8, 8, 8, 9}, ਗਿਣਤੀ_2 = 9, ਬਹੁਲਕ = ਮੁੱਲ[0], ਉੱਤਮ = 0;

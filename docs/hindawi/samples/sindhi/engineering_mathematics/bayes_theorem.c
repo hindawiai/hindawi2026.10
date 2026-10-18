@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* probability: Bayes' theorem for a test with known sensitivity and false-positive rate */
 صحيح مکيه(فراغ) {
   مزدوج اڳواٽ = 0.01, حساسيت = 0.95, ڪوڙو_مثبت = 0.05;

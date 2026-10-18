@@ -27,6 +27,7 @@ PARADIGM_WORDS = {
         global if import in is lambda nonlocal not or pass raise return try while with yield print range len""".split()),
     "BASIC": (["b2h"], "dim end for gosub goto if input let next print rem return step then to wend while and or not mod".split()),
     "LOGO": (["logo2h"], "forward back left right penup pendown repeat to end make if ifelse home clearscreen".split()),
+    "C preprocessor": (["c2h"], "#define #include #if #ifdef #ifndef #else #elif #endif #undef #pragma #error #line".split()),
 }
 
 
@@ -49,25 +50,31 @@ def gate_names(lang, work):
     done = [k for k, v in names.items() if v != k and not latin.search(v)]
     words = sorted({w.lower() for k, v in names.items() if latin.search(v) for w in re.split(r"_|(?<=[a-z0-9])(?=[A-Z])", k) if w and not w.isdigit()})
     text = " ".join(p.read_text(encoding="utf-8", errors="replace") for p in (work / lang).rglob("*.c"))
+    text = re.sub(r'/\*[\s\S]*?\*/|//[^\n]*|"(?:\\.|[^"\\\n])*"', " ", text)   # code only: comments and strings stay English
     lib = sorted({w for w in re.findall(r"\b(printf|scanf|puts|putchar|getchar|malloc|calloc|free|strlen|strcpy|strcmp|memset|"
-                                       r"memcpy|sqrt|pow|abs|exit|isdigit|isalpha|isalnum|isspace|INT_MAX|NULL)\b", text)})
+                                       r"memcpy|sqrt|pow|abs|exit|sin|cos|exp|log|toupper|sscanf|strstr|strncmp|isdigit|isalpha|isalnum|isspace|INT_MAX)\b", text)})
     return len(done), len(names), words, lib
 
 
-ap = argparse.ArgumentParser()
-ap.add_argument("--langs", required=True)
-ap.add_argument("--missing", action="store_true", help="list what is missing")
-a = ap.parse_args()
-work = Path(tempfile.mkdtemp(prefix="coverage-"))
-for lang in a.langs.split(","):
-    kw = keywords(lang)
-    done, total, words, lib = gate_names(lang, work)
-    print(f"{lang}: " + ", ".join(f"{p} {h}/{t}" for p, (h, t, _) in kw.items())
-          + f"; GATE programs: {done}/{total} names in {lang}, library calls left in English: {' '.join(lib) or 'none'}")
-    if a.missing:
-        for p, (_, _, miss) in kw.items():
-            if miss:
-                print(f"  {p} keywords without a word: {' '.join(miss)}")
-        if words:
-            print(f"  words of untranslated names: {' '.join(words)}")
-shutil.rmtree(work, ignore_errors=True)
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--langs", required=True)
+    ap.add_argument("--missing", action="store_true", help="list what is missing")
+    a = ap.parse_args()
+    work = Path(tempfile.mkdtemp(prefix="coverage-"))
+    for lang in a.langs.split(","):
+        kw = keywords(lang)
+        done, total, words, lib = gate_names(lang, work)
+        print(f"{lang}: " + ", ".join(f"{p} {h}/{t}" for p, (h, t, _) in kw.items())
+              + f"; GATE programs: {done}/{total} names in {lang}, library calls left in English: {' '.join(lib) or 'none'}")
+        if a.missing:
+            for p, (_, _, miss) in kw.items():
+                if miss:
+                    print(f"  {p} keywords without a word: {' '.join(miss)}")
+            if words:
+                print(f"  words of untranslated names: {' '.join(words)}")
+    shutil.rmtree(work, ignore_errors=True)
+
+
+if __name__ == "__main__":
+    main()

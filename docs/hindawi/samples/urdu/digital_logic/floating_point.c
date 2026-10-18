@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#شامل <stdio.h>
+#شامل <string.h>
 /* number representation: the sign, exponent and fraction of an IEEE 754 single-precision number */
 صحیح مین(خالی) {
   اعشاری نمبر = -6.25f;

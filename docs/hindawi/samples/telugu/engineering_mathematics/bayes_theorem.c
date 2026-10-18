@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* probability: Bayes' theorem for a test with known sensitivity and false-positive rate */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   ద్విగుణ పూర్వ = 0.01, సున్నితత్వం = 0.95, తప్పుడు_అనుకూల = 0.05;

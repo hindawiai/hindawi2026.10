@@ -14,6 +14,7 @@
 غیرځایی                     {printf("nonlocal");}
 وإلاإذا                     {printf("elif");}
 استورد                      {printf("import");}
+ریښتیا                      {printf("True");}
 غورځوي                      {printf("throws");}
 لرېکړه                      {printf("del");}
 متطاير                      {printf("volatile");}
@@ -47,7 +48,7 @@
 حاول                        {printf("try");}
 حزمة                        {printf("package");}
 ساكن                        {printf("static");}
-صحيح                        {printf("True");}
+صحيح                        {printf("int");}
 عائم                        {printf("float");}
 فراغ                        {printf("void");}
 كائن                        {printf("Object");}

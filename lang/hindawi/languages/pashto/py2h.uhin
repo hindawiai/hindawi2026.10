@@ -32,7 +32,6 @@ global                      {printf("عام");}
 import                      {printf("استورد");}
 lambda                      {printf("مجهول");}
 native                      {printf("ځایی");}
-public                      {printf("عام");}
 return                      {printf("أرجع");}
 static                      {printf("ساكن");}
 switch                      {printf("بدل");}
@@ -55,7 +54,7 @@ while                       {printf("طالما");}
 write                       {printf("اكتب");}
 yield                       {printf("أنتج");}
 None                        {printf("هیڅ");}
-True                        {printf("صحيح");}
+True                        {printf("ریښتیا");}
 byte                        {printf("بایټ");}
 case                        {printf("حالة");}
 char                        {printf("حرف");}

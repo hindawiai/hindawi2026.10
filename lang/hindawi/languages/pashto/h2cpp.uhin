@@ -6,15 +6,30 @@
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+\#که_نه_تعریف_شوی           {printf("#ifndef");}
 حافظه_صفر_ورکړه             {printf("calloc");}
 که_توری_یا_عدد              {printf("isalnum");}
+\#که_تعریف_شوی              {printf("#ifdef");}
+توری_چاپ_کړه                {printf("putchar");}
+له_مزي_ولوله                {printf("sscanf");}
 مزي_اوږدوالی                {printf("strlen");}
+\#تعریف_لغوه                {printf("#undef");}
+توانیز_تابع                 {printf("exp");}
 حافظه_ورکړه                 {printf("malloc");}
+\#تعریف_کړه                 {printf("#define");}
+\#د_که_پای                  {printf("#endif");}
+\#لارښوونه                  {printf("#pragma");}
 بدلیدونکی                   {printf("mutable");}
 حافظه_نقل                   {printf("memcpy");}
+مزي_پرتله                   {printf("strncmp");}
+مزي_پلټنه                   {printf("strstr");}
+مطلق_قیمت                   {printf("abs");}
+\#تېروتنه                   {printf("#error");}
 \#وإلاإذا                   {printf("#elif");}
 تش_اشاره                    {printf("nullptr");}
 تعريفنوع                    {printf("typedef");}
+لوګاریتم                    {printf("log");}
+لوی_توری                    {printf("toupper");}
 کرښه_پای                    {printf("endl");}
 افتراضي                     {printf("default");}
 خپلکاری                     {printf("auto");}
@@ -23,13 +38,16 @@
 چلوونکی                     {printf("operator");}
 ډول_نوم                     {printf("typename");}
 که_توری                     {printf("isalpha");}
+ریښتیا                      {printf("true");}
 متزامن                      {printf("sync");}
 متطاير                      {printf("volatile");}
 ننوتنه                      {printf("cin");}
 نښهدار                      {printf("signed");}
 که_تشه                      {printf("isspace");}
 که_عدد                      {printf("isdigit");}
+کوساین                      {printf("cos");}
 \#وإلا                      {printf("#else");}
+\#کرښه                      {printf("#line");}
 أنبوب                       {printf("pipe");}
 إشارة                       {printf("signal");}
 اتحاد                       {printf("union");}
@@ -38,6 +56,7 @@
 تعداد                       {printf("enum");}
 خارجي                       {printf("extern");}
 طالما                       {printf("while");}
+مجازي                       {printf("virtual");}
 محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
 ملګری                       {printf("friend");}
@@ -59,11 +78,13 @@
 امسك                        {printf("catch");}
 اوږد                        {printf("long");}
 بنية                        {printf("struct");}
+توان                        {printf("pow");}
 ثابت                        {printf("const");}
 جديد                        {printf("new");}
 حالة                        {printf("case");}
 حاول                        {printf("try");}
 ساكن                        {printf("static");}
+ساین                        {printf("sin");}
 صحيح                        {printf("int");}
 عائم                        {printf("float");}
 فراغ                        {printf("void");}
@@ -90,6 +111,7 @@
 لنډ                         {printf("short");}
 نوم                         {printf("sleep");}
 هذا                         {printf("this");}
+وتل                         {printf("exit");}
 کیڼ                         {printf("left");}
 ښی                          {printf("right");}
 

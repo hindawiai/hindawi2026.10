@@ -48,7 +48,7 @@
 حزمة                        {printf("package");}
 ساكن                        {printf("static");}
 سٹدا                        {printf("throws");}
-صحيح                        {printf("True");}
+صحيح                        {printf("int");}
 عائم                        {printf("float");}
 فراغ                        {printf("void");}
 كائن                        {printf("Object");}
@@ -79,6 +79,7 @@
 هذا                         {printf("this");}
 أو                          {printf("or");}
 اے                          {printf("is");}
+سچ                          {printf("True");}
 في                          {printf("in");}
 كـ                          {printf("as");}
 من                          {printf("from");}

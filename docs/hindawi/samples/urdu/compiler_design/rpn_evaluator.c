@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#شامل <stdio.h>
+#شامل <ctype.h>
 /* evaluate a postfix (reverse Polish) expression with a stack */
 صحیح مین(خالی) {
   حرف عبارت[] = "3 4 + 2 * 7 -";

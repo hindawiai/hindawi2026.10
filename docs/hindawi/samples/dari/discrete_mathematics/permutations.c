@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* all permutations of 1..3, by swapping */
 صحيح مقادیر[] = {1, 2, 3}, مجموع = 0;
 فراغ جایگشت(صحيح شروع) {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਅੱਖਰ ਫੀਤਾ[16] = "_1011_";

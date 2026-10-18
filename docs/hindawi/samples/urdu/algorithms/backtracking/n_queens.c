@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* N queens: count the solutions for N = 6 */
 صحیح عمود[8], سائز = 6, حل = 0;
 صحیح محفوظ_2(صحیح صف, صحیح ستون) {

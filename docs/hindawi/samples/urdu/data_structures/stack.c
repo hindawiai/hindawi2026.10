@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* stack: balanced brackets */
 صحیح مین(خالی) {
   حرف متن[] = "{[()()]}", انبار[32];

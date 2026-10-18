@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <ctype.h>
 /* evaluate a postfix (reverse Polish) expression with a stack */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಅಕ್ಷರ ಅಭಿವ್ಯಕ್ತಿ[] = "3 4 + 2 * 7 -";

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* linear algebra: solve a system of three equations by Gaussian elimination, and its determinant */
 صحيح مکيه(فراغ) {
   مزدوج ميٽرڪس[3][4] = {{2, 1, -1, 8}, {-3, -1, 2, -11}, {-2, 1, 2, -3}}, نتيجو[3], مقطع = 1;

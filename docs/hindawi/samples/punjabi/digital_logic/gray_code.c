@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* binary to Gray code and back */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਲਈ (ਪੂਰਨ ਨੰਬਰ = 0; ਨੰਬਰ < 8; ਨੰਬਰ++) {

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* activity selection: activities sorted by finish time */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಆರಂಭ[] = {1, 3, 0, 5, 8, 5}, ಮುಕ್ತಾಯ[] = {2, 4, 6, 7, 9, 9}, ಎಣಿಕೆ_2 = 6, ಕೊನೆಯ = 0, ಒಟ್ಟು = 1;

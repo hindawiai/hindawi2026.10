@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* activity selection: activities sorted by finish time */
 صحيح اصلی(فراغ) {
   صحيح شروع[] = {1, 3, 0, 5, 8, 5}, پایان[] = {2, 4, 6, 7, 9, 9}, شمار = 6, آخرین = 0, مجموع = 1;

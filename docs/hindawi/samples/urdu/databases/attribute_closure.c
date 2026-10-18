@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 صحیح مین(خالی) {
   صحیح بائیں[] = {1 | 2, 2 | 4, 8, 16}, دائیں[] = {4, 8, 16, 32}, احاطہ = 1 | 2, بدلا = 1;   /* AB->C, BC->D, D->E, E->F */

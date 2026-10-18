@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* all permutations of 1..3, by swapping */
 ಪೂರ್ಣಾಂಕ ಮೌಲ್ಯಗಳು[] = {1, 2, 3}, ಒಟ್ಟು = 0;
 ಶೂನ್ಯ ಕ್ರಮಬದಲಾವಣೆ(ಪೂರ್ಣಾಂಕ ಆರಂಭ) {

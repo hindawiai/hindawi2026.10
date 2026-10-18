@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* IPv4 and CIDR: the network, broadcast address and host count of 192.168.10.77/26 */
 صحيح مکھ(فراغ) {
   بنانشانی پتہ = (192u << 24) | (168 << 16) | (10 << 8) | 77, اگیتر = 26, نقاب = اگیتر ? ~0u << (32 - اگیتر) : 0;

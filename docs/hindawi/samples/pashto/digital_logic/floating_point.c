@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ضمن <stdio.h>
+#ضمن <string.h>
 /* number representation: the sign, exponent and fraction of an IEEE 754 single-precision number */
 صحيح اصلي(فراغ) {
   عائم شمېره = -6.25f;

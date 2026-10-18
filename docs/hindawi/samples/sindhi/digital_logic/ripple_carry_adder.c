@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 صحيح مکيه(فراغ) {
   صحيح پهريون = 11, ٻيو = 6, حاصل = 0, جوڙ = 0;

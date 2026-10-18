@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* routing: distance-vector rounds (Bellman-Ford) until no table changes; 99 means unreachable */
 صحیح مین(خالی) {
   صحیح لاگت[4][4] = {{0, 1, 99, 7}, {1, 0, 2, 99}, {99, 2, 0, 1}, {7, 99, 1, 0}}, فاصلہ[4][4], دور = 0, بدلا = 1;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* pointers and arrays: reverse in place, pointer arithmetic */
 ਖਾਲੀ ਉਲਟ(ਪੂਰਨ *ਸ਼ੁਰੂ, ਪੂਰਨ *ਸਿਰਾ) { ਜਦੋਂ (ਸ਼ੁਰੂ < ਸਿਰਾ) { ਪੂਰਨ ਆਰਜ਼ੀ = *ਸ਼ੁਰੂ; *ਸ਼ੁਰੂ++ = *ਸਿਰਾ; *ਸਿਰਾ-- = ਆਰਜ਼ੀ; } }
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {

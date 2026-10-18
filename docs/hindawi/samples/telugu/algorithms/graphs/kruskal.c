@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 పూర్ణాంకం మాతృ[6];
 పూర్ణాంకం కనుగొను(పూర్ణాంకం శీర్షం) { తిరిగి మాతృ[శీర్షం] == శీర్షం ? శీర్షం : (మాతృ[శీర్షం] = కనుగొను(మాతృ[శీర్షం])); }

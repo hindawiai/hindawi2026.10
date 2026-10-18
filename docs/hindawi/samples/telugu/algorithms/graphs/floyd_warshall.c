@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* Floyd-Warshall all-pairs shortest paths; 999 means no edge */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం దూరం[4][4] = {{0,5,999,10},{999,0,3,999},{999,999,0,1},{999,999,999,0}};

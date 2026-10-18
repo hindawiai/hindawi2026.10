@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* structures, unions and sizeof */
 ਬਣਤਰ ਬਿੰਦੂ { ਪੂਰਨ x, y; };
 ਸੰਘ ਨੰਬਰ { ਪੂਰਨ ਸਾਰਾ; ਅੱਖਰ ਬਾਈਟਾਂ[4]; };

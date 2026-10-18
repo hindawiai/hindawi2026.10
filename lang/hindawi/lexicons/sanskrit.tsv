@@ -16,8 +16,8 @@ inline	पङ्क्तिस्थ
 #pragma	#निर्देशः
 #error	#दोषः
 #line	#पङ्क्तिः
-printf	लिख
-scanf	पठ
+printf	प्रारूप_लिख
+scanf	प्रारूप_पठ
 puts	पङ्क्तिं_लिख
 putchar	अक्षरं_लिख
 getchar	अक्षरं_पठ

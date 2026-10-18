@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* an NFA, simulated on sets of states, accepting binary strings whose second-last symbol is 1 */
 صحيح میپذیرد(ثابت حرف *کلمه) {
   صحيح حالتها = 1;                                /* bit k set means state k is active */

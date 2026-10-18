@@ -1,0 +1,632 @@
+# HLS ur 2026.10
+
+**Urdu bindings for programming languages: lexical mapping and lowering to the host standards**
+
+Edition 2026.10, working draft, 2026-10-18. © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+
+## Foreword
+
+This document was prepared by AyeAI, Hindawi project (Project ILM). It is generated from the Urdu cell of Hindawi 2026.10 by lang/hindawi/tools/standards.py, so that the published standard and the reference implementation cannot drift apart. Its stage is a working draft: the words marked proposed in Annex A await review by the Urdu language community, through the review pages of the Hindawi project.
+
+## Introduction
+
+This document lets programs be written in Urdu, in the Arabic script, in each of the programming languages listed in Clause 1. Each binding is a programming language in its own right, Urdu C for example, whose programs are lowered by the function defined in Clause 6 to programs of the host language, and are then processed by any conforming implementation of the host standard. The host standards are incorporated by reference and are not restated. Names keep a defined form down to object code (Clause 7), so programs written in Urdu remain debuggable at the level of firmware, kernels and libraries.
+
+## 1 Scope
+
+This document specifies, for the Urdu language written in the Arabic script, bindings to the following host programming languages: C, C preprocessor, C++, Java, Python, BASIC, LOGO. For each binding it specifies the native keywords and directives, the lowering of native programs to host programs, the treatment of names, and the requirements for conformance.
+
+It does not specify the syntax or semantics of any host language beyond what is needed to define the lowering, and it does not specify translations of comments, string literals or documentation.
+
+## 2 Normative references
+
+The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For undated references, the latest edition of the referenced document (including any amendments) applies.
+
+- ISO/IEC 9899, Information technology, Programming languages, C
+- ISO/IEC 14882, Programming languages, C++
+- The Java Language Specification, Oracle, current edition
+- The Python Language Reference, Python Software Foundation, current version
+- ISO/IEC 10279, Information technology, Programming languages, Full BASIC
+- ISO/IEC 10646, Information technology, Universal coded character set (UCS)
+- Unicode Standard Annex #15, Unicode normalization forms
+- Unicode Standard Annex #31, Unicode identifiers and syntax
+
+## 3 Terms and definitions
+
+- host language: programming language defined by a normative reference, to which a native program is lowered
+
+- binding: programming language defined by this document whose programs are written in Urdu and lowered to one host language
+
+- native keyword: word of this document that stands for one keyword, directive or standard library name of a host language
+
+- lowering: function from native programs to host programs defined in Clause 6
+
+- raising: inverse of lowering applied to a host program with a dictionary of names, giving back the native program exactly
+
+- name transformation: function from native names to host identifiers defined in Clause 7
+
+- C-level form: result of the name transformation; the form a native name takes in host source and in object code
+
+## 4 Conformance
+
+A conforming Urdu program of a binding shall be a text that meets Clause 5 and whose lowering is a conforming program of the host language.
+
+A conforming implementation of a binding shall accept every conforming program of that binding and shall behave as the lowering of the program, processed by a conforming implementation of the host language, behaves.
+
+An implementation that raises host programs into a binding shall produce native programs whose lowering, with the same dictionary of names, is identical to the host program it raised.
+
+## 5 Character set and encoding
+
+A native program shall be encoded in UTF-8 and shall be in Normalization Form C. Native keywords and names are written in the Arabic script, whose direction is right to left. Numeric literals are written with the digits 0 to 9 (U+0030 to U+0039). A native keyword written as several words is one token, its words joined by LOW LINE (U+005F).
+
+## 6 Lowering
+
+A native program is lowered by the following steps, applied in order to the tokens the host language's lexical rules yield when the letters and marks of the script are treated as identifier characters.
+
+- Each native keyword of the binding's table in Annex A is replaced by the host keyword, directive or name it stands for.
+- A host keyword for which Annex A gives no native word is written in its host form.
+- Every other name is lowered as the binding requires: by the name transformation of Clause 7 for C, the C preprocessor, C++, BASIC and LOGO; unchanged for Java and Python, whose host standards accept such names.
+- String literals, character constants, header names in include directives, and comments are not changed.
+- Every other character is not changed.
+
+## 7 Name transformation
+
+The C-level form of a native name is obtained by passing the name, alone, through the script filter of the script (Annex C), then through the Romenagri transliteration (uni2acii followed by acii2cf), and writing each circumflex accent (U+005E) that results as LOW LINE (U+005F). Names already written in the digits, Latin letters and LOW LINE of the Basic Latin block are not transformed.
+
+Two names declared in the same scope shall not have the same C-level form.
+
+## 8 Reference implementation
+
+Hindawi 2026.10 is the reference implementation: hindawicc lowers and compiles, BURP raises and lowers projects, and the Romenagri tools of Chintamani at commit 3ad87785a75dc2b18438a8b068807103cb920c81 give the name transformation. Where this document and the reference implementation differ, this document governs.
+
+## Annex A (normative) Native keywords
+
+### A.1 C
+
+Host: ISO/IEC 9899, Information technology, Programming languages, C. Names: name transformation.
+
+| Host | Urdu | Source |
+|---|---|---|
+| auto | خودکار | proposed |
+| break | توڑو | lexicon |
+| case | حالت | lexicon |
+| char | حرف | lexicon |
+| const | ثابت | lexicon |
+| continue | جاری | lexicon |
+| default | طےشدہ | lexicon |
+| do | کرو | lexicon |
+| double | دوہرا | lexicon |
+| else | ورنہ | lexicon |
+| enum | شمار | lexicon |
+| extern | خارجی | lexicon |
+| float | اعشاری | lexicon |
+| for | برائے | lexicon |
+| goto | جاؤ | lexicon |
+| if | اگر | lexicon |
+| inline | اندرونی | lexicon |
+| int | صحیح | lexicon |
+| long | طویل | proposed |
+| register | اندراج | lexicon |
+| restrict | محدود | proposed |
+| return | واپس | lexicon |
+| short | مختصر | proposed |
+| signed | علامتی | proposed |
+| sizeof | حجم | lexicon |
+| static | ساکن | lexicon |
+| struct | ساخت | lexicon |
+| switch | انتخاب | lexicon |
+| typedef | قسمتعریف | lexicon |
+| union | اتحاد | lexicon |
+| unsigned | غیرعلامتی | proposed |
+| void | خالی | lexicon |
+| volatile | متلون | lexicon |
+| while | جب | lexicon |
+| main | مین | lexicon |
+
+Standard library and runtime names of the C binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| INT_MAX | زیادہ_سے_زیادہ_عدد | proposed |
+| NULL | تہی | lexicon |
+| abs | مطلق_قدر | proposed |
+| assert | أكد | lexicon |
+| calloc | صفر_حافظہ_دو | proposed |
+| cos | جیب_تمام | proposed |
+| exit | باہر_نکلو | proposed |
+| exp | قوت_نما | proposed |
+| free | آزاد | lexicon |
+| friend | دوست | proposed |
+| isalnum | حرف_یا_ہندسہ | proposed |
+| isalpha | حرف_ہے | proposed |
+| isdigit | ہندسہ_ہے | proposed |
+| isspace | خلا_ہے | proposed |
+| log | لوگارتھم | proposed |
+| malloc | حافظہ_دو | proposed |
+| memcpy | حافظہ_نقل | proposed |
+| operator | عامل | proposed |
+| pow | قوت | proposed |
+| printf | لکھو | proposed |
+| private | نجی | lexicon |
+| protected | محفوظ | lexicon |
+| public | عوامی | lexicon |
+| putchar | حرف_لکھو | proposed |
+| raise | اٹھاؤ | lexicon |
+| read | اقرأ | lexicon |
+| signal | اشارہ | lexicon |
+| sin | جیب | proposed |
+| sqrt | جذر | proposed |
+| sscanf | لڑی_سے_پڑھو | proposed |
+| strlen | لڑی_لمبائی | proposed |
+| strncmp | لڑی_موازنہ | proposed |
+| strstr | لڑی_تلاش | proposed |
+| template | سانچہ | proposed |
+| toupper | بڑا_حرف | proposed |
+| virtual | مجازی | lexicon |
+| write | اكتب | lexicon |
+
+### A.2 C preprocessor
+
+Host: ISO/IEC 9899, Information technology, Programming languages, C (preprocessing directives). Names: name transformation.
+
+| Host | Urdu | Source |
+|---|---|---|
+| #define | #تعریف_کرو | proposed |
+| #include | #شامل | lexicon |
+| #if | #اگر | lexicon |
+| #ifdef | #اگر_تعریف_شدہ | proposed |
+| #ifndef | #اگر_غیر_تعریف_شدہ | proposed |
+| #else | #ورنہ | lexicon |
+| #elif | #وگرنہ_اگر | lexicon |
+| #endif | #اگر_ختم | proposed |
+| #undef | #تعریف_منسوخ | proposed |
+| #pragma | #ہدایت | proposed |
+| #error | #غلطی | proposed |
+| #line | #سطر | proposed |
+
+### A.3 C++
+
+Host: ISO/IEC 14882, Programming languages, C++. Names: name transformation.
+
+| Host | Urdu | Source |
+|---|---|---|
+| auto | خودکار | proposed |
+| break | توڑو | lexicon |
+| case | حالت | lexicon |
+| char | حرف | lexicon |
+| const | ثابت | lexicon |
+| continue | جاری | lexicon |
+| default | طےشدہ | lexicon |
+| do | کرو | lexicon |
+| double | دوہرا | lexicon |
+| else | ورنہ | lexicon |
+| enum | شمار | lexicon |
+| extern | خارجی | lexicon |
+| float | اعشاری | lexicon |
+| for | برائے | lexicon |
+| goto | جاؤ | lexicon |
+| if | اگر | lexicon |
+| inline | اندرونی | lexicon |
+| int | صحیح | lexicon |
+| long | طویل | proposed |
+| register | اندراج | lexicon |
+| restrict | محدود | proposed |
+| return | واپس | lexicon |
+| short | مختصر | proposed |
+| signed | علامتی | proposed |
+| sizeof | حجم | lexicon |
+| static | ساکن | lexicon |
+| struct | ساخت | lexicon |
+| switch | انتخاب | lexicon |
+| typedef | قسمتعریف | lexicon |
+| union | اتحاد | lexicon |
+| unsigned | غیرعلامتی | proposed |
+| void | خالی | lexicon |
+| volatile | متلون | lexicon |
+| while | جب | lexicon |
+| main | مین | lexicon |
+| bool | منطقی | lexicon |
+| catch | پکڑو | lexicon |
+| class | جماعت | lexicon |
+| delete | حذف | proposed |
+| explicit | صریح | proposed |
+| false | جھوٹ | lexicon |
+| friend | دوست | proposed |
+| mutable | تغیرپذیر | proposed |
+| namespace | نامخلا | lexicon |
+| new | نیا | lexicon |
+| nullptr | خالی_اشاریہ | proposed |
+| operator | عامل | proposed |
+| private | نجی | lexicon |
+| protected | محفوظ | lexicon |
+| public | عوامی | lexicon |
+| template | سانچہ | proposed |
+| this | یہ | lexicon |
+| throw | پھینکو | lexicon |
+| true | سچ | lexicon |
+| try | کوشش | lexicon |
+| typename | قسم_نام | proposed |
+| using | استعمال | proposed |
+| virtual | مجازی | lexicon |
+| cout | خارج | proposed |
+| cin | داخل | proposed |
+| endl | سطر_ختم | proposed |
+
+Standard library and runtime names of the C++ binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| INT_MAX | زیادہ_سے_زیادہ_عدد | proposed |
+| NULL | تہی | lexicon |
+| abs | مطلق_قدر | proposed |
+| assert | أكد | lexicon |
+| calloc | صفر_حافظہ_دو | proposed |
+| cos | جیب_تمام | proposed |
+| exit | باہر_نکلو | proposed |
+| exp | قوت_نما | proposed |
+| free | آزاد | lexicon |
+| isalnum | حرف_یا_ہندسہ | proposed |
+| isalpha | حرف_ہے | proposed |
+| isdigit | ہندسہ_ہے | proposed |
+| isspace | خلا_ہے | proposed |
+| left | بائیں | proposed |
+| log | لوگارتھم | proposed |
+| malloc | حافظہ_دو | proposed |
+| memcpy | حافظہ_نقل | proposed |
+| pipe | أنبوب | lexicon |
+| pow | قوت | proposed |
+| printf | لکھو | proposed |
+| putchar | حرف_لکھو | proposed |
+| raise | اٹھاؤ | lexicon |
+| read | اقرأ | lexicon |
+| right | دائیں | proposed |
+| signal | اشارہ | lexicon |
+| sin | جیب | proposed |
+| sleep | نوم | lexicon |
+| sqrt | جذر | proposed |
+| sscanf | لڑی_سے_پڑھو | proposed |
+| strlen | لڑی_لمبائی | proposed |
+| strncmp | لڑی_موازنہ | proposed |
+| strstr | لڑی_تلاش | proposed |
+| sync | ہمآہنگ | lexicon |
+| toupper | بڑا_حرف | proposed |
+| write | اكتب | lexicon |
+
+### A.4 Java
+
+Host: The Java Language Specification, Oracle, current edition. Names: unchanged.
+
+| Host | Urdu | Source |
+|---|---|---|
+| abstract | تجریدی | lexicon |
+| assert | أكد | lexicon |
+| boolean | منطقی | proposed |
+| break | توڑو | lexicon |
+| byte | بائٹ | proposed |
+| case | حالت | lexicon |
+| catch | پکڑو | lexicon |
+| char | حرف | lexicon |
+| class | جماعت | lexicon |
+| continue | جاری | lexicon |
+| default | طےشدہ | lexicon |
+| do | کرو | lexicon |
+| double | دوہرا | lexicon |
+| else | ورنہ | lexicon |
+| enum | شمار | lexicon |
+| extends | توسیع | lexicon |
+| final | حتمی | proposed |
+| finally | آخرکار | lexicon |
+| float | اعشاری | lexicon |
+| for | برائے | lexicon |
+| if | اگر | lexicon |
+| implements | نافذ | lexicon |
+| import | درآمد | lexicon |
+| instanceof | نمونہ_ہے | proposed |
+| int | صحیح | lexicon |
+| interface | سطحرابطہ | lexicon |
+| long | طویل | proposed |
+| native | مقامی | proposed |
+| new | نیا | lexicon |
+| package | بستہ | lexicon |
+| private | نجی | lexicon |
+| protected | محفوظ | lexicon |
+| public | عوامی | lexicon |
+| return | واپس | lexicon |
+| short | مختصر | proposed |
+| static | ساکن | lexicon |
+| super | بالا | proposed |
+| switch | انتخاب | lexicon |
+| synchronized | ہمزمان | proposed |
+| this | یہ | lexicon |
+| throw | پھینکو | lexicon |
+| throws | پھینکتا | proposed |
+| try | کوشش | lexicon |
+| void | خالی | lexicon |
+| volatile | متلون | lexicon |
+| while | جب | lexicon |
+| true | سچ | lexicon |
+| false | جھوٹ | lexicon |
+| null | تہی | lexicon |
+| String | جملہ | lexicon |
+| System | نظام | proposed |
+
+Standard library and runtime names of the Java binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| INT_MAX | زیادہ_سے_زیادہ_عدد | proposed |
+| Object | شے | lexicon |
+| Thread | دھاگہ | lexicon |
+| abs | مطلق_قدر | proposed |
+| auto | خودکار | proposed |
+| calloc | صفر_حافظہ_دو | proposed |
+| const | ثابت | lexicon |
+| cos | جیب_تمام | proposed |
+| exit | باہر_نکلو | proposed |
+| exp | قوت_نما | proposed |
+| extern | خارجی | lexicon |
+| free | آزاد | lexicon |
+| friend | دوست | proposed |
+| goto | جاؤ | lexicon |
+| inline | اندرونی | lexicon |
+| isalnum | حرف_یا_ہندسہ | proposed |
+| isalpha | حرف_ہے | proposed |
+| isdigit | ہندسہ_ہے | proposed |
+| isspace | خلا_ہے | proposed |
+| log | لوگارتھم | proposed |
+| main | مین | lexicon |
+| malloc | حافظہ_دو | proposed |
+| memcpy | حافظہ_نقل | proposed |
+| operator | عامل | proposed |
+| pow | قوت | proposed |
+| printf | لکھو | proposed |
+| println | سطر_چھاپو | proposed |
+| putchar | حرف_لکھو | proposed |
+| raise | اٹھاؤ | lexicon |
+| read | اقرأ | lexicon |
+| register | اندراج | lexicon |
+| restrict | محدود | proposed |
+| signal | اشارہ | lexicon |
+| signed | علامتی | proposed |
+| sin | جیب | proposed |
+| sizeof | حجم | lexicon |
+| sleep | نوم | lexicon |
+| sqrt | جذر | proposed |
+| sscanf | لڑی_سے_پڑھو | proposed |
+| strlen | لڑی_لمبائی | proposed |
+| strncmp | لڑی_موازنہ | proposed |
+| strstr | لڑی_تلاش | proposed |
+| struct | ساخت | lexicon |
+| template | سانچہ | proposed |
+| toupper | بڑا_حرف | proposed |
+| typedef | قسمتعریف | lexicon |
+| union | اتحاد | lexicon |
+| unsigned | غیرعلامتی | proposed |
+| virtual | مجازی | lexicon |
+| write | اكتب | lexicon |
+
+### A.5 Python
+
+Host: The Python Language Reference, Python Software Foundation, current version. Names: unchanged.
+
+| Host | Urdu | Source |
+|---|---|---|
+| False | جھوٹ | lexicon |
+| None | کچھ_نہیں | proposed |
+| True | سچ | lexicon |
+| and | اور | lexicon |
+| as | بطور | lexicon |
+| assert | أكد | lexicon |
+| break | توڑو | lexicon |
+| class | جماعت | lexicon |
+| continue | جاری | lexicon |
+| def | تعریف | proposed |
+| del | مٹاؤ | proposed |
+| elif | وگرنہ_اگر | lexicon |
+| else | ورنہ | lexicon |
+| except | استثنا | lexicon |
+| finally | آخرکار | lexicon |
+| for | برائے | lexicon |
+| from | سے | lexicon |
+| global | عام | lexicon |
+| if | اگر | lexicon |
+| import | درآمد | lexicon |
+| in | میں | lexicon |
+| is | ہے | proposed |
+| lambda | بےنام | lexicon |
+| nonlocal | غیرمقامی | proposed |
+| not | نہیں | lexicon |
+| or | یا | lexicon |
+| pass | گزرو | proposed |
+| raise | اٹھاؤ | lexicon |
+| return | واپس | lexicon |
+| try | کوشش | lexicon |
+| while | جب | lexicon |
+| with | ساتھ | proposed |
+| yield | دو | lexicon |
+| print | چھاپو | proposed |
+| range | سلسلہ | proposed |
+| len | لمبائی | proposed |
+
+Standard library and runtime names of the Python binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| Object | شے | lexicon |
+| String | جملہ | lexicon |
+| System | نظام | proposed |
+| Thread | دھاگہ | lexicon |
+| abstract | تجریدی | lexicon |
+| boolean | منطقی | proposed |
+| byte | بائٹ | proposed |
+| case | حالت | lexicon |
+| catch | پکڑو | lexicon |
+| char | حرف | lexicon |
+| const | ثابت | lexicon |
+| default | طےشدہ | lexicon |
+| do | کرو | lexicon |
+| double | دوہرا | lexicon |
+| extends | توسیع | lexicon |
+| final | حتمی | proposed |
+| float | اعشاری | lexicon |
+| goto | جاؤ | lexicon |
+| implements | نافذ | lexicon |
+| instanceof | نمونہ_ہے | proposed |
+| int | صحیح | lexicon |
+| interface | سطحرابطہ | lexicon |
+| long | طویل | proposed |
+| main | مین | lexicon |
+| native | مقامی | proposed |
+| new | نیا | lexicon |
+| package | بستہ | lexicon |
+| println | سطر_چھاپو | proposed |
+| private | نجی | lexicon |
+| protected | محفوظ | lexicon |
+| public | عوامی | lexicon |
+| read | اقرأ | lexicon |
+| short | مختصر | proposed |
+| sleep | نوم | lexicon |
+| sqrt | جذر | proposed |
+| static | ساکن | lexicon |
+| super | بالا | proposed |
+| switch | انتخاب | lexicon |
+| this | یہ | lexicon |
+| throw | پھینکو | lexicon |
+| throws | پھینکتا | proposed |
+| void | خالی | lexicon |
+| volatile | متلون | lexicon |
+| write | اكتب | lexicon |
+
+### A.6 BASIC
+
+Host: ISO/IEC 10279, Information technology, Programming languages, Full BASIC. Names: name transformation.
+
+| Host | Urdu | Source |
+|---|---|---|
+| dim | ابعاد | proposed |
+| end | اختتام | lexicon |
+| for | برائے | lexicon |
+| gosub | ذیلی_جاؤ | proposed |
+| goto | جاؤ | lexicon |
+| if | اگر | lexicon |
+| input | حاصل_کرو | proposed |
+| let | مانو | lexicon |
+| next | اگلا_چکر | proposed |
+| print | چھاپو | proposed |
+| rem | تبصرہ | proposed |
+| return | واپس | lexicon |
+| step | قدم_سے | proposed |
+| then | تو | proposed |
+| to | تک | proposed |
+| wend | جب_تک_ختم | proposed |
+| while | جب | lexicon |
+| and | اور | lexicon |
+| or | یا | lexicon |
+| not | نہیں | lexicon |
+| mod | باقی | proposed |
+
+Standard library and runtime names of the BASIC binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| AS | بطور | lexicon |
+| CALL | بلاؤ | lexicon |
+| CONST | ثابت | lexicon |
+| DO | کرو | lexicon |
+| ELSE | ورنہ | lexicon |
+| INT | صحیح | lexicon |
+| SHARED | مشترك | lexicon |
+| STATIC | ساکن | lexicon |
+| STRING | جملہ | lexicon |
+| TIMER | مؤقت | lexicon |
+
+### A.7 LOGO
+
+Host: No international standard; the host is the Berkeley Logo dialect (bibliography). Names: name transformation.
+
+| Host | Urdu | Source |
+|---|---|---|
+| forward | أمامي | lexicon |
+| back | پیچھے | proposed |
+| left | بائیں | proposed |
+| right | دائیں | proposed |
+| penup | قلم_اٹھاؤ | proposed |
+| pendown | قلم_رکھو | proposed |
+| repeat | دہراؤ | proposed |
+| to | تک | proposed |
+| end | اختتام | lexicon |
+| make | بناؤ | proposed |
+| if | اگر | lexicon |
+| ifelse | اگر_ورنہ | proposed |
+| home | گھر | proposed |
+| clearscreen | سکرین_صاف | proposed |
+
+Standard library and runtime names of the LOGO binding:
+
+| Host | Urdu | Source |
+|---|---|---|
+| print | چھاپو | proposed |
+
+## Annex B (informative) Coverage and review
+
+| Binding | Host keywords with a native word | Library names |
+|---|---|---|
+| C | 35 of 35 | 37 |
+| C preprocessor | 12 of 12 | 0 |
+| C++ | 61 of 61 | 35 |
+| Java | 51 of 51 | 50 |
+| Python | 36 of 36 | 44 |
+| BASIC | 21 of 21 | 10 |
+| LOGO | 14 of 14 | 1 |
+
+The lowering of Urdu programs to C is verified by the reference implementation: runs, same output. Source Chintamani means a word of the original Hindawi transducers; lexicon, a word of the language's lexicon; proposed, a word proposed by the project and not yet reviewed by the language community.
+
+## Annex C (normative) Script filter
+
+The script filter is Chintamani's own (fltr_ur_hi).
+
+Before the filter, these letters are written as the letters that follow them:
+
+| Letter | Written as |
+|---|---|
+| ٻ | ب |
+| ټ | ٹ |
+| ٽ | ٹ |
+| ٿ | تھ |
+| ڀ | بھ |
+| ځ | ز |
+| ڄ | ج |
+| څ | س |
+| ڇ | چھ |
+| ډ | ڈ |
+| ڊ | ڈ |
+| ڌ | دھ |
+| ڍ | ڈھ |
+| ڏ | د |
+| ړ | ڑ |
+| ږ | ژ |
+| ڙ | ڑ |
+| ښ | ش |
+| ڦ | پھ |
+| ڪ | ک |
+| ګ | گ |
+| ڱ | نگ |
+| ڳ | گ |
+| ڻ | ن |
+| ڼ | ن |
+| ۀ | ہ |
+| ۍ | ی |
+| ې | ی |
+
+## Annex D (informative) Rights and provenance
+
+This document is an original work. It defines new programming languages by reference to the host language standards listed in Clause 2 and reproduces no text from them. Permission to adopt, translate or publish it as a standard is given by the copyright holder to a standards body on request.
+
+Single words and the keywords of the host languages are not reproduced from any copyrighted text; the native words of Annex A were chosen by the Hindawi project, taken from the language's lexicon in the Hindawi repository, or, for Hindi, taken from the Chintamani transducers of the original Hindawi, whose author holds their copyright.
+
+## Bibliography
+
+- Hindawi 2026.10, hindawiai/hindawi2026.10, the reference implementation
+- Chintamani, hindawiai/chintamani, the Hindawi transducers and the Romenagri tools
+- Berkeley Logo reference manual, Brian Harvey
+

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 ರಚನೆ ಗಂಟು { ಪೂರ್ಣಾಂಕ ಕೀಲಿ; ರಚನೆ ಗಂಟು *ಎಡಭಾಗ, *ಬಲಭಾಗ; };
 ರಚನೆ ಗಂಟು *ಸೇರಿಸು(ರಚನೆ ಗಂಟು *ಬೇರು, ಪೂರ್ಣಾಂಕ ಕೀಲಿ) {

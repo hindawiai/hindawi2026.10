@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* an NFA, simulated on sets of states, accepting binary strings whose second-last symbol is 1 */
 صحیح قبول_کرتا(ثابت حرف *لفظ) {
   صحیح حالتیں = 1;                                /* bit k set means state k is active */

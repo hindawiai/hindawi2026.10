@@ -47,8 +47,9 @@
 حاول                        {printf("try");}
 حزمة                        {printf("package");}
 دراز                        {printf("long");}
+درست                        {printf("True");}
 ساكن                        {printf("static");}
-صحيح                        {printf("True");}
+صحيح                        {printf("int");}
 عائم                        {printf("float");}
 فراغ                        {printf("void");}
 كائن                        {printf("Object");}

@@ -44,6 +44,12 @@ def lex(src, dst, pairs):
 ALIASES = {"GURMUKHI": [(" SIGN BINDI", " SIGN ANUSVARA"), (" TIPPI", " SIGN ANUSVARA"), (" VOWEL SIGN EE", " VOWEL SIGN E"),
                         (" VOWEL SIGN OO", " VOWEL SIGN O"), (" LETTER EE", " LETTER E"), (" LETTER OO", " LETTER O"),
                         (" ADDAK", None)]}
+# The Dravidian scripts write short and long e and o apart; Devanagari's short e and o letters and signs keep them apart
+# there too, where mapping by name would have put short e on Devanagari's e and left long ee unmapped.
+_DRAVIDIAN = [(" LETTER EE", " LETTER E"), (" LETTER E", " LETTER SHORT E"), (" LETTER OO", " LETTER O"),
+              (" LETTER O", " LETTER SHORT O"), (" VOWEL SIGN EE", " VOWEL SIGN E"), (" VOWEL SIGN E", " VOWEL SIGN SHORT E"),
+              (" VOWEL SIGN OO", " VOWEL SIGN O"), (" VOWEL SIGN O", " VOWEL SIGN SHORT O")]
+ALIASES.update({"KANNADA": _DRAVIDIAN, "TAMIL": _DRAVIDIAN, "MALAYALAM": _DRAVIDIAN})
 
 
 def build():
@@ -55,11 +61,9 @@ def build():
             if not n.startswith(s + " "):
                 continue
             rest = n[len(s):]
-            for alias, to in ALIASES.get(s, ()):       # the same letter under another Unicode name
-                if rest.endswith(alias) and to is not None:
-                    rest = rest[: -len(alias)] + to
-                elif rest.endswith(alias):
-                    rest = None                            # a sign Devanagari does not write: dropped
+            for alias, to in ALIASES.get(s, ()):       # the same letter under another Unicode name; the first match only
+                if rest.endswith(alias):
+                    rest = rest[: -len(alias)] + to if to is not None else None   # None: a sign Devanagari does not write
                     break
             if rest is None:
                 pairs.append((c, ""))
@@ -78,9 +82,10 @@ def build():
 
 # Letters of Pashto, Sindhi and other Perso-Arabic orthographies that Chintamani's Urdu filter does not know, folded
 # to the nearest Urdu letter before it; without this the filter emits control bytes for them (DEVIATIONS.md).
-FOLD = str.maketrans({"ټ": "ٹ", "ډ": "ڈ", "ړ": "ڑ", "ږ": "ژ", "ښ": "ش", "ګ": "گ", "ڼ": "ن", "ې": "ی", "ۍ": "ی", "ځ": "ز",
+FOLD_PAIRS = {"ټ": "ٹ", "ډ": "ڈ", "ړ": "ڑ", "ږ": "ژ", "ښ": "ش", "ګ": "گ", "ڼ": "ن", "ې": "ی", "ۍ": "ی", "ځ": "ز",
                       "څ": "س", "ڪ": "ک", "ڳ": "گ", "ڱ": "نگ", "ڄ": "ج", "ٻ": "ب", "ڀ": "بھ", "ٽ": "ٹ", "ٿ": "تھ", "ڊ": "ڈ",
-                      "ڏ": "د", "ڍ": "ڈھ", "ڙ": "ڑ", "ڦ": "پھ", "ڻ": "ن", "ڇ": "چھ", "ڌ": "دھ", "ۀ": "ہ"})
+                      "ڏ": "د", "ڍ": "ڈھ", "ڙ": "ڑ", "ڦ": "پھ", "ڻ": "ن", "ڇ": "چھ", "ڌ": "دھ", "ۀ": "ہ"}
+FOLD = str.maketrans(FOLD_PAIRS)
 
 
 def fold(lang, text):

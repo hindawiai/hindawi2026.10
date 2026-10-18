@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* binary to Gray code and back */
 صحیح مین(خالی) {
   برائے (صحیح نمبر = 0; نمبر < 8; نمبر++) {

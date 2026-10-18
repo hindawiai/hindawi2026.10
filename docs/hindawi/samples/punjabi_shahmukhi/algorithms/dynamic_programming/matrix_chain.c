@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#ضمن <stdio.h>
+#ضمن <limits.h>
 /* matrix chain multiplication order */
 صحيح مکھ(فراغ) {
   صحيح ناپ[] = {40, 20, 30, 10, 30}, گنتی = 4, لاگت[8][8] = {{0}};

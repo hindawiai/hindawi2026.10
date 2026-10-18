@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#شامل <stdio.h>
+#شامل <ctype.h>
 /* a hand-written lexer: identifiers, numbers and operators */
 صحیح مین(خالی) {
   حرف ماخذ[] = "total = count1 + 42 * rate;";

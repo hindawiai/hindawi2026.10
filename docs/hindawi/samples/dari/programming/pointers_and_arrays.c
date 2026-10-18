@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* pointers and arrays: reverse in place, pointer arithmetic */
 فراغ معکوس(صحيح *شروع, صحيح *انتها) { طالما (شروع < انتها) { صحيح موقت = *شروع; *شروع++ = *انتها; *انتها-- = موقت; } }
 صحيح اصلی(فراغ) {

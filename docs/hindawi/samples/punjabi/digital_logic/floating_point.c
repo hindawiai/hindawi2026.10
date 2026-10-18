@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <string.h>
 /* number representation: the sign, exponent and fraction of an IEEE 754 single-precision number */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਦਸ਼ਮਲਵ ਨੰਬਰ = -6.25f;

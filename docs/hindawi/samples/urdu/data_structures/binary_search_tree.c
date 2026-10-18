@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#شامل <stdio.h>
+#شامل <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 ساخت نوڈ { صحیح کلید; ساخت نوڈ *بائیں, *دائیں; };
 ساخت نوڈ *داخل_کرو(ساخت نوڈ *جڑ, صحیح کلید) {

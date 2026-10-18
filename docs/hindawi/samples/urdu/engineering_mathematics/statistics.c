@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#شامل <stdio.h>
+#شامل <math.h>
 /* probability and statistics: mean, median, mode and standard deviation of sorted values */
 صحیح مین(خالی) {
   صحیح اقدار[] = {2, 3, 3, 5, 7, 8, 8, 8, 9}, گنتی = 9, منوال = اقدار[0], بہترین = 0;

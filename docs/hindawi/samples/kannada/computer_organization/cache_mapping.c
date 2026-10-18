@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* memory hierarchy: a direct-mapped cache of four lines, block size 4 words; count hits and misses */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ವಿಳಾಸಗಳು[] = {0, 4, 8, 0, 16, 4, 32, 0, 8, 48}, ಟ್ಯಾಗುಗಳು[4], ಬಳಸಿದ[4] = {0}, ದೊರಕಿದವು = 0, ತಪ್ಪಿದವು = 0;

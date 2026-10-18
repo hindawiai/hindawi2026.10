@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 నిర్మాణం కణుపు { పూర్ణాంకం కీలకం; నిర్మాణం కణుపు *ఎడమవైపు, *కుడివైపు; };
 నిర్మాణం కణుపు *చొప్పించు(నిర్మాణం కణుపు *మూలం, పూర్ణాంకం కీలకం) {

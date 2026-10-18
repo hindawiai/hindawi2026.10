@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* linear algebra: solve a system of three equations by Gaussian elimination, and its determinant */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   ద్విగుణ మాతృక[3][4] = {{2, 1, -1, 8}, {-3, -1, 2, -11}, {-2, 1, 2, -3}}, ఫలితం[3], నిర్ధారకం = 1;

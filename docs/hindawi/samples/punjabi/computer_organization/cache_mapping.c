@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* memory hierarchy: a direct-mapped cache of four lines, block size 4 words; count hits and misses */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਪਤੇ[] = {0, 4, 8, 0, 16, 4, 32, 0, 8, 48}, ਟੈਗ_ਸੂਚੀ[4], ਵਰਤਿਆ[4] = {0}, ਪ੍ਰਾਪਤੀਆਂ = 0, ਖੁੰਝਾਂ = 0;

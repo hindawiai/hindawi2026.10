@@ -19,15 +19,15 @@ NINE stands for `dari,pashto,urdu,punjabi,punjabi_shahmukhi,sindhi,telugu,kannad
    name surviving into the ELF symbol table and back through Romenagri.
 
 4. **Each language complete.** `hindawi coverage --langs NINE`
-   For every language: `C 35/35, C++ 61/61, Java 51/51, Python 36/36, BASIC 21/21, LOGO 14/14; GATE programs: 199/199
-   names in <language>, library calls left in English: none` (Sanskrit: 198/198).
+   For every language: `C 35/35, C++ 61/61, Java 51/51, Python 36/36, BASIC 21/21, LOGO 14/14, C preprocessor 12/12;
+   GATE programs: 354/354 names in <language>, library calls left in English: none`.
 
 5. **Every paradigm reversible.** `hindawi check tests/burp/sample --langs all --scripts brahmi`
    `burp check: 355 ingestions, 355 reverse to the original byte for byte`.
 
 6. **Every GATE program compiled from each language.** `hindawi gate --langs NINE`
-   For every language: `60 of 60 C programs compile from <language> and print what the originals print; 64 of 64
-   files reverse byte for byte`.
+   For every language: `113 of 113 C programs compile from <language> and print what the originals print; 117 of
+   117 files reverse byte for byte`.
 
 7. **One program, by hand, in Urdu.**
 

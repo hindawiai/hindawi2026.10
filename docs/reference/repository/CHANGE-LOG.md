@@ -507,3 +507,33 @@ passed; scripts/test_all.sh passes.
 - changed `README.md` (sha256 `94ea8f757af70d4f`)
 
 **Verified.** All nine languages: keywords C 35/35, C++ 61/61, Java 51/51, Python 36/36, BASIC 21/21, LOGO 14/14; every name of the GATE programs in the language (199/199, Sanskrit 198/198); no library call left in English. In each, 60 of 60 C programs compile from the language through the original pipeline and print exactly what the English originals print, and 64 of 64 files reverse byte for byte. All 355 ingestions of the BURP sample reverse byte for byte; tests/fundamental.py 12 passed; scripts/test_all.sh passes; 47 of 76 languages build and run the sample, as before. install.sh installed into a scratch prefix and compiled quick sort from Urdu and Telugu; hindawi verify passed every step.
+
+## C23. Every GATE topic written, each language's standard, work packages, notebooks, and the faults the new names exposed
+
+**Why.** He asked to complete the languages and much more: programs for the whole GATE syllabus, a standard for each language that its community can review, the remaining work written out as packages students and AIs can take, and notebooks to teach with. This records that work, done over two turns (the first turn's report never reached him), and its verification. GATE: 53 programs added, 113 in C; every topic of the 2027 CS map in docs/hindawi/GATE-PROGRAMS.md now has one; tests/gate/run.py links -lpthread, takes --only, and records a program that hangs as a failure. Words: 136 names added to lang/hindawi/burp/glossary/multi.tsv and the preprocessor directives to lang/hindawi/lexicons/multi.tsv for the nine languages; coverage.py measures the preprocessor too. Standards: lang/hindawi/tools/standards.py, standards_docx.js and standard_import.py write standards/<language>/standard.md, standard.json and standard.docx for all 76 languages, in the structure standards bodies use, citing host standards by reference only and recording where each word came from; hindawi standard generates them and imports a filled work package. Work packages: lang/hindawi/tools/work_packages.py writes work-packages/ (67 language packages, 12 JavaScript packages; no GATE topic left open) and docs/hindawi/work-packages.html, where each is claimed as an issue; hindawi wp lists them. Notebooks: lang/hindawi/tools/notebooks.py and lang/hindawi/colab.py make seven Colab notebooks in each of eleven languages, from notebooks/ and docs/hindawi/notebooks.html; hindawi notebooks. Faults fixed and recorded in DEVIATIONS.md: the Dravidian scripts' short and long e and o kept apart in the generated filters; one word for one construct in each cell; licence and copyright notices never translated; BURP reads and writes files byte for byte, line endings included; directive forms keep their #; the flex runtime found as libfl, libl or none; hindawicc follows symlinks without readlink -f; the Arduino installer finds cores on macOS and under WSL.
+
+- added `samples/gate/discrete_mathematics/truth_table.c` (sha256 `5c82e45a2c184f3a`)
+- changed `lang/hindawi/burp/glossary/multi.tsv` (sha256 `5bdd0ba85ab1fe95`)
+- changed `lang/hindawi/lexicons/multi.tsv` (sha256 `b5d4df9508d44265`)
+- added `lang/hindawi/tools/standards.py` (sha256 `35a09b6b0f00253a`)
+- added `lang/hindawi/tools/standards_docx.js` (sha256 `ab573bd0df0d8752`)
+- added `lang/hindawi/tools/standard_import.py` (sha256 `4d9d7ce769cf338d`)
+- added `lang/hindawi/tools/work_packages.py` (sha256 `ad6a0dac5c2dae74`)
+- added `lang/hindawi/tools/notebooks.py` (sha256 `6add5fb04add9210`)
+- added `lang/hindawi/colab.py` (sha256 `69bb52b15686adf7`)
+- added `docs/hindawi/work-packages.html` (sha256 `c986cacc06c32e5b`)
+- added `docs/hindawi/notebooks.html` (sha256 `cc7c87b5bcc79e48`)
+- added `standards/urdu/standard.docx` (sha256 `b99616710026aa28`)
+- added `notebooks/urdu/00_start_here.ipynb` (sha256 `e702fb0a66037d85`)
+- changed `tests/gate/run.py` (sha256 `c69b0207a78a4ae2`)
+- changed `bin/hindawi` (sha256 `0665fb46416e2036`)
+- changed `lang/hindawi/burp/burp.py` (sha256 `9a605bff762a4009`)
+- changed `lang/hindawi/tools/script_filters.py` (sha256 `982aa8ed49b9c0c7`)
+- changed `lang/hindawi/tools/complete_cells.py` (sha256 `f0b74f7a9e18a111`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `ff5522c0dbcce2be`)
+- changed `lang/hindawi/hindawicc` (sha256 `daa692b799c38f09`)
+- changed `docs/hindawi/DEVIATIONS.md` (sha256 `d2ebb75543fe3dd4`)
+- changed `docs/hindawi/MANUAL.md` (sha256 `21c3b6614bb03a77`)
+- changed `docs/hindawi/GATE-PROGRAMS.md` (sha256 `7a798c476f8bafc3`)
+
+**Verified.** All nine languages: keywords complete in C, C++, Java, Python, BASIC, LOGO and the C preprocessor; 354 of 354 names of the GATE programs in the language; no library call left in English. In each, 113 of 113 C programs compile from the language through the original pipeline and print exactly what the English originals print, and 117 of 117 files reverse byte for byte. All 355 ingestions of the BURP sample reverse byte for byte; tests/fundamental.py 12 passed; scripts/test_all.sh passes; 47 of 76 languages build and run the sample, as before. 76 standards written as Word files that open cleanly; 77 notebooks; 79 open work packages.

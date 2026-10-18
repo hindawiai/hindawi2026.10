@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* stack: balanced brackets */
 صحيح مکيه(فراغ) {
   حرف متن[] = "{[()()]}", ٿهي[32];

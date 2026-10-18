@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* routing: distance-vector rounds (Bellman-Ford) until no table changes; 99 means unreachable */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ವೆಚ್ಚ[4][4] = {{0, 1, 99, 7}, {1, 0, 2, 99}, {99, 2, 0, 1}, {7, 99, 1, 0}}, ದೂರ[4][4], ಸುತ್ತುಗಳು = 0, ಬದಲಾಯಿತು = 1;

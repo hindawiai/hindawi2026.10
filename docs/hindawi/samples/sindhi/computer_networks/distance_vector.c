@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* routing: distance-vector rounds (Bellman-Ford) until no table changes; 99 means unreachable */
 صحيح مکيه(فراغ) {
   صحيح لاڳت[4][4] = {{0, 1, 99, 7}, {1, 0, 2, 99}, {99, 2, 0, 1}, {7, 99, 1, 0}}, مفاصلو[4][4], ڦيرا = 0, بدليو = 1;

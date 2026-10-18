@@ -31,7 +31,7 @@ except                      {printf("ਅਪਵਾਦ");}
 global                      {printf("ਵੈਸ਼੍ਵਿਕ");}
 import                      {printf("ਆਯਾਤ");}
 lambda                      {printf("ਅਨਾਮ");}
-native                      {printf("ਮੂਲ");}
+native                      {printf("ਦੇਸੀ");}
 public                      {printf("ਜਨਤਕ");}
 return                      {printf("ਵਾਪਸ");}
 static                      {printf("ਸਥਿਰ");}

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* linear algebra: solve a system of three equations by Gaussian elimination, and its determinant */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ದ್ವಿಗುಣ ಮಾತೃಕೆ[3][4] = {{2, 1, -1, 8}, {-3, -1, 2, -11}, {-2, 1, 2, -3}}, ಫಲಿತಾಂಶ[3], ನಿರ್ಧಾರಕ = 1;

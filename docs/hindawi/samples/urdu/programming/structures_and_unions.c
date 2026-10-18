@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* structures, unions and sizeof */
 ساخت نقطہ { صحیح x, y; };
 اتحاد نمبر { صحیح پورا; حرف بائٹیں[4]; };

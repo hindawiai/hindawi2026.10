@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary min-heap as a priority queue */
 صحيح ڈھیر[32], ناپ = 0;
 فراغ داخل_کرو(صحيح قیمت) {

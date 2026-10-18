@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <string.h>
 /* longest common subsequence length */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   అక్షరం మొదటి[] = "AGGTAB", రెండవ[] = "GXTXAYB";

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం ఎడమవైపు[] = {1 | 2, 2 | 4, 8, 16}, కుడివైపు[] = {4, 8, 16, 32}, సంవృతం = 1 | 2, మారింది = 1;   /* AB->C, BC->D, D->E, E->F */

@@ -8,30 +8,30 @@ every language. `hindawi gate --langs L` compiles each C program from language L
 it, and checks that it prints exactly what the English original prints; it also reverses every file byte for byte.
 
 The map below follows the ten sections of the GATE 2027 CS syllabus published by IIT Madras (read 18 October 2026).
-Topics are described in our own words; the syllabus text itself is not reproduced. Four sections changed for 2027
+Topics are described in our own words; the syllabus text itself is not reproduced. Three sections changed for 2027
 (Digital Logic, Computer Organisation and Architecture, Computer Networks); the map follows the 2027 version. General
 Aptitude has no programs. The new 2027 paper in Robotics and Automation needs its own set and is not started.
 
-## What is covered, and what is still to write
+## What is covered
 
-| Section | Programs now | Still to write |
-|---|---|---|
-| Engineering mathematics: discrete | `discrete_mathematics/permutations.c`, `sieve_of_eratosthenes.c` | truth table of a formula; properties of a relation; group axioms on Z_n; greedy graph colouring; bipartite matching; a recurrence solved by table |
-| Engineering mathematics: linear algebra | `engineering_mathematics/gaussian_elimination.c` (system and determinant) | eigenvalue by power iteration; LU decomposition |
-| Engineering mathematics: calculus | `engineering_mathematics/simpson_integration.c` | derivative and limit by finite differences; a minimum by golden-section search |
-| Engineering mathematics: probability and statistics | `engineering_mathematics/statistics.c`, `bayes_theorem.c` | binomial and Poisson probabilities; uniform, normal and exponential sampled with a fixed generator |
-| Digital logic | `digital_logic/gray_code.c`, `ripple_carry_adder.c`, `floating_point.c` | prime implicants by the tabular method; a counter as a state machine; two's complement and fixed point |
-| Computer organisation and architecture | `computer_organization/cache_mapping.c`, `pipeline_hazards.c` | a small instruction set with addressing modes; an ALU with flags; a microprogrammed control sequencer; average memory access time; interrupt and DMA transfer counts |
-| Programming and data structures | `programming/` (recursion, gcd, pointers, structures and unions), `data_structures/` (stack, circular queue, linked list, binary search tree, min-heap, hash table) | tree traversals in pre-, post- and level order; graphs as adjacency lists |
-| Algorithms | `algorithms/` sorting (quick, merge, heap, insertion), searching, greedy (activity selection, fractional knapsack), dynamic programming (0/1 knapsack, LCS, edit distance, matrix chain), divide and conquer (Hanoi, maximum subarray), backtracking (N queens), graphs (BFS, DFS, Dijkstra, Floyd-Warshall, topological sort, Kruskal) | Prim; Huffman code lengths; counting operations to show growth rates |
-| Theory of computation | `theory_of_computation/dfa_divisible_by_three.c`, `nfa_simulation.c`, `turing_machine.c` | a regular-expression matcher; a pushdown automaton for aⁿbⁿ; CYK parsing of a grammar in normal form. Pumping lemmas and undecidability are taught in prose |
-| Compiler design | `compiler_design/tokenizer.c`, `recursive_descent_parser.c`, `rpn_evaluator.c`, `three_address_code.c` | infix to postfix by syntax-directed translation; activation records; constant folding and propagation; liveness; common subexpressions |
-| Operating systems | `operating_systems/round_robin.c`, `bankers_algorithm.c`, `lru_page_replacement.c`, `paging_translation.c` | fork and wait; threads with a mutex; a pipe between processes; producer and consumer with semaphores; FCFS, SJF and priority scheduling; disk scheduling; inode block counts |
-| Databases | `databases/hash_join.c`, `attribute_closure.c`, `conflict_serializability.c` | selection, projection and join as functions; candidate keys; B+ tree order and height. SQL needs SQLite and is outside C |
-| Computer networks | `computer_networks/crc32.c`, `internet_checksum.c`, `cidr.c`, `distance_vector.c`, `tcp_congestion.c` | transmission and propagation delay; slotted ALOHA efficiency; link-state routing; IPv4 fragmentation; a NAT table; sliding-window flow control; a socket pair echo; DNS name encoding; parsing an HTTP request |
+Every topic of the ten sections that a program can show has one: 113 C programs, plus Python, Java, C++ and BASIC
+programs in `samples/gate/paradigms/` for the other paradigms.
 
-Python, Java, C++ and BASIC programs in `samples/gate/paradigms/` show the other paradigms; they ingest and reverse
-exactly, and the C programs are the ones compiled from every language.
+| Section | Programs |
+|---|---|
+| Engineering mathematics | discrete: `truth_table`, `relation_properties`, `group_axioms`, `graph_colouring`, `bipartite_matching`, `recurrence_table`, `permutations`, `sieve_of_eratosthenes`; linear algebra: `gaussian_elimination`, `lu_decomposition`, `power_iteration`; calculus: `finite_differences`, `golden_section`, `simpson_integration`; probability and statistics: `statistics`, `bayes_theorem`, `binomial_poisson`, `distribution_sampling` |
+| Digital logic | `quine_mccluskey` (tabular minimisation), `sequence_detector` (a state machine), `ripple_carry_adder`, `gray_code`, `twos_complement_fixed_point`, `floating_point` |
+| Computer organisation and architecture | `addressing_modes`, `alu_flags`, `microprogrammed_control`, `cache_mapping`, `memory_access_time`, `pipeline_hazards`, `interrupt_dma` |
+| Programming and data structures | `recursion_fibonacci`, `gcd_and_lcm`, `pointers_and_arrays`, `structures_and_unions`, `preprocessor_macros`; `stack`, `circular_queue`, `linked_list`, `binary_search_tree`, `tree_traversals`, `min_heap`, `hash_table`, `adjacency_list` |
+| Algorithms | sorting: `quick_sort`, `merge_sort`, `heap_sort`, `insertion_sort`; `binary_search`; greedy: `activity_selection`, `fractional_knapsack`, `huffman_code_lengths`; dynamic programming: `knapsack_01`, `longest_common_subsequence`, `edit_distance`, `matrix_chain`; divide and conquer: `towers_of_hanoi`, `maximum_subarray`; `n_queens`; graphs: `breadth_first_search`, `depth_first_search`, `dijkstra`, `floyd_warshall`, `topological_sort`, `kruskal`, `prim`; analysis: `growth_rates` |
+| Theory of computation | `dfa_divisible_by_three`, `nfa_simulation`, `regex_matcher`, `pda_anbn`, `cyk_parsing`, `turing_machine` |
+| Compiler design | `tokenizer`, `recursive_descent_parser`, `infix_to_postfix`, `rpn_evaluator`, `activation_records`, `three_address_code`, `constant_folding`, `liveness_analysis`, `common_subexpression` |
+| Operating systems | `fork_wait`, `threads_mutex`, `pipe_ipc`, `producer_consumer`, `cpu_scheduling`, `round_robin`, `bankers_algorithm`, `paging_translation`, `lru_page_replacement`, `disk_scheduling`, `inode_blocks` |
+| Databases | `relational_algebra`, `hash_join`, `attribute_closure`, `candidate_keys`, `conflict_serializability`, `bplus_tree_order` |
+| Computer networks | `delay_throughput`, `crc32`, `internet_checksum`, `aloha_efficiency`, `distance_vector`, `link_state`, `ip_fragmentation`, `cidr`, `nat_table`, `sliding_window`, `tcp_congestion`, `socket_pair`, `dns_name_encoding`, `http_request` |
+
+What no C program shows is taught in prose: pumping lemmas and undecidability, the ER model, and SQL itself (which
+needs a database engine rather than C). The new 2027 paper in Robotics and Automation needs its own set.
 
 ## The contract every program keeps
 
@@ -52,7 +52,8 @@ reports it compiled and matched in every language, and `hindawi coverage` report
 
 ## Instructions to give another AI
 
-Paste this, followed by the topics to write from the table above:
+Paste this, followed by the topics to write (more practice programs for a section, or the first set for the
+Robotics and Automation paper):
 
 > Write teaching programs for the GATE Computer Science paper, one C file per topic I list. Each file: a one-line
 > comment saying what it shows; self-contained C99 under forty lines; compiles with `gcc -O2 -Wall` with no warnings

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* intermediate code generation: three-address code for a = b * c + b * d, with common subexpression reuse shown */
 صحيح مکھ(فراغ) {
   ثابت حرف *کوڈ[] = {"t1 = b * c", "t2 = b * d", "t3 = t1 + t2", "a = t3"};

@@ -29,7 +29,7 @@
 ارفع                        {printf("raise");}
 افعل                        {printf("do");}
 اقرأ                        {printf("read");}
-اكتب                        {printf("printf");}
+اكتب                        {printf("write");}
 اكسر                        {printf("break");}
 امسك                        {printf("catch");}
 بنية                        {printf("struct");}

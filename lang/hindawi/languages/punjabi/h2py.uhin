@@ -44,6 +44,7 @@
 ਜਨਤਕ                        {printf("public");}
 ਜਾਰੀ                        {printf("continue");}
 ਤਰਕੀ                        {printf("boolean");}
+ਦੇਸੀ                        {printf("native");}
 ਧਾਗਾ                        {printf("Thread");}
 ਨਵਾਂ                        {printf("new");}
 ਨਹੀਂ                        {printf("not");}

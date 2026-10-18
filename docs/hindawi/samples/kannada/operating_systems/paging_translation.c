@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* memory management: translate virtual addresses with a page table, page size 1024 */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಕೋಷ್ಟಕ[8] = {5, 2, -1, 7, 1, -1, 3, 0}, ವಿಳಾಸಗಳು[] = {100, 2048, 3100, 7000, 5000};

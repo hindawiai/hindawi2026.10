@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* pointers and arrays: reverse in place, pointer arithmetic */
 فراغ سرچپه(صحيح *پیل, صحيح *پای_ټکی) { طالما (پیل < پای_ټکی) { صحيح لنډمهاله = *پیل; *پیل++ = *پای_ټکی; *پای_ټکی-- = لنډمهاله; } }
 صحيح اصلي(فراغ) {

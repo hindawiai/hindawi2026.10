@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* IPv4 and CIDR: the network, broadcast address and host count of 192.168.10.77/26 */
 صحيح اصلی(فراغ) {
   بیعلامت آدرس = (192u << 24) | (168 << 16) | (10 << 8) | 77, پیشوند = 26, ماسک = پیشوند ? ~0u << (32 - پیشوند) : 0;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* a DFA over binary strings that accepts multiples of three */
 صحیح قبول_کرتا(ثابت حرف *لفظ) {
   صحیح state = 0;

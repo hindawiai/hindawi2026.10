@@ -96,3 +96,13 @@ original pipeline gave one name two C-level forms, or none; each is now handled,
   E and O); those passed through raw and Romenagri emitted control bytes. They are now mapped by alias. Addak, which
   doubles the next consonant, has no Devanagari sign and is dropped on the compilation path, so two names differing
   only by addak share a C-level form; the source, the dictionary and ingestion keep them apart.
+- **Short and long e and o are kept apart for the Dravidian scripts.** Mapping Kannada, Tamil and Malayalam to
+  Devanagari by Unicode name put short e (ೆ) on Devanagari's e (े) and left long ee (ೇ), and likewise o and oo,
+  unmapped, so Romenagri emitted control bytes. The generated filters now map short e and o to Devanagari's short e
+  and o letters and signs (ऎ ॆ ऒ ॊ) and long ee and oo to its e and o, as ISCII does for the southern scripts.
+  Telugu uses Chintamani's own filter and is unchanged.
+- **One word, one construct, in each cell.** Some lexicons give two constructs the same word (Sanskrit लिख for both
+  write and printf; صحيح for both int and true in the Perso-Arabic lexicons), and a cell built from them compiled
+  every such word back to only one of the two. The generator now keeps each word with one construct: the same token in
+  another case (FOR, for) counts as one construct; a token with a proposed word of its own takes that word; otherwise
+  the better-sourced token keeps the word and the other is listed in the cell's `STATUS.tsv` as sharing it.

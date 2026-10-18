@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 بیعلامت بررسی_چرخهای_32(ثابت حرف *متن) {
   بیعلامت بررسی_چرخهای = 0xFFFFFFFFu;

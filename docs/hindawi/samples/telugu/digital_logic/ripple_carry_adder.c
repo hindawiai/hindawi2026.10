@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం మొదటి = 11, రెండవ = 6, వాహకం = 0, కూడిక = 0;

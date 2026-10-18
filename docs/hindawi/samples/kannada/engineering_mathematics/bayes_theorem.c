@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* probability: Bayes' theorem for a test with known sensitivity and false-positive rate */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ದ್ವಿಗುಣ ಪೂರ್ವ = 0.01, ಸಂವೇದನಾಶೀಲತೆ = 0.95, ಸುಳ್ಳು_ಧನಾತ್ಮಕ = 0.05;

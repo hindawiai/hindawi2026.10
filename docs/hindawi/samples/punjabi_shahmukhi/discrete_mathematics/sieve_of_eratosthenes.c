@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* primes below 60 */
 صحيح مکھ(فراغ) {
   صحيح مرکب[60] = {0};

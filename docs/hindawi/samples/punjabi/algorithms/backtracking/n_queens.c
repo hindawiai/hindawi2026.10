@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* N queens: count the solutions for N = 6 */
 ਪੂਰਨ ਕਾਲਮ[8], ਮਾਪ = 6, ਹੱਲ = 0;
 ਪੂਰਨ ਸੁਰੱਖਿਅਤ_2(ਪੂਰਨ ਪੰਕਤੀ, ਪੂਰਨ ਖਾਨਾ) {

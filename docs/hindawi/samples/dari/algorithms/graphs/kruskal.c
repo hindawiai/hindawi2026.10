@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 صحيح والد[6];
 صحيح پیدا_کن(صحيح رأس) { أرجع والد[رأس] == رأس ? رأس : (والد[رأس] = پیدا_کن(والد[رأس])); }

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <math.h>
 /* probability and statistics: mean, median, mode and standard deviation of sorted values */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం విలువలు[] = {2, 3, 3, 5, 7, 8, 8, 8, 9}, లెక్క = 9, బహుళకం = విలువలు[0], ఉత్తమ = 0;

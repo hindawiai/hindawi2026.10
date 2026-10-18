@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* instruction pipelining: a five-stage pipeline with forwarding stalls one cycle after each load whose result is used next */
 صحيح اصلي(فراغ) {
   صحيح بارول[] = {1, 0, 1, 0, 0, 1, 0}, کاروي_پخوانی[] = {0, 1, 0, 0, 1, 0, 1}, شمېر = 7, ځنډونه = 0;

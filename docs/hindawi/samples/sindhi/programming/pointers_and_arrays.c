@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* pointers and arrays: reverse in place, pointer arithmetic */
 فراغ ابتو(صحيح *شروعات, صحيح *پڇاڙي) { طالما (شروعات < پڇاڙي) { صحيح عارضي = *شروعات; *شروعات++ = *پڇاڙي; *پڇاڙي-- = عارضي; } }
 صحيح مکيه(فراغ) {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <ctype.h>
 /* a hand-written lexer: identifiers, numbers and operators */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਅੱਖਰ ਸਰੋਤ[] = "total = count1 + 42 * rate;";

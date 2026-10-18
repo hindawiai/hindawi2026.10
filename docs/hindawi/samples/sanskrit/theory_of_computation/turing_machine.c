@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#अन्तर्भाव <stdio.h>
+#अन्तर्भाव <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 पूर्णाङ्क मुख्यम्(शून्य) {
   वर्ण पट्टिका[16] = "_1011_";
@@ -9,6 +9,6 @@
     अन्यथा { पट्टिका[शिरः] = '1'; state = 1; }
     चरणाः++;
   }
-  लिख("%s %d\n", पट्टिका, चरणाः);
+  प्रारूप_लिख("%s %d\n", पट्टिका, चरणाः);
   प्रत्यागम 0;
 }

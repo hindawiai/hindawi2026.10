@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary to Gray code and back */
 صحيح اصلي(فراغ) {
   لكل (صحيح شمېره = 0; شمېره < 8; شمېره++) {

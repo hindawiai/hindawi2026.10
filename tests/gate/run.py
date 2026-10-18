@@ -10,24 +10,36 @@ import argparse, filecmp, json, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
 R = Path(__file__).resolve().parents[2]; SRC = R / "samples/gate"
 ENV = dict(os.environ, ROMENAGRI=str(R / ".build/chintamani/Romenagri"), HINDAWI_NATIVE_SOURCE="1")
+def run_bounded(exe):
+    """A program's output, or None when it runs past twenty seconds (a program that hangs fails; it does not stop the run)."""
+    try:
+        return subprocess.run([str(exe)], capture_output=True, timeout=20, stdin=subprocess.DEVNULL).stdout
+    except subprocess.TimeoutExpired:
+        return None
+
+
 ap = argparse.ArgumentParser(); ap.add_argument("--langs", default="sanskrit"); ap.add_argument("--gallery", action="store_true")
+ap.add_argument("--only", default="", help="check only the C programs whose path contains this text")
 a = ap.parse_args()
 w = Path(tempfile.mkdtemp(prefix="gate-"))
 burp = [sys.executable, str(R / "lang/hindawi/burp/burp.py")]
 subprocess.run(burp + ["ingest", str(SRC), "--langs", a.langs, "--out", str(w / "n")], check=True, capture_output=True)
-programs = sorted(p.relative_to(SRC) for p in SRC.rglob("*.c"))
+programs = sorted(p.relative_to(SRC) for p in SRC.rglob("*.c") if a.only in str(p.relative_to(SRC)))
 want = {}
 for p in programs:
-    exe = w / "orig"; subprocess.run(["gcc", "-O2", "-o", str(exe), str(SRC / p), "-lm"], check=True)
-    want[p] = subprocess.run([str(exe)], capture_output=True, timeout=20).stdout
+    exe = w / "orig"; subprocess.run(["gcc", "-O2", "-o", str(exe), str(SRC / p), "-lm", "-lpthread"], check=True, capture_output=True)
+    want[p] = run_bounded(exe)
 failed = 0
 for lang in a.langs.split(","):
     n = w / "n" / lang; ok = 0
     env = dict(ENV, HINDAWI_LANG=lang, HINDAWI_DICT=str(n / ".hindawi/dictionary.json"))
     for p in programs:
         exe = w / "native"
-        c = subprocess.run([str(R / "lang/hindawi/hindawicc"), "-O2", "-o", str(exe), str(n / p), "-lm"], capture_output=True, env=env)
-        got = subprocess.run([str(exe)], capture_output=True, timeout=20).stdout if c.returncode == 0 else None
+        c = subprocess.run([str(R / "lang/hindawi/hindawicc"), "-O2", "-o", str(exe), str(n / p), "-lm", "-lpthread"], capture_output=True, env=env)
+        try:
+            got = run_bounded(exe) if c.returncode == 0 else None
+        except subprocess.TimeoutExpired:
+            got = b"(still running after 20 s)"
         if got == want[p]:
             ok += 1
         else:

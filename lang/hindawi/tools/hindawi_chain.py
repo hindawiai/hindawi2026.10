@@ -40,7 +40,7 @@ ASCII_RUN = re.compile(r"(?<![A-Za-z0-9_])[A-Za-z_][A-Za-z0-9_]*(?![A-Za-z0-9_])
 
 
 def env():
-    rmn = os.environ.get("ROMENAGRI", "")
+    rmn = os.environ.get("ROMENAGRI", "") or str(REPO / ".build/chintamani/Romenagri")   # where scripts/build.sh puts it
     if not rmn or not Path(rmn, "uni2acii").exists():
         sys.exit("hindawi_chain: set ROMENAGRI to a built Romenagri folder")
     return dict(os.environ, PATH=f"{rmn}:" + os.environ.get("PATH", ""))
@@ -90,14 +90,16 @@ def lexers(lang):
         shutil.copy(src / "c2h", c2h); shutil.copy(src / "h2c", h2c)
         return c2h, h2c
     # ingestion: the cell's c2h straight on Unicode, so keywords come out in the language's own script
-    sh(f"flex -8 -o '{out}/c2h_lex.c' '{src}/c2h.uhin' && gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -lfl")
+    sh(f"flex -8 -o '{out}/c2h_lex.c' '{src}/c2h.uhin' && {{ gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -lfl 2>/dev/null || "
+       f"gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -ll 2>/dev/null || gcc -O1 -o '{c2h}' '{out}/c2h_lex.c'; }}")
     # compilation: the cell's h2c through the script filter and Romenagri, as the original Makefiles build h2c
     filt = script_filter(lang) and f"python3 '{HERE / 'script_filters.py'}' prepare {lang} | "
     sh(f"cat '{src}/h2c.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex'")
     lex = (out / "h2c.lex").read_bytes().split(b"\n")      # a word's C-level form, as to_c gives it (cform)
-    lex = [re.sub(rb"^[A-Za-z0-9_^]+(?=\s+\{)", lambda m: cform(m.group(0).decode()).encode(), l) for l in lex]
+    lex = [re.sub(rb"^(\\#)?[A-Za-z0-9_^]+(?=\s+\{)", lambda m: cform(m.group(0).decode()).encode(), l) for l in lex]
     (out / "h2c.lex").write_bytes(b"\n".join(lex))
-    sh(f"flex -8 -o '{out}/h2c_lex.c' '{out}/h2c.lex' && gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -lfl")
+    sh(f"flex -8 -o '{out}/h2c_lex.c' '{out}/h2c.lex' && {{ gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -lfl 2>/dev/null || "
+       f"gcc -O1 -o '{h2c}' '{out}/h2c_lex.c' -ll 2>/dev/null || gcc -O1 -o '{h2c}' '{out}/h2c_lex.c'; }}")   # libfl, BSD libl, or none
     return c2h, h2c
 
 
@@ -113,7 +115,7 @@ def to_native(text, lang):
 def cform(form):
     """Romenagri marks a vowel-initial syllable inside a word with ^, which no C identifier may contain; it is written _
     instead, as Romenagri itself writes a vowel at the start of a word (DEVIATIONS.md)."""
-    return form.replace("^", "_")
+    return form[:2] + form[2:].replace("^", "_") if form.startswith("\\#") else form.replace("^", "_")
 
 
 def to_c(text, lang):

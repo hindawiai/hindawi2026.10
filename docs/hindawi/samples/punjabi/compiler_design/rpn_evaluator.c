@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <ctype.h>
 /* evaluate a postfix (reverse Polish) expression with a stack */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਅੱਖਰ ਵਿਅੰਜਕ[] = "3 4 + 2 * 7 -";

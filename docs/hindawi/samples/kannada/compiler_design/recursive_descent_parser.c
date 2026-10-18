@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <ctype.h>
 /* parsing: a recursive-descent parser that evaluates  expression -> term {+|- term},  term -> factor {*|/ factor} */
 ಸ್ಥಿರಾಂಕ ಅಕ್ಷರ *ಪಠ್ಯ;
 ಪೂರ್ಣಾಂಕ ಅಭಿವ್ಯಕ್ತಿ(ಶೂನ್ಯ);

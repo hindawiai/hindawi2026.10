@@ -35,7 +35,9 @@ SHAILIS = {
     "robot": ("h2logo", "logo2h", None, "forward back left right repeat to end make if ifelse print penup pendown home clearscreen"),
 }
 # host words every language's standard needs beyond what the legacy tables list
-EXTRA = {"shraeni": "nullptr cout cin endl auto", "kritrima": "true false null String System super synchronized throws println",
+EXTRA = {"guru": "printf putchar puts scanf sscanf malloc calloc free exit abs pow sqrt sin cos exp log strlen strstr strncmp "
+                 "strcmp strcpy memcpy memset isdigit isalpha isalnum isspace toupper tolower",
+         "shraeni": "nullptr cout cin endl auto", "kritrima": "true false null String System super synchronized throws println",
          "soochee": "None True False print range len", "praatha": "mod and or not"}
 SHAILIS = {s: v[:3] + (v[3] + " " + EXTRA.get(s, ""),) for s, v in SHAILIS.items()}
 C_SHARED = {"shraeni", "kritrima", "wyaaka", "shabda"}
@@ -188,6 +190,28 @@ def main():
         status = ["shaili\ttokens\twith a word\tmissing"] + [f"rejected\t{k}\t{w}\tnot a name, or the host's own token" for k, w in sorted(bad.items())]
         for s, (fwd, rev, _, _) in SHAILIS.items():
             have = {t: word[t] for t in tokens[s] if t in word}
+            # one word, one construct: a word two tokens share would compile back to only one of them (write and printf
+            # both as लिख made every write a printf). The same token in another case (FOR, for) is the same construct.
+            # A token with a proposed word of its own yields and takes that word; otherwise the better-sourced one keeps it.
+            def rank(t, p=prov, ov=overlay):
+                q = p.get(t, "")
+                return (t in ov and ov[t] != have[t],
+                        0 if q == "lexicon" else 1 if "lexicons/multi" not in q and "lexicons/" in q else 2 if "multi" in q else 3,
+                        t.startswith("#"), t)
+            owner = {}
+            for t in sorted(have, key=rank):
+                o = owner.setdefault(have[t], t)
+            shared = {t: owner[have[t]] for t in have if owner[have[t]] != t and owner[have[t]].lower() != t.lower()}
+            used = set(have.values())
+            for t in shared:
+                alt = overlay.get(t)
+                if alt and alt != have[t] and alt not in used:
+                    have[t] = alt; used.add(alt); prov[t] = "proposed in lexicons, unreviewed (the lexicon's word is another construct's)"
+                else:
+                    del have[t]
+            dropped = {t: o for t, o in shared.items() if t not in have}
+            if dropped:
+                status.append(f"shared\t{s}\t\t" + " ".join(f"{t}(word of {o})" for t, o in sorted(dropped.items())))
             seen, inv = set(), []
             for t, w in sorted(have.items(), key=lambda kv: (kv[0].startswith('#'), kv[0])):
                 if w not in seen:
@@ -203,6 +227,9 @@ def main():
         total = sum(len(tokens[s]) for s in SHAILIS); got = sum(1 for s in SHAILIS for t in tokens[s] if t in word)
         print(f"complete_cells: {lang:22} {got}/{total} token rules across the nine shailis")
     out = REPO / "docs/hindawi/data/standards.json"
+    if out.exists():                       # a run over some languages keeps every other language's record
+        old = json.loads(out.read_text(encoding="utf-8"))
+        standards["languages"] = {**old.get("languages", {}), **standards["languages"]}
     out.write_text(json.dumps(standards, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 

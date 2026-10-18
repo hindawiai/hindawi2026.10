@@ -1,0 +1,12 @@
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.uhin text eol=lf
+*.l text eol=lf
+*.y text eol=lf
+*.tsv text eol=lf
+*.md text eol=lf
+bin/* text eol=lf
+lang/hindawi/hindawicc text eol=lf
+*.docx binary
+*.zip binary

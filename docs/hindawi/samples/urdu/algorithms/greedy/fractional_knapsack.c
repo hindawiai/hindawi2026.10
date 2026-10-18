@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* fractional knapsack: items already sorted by value per unit weight */
 صحیح مین(خالی) {
   دوہرا قدر[] = {60, 100, 120}, وزن[] = {10, 20, 30}, استعداد = 50, کل = 0;

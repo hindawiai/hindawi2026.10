@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* calculus: integrate x*x from 0 to 3 by Simpson's rule */
 ਦੁੱਗਣਾ ਵਕਰ(ਦੁੱਗਣਾ ਬਿੰਦੂ) { ਵਾਪਸ ਬਿੰਦੂ * ਬਿੰਦੂ; }
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* linear algebra: solve a system of three equations by Gaussian elimination, and its determinant */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਦੁੱਗਣਾ ਮੈਟ੍ਰਿਕਸ[3][4] = {{2, 1, -1, 8}, {-3, -1, 2, -11}, {-2, 1, 2, -3}}, ਨਤੀਜਾ[3], ਨਿਰਧਾਰਕ = 1;

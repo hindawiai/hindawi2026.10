@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* transactions: test a schedule for conflict serializability through its precedence graph */
 ਪੂਰਨ ਗ੍ਰਾਫ[3][3], ਦੇਖਿਆ[3], ਸਰਗਰਮ[3];
 ਪੂਰਨ ਚੱਕਰ(ਪੂਰਨ ਸ਼ੀਰਸ਼) {

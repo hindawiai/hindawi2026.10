@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* an NFA, simulated on sets of states, accepting binary strings whose second-last symbol is 1 */
 పూర్ణాంకం స్వీకరించు(స్థిరరాశి అక్షరం *మాట) {
   పూర్ణాంకం స్థితులు = 1;                                /* bit k set means state k is active */

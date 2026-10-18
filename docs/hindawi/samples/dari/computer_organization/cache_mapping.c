@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* memory hierarchy: a direct-mapped cache of four lines, block size 4 words; count hits and misses */
 صحيح اصلی(فراغ) {
   صحيح آدرسها[] = {0, 4, 8, 0, 16, 4, 32, 0, 8, 48}, برچسبها[4], استفاده_شده[4] = {0}, اصابتها = 0, ناکامیها = 0;

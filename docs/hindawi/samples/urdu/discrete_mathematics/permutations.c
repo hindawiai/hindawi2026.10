@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* all permutations of 1..3, by swapping */
 صحیح اقدار[] = {1, 2, 3}, کل = 0;
 خالی ترتیب_بدلو(صحیح آغاز) {

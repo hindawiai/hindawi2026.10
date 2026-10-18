@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* an equi-join of two small relations by hashing the smaller one */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ವಿದ್ಯಾರ್ಥಿ[4][2] = {{1, 81}, {2, 72}, {3, 95}, {4, 60}};          /* id, marks */

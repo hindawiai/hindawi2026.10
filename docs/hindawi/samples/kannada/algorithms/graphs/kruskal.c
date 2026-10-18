@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 ಪೂರ್ಣಾಂಕ ಪೋಷಕ[6];
 ಪೂರ್ಣಾಂಕ ಕಂಡುಹಿಡಿ(ಪೂರ್ಣಾಂಕ ಶೃಂಗ) { ಹಿಂತಿರುಗಿ ಪೋಷಕ[ಶೃಂಗ] == ಶೃಂಗ ? ಶೃಂಗ : (ಪೋಷಕ[ಶೃಂಗ] = ಕಂಡುಹಿಡಿ(ಪೋಷಕ[ಶೃಂಗ])); }

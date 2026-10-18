@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary search in a sorted array */
 صحيح ثنائی_کھوج(صحيح مل[], صحيح گنتی, صحيح کنجی) {
   صحيح نیواں = 0, اچا = گنتی - 1;

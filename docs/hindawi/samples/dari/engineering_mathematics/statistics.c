@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#ضمن <stdio.h>
+#ضمن <math.h>
 /* probability and statistics: mean, median, mode and standard deviation of sorted values */
 صحيح اصلی(فراغ) {
   صحيح مقادیر[] = {2, 3, 3, 5, 7, 8, 8, 8, 9}, شمار = 9, نما = مقادیر[0], بهترین = 0;

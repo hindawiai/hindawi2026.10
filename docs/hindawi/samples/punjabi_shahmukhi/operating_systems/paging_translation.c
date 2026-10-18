@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* memory management: translate virtual addresses with a page table, page size 1024 */
 صحيح مکھ(فراغ) {
   صحيح جدول[8] = {5, 2, -1, 7, 1, -1, 3, 0}, پتے[] = {100, 2048, 3100, 7000, 5000};

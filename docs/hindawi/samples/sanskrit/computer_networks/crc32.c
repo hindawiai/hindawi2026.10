@@ -1,4 +1,4 @@
-#include <stdio.h>
+#अन्तर्भाव <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 अचिह्नित चक्रीयपरीक्षा_32(ध्रुव वर्ण *पाठः) {
   अचिह्नित चक्रीयपरीक्षा = 0xFFFFFFFFu;
@@ -8,4 +8,4 @@
   }
   प्रत्यागम ~चक्रीयपरीक्षा;
 }
-पूर्णाङ्क मुख्यम्(शून्य) { लिख("%08X\n", चक्रीयपरीक्षा_32("The quick brown fox jumps over the lazy dog")); प्रत्यागम 0; }
+पूर्णाङ्क मुख्यम्(शून्य) { प्रारूप_लिख("%08X\n", चक्रीयपरीक्षा_32("The quick brown fox jumps over the lazy dog")); प्रत्यागम 0; }

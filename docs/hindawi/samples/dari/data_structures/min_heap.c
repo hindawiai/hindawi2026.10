@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary min-heap as a priority queue */
 صحيح انباشته[32], اندازه = 0;
 فراغ درج(صحيح مقدار) {

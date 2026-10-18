@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం కిటికీ = 1, పరిమితి = 16;

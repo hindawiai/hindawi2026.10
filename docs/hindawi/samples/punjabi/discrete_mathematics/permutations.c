@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* all permutations of 1..3, by swapping */
 ਪੂਰਨ ਮੁੱਲ[] = {1, 2, 3}, ਕੁੱਲ = 0;
 ਖਾਲੀ ਕ੍ਰਮ_ਬਦਲੋ(ਪੂਰਨ ਸ਼ੁਰੂ) {

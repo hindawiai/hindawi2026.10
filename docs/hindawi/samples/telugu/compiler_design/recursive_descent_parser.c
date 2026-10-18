@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <ctype.h>
 /* parsing: a recursive-descent parser that evaluates  expression -> term {+|- term},  term -> factor {*|/ factor} */
 స్థిరరాశి అక్షరం *పాఠ్యం;
 పూర్ణాంకం వ్యక్తీకరణ(శూన్య);

@@ -24,7 +24,7 @@ GOTO                        {printf("ಹೋಗು");}
 goto                        {printf("ಹೋಗು");}
 next                        {printf("ಮುಂದಿನ_ಸುತ್ತು");}
 step                        {printf("ಹೆಜ್ಜೆಯಲ್ಲಿ");}
-then                        {printf("ಆಗ");}
+then                        {printf("ಹಾಗಾದರೆ");}
 wend                        {printf("ತನಕ_ಅಂತ್ಯ");}
 AND                         {printf("ಮತ್ತು");}
 END                         {printf("ಅಂತ್ಯ");}

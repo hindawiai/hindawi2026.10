@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* instruction pipelining: a five-stage pipeline with forwarding stalls one cycle after each load whose result is used next */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਲੱਦੋ[] = {1, 0, 1, 0, 0, 1, 0}, ਵਰਤਦਾ_ਪਿਛਲਾ[] = {0, 1, 0, 0, 1, 0, 1}, ਗਿਣਤੀ_2 = 7, ਰੁਕਾਵਟਾਂ = 0;

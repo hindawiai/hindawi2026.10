@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 صحيح مکيه(فراغ) {
   صحيح کاٻو[] = {1 | 2, 2 | 4, 8, 16}, ساڄو[] = {4, 8, 16, 32}, گهيرو = 1 | 2, بدليو = 1;   /* AB->C, BC->D, D->E, E->F */

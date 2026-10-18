@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   అక్షరం పట్టీ[16] = "_1011_";

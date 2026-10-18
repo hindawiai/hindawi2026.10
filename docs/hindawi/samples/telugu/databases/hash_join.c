@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* an equi-join of two small relations by hashing the smaller one */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం విద్యార్థి[4][2] = {{1, 81}, {2, 72}, {3, 95}, {4, 60}};          /* id, marks */

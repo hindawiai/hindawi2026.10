@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* IPv4 and CIDR: the network, broadcast address and host count of 192.168.10.77/26 */
 صحیح مین(خالی) {
   غیرعلامتی پتہ = (192u << 24) | (168 << 16) | (10 << 8) | 77, سابقہ = 26, نقاب = سابقہ ? ~0u << (32 - سابقہ) : 0;

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಅಕ್ಷರ ಪಟ್ಟಿ[16] = "_1011_";

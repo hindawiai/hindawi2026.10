@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 ਬਿਨਾਨਿਸ਼ਾਨੀ ਚੱਕਰੀ_ਜਾਂਚ_32(ਅਚਲ ਅੱਖਰ *ਪਾਠ) {
   ਬਿਨਾਨਿਸ਼ਾਨੀ ਚੱਕਰੀ_ਜਾਂਚ = 0xFFFFFFFFu;

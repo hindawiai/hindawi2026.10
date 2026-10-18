@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* activity selection: activities sorted by finish time */
 صحیح مین(خالی) {
   صحیح آغاز[] = {1, 3, 0, 5, 8, 5}, اختتام[] = {2, 4, 6, 7, 9, 9}, گنتی = 6, آخری = 0, کل = 1;

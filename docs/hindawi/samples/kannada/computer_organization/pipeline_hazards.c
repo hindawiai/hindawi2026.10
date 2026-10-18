@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* instruction pipelining: a five-stage pipeline with forwarding stalls one cycle after each load whose result is used next */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ತುಂಬು[] = {1, 0, 1, 0, 0, 1, 0}, ಬಳಸುತ್ತದೆ_ಹಿಂದಿನ[] = {0, 1, 0, 0, 1, 0, 1}, ಎಣಿಕೆ_2 = 7, ತಡೆಗಳು = 0;

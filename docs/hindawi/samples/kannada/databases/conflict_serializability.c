@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* transactions: test a schedule for conflict serializability through its precedence graph */
 ಪೂರ್ಣಾಂಕ ನಕ್ಷೆ[3][3], ಭೇಟಿಯಾದ[3], ಸಕ್ರಿಯ[3];
 ಪೂರ್ಣಾಂಕ ಚಕ್ರ(ಪೂರ್ಣಾಂಕ ಶೃಂಗ) {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <ctype.h>
 /* a hand-written lexer: identifiers, numbers and operators */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   అక్షరం ఆధారం[] = "total = count1 + 42 * rate;";

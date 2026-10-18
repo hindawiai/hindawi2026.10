@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* fractional knapsack: items already sorted by value per unit weight */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   ద్విగుణ విలువ[] = {60, 100, 120}, బరువు[] = {10, 20, 30}, సామర్థ్యం = 50, మొత్తం = 0;

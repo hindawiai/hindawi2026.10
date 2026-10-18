@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* a DFA over binary strings that accepts multiples of three */
 صحيح مندا(ثابت حرف *لفظ) {
   صحيح state = 0;

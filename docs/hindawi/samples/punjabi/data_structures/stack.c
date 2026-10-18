@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* stack: balanced brackets */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਅੱਖਰ ਪਾਠ[] = "{[()()]}", ਥੱਬਾ[32];

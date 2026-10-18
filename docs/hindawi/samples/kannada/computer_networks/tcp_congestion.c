@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಕಿಟಕಿ = 1, ಮಿತಿ = 16;

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <ctype.h>
 /* evaluate a postfix (reverse Polish) expression with a stack */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   అక్షరం వ్యక్తీకరణ[] = "3 4 + 2 * 7 -";

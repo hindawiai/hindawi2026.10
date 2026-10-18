@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <limits.h>
 /* matrix chain multiplication order */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਮਾਪ[] = {40, 20, 30, 10, 30}, ਗਿਣਤੀ_2 = 4, ਲਾਗਤ[8][8] = {{0}};

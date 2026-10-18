@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#ضمن <stdio.h>
+#ضمن <limits.h>
 /* matrix chain multiplication order */
 صحيح اصلي(فراغ) {
   صحيح اندازه[] = {40, 20, 30, 10, 30}, شمېر = 4, لګښت[8][8] = {{0}};

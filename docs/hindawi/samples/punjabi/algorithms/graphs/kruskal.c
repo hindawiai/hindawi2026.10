@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 ਪੂਰਨ ਮਾਪਾ[6];
 ਪੂਰਨ ਲੱਭੋ(ਪੂਰਨ ਸ਼ੀਰਸ਼) { ਵਾਪਸ ਮਾਪਾ[ਸ਼ੀਰਸ਼] == ਸ਼ੀਰਸ਼ ? ਸ਼ੀਰਸ਼ : (ਮਾਪਾ[ਸ਼ੀਰਸ਼] = ਲੱਭੋ(ਮਾਪਾ[ਸ਼ੀਰਸ਼])); }

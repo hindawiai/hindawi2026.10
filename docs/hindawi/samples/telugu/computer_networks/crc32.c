@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 గుర్తులేని చక్రీయ_తనిఖీ_32(స్థిరరాశి అక్షరం *పాఠ్యం) {
   గుర్తులేని చక్రీయ_తనిఖీ = 0xFFFFFFFFu;

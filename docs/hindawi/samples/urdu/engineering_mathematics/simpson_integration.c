@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* calculus: integrate x*x from 0 to 3 by Simpson's rule */
 دوہرا خم(دوہرا نقطہ) { واپس نقطہ * نقطہ; }
 صحیح مین(خالی) {

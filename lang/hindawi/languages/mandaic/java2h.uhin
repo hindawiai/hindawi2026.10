@@ -20,7 +20,6 @@ finally                     {printf("أخيرا");}
 package                     {printf("حزمة");}
 private                     {printf("خاص");}
 typedef                     {printf("تعريفنوع");}
-virtual                     {printf("افتراضي");}
 Object                      {printf("كائن");}
 String                      {printf("نص");}
 Thread                      {printf("خيط");}
@@ -61,7 +60,6 @@ goto                        {printf("اذهب");}
 null                        {printf("عدم");}
 read                        {printf("اقرأ");}
 this                        {printf("هذا");}
-true                        {printf("صحيح");}
 void                        {printf("فراغ");}
 \#if                        {printf("#إذا");}
 for                         {printf("لكل");}

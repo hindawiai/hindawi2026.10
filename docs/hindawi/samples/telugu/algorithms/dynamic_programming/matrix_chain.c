@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <limits.h>
 /* matrix chain multiplication order */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం కొలత[] = {40, 20, 30, 10, 30}, లెక్క = 4, ఖర్చు[8][8] = {{0}};

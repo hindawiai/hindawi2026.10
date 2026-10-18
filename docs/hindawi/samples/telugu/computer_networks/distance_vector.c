@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* routing: distance-vector rounds (Bellman-Ford) until no table changes; 99 means unreachable */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం ఖర్చు[4][4] = {{0, 1, 99, 7}, {1, 0, 2, 99}, {99, 2, 0, 1}, {7, 99, 1, 0}}, దూరం[4][4], విడతలు = 0, మారింది = 1;

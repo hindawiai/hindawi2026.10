@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#شامل <stdio.h>
+#شامل <limits.h>
 /* matrix chain multiplication order */
 صحیح مین(خالی) {
   صحیح سائز[] = {40, 20, 30, 10, 30}, گنتی = 4, لاگت[8][8] = {{0}};

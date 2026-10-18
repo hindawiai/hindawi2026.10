@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <limits.h>
 /* matrix chain multiplication order */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಗಾತ್ರ_2[] = {40, 20, 30, 10, 30}, ಎಣಿಕೆ_2 = 4, ವೆಚ್ಚ[8][8] = {{0}};

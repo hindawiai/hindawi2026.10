@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* fractional knapsack: items already sorted by value per unit weight */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ದ್ವಿಗುಣ ಮೌಲ್ಯ[] = {60, 100, 120}, ತೂಕ[] = {10, 20, 30}, ಸಾಮರ್ಥ್ಯ = 50, ಒಟ್ಟು = 0;

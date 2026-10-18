@@ -10,7 +10,6 @@ INCLUDE                     {printf("ضمن");}
 ASSUME                      {printf("افترض");}
 EXTERN                      {printf("خارجي");}
 PUBLIC                      {printf("عام");}
-global                      {printf("عام");}
 WHILE                       {printf("כלעוד");}
 CALL                        {printf("نادي");}
 ELSE                        {printf("אחרת");}

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 صحيح اصلي(فراغ) {
   صحيح لومړی = 11, دوهم = 6, لېږد = 0, مجموعه = 0;

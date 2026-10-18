@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* calculus: integrate x*x from 0 to 3 by Simpson's rule */
 ದ್ವಿಗುಣ ವಕ್ರ(ದ್ವಿಗುಣ ಬಿಂದು) { ಹಿಂತಿರುಗಿ ಬಿಂದು * ಬಿಂದು; }
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {

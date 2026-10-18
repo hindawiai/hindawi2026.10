@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <ctype.h>
 /* parsing: a recursive-descent parser that evaluates  expression -> term {+|- term},  term -> factor {*|/ factor} */
 ਅਚਲ ਅੱਖਰ *ਪਾਠ;
 ਪੂਰਨ ਵਿਅੰਜਕ(ਖਾਲੀ);

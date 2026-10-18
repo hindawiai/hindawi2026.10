@@ -6,13 +6,28 @@
 \'(\\.|[^\\\'\n])*\'                       {printf("%s",yytext);}
 \"(\\.|[^\\\"\n])*\"                       {printf("%s",yytext);}
 
+\#که_نه_تعریف_شوی           {printf("#ifndef");}
 حافظه_صفر_ورکړه             {printf("calloc");}
 که_توری_یا_عدد              {printf("isalnum");}
+\#که_تعریف_شوی              {printf("#ifdef");}
+توری_چاپ_کړه                {printf("putchar");}
+له_مزي_ولوله                {printf("sscanf");}
 مزي_اوږدوالی                {printf("strlen");}
+\#تعریف_لغوه                {printf("#undef");}
+توانیز_تابع                 {printf("exp");}
 حافظه_ورکړه                 {printf("malloc");}
+\#تعریف_کړه                 {printf("#define");}
+\#د_که_پای                  {printf("#endif");}
+\#لارښوونه                  {printf("#pragma");}
 حافظه_نقل                   {printf("memcpy");}
+مزي_پرتله                   {printf("strncmp");}
+مزي_پلټنه                   {printf("strstr");}
+مطلق_قیمت                   {printf("abs");}
+\#تېروتنه                   {printf("#error");}
 \#وإلاإذا                   {printf("#elif");}
 تعريفنوع                    {printf("typedef");}
+لوګاریتم                    {printf("log");}
+لوی_توری                    {printf("toupper");}
 افتراضي                     {printf("default");}
 خپلکاری                     {printf("auto");}
 لوی_عدد                     {printf("INT_MAX");}
@@ -23,7 +38,9 @@
 نښهدار                      {printf("signed");}
 که_تشه                      {printf("isspace");}
 که_عدد                      {printf("isdigit");}
+کوساین                      {printf("cos");}
 \#وإلا                      {printf("#else");}
+\#کرښه                      {printf("#line");}
 إشارة                       {printf("signal");}
 اتحاد                       {printf("union");}
 استمر                       {printf("continue");}
@@ -31,6 +48,7 @@
 تعداد                       {printf("enum");}
 خارجي                       {printf("extern");}
 طالما                       {printf("while");}
+مجازي                       {printf("virtual");}
 محدود                       {printf("restrict");}
 مزدوج                       {printf("double");}
 ملګری                       {printf("friend");}
@@ -47,9 +65,11 @@
 اكسر                        {printf("break");}
 اوږد                        {printf("long");}
 بنية                        {printf("struct");}
+توان                        {printf("pow");}
 ثابت                        {printf("const");}
 حالة                        {printf("case");}
 ساكن                        {printf("static");}
+ساین                        {printf("sin");}
 صحيح                        {printf("int");}
 عائم                        {printf("float");}
 فراغ                        {printf("void");}
@@ -70,6 +90,7 @@
 لكل                         {printf("for");}
 لنډ                         {printf("short");}
 نوع                         {printf("type");}
+وتل                         {printf("exit");}
 کیڼ                         {printf("left");}
 ښی                          {printf("right");}
 

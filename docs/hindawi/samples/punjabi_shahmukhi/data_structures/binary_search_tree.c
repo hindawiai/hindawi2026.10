@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ضمن <stdio.h>
+#ضمن <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 بنية گنڈھ { صحيح کنجی; بنية گنڈھ *کھبا, *سجا; };
 بنية گنڈھ *داخل_کرو(بنية گنڈھ *جڑ, صحيح کنجی) {

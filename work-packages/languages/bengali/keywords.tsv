@@ -1,0 +1,89 @@
+token	meaning	word
+auto	automatic storage duration	
+long	long integer type	
+restrict	the only pointer to its object	
+short	short integer type	
+signed	signed integer type	
+unsigned	unsigned integer type	
+delete	free an object	
+explicit	no implicit conversion	
+friend	may see private members	
+mutable	changeable in a const object	
+nullptr	the null pointer	
+operator	operator function	
+template	template	
+typename	a type name	
+using	use a name or namespace	
+cout	standard output stream	
+cin	standard input stream	
+endl	end of line	
+boolean	true-or-false type	
+byte	byte type	
+final	cannot change or be overridden	
+instanceof	is an instance of	
+native	implemented outside Java	
+synchronized	one thread at a time	
+throws	may raise	
+System	the system class	
+None	no value	
+def	define a function	
+del	delete	
+global	global	
+is	is the same object	
+nonlocal	from the enclosing function	
+pass	do nothing	
+with	with a context	
+print	print	
+range	a range of numbers	
+len	length	
+dim	dimension an array	
+gosub	go to a subroutine	
+input	read input	
+next	next iteration	
+rem	remark (comment)	
+step	step size	
+then	then	
+to	to	
+wend	end of while	
+mod	remainder	
+back	move back	
+left	turn left	
+right	turn right	
+penup	lift the pen	
+pendown	put the pen down	
+repeat	repeat	
+make	make a variable	
+ifelse	if, otherwise	
+home	go home	
+clearscreen	clear the screen	
+#define	define a macro	
+#ifdef	compile if defined	
+#ifndef	compile if not defined	
+#endif	end of conditional compilation	
+#undef	remove a macro	
+#pragma	implementation directive	
+#error	stop with an error	
+#line	set the line number	
+INT_MAX		
+abs		
+calloc		
+cos		
+exit		
+exp		
+isalnum		
+isalpha		
+isdigit		
+isspace		
+log		
+malloc		
+memcpy		
+pow		
+printf		
+putchar		
+sin		
+sqrt		
+sscanf		
+strlen		
+strncmp		
+strstr		
+toupper		

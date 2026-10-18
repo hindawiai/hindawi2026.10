@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary min-heap as a priority queue */
 صحيح ډېرۍ[32], اندازه = 0;
 فراغ ورداخل(صحيح ارزښت) {

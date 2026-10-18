@@ -20,7 +20,6 @@ finally                     {printf("أخيرا");}
 package                     {printf("حزمة");}
 private                     {printf("خاص");}
 typedef                     {printf("تعريفنوع");}
-virtual                     {printf("افتراضي");}
 Object                      {printf("كائن");}
 String                      {printf("نص");}
 Thread                      {printf("خيط");}

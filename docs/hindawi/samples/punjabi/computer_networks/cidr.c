@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* IPv4 and CIDR: the network, broadcast address and host count of 192.168.10.77/26 */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਬਿਨਾਨਿਸ਼ਾਨੀ ਪਤਾ = (192u << 24) | (168 << 16) | (10 << 8) | 77, ਅਗੇਤਰ = 26, ਨਕਾਬ = ਅਗੇਤਰ ? ~0u << (32 - ਅਗੇਤਰ) : 0;

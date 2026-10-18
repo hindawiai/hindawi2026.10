@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#شامل <stdio.h>
+#شامل <limits.h>
 /* Dijkstra's shortest paths from vertex 0 */
 صحیح مین(خالی) {
   صحیح وزن[5][5] = {{0,10,0,30,100},{10,0,50,0,0},{0,50,0,20,10},{30,0,20,0,60},{100,0,10,60,0}};

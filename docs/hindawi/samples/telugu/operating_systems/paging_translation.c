@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* memory management: translate virtual addresses with a page table, page size 1024 */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం పట్టిక[8] = {5, 2, -1, 7, 1, -1, 3, 0}, చిరునామాలు[] = {100, 2048, 3100, 7000, 5000};

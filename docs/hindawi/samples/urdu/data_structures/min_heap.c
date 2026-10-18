@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* binary min-heap as a priority queue */
 صحیح ڈھیر[32], سائز = 0;
 خالی داخل_کرو(صحیح قدر) {

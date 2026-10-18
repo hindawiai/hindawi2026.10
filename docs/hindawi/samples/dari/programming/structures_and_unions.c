@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* structures, unions and sizeof */
 بنية نقطه { صحيح x, y; };
 اتحاد شماره { صحيح کامل; حرف بایتها[4]; };

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* normal forms: the closure of a set of attributes under functional dependencies; attributes A..F are bits */
 صحيح اصلی(فراغ) {
   صحيح طرف_چپ[] = {1 | 2, 2 | 4, 8, 16}, طرف_راست[] = {4, 8, 16, 32}, بستگی = 1 | 2, تغییریافته = 1;   /* AB->C, BC->D, D->E, E->F */

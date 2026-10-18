@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* binary min-heap as a priority queue */
 పూర్ణాంకం కుప్ప[32], కొలత = 0;
 శూన్య చొప్పించు(పూర్ణాంకం విలువ) {

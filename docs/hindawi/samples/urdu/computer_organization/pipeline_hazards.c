@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* instruction pipelining: a five-stage pipeline with forwarding stalls one cycle after each load whose result is used next */
 صحیح مین(خالی) {
   صحیح بھرو[] = {1, 0, 1, 0, 0, 1, 0}, استعمال_کرتا_پچھلا[] = {0, 1, 0, 0, 1, 0, 1}, گنتی = 7, رکاوٹیں = 0;

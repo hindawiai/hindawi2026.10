@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 صحیح مین(خالی) {
   صحیح کھڑکی = 1, حد = 16;

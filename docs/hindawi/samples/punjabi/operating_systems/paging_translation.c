@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* memory management: translate virtual addresses with a page table, page size 1024 */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਸਾਰਣੀ[8] = {5, 2, -1, 7, 1, -1, 3, 0}, ਪਤੇ[] = {100, 2048, 3100, 7000, 5000};

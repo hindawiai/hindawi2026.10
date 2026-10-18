@@ -6,7 +6,7 @@
 #   bash install.sh [--prefix DIR] [--no-build] [--uninstall]
 # © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 set -euo pipefail
-ROOT="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+ROOT="$(cd "$(dirname "$0")" && pwd)"
 PREFIX="${PREFIX:-$HOME/.local}"; BUILD=1; UNINSTALL=0
 while [ $# -gt 0 ]; do
   case "$1" in

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* fractional knapsack: items already sorted by value per unit weight */
 صحيح مکيه(فراغ) {
   مزدوج قدر[] = {60, 100, 120}, وزن[] = {10, 20, 30}, صلاحيت = 50, ڪل = 0;

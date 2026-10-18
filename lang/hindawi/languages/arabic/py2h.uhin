@@ -26,7 +26,6 @@ except                      {printf("استثناء");}
 global                      {printf("عام");}
 import                      {printf("استورد");}
 lambda                      {printf("مجهول");}
-public                      {printf("عام");}
 return                      {printf("إرجاع");}
 static                      {printf("ساكن");}
 switch                      {printf("بدل");}
@@ -56,7 +55,6 @@ this                        {printf("هذا");}
 void                        {printf("فراغ");}
 and                         {printf("و");}
 for                         {printf("لكل");}
-int                         {printf("صحيح");}
 new                         {printf("جديد");}
 not                         {printf("ليس");}
 try                         {printf("حاول");}

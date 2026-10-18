@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* stack: balanced brackets */
 صحيح اصلي(فراغ) {
   حرف متن[] = "{[()()]}", ټولګه[32];

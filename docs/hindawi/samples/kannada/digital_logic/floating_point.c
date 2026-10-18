@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <string.h>
 /* number representation: the sign, exponent and fraction of an IEEE 754 single-precision number */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ದಶಮಾಂಶ ಸಂಖ್ಯೆ = -6.25f;

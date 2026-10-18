@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* calculus: integrate x*x from 0 to 3 by Simpson's rule */
 مزدوج منحنی(مزدوج نقطه) { أرجع نقطه * نقطه; }
 صحيح اصلی(فراغ) {

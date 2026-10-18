@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#شامل <stdio.h>
+#شامل <stdlib.h>
 /* singly linked list: insert, reverse, print */
 ساخت نوڈ { صحیح قدر; ساخت نوڈ *اگلا; };
 ساخت نوڈ *ڈالو(ساخت نوڈ *سر, صحیح قدر) { ساخت نوڈ *شے = حافظہ_دو(حجم *شے); شے->قدر = قدر; شے->اگلا = سر; واپس شے; }

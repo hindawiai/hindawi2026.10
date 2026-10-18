@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* activity selection: activities sorted by finish time */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   పూర్ణాంకం ప్రారంభం[] = {1, 3, 0, 5, 8, 5}, ముగింపు[] = {2, 4, 6, 7, 9, 9}, లెక్క = 6, చివరి = 0, మొత్తం = 1;

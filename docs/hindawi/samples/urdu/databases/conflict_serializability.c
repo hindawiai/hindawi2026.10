@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* transactions: test a schedule for conflict serializability through its precedence graph */
 صحیح گراف[3][3], دیکھا[3], فعال[3];
 صحیح چکر(صحیح راس) {

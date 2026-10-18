@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* a DFA over binary strings that accepts multiples of three */
 పూర్ణాంకం స్వీకరించు(స్థిరరాశి అక్షరం *మాట) {
   పూర్ణాంకం state = 0;

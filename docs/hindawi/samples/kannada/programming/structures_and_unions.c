@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* structures, unions and sizeof */
 ರಚನೆ ಬಿಂದು { ಪೂರ್ಣಾಂಕ x, y; };
 ಒಕ್ಕೂಟ ಸಂಖ್ಯೆ { ಪೂರ್ಣಾಂಕ ಸಂಪೂರ್ಣ; ಅಕ್ಷರ ಬೈಟುಗಳು[4]; };

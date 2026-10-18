@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 صحيح مکھ(فراغ) {
   صحيح کھڑکی = 1, حد = 16;

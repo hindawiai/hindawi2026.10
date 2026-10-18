@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 صحيح اصلي(فراغ) {
   صحيح کړکۍ = 1, پوله = 16;

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ضمن <stdio.h>
+#ضمن <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 بنية غوټه { صحيح کیلي; بنية غوټه *کیڼ_اړخ, *ښی_اړخ; };
 بنية غوټه *ورداخل(بنية غوټه *ریښه, صحيح کیلي) {

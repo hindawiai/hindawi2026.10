@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* a DFA over binary strings that accepts multiples of three */
 ਪੂਰਨ ਮੰਨਦਾ(ਅਚਲ ਅੱਖਰ *ਸ਼ਬਦ) {
   ਪੂਰਨ state = 0;

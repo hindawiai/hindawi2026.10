@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <string.h>
 /* longest common subsequence length */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಅಕ್ಷರ ಮೊದಲ[] = "AGGTAB", ಎರಡನೇ[] = "GXTXAYB";

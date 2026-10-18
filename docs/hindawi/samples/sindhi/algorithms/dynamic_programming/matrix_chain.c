@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
+#ضمن <stdio.h>
+#ضمن <limits.h>
 /* matrix chain multiplication order */
 صحيح مکيه(فراغ) {
   صحيح سائيز[] = {40, 20, 30, 10, 30}, ڳڻپ = 4, لاڳت[8][8] = {{0}};

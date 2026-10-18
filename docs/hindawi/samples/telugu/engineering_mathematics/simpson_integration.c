@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* calculus: integrate x*x from 0 to 3 by Simpson's rule */
 ద్విగుణ వక్రం(ద్విగుణ బిందువు) { తిరిగి బిందువు * బిందువు; }
 పూర్ణాంకం ప్రధాన(శూన్య) {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ضمن <stdio.h>
+#ضمن <string.h>
 /* longest common subsequence length */
 صحيح مکيه(فراغ) {
   حرف پهريون[] = "AGGTAB", ٻيو[] = "GXTXAYB";

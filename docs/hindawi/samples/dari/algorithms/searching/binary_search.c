@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary search in a sorted array */
 صحيح دودویی_جستجو(صحيح مقادیر[], صحيح شمار, صحيح کلید) {
   صحيح کم = 0, بالا = شمار - 1;

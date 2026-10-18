@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* activity selection: activities sorted by finish time */
 صحيح مکيه(فراغ) {
   صحيح شروعات[] = {1, 3, 0, 5, 8, 5}, پڄاڻي[] = {2, 4, 6, 7, 9, 9}, ڳڻپ = 6, آخري = 0, ڪل = 1;

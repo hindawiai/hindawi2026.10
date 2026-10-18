@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 ਬਣਤਰ ਗੰਢ { ਪੂਰਨ ਕੁੰਜੀ; ਬਣਤਰ ਗੰਢ *ਖੱਬਾ, *ਸੱਜਾ; };
 ਬਣਤਰ ਗੰਢ *ਦਾਖਲ_ਕਰੋ(ਬਣਤਰ ਗੰਢ *ਜੜ੍ਹ, ਪੂਰਨ ਕੁੰਜੀ) {

@@ -84,6 +84,20 @@ def scanner(style):
     return re.compile("|".join(parts + [number, f"(?P<word>{WORD})"]))
 
 
+# A licence obliges its notice to be kept intact (GPL section 1, Apache section 4, BSD clause 1, MIT): never translated.
+LEGAL = re.compile(r"(?i)copyright|\(c\)|©|licen[cs]e|spdx|warranty|all rights reserved|permission is hereby granted")
+
+
+def read_exact(path):
+    with open(path, encoding="utf-8", errors="surrogateescape", newline="") as f:
+        return f.read()
+
+
+def write_exact(path, text):
+    with open(path, "w", encoding="utf-8", errors="surrogateescape", newline="") as f:
+        f.write(text)
+
+
 def load_rules(path):
     """English word to native word, from one transducer's own rules; plain words only."""
     table = {}
@@ -227,6 +241,16 @@ def externals(src, includes, defines):
                 system = " 3" in m.group(2) or m.group(1).startswith("/usr/"); continue
             if system:
                 names["c++" if f.suffix in (".cpp", ".cc", ".hpp") else "c"].update(re.findall(r"\b[A-Za-z_]\w*\b", line))
+    # Macros a system header defines (AF_UNIX, WEXITSTATUS, SOCK_STREAM) never reach the preprocessed text, so they are
+    # read from the headers' own definitions: only the <...> includes, so the project's own macros are still its names.
+    for f in sorted(p for p in Path(src).rglob("*") if p.suffix in (".c", ".h", ".cpp", ".cc", ".hpp")):
+        system = re.findall(r"^\s*#\s*include\s*<[^>]+>", f.read_text(encoding="utf-8", errors="replace"), re.M)
+        if not system:
+            continue
+        cpp = f.suffix in (".cpp", ".cc", ".hpp")
+        p = subprocess.run(["gcc", "-E", "-dM", "-x", "c++" if cpp else "c", "-"] + [f"-D{d}" for d in defines],
+                           input="\n".join(system), capture_output=True, text=True, errors="replace")
+        names["c++" if cpp else "c"].update(re.findall(r"^#define (\w+)", p.stdout, re.M))
     names["c++"] |= names["c"]
     return names
 
@@ -262,9 +286,13 @@ class Ingestion:
         if not m:
             return text
         inner = m.group(2)
+        if LEGAL.search(inner):                  # copyright and licence notices are kept exactly as their authors wrote them
+            return text
         lines = [self.tr.phrase(l) or l if l.strip() else l for l in inner.split("\n")]
         native = m.group(1) + "\n".join(lines) + (m.group(3) or "")
         if native != text:
+            if self.d["comments"].get(native, text) != text:
+                return text          # another comment already reads this way once translated: this one stays as written
             self.d["comments"][native] = text
         return native
 
@@ -282,8 +310,14 @@ class Ingestion:
             if m.group("word") is None:
                 if m.lastgroup == "com":
                     return self.comment(m.group(0))
-                if m.lastgroup == "inc" and self.args.rename_files:
-                    return re.sub(r'"([^"]+)"', lambda q: '"' + self.renamed(rel, q.group(1)) + '"', m.group(0))
+                if m.lastgroup == "inc":
+                    t = m.group(0)
+                    if self.args.rename_files:
+                        t = re.sub(r'"([^"]+)"', lambda q: '"' + self.renamed(rel, q.group(1)) + '"', t)
+                    if t.startswith("#include") and "#include" in table:   # the directive is a keyword; the header is a file
+                        seq.append("#include")
+                        t = table["#include"] + t[len("#include"):]
+                    return t
                 return m.group(0)
             w = m.group("word")
             key = w.lower() if caseless else w
@@ -329,18 +363,18 @@ def ingest_one(lang, args, external):
     for p in files:                      # sources first, so the build files see every identifier's name
         rel = str(p.relative_to(src))
         if p.suffix in PARADIGMS:
-            written[rel] = ing.source(rel, p.read_text(encoding="utf-8", errors="surrogateescape"))
+            written[rel] = ing.source(rel, read_exact(p))
     for p in files:
         rel = str(p.relative_to(src))
         if rel in written:
             continue
         if BUILD_FILES.match(p.name):
-            written[rel] = ing.build_file(p.read_text(encoding="utf-8", errors="surrogateescape"))
+            written[rel] = ing.build_file(read_exact(p))
         else:
             dst = out / rel; dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(p, dst)
     for rel, text in written.items():
         dst = out / ing.d["files"].get(rel, rel); dst.parent.mkdir(parents=True, exist_ok=True)
-        dst.write_text(text, encoding="utf-8", errors="surrogateescape")
+        write_exact(dst, text)
     script = script_of("".join(ing.natives)) or "LATIN"
     ing.d["script"] = script
     (out / ".hindawi").mkdir(parents=True, exist_ok=True)
@@ -353,7 +387,7 @@ def ingest_one(lang, args, external):
         shutil.copytree(out, alt)
         for f in alt.rglob("*"):
             if f.is_file() and (f.suffix in PARADIGMS or BUILD_FILES.match(f.name)):
-                f.write_text(project(f.read_text(encoding="utf-8", errors="surrogateescape"), script, s), encoding="utf-8", errors="surrogateescape")
+                write_exact(f, project(read_exact(f), script, s))
         d = json.loads((alt / DICT_NAME).read_text(encoding="utf-8")); d["rendered"] = {"from": script, "to": s}
         (alt / DICT_NAME).write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
     return lang, len(written), len(ing.d["identifiers"]), len(ing.d["comments"]), script
@@ -383,14 +417,14 @@ def reverse_tree(native, out):
         dst = out / orig; dst.parent.mkdir(parents=True, exist_ok=True)
         if p.suffix not in PARADIGMS and not BUILD_FILES.match(p.name):
             shutil.copy2(p, dst); continue
-        text = p.read_text(encoding="utf-8", errors="surrogateescape")
+        text = read_exact(p)
         if "rendered" in d:
             text = project(text, d["rendered"]["to"], d["rendered"]["from"])
         if BUILD_FILES.match(p.name):
             text = re.sub(r"(-[DU])(\S+?)(?=[=\s'\")]|$)", lambda m: m.group(1) + ids.get(m.group(2), m.group(2)), text)
             for orig_f, native_f in d["files"].items():
                 text = re.sub(rf"(?<![\w/.]){re.escape(Path(native_f).name)}(?![\w.])", Path(orig_f).name, text)
-            dst.write_text(text, encoding="utf-8", errors="surrogateescape"); continue
+            write_exact(dst, text); continue
         _, rev, style = PARADIGMS[p.suffix]
         table = keyword_table(lang, rev); inverse = {}
         for k, v in table.items():
@@ -401,7 +435,17 @@ def reverse_tree(native, out):
         multi = sorted((k for k in inverse if re.search(r"\s", k)), key=len, reverse=True)
         scan = re.compile("(?P<multi>" + "|".join(re.escape(k) for k in multi) + ")|" + scanner(style).pattern) if multi else scanner(style)
 
+        # an include line whose directive was localised: the directive comes back, the header is unrenamed
+        ninc = sorted((k for k, v in inverse.items() if "#include" in v), key=len, reverse=True)
+        if ninc:
+            scan = re.compile("(?P<ninc>(?:" + "|".join(re.escape(k) for k in ninc) + r')[ \t]*[<"][^>"\n]*[>"])|' + scan.pattern)
+
         def sub(m):
+            if m.lastgroup == "ninc":
+                t = m.group(0); nat = next(k for k in ninc if t.startswith(k)); rest = t[len(nat):]
+                if d["files"]:
+                    rest = re.sub(r'"([^"]+)"', lambda q: '"' + unrename(d, orig, rel, q.group(1)) + '"', rest)
+                return (seq.pop(0) if seq else "#include") + rest
             if m.lastgroup == "multi":
                 return seq.pop(0) if seq else inverse[m.group(0)][0]
             if m.group("word") is None:
@@ -414,7 +458,7 @@ def reverse_tree(native, out):
             if w in inverse:
                 return seq.pop(0) if seq else inverse[w][0]
             return ids.get(w, w)
-        dst.write_text(scan.sub(sub, text), encoding="utf-8", errors="surrogateescape")
+        write_exact(dst, scan.sub(sub, text))
     return out
 
 
@@ -455,8 +499,8 @@ def cmd_check(args):
         for f in src_files:
             sfx = Path(f).suffix
             if sfx in PARADIGMS:
-                orig = (Path(args.src) / f).read_text(encoding="utf-8", errors="replace")
-                nat = (folder / d["files"].get(f, f)).read_text(encoding="utf-8", errors="replace")
+                orig = read_exact(Path(args.src) / f)
+                nat = read_exact(folder / d["files"].get(f, f))
                 localized[PARADIGMS[sfx][0]] = localized.get(PARADIGMS[sfx][0], False) or nat != orig
         report.append({"folder": folder.name, "script": d.get("rendered", {}).get("to", d.get("script")),
                        "files": len(src_files), "exact": len(same), "localised": localized})

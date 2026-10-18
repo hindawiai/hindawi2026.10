@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* TCP congestion control: slow start, congestion avoidance, and a timeout at round 8 */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਖਿੜਕੀ = 1, ਹੱਦ = 16;

@@ -1,0 +1,135 @@
+token	meaning	word
+auto	automatic storage duration	
+const	read-only qualifier	
+continue	next iteration of the loop	
+default	the switch branch taken otherwise	
+do	loop whose test comes after its body	
+extern	defined elsewhere	
+float	real type	
+goto	jump to a label	
+long	long integer type	
+restrict	the only pointer to its object	
+short	short integer type	
+signed	signed integer type	
+static	static storage, or private to the file	
+switch	choose by value	
+typedef	name a type	
+unsigned	unsigned integer type	
+void	no value	
+main	the program's entry function	
+bool	true-or-false type	
+class	class	
+delete	free an object	
+explicit	no implicit conversion	
+false	false	
+friend	may see private members	
+mutable	changeable in a const object	
+namespace	a space of names	
+new	create an object	
+nullptr	the null pointer	
+operator	operator function	
+private	private	
+public	public	
+template	template	
+this	this object	
+true	true	
+try	try	
+typename	a type name	
+using	use a name or namespace	
+virtual	overridable	
+cout	standard output stream	
+cin	standard input stream	
+endl	end of line	
+abstract	abstract	
+assert	assert	
+boolean	true-or-false type	
+byte	byte type	
+final	cannot change or be overridden	
+import	bring in	
+instanceof	is an instance of	
+interface	interface	
+native	implemented outside Java	
+package	package	
+super	the parent class	
+synchronized	one thread at a time	
+throws	may raise	
+null	no object	
+String	text string type	
+System	the system class	
+False	false	
+None	no value	
+True	true	
+as	as	
+def	define a function	
+del	delete	
+elif	otherwise if	
+except	on exception	
+global	global	
+is	is the same object	
+lambda	anonymous function	
+nonlocal	from the enclosing function	
+or	or	
+pass	do nothing	
+raise	raise an exception	
+with	with a context	
+yield	yield a value	
+print	print	
+range	a range of numbers	
+len	length	
+dim	dimension an array	
+end	end	
+gosub	go to a subroutine	
+input	read input	
+let	let	
+next	next iteration	
+rem	remark (comment)	
+step	step size	
+then	then	
+to	to	
+wend	end of while	
+mod	remainder	
+forward	move forward	
+back	move back	
+left	turn left	
+right	turn right	
+penup	lift the pen	
+pendown	put the pen down	
+repeat	repeat	
+make	make a variable	
+ifelse	if, otherwise	
+home	go home	
+clearscreen	clear the screen	
+#define	define a macro	
+#include	include a header	
+#ifdef	compile if defined	
+#ifndef	compile if not defined	
+#elif	otherwise compile if	
+#endif	end of conditional compilation	
+#undef	remove a macro	
+#pragma	implementation directive	
+#error	stop with an error	
+#line	set the line number	
+INT_MAX		
+abs		
+calloc		
+cos		
+exit		
+exp		
+free		
+isalnum		
+isalpha		
+isdigit		
+isspace		
+log		
+malloc		
+memcpy		
+pow		
+printf		
+putchar		
+sin		
+sqrt		
+sscanf		
+strlen		
+strncmp		
+strstr		
+toupper		

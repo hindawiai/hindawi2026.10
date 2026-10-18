@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* primes below 60 */
 صحیح مین(خالی) {
   صحیح مرکب[60] = {0};

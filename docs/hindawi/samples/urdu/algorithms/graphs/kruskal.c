@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 صحیح والد[6];
 صحیح ڈھونڈو(صحیح راس) { واپس والد[راس] == راس ? راس : (والد[راس] = ڈھونڈو(والد[راس])); }

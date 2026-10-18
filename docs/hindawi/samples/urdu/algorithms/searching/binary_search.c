@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* binary search in a sorted array */
 صحیح ثنائی_تلاش(صحیح اقدار[], صحیح گنتی, صحیح کلید) {
   صحیح کم = 0, بلند = گنتی - 1;

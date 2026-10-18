@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* an NFA, simulated on sets of states, accepting binary strings whose second-last symbol is 1 */
 ಪೂರ್ಣಾಂಕ ಸ್ವೀಕರಿಸು(ಸ್ಥಿರಾಂಕ ಅಕ್ಷರ *ಶಬ್ದ) {
   ಪೂರ್ಣಾಂಕ ಸ್ಥಿತಿಗಳು = 1;                                /* bit k set means state k is active */

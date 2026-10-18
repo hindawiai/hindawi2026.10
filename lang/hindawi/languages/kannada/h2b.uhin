@@ -19,6 +19,7 @@
 ಉಪ_ಹೋಗು                     {printf("gosub");}
 ಟಿಪ್ಪಣಿ                     {printf("rem");}
 ಸಹಭಾಜಿತ                     {printf("SHARED");}
+ಹಾಗಾದರೆ                     {printf("then");}
 ಪದಪುಂಜ                      {printf("STRING");}
 ಅಂತ್ಯ                       {printf("END");}
 ಮತ್ತು                       {printf("AND");}

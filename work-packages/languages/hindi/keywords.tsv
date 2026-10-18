@@ -1,0 +1,57 @@
+token	meaning	word
+restrict	the only pointer to its object	
+bool	true-or-false type	
+explicit	no implicit conversion	
+false	false	
+mutable	changeable in a const object	
+namespace	a space of names	
+nullptr	the null pointer	
+true	true	
+typename	a type name	
+using	use a name or namespace	
+assert	assert	
+enum	enumeration type	
+synchronized	one thread at a time	
+null	no object	
+False	false	
+None	no value	
+True	true	
+and	and	
+as	as	
+def	define a function	
+del	delete	
+elif	otherwise if	
+except	on exception	
+from	from	
+global	global	
+in	in	
+is	is the same object	
+lambda	anonymous function	
+nonlocal	from the enclosing function	
+not	not	
+or	or	
+pass	do nothing	
+raise	raise an exception	
+with	with a context	
+yield	yield a value	
+print	print	
+range	a range of numbers	
+len	length	
+forward	move forward	
+back	move back	
+left	turn left	
+right	turn right	
+penup	lift the pen	
+pendown	put the pen down	
+repeat	repeat	
+to	to	
+end	end	
+make	make a variable	
+if	if	
+ifelse	if, otherwise	
+home	go home	
+clearscreen	clear the screen	
+cos		
+exp		
+log		
+sin		

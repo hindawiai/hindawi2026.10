@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary search in a sorted array */
 صحيح دوګونی_پلټنه(صحيح ارزښتونه[], صحيح شمېر, صحيح کیلي) {
   صحيح ټیټ = 0, لوړ = شمېر - 1;

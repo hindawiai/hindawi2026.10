@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#شامل <stdio.h>
+#شامل <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 صحیح مین(خالی) {
   حرف فیتہ[16] = "_1011_";

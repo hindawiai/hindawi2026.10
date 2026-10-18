@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* activity selection: activities sorted by finish time */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਸ਼ੁਰੂ[] = {1, 3, 0, 5, 8, 5}, ਅੰਤ[] = {2, 4, 6, 7, 9, 9}, ਗਿਣਤੀ_2 = 6, ਆਖਰੀ = 0, ਕੁੱਲ = 1;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
 /* binary min-heap as a priority queue */
 ಪೂರ್ಣಾಂಕ ರಾಶಿ[32], ಗಾತ್ರ_2 = 0;
 ಶೂನ್ಯ ಸೇರಿಸು(ಪೂರ್ಣಾಂಕ ಮೌಲ್ಯ) {

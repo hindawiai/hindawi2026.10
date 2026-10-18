@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <math.h>
 /* probability and statistics: mean, median, mode and standard deviation of sorted values */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಪೂರ್ಣಾಂಕ ಮೌಲ್ಯಗಳು[] = {2, 3, 3, 5, 7, 8, 8, 8, 9}, ಎಣಿಕೆ_2 = 9, ಬಹುಲಕ = ಮೌಲ್ಯಗಳು[0], ಉತ್ತಮ = 0;

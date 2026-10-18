@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* memory hierarchy: a direct-mapped cache of four lines, block size 4 words; count hits and misses */
 صحيح مکھ(فراغ) {
   صحيح پتے[] = {0, 4, 8, 0, 16, 4, 32, 0, 8, 48}, ٹیگ_سوچی[4], ورتیا[4] = {0}, کامیابیاں = 0, کھنجاں = 0;

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 بنانشانی چکری_جانچ_32(ثابت حرف *متن) {
   بنانشانی چکری_جانچ = 0xFFFFFFFFu;

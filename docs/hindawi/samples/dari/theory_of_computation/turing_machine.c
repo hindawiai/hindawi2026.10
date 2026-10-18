@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#ضمن <stdio.h>
+#ضمن <string.h>
 /* a Turing machine that adds one to a binary number written on its tape */
 صحيح اصلی(فراغ) {
   حرف نوار[16] = "_1011_";

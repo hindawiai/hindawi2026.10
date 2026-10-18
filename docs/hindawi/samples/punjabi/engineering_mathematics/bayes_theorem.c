@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* probability: Bayes' theorem for a test with known sensitivity and false-positive rate */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਦੁੱਗਣਾ ਪੂਰਵ = 0.01, ਸੰਵੇਦਨਸ਼ੀਲਤਾ = 0.95, ਝੂਠਾ_ਸਕਾਰਾਤਮਕ = 0.05;

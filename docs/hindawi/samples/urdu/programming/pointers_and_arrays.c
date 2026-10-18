@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* pointers and arrays: reverse in place, pointer arithmetic */
 خالی الٹ(صحیح *آغاز, صحیح *انتہا) { جب (آغاز < انتہا) { صحیح عارضی = *آغاز; *آغاز++ = *انتہا; *انتہا-- = عارضی; } }
 صحیح مین(خالی) {

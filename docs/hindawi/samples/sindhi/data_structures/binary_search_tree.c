@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ضمن <stdio.h>
+#ضمن <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 بنية ڳنڍ { صحيح ڪنجي; بنية ڳنڍ *کاٻو, *ساڄو; };
 بنية ڳنڍ *داخل_ڪريو(بنية ڳنڍ *پاڙ, صحيح ڪنجي) {

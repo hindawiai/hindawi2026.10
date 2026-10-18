@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* fractional knapsack: items already sorted by value per unit weight */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਦੁੱਗਣਾ ਮੁੱਲ_ਇਕ[] = {60, 100, 120}, ਭਾਰ[] = {10, 20, 30}, ਸਮਰੱਥਾ = 50, ਕੁੱਲ = 0;

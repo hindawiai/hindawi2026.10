@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* structures, unions and sizeof */
 بنية ټکی { صحيح x, y; };
 اتحاد شمېره { صحيح ټولیز; حرف بایټونه[4]; };

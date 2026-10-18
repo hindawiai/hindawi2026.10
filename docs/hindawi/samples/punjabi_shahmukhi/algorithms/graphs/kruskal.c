@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* Kruskal's minimum spanning tree with union-find; edges sorted by weight */
 صحيح ماپا[6];
 صحيح لبھو(صحيح راس) { أرجع ماپا[راس] == راس ? راس : (ماپا[راس] = لبھو(ماپا[راس])); }

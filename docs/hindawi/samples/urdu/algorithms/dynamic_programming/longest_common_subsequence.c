@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#شامل <stdio.h>
+#شامل <string.h>
 /* longest common subsequence length */
 صحیح مین(خالی) {
   حرف پہلا[] = "AGGTAB", دوسرا[] = "GXTXAYB";

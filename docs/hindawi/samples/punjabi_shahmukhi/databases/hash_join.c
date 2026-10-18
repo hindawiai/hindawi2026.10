@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* an equi-join of two small relations by hashing the smaller one */
 صحيح مکھ(فراغ) {
   صحيح طالب_علم[4][2] = {{1, 81}, {2, 72}, {3, 95}, {4, 60}};          /* id, marks */

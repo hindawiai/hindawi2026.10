@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <ctype.h>
+#ಅನ್ತರ್ಭಾವ <stdio.h>
+#ಅನ್ತರ್ಭಾವ <ctype.h>
 /* a hand-written lexer: identifiers, numbers and operators */
 ಪೂರ್ಣಾಂಕ ಮುಖ್ಯ(ಶೂನ್ಯ) {
   ಅಕ್ಷರ ಮೂಲ[] = "total = count1 + 42 * rate;";

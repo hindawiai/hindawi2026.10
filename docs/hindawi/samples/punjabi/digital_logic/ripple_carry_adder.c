@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ਅਨ੍ਤਰ੍ਭਾਵ <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 ਪੂਰਨ ਮੁੱਖ(ਖਾਲੀ) {
   ਪੂਰਨ ਪਹਿਲਾ = 11, ਦੂਜਾ = 6, ਹਾਸਲ = 0, ਜੋੜ = 0;

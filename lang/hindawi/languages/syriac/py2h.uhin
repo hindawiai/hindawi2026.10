@@ -26,7 +26,6 @@ except                      {printf("استثناء");}
 global                      {printf("عام");}
 import                      {printf("استورد");}
 lambda                      {printf("مجهول");}
-public                      {printf("عام");}
 return                      {printf("ܦܢܐ");}
 static                      {printf("ساكن");}
 switch                      {printf("بدل");}

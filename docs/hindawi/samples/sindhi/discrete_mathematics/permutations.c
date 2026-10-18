@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* all permutations of 1..3, by swapping */
 صحيح قدرون[] = {1, 2, 3}, ڪل = 0;
 فراغ ترتيب_بدلايو(صحيح شروعات) {

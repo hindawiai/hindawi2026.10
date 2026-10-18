@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#అన్తర్భావ <stdio.h>
+#అన్తర్భావ <string.h>
 /* number representation: the sign, exponent and fraction of an IEEE 754 single-precision number */
 పూర్ణాంకం ప్రధాన(శూన్య) {
   దశాంశం సంఖ్య = -6.25f;

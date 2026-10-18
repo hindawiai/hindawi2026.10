@@ -36,7 +36,10 @@ the installation by compiling quick sort from Urdu and from Telugu. `hindawi doc
 | `hindawi check SRC --langs L` | ingests, reverses and compares | `lang/hindawi/burp/burp.py` |
 | `hindawi cc --lang L [gcc options]` | gcc for sources written in L | `lang/hindawi/hindawicc` |
 | `hindawi build TREE --lang L` | builds a project with its own Makefile through hindawicc | `lang/hindawi/tools/build_project.py` |
-| `hindawi gate [--langs L] [--gallery]` | the GATE programs in languages, compiled, run and compared | `tests/gate/run.py` |
+| `hindawi gate [--langs L] [--only TEXT] [--gallery]` | the GATE programs in languages, compiled, run and compared | `tests/gate/run.py` |
+| `hindawi standard [generate\|import]` | each language's standard in Markdown, JSON and Word; a filled work package back into the language | `lang/hindawi/tools/standards.py`, `standards_docx.js`, `standard_import.py` |
+| `hindawi wp [list\|show ID\|generate]` | the work packages anyone can take: languages, JavaScript | `lang/hindawi/tools/work_packages.py` |
+| `hindawi notebooks` | the Colab notebooks, in English and in each language | `lang/hindawi/tools/notebooks.py`, `lang/hindawi/colab.py` |
 | `hindawi cells [--langs L]` | regenerates the language cells from the lexicons | `lang/hindawi/tools/complete_cells.py` |
 | `hindawi stack [--stage Lnn]` | the sovereign-stack test, one stage at a time | `scripts/sovereign/stack.sh` |
 | `hindawi arduino install` | the Arduino IDE drop-in | `ide/arduino/` |
@@ -82,6 +85,19 @@ by paradigm; `docs/hindawi/contribute.html` turns a proposal into an issue on th
 ingested set into the site, where `docs/hindawi/samples/index.html` shows each beside its English original. What the
 programs cover, what is still to write, and how another AI can write more: `docs/hindawi/GATE-PROGRAMS.md`.
 
+**Publish a language's standard.** `hindawi standard --langs L` writes `standards/L/standard.md`, `standard.json` and
+`standard.docx`: the language's bindings for C, C++, Java, Python, BASIC, LOGO and the preprocessor, laid out as standards
+bodies take drafts, citing the host standards by reference only and recording where each word came from.
+
+**Hand out the work.** `hindawi wp list` shows the open packages: for each language not yet complete, the keywords and
+names it still needs (`work-packages/languages/L/`), and the move of the tools to JavaScript. Anyone claims one as a
+GitHub issue from `docs/hindawi/work-packages.html`; a filled language package comes back with
+`hindawi standard import L keywords.tsv names.tsv --by "name"`, which checks every word before it goes in.
+
+**Teach in a notebook.** `notebooks/<language>/` holds seven Colab notebooks per language, from getting started to the
+sovereign stack; `docs/hindawi/notebooks.html` opens them in Colab. In a notebook, `%%hindawi_c urdu` compiles a cell
+written in Urdu through the original pipeline and runs it (`lang/hindawi/colab.py`).
+
 **Editors and debuggers.** The Arduino IDE, Eclipse, Geany and gdb with native names: `docs/hindawi/IDE.md`.
 
 ## Where everything lives
@@ -98,6 +114,9 @@ programs cover, what is still to write, and how another AI can write more: `docs
 | `lang/hindawi/tools/` | the compilation path (`hindawi_chain.py`, `script_filters.py`), the cell generator, coverage, the project builder |
 | `lang/hindawi/upstream/chintamani/` | Chintamani, unchanged: the reference every cell is measured against |
 | `samples/gate/` | the GATE programs |
+| `standards/` | each language's standard (Markdown, JSON, Word) and the standards' metadata |
+| `work-packages/` | the open work, for students and AI, indexed for the site |
+| `notebooks/` | the Colab notebooks, per language |
 | `tests/` | `fundamental.py`, `gate/`, `burp/` and the build's earlier tests |
 | `scripts/` | `build.sh` and `fetch.sh` (the toolchain), `sovereign/` (the stack test), `upstream/` |
 | `ide/`, `lab/` | editor integrations; the linguistics lab |

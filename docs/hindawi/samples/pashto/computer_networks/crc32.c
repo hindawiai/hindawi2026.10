@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* CRC-32, the polynomial Ethernet uses, bit by bit */
 بینښه دوراني_ازموینه_32(ثابت حرف *متن) {
   بینښه دوراني_ازموینه = 0xFFFFFFFFu;

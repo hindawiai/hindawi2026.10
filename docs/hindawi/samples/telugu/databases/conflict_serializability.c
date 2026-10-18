@@ -1,4 +1,4 @@
-#include <stdio.h>
+#అన్తర్భావ <stdio.h>
 /* transactions: test a schedule for conflict serializability through its precedence graph */
 పూర్ణాంకం లేఖాచిత్రం[3][3], సందర్శించిన[3], చురుకైన[3];
 పూర్ణాంకం చక్రం(పూర్ణాంకం శీర్షం) {

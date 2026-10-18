@@ -1,4 +1,4 @@
-#include <stdio.h>
+#شامل <stdio.h>
 /* a four-bit ripple-carry adder built from full adders */
 صحیح مین(خالی) {
   صحیح پہلا = 11, دوسرا = 6, حاصل = 0, مجموع = 0;

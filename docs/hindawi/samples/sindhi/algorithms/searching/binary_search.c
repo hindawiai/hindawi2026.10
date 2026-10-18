@@ -1,4 +1,4 @@
-#include <stdio.h>
+#ضمن <stdio.h>
 /* binary search in a sorted array */
 صحيح ٻٽو_ڳولا(صحيح قدرون[], صحيح ڳڻپ, صحيح ڪنجي) {
   صحيح هيٺيون = 0, مٿاهون = ڳڻپ - 1;

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ضمن <stdio.h>
+#ضمن <stdlib.h>
 /* binary search tree: insert and in-order traversal */
 بنية گره { صحيح کلید; بنية گره *طرف_چپ, *طرف_راست; };
 بنية گره *درج(بنية گره *ریشه, صحيح کلید) {

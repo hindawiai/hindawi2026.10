@@ -15,7 +15,6 @@ volatile                    {printf("متطاير");}
 default                     {printf("افتراضي");}
 private                     {printf("خاص");}
 typedef                     {printf("تعريفنوع");}
-virtual                     {printf("افتراضي");}
 assert                      {printf("أكد");}
 double                      {printf("مزدوج");}
 extern                      {printf("خارجي");}
