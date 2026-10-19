@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Cite this release by its DOI."
 title: "Hindawi 2026.10: the Hindawi programming system for every language and script, on the original Chintamani pipeline"
-doi: 10.5281/zenodo.23469266
+doi: 10.5281/zenodo.23480901
 version: 2026.10.7
 authors:
   - family-names: Choudhary
