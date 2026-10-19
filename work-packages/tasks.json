@@ -502,5 +502,37 @@
   "status": "in progress",
   "evidence": "PRODUCTS.md; README links each practice notebook to Colab",
   "next": "close each release gap, product by product"
+ },
+ {
+  "id": "T-55",
+  "title": "Robots, ready for physical seeding: an instructions page (parts, wiring, upload, the first test with the expected answer, driving from a phone or from the page over USB, checks before judging the code, how to record a run, safety); the ESP32 serves its own phone control page",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "docs/robots/index.html; the ESP32 sketch in English and six languages lowered and syntax-checked",
+  "next": "the first recorded runs on built robots"
+ },
+ {
+  "id": "T-56",
+  "title": "Parashakti: a timed sanity check of the machine first; nothing installed unless asked, one package at a time; each project runs only where its needs are met; every build time-limited",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "parashakti.sh --check, run here",
+  "next": "his run"
+ },
+ {
+  "id": "T-57",
+  "title": "The audit: released, done with evidence, pending in order, the other projects related, the order of runs",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "AUDIT.md",
+  "next": ""
+ },
+ {
+  "id": "T-58",
+  "title": "Material that lets a doubtful reader check each claim before dismissing it",
+  "source": "19 Oct 2026",
+  "status": "open",
+  "evidence": "expected results and checks on the robot and machine pages",
+  "next": "his design"
  }
 ]

@@ -40,6 +40,9 @@ Every point of his requests, from the register `work-packages/tasks.json`. Coven
 | T-50 | Master contract: the intention is the author's and an unverified claim carries a disclaimer; gates guard the release and nothing else | update_contract.sh adds them to zistgah/governance as C38 and C39 after his PUSH; this repository's audits now report without refusing | his run of update_contract.sh |
 | T-51 | AyeCode: reuse what it has for the explainer site | AyeCode found in ayehandsum/ayehandsum (commit f338cba); its alphabets are reused by the explainer site, which writes the typed text in any of them and reads it back (round trip verified) |  |
 | T-53 | UISA, the living research record: seed it in pvjournal/uisa and mint it | uisa.json and uisa_payload.tar.gz for estate.sh: the record as authored, README and landing page with each claim's evidence state, its own gate (11 checks, refuses a record altered by one byte) | his run of estate.sh seed uisa.json; the research package added when available |
+| T-55 | Robots, ready for physical seeding: an instructions page (parts, wiring, upload, the first test with the expected answer, driving from a phone or from the page over USB, checks before judging the code, how to record a run, safety); the ESP32 serves its own phone control page | docs/robots/index.html; the ESP32 sketch in English and six languages lowered and syntax-checked | the first recorded runs on built robots |
+| T-56 | Parashakti: a timed sanity check of the machine first; nothing installed unless asked, one package at a time; each project runs only where its needs are met; every build time-limited | parashakti.sh --check, run here | his run |
+| T-57 | The audit: released, done with evidence, pending in order, the other projects related, the order of runs | AUDIT.md |  |
 
 ## Rework required
 
@@ -91,3 +94,4 @@ Every point of his requests, from the register `work-packages/tasks.json`. Coven
 | T-46 | Scripts with no filter yet (Cyrillic, Han, Hangul, Kana, Thai, Lao, Khmer, Myanmar, Tibetan, Sinhala, Javanese and others: 24 languages): one generic transliteration from Unicode data to C-level forms |  | decide the scheme (ISO transliterations, or Unicode names) and generate the filters from Unicode data |
 | T-47 | Hebrew, Syriac, Phoenician and Imperial Aramaic are written in their own scripts but bound to the Perso-Arabic filter: give each its script | the foundation check reports their words outside the declared script |  |
 | T-52 | The hardware layers below the ISA for Parashakti and Qwan-tum: RTL, simulation, synthesis, formal checks, FPGA (Spartan-3A) bitstream, GPIO and oscilloscope capture, and the measured round trip D(M(E(x))) = x | the layers are open in the explainer site's stack table |  |
+| T-58 | Material that lets a doubtful reader check each claim before dismissing it | expected results and checks on the robot and machine pages | his design |

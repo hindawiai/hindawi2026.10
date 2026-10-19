@@ -99,6 +99,17 @@ a { color: var(--acc2); }
       <p class="small mut">Before and after this step. A halant or a ra with halant is not drawn at once: it waits for the next
       component to decide its form.</p></div>
   </div>
+  <h3>How the pieces combine at this step</h3>
+  <div class="card"><p id="say" style="margin-top:0"></p>
+    <div class="row" style="align-items:flex-start">
+      <div><div class="small mut">the working map before</div><canvas id="cbefore" class="light"></canvas></div>
+      <div style="font:28px Georgia;padding-top:30px">+</div>
+      <div><div class="small mut">this component's pieces, on its 3×3 grid</div><canvas id="cpiece" class="light"></canvas></div>
+      <div style="font:28px Georgia;padding-top:30px">=</div>
+      <div><div class="small mut">the working map after</div><canvas id="cafter" class="light"></canvas></div>
+    </div>
+    <p class="small mut">Each piece is a small part of a letter: a stem, a bar, a hook, a vowel sign. A letter is the pieces that
+    land in the same columns, put together by OR: a piece never erases another. Where they land is the algorithm's decision.</p></div>
   <h3>The working map after this step</h3>
   <div class="wrap"><table class="wm" id="wm"></table></div>
   <canvas id="wmcanvas" class="light" width="400" height="96" aria-label="The working map drawn through the font"></canvas>
@@ -181,15 +192,13 @@ a { color: var(--acc2); }
 </section>
 
 <section id="gpgpu">
-  <h2>8. GPGPU and CUDA: the same processors, other numbers</h2>
-  <p>A frame is a matrix of numbers; so is much of science. From around 2007, with NVIDIA's CUDA, GPUs were offered for work
-  that is not graphics: General-Purpose computing on GPUs. In CUDA a <b>kernel</b> is a function run by thousands of
-  <b>threads</b> at once, grouped in <b>blocks</b> of a <b>grid</b>, on the GPU's CUDA cores. Below, each output of a
-  matrix product is one thread.</p>
-  <div class="row"><button id="mm">multiply</button><span class="small mut">C = A × B, every element of C at once</span></div>
-  <pre id="mmview" class="small"></pre>
-  <p class="small mut">GPU hardware, the CUDA programming model, GPGPU computation and AI workloads are four different
-  things; each made the next possible.</p>
+  <h2>8. From pixels to matrices: GPGPU and CUDA, one idea at a time</h2>
+  <p>Press <b>next idea</b>. Each idea needs only the one before it.</p>
+  <div class="row"><button id="idea">next idea</button><span id="ideano" class="mono small"></span></div>
+  <div class="card"><div id="ideatext"></div><pre id="mmview" class="small"></pre></div>
+  <p class="small mut">From around 2007, with NVIDIA's CUDA, GPUs were offered for work that is not graphics: General-Purpose
+  computing on GPUs. GPU hardware, the CUDA programming model, GPGPU computation and AI workloads are four different things;
+  each made the next possible.</p>
 </section>
 
 <section id="ai">
@@ -201,6 +210,42 @@ a { color: var(--acc2); }
   <pre id="layer" class="small"></pre>
   <p class="q">The character became numbers at the keyboard, and stayed numbers all the way to the light on the screen.
   Only people, and the fonts and tables they agreed on, made them letters.</p>
+</section>
+
+<section id="files">
+  <h2>10. Files, formats, OCR and AI: does the encoding hold Indic text back?</h2>
+  <p>A question asked in the same discussion: operating systems and applications decide file formats and sizes; how does that
+  affect character recognition (OCR) and AI work on files with Indic text? The answers, in short:</p>
+  <ol>
+    <li><b>Size grows; communication need not suffer.</b> An Indic letter takes three bytes in UTF-8 against one for a Latin
+      letter, but information theory and compression recover most of it. Every algorithm pays in time and space, compression
+      too, and here the penalty is small. Text is also a tiny part of what networks carry: video, and the data of IoT devices,
+      carry no text at all. Your own text, measured:
+      <div class="card mono small" id="sizes"></div></li>
+    <li><b>How an application stores its data is its choice.</b> Where that harms people, the remedy is validated, verifiable
+      evidence of the harm, which can lead to real change.</li>
+    <li><b>Recognising Indic text in images (OCR) is a research field of its own;</b> its difficulties lie in the shapes of
+      conjuncts and vowel signs, not in the encoding.</li>
+    <li><b>Indic text costs AI models more tokens</b> than English of the same meaning, and the problem runs deeper than byte
+      counts: an active research field. Where a sector exchanged images instead of data (health IT, before the ABDM standards
+      were enforced), the remedy was to exchange data; the industry generally exchanges data, not pictures of it.</li>
+  </ol>
+</section>
+
+<section id="gate">
+  <h2>Where this is in the GATE syllabus, and where to practise</h2>
+  <div class="wrap"><table>
+    <tr><th>On this page</th><th>GATE CS subject</th></tr>
+    <tr><td>Bits, bytes, UTF-8, binary and hexadecimal</td><td>Digital Logic: number representations</td></tr>
+    <tr><td>APCISR: a state machine reading a stream of symbols</td><td>Theory of Computation: finite automata and transducers</td></tr>
+    <tr><td>Video memory, the framebuffer, mapped memory, the display adapter</td><td>Computer Organization and Architecture: memory, I/O interfacing</td></tr>
+    <tr><td>Terminals, headless clusters, the frame redrawn on time</td><td>Operating Systems: I/O and devices</td></tr>
+    <tr><td>Dot products, matrix products, parallel work</td><td>Algorithms and Linear Algebra (Engineering Mathematics)</td></tr>
+    <tr><td>Compression and file sizes</td><td>Algorithms: Huffman coding</td></tr>
+  </table></div>
+  <p>Practise in your own language: every GATE program, compiled through the same pipeline, in a notebook that runs on a phone
+  (<a href="../../PRODUCTS.md">the products</a> list the links), and the programs mapped to the syllabus in
+  <a href="https://github.com/hindawiai/hindawi2026.10/blob/main/docs/hindawi/GATE-PROGRAMS.md">GATE-PROGRAMS.md</a>.</p>
 </section>
 
 <footer class="small mut" style="padding:24px 0">
@@ -245,10 +290,31 @@ function showStep() {
   const head = Array.from({length: W}, (_, c) => `<th class="${[a.matrik, a.lipik, a.purak].includes(c) ? "cur" : ""}">${c}${c === a.matrik ? " M" : ""}${c === a.lipik ? " L" : ""}${c === a.purak ? " P" : ""}</th>`).join("");
   $("wm").innerHTML = `<tr><th></th>${head}</tr>` + rows.map(([l, now, was]) => `<tr><th>${l}</th>` +
     Array.from({length: W}, (_, c) => `<td class="${now[c] ? "nz" : ""} ${now[c] !== was[c] ? "chg" : ""}">${now[c] || ""}</td>`).join("") + "</tr>").join("");
+  $("say").innerHTML = explain(s);
+  drawMap($("cbefore"), [b.u, b.m, b.n], W, [b.matrik, b.lipik, b.purak]);
+  drawMap($("cpiece"), [0, 1, 2].map(r => [0, 1, 2].map(c => g[r * 3 + c])), 3, null);
+  drawMap($("cafter"), [a.u, a.m, a.n], W, [a.matrik, a.lipik, a.purak]);
   const cv = $("wmcanvas"), sc = 2; cv.width = W * 8 * sc; cv.height = 48 * sc; const ctx = cv.getContext("2d");
   ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cv.width, cv.height);
   [a.u, a.m, a.n].forEach((row, r) => { for (let c = 0; c < W; c++) if (row[c]) A.drawGlyph(ctx, A.wmGlyph(r, row[c]), c * 8 * sc, r * 16 * sc, sc, "#1d1b17", null, 16); });
   ctx.strokeStyle = "#b4530a"; [a.matrik, a.lipik, a.purak].forEach(c => ctx.strokeRect(c * 8 * sc + 0.5, 0.5, 8 * sc - 1, cv.height - 1));
+}
+function drawMap(cv, rows, W, cur) {
+  const sc = 2; cv.width = Math.max(3, W) * 8 * sc; cv.height = 48 * sc; const ctx = cv.getContext("2d");
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cv.width, cv.height);
+  rows.forEach((row, r) => { for (let c = 0; c < W; c++) if (row[c]) A.drawGlyph(ctx, A.wmGlyph(r, row[c]), c * 8 * sc, r * 16 * sc, sc, "#1d1b17", null, 16); });
+  ctx.strokeStyle = "#ddd"; for (let c = 0; c <= W; c++) { ctx.beginPath(); ctx.moveTo(c * 8 * sc + 0.5, 0); ctx.lineTo(c * 8 * sc + 0.5, cv.height); ctx.stroke(); }
+  if (cur) { ctx.strokeStyle = "#b4530a"; cur.forEach(c => ctx.strokeRect(c * 8 * sc + 0.5, 0.5, 8 * sc - 1, cv.height - 1)); }
+}
+function explain(s) {
+  const b = s.before, a = s.after, e = s.entry, moved = a.matrik !== b.matrik || a.purak !== b.purak, name = e ? e.rmn : "a character outside the table";
+  if (!e) return `<b>${name}</b>: not an Indic component, so it is passed through whole into a column of its own.`;
+  if (a.prev_hal && !b.prev_hal) return `<b>${name}</b>: a halant. Nothing final is drawn yet: the next component decides whether this letter takes its half form in a conjunct, or shows the halant.`;
+  if (a.prev_ra_hal && !b.prev_ra_hal) return `<b>${name}</b>: ra with a halant. It is held back: when the next letter arrives, the ra goes above it as a ref.`;
+  if (b.prev_ra_hal && !a.prev_ra_hal) return `<b>${name}</b> arrives, so the waiting ra is placed above it as a ref, and ${name}'s own pieces land at the cursors.`;
+  if (b.prev_hal && !a.prev_hal) return `<b>${name}</b> arrives after a halant, so the letter before it takes its half form, joined to ${name} in a conjunct.`;
+  if (e.purna === 0) return `<b>${name}</b>: a vowel sign (purna 0). It makes no new letter: its pieces join the letter already in the working map, above, below or beside it.`;
+  return `<b>${name}</b>: a full letter (purna ${e.purna}). ${moved ? "The cursors move on, and its pieces" : "Its pieces"} land at matrik, lipik and purak, columns ${a.matrik}, ${a.lipik} and ${a.purak}.`;
 }
 function showResult() {
   const cv = $("result"), sc = 3, n = Math.max(1, R.cells.length); cv.width = n * 8 * sc; cv.height = 48 * sc;
@@ -311,10 +377,19 @@ function parallel(mode) {
     for (let j = 0; j < per && k < total; j++, k++) { const x = k % W, y = Math.floor(k / W); c.fillStyle = `hsl(${(x * 11 + y * 7) % 360},70%,55%)`; c.fillRect(x * s, y * s, s - 1, s - 1); }
     $("gputime").textContent = `${k} of ${total} pixels, ${per} at a time`; if (k >= total) clearInterval(parallel.t); }, 16);
 }
+const IDEAS = [
+  ["One multiplication.", "3 × 4 = 12\n\nOne worker, one small job."],
+  ["A dot product: multiply pairs, then add.", "row    [1 2 3]\ncolumn [4 5 6]\n\n1×4 + 2×5 + 3×6 = 4 + 10 + 18 = 32"],
+  ["A blur is a dot product too: each new pixel is a weighted sum of its neighbours.", "neighbours [10 20 30] · weights [0.25 0.5 0.25]\n= 2.5 + 10 + 7.5 = 20  → the new pixel\n\nEvery pixel of the frame is computed this same way."],
+  ["A matrix product is many dot products: each cell of C is one row of A with one column of B.", "A = [1 2; 3 4]   B = [5 6; 7 8]\nC[0][0] = 1×5 + 2×7 = 19     C[0][1] = 1×6 + 2×8 = 22\nC[1][0] = 3×5 + 4×7 = 43     C[1][1] = 3×6 + 4×8 = 50"],
+  ["None of them needs another's answer, so they can all be done at the same time, by different workers.", "worker 1 → C[0][0]   worker 2 → C[0][1]\nworker 3 → C[1][0]   worker 4 → C[1][1]\n\nA 1000 × 1000 product: a million such dot products, all at once."],
+  ["CUDA names these: the job is a kernel, each worker is a thread, threads come in blocks, the blocks make a grid.", "kernel  multiply(A, B, C):  C[row][col] = Σ A[row][k] × B[k][col]\nlaunch  a grid of blocks of threads, one thread per (row, col)\nthe GPU's CUDA cores run the threads in parallel"],
+  ["A neural network layer is a matrix product followed by a simple function: y = f(W·x + b).", "x = three inputs, W = a 2 × 3 matrix of weights, b = two biases\ny = relu(W·x + b): two dot products, one thread each\n\nA large model does this with matrices of thousands by thousands, billions of times: that is why GPUs accelerate AI."]];
+let idea = -1;
+function nextIdea() { idea = (idea + 1) % IDEAS.length; $("ideano").textContent = `idea ${idea + 1} of ${IDEAS.length}`;
+  $("ideatext").innerHTML = `<b>${IDEAS[idea][0]}</b>`; $("mmview").textContent = IDEAS[idea][1]; }
 function matmul() { const A2 = [[1, 2], [3, 4]], B2 = [[5, 6], [7, 8]];
   const C = A2.map((r, i) => B2[0].map((_, j) => r.reduce((s, v, k) => s + v * B2[k][j], 0)));
-  $("mmview").textContent = "A = [1 2; 3 4]   B = [5 6; 7 8]\n\n" + C.map((r, i) => r.map((v, j) => `thread (${i},${j}): C[${i}][${j}] = ${A2[i].map((a, k) => `${a}×${B2[k][j]}`).join(" + ")} = ${v}`).join("\n")).join("\n") +
-    "\n\nAll four threads run at the same time: one kernel launch, a 2 × 2 grid of threads.";
   $("layer").textContent = "x = [0.5, -1.0, 2.0]    (three inputs)\nW = 2 × 3 weights, b = 2 biases\ny = relu(W·x + b)      (two outputs, each a dot product: one thread each on a GPU)\n\nA large model does this with matrices of thousands by thousands, billions of times."; }
 document.querySelectorAll(".ex").forEach(b => b.onclick = () => { $("txt").value = b.textContent; analyse(); graphics(); });
 $("txt").oninput = () => { analyse(); graphics(); };
@@ -322,8 +397,16 @@ $("first").onclick = () => { step = 0; showStep(); }; $("last").onclick = () => 
 $("prev").onclick = () => { step = Math.max(0, step - 1); showStep(); }; $("next").onclick = () => { step = Math.min(R.steps.length - 1, step + 1); showStep(); };
 $("play").onclick = () => { clearInterval(timer); step = 0; showStep(); timer = setInterval(() => { if (step >= R.steps.length - 1) return clearInterval(timer); step++; showStep(); }, 900); };
 $("scale").oninput = graphics; $("dacv").oninput = dac;
-$("runcpu").onclick = () => parallel("cpu"); $("rungpu").onclick = () => parallel("gpu"); $("mm").onclick = matmul;
-analyse(); graphics(); dac(); matmul();
+$("runcpu").onclick = () => parallel("cpu"); $("rungpu").onclick = () => parallel("gpu"); $("idea").onclick = nextIdea; nextIdea();
+async function sizes() {
+  const t = $("txt").value || "क", u8 = new TextEncoder().encode(t), chars = Array.from(t).length;
+  let gz = "compression needs a newer browser";
+  if (window.CompressionStream) { try { const st = new Blob([u8.length < 200 ? new Uint8Array(Array(20).fill([...u8]).flat()) : u8]).stream().pipeThrough(new CompressionStream("gzip"));
+    const n = (await new Response(st).arrayBuffer()).byteLength; gz = `${u8.length < 200 ? "the same text twenty times: " + u8.length * 20 + " bytes in UTF-8, " : ""}${n} bytes gzip-compressed`; } catch (e) {} }
+  let u16 = 0; for (let i = 0; i < t.length; i++) u16 += 2;
+  $("sizes").innerHTML = `${chars} characters · UTF-8 ${u8.length} bytes · UTF-16 ${u16} bytes<br>${gz}`; }
+$("txt").addEventListener("input", sizes);
+analyse(); graphics(); dac(); matmul(); sizes();
 </script>
 </body>
 </html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build and drive the robot · Hindawi robots</title>
+<meta name="description" content="Build the basic AyeAM robot (Arduino UNO, then ESP32), program it in your own language, and drive it from a laptop or a phone. Step by step, with what you should see at each step.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#fff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a; --ok:#1f7a3a; --run:#a86a00; --code:#f3ede1; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a; --acc:#f08a3c; --acc2:#7fb0ef; --ok:#5cc27a; --run:#e0a640; --code:#2a261f; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+main { max-width: 900px; margin: 0 auto; padding: 0 16px 60px; }
+section { padding: 26px 0 10px; border-bottom: 1px solid var(--line); }
+h1 { font: 700 clamp(28px, 6vw, 44px)/1.1 Georgia, serif; margin: 30px 0 8px; } h2 { font: 700 24px/1.25 Georgia, serif; margin: 0 0 8px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 10px 0; }
+.mut { color: var(--mut); } .small { font-size: 14px; } code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+pre { background: var(--code); border-radius: 10px; padding: 10px; overflow-x: auto; }
+.wrap { overflow-x: auto; } table { border-collapse: collapse; width: 100%; } td, th { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+th { color: var(--mut); font-size: 14px; } ol li, ul li { margin: 6px 0; }
+.see { border-left: 4px solid var(--ok); background: var(--card); padding: 8px 12px; border-radius: 0 9px 9px 0; margin: 8px 0; }
+button { font: inherit; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--fg); margin: 4px; min-width: 64px; }
+button:hover { border-color: var(--acc); color: var(--acc); } a { color: var(--acc2); }
+.state { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; border: 1px solid currentColor; border-radius: 6px; padding: 1px 7px; color: var(--run); }
+</style>
+</head>
+<body>
+<main>
+<h1>Build and drive the robot</h1>
+<p>Two robots, the same commands. Stage 1 is an Arduino UNO with a motor shield, driven over its USB cable. Stage 3 is an
+ESP32, driven over WiFi from any phone. You program both in your own language. Each step says what you should see; if you
+see it, go on to the next.</p>
+<div class="card small">Ages: Stage 1 from 12, Stage 3 from 16, with an adult present. The basic robot is meant to cost
+under 1000 rupees; prices differ by seller. Try the commands first in the robot simulator:
+<a href="https://ayecnse.net/robot_beta.html">ayecnse.net</a> (<a href="https://sims.ayecnse.site/">sims.ayecnse.site</a>), part of
+the AyeAI triad (<a href="https://icansee.life/">icansee.life</a>). The control interface the robots answer is
+<a href="https://github.com/ayecnse/ayeam-robot">ayecnse/ayeam-robot</a>.</div>
+
+<section>
+<h2>1. Parts</h2>
+<div class="wrap"><table>
+<tr><th>Part</th><th>Stage 1 (UNO)</th><th>Stage 3 (ESP32)</th></tr>
+<tr><td>Controller</td><td>Arduino UNO and its USB cable</td><td>ESP32 development board and its USB cable</td></tr>
+<tr><td>Motor driver</td><td>L293D motor shield (plugs on top of the UNO)</td><td>L298N module</td></tr>
+<tr><td>Motors and wheels</td><td colspan="2">Two geared DC motors with wheels, one caster wheel, a chassis</td></tr>
+<tr><td>Power</td><td colspan="2">A battery pack of 6 to 12 V for the motors (USB alone cannot turn the motors)</td></tr>
+<tr><td>Wires</td><td>Motor wires only</td><td>Six jumper wires from the ESP32 to the L298N, and a ground wire</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>2. Put it together</h2>
+<ol>
+<li>Fix the two motors and the caster to the chassis, and the battery pack where it will not move.</li>
+<li><b>Stage 1:</b> press the L293D shield onto the UNO. Left motor to <b>M1</b>, right motor to <b>M2</b>. Battery to the shield's power terminals (red to +).</li>
+<li><b>Stage 3:</b> wire the ESP32 to the L298N as in the table below; the L298N takes the battery; join the L298N's ground to an ESP32 GND pin.</li>
+</ol>
+<div class="wrap"><table>
+<tr><th>ESP32 pin</th><th>L298N</th><th>Does</th></tr>
+<tr><td>26</td><td>IN1</td><td>left motor forward</td></tr><tr><td>27</td><td>IN2</td><td>left motor backward</td></tr>
+<tr><td>14</td><td>IN3</td><td>right motor forward</td></tr><tr><td>12</td><td>IN4</td><td>right motor backward</td></tr>
+<tr><td>25</td><td>ENA</td><td>left motor speed</td></tr><tr><td>33</td><td>ENB</td><td>right motor speed</td></tr>
+<tr><td>GND</td><td>GND</td><td>a common ground: without it nothing moves</td></tr>
+</table></div>
+<p class="small mut">On the L298N, take off the ENA and ENB jumpers so the ESP32 sets the speed.</p>
+</section>
+
+<section>
+<h2>3. Load the program</h2>
+<ol>
+<li>Install the Arduino IDE. For Stage 1 add the <b>Adafruit Motor Shield library</b> (Tools, Manage Libraries, search AFMotor).
+  For Stage 3 add the board package <b>esp32 by Espressif</b> (Tools, Board, Boards Manager).</li>
+<li>Open the sketch, in English or in your language: <code>robot_coding/uno_l293d_usb/</code> or <code>robot_coding/esp32_l298n_wifi/</code>,
+  and the same in <code>urdu/</code>, <code>hindi/</code>, <code>telugu/</code>, <code>kannada/</code>, <code>tamil/</code>, <code>punjabi/</code>.</li>
+<li>For a sketch in your language, connect the IDE to Hindawi once, from a copy of hindawiai/hindawi2026.10:
+  <code>bash ide/arduino/install.sh --lang urdu</code> (your language in place of urdu), then restart the IDE.</li>
+<li><b>Stage 3:</b> write your WiFi name and password in the sketch (2.4 GHz networks only).</li>
+<li>Choose the board (Arduino Uno, or your ESP32 board) and its port, and press Upload.</li>
+</ol>
+<div class="see">You should see: "Done uploading". Open the Serial Monitor at <b>115200</b> baud. Stage 1 prints
+<code>READY</code>; Stage 3 prints <code>robot at http://192.168.…</code>.</div>
+</section>
+
+<section>
+<h2>4. The first test</h2>
+<p>Lift the robot so its wheels are off the table. Every command is three values: direction, time in milliseconds, speed
+from 0 to 255. Direction is F, B, L, R or S.</p>
+<p><b>Stage 1:</b> in the Serial Monitor, with the line ending set to "Newline", type <code>F,1000,200</code> and press Enter.</p>
+<div class="see">You should see: both wheels turn forward for one second, then stop, and the Serial Monitor shows <code>OK</code>.</div>
+<p><b>Stage 3:</b> on a phone joined to the same WiFi, open the address the Serial Monitor printed. The robot's own page opens:
+arrows, a stop button, speed and time. Press the up arrow.</p>
+<div class="see">You should see: both wheels turn forward for the time set, and the page shows <code>F: OK</code>.</div>
+</section>
+
+<section>
+<h2>5. Drive Stage 1 from this page</h2>
+<p class="small">On a laptop with Chrome or Edge, plug the UNO in, close the Arduino Serial Monitor, then press Connect and
+choose the UNO's port. (Phones cannot open a USB serial port from a page; drive Stage 3 from a phone instead.)</p>
+<button id="conn">Connect</button>
+<div><button data-d="F">↑</button></div><div><button data-d="L">←</button><button data-d="S">■</button><button data-d="R">→</button></div><div><button data-d="B">↓</button></div>
+<p class="small">speed <input id="sp" type="range" min="80" max="255" value="200"> time <input id="tm" type="range" min="100" max="3000" value="800"></p>
+<pre id="log">not connected</pre>
+</section>
+
+<section>
+<h2>6. Before you conclude it does not work</h2>
+<p>Almost every robot that "does not work" is a power or wiring matter, not the program. Check these in order:</p>
+<ol>
+<li><b>Is the program answering?</b> If the Serial Monitor or the phone page shows <code>OK</code> after a command, the program
+  works; what remains is power or wiring.</li>
+<li><b>Power:</b> fresh or charged batteries, connected the right way round, switched on. USB power alone does not turn the motors.</li>
+<li><b>Stage 1:</b> the shield pressed fully onto the UNO; motors in M1 and M2.</li>
+<li><b>Stage 3:</b> the common ground wire; the ENA and ENB jumpers removed; 2.4 GHz WiFi; the phone on the same network.</li>
+<li><b>One wheel turns the wrong way:</b> swap that motor's two wires. Nothing is wrong with the program.</li>
+<li><b>Nothing in the Serial Monitor:</b> the baud rate is 115200; the right port is chosen; the line ending is "Newline".</li>
+<li><b>The sketch in your language does not compile:</b> run the Hindawi connection step again for that language; the English
+  sketch beside it compiles without it.</li>
+</ol>
+</section>
+
+<section>
+<h2>7. Record what happened</h2>
+<p>Each run you report becomes evidence for everyone who builds the next robot. Note: the board, the sketch and its
+language, the command, and what the robot did. Open an issue on hindawiai/hindawi2026.10 with the title
+"Robot run: Stage 1 (or 3), language", and a photo or a short video if you can.</p>
+<div class="card small"><span class="state">implemented</span> Both sketches, in English and in six languages, pass a C++
+syntax check, also after being lowered from the language; they have not yet been recorded running on a built robot. The
+first recorded runs will be listed here.</div>
+</section>
+
+<section>
+<h2>8. Safety</h2>
+<p>Build and drive with an adult present. Batteries, chargers and motors can heat up or catch fire if shorted: never leave
+a charging battery unattended, and keep fingers clear of the wheels when testing.</p>
+</section>
+<p class="small mut">© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. AyeAM® is his registered trademark in India; Hindawi™ is his trademark.</p>
+</main>
+<script>
+"use strict";
+let port = null, writer = null, n = 0;
+const log = t => document.getElementById("log").textContent = t;
+document.getElementById("conn").onclick = async () => {
+  if (!("serial" in navigator)) return log("This browser cannot open a serial port: use Chrome or Edge on a laptop.");
+  try { port = await navigator.serial.requestPort(); await port.open({baudRate: 115200});
+    writer = port.writable.getWriter(); log("connected: press an arrow");
+    const reader = port.readable.pipeThrough(new TextDecoderStream()).getReader();
+    (async () => { let buf = ""; for (;;) { const {value, done} = await reader.read(); if (done) break; buf += value; log(buf.split("\n").slice(-6).join("\n")); } })();
+  } catch (e) { log("not connected: " + e.message); }
+};
+document.querySelectorAll("button[data-d]").forEach(b => b.onclick = async () => {
+  if (!writer) return log("Press Connect first.");
+  const line = `${b.dataset.d},${document.getElementById("tm").value},${document.getElementById("sp").value}\n`;
+  await writer.write(new TextEncoder().encode(line)); n++;
+});
+</script>
+</body>
+</html>

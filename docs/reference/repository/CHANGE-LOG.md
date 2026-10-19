@@ -631,3 +631,17 @@ passed; scripts/test_all.sh passes.
 - changed `README.md` (sha256 `8b1f73fd7cd9da90`)
 
 **Verified.** On 1,497 inputs (every table entry, pairs of the first thirty, triples of the first eight) the WebAssembly engine's output is byte for byte that of the original compiled natively. The page driven headless with the real engine: no errors; कर्म क्षत्रिय gives eight steps and eleven result columns; a tap on the screen gives the cell's address, code and bitmap. test_all passes.
+
+## C29. Robots ready for physical seeding, the machine page made to build concepts, files and AI, Start here, Parashakti's sanity check, and the audit
+
+**Why.** He found the APCISR lab did not yet show how characters combine, and the GPU and CUDA part did not build concepts; asked for the files, formats, OCR and AI discussion to be built in, for a landing that routes people, for the robots to be ready for physical seeding with an instructions page, for Parashakti to check the machine in limited time instead of installing everything, and for an audit of everything done and pending. The APCISR lab now draws, for each step, the working map before, the component's own pieces on its 3 by 3 grid, and the map after, with a sentence saying what the algorithm decided (a full letter, a vowel sign joining, a halant waiting, a ref placed). The GPGPU section builds the idea in seven steps, from one multiplication to a neural layer. A files, formats, OCR and AI section gives his answers, with the reader's text measured. A GATE syllabus map links each part to its subject. The front page has Start here. docs/robots/index.html takes a builder from parts to a recorded run; the ESP32 serves its own phone control page; Stage 1 can be driven from the page over USB. parashakti.sh probes each tool, the SHAKTI machine, the network, sudo and the disk, each in limited time, installs nothing unless asked, and runs each project only where its needs are met. AUDIT.md records what is released, done, pending and related.
+
+- added `docs/robots/index.html` (sha256 `541ede69e51e14c8`)
+- changed `docs/trace/machine.html` (sha256 `33c4f2e18e541bfd`)
+- changed `docs/index.html` (sha256 `092321af393ff44a`)
+- changed `robot_coding/esp32_l298n_wifi/esp32_l298n_wifi.ino` (sha256 `8c251610420c1aea`)
+- changed `scripts/parashakti.sh` (sha256 `f4b1086b2806db66`)
+- added `AUDIT.md` (sha256 `e3ca555fa5cdf472`)
+- changed `work-packages/tasks.json` (sha256 `34ba4ee24cd8614c`)
+
+**Verified.** The machine page driven headless: no errors; the step sentence, the ideas and the sizes shown. The ESP32 sketch, with its page, lowered from six languages and syntax-checked. parashakti.sh --check run here. test_all passes.

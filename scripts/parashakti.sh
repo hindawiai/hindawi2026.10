@@ -16,15 +16,38 @@
 set -uo pipefail
 W="$PWD/parashakti"; REPO=""; ARGS=("$@")
 for ((k = 0; k < $#; k++)); do [ "${ARGS[$k]}" = "--repo" ] && REPO="${ARGS[$((k + 1))]}"; done
+#   bash parashakti.sh --check                                 only the timed sanity check of this machine
+#   bash parashakti.sh --install                               also try to install what is missing, one package at a time
 mkdir -p "$W/logs"; export PARASHAKTI_LOG="$W/logs/parashakti.$(date -u +%Y%m%dT%H%M%SZ).log"
-need=(git python3 gcc g++ make flex bison gawk iconv qemu-system-riscv64 qemu-system-x86_64 qemu-system-i386 riscv64-linux-gnu-gcc wat2wasm bc)
-pkg=(git python3 gcc g++ make flex bison gawk libc-bin qemu-system-misc qemu-system-x86 qemu-system-x86 gcc-riscv64-linux-gnu wabt bc)
-miss=(); for k in "${!need[@]}"; do command -v "${need[$k]}" >/dev/null || miss+=("${pkg[$k]}"); done
-if [ ${#miss[@]} -gt 0 ]; then
-  printf '\n\033[1mINSTALLING %s (sudo asks once)\033[0m\n' "${miss[*]}"
-  sudo apt-get update -qq && sudo apt-get install -y -qq "${miss[@]}" libssl-dev libelf-dev cmake ninja-build >>"$PARASHAKTI_LOG" 2>&1 \
-    || { echo "apt failed: see $PARASHAKTI_LOG"; exit 1; }
+# ---- a timed sanity check of this machine: each probe has a time limit, nothing is installed unless --install is given,
+# and nothing here stops the run; each project later runs only if what it needs is present, and says what is missing
+INSTALL=0; CHECKONLY=0; for a in "$@"; do [ "$a" = "--install" ] && INSTALL=1; [ "$a" = "--check" ] && CHECKONLY=1; done
+printf '\n\033[1mSANITY CHECK (each probe limited in time)\033[0m\n'
+HAVE=""
+probe(){ # probe NAME SECONDS COMMAND...: PASS with the first line of output, or MISSING / TIMEOUT
+  local name="$1" t="$2"; shift 2; local t0=$SECONDS out rc
+  out=$(timeout "$t" "$@" 2>&1); rc=$?; out=$(printf '%s\n' "$out" | head -1)
+  if [ "$rc" = 124 ]; then printf '   %-26s TIMEOUT after %ss\n' "$name" "$t"
+  elif [ "$rc" = 0 ]; then printf '   %-26s ok   %s (%ss)\n' "$name" "${out:0:60}" "$((SECONDS - t0))"; HAVE="$HAVE,$name"
+  else printf '   %-26s MISSING\n' "$name"; fi; }
+for t in git python3 gcc g++ make flex bison gawk iconv bc cmake ninja wat2wasm riscv64-linux-gnu-gcc qemu-system-riscv64 qemu-system-x86_64 qemu-system-i386; do
+  if command -v "$t" >/dev/null; then probe "$t" 10 "$t" --version; else printf '   %-26s MISSING\n' "$t"; fi
+done
+probe "qemu shakti_c machine" 10 sh -c 'qemu-system-riscv64 -M help | grep -m1 shakti_c'
+probe "network to github.com" 20 git ls-remote https://github.com/mit-pdos/xv6-riscv HEAD
+probe "sudo without a password" 5 sudo -n true
+free=$(df -Pm "$W" | awk 'NR==2 {print $4}'); printf '   %-26s %s MB free\n' "disk at $W" "$free"
+[ "${free:-0}" -lt 3000 ] && printf '   %-26s under 3 GB free: the heavy projects (Linux, GCC, LLVM, MINIX) will not fit\n' "note"
+export PARASHAKTI_HAVE="$HAVE"
+if [ "$INSTALL" = 1 ]; then      # one package at a time, each limited in time; a failure is reported and the next is tried
+  for pair in gcc-riscv64-linux-gnu:riscv64-linux-gnu-gcc qemu-system-misc:qemu-system-riscv64 qemu-system-x86:qemu-system-x86_64 \
+              wabt:wat2wasm flex:flex bison:bison gawk:gawk bc:bc cmake:cmake ninja-build:ninja; do
+    pk=${pair%%:*}; tool=${pair##*:}; command -v "$tool" >/dev/null && continue
+    printf '   installing %-20s' "$pk"; timeout 600 sudo apt-get install -y -qq "$pk" >>"$PARASHAKTI_LOG" 2>&1 && echo " done" || echo " not installed (see the log); carrying on"
+  done
 fi
+[ "$CHECKONLY" = 1 ] && { printf '\n   --check: nothing else done\n'; exit 0; }
+for t in git python3 gcc make flex bison; do command -v "$t" >/dev/null || { echo "   Hindawi's toolchain needs $t; install it (sudo apt install $t) and run again"; exit 1; }; done
 if [ -z "$REPO" ]; then
   REPO="$W/hindawi2026.10"
   [ -d "$REPO/.git" ] || git clone -q --depth 1 https://github.com/hindawiai/hindawi2026.10 "$REPO" >>"$PARASHAKTI_LOG" 2>&1
@@ -55,40 +78,40 @@ SHAKTI_FILES = {
 # (small trees) or kept so the keywords alone are in the language (very large trees, first), how the lowered tree is
 # built, how it is run, and what it must print. "heavy" projects run only when named with --stage.
 MANIFEST = {
-  "shakti": {"title": "bare metal on QEMU's SHAKTI C-class machine", "files": SHAKTI_FILES,
+  "shakti": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'qemu shakti_c machine'], "title": "bare metal on QEMU's SHAKTI C-class machine", "files": SHAKTI_FILES,
              "build": "riscv64-linux-gnu-gcc -march=rv64imac -mabi=lp64 -mcmodel=medany -nostdlib -ffreestanding -O2 -T link.ld -o prog.elf start.S main.c",
              "run": "timeout 6 qemu-system-riscv64 -M shakti_c -nographic -bios prog.elf", "expect": [r"sum 1\.\.10 = 55"]},
-  "xv6": {"title": "the xv6 kernel and shell on QEMU's RISC-V machine", "repo": "https://github.com/mit-pdos/xv6-riscv",
+  "xv6": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'network to github.com'], "title": "the xv6 kernel and shell on QEMU's RISC-V machine", "repo": "https://github.com/mit-pdos/xv6-riscv",
           "build": "make TOOLPREFIX=riscv64-linux-gnu- kernel/kernel fs.img",
           "run": "timeout 18 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic "
                  "-global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 "
                  "-device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0",
           "input": [6, "echo parashakti-{lang}", 3, "ls", 3], "expect": [r"parashakti-{lang}", r"README"], "never": [r"usertrap|panic"]},
-  "wasm3": {"title": "a WebAssembly runtime built from the language, running a WebAssembly module", "repo": "https://github.com/wasm3/wasm3",
+  "wasm3": {"needs": ['gcc', 'network to github.com'], "title": "a WebAssembly runtime built from the language, running a WebAssembly module", "repo": "https://github.com/wasm3/wasm3",
             "ref": "v0.5.0", "names": False, "build": "gcc -O2 -Dd_m3HasWASI -Isource source/*.c platforms/app/main.c -o wasm3 -lm",
             "run": "timeout 30 ./wasm3 --func fib test/lang/fib64.wasm 20", "expect": [r"Result: 6765"]},
-  "seabios": {"title": "the x86 BIOS on QEMU", "repo": "https://github.com/coreboot/seabios", "ref": "rel-1.16.3",
+  "seabios": {"needs": ['qemu-system-x86_64', 'python3', 'network to github.com'], "title": "the x86 BIOS on QEMU", "repo": "https://github.com/coreboot/seabios", "ref": "rel-1.16.3",
               "build": "make", "names": False,
               "run": "timeout 8 qemu-system-x86_64 -bios out/bios.bin -display none -chardev stdio,id=s -device isa-debugcon,iobase=0x402,chardev=s",
               "expect": [r"SeaBIOS \(version"]},
-  "tinycc": {"title": "a compiler built from the language that compiles and runs a program", "repo": "https://github.com/TinyCC/tinycc",
+  "tinycc": {"needs": ['gcc', 'network to github.com'], "title": "a compiler built from the language that compiles and runs a program", "repo": "https://github.com/TinyCC/tinycc",
              "ref": "release_0_9_27", "configure": "./configure", "build": "make tcc", "names": False,
              "run": "printf '#include <stdio.h>\\nint main(void){int t=0;for(int i=1;i<=10;i++)t+=i;printf(\"tcc says %%d\\\\n\",t);return 0;}\\n' > t.c && ./tcc -B. -Iinclude -run t.c",
              "expect": [r"tcc says 55"]},
-  "minix": {"title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
+  "minix": {"needs": ['qemu-system-i386', 'network to github.com'], "title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
             "heavy": True, "names": False, "build": "bash releasetools/x86_hdimage.sh",
             "run": "timeout 900 qemu-system-i386 -m 512 -hda minix_x86.img -nographic -serial mon:stdio", "expect": [r"login:"]},
-  "linux": {"title": "the Linux kernel built and booted on QEMU's RISC-V machine", "repo": "https://github.com/torvalds/linux",
+  "linux": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'bc', 'flex', 'bison', 'network to github.com'], "title": "the Linux kernel built and booted on QEMU's RISC-V machine", "repo": "https://github.com/torvalds/linux",
             "ref": "v6.6", "heavy": True, "names": False, "keep": [r"^CONFIG_"],
             "build": "make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- defconfig && make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- -j$(nproc) Image",
             "run": "timeout 90 qemu-system-riscv64 -machine virt -m 512M -nographic -kernel arch/riscv/boot/Image -append 'console=ttyS0 panic=-1'",
             "expect": [r"Linux version 6\.6"]},
-  "gcc": {"title": "GCC's C compiler built from the language", "repo": "https://github.com/gcc-mirror/gcc", "ref": "releases/gcc-13",
+  "gcc": {"needs": ['g++', 'flex', 'bison', 'network to github.com'], "title": "GCC's C compiler built from the language", "repo": "https://github.com/gcc-mirror/gcc", "ref": "releases/gcc-13",
           "heavy": True, "names": False, "cxx": True,
           "build": "mkdir -p obj && cd obj && ../configure --disable-multilib --enable-languages=c --disable-bootstrap >/dev/null && make -j$(nproc) all-gcc",
           "run": "printf 'int main(void){return 0;}\\n' > t.c && obj/gcc/xgcc -Bobj/gcc/ t.c -o t && ./t && echo gcc-from-language-ok",
           "expect": [r"gcc-from-language-ok"]},
-  "llvm": {"title": "LLVM and clang built from the language", "repo": "https://github.com/llvm/llvm-project", "ref": "release/18.x",
+  "llvm": {"needs": ['cmake', 'ninja', 'g++', 'network to github.com'], "title": "LLVM and clang built from the language", "repo": "https://github.com/llvm/llvm-project", "ref": "release/18.x",
            "heavy": True, "names": False, "cxx": True,
            "build": "cmake -S llvm -B obj -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang "
                     "-DLLVM_TARGETS_TO_BUILD='RISCV;WebAssembly;X86' >/dev/null && ninja -C obj clang",
@@ -163,7 +186,10 @@ def run_project(name, p, langs, rows):
         if r.returncode:
             rows.append((name, lang, pin, "yes", "no", "", (r.stderr.strip().splitlines() or ["lowering failed"])[-1][:120])); continue
         shutil.rmtree(n, ignore_errors=True)
-        b = sh(p["build"], cwd=work, env=env)
+        try:                        # every build has a time limit: 30 minutes, or 6 hours for a heavy project
+            b = sh(p["build"], cwd=work, env=env, timeout=21600 if p.get("heavy") else 1800)
+        except subprocess.TimeoutExpired:
+            rows.append((name, lang, pin, "yes", "yes", "no", "the build did not finish within its time limit")); shutil.rmtree(work, ignore_errors=True); continue
         if b.returncode:
             err = next((l for l in (b.stderr + b.stdout).splitlines() if "error" in l.lower()), "build failed")
             rows.append((name, lang, pin, "yes", "yes", "no", err[:140])); shutil.rmtree(work, ignore_errors=True); continue
@@ -187,6 +213,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--langs", default=DEFAULT_LANGS); ap.add_argument("--stage", default="")
     ap.add_argument("--manifest"); ap.add_argument("--list", action="store_true"); ap.add_argument("--repo")
+    ap.add_argument("--install", action="store_true"); ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
     man = json.loads(Path(a.manifest).read_text()) if a.manifest else MANIFEST
     if a.list:
@@ -194,6 +221,12 @@ def main():
             print(f"{k:8} {'heavy ' if v.get('heavy') else 'light '} {v['title']}")
         return
     stages = [s for s in a.stage.split(",") if s] or [k for k, v in man.items() if not v.get("heavy")]
+    have = set(os.environ.get("PARASHAKTI_HAVE", "").split(","))
+    for s_ in list(stages):         # a project runs only when this machine has what it needs; the rest is said, not failed
+        missing = [n for n in man[s_].get("needs", []) if n not in have]
+        if missing:
+            print(f"   {s_}: not run here, this machine lacks {', '.join(missing)} (bash parashakti.sh --install, or install them)")
+            stages.remove(s_)
     langs, why = ready_languages(a.langs.split(","))
     for l, w in why.items():
         print(f"   skipped {l}: {w}")
