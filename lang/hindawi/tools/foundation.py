@@ -128,6 +128,7 @@ def _raw_table(lang, rev):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--langs", default="all"); ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--out", help="write this run's readiness here, for the languages asked (Parashakti uses it)")
     a = ap.parse_args()
     scripts = {s: script_report(s) for s in REPRESENTATIVE}
     scripts_ok = {s: not r["failing"] for s, r in scripts.items()}
@@ -142,6 +143,8 @@ def main():
             report["languages"][l]["round_trip_excluded"] = v
         print(f"round trip: {sum(len(x) for v in rt.values() for x in v.values())} bindings in {len(rt)} languages do not "
               "come back as their keyword and are kept in host form (lang/hindawi/data/roundtrip.json)")
+    if a.out:
+        Path(a.out).write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     out = R / "docs/hindawi/data/readiness.json"
     if a.langs == "all":
         out.write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

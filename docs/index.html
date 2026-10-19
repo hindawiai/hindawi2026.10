@@ -2,81 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pushkalāvatī · Hindawi language laboratory</title>
-<meta name="description" content="Browser-based laboratory for Pushkalāvatī, Sūtram, and the Hindawi/Romenagri compilation model.">
-<link rel="stylesheet" href="site.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hindawi 2026.10 · program in your own language, from the phone to the chip</title>
+<meta name="description" content="Write programs in your own language and script, compiled through to the machine. Practise on a phone, follow a letter into the chip, build robots, run the sovereign stack.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>अ</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#fff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a; --acc:#f08a3c; --acc2:#7fb0ef; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+main { max-width: 1120px; margin: 0 auto; padding: 0 18px 70px; }
+.hero { padding: 54px 0 26px; } .hero h1 { font: 800 clamp(34px, 7vw, 64px)/1.05 Georgia, "Noto Serif", serif; margin: 0 0 12px; letter-spacing: -.5px; }
+.hero p { font-size: clamp(17px, 2.4vw, 21px); color: var(--mut); max-width: 760px; margin: 0 0 18px; }
+.scripts { font-size: clamp(22px, 4vw, 34px); color: var(--acc); margin: 6px 0 18px; word-spacing: 10px; }
+.cta { display: inline-block; margin: 4px 8px 4px 0; padding: 12px 18px; border-radius: 12px; background: var(--acc); color: #fff; text-decoration: none; font-weight: 700; }
+.cta.alt { background: none; color: var(--acc); border: 2px solid var(--acc); }
+h2 { font: 700 clamp(22px, 3.6vw, 30px)/1.2 Georgia, serif; margin: 40px 0 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 12px; text-decoration: none; color: var(--fg); transition: transform .12s, border-color .12s; }
+.card:hover { transform: translateY(-2px); border-color: var(--acc); } .card h3 { margin: 0 0 6px; font-size: 18px; color: var(--acc2); } .card p { margin: 0; color: var(--mut); font-size: 15px; }
+.pills a { display: inline-block; margin: 4px 6px 4px 0; padding: 7px 12px; border-radius: 18px; border: 1px solid var(--line); background: var(--card); color: var(--fg); text-decoration: none; }
+.pills a:hover { border-color: var(--acc); color: var(--acc); } footer { color: var(--mut); font-size: 14px; padding: 30px 0; border-top: 1px solid var(--line); margin-top: 40px; }
+a { color: var(--acc2); }
+</style>
 </head>
 <body>
-<header class="hero">
-  <p class="eyebrow">HINDAWI · ROMENAGRI · PUSHKALĀVATĪ</p>
-  <h1>Language laboratory</h1>
-<div style="border:2px solid #b4530a;border-radius:14px;padding:14px 16px;margin:16px 0">
-<h2 style="margin-top:0">Start here</h2>
-<p><b>Program in your language, on a phone:</b> open a notebook and press its first cell's play button. <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_urdu.ipynb">اردو</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_hindi.ipynb">हिन्दी</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_telugu.ipynb">తెలుగు</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_kannada.ipynb">ಕನ್ನಡ</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi.ipynb">ਪੰਜਾਬੀ</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sanskrit.ipynb">संस्कृतम्</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sindhi.ipynb">سنڌي</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi_shahmukhi.ipynb">شاہمکھی</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_dari.ipynb">دری</a> · <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_pashto.ipynb">پښتو</a></p>
-<p><b>Wondering how a letter reaches the chip?</b> <a href="trace/index.html">Can a language survive the whole stack?</a> then
-<a href="trace/machine.html">inside the machine</a>: APCISR forming the letters, text mode, graphics mode, the display, GPUs and AI.</p>
-<p><b>Building robots with students?</b> <a href="robots/index.html">Build and drive the robot</a>: parts, wiring, the program
-in your language, driving from a phone.</p>
-<p><b>Engineer, teacher or reviewer?</b> The <a href="https://github.com/hindawiai/hindawi2026.10#readme">repository</a>:
-the hindawi command (install.sh), the GATE programs, the standards, Parashakti (the sovereign stack on QEMU), the
-<a href="https://github.com/hindawiai/hindawi2026.10/blob/main/PRODUCTS.md">products and what is shown to work</a>, and the
-<a href="https://github.com/hindawiai/hindawi2026.10/blob/main/AUDIT.md">audit of what is done and what is not yet</a>.</p>
-</div>
-
-  <p>Explore the historical Hindawi source-to-source compilation model and the current Sanskrit rule-engine prototype. This static site runs without a server.</p>
-  <nav><a href="trace/index.html">Can a language survive the whole stack?</a> <a href="hindawi/review.html">Review your language's standard</a><a href="specifications/index.html">Language specifications</a><a href="shaili-robot.html">Shaili Robot lab</a><a href="hindawi-history.html">Hindawi history</a><a href="pipeline.html">Compilation pipeline</a><a href="validation.html">Validation and status</a><a href="tasks.html">Tasks and features</a><a href="tests.html">Test register</a><a href="sutram-compiler.html">Sūtram C/Rust compiler</a><a href="sanchalan-suktam.html">Sanchalan Suktam</a><a href="reference.html">Handoff documents</a><a href="documentation.html">Docs and code index</a><a href="documentation-catalog.html">Complete documentation</a><a href="HINDAWI-CHATGPT-PROJECT-NARRATIVE.md">Project narrative v1.0.0</a><a href="https://github.com/project-ilm/romenagri">Romenagri source</a></nav>
-</header>
 <main>
-<section class="panel">
-<h2>1 · Sūtram browser runner</h2>
-<p class="notice">Browser implementation of the documented subset only. It is not a full Aṣṭādhyāyī interpreter.</p>
-<label for="sutram">Sūtram source</label>
-<textarea id="sutram" spellcheck="false">adhyaya ganana:
-pada mula:
-adhikara ganana():
-  karta: 5
-  yoga 7
-  likh
-  yoga 1
-  phala
-iti
-iti
-iti</textarea>
-<div class="actions"><button id="run-sutram">Run program</button><button id="load-sample" class="secondary">Restore sample</button></div>
-<pre id="sutram-output" aria-live="polite">Ready. Press Run program.</pre>
+<section class="hero">
+  <h1>Program in your own language.<br>All the way to the chip.</h1>
+  <div class="scripts">हिन्दी اردو తెలుగు ಕನ್ನಡ ਪੰਜਾਬੀ தமிழ் संस्कृतम् سنڌي বাংলা</div>
+  <p>Hindawi compiles programs written in the languages and scripts people speak, through to machine code. Since 2004.
+  Practise on a phone, follow a letter into the chip, build a robot, or run the whole sovereign stack.</p>
+  <a class="cta" href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_hindi.ipynb" target="_blank" rel="noopener">Try it now, on a phone</a>
+  <a class="cta alt" href="trace/index.html">How does a letter reach the chip?</a>
 </section>
-<section class="panel">
-<h2>2 · Sanskrit sound-token audit</h2>
-<p>Tokenization is a rule-engine representation, not a claim that the legacy ACII bytes are phoneme IDs. Unsupported mappings are reported, never guessed.</p>
-<label for="sound-input">IAST / Sanskrit sound string</label>
-<input id="sound-input" value="upendra" spellcheck="false">
-<div class="actions"><button id="audit-sounds">Tokenize and audit table keys</button></div>
-<pre id="sound-output" aria-live="polite">Enter a sound string and audit it.</pre>
+
+<section>
+<h2>Start here</h2>
+<div class="grid">
+<a class="card" href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_urdu.ipynb"><h3>On a phone</h3><p>Program in your language in a notebook, nothing to install. Open one below and press play.</p></a>
+<a class="card" href="trace/index.html"><h3>Curious</h3><p>One character, followed from the keyboard to the voltage on a wire, and back.</p></a>
+<a class="card" href="robots/index.html"><h3>Teaching or building robots</h3><p>Parts, wiring, the program in your language, driving from a phone.</p></a>
+<a class="card" href="https://github.com/hindawiai/hindawi2026.10#readme" target=_blank rel=noopener><h3>Engineer or reviewer</h3><p>The compiler, the GATE programs, the standards, the tests, and Parashakti.</p></a>
+</div>
+<p class="pills" style="margin-top:14px">Notebooks: <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_urdu.ipynb" target="_blank" rel="noopener">اردو</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_hindi.ipynb" target="_blank" rel="noopener">हिन्दी</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_telugu.ipynb" target="_blank" rel="noopener">తెలుగు</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_kannada.ipynb" target="_blank" rel="noopener">ಕನ್ನಡ</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi.ipynb" target="_blank" rel="noopener">ਪੰਜਾਬੀ</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sanskrit.ipynb" target="_blank" rel="noopener">संस्कृतम्</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sindhi.ipynb" target="_blank" rel="noopener">سنڌي</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi_shahmukhi.ipynb" target="_blank" rel="noopener">شاہمکھی</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_dari.ipynb" target="_blank" rel="noopener">دری</a> <a href="https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_pashto.ipynb" target="_blank" rel="noopener">پښتو</a></p>
 </section>
-<section class="panel">
-<h2>3 · Rule-operation demonstrator</h2>
-<p>Run a small, explicit set of vowel sandhi examples using the current rule-operation definitions.</p>
-<label for="rule-choice">Rule</label>
-<select id="rule-choice"><option value="6.1.77">6.1.77 · yaṇ</option><option value="6.1.87">6.1.87 · guṇa</option><option value="6.1.88">6.1.88 · vṛddhi</option><option value="6.1.101">6.1.101 · savarṇadīrgha</option></select>
-<div class="inputs"><div><label for="left">Left input</label><input id="left" value="upa"></div><div><label for="right">Right input</label><input id="right" value="indra"></div></div>
-<div class="actions"><button id="run-rule">Apply demonstration</button></div>
-<pre id="rule-output" aria-live="polite">Example: upa + indra → upendra (6.1.87).</pre>
+
+<section>
+<h2>Products</h2>
+<div class="grid">
+<a class="card" href="trace/machine.html"><h3>Inside the machine</h3><p>APCISR forming Indic letters on its 9-grid, text mode, graphics mode, the display, GPUs, GPGPU and AI.</p></a>
+<a class="card" href="https://github.com/hindawiai/hindawi2026.10/blob/main/scripts/parashakti.sh" target=_blank rel=noopener><h3>Parashakti</h3><p>The sovereign stack, built from your language and run on QEMU: SHAKTI, xv6, MINIX, Linux, GCC, LLVM.</p></a>
+<a class="card" href="process/index.html"><h3>Build with AI, this way</h3><p>zops, the master contract, typed gates, seals and DOIs: the process behind every release here.</p></a>
+<a class="card" href="https://github.com/hindawiai/hindawi2026.10/blob/main/PRODUCTS.md" target=_blank rel=noopener><h3>What works, and what is next</h3><p>Each product, what is shown to work, and what stands before its release.</p></a>
+<a class="card" href="https://github.com/hindawiai/hindawi2026.10/blob/main/AUDIT.md" target=_blank rel=noopener><h3>The audit</h3><p>Released, done with evidence, pending, in order.</p></a>
+<a class="card" href="hindawi/work-packages.html"><h3>Take on a work package</h3><p>Open tasks anyone can claim, with the originator's credit kept.</p></a>
+</div>
 </section>
-<section class="panel">
-<h2>4 · Compiler and Sanchalan frontend</h2>
-<p>Use the <a href="sutram-compiler.html">Sūtram C/Rust compiler</a> to generate native source and raise the documented C/Rust subset. Use the <a href="sanchalan-suktam.html">Sanchalan Suktam frontend</a> to inspect lexical IR and generate C/Rust reporting programs.</p>
-<p>Track status in the <a href="tasks.html">task and feature inventory</a> and <a href="tests.html">test register</a>.</p>
+
+<section>
+<h2>The ecosystem</h2>
+<div class="grid">
+<a class="card" href="https://github.com/hindawiai/hindawi2026.10" target=_blank rel=noopener><h3>Hindawi 2026.10</h3><p>The repository: compiler, languages, tests, releases. Zenodo concept DOI 10.5281/zenodo.23424410.</p></a><a class="card" href="https://doi.org/10.5281/zenodo.23424410" target=_blank rel=noopener><h3>Every Hindawi release</h3><p>All versions, minted and citable.</p></a><a class="card" href="https://pvjournal.github.io/uisa/" target=_blank rel=noopener><h3>UISA</h3><p>Universal Information Structure Analysis, a living research record. DOI 10.5281/zenodo.23471398.</p></a><a class="card" href="https://github.com/hindawiai/sanskrit" target=_blank rel=noopener><h3>Pushkalāvatī</h3><p>The Sanskrit parser builds. DOI 10.5281/zenodo.23382730.</p></a><a class="card" href="https://github.com/project-ilm/romenagri" target=_blank rel=noopener><h3>Romenagri</h3><p>The 7-bit phonetic transliteration Hindawi compiles through.</p></a><a class="card" href="https://icansee.life/" target=_blank rel=noopener><h3>icansee.life</h3><p>The AyeAI triad: AyeAI, AyeCNSe, AyeAM.</p></a><a class="card" href="https://ayecnse.net/" target=_blank rel=noopener><h3>AyeCNSe</h3><p>Robots and the robot simulator.</p></a><a class="card" href="https://sims.ayecnse.site/" target=_blank rel=noopener><h3>Simulations</h3><p>Robot arms, humanoids, drones and more, in the browser.</p></a><a class="card" href="https://github.com/ayecnse/ayeam-robot" target=_blank rel=noopener><h3>AyeAM robot control</h3><p>The control interface the robots answer.</p></a><a class="card" href="https://github.com/ayehandsum/ayehandsum" target=_blank rel=noopener><h3>AyeCode</h3><p>Any number written in any alphabet: hieroglyphs, Sa Re Ga, emoji.</p></a><a class="card" href="https://github.com/zistgah/governance" target=_blank rel=noopener><h3>The master contract and zops</h3><p>The rules every repository follows, and the one operations tool.</p></a><a class="card" href="https://github.com/zistgah/tajziya" target=_blank rel=noopener><h3>Tajziya</h3><p>Parsers for the classical languages.</p></a>
+</div>
+<p class="pills" style="margin-top:14px">Organisations: <a href="https://github.com/hindawiai" target="_blank" rel="noopener">hindawiai</a> <a href="https://github.com/zistgah" target="_blank" rel="noopener">zistgah</a> <a href="https://github.com/project-ilm" target="_blank" rel="noopener">project-ilm</a> <a href="https://github.com/ayeai" target="_blank" rel="noopener">ayeai</a> <a href="https://github.com/ayecnse" target="_blank" rel="noopener">ayecnse</a> <a href="https://github.com/pvjournal" target="_blank" rel="noopener">pvjournal</a> <a href="https://github.com/ayevdi" target="_blank" rel="noopener">ayevdi</a></p>
 </section>
-<section class="panel">
-<h2>Execution boundaries</h2>
-<ul>
-<li>Available in this page: Sūtram subset runner, Sanskrit sound-tokenization/table-key audit, selected rule-operation demonstrations.</li>
-<li>Requires a native toolchain or a future verified WebAssembly build: the original Romenagri C utilities, GCC-backed HPS compilers, sed filters, and native code generation.</li>
-<li>The complete Romenagri upstream source and original Perso-Arabic filter must be vendored and parity-tested before claiming that the browser reproduces them.</li>
-</ul>
+
+<section>
+<h2>Every page</h2>
+<p class="pills"><a href="trace/index.html">Can a language survive the stack?</a> <a href="trace/machine.html">Inside the machine</a> <a href="robots/index.html">Build and drive the robot</a> <a href="process/index.html">Build with AI, the way this was built</a> <a href="hindawi/work-packages.html">Work packages</a> <a href="hindawi/review.html">Review your language's standard</a> <a href="specifications/index.html">Language specifications</a> <a href="shaili-robot.html">Shaili Robot lab</a> <a href="hindawi-history.html">Hindawi history</a> <a href="pipeline.html">Compilation pipeline</a> <a href="validation.html">Validation and status</a> <a href="tasks.html">Tasks and features</a> <a href="tests.html">Test register</a> <a href="sutram-compiler.html">Sūtram C/Rust compiler</a> <a href="sanchalan-suktam.html">Sanchalan Suktam</a> <a href="reference.html">Handoff documents</a> <a href="documentation.html">Docs and code index</a> <a href="documentation-catalog.html">Complete documentation</a> <a href="HINDAWI-CHATGPT-PROJECT-NARRATIVE.md">Project narrative</a></p>
 </section>
+
+<footer>
+  © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. AyeAI®, AyeCNSe® and AyeAM® are registered trademarks of
+  Abhishek Choudhary in India; Hindawi™, Romenagri™, Parashakti™ and BURP™ are his trademarks.
+  <a href="https://github.com/zistgah/zistgah.github.io/blob/main/legal/TRADEMARKS.md">Trademarks</a> ·
+  <a href="https://github.com/zistgah/zistgah.github.io/blob/main/legal/DISCLAIMERS.md">Disclaimers</a> ·
+  Select any text to ask an AI about it; every section can be doubted, checked and reported.
+</footer>
 </main>
-<footer>Pushkalāvatī / Hindawi documentation · GitHub Pages root: <code>/docs</code></footer>
-<script type="module" src="app.js"></script>
-</body></html>
+<script src="assets/aye.js" defer></script>
+</body>
+</html>

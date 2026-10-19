@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build with AI, the way this was built · zops, the contract, gates, seals and DOIs</title>
+<meta name="description" content="The process behind every release here: AI drafts, a person decides at typed gates, every push is sealed and timestamped, every release gets a DOI. How to install and use it for your own work.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#fff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a; --code:#f3ede1; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a; --acc:#f08a3c; --acc2:#7fb0ef; --code:#2a261f; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+main { max-width: 900px; margin: 0 auto; padding: 0 16px 60px; } section { padding: 26px 0 10px; border-bottom: 1px solid var(--line); }
+h1 { font: 700 clamp(28px, 6vw, 46px)/1.1 Georgia, serif; margin: 30px 0 8px; } h2 { font: 700 24px/1.25 Georgia, serif; margin: 0 0 8px; }
+pre { background: var(--code); border-radius: 10px; padding: 10px; overflow-x: auto; font: 14px ui-monospace, Menlo, monospace; }
+.flow { display: flex; flex-direction: column; gap: 6px; } .step { border-left: 4px solid var(--acc2); background: var(--card); padding: 8px 12px; border-radius: 0 9px 9px 0; }
+.step b { color: var(--acc2); } .mut { color: var(--mut); } .small { font-size: 14px; } a { color: var(--acc2); }
+.wrap { overflow-x: auto; } table { border-collapse: collapse; width: 100%; } td, th { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; } th { color: var(--mut); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Build with AI, the way this was built</h1>
+<p>Every release in this repository was drafted with AI and decided by a person. The AI builds; the person reads and types
+the decision at a gate; every push is sealed and timestamped; every release gets a DOI. The process is open: use it for
+your own work.</p>
+
+<section>
+<h2>1. The loop</h2>
+<div class="flow">
+  <div class="step"><b>Intent.</b> The person says what is wanted. The intention is the person's: the AI does not replace it with its own reading.</div>
+  <div class="step"><b>Payload.</b> The AI builds the change and the tests that check it, and packs them with a script that carries its own gate.</div>
+  <div class="step"><b>Dry run.</b> The script checks the live repository is where the change was built, applies it to a scratch copy, and runs the gate. Nothing is pushed.</div>
+  <div class="step"><b>PUSH, typed.</b> The person reads what will change and types PUSH with a reason. That typed line is the recorded intent.</div>
+  <div class="step"><b>Receipt, timestamp, seal.</b> A receipt of the decision is written and timestamped (OpenTimestamps); a manifest of every file's hash is rebuilt, verified and timestamped; old manifests and proofs are kept, never overwritten.</div>
+  <div class="step"><b>Contract check, push, return-to tag.</b> The repository's own checks run once more; the commit is pushed; a tag marks a point anyone can return to.</div>
+  <div class="step"><b>MINT, typed.</b> The person types MINT; misty deposits the release on Zenodo and a DOI is minted; the DOI is written back, resealed and pushed.</div>
+</div>
+<p class="small mut">Gates refuse only on what the release needs: the expected base, the payload that was built, the repository's own
+tests and contract, no secrets, no oversized files, versions agreeing. Every other check reports and never refuses.</p>
+</section>
+
+<section>
+<h2>2. The rules: the master contract</h2>
+<p>Every repository follows the master contract in <a href="https://github.com/zistgah/governance">zistgah/governance</a>; a repository may add to it and never relax it. Among its clauses:</p>
+<div class="wrap"><table>
+<tr><th>Clause</th><th>In short</th></tr>
+<tr><td>C31</td><td>Retrieve before assuming: what is in the repository beats what anyone remembers.</td></tr>
+<tr><td>C37</td><td>Never bluff: say what was verified, and how.</td></tr>
+<tr><td>C38</td><td>The intention is the author's; a claim that cannot be verified keeps its wording and carries a disclaimer beside it.</td></tr>
+<tr><td>C39</td><td>Gates guard the release, and nothing else.</td></tr>
+</table></div>
+<p class="small">Claims carry their evidence state (AyeKnow): defined, implemented, executed, measured, verified, reproduced, open.</p>
+</section>
+
+<section>
+<h2>3. Install</h2>
+<pre>git clone https://github.com/zistgah/governance     # zops: ops/zops.sh, and the master contract
+pip install misty-doi                                # misty: Zenodo deposits and DOIs (needs a Zenodo token)
+pip install opentimestamps-client                    # ots: timestamps on receipts and manifests
+# and the GitHub CLI, gh, from your system's packages</pre>
+</section>
+
+<section>
+<h2>4. Use it: a seed in a dozen lines</h2>
+<pre>. ops/zops.sh
+zops_init "my project seed"
+zops_preflight git python3 -- gh misty ots       # required -- optional
+zops_repo my-org/my-project                      # clone or reuse; safe to rerun
+zops_contract_begin
+  zops_check Q1 "copyright"      zops_check_copyright
+  zops_check Q2 "affiliation"    zops_check_affiliation
+  zops_check Q3 "no placeholder" zops_check_no_placeholder
+zops_contract_end || exit 1
+zops_diff
+zops_push "my-project: seed"                     # gate, commit, receipt, stamp, reseal, verify, push
+zops_mark                                        # a return-to tag
+zops_done</pre>
+<p class="small">This is the usage in zops's own README. Worked examples in this repository: <code>scripts/parashakti.sh</code>
+(a parametric pipeline with a timed sanity check), the update scripts that publish each version, and the UISA seed script.</p>
+</section>
+
+<section>
+<h2>5. With any AI</h2>
+<p>Give your AI these instructions before the work, and hold it to them:</p>
+<pre>Retrieve before you write: read the repository and its contract first; never rely on memory for a fact you can check.
+Build the change with its own tests, and a script with a dry run. Do not push or mint: I type PUSH and MINT.
+Say exactly what you verified and how. Mark anything unverified, beside the claim. Never call done what I have not accepted.
+Gates refuse only on what the release needs; every other check reports.</pre>
+</section>
+<footer class="small mut" style="padding:24px 0">© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. zops, misty and the master contract are his.</footer>
+</main>
+<script src="../assets/aye.js" defer></script>
+</body>
+</html>

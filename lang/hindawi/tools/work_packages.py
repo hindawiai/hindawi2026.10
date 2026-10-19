@@ -64,7 +64,7 @@ def languages():
         missing_kw = [w for _, (_, _, miss) in kw.items() for w in miss]
         if not missing_kw and done == total and not lib:
             continue
-        d = lw / lang; d.mkdir()
+        d = lw / lang; d.mkdir(parents=True, exist_ok=True)
         table = {k: v for r in ("c2h", "cpp2h", "java2h", "py2h", "b2h", "logo2h") for k, v in burp.keyword_table(lang, [r]).items()}
         rows = ["token\tmeaning\tword"] + [f"{t}\t{MEANING.get(t, '')}\t" for t in dict.fromkeys(missing_kw + lib)]
         (d / "keywords.tsv").write_text("\n".join(rows) + "\n", encoding="utf-8")

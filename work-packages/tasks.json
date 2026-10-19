@@ -531,8 +531,40 @@
   "id": "T-58",
   "title": "Material that lets a doubtful reader check each claim before dismissing it",
   "source": "19 Oct 2026",
-  "status": "open",
-  "evidence": "expected results and checks on the robot and machine pages",
-  "next": "his design"
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "docs/assets/aye.js on every page: a Doubt this? panel per section (its SHA-256 fingerprint to copy, a way to check, a pre-filled GitHub issue, a work package), badges and hidden finds",
+  "next": "a problem to solve written for each section"
+ },
+ {
+  "id": "T-59",
+  "title": "A modern home page linking every page, the products and the ecosystem (links taken from this work, not reconstructed)",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "docs/index.html",
+  "next": ""
+ },
+ {
+  "id": "T-60",
+  "title": "Select any text on any page and ask an AI about it (Claude, ChatGPT, Perplexity, Copilot, Grok, Gemini), by right-click or on phones by a button",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "docs/assets/aye.js",
+  "next": ""
+ },
+ {
+  "id": "T-61",
+  "title": "The process as a product: zops, the master contract, typed gates, seals and DOIs, and how to install and use them for one's own AI-based development",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "docs/process/index.html",
+  "next": ""
+ },
+ {
+  "id": "T-62",
+  "title": "Parashakti publishes: a fork of each upstream, one branch per language, a scheduled sync, stricter tests than upstream's (byte-for-byte reversal, the same output as the English build), progress shown, the SHAKTI SDK first, dependencies layer by layer",
+  "source": "19 Oct 2026",
+  "status": "in progress",
+  "evidence": "rehearsed here: xv6 in Urdu published to a local repository, 65 of 65 C files reversing byte for byte, the same lines as English; docs/parashakti/PROCESS.md",
+  "next": "his run with --publish; the SHAKTI SDK, OpenSBI, QEMU and binutils run; the workflow on GitHub"
  }
 ]

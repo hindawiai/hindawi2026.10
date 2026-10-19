@@ -288,12 +288,12 @@
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-54]+Productization:+every+product+with+its+audience,+how+to+get+it,+what+is+shown+to+work,+and+its+release+gap+(PRODUCTS.md);+Colab+links+for+phones&body=I+am+taking+WP-T-54:+work-packages/tasks/WP-T-54.md"
  },
  {
-  "id": "WP-T-58",
+  "id": "WP-T-62",
   "kind": "task",
-  "title": "Material that lets a doubtful reader check each claim before dismissing it",
-  "size": "open",
-  "path": "work-packages/tasks/WP-T-58.md",
-  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-58]+Material+that+lets+a+doubtful+reader+check+each+claim+before+dismissing+it&body=I+am+taking+WP-T-58:+work-packages/tasks/WP-T-58.md"
+  "title": "Parashakti publishes: a fork of each upstream, one branch per language, a scheduled sync, stricter tests than upstream's (byte-for-byte reversal, the same output as the English build), progress shown, the SHAKTI SDK first, dependencies layer by layer",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-62.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-62]+Parashakti+publishes:+a+fork+of+each+upstream,+one+branch+per+language,+a+scheduled+sync,+stricter+tests+than+upstream's+(byte-for-byte+reversal,+the+same+output+as+the+English+build),+progress+shown,+the+SHAKTI+SDK+first,+dependencies+layer+by+layer&body=I+am+taking+WP-T-62:+work-packages/tasks/WP-T-62.md"
  },
  {
   "id": "WP-JS-01",

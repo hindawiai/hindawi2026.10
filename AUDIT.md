@@ -7,7 +7,7 @@ AyeKnow: defined, implemented, executed, verified, open. Nothing is called done 
 
 | What | Where | Identifier |
 |---|---|---|
-| Hindawi 2026.10, versions 2026.10.3 to 2026.10.7 | hindawiai/hindawi2026.10 | concept 10.5281/zenodo.23424410; 2026.10.3 23437358, 2026.10.4 23446805, 2026.10.5 23450594, 2026.10.6 23469266, 2026.10.7 recorded in its README |
+| Hindawi 2026.10, versions 2026.10.3 to 2026.10.8 | hindawiai/hindawi2026.10 | concept 10.5281/zenodo.23424410; 2026.10.3 23437358, 2026.10.4 23446805, 2026.10.5 23450594, 2026.10.6 23469266, 2026.10.7 23480901, 2026.10.8 23482338 |
 | UISA, the living research record | pvjournal/uisa, https://pvjournal.github.io/uisa/ | 10.5281/zenodo.23471398 |
 | Master contract clauses C38 (the intention is the author's; an unverified claim carries a disclaimer) and C39 (gates guard the release only) | zistgah/governance CONTRACT.md | pushed 19 Oct 2026 |
 | Trademark notices, central texts in one place | zistgah/zistgah.github.io/legal and the repositories the run reached | about a third of the estate (his count) |
@@ -46,8 +46,8 @@ AyeKnow: defined, implemented, executed, verified, open. Nothing is called done 
 11. UISA's research package (code, tests, benchmark) added so its gate re-runs it.
 12. Rahnuma updated and checked against the original architecture; the software factory with the student networks;
     posters to Zenodo (lawh first); VARZISH and the cyclers; the PANINI family architecture note; estate deduplication.
-13. Open topic, his: material that lets a doubtful reader check each claim before dismissing it (expected results and
-    checks are now on the robot and machine pages; the rest is open).
+13. The doubting reader: every section of every page now offers its fingerprint to quote, a way to check it, a pre-filled
+    GitHub issue and a work package, with badges and hidden finds; problems to solve per section are still to be written.
 
 ## 4. How the other projects relate
 

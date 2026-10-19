@@ -43,6 +43,10 @@ Every point of his requests, from the register `work-packages/tasks.json`. Coven
 | T-55 | Robots, ready for physical seeding: an instructions page (parts, wiring, upload, the first test with the expected answer, driving from a phone or from the page over USB, checks before judging the code, how to record a run, safety); the ESP32 serves its own phone control page | docs/robots/index.html; the ESP32 sketch in English and six languages lowered and syntax-checked | the first recorded runs on built robots |
 | T-56 | Parashakti: a timed sanity check of the machine first; nothing installed unless asked, one package at a time; each project runs only where its needs are met; every build time-limited | parashakti.sh --check, run here | his run |
 | T-57 | The audit: released, done with evidence, pending in order, the other projects related, the order of runs | AUDIT.md |  |
+| T-58 | Material that lets a doubtful reader check each claim before dismissing it | docs/assets/aye.js on every page: a Doubt this? panel per section (its SHA-256 fingerprint to copy, a way to check, a pre-filled GitHub issue, a work package), badges and hidden finds | a problem to solve written for each section |
+| T-59 | A modern home page linking every page, the products and the ecosystem (links taken from this work, not reconstructed) | docs/index.html |  |
+| T-60 | Select any text on any page and ask an AI about it (Claude, ChatGPT, Perplexity, Copilot, Grok, Gemini), by right-click or on phones by a button | docs/assets/aye.js |  |
+| T-61 | The process as a product: zops, the master contract, typed gates, seals and DOIs, and how to install and use them for one's own AI-based development | docs/process/index.html |  |
 
 ## Rework required
 
@@ -58,6 +62,7 @@ Every point of his requests, from the register `work-packages/tasks.json`. Coven
 | T-34 | A local test harness: after seeding, one command tests every feature and function, for every project delivered | hindawi test runs the originals check, the build suite, the standards and register checks and the fundamental regression; hindawi test --full adds the GATE programs in every complete language | the same harness shape for every repository of the estate |
 | T-35 | Trademarks and disclaimers from one central place, referred to by every README and web page | central texts and notice.js in the kit | web pages include legal/notice.js, one site at a time, reviewed |
 | T-54 | Productization: every product with its audience, how to get it, what is shown to work, and its release gap (PRODUCTS.md); Colab links for phones | PRODUCTS.md; README links each practice notebook to Colab | close each release gap, product by product |
+| T-62 | Parashakti publishes: a fork of each upstream, one branch per language, a scheduled sync, stricter tests than upstream's (byte-for-byte reversal, the same output as the English build), progress shown, the SHAKTI SDK first, dependencies layer by layer | rehearsed here: xv6 in Urdu published to a local repository, 65 of 65 C files reversing byte for byte, the same lines as English; docs/parashakti/PROCESS.md | his run with --publish; the SHAKTI SDK, OpenSBI, QEMU and binutils run; the workflow on GitHub |
 
 ## Open
 
@@ -94,4 +99,3 @@ Every point of his requests, from the register `work-packages/tasks.json`. Coven
 | T-46 | Scripts with no filter yet (Cyrillic, Han, Hangul, Kana, Thai, Lao, Khmer, Myanmar, Tibetan, Sinhala, Javanese and others: 24 languages): one generic transliteration from Unicode data to C-level forms |  | decide the scheme (ISO transliterations, or Unicode names) and generate the filters from Unicode data |
 | T-47 | Hebrew, Syriac, Phoenician and Imperial Aramaic are written in their own scripts but bound to the Perso-Arabic filter: give each its script | the foundation check reports their words outside the declared script |  |
 | T-52 | The hardware layers below the ISA for Parashakti and Qwan-tum: RTL, simulation, synthesis, formal checks, FPGA (Spartan-3A) bitstream, GPIO and oscilloscope capture, and the measured round trip D(M(E(x))) = x | the layers are open in the explainer site's stack table |  |
-| T-58 | Material that lets a doubtful reader check each claim before dismissing it | expected results and checks on the robot and machine pages | his design |

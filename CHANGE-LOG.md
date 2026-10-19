@@ -645,3 +645,18 @@ passed; scripts/test_all.sh passes.
 - changed `work-packages/tasks.json` (sha256 `34ba4ee24cd8614c`)
 
 **Verified.** The machine page driven headless: no errors; the step sentence, the ideas and the sizes shown. The ESP32 sketch, with its page, lowered from six languages and syntax-checked. parashakti.sh --check run here. test_all passes.
+
+## C30. Doubt any section, ask any AI, a modern home page, the process as a product, and Parashakti that publishes
+
+**Why.** He asked for a way for doubtful readers to check each claim (a fingerprint to quote, problems to solve, issues for the best critics, games for the curious), for any text on any page to be put to any AI, for a modern home page linking everything, for zops and this process to be offered to others, and for Parashakti to show progress, ingest the SHAKTI SDK first and every dependency layer by layer, test more strictly than upstream, and publish each result as a fork with one branch per language, synced and minted. docs/assets/aye.js gives every page a Doubt this? panel per section (its SHA-256 fingerprint, a way to check it, a pre-filled GitHub issue, a work package), badges and hidden finds, and an Ask AI menu for selected text (Claude, ChatGPT, Perplexity, Copilot, Grok, Gemini). docs/index.html is rebuilt as a landing with every page, the products and the ecosystem. docs/process/index.html sets out the process and how to install and use zops, misty and the timestamp client. parashakti.sh shows a progress line on every long step, checks readiness only for the languages asked, puts the SHAKTI SDK first with OpenSBI, QEMU and binutils behind it by layer, builds each project once in English as the baseline, verifies a language only when its tree reverses to upstream byte for byte and its output matches the English build, and with --publish forks the upstream (or mirrors it) with one branch per language, a default branch carrying the evidence and a daily sync workflow, under a typed PUSH, with --mint behind a typed MINT. docs/parashakti/PROCESS.md describes it.
+
+- added `docs/assets/aye.js` (sha256 `5c10857b16cca5dc`)
+- changed `docs/index.html` (sha256 `464d495e87d4272b`)
+- added `docs/process/index.html` (sha256 `06641f45a2c9e27a`)
+- changed `scripts/parashakti.sh` (sha256 `4d601a51f9e1dcfa`)
+- added `docs/parashakti/PROCESS.md` (sha256 `121baac34ebdb27b`)
+- changed `lang/hindawi/tools/foundation.py` (sha256 `97b8ed8c09c65c10`)
+- changed `AUDIT.md` (sha256 `6ebf42ea597a79a8`)
+- changed `work-packages/tasks.json` (sha256 `b175d2308f17eafd`)
+
+**Verified.** Rehearsed here: SHAKTI and xv6 proved in Urdu with progress shown; xv6 in Urdu reversing to its upstream in 65 of 65 C files and printing the same lines as the English build; published into a local repository with the branches riscv, lang/urdu and parashakti. The home page driven headless with the shared script: no errors, four doubt panels, a fingerprint and a pre-filled issue, badges awarded. test_all passes.
