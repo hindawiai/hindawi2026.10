@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>From script to silicon: inside the machine · APCISR, text mode, graphics mode, GPU, AI</title>
+<meta name="description" content="Follow an Indic character from the keyboard into numbers, through APCISR's 9-grid, a text-mode screen, graphics mode, the framebuffer, the DAC or a digital link, the GPU, GPGPU and AI.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#fff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a; --ok:#1f7a3a;
+  --run:#a86a00; --open:#6b6b6b; --code:#f3ede1; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a;
+  --acc:#f08a3c; --acc2:#7fb0ef; --ok:#5cc27a; --run:#e0a640; --open:#9a9a9a; --code:#2a261f; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", "Noto Sans",
+  "Noto Sans Devanagari", sans-serif; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; }
+main { max-width: 1040px; margin: 0 auto; padding: 0 16px 60px; }
+section { padding: 30px 0 12px; border-bottom: 1px solid var(--line); }
+h1 { font: 700 clamp(28px, 6vw, 50px)/1.1 Georgia, serif; margin: 34px 0 8px; }
+h2 { font: 700 clamp(22px, 4vw, 30px)/1.2 Georgia, serif; margin: 0 0 10px; } h3 { margin: 16px 0 6px; }
+p { margin: 8px 0; } .mut { color: var(--mut); } .small { font-size: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 10px 0; }
+code, .mono, pre { font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace; font-size: 14px; }
+pre { background: var(--code); border-radius: 10px; padding: 10px; overflow-x: auto; margin: 8px 0; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 12px; }
+button, select, textarea, input[type=text] { font: inherit; color: var(--fg); background: var(--card); border: 1px solid var(--line); border-radius: 9px; padding: 7px 12px; }
+button { cursor: pointer; } button.on, button:hover { border-color: var(--acc); color: var(--acc); }
+textarea { width: 100%; font-size: 26px; }
+.wrap { overflow-x: auto; } table { border-collapse: collapse; } td, th { border: 1px solid var(--line); padding: 4px 7px; text-align: center; }
+th { color: var(--mut); font-weight: 600; font-size: 13px; }
+.state { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; border: 1px solid currentColor;
+  border-radius: 6px; padding: 1px 7px; } .s-verified { color: var(--ok); } .s-implemented, .s-executed { color: var(--run); } .s-defined { color: var(--open); }
+.grid9 td { width: 54px; height: 40px; font: 15px ui-monospace, monospace; } .grid9 td.nz { background: var(--code); color: var(--acc); font-weight: 700; }
+.wm td { min-width: 30px; font: 13px ui-monospace, monospace; padding: 3px 4px; } .wm td.nz { background: var(--code); }
+.wm td.chg { outline: 2px solid var(--acc); } .wm th.cur { color: var(--acc); }
+canvas { image-rendering: pixelated; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #000; }
+canvas.light { background: var(--card); }
+nav.pipe { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav.pipe div { max-width: 1040px; margin: 0 auto; padding: 8px 16px; overflow-x: auto; white-space: nowrap; font-size: 14px; }
+nav.pipe a { color: var(--fg); text-decoration: none; } nav.pipe span { color: var(--mut); margin: 0 6px; }
+.q { font: italic 600 clamp(19px, 3.6vw, 26px)/1.3 Georgia, serif; color: var(--acc); }
+.bits { font: 13px/1 ui-monospace, monospace; letter-spacing: 1px; white-space: pre; }
+a { color: var(--acc2); }
+</style>
+</head>
+<body>
+<nav class="pipe"><div>
+  <a href="#input">INPUT</a><span>→</span><a href="#apcisr">APCISR</a><span>→</span><a href="#textmode">TEXT MODE</a><span>→</span>
+  <a href="#graphics">GRAPHICS MODE</a><span>→</span><a href="#framebuffer">FRAMEBUFFER</a><span>→</span><a href="#display">DISPLAY</a><span>→</span>
+  <a href="#gpu">GPU</a><span>→</span><a href="#gpgpu">GPGPU</a><span>→</span><a href="#ai">AI</a> <span>·</span> <a href="index.html">the whole stack</a>
+</div></nav>
+<main>
+<section id="top">
+  <h1>From script to silicon: inside the machine</h1>
+  <p>Follow an Indic character from the keyboard into numbers, through the algorithm that forms it, onto a text-mode screen,
+  into graphics mode and the framebuffer, out through the DAC or a digital link to the pixels, and on into GPUs, GPGPU and AI.
+  At every step the numbers are shown.</p>
+  <p class="q">At this point, is the machine still dealing with a character, or only with numbers?</p>
+  <p>Processors (CPU, MCU, GPU, TPU) work only on numbers. A script is an encoding: people agree that certain numbers mean
+  certain letters. Where a character is still a character, and where it becomes only numbers, is what this page shows.</p>
+</section>
+
+<section id="input">
+  <h2>1. Input: the keyboard gives numbers</h2>
+  <textarea id="txt" rows="1" aria-label="Type Devanagari">कर्म क्षत्रिय</textarea>
+  <div class="row small"><span class="mut">Try:</span><button class="ex">कर्म</button><button class="ex">क्षत्रिय</button>
+    <button class="ex">हिन्दी</button><button class="ex">प्रकृति</button><button class="ex">स्वतन्त्रता</button><button class="ex">A = 65</button></div>
+  <div class="wrap"><table id="codes"></table></div>
+  <p class="small mut">Unicode gives each letter a number (क is U+0915). ISCII, the Indian standard of 1988 and 1991 that APCISR
+  reads, gives it another (क is 0xB3). The conversion from Unicode to ISCII here uses the table Romenagri's own uni2acii gives.</p>
+</section>
+
+<section id="apcisr">
+  <h2>2. APCISR: how the letters are formed</h2>
+  <p>APCISR (2003 to 2006) renders Indic text in text mode, in software. It is based on a 9-grid theory for Brahmi-derived
+  scripts: every component of a letter is described on a 3×3 logical grid, three levels (<b>urdha</b> above, <b>madhya</b>
+  in the middle, <b>nimna</b> below) by three positions (<b>matrik</b>, <b>lipik</b>, <b>purak</b>). The grid is not a 3×3
+  bitmap: each of its nine cells holds a number naming a piece of a glyph.</p>
+  <p>As the ISCII bytes are read, the algorithm looks each component up in its table (its ISCII bytes, its Romenagri name,
+  its <b>purna</b> and its nine grid values), then places the nine values into a growing <b>working map</b>, three rows
+  by as many columns as the text needs, at positions decided by its state: the cursors matrik, lipik and purak, the purna of
+  this and the previous component, and whether a halant or a ra with halant is waiting for what comes next. Values meet by
+  bitwise OR. Rules then move or add pieces (the ra below, u and uu below, the ref above, visarga, anusvara, chandrabindu, the
+  i that reaches back), empty columns are removed, and each cell's value is replaced by a font character.</p>
+  <div class="card small"><span class="state s-verified">verified</span> What runs below is APCISR's original C
+  (<code>acii2cisr()</code>, from hindawiai/chintamani APCISR/), compiled to WebAssembly with two lines added that only record
+  its state for this page. On 1,497 inputs (every table entry, every pair of the first thirty, every triple of the first
+  eight) its output is byte for byte that of the original compiled natively. Sources: <a href="apcisr/src/acii2csr.c">acii2csr.c</a>,
+  <a href="apcisr/src/apcisr.h">apcisr.h</a>, <a href="apcisr/src/build.sh">build.sh</a>.</div>
+  <div class="row"><button id="first">|◀</button><button id="prev">◀ step</button><button id="play" class="on">play</button>
+    <button id="next">step ▶</button><button id="last">▶|</button><span id="stepno" class="mono small"></span></div>
+  <div class="cols">
+    <div class="card"><h3>The component read at this step</h3><div id="token" class="mono small"></div>
+      <div class="wrap"><table class="grid9" id="grid9"></table></div>
+      <p class="small mut">Its nine grid values from the APCISR table, laid out as the 9-grid: rows urdha, madhya, nimna; columns matrik, lipik, purak.</p></div>
+    <div class="card"><h3>The state</h3><div class="wrap"><table id="state"></table></div>
+      <p class="small mut">Before and after this step. A halant or a ra with halant is not drawn at once: it waits for the next
+      component to decide its form.</p></div>
+  </div>
+  <h3>The working map after this step</h3>
+  <div class="wrap"><table class="wm" id="wm"></table></div>
+  <canvas id="wmcanvas" class="light" width="400" height="96" aria-label="The working map drawn through the font"></canvas>
+  <p class="small mut">Cells outlined changed at this step; the columns marked M, L and P are the cursors. Below the numbers,
+  the same working map drawn through APCISR's font substitution: the letter forming as the components arrive.</p>
+  <h3>The result: three rows of font characters</h3>
+  <canvas id="result" width="400" height="48"></canvas>
+  <div class="wrap"><table class="wm" id="cells"></table></div>
+</section>
+
+<section id="textmode">
+  <h2>3. Text mode: the screen holds numbers, the font gives the dots</h2>
+  <p>In text mode the video memory holds, for each place on the screen, a character code and an attribute: 65 for A, and a
+  byte for its colours. On a PC that memory starts at segment B800 (graphics modes use A000), mapped into the system's
+  memory. Every frame the display adapter reads it, looks each code up in its font (on old adapters a font ROM), and lights
+  the dots of that character's bitmap. The screen is redrawn many times a second: 60 times, or 144 on a gaming laptop's
+  panel. Below is an 80 × 60 character screen. APCISR's line takes three text rows: urdha, madhya, nimna. Tap any character.</p>
+  <canvas id="screen" aria-label="An 80 by 60 text-mode screen"></canvas>
+  <div class="cols">
+    <div class="card"><h3>The cell you tapped</h3><div id="cellinfo" class="mono small">Tap a character on the screen.</div></div>
+    <div class="card"><h3>Its bitmap in the font</h3><canvas id="zoom" width="128" height="256" class="light"></canvas><div id="cellbits" class="bits"></div></div>
+  </div>
+  <p>A teletype or an early screen worked like a typewriter whose carriage only moves right: each character appears whole
+  at the next place. Left-to-right writing suits it; a vowel sign above or below, or a conjunct, needs to come back to a place
+  already written, and right-to-left scripts are drawn against the carriage. APCISR answers by composing each syllable in
+  its working map first and writing it out complete, over three rows. Text-mode Indic renderers are still rare; the GIST card
+  did this in hardware, APCISR in software, by different methods.</p>
+  <p class="small mut">A terminal is an input device and an output device together. Clusters and supercomputers are often
+  headless, in lights-out rooms, reached only from a remote terminal: the same text-mode ideas, without a screen attached.</p>
+</section>
+
+<section id="graphics">
+  <h2>4. Graphics mode: software draws the character</h2>
+  <p>In graphics mode the video memory holds pixels, not character codes. The software carries the font (TrueType and the
+  like) and draws each character into the pixels. A raster font is dots at one size; a vector font is the outline, which can
+  be scaled up without jagged edges. Either way, every pixel's value is finally needed: turning outlines into dots is
+  <b>rasterisation</b>.</p>
+  <div class="row"><label class="small mut" for="scale">size</label><input id="scale" type="range" min="1" max="8" value="4"></div>
+  <div class="cols">
+    <div class="card"><h3>Raster: the 8×16 font, enlarged</h3><canvas id="rast" class="light" width="300" height="150"></canvas>
+      <p class="small mut">The same dots, only bigger: the steps show.</p></div>
+    <div class="card"><h3>Vector: the outline, rasterised at this size</h3><canvas id="vect" class="light" width="300" height="150"></canvas>
+      <p class="small mut">Drawn from the outline at each size: smooth at any size.</p></div>
+  </div>
+</section>
+
+<section id="framebuffer">
+  <h2>5. The framebuffer: a grid of numbers</h2>
+  <p>The framebuffer is the frame being displayed, held as numbers: one bit per pixel for black and white, or three numbers
+  per pixel for colour, red, green and blue (RGB), often with a fourth (alpha). RGB is one colour space: any set of axes
+  is a space. HSV is another. The same science of measuring colour is used to tell temperatures of objects and distances to
+  galaxies. Tap a pixel.</p>
+  <canvas id="fb" class="light" width="320" height="160"></canvas>
+  <div class="card mono small" id="pixel">Tap a pixel.</div>
+  <div class="card small" id="fbmath"></div>
+</section>
+
+<section id="display">
+  <h2>6. To the display: a DAC, or a digital link</h2>
+  <div class="cols">
+    <div class="card"><h3>Analogue (VGA)</h3><p class="small">A digital-to-analogue converter turns each number into a voltage:
+      in VGA, 0 to 0.7 volts on each of the red, green and blue wires.</p>
+      <div class="row"><input id="dacv" type="range" min="0" max="255" value="200"><span id="dacout" class="mono"></span></div>
+      <svg id="dacsvg" viewBox="0 0 300 80" width="100%" height="80" aria-label="Voltage on one wire"></svg></div>
+    <div class="card"><h3>Digital (HDMI, DisplayPort)</h3><p class="small">The numbers travel as numbers, in a serial digital
+      stream; the monitor itself turns them into light. No DAC is needed in the computer.</p>
+      <pre id="digstream" class="small"></pre></div>
+  </div>
+  <p class="small mut">Almost all displays today are raster displays, grids of pixels. A vector display draws lines
+  directly; an analogue oscilloscope still does.</p>
+</section>
+
+<section id="gpu">
+  <h2>7. Why GPUs: many pixels, the same work</h2>
+  <p>Rasterising means computing every pixel of every frame. A 1920 × 1080 screen has 2,073,600 pixels; at 144 frames a second
+  that is about 299 million pixel values a second. One processor does them one after another; a graphics processor has many
+  small processors doing them at once. Software rendering uses the CPU; hardware rendering uses the GPU.</p>
+  <div class="row"><button id="runcpu">one processor</button><button id="rungpu">many processors</button><span id="gputime" class="mono small"></span></div>
+  <canvas id="par" class="light" width="320" height="160"></canvas>
+</section>
+
+<section id="gpgpu">
+  <h2>8. GPGPU and CUDA: the same processors, other numbers</h2>
+  <p>A frame is a matrix of numbers; so is much of science. From around 2007, with NVIDIA's CUDA, GPUs were offered for work
+  that is not graphics: General-Purpose computing on GPUs. In CUDA a <b>kernel</b> is a function run by thousands of
+  <b>threads</b> at once, grouped in <b>blocks</b> of a <b>grid</b>, on the GPU's CUDA cores. Below, each output of a
+  matrix product is one thread.</p>
+  <div class="row"><button id="mm">multiply</button><span class="small mut">C = A × B, every element of C at once</span></div>
+  <pre id="mmview" class="small"></pre>
+  <p class="small mut">GPU hardware, the CUDA programming model, GPGPU computation and AI workloads are four different
+  things; each made the next possible.</p>
+</section>
+
+<section id="ai">
+  <h2>9. AI: matrices all the way</h2>
+  <p>A layer of a neural network is a matrix product followed by a simple function: <code>y = f(W·x + b)</code>. Training and
+  running a model is billions of such products, which is why the GPU's parallel numerical machinery accelerates AI. When one
+  chip helps another do its work faster, we call it acceleration: the GPU accelerates the CPU, as the cores of a phone help
+  each other.</p>
+  <pre id="layer" class="small"></pre>
+  <p class="q">The character became numbers at the keyboard, and stayed numbers all the way to the light on the screen.
+  Only people, and the fonts and tables they agreed on, made them letters.</p>
+</section>
+
+<footer class="small mut" style="padding:24px 0">
+  APCISR © 2003–2006 Abhishek Choudhary, GPL-2.0-or-later (<a href="apcisr/src/copying">copying</a>). This page © 1993–2026
+  Abhishek Choudhary. All rights reserved. AyeAI. Evidence: the APCISR engine is <span class="state s-verified">verified</span>
+  against the original; the 80 × 60 screen is <span class="state s-implemented">implemented</span> as a simulation of a text-mode
+  display using APCISR's own 8 × 16 font; the voltages are those of the VGA standard; the GPU, GPGPU and AI sections are
+  <span class="state s-defined">defined</span> illustrations of the ideas, not measurements.
+</footer>
+</main>
+<script src="apcisr-data.js"></script>
+<script src="apcisr.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id), A = window.APC;
+const hx = (n, w) => n.toString(16).toUpperCase().padStart(w || 2, "0");
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+let R = null, step = 0, timer = null;
+const screen = new A.TextScreen($("screen"), 80, 60);
+
+function analyse() {
+  const text = $("txt").value || "क";
+  R = A.run(text);
+  const ch = Array.from(text.normalize("NFC")).slice(0, 24);
+  $("codes").innerHTML = "<tr><th>character</th>" + ch.map(c => `<td>${c === " " ? "␠" : c}</td>`).join("") + "</tr>" +
+    "<tr><th>Unicode</th>" + ch.map(c => `<td class="mono small">U+${hx(c.codePointAt(0), 4)}</td>`).join("") + "</tr>" +
+    "<tr><th>ISCII</th>" + ch.map(c => { const t = A.toISCII(c).bytes; return `<td class="mono small">${t.map(b => hx(b)).join(" ") || "–"}</td>`; }).join("") + "</tr>";
+  step = R.steps.length ? 0 : -1; showStep(); showResult(); fillScreen();
+}
+function showStep() {
+  const n = R.steps.length; $("stepno").textContent = n ? `step ${step + 1} of ${n}` : "no steps";
+  if (!n) return;
+  const s = R.steps[step], e = s.entry, g = e ? e.grid : Array(9).fill(0);
+  $("token").innerHTML = `ISCII bytes <b>${s.token.map(b => hx(b)).join(" ") || "–"}</b>` + (e ? ` · table entry ${e.index}: Romenagri <b>${e.rmn}</b>, purna <b>${e.purna}</b>` : " · not in the table: passed through as a non-ISCII character");
+  const L = ["urdha", "madhya", "nimna"], C = ["matrik", "lipik", "purak"];
+  $("grid9").innerHTML = "<tr><th></th>" + C.map(c => `<th>${c}</th>`).join("") + "</tr>" +
+    L.map((l, r) => `<tr><th>${l}</th>` + C.map((_, c) => { const v = g[r * 3 + c]; return `<td class="${v ? "nz" : ""}">${v}</td>`; }).join("") + "</tr>").join("");
+  const K = ["matrik", "lipik", "purak", "purna", "varna_purna", "prev_hal", "prev_ra_hal"];
+  $("state").innerHTML = "<tr><th></th><th>before</th><th>after</th></tr>" + K.map(k => `<tr><th>${k}</th><td>${s.before[k]}</td><td${s.before[k] !== s.after[k] ? ' class="nz"' : ""}>${s.after[k]}</td></tr>`).join("");
+  const a = s.after, b = s.before, W = Math.min(96, Math.max(6, a.purak + 3, b.purak + 3));
+  const rows = [["urdha", a.u, b.u], ["madhya", a.m, b.m], ["nimna", a.n, b.n]];
+  const head = Array.from({length: W}, (_, c) => `<th class="${[a.matrik, a.lipik, a.purak].includes(c) ? "cur" : ""}">${c}${c === a.matrik ? " M" : ""}${c === a.lipik ? " L" : ""}${c === a.purak ? " P" : ""}</th>`).join("");
+  $("wm").innerHTML = `<tr><th></th>${head}</tr>` + rows.map(([l, now, was]) => `<tr><th>${l}</th>` +
+    Array.from({length: W}, (_, c) => `<td class="${now[c] ? "nz" : ""} ${now[c] !== was[c] ? "chg" : ""}">${now[c] || ""}</td>`).join("") + "</tr>").join("");
+  const cv = $("wmcanvas"), sc = 2; cv.width = W * 8 * sc; cv.height = 48 * sc; const ctx = cv.getContext("2d");
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cv.width, cv.height);
+  [a.u, a.m, a.n].forEach((row, r) => { for (let c = 0; c < W; c++) if (row[c]) A.drawGlyph(ctx, A.wmGlyph(r, row[c]), c * 8 * sc, r * 16 * sc, sc, "#1d1b17", null, 16); });
+  ctx.strokeStyle = "#b4530a"; [a.matrik, a.lipik, a.purak].forEach(c => ctx.strokeRect(c * 8 * sc + 0.5, 0.5, 8 * sc - 1, cv.height - 1));
+}
+function showResult() {
+  const cv = $("result"), sc = 3, n = Math.max(1, R.cells.length); cv.width = n * 8 * sc; cv.height = 48 * sc;
+  const ctx = cv.getContext("2d"); ctx.fillStyle = "#000"; ctx.fillRect(0, 0, cv.width, cv.height);
+  R.cells.forEach((cell, c) => cell.forEach((code, r) => A.drawGlyph(ctx, code, c * 8 * sc, r * 16 * sc, sc, "#55ff55", null, 16)));
+  $("cells").innerHTML = ["urdha", "madhya", "nimna"].map((l, r) => `<tr><th>${l}</th>` + R.cells.map(c => `<td>${c[r]}</td>`).join("") + "</tr>").join("");
+}
+function fillScreen() {
+  screen.clear(0x07);
+  screen.write(0, 0, " HINDAWI TEXT MODE  80 x 60  video memory at B800:0000 ", 0x1F);
+  screen.write(2, 1, "Typed: Unicode -> ISCII -> APCISR -> three rows of font codes:", 0x0E);
+  screen.writeCells(4, 2, R.cells.slice(0, 76), 0x0A);
+  screen.write(8, 1, "The same codes as numbers (urdha / madhya / nimna):", 0x0E);
+  ["U", "M", "N"].forEach((l, r) => screen.write(10 + r, 1, (l + ": " + R.cells.slice(0, 18).map(c => hx(c[r])).join(" ")).slice(0, 78), 0x07));
+  screen.write(15, 1, "A = 65 = 0x41: the screen stores the number, the font draws the dots.", 0x0B);
+  screen.write(16, 1, "ASCII: ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789", 0x07);
+  screen.write(18, 1, "Tap any character to see its cell, its address and its bitmap.", 0x0E);
+  screen.write(58, 0, " Each cell: one code byte + one attribute byte (colours)                         ", 0x70);
+  screen.draw();
+}
+$("screen").addEventListener("click", ev => {
+  const c = screen.cellAt(ev), bm = A.bitmap(c.code);
+  $("cellinfo").innerHTML = `row ${c.row}, column ${c.col}<br>address 0x${hx(c.address, 5)} (B800:${hx(c.address - 0xB8000, 4)})<br>` +
+    `code ${c.code} = 0x${hx(c.code)}${c.code >= 32 && c.code < 127 ? ` ('${String.fromCharCode(c.code)}')` : ""}<br>attribute 0x${hx(c.attr)}: ` +
+    `foreground ${c.attr & 15}, background ${(c.attr >> 4) & 7}<br>font: 16 bytes at ${c.code} × 16`;
+  $("cellbits").textContent = bm.map(b => b.toString(2).padStart(8, "0").replace(/0/g, "·").replace(/1/g, "█") + "  " + b.toString(2).padStart(8, "0") + "  " + hx(b)).join("\n");
+  const z = $("zoom").getContext("2d"); z.fillStyle = "#fff"; z.fillRect(0, 0, 128, 256); A.drawGlyph(z, c.code, 0, 0, 16, "#1d1b17", null, 16);
+});
+function graphics() {
+  const s = +$("scale").value, code = (R.cells[0] || [32, 65, 32])[1] || 65;
+  const r = $("rast"), rc = r.getContext("2d"); rc.fillStyle = "#fff"; rc.fillRect(0, 0, r.width, r.height); A.drawGlyph(rc, code, 10, 6, Math.max(1, Math.floor(s * 1.1)), "#1d1b17", null, 16);
+  const v = $("vect"), vc = v.getContext("2d"), word = Array.from(($("txt").value || "क").normalize("NFC"))[0] || "क";
+  vc.fillStyle = "#fff"; vc.fillRect(0, 0, v.width, v.height); vc.fillStyle = "#1d1b17"; vc.textBaseline = "top";
+  vc.font = `${16 * s}px "Noto Sans Devanagari", sans-serif`; vc.fillText(word, 10, 6);
+  framebuffer(word);
+}
+function framebuffer(word) {
+  const W = 40, H = 20, fb = document.createElement("canvas"); fb.width = W; fb.height = H;
+  const f = fb.getContext("2d"); f.fillStyle = "#fff"; f.fillRect(0, 0, W, H); f.fillStyle = "#b4530a"; f.textBaseline = "top";
+  f.font = `17px "Noto Sans Devanagari", sans-serif`; f.fillText(word, 2, 0);
+  const img = f.getImageData(0, 0, W, H).data, out = $("fb"), o = out.getContext("2d"), px = out.width / W;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const k = 4 * (y * W + x);
+    o.fillStyle = `rgba(${img[k]},${img[k + 1]},${img[k + 2]},${img[k + 3] / 255})`; o.fillRect(x * px, y * px, px, px);
+    o.strokeStyle = "rgba(128,128,128,.25)"; o.strokeRect(x * px, y * px, px, px); }
+  out.onclick = ev => { const b = out.getBoundingClientRect(), x = Math.floor((ev.clientX - b.left) / b.width * W), y = Math.floor((ev.clientY - b.top) / b.height * H), k = 4 * (y * W + x);
+    const [rr, gg, bb, aa] = [img[k], img[k + 1], img[k + 2], img[k + 3]], mx = Math.max(rr, gg, bb), mn = Math.min(rr, gg, bb), d = mx - mn;
+    let h = 0; if (d) h = mx === rr ? 60 * (((gg - bb) / d) % 6) : mx === gg ? 60 * ((bb - rr) / d + 2) : 60 * ((rr - gg) / d + 4); if (h < 0) h += 360;
+    $("pixel").innerHTML = `pixel (x ${x}, y ${y})<br>R ${rr} G ${gg} B ${bb} A ${aa} = 0x${hx(rr)}${hx(gg)}${hx(bb)}<br>HSV: hue ${h.toFixed(0)}°, saturation ${(mx ? d / mx * 100 : 0).toFixed(0)}%, value ${(mx / 2.55).toFixed(0)}%`; };
+  $("fbmath").innerHTML = "A 1920 × 1080 frame at 4 bytes a pixel is 1920 × 1080 × 4 = 8,294,400 bytes (about 8.3 MB); at 144 frames a second, about 1.19 GB of pixel values every second.";
+}
+function dac() { const v = +$("dacv").value, volts = v / 255 * 0.7;
+  $("dacout").textContent = `${v} = ${v.toString(2).padStart(8, "0")} → ${volts.toFixed(3)} V`;
+  const pts = Array.from({length: 30}, (_, i) => { const val = (i % 10 < 5) ? v : Math.round(v * 0.3); return `${i * 10},${75 - val / 255 * 65} ${i * 10 + 10},${75 - val / 255 * 65}`; }).join(" ");
+  $("dacsvg").innerHTML = `<polyline points="${pts}" fill="none" stroke="${css("--acc2")}" stroke-width="2"/><text x="2" y="10" font-size="10" fill="${css("--mut")}">0.7 V</text><text x="2" y="78" font-size="10" fill="${css("--mut")}">0 V</text>`;
+  $("digstream").textContent = `R ${v.toString(2).padStart(8, "0")}  G ${Math.round(v * 0.5).toString(2).padStart(8, "0")}  B ${Math.round(v * 0.2).toString(2).padStart(8, "0")}  → serial bits to the monitor`; }
+function parallel(mode) {
+  const cv = $("par"), c = cv.getContext("2d"), W = 32, H = 16, s = cv.width / W; c.fillStyle = "#fff"; c.fillRect(0, 0, cv.width, cv.height);
+  let k = 0; const total = W * H, t0 = performance.now(), per = mode === "cpu" ? 1 : 64;
+  clearInterval(parallel.t); parallel.t = setInterval(() => {
+    for (let j = 0; j < per && k < total; j++, k++) { const x = k % W, y = Math.floor(k / W); c.fillStyle = `hsl(${(x * 11 + y * 7) % 360},70%,55%)`; c.fillRect(x * s, y * s, s - 1, s - 1); }
+    $("gputime").textContent = `${k} of ${total} pixels, ${per} at a time`; if (k >= total) clearInterval(parallel.t); }, 16);
+}
+function matmul() { const A2 = [[1, 2], [3, 4]], B2 = [[5, 6], [7, 8]];
+  const C = A2.map((r, i) => B2[0].map((_, j) => r.reduce((s, v, k) => s + v * B2[k][j], 0)));
+  $("mmview").textContent = "A = [1 2; 3 4]   B = [5 6; 7 8]\n\n" + C.map((r, i) => r.map((v, j) => `thread (${i},${j}): C[${i}][${j}] = ${A2[i].map((a, k) => `${a}×${B2[k][j]}`).join(" + ")} = ${v}`).join("\n")).join("\n") +
+    "\n\nAll four threads run at the same time: one kernel launch, a 2 × 2 grid of threads.";
+  $("layer").textContent = "x = [0.5, -1.0, 2.0]    (three inputs)\nW = 2 × 3 weights, b = 2 biases\ny = relu(W·x + b)      (two outputs, each a dot product: one thread each on a GPU)\n\nA large model does this with matrices of thousands by thousands, billions of times."; }
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => { $("txt").value = b.textContent; analyse(); graphics(); });
+$("txt").oninput = () => { analyse(); graphics(); };
+$("first").onclick = () => { step = 0; showStep(); }; $("last").onclick = () => { step = R.steps.length - 1; showStep(); };
+$("prev").onclick = () => { step = Math.max(0, step - 1); showStep(); }; $("next").onclick = () => { step = Math.min(R.steps.length - 1, step + 1); showStep(); };
+$("play").onclick = () => { clearInterval(timer); step = 0; showStep(); timer = setInterval(() => { if (step >= R.steps.length - 1) return clearInterval(timer); step++; showStep(); }, 900); };
+$("scale").oninput = graphics; $("dacv").oninput = dac;
+$("runcpu").onclick = () => parallel("cpu"); $("rungpu").onclick = () => parallel("gpu"); $("mm").onclick = matmul;
+analyse(); graphics(); dac(); matmul();
+</script>
+</body>
+</html>

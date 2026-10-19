@@ -618,3 +618,16 @@ passed; scripts/test_all.sh passes.
 - changed `work-packages/tasks.json` (sha256 `737c1d1c368eccea`)
 
 **Verified.** The site driven headless: no errors; the AyeCode round trip verified in the Sa Re Ga alphabet. test_all passes.
+
+## C28. Inside the machine: APCISR's algorithm, a text-mode screen, graphics mode, the framebuffer, the display, GPUs, GPGPU and AI
+
+**Why.** He found the explainer site too shallow for the question asked and asked for the whole path end to end: APCISR's algorithm shown on its 9-grid, text mode, graphics mode, the DAC, GPUs, GPGPU, acceleration and AI. docs/trace/machine.html follows a typed Indic text from Unicode to ISCII, then steps APCISR's original acii2cisr() component by component, showing the table entry (Romenagri name, ISCII bytes, purna, the nine grid values), the state before and after (matrik, lipik, purak, purna, varna_purna, prev_hal, prev_ra_hal), the working map with the cells each step changed, and the letter forming through the font substitution; then an 80 by 60 text-mode screen whose cells hold a code and an attribute at B800, with each cell's address and 8 by 16 bitmap; graphics mode with raster against vector at any size; the framebuffer with RGB and HSV per pixel; the VGA DAC and the digital link; one processor against many; a matrix product as CUDA threads; and a neural layer. The engine is the original C (hindawiai/chintamani APCISR/, GPL-2.0-or-later) compiled to WebAssembly with two lines that only record state (docs/trace/apcisr/src).
+
+- added `docs/trace/machine.html` (sha256 `e9516ef877bb2145`)
+- added `docs/trace/apcisr.js` (sha256 `7c54636a05aa2e84`)
+- added `docs/trace/apcisr-data.js` (sha256 `5c0da53f62a24d1e`)
+- added `docs/trace/apcisr/src/acii2csr.c` (sha256 `2610a50603f5734f`)
+- changed `docs/trace/index.html` (sha256 `9328dfdc564ada79`)
+- changed `README.md` (sha256 `8b1f73fd7cd9da90`)
+
+**Verified.** On 1,497 inputs (every table entry, pairs of the first thirty, triples of the first eight) the WebAssembly engine's output is byte for byte that of the original compiled natively. The page driven headless with the real engine: no errors; कर्म क्षत्रिय gives eight steps and eleven result columns; a tap on the screen gives the cell's address, code and bitmap. test_all passes.

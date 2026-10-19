@@ -14,6 +14,9 @@ every tool lives. `VERIFY.md` is the manual verification, step by step, with the
 - **Can a language survive the whole computing stack?** `docs/trace/` is the explainer site: one character, in any
   script, followed from human language through encoding, compilers and machines to the physical signal and back, with
   every layer's evidence state (AyeKnow) and the posters below.
+  `docs/trace/machine.html` opens the machine: APCISR's original algorithm (compiled to WebAssembly, byte for byte the
+  native build's) forming the letters on its 9-grid, an 80 × 60 text-mode screen, graphics mode, the framebuffer, the DAC
+  or digital link, and GPUs, GPGPU, CUDA and AI.
 - **Trademarks, credits and the work.** `legal/TRADEMARKS.md` asserts the marks (AyeAI®, AyeCNSe® and AyeAM® are
   registered in India); code licences grant copyright permissions only. `CREDITS.md` keeps the originator's credit.
   `TASKS.md` is every open task and standing covenant; each open task is a work package anyone can claim from
