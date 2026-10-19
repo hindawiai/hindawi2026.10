@@ -1,0 +1,1818 @@
+{
+ "scripts": {
+  "DEVANAGARI": {
+   "characters": 125,
+   "failing": [],
+   "rare_failing": [
+    "ऄ U+0904",
+    "ऌ U+090C",
+    "कऺ U+093A",
+    "कऻ U+093B",
+    "ॠ U+0960",
+    "ॻ U+097B",
+    "ॼ U+097C",
+    "ॽ U+097D",
+    "ॾ U+097E",
+    "ॿ U+097F"
+   ]
+  },
+  "TELUGU": {
+   "characters": 98,
+   "failing": [],
+   "rare_failing": [
+    "ఌ U+0C0C",
+    "క఼ U+0C3C",
+    "ౝ U+0C5D",
+    "ౠ U+0C60",
+    "౻ U+0C7B",
+    "౼ U+0C7C",
+    "౽ U+0C7D",
+    "౾ U+0C7E"
+   ]
+  },
+  "ARABIC": {
+   "characters": 225,
+   "failing": [],
+   "rare_failing": [
+    "ؠ U+0620",
+    "بؐ U+0610",
+    "بؑ U+0611",
+    "بؒ U+0612",
+    "بؓ U+0613",
+    "بؔ U+0614",
+    "بؕ U+0615",
+    "بؖ U+0616",
+    "بؗ U+0617",
+    "بؘ U+0618",
+    "بؙ U+0619",
+    "بؚ U+061A",
+    "بٛ U+065B",
+    "بٜ U+065C",
+    "بٝ U+065D",
+    "ب۪ U+06EA",
+    "ػ U+063B",
+    "ؼ U+063C",
+    "ؽ U+063D",
+    "ؾ U+063E",
+    "ؿ U+063F",
+    "٠ U+0660",
+    "ڂ U+0682",
+    "ڋ U+068B",
+    "ڎ U+068E",
+    "ڐ U+0690",
+    "ڒ U+0692",
+    "ڔ U+0694",
+    "ڕ U+0695",
+    "ڗ U+0697",
+    "ڛ U+069B",
+    "ڜ U+069C",
+    "ڝ U+069D",
+    "ڞ U+069E",
+    "ڟ U+069F",
+    "ڠ U+06A0",
+    "ۂ U+06C2",
+    "ۯ U+06EF",
+    "ۻ U+06FB",
+    "ۼ U+06FC",
+    "ۿ U+06FF"
+   ]
+  },
+  "BENGALI": {
+   "characters": 91,
+   "failing": [],
+   "rare_failing": [
+    "ঌ U+098C",
+    "ক৾ U+09FE",
+    "ৠ U+09E0",
+    "ৼ U+09FC"
+   ]
+  },
+  "GURMUKHI": {
+   "characters": 79,
+   "failing": [],
+   "rare_failing": [
+    "ਕਁ U+0A01"
+   ]
+  },
+  "GUJARATI": {
+   "characters": 89,
+   "failing": [],
+   "rare_failing": [
+    "ઌ U+0A8C",
+    "ઍ U+0A8D",
+    "ઑ U+0A91",
+    "કૻ U+0AFB",
+    "કૼ U+0AFC",
+    "ક૽ U+0AFD",
+    "ક૾ U+0AFE",
+    "ક૿ U+0AFF",
+    "ૠ U+0AE0"
+   ]
+  },
+  "ORIYA": {
+   "characters": 90,
+   "failing": [],
+   "rare_failing": [
+    "ଌ U+0B0C",
+    "ୠ U+0B60"
+   ]
+  },
+  "TAMIL": {
+   "characters": 64,
+   "failing": [],
+   "rare_failing": []
+  },
+  "KANNADA": {
+   "characters": 90,
+   "failing": [],
+   "rare_failing": [
+    "ಌ U+0C8C",
+    "ೠ U+0CE0"
+   ]
+  },
+  "MALAYALAM": {
+   "characters": 116,
+   "failing": [],
+   "rare_failing": [
+    "ഄ U+0D04",
+    "ഌ U+0D0C",
+    "ക഻ U+0D3B",
+    "ക഼ U+0D3C",
+    "ഺ U+0D3A",
+    "൛ U+0D5B",
+    "൜ U+0D5C",
+    "൝ U+0D5D",
+    "ൠ U+0D60"
+   ]
+  }
+ },
+ "languages": {
+  "arabic": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "41/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "aramaic": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [
+    "no well-formed C-level form: #𐡄𐡍",
+    "no well-formed C-level form: 𐡄𐡍",
+    "no well-formed C-level form: 𐡏𐡁𐡃"
+   ],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [
+    "#𐡄𐡍",
+    "𐡀𐡅",
+    "𐡄𐡍",
+    "𐡅",
+    "𐡋𐡀",
+    "𐡎𐡅𐡐",
+    "𐡏𐡁𐡃",
+    "𐡒𐡔𐡈"
+   ],
+   "keywords": {
+    "C": "28/35",
+    "C++": "41/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "assamese": {
+   "script": "BENGALI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "awadhi": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "33/35",
+    "C++": "50/61",
+    "Java": "45/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ],
+    "cpp2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ]
+   }
+  },
+  "balinese": {
+   "script": "BALINESE",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "balochi": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "batak": {
+   "script": "BATAK",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "bengali": {
+   "script": "BENGALI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "bhojpuri": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "33/35",
+    "C++": "50/61",
+    "Java": "45/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ],
+    "cpp2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ]
+   }
+  },
+  "bodo": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "buginese": {
+   "script": "BUGINESE",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "bulgarian": {
+   "script": "CYRILLIC",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "6/35",
+    "C++": "6/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "burmese": {
+   "script": "MYANMAR",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "chhattisgarhi": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "chinese": {
+   "script": "CJK",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "7/35",
+    "C++": "7/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "dari": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "dogri": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "dzongkha": {
+   "script": "TIBETAN",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "gujarati": {
+   "script": "GUJARATI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "hausa_ajami": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "hebrew": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [
+    "no well-formed C-level form: #אחרת",
+    "no well-formed C-level form: אחרת"
+   ],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [
+    "#אחרת",
+    "#אם",
+    "או",
+    "אחרת",
+    "אם",
+    "אמת",
+    "החזר",
+    "וגם",
+    "כלעוד",
+    "לא",
+    "מחלקה",
+    "סוף",
+    "עבור",
+    "עשה",
+    "שקר"
+   ],
+   "keywords": {
+    "C": "28/35",
+    "C++": "41/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "hindi": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [
+    "no well-formed C-level form in the original tables: अंक_रचना-त्रुटि",
+    "no well-formed C-level form in the original tables: अंक_रचना-त्रुटि",
+    "no well-formed C-level form in the original tables: जब तक",
+    "no well-formed C-level form in the original tables: तब तक",
+    "no well-formed C-level form in the original tables: हो तो"
+   ],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "34/35",
+    "C++": "51/61",
+    "Java": "45/51",
+    "Python": "11/36",
+    "BASIC": "21/21",
+    "LOGO": "0/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "__DATE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ],
+    "cpp2h": [
+     "__DATE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ]
+   }
+  },
+  "japanese": {
+   "script": "HIRAGANA",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "7/35",
+    "C++": "7/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "javanese": {
+   "script": "JAVANESE",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "kannada": {
+   "script": "KANNADA",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "kashmiri": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "kashmiri_dev": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "khmer": {
+   "script": "KHMER",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "konkani": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "korean": {
+   "script": "HANGUL",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "6/35",
+    "C++": "6/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "kurdish_sorani": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "lao": {
+   "script": "LAO",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "lepcha": {
+   "script": "LEPCHA",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "limbu": {
+   "script": "LIMBU",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "magahi": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "maithili": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "malay_jawi": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "malayalam": {
+   "script": "MALAYALAM",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "mandaic": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "manipuri_beng": {
+   "script": "BENGALI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "marathi": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "33/35",
+    "C++": "50/61",
+    "Java": "45/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ],
+    "cpp2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ]
+   }
+  },
+  "marwari": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "nabataean": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "nepali": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "33/35",
+    "C++": "50/61",
+    "Java": "45/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ],
+    "cpp2h": [
+     "__DATE__",
+     "__FILE__",
+     "__LINE__",
+     "__STDC__",
+     "__TIME__"
+    ]
+   }
+  },
+  "newari": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "odia": {
+   "script": "ORIYA",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "pali": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "pashto": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "persian": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "phoenician": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [
+    "no well-formed C-level form: #𐤀𐤌",
+    "no well-formed C-level form: 𐤀𐤌",
+    "no well-formed C-level form: 𐤐𐤏𐤋"
+   ],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [
+    "#𐤀𐤌",
+    "𐤀𐤅",
+    "𐤀𐤌",
+    "𐤅",
+    "𐤋𐤀",
+    "𐤐𐤏𐤋",
+    "𐤒𐤑"
+   ],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "prakrit": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "punjabi": {
+   "script": "GURMUKHI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "60/61",
+    "Java": "51/51",
+    "Python": "35/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "punjabi_shahmukhi": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "rajasthani": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "russian": {
+   "script": "CYRILLIC",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "7/35",
+    "C++": "7/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "samaritan": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "sanskrit": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "santali": {
+   "script": "OL",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "saraiki": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "serbian": {
+   "script": "CYRILLIC",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "6/35",
+    "C++": "6/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "shan": {
+   "script": "MYANMAR",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "sindhi": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "sindhi_dev": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "sinhala": {
+   "script": "SINHALA",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "17/35",
+    "C++": "20/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "sundanese": {
+   "script": "SUNDANESE",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "16/35",
+    "C++": "19/61",
+    "Java": "17/51",
+    "Python": "10/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "syriac": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [
+    "no well-formed C-level form: #ܐܚܪܢܐ",
+    "no well-formed C-level form: #ܐܢ",
+    "no well-formed C-level form: ܐܚܪܢܐ",
+    "no well-formed C-level form: ܐܢ",
+    "no well-formed C-level form: ܟܡܐ",
+    "no well-formed C-level form: ܥܒܕ",
+    "no well-formed C-level form: ܦܢܐ"
+   ],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [
+    "#ܐܚܪܢܐ",
+    "#ܐܢ",
+    "ܐܘ",
+    "ܐܚܪܢܐ",
+    "ܐܢ",
+    "ܕܓܠܐ",
+    "ܘ",
+    "ܟܡܐ",
+    "ܠܐ",
+    "ܥܒܕ",
+    "ܦܢܐ",
+    "ܫܠܡ",
+    "ܫܪܪܐ"
+   ],
+   "keywords": {
+    "C": "28/35",
+    "C++": "41/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "tagalog": {
+   "script": "DEVANAGARI",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "0/35",
+    "C++": "0/61",
+    "Java": "17/51",
+    "Python": "0/36",
+    "BASIC": "5/21",
+    "LOGO": "1/14",
+    "C preprocessor": "0/12"
+   },
+   "ready_to_compile": true,
+   "complete": false,
+   "round_trip_excluded": {
+    "c2h": [
+     "#else",
+     "#if",
+     "break",
+     "case",
+     "char",
+     "double",
+     "else",
+     "enum",
+     "if",
+     "inline",
+     "int",
+     "protected",
+     "register",
+     "return",
+     "signal",
+     "sizeof",
+     "struct",
+     "union",
+     "volatile",
+     "while"
+    ],
+    "cpp2h": [
+     "#else",
+     "#if",
+     "break",
+     "case",
+     "catch",
+     "char",
+     "double",
+     "else",
+     "enum",
+     "if",
+     "inline",
+     "int",
+     "pipe",
+     "protected",
+     "register",
+     "return",
+     "signal",
+     "sizeof",
+     "sleep",
+     "struct",
+     "throw",
+     "union",
+     "volatile",
+     "while"
+    ],
+    "py2h": [
+     "and",
+     "break",
+     "case",
+     "catch",
+     "char",
+     "double",
+     "else",
+     "extends",
+     "finally",
+     "from",
+     "if",
+     "implements",
+     "in",
+     "int",
+     "not",
+     "protected",
+     "return",
+     "sleep",
+     "throw",
+     "volatile",
+     "while"
+    ]
+   }
+  },
+  "tamil": {
+   "script": "TAMIL",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "29/35",
+    "C++": "43/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "telugu": {
+   "script": "TELUGU",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "thai": {
+   "script": "THAI",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "18/35",
+    "C++": "21/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "tibetan": {
+   "script": "TIBETAN",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "18/35",
+    "C++": "21/61",
+    "Java": "18/51",
+    "Python": "11/36",
+    "BASIC": "6/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "tulu": {
+   "script": "KANNADA",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "42/61",
+    "Java": "41/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "ukrainian": {
+   "script": "CYRILLIC",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "6/35",
+    "C++": "6/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  },
+  "urdu": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "35/35",
+    "C++": "61/61",
+    "Java": "51/51",
+    "Python": "36/36",
+    "BASIC": "21/21",
+    "LOGO": "14/14",
+    "C preprocessor": "12/12"
+   },
+   "ready_to_compile": true,
+   "complete": true
+  },
+  "uyghur": {
+   "script": "ARABIC",
+   "script_ready": true,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "28/35",
+    "C++": "40/61",
+    "Java": "40/51",
+    "Python": "26/36",
+    "BASIC": "10/21",
+    "LOGO": "3/14",
+    "C preprocessor": "4/12"
+   },
+   "ready_to_compile": true,
+   "complete": false
+  },
+  "vietnamese": {
+   "script": "LATIN",
+   "script_ready": false,
+   "errors": [],
+   "collisions": [],
+   "known": [],
+   "words_outside_script": [],
+   "keywords": {
+    "C": "6/35",
+    "C++": "6/61",
+    "Java": "6/51",
+    "Python": "5/36",
+    "BASIC": "4/21",
+    "LOGO": "1/14",
+    "C preprocessor": "2/12"
+   },
+   "ready_to_compile": false,
+   "complete": false
+  }
+ }
+}

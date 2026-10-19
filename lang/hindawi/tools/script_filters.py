@@ -88,9 +88,29 @@ FOLD_PAIRS = {"ټ": "ٹ", "ډ": "ڈ", "ړ": "ڑ", "ږ": "ژ", "ښ": "ش", "ګ": 
 FOLD = str.maketrans(FOLD_PAIRS)
 
 
+# Rules of a whole script, applied before its filter, the same on the cells' rules and on the words compiled: Arabic's
+# tatweel only lengthens a line and carries no sound; Malayalam's chillu letters are a consonant without its vowel, the
+# consonant and virama the filter knows.
+SCRIPT_RULES = {"ARABIC": str.maketrans({"\u0640": ""}),
+                # Assamese writes ra and wa with its own letters in the Bengali script; the filter reads them as ra and va
+                "BENGALI": str.maketrans({"\u09f0": "\u09b0", "\u09f1": "\u09ac"}),
+                "MALAYALAM": str.maketrans({"\u0d7a": "\u0d23\u0d4d", "\u0d7b": "\u0d28\u0d4d", "\u0d7c": "\u0d30\u0d4d",
+                                            "\u0d7d": "\u0d32\u0d4d", "\u0d7e": "\u0d33\u0d4d", "\u0d7f": "\u0d15\u0d4d"})}
+
+
+def normalize(lang, text):
+    """The one normalisation every native text gets before its script filter, the cells' rules and the compiled words
+    alike: Unicode's canonical composition (NFC), then the whole script's rules and folds."""
+    import unicodedata
+    return fold(lang, unicodedata.normalize("NFC", text))
+
+
 def fold(lang, text):
-    """The text as Chintamani's Urdu filter can read it, for Perso-Arabic languages; unchanged for every other script."""
-    return text.translate(FOLD) if script_of_language(lang) == "ARABIC" else text
+    """The text as the script's filter can read it: the whole script's rules, then, for Perso-Arabic, the letters of
+    Pashto, Sindhi and the rest folded to Urdu's."""
+    script = script_of_language(lang)
+    text = text.translate(SCRIPT_RULES[script]) if script in SCRIPT_RULES else text
+    return text.translate(FOLD) if script == "ARABIC" else text
 
 
 def which(lang):

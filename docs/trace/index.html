@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Can a language survive the whole computing stack? · Qwan-tum Tum Tum</title>
+<meta name="description" content="Follow one character, in any script, from human language down through encoding, compilers, machines and hardware, and back again. Hindawi, Parashakti, AyeKnow.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐎</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#ffffff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a;
+  --ok:#1f7a3a; --run:#a86a00; --open:#6b6b6b; --code:#f3ede1; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a;
+  --acc:#f08a3c; --acc2:#7fb0ef; --ok:#5cc27a; --run:#e0a640; --open:#9a9a9a; --code:#2a261f; color-scheme: dark; } }
+* { box-sizing: border-box; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", "Noto Sans",
+  "Noto Sans Devanagari", "Noto Naskh Arabic", "Noto Sans CJK SC", sans-serif; padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px); }
+main { max-width: 980px; margin: 0 auto; padding: 0 18px 60px; }
+section { padding: 34px 0 10px; border-bottom: 1px solid var(--line); }
+h1 { font: 700 clamp(30px, 6vw, 54px)/1.1 Georgia, "Noto Serif", serif; margin: 40px 0 10px; }
+h2 { font: 700 clamp(22px, 4vw, 32px)/1.2 Georgia, "Noto Serif", serif; margin: 0 0 12px; }
+h3 { margin: 18px 0 6px; }
+p { margin: 8px 0; } .mut { color: var(--mut); } .small { font-size: 14px; }
+.quote { font: italic 600 clamp(22px, 4.6vw, 34px)/1.3 Georgia, serif; color: var(--acc); margin: 18px 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
+.big { font-size: clamp(90px, 22vw, 180px); line-height: 1.1; text-align: center; margin: 6px 0; }
+code, .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Noto Sans Mono", monospace; font-size: 15px; }
+pre { background: var(--code); border-radius: 10px; padding: 12px; overflow-x: auto; margin: 8px 0; font-size: 14px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button, select, input[type=text], textarea { font: inherit; color: var(--fg); background: var(--card); border: 1px solid var(--line);
+  border-radius: 9px; padding: 8px 12px; }
+button { cursor: pointer; } button.on, button:hover { border-color: var(--acc); color: var(--acc); }
+input[type=text], textarea { width: 100%; }
+.wrap { overflow-x: auto; } table { border-collapse: collapse; width: 100%; } td, th { border-bottom: 1px solid var(--line);
+  padding: 6px 8px; text-align: left; vertical-align: top; } th { font-weight: 600; color: var(--mut); font-size: 14px; }
+.state { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  border-radius: 6px; padding: 2px 7px; border: 1px solid currentColor; white-space: nowrap; }
+.s-verified { color: var(--ok); } .s-executed, .s-implemented, .s-measured, .s-reproduced { color: var(--run); }
+.s-defined, .s-open { color: var(--open); }
+.flow { display: flex; flex-direction: column; gap: 6px; }
+.step { border-left: 4px solid var(--acc2); background: var(--card); padding: 8px 12px; border-radius: 0 9px 9px 0; }
+.step b { color: var(--acc2); }
+.grid128 { display: grid; grid-template-columns: repeat(16, 1fr); gap: 2px; font-size: 13px; }
+.grid128 div { text-align: center; padding: 3px 0; border-radius: 4px; background: var(--code); min-height: 26px; }
+.grid128 .ctl { color: var(--mut); font-size: 9px; } .grid128 .hit { outline: 2px solid var(--acc); }
+canvas { width: 100%; height: 240px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+figure { margin: 14px 0; } figure img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+figcaption { font-size: 14px; color: var(--mut); margin-top: 6px; }
+.claims li { margin: 6px 0; }
+.final { background: #000; color: #f4efe6; text-align: center; padding: 80px 18px; border: 0; }
+.final h2 { color: #f4efe6; } nav.top { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg);
+  border-bottom: 1px solid var(--line); z-index: 5; } nav.top div { max-width: 980px; margin: 0 auto; padding: 8px 18px;
+  overflow-x: auto; white-space: nowrap; font-size: 14px; } nav.top a { color: var(--fg); margin-right: 14px; text-decoration: none; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; }
+a { color: var(--acc2); }
+</style>
+</head>
+<body>
+<nav class="top"><div>
+  <a href="#question">The question</a><a href="#what">What is क?</a><a href="#represent">Representation</a>
+  <a href="#hexdump">Hexdump</a><a href="#unicode">Unicode</a><a href="#qwantum">Qwan-tum</a><a href="#seven">7-bit lab</a>
+  <a href="#hindawi">Hindawi</a><a href="#stack">The stack</a><a href="#trace">Trace</a><a href="#posters">Posters</a>
+</div></nav>
+<main>
+
+<section id="question">
+  <h1>Can a language survive the whole computing stack?</h1>
+  <p class="quote">“I give my cloth to the tailor. After that I depend on whatever he stitches.”</p>
+  <p>A question asked in a language-technology discussion: Unicode is an agreement on which numbers mean which characters,
+  but what happens to a character after that, inside processors, assembly, file formats, compilers and apps? Is there one
+  model that lets a character of any script remain intelligible and controllable all the way down, and all the way back up?</p>
+  <p>This page answers by following one character. Choose any character, in any script; it travels down through every
+  layer of the stack and comes back. Everything the page computes, it computes in your browser; everything marked as
+  computed by Hindawi was computed by its real compilation pipeline when this site was built.</p>
+  <div class="card mono small">Human language → script → character → encoding → software → compiler → machine → firmware → debugging → hardware → physical signal</div>
+  <p class="mut">This is not only a Unicode question. It is a question about every layer the information passes through.</p>
+</section>
+
+<section id="what">
+  <h2>What is this?</h2>
+  <div class="row"><span class="mut small">Try:</span>
+    <span id="examples" class="row"></span>
+    <input id="ch" type="text" value="क" style="max-width:220px" aria-label="Type any character or word">
+  </div>
+  <div class="big" id="glyph">क</div>
+  <p>Is it a glyph? A character? A code point? An encoding? A sequence of bytes? A representation? Each is a different
+  thing, and each layer of the stack sees a different one. Choose one:</p>
+  <div class="row" id="answers"></div>
+  <div class="card" id="answer" aria-live="polite">Choose an answer above.</div>
+  <h3>Where we mix everything up</h3>
+  <div class="wrap"><table id="layers"></table></div>
+  <p class="mut small">The same information has many representations. A glyph is what a font draws; a character is the
+  abstract letter; a code point is its number in Unicode; UTF-8, UTF-16 and UTF-32 are three ways of writing that number
+  as bytes; hexadecimal and binary are two ways of writing the bytes for people.</p>
+</section>
+
+<section id="represent">
+  <h2>Representation is not encoding</h2>
+  <p>A four-bit value can be written with any sixteen symbols. Writing ten to fifteen as क ख ग घ ङ च instead of A B C D E F
+  changes nothing in the bits. It changes only what a human reads.</p>
+  <div class="row"><label for="digits" class="small mut">Write the digits with</label><select id="digits"></select>
+    <label for="val" class="small mut">value</label><input id="val" type="text" value="175" style="max-width:110px"></div>
+  <div class="wrap"><table id="reps"></table></div>
+  <pre id="nibbles"></pre>
+</section>
+
+<section id="hexdump">
+  <h2>The hexdump moment</h2>
+  <p>Type anything, in any script. Below are its bytes, the same bytes shown with different digits. The bytes never change.</p>
+  <textarea id="hexin" rows="2">EFGHIJKL नमस्ते سلام 你好</textarea>
+  <div class="row" id="hexreps"></div>
+  <pre id="hexout"></pre>
+  <h3>When the decoder is wrong: mojibake</h3>
+  <p>The same UTF-8 bytes, decoded as if they were another encoding. Nothing is lost in the bytes; the reader is wrong.</p>
+  <div class="wrap"><table id="moji"></table></div>
+</section>
+
+<section id="unicode">
+  <h2>Then Unicode</h2>
+  <p>Unicode is one layer of the agreement: every character of every script gets a number, its code point. An encoding
+  then writes that number as bytes. Tap a step to see what changed.</p>
+  <div class="flow" id="uniflow"></div>
+  <div class="card" id="unistep">Tap a step.</div>
+  <h3>Does a CPU understand Devanagari, Arabic or Han?</h3>
+  <p><b>No script is required.</b> Processors, microcontrollers and accelerators work on numbers: bits, instructions,
+  memory and signals. A script enters at a human-facing layer: a font, an input method, a source file, a compiler that
+  reads it. The question that matters is <i>at which layer human notation is introduced, and who interprets it there</i>.</p>
+</section>
+
+<section id="qwantum">
+  <h2>Qwan-tum Tum Tum: from continuous to discrete</h2>
+  <p>The cart moves continuously; the horse trots discretely: <i>tum, tum, tum</i>. A continuous signal is sampled,
+  quantised into discrete levels, turned into states, and encoded. Binary is one choice of levels among many: balanced
+  ternary uses −1, 0, +1; quinary −2 to +2; in general 2k+1 levels from −k to +k.</p>
+  <div class="row"><label class="small mut" for="rate">samples</label><input id="rate" type="range" min="4" max="48" value="16">
+    <label class="small mut" for="lev">levels</label><select id="lev"><option>2</option><option selected>3</option><option>5</option><option>7</option><option>9</option></select></div>
+  <canvas id="wave" width="900" height="240" aria-label="A continuous wave, its samples and their quantised levels"></canvas>
+  <pre id="states"></pre>
+  <p class="mut small">Gray code orders the states so that neighbouring levels differ in one bit. It does not compress;
+  compression comes from giving frequent symbols shorter codes (average length Σ pᵢ·lᵢ, bounded below by the entropy H).</p>
+</section>
+
+<section id="seven">
+  <h2>The 7-bit lab</h2>
+  <p>Seven bits give 2⁷ = 128 states. Unicode does not fit in 128 states at once, but one <i>segment</i> of it can: a local
+  alphabet. The 33 control positions stay as they are; an escape followed by a segment number switches into “our”
+  alphabet, and Shift In returns to ordinary text. ISO/IEC 2022 used the same idea, escape sequences that designate a
+  character set, decades ago. This is an experiment, defined and run in this page.</p>
+  <div class="row"><label class="small mut" for="seg">segment</label><select id="seg"></select><span id="segnote" class="small mut"></span></div>
+  <input id="sevenin" type="text" value="नमस्ते, world">
+  <div class="grid128" id="grid"></div>
+  <pre id="sevenout"></pre>
+  <div class="card" id="roundtrip"></div>
+</section>
+
+<section id="hindawi">
+  <h2>Romenagri and Hindawi: keeping the language all the way to the machine</h2>
+  <p>Romenagri writes Indic scripts in 7-bit form with phonetic fidelity, and reverses back to the script. Hindawi uses it
+  to compile programs written in a language: the script filter brings a script to a common form, Romenagri gives every
+  native word a 7-bit form, and the language's transducer turns the keywords into the host language's; names keep
+  their Romenagri form all the way into the binary's symbols. The computer never needed Latin; the toolchain did.</p>
+  <div class="wrap"><table id="rmn"></table></div>
+  <h3>A real program, every stage</h3>
+  <div class="row" id="stagelangs"></div>
+  <div id="stages"></div>
+  <p class="mut small">Computed by the real pipeline (lang/hindawi/tools/trace_site.py) when this site was built: the English
+  program put into the language by BURP, then lowered stage by stage, exactly as hindawicc compiles it.</p>
+  <h3>Eliminating Latin from the development path: the T-diagram</h3>
+  <pre class="mono">  source ──▶ [ compiler ] ──▶ target        a compiler written in its own language,
+                 │                              compiled by an earlier compiler,
+                 ▼                              until it compiles itself: self-hosting
+  compiler ─▶ compiler ─▶ compiler</pre>
+  <p>Keyword swaps are not enough: the language has to survive the whole chain, debuggers and firmware included. Hindawi
+  2026.10's repository is <a href="https://github.com/hindawiai/hindawi2026.10">hindawiai/hindawi2026.10</a>.</p>
+</section>
+
+<section id="stack">
+  <h2>The descent: every layer, and its evidence</h2>
+  <p>Parashakti is the stack, from the physical world to human language. AyeKnow asks, at every layer: what evidence is
+  there? Each layer below carries its state in this repository today. <b>Defined</b>, <b>implemented</b>,
+  <b>executed</b>, <b>measured</b>, <b>verified</b>, <b>reproduced</b>, <b>open</b>: open is not failure, it is the known
+  boundary of the work.</p>
+  <div class="wrap"><table id="stacktable"></table></div>
+</section>
+
+<section id="trace">
+  <h2>Trace it</h2>
+  <p>Follow the character you chose, down and back up.</p>
+  <button id="go" class="on">TRACE</button>
+  <div class="flow" id="traceflow"></div>
+</section>
+
+<section id="posters">
+  <h2>The posters</h2>
+  <p>The posters state the intent of the work. Under each, every claim it makes is listed with its evidence state as of
+  this site's build, so a reader can tell what has been shown from what is still to be shown.</p>
+  <div id="postergallery"></div>
+</section>
+
+<section class="final">
+  <h2>You did not lose the cloth.</h2>
+  <p class="quote" style="color:#f0a35e">You followed it.</p>
+  <p class="mono">language → script → character → representation → encoding → bits → computation → machine → physical reality</p>
+  <p style="margin-top:30px">Qwan-tum Tum Tum. Same journey, different scales.</p>
+</section>
+
+<footer class="small mut" style="padding:24px 0">
+  © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. AyeAI®, AyeCNSe® and AyeAM® are registered trademarks of
+  Abhishek Choudhary in India; Parashakti™, Hindawi™, Romenagri™, BURP™, AyeKnow™ and Qwan-tum Tum Tum™ are his trademarks.
+  <a href="https://github.com/zistgah/zistgah.github.io/blob/main/legal/TRADEMARKS.md">Trademarks</a> ·
+  <a href="https://github.com/zistgah/zistgah.github.io/blob/main/legal/DISCLAIMERS.md">Disclaimers</a>.
+  Site data built <span id="built"></span>.
+</footer>
+</main>
+<script src="data.js"></script>
+<script>
+"use strict";
+const T = window.TRACE, $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const cps = s => Array.from(s).map(c => c.codePointAt(0));
+const hex = (n, w) => n.toString(16).toUpperCase().padStart(w || 2, "0");
+const bin = (n, w) => n.toString(2).padStart(w || 8, "0");
+const utf8 = s => Array.from(new TextEncoder().encode(s));
+const utf16 = s => { const u = []; for (let i = 0; i < s.length; i++) u.push(s.charCodeAt(i)); return u; };
+const U = n => "U+" + hex(n, 4);
+function scriptOf(cp) { let lo = 0, hi = T.ranges.length - 1;
+  while (lo <= hi) { const m = (lo + hi) >> 1, r = T.ranges[m]; if (cp < r[0]) hi = m - 1; else if (cp > r[1]) lo = m + 1; else return r[2]; }
+  return cp < 0x80 ? "Basic Latin" : "unassigned or outside this table"; }
+const STATE = s => `<span class="state s-${s}">${s}</span>`;
+$("built").textContent = T.built;
+
+// ---- the traveller
+const EX = ["क", "A", "ب", "字", "Ж", "α", "ש", "ก", "அ", "క", "ক", "ਕ", "😀", "क्ष"];
+$("examples").innerHTML = EX.map(e => `<button class="ex">${e}</button>`).join("");
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => { $("ch").value = b.textContent; update(); });
+$("ch").oninput = update;
+const ANSWERS = {
+  "A glyph": "A glyph is the shape a font draws. Change the font and the glyph changes; the character does not.",
+  "A character": "A character is the abstract letter. One character can need several code points (क्ष is क + ् + ष), and one glyph can show several characters.",
+  "A Unicode code point": c => `Its code point${c.length > 1 ? "s are" : " is"} ${c.map(U).join(" ")}: a number Unicode assigns. Numbers, not shapes.`,
+  "An encoding": "An encoding is a rule for writing code points as bytes: UTF-8, UTF-16, UTF-32, or older code pages.",
+  "A byte sequence": c => `In UTF-8 it is ${utf8(String.fromCodePoint(...c)).map(b => hex(b)).join(" ")}: what is actually stored and sent.`,
+  "A representation": "Hexadecimal, binary, decimal, or digits from any script: ways of showing the same number to people.",
+  "All of these, depending on the layer": "Exactly. Each layer of the stack sees a different one of these. The rest of this page follows them.",
+};
+$("answers").innerHTML = Object.keys(ANSWERS).map(a => `<button class="ans">${a}</button>`).join("");
+document.querySelectorAll(".ans").forEach(b => b.onclick = () => { const v = ANSWERS[b.textContent], c = cps($("ch").value || "क");
+  $("answer").textContent = typeof v === "function" ? v(c) : v; });
+function update() {
+  const s = $("ch").value || "क", c = cps(s);
+  $("glyph").textContent = s;
+  const rows = [["Glyph", esc(s)], ["Characters (grapheme clusters)", [...new Intl.Segmenter(undefined, {granularity: "grapheme"}).segment(s)].length],
+    ["Code points", c.map(U).join(" ")], ["Script", [...new Set(c.map(scriptOf))].join(", ")],
+    ["NFC / NFD", `${s.normalize("NFC") === s ? "already NFC" : "not NFC"}; NFD has ${cps(s.normalize("NFD")).length} code points`],
+    ["UTF-8 bytes", utf8(s).map(b => hex(b)).join(" ") + ` (${utf8(s).length} bytes)`],
+    ["UTF-16 code units", utf16(s).map(u => hex(u, 4)).join(" ")], ["UTF-32", c.map(n => hex(n, 8)).join(" ")],
+    ["Binary (UTF-8)", utf8(s).map(b => bin(b)).join(" ")]];
+  $("layers").innerHTML = rows.map(r => `<tr><th>${r[0]}</th><td class="mono">${r[1]}</td></tr>`).join("");
+}
+update();
+
+// ---- representation
+const DIGITS = {"Latin hexadecimal": "0123456789ABCDEF", "Devanagari digits, then क to च": "०१२३४५६७८९कखगघङच",
+  "Arabic-Indic digits, then ا to ح": "٠١٢٣٤٥٦٧٨٩ابتثجح", "Bengali digits, then ক to চ": "০১২৩৪৫৬৭৮৯কখগঘঙচ",
+  "Tamil digits, then க to ண": "௦௧௨௩௪௫௬௭௮௯கஙசஞடண", "Thai digits, then ก to ฉ": "๐๑๒๓๔๕๖๗๘๙กขคงจฉ",
+  "Chinese numerals, then the stems 甲 to 己": "〇一二三四五六七八九甲乙丙丁戊己", "Cyrillic: Latin digits, then А to Е": "0123456789АБВГДЕ"};
+$("digits").innerHTML = Object.keys(DIGITS).map(k => `<option>${k}</option>`).join("");
+const inDigits = (n, set) => { const d = Array.from(DIGITS[set]); return n.toString(16).toUpperCase().split("").map(x => d[parseInt(x, 16)]).join(""); };
+function reps() { const n = Math.max(0, Math.min(0xFFFF, parseInt($("val").value) || 0)), set = $("digits").value;
+  $("reps").innerHTML = [["Decimal", n], ["Hexadecimal", "0x" + hex(n)], ["Binary", bin(n, n > 255 ? 16 : 8)], [set, inDigits(n, set)]]
+    .map(r => `<tr><th>${r[0]}</th><td class="mono">${r[1]}</td></tr>`).join("");
+  const d = Array.from(DIGITS[set]);
+  $("nibbles").textContent = d.map((x, i) => `${bin(i, 4)}  ${hex(i, 1)}  ${x}`).join("\n").split("\n").slice(10).join("\n") + "\n(the same six nibbles, 1010 to 1111)"; }
+$("digits").onchange = reps; $("val").oninput = reps; reps();
+
+// ---- hexdump and mojibake
+let hexset = "Latin hexadecimal";
+$("hexreps").innerHTML = Object.keys(DIGITS).map(k => `<button class="hr${k === hexset ? " on" : ""}">${k}</button>`).join("");
+document.querySelectorAll(".hr").forEach(b => b.onclick = () => { hexset = b.textContent;
+  document.querySelectorAll(".hr").forEach(x => x.classList.toggle("on", x === b)); hexdump(); });
+function hexdump() { const b = utf8($("hexin").value), d = Array.from(DIGITS[hexset]), h = v => d[v >> 4] + d[v & 15], lines = [];
+  for (let i = 0; i < b.length; i += 8) { const row = b.slice(i, i + 8);
+    lines.push(h(i >> 8 & 255) + h(i & 255) + "  " + row.map(h).join(" ").padEnd(8 * 3 * 1) + "  " + row.map(v => v >= 32 && v < 127 ? String.fromCharCode(v) : "·").join("")); }
+  $("hexout").textContent = lines.join("\n");
+  const raw = new Uint8Array(b), dec = l => { try { return new TextDecoder(l).decode(raw); } catch (e) { return "(this browser has no " + l + " decoder)"; } };
+  $("moji").innerHTML = [["UTF-8 (right)", dec("utf-8")], ["Windows-1252", dec("windows-1252")], ["ISO-8859-5 (Cyrillic)", dec("iso-8859-5")],
+    ["Shift_JIS", dec("shift_jis")], ["UTF-16LE", dec("utf-16le")]].map(r => `<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join(""); }
+$("hexin").oninput = hexdump; hexdump();
+
+// ---- Unicode flow
+function uniflow() { const s = $("ch").value || "क", c = cps(s)[0], ch = String.fromCodePoint(c), b = utf8(ch);
+  const steps = [["Character", ch, "The abstract letter, independent of any font."],
+    ["Code point", U(c), "Unicode's number for it; " + scriptOf(c) + " block. A table lookup, agreed internationally."],
+    ["UTF-8", b.map(x => hex(x)).join(" "), `UTF-8 writes code points up to U+007F in one byte, up to U+07FF in two, up to U+FFFF in three, beyond in four. This one takes ${b.length}.`],
+    ["Bits", b.map(x => bin(x)).join(" "), "The leading bits of each byte say whether it starts a character (0, 110, 1110, 11110) or continues one (10)."],
+    ["Machine", "memory, registers, wires", "From here down, nothing knows these were letters: they are numbers in memory and voltages on wires."]];
+  $("uniflow").innerHTML = steps.map((x, i) => `<div class="step" data-i="${i}"><b>${x[0]}</b> <span class="mono">${esc(x[1])}</span></div>`).join("");
+  document.querySelectorAll("#uniflow .step").forEach(el => el.onclick = () => $("unistep").textContent = steps[+el.dataset.i][2]); }
+$("ch").addEventListener("input", uniflow); uniflow();
+
+// ---- Qwan-tum: sample, quantise, state, encode
+function gray(n) { return n ^ (n >> 1); }
+function qwantum() { const cv = $("wave"), g = cv.getContext("2d"), W = cv.width, H = cv.height, N = +$("rate").value, L = +$("lev").value, k = (L - 1) / 2;
+  const css = getComputedStyle(document.documentElement), fg = css.getPropertyValue("--acc2"), ac = css.getPropertyValue("--acc"), mu = css.getPropertyValue("--mut");
+  g.clearRect(0, 0, W, H); g.strokeStyle = mu; g.beginPath(); g.moveTo(0, H / 2); g.lineTo(W, H / 2); g.stroke();
+  const f = t => 0.8 * Math.sin(2 * Math.PI * t) + 0.18 * Math.sin(6 * Math.PI * t + 1), y = v => H / 2 - v * H * 0.42;
+  g.strokeStyle = fg; g.lineWidth = 2; g.beginPath(); for (let x = 0; x <= W; x++) { const v = f(x / W); x ? g.lineTo(x, y(v)) : g.moveTo(x, y(v)); } g.stroke();
+  const states = []; g.fillStyle = ac;
+  for (let i = 0; i < N; i++) { const t = (i + 0.5) / N, v = f(t), q = Math.max(-k, Math.min(k, Math.round(v * k))); states.push(q);
+    const qx = t * W, qy = y(q / (k || 1)); g.beginPath(); g.arc(qx, qy, 4, 0, 7); g.fill(); g.fillRect(qx - W / N / 2, qy - 1, W / N, 2); }
+  const bits = Math.ceil(Math.log2(L)), fmt = q => q > 0 ? "+" + q : String(q);
+  $("states").textContent = `${L} levels, from ${-k} to +${k}; ${N} samples\nstates:   ${states.map(fmt).join(" ")}\n` +
+    `binary:   ${states.map(q => bin(q + k, bits)).join(" ")}\nGray:     ${states.map(q => bin(gray(q + k), bits)).join(" ")}\n` +
+    (L === 3 ? `balanced ternary trits: ${states.map(q => ["−", "0", "+"][q + 1]).join("")}\n` : "") +
+    `${N} samples × ${bits} bits = ${N * bits} bits; a ${L}-level line carries log₂${L} = ${Math.log2(L).toFixed(2)} bits per symbol`; }
+$("rate").oninput = qwantum; $("lev").onchange = qwantum; qwantum();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", qwantum);
+
+// ---- the 7-bit lab: ESC + segment selects a local alphabet, SI returns to ordinary 7-bit text
+const ESC = 0x1B, SI = 0x0F, SLOTS = 95;       // positions 0x20 to 0x7E carry the local alphabet; controls stay controls
+$("seg").innerHTML = Object.keys(T.segments).map(k => `<option>${k}</option>`).join("");
+function encode7(text, alpha) { const out = []; let cur = -1;
+  for (const ch of Array.from(text)) { const idx = alpha.indexOf(ch);
+    if (idx < 0) { if (ch.codePointAt(0) > 0x7E) return {error: `“${ch}” (${U(ch.codePointAt(0))}) is not in this segment or in 7-bit ASCII`};
+      if (cur >= 0) { out.push(SI); cur = -1; } out.push(ch.codePointAt(0)); continue; }
+    const seg = Math.floor(idx / SLOTS); if (seg !== cur) { out.push(ESC, 0x30 + seg); cur = seg; } out.push(0x20 + idx % SLOTS); }
+  if (cur >= 0) out.push(SI); return {codes: out}; }
+function decode7(codes, alpha) { let s = "", cur = -1;
+  for (let i = 0; i < codes.length; i++) { const v = codes[i];
+    if (v === ESC) { cur = codes[++i] - 0x30; continue; } if (v === SI) { cur = -1; continue; }
+    s += cur >= 0 ? alpha[cur * SLOTS + v - 0x20] : String.fromCharCode(v); } return s; }
+function seven() { const name = $("seg").value, alpha = Array.from(T.segments[name]), text = $("sevenin").value, r = encode7(text, alpha);
+  const segs = Math.ceil(alpha.length / SLOTS);
+  $("segnote").textContent = `${alpha.length} characters in the block: ${segs} segment${segs > 1 ? "s" : ""} of 95`;
+  const used = new Set(r.codes || []);
+  $("grid").innerHTML = Array.from({length: 128}, (_, v) => v < 32 || v === 127 ? `<div class="ctl">${v === ESC ? "ESC" : v === SI ? "SI" : hex(v)}</div>`
+    : `<div class="${used.has(v) ? "hit" : ""}">${esc(alpha[v - 0x20] || "·")}</div>`).join("");
+  if (r.error) { $("sevenout").textContent = r.error; $("roundtrip").innerHTML = "Choose the segment of the script you typed."; return; }
+  $("sevenout").textContent = r.codes.map(v => bin(v, 7)).join(" ") + `\n${r.codes.length} seven-bit codes for ${Array.from(text).length} characters (UTF-8 needs ${utf8(text).length} eight-bit bytes)`;
+  const back = decode7(r.codes, alpha);
+  $("roundtrip").innerHTML = `Decoded: <b>${esc(back)}</b> · D(E(x)) = x: ${back === text ? STATE("verified") : '<span class="state s-open">failed</span>'} <span class="small mut">checked now, in your browser</span>`; }
+$("seg").onchange = seven; $("sevenin").oninput = seven; seven();
+
+// ---- Romenagri and the real stages
+$("rmn").innerHTML = "<tr><th>Language</th><th>Word</th><th>Code points</th><th>Romenagri form</th></tr>" + Object.entries(T.romenagri)
+  .map(([l, r]) => `<tr><td>${l}</td><td>${esc(r.word)}</td><td class="mono small">${r.code_points.map(x => x[0]).join(" ")}</td><td class="mono">${esc(r.romenagri)}</td></tr>`).join("");
+$("stagelangs").innerHTML = Object.keys(T.stages).map((l, i) => `<button class="sl${i ? "" : " on"}">${l}</button>`).join("");
+function stages(l) { $("stages").innerHTML = T.stages[l].map(([n, t]) => `<h3 class="small">${esc(n)}</h3><pre>${esc(t)}</pre>`).join("");
+  document.querySelectorAll(".sl").forEach(b => b.classList.toggle("on", b.textContent === l)); }
+document.querySelectorAll(".sl").forEach(b => b.onclick = () => stages(b.textContent)); stages(Object.keys(T.stages)[0]);
+
+// ---- the stack, with evidence
+$("stacktable").innerHTML = "<tr><th>#</th><th>Layer</th><th>State here</th><th>Evidence</th></tr>" +
+  T.layers.map(x => `<tr><td>${x.n}</td><td>${esc(x.name)}</td><td>${STATE(x.state)}</td><td class="small">${esc(x.evidence)}</td></tr>`).join("");
+
+// ---- the trace
+$("go").onclick = () => { const s = $("ch").value || "क", c = cps(s), b = utf8(s), first = String.fromCodePoint(c[0]);
+  const seg = Object.entries(T.segments).find(([, a]) => Array.from(a).includes(first));
+  const r = Object.values(T.romenagri).find(x => x.word === s);
+  const down = [["character", s], ["code point", c.map(U).join(" ")], ["script", [...new Set(c.map(scriptOf))].join(", ")],
+    ["UTF-8", b.map(x => hex(x)).join(" ")], ["binary", b.map(x => bin(x)).join(" ")],
+    ["7-bit segment", seg ? (() => { const e = encode7(s, Array.from(seg[1])); return e.codes ? seg[0] + ": " + e.codes.map(v => bin(v, 7)).join(" ") : e.error; })() : "no segment on this page for this script"],
+    ["Romenagri", r ? r.romenagri : "computed by Hindawi for the greetings above; scripts without a filter are open work"],
+    ["compiler", "names keep their 7-bit form into the binary's symbols; keywords become the host language's"],
+    ["machine", "numbers in memory and registers"], ["signal", "voltages on wires: no script anywhere"]];
+  const up = [["decoder", "the same numbers, read with the same agreement"], ["character", s]];
+  $("traceflow").innerHTML = "";
+  [...down, ...up].forEach((x, i) => setTimeout(() => $("traceflow").insertAdjacentHTML("beforeend",
+    `<div class="step"><b>${i < down.length ? "↓" : "↑"} ${x[0]}</b> <span class="mono">${esc(x[1])}</span></div>`), i * 180));
+  setTimeout(() => $("traceflow").insertAdjacentHTML("beforeend", `<div class="card"><b>Trace complete.</b> The representation changed; the information survived.</div>`), (down.length + up.length) * 180); };
+
+// ---- posters, with the evidence for each claim
+$("postergallery").innerHTML = T.posters.map(p => `<figure><a href="posters/${p.file}${p.file === "ayeknow-stack-detail" ? ".jpg" : ".png"}">
+  <img src="posters/web/${p.file}.jpg" alt="${esc(p.title)}" loading="lazy"></a><figcaption><b>${esc(p.title)}.</b> ${esc(p.about)}</figcaption>
+  <div class="card"><b>Evidence for this poster's claims</b> <span class="small mut">(as of ${T.built})</span><ul class="claims">${p.claims.map(c =>
+  `<li>${STATE(c.state)} ${esc(c.claim)}. <span class="small mut">${esc(c.evidence)}</span></li>`).join("")}</ul>
+  <p class="small mut">Claims marked open are stated intent, not yet shown by evidence here. Images made with generative tools
+  are illustrations; figures and console text in them are not measurements unless a claim above says so.</p></div></figure>`).join("");
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 Asked: 18 Oct 2026. Status: in progress.
 
-What exists: parashakti.sh, proved here: a bare-metal program in Urdu, Tamil and Hindi on QEMU's SHAKTI C-class machine; xv6 in Urdu, Tamil, Bengali and Punjabi booted on QEMU's RISC-V machine and its shell ran echo and ls. SeaBIOS and TinyCC stages written, not yet run.
+What exists: parashakti.sh is parametric: a manifest of projects (SHAKTI bare metal, xv6, MINIX 3, Linux, GCC, LLVM, wasm3, SeaBIOS, TinyCC), each fetched, ingested, lowered as a whole tree and built with its own tools. Proved here: SHAKTI bare metal and xv6 in Urdu, Tamil and Hindi. MINIX, Linux, GCC and LLVM are written into the manifest and not yet run; they take hours and several gigabytes each.
 
 Next step: his full run; then TinyCC self-hosting and the Linux stack.
 

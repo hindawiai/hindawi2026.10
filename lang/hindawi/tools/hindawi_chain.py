@@ -96,7 +96,8 @@ def lexers(lang):
        f"gcc -O1 -o '{c2h}' '{out}/c2h_lex.c' -ll 2>/dev/null || gcc -O1 -o '{c2h}' '{out}/c2h_lex.c'; }}")
     # compilation: the cell's h2c through the script filter and Romenagri, as the original Makefiles build h2c
     filt = script_filter(lang) and f"python3 '{HERE / 'script_filters.py'}' prepare {lang} | "
-    sh(f"cat '{src}/h2c.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex'")
+    sh(f"{filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/h2c.lex'",
+       script_filters.normalize(lang, (src / "h2c.uhin").read_text(encoding="utf-8")).encode("utf-8"))
     lex = (out / "h2c.lex").read_bytes().split(b"\n")      # a word's C-level form, as to_c gives it (cform)
     lex = [re.sub(rb"^(\\#)?[A-Za-z0-9_^]+(?=\s+\{)", lambda m: cform(m.group(0).decode()).encode(), l) for l in lex]
     (out / "h2c.lex").write_bytes(b"\n".join(lex))
@@ -118,6 +119,59 @@ def cform(form):
     """Romenagri marks a vowel-initial syllable inside a word with ^, which no C identifier may contain; it is written _
     instead, as Romenagri itself writes a vowel at the start of a word (DEVIATIONS.md)."""
     return form[:2] + form[2:].replace("^", "_") if form.startswith("\\#") else form.replace("^", "_")
+
+
+def forms(words, lang):
+    """The C-level form of each native word: the whole set through the script filter and Romenagri in one call, each word
+    on its own line, as the cell's rules were built, so a word has one form wherever it stands (DEVIATIONS.md). A word
+    holding a code point Unicode never assigned is named and refused: it cannot be transliterated."""
+    import unicodedata
+    broken = [w for w in words if any(unicodedata.category(c) == "Cn" for c in w)]
+    if broken:
+        sys.exit(f"hindawi_chain: {lang}: these words hold code points Unicode never assigned: {' '.join(broken[:5])}")
+    if not words:
+        return {}
+    # Unicode's canonical form first, so a word typed with a precomposed nukta letter and the same word typed with base
+    # and nukta are one word, with one C-level form
+    out = sh(f"{script_filter(lang)}{ROMENAGRI_CHAIN}", script_filters.normalize(lang, "\n".join(words)).encode("utf-8"))
+    return {w: cform(f.strip() or w) for w, f in zip(words, out.decode("utf-8", "replace").replace("\r", "").split("\n"))}
+
+
+SEPARATOR = "QZXQFILEQXZQ"     # upper-case ASCII: no transducer rule matches it, so it passes every lexer unchanged
+
+
+def lower_many(texts, lang, fwd="h2c", chunk=32 << 20):
+    """Lower many source texts at once, for a whole tree: one transliteration call for every native word of every text,
+    and one transducer run per 32 MB of text, the texts joined by a separator line and split again afterwards. The result
+    for each text is exactly what to_c gives for it alone (tests/check_foundation.py checks this on real trees)."""
+    lexer = fwd_lexer(lang, fwd)
+    held = []
+    def hold(m):
+        t = m.group(0)
+        if not ASCII_WHOLE.fullmatch(t) or not re.search(r"[A-Za-z0-9]", t):
+            return t
+        held.append(t); return f"QZXQ{len(held) - 1:010d}QXZQ"
+    restore = lambda t: re.sub(r"QZXQ(\d{10})QXZQ", lambda m: held[int(m.group(1))], t)
+    guarded = [ASCII_RUN.sub(hold, t) for t in texts]
+    table = forms(sorted({m.group(0) for g in guarded for m in NATIVE_WORD.finditer(g)}), lang)
+    lowered, batch, size = [], [], 0
+    def flush():
+        if not batch:
+            return
+        sep = f"\n{SEPARATOR}\n"
+        c = sh(f"'{lexer}'", sep.join(batch).encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
+        for a, b in REPAIRS:
+            c = c.replace(a, b)
+        parts = c.split(sep)
+        if len(parts) != len(batch):
+            sys.exit("hindawi_chain: the transducer changed the separator between files")
+        lowered.extend(restore(x) for x in parts); batch.clear()
+    for g in guarded:
+        batch.append(NATIVE_WORD.sub(lambda m: table[m.group(0)], g)); size += len(g)
+        if size > chunk:
+            flush(); size = 0
+    flush()
+    return lowered
 
 
 def stages(text, lang, fwd="h2c"):
@@ -142,18 +196,13 @@ def stages(text, lang, fwd="h2c"):
     # word has one C-level form wherever it stands: Chintamani's Perso-Arabic filter reads a word-initial letter one
     # way after a space and another way after a bracket, which would give one name two forms (DEVIATIONS.md).
     words = sorted({m.group(0) for m in NATIVE_WORD.finditer(guarded)})
-    import unicodedata
-    broken = [w for w in words if any(unicodedata.category(c) == "Cn" for c in w)]
-    if broken:   # a code point Unicode never assigned cannot be transliterated; say which word, never emit stray bytes
-        sys.exit(f"hindawi_chain: {lang}: these words hold code points Unicode never assigned: {' '.join(broken[:5])}")
     if words:
-        folded = script_filters.fold(lang, "\n".join(words)).encode("utf-8")
+        folded = script_filters.normalize(lang, "\n".join(words)).encode("utf-8")
         if filt:
             deva = sh(f"{filt}cat", folded).decode("utf-8", "replace").replace("\r", "").split("\n")
             dmap = {w: (d.strip() or w) for w, d in zip(words, deva)}
             out.append(("script filter", restore(NATIVE_WORD.sub(lambda m: dmap[m.group(0)], guarded))))
-        forms = sh(f"{filt}{ROMENAGRI_CHAIN}", folded).decode("utf-8", "replace").replace("\r", "").split("\n")
-        table = {w: cform(f.strip() or w) for w, f in zip(words, forms)}
+        table = forms(words, lang)
         guarded = NATIVE_WORD.sub(lambda m: table[m.group(0)], guarded)
         out.append(("Romenagri", restore(guarded)))
     c = sh(f"'{h2c}'", guarded.encode("utf-8")).decode("utf-8", "replace").replace("\r", "")
@@ -190,7 +239,8 @@ def fwd_lexer(lang, name):
         return exe
     out.mkdir(parents=True, exist_ok=True)
     filt = script_filter(lang) and f"python3 '{HERE / 'script_filters.py'}' prepare {lang} | "
-    sh(f"cat '{src}/{name}.uhin' | {filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/{name}.lex'")
+    sh(f"{filt}iconv -f utf-8 -t utf-16 | uni2acii | acii2cf > '{out}/{name}.lex'",
+       script_filters.normalize(lang, (src / f"{name}.uhin").read_text(encoding="utf-8")).encode("utf-8"))
     lex = (out / f"{name}.lex").read_bytes().split(b"\n")
     lex = [re.sub(rb"^(\\#)?[A-Za-z0-9_^]+(?=\s+\{)", lambda m: cform(m.group(0).decode()).encode(), l) for l in lex]
     (out / f"{name}.lex").write_bytes(b"\n".join(lex))

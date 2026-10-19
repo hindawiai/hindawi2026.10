@@ -1,0 +1,153 @@
+{
+ "awadhi": {
+  "c2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ],
+  "cpp2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ]
+ },
+ "bhojpuri": {
+  "c2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ],
+  "cpp2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ]
+ },
+ "hindi": {
+  "c2h": [
+   "__DATE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ],
+  "cpp2h": [
+   "__DATE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ]
+ },
+ "marathi": {
+  "c2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ],
+  "cpp2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ]
+ },
+ "nepali": {
+  "c2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ],
+  "cpp2h": [
+   "__DATE__",
+   "__FILE__",
+   "__LINE__",
+   "__STDC__",
+   "__TIME__"
+  ]
+ },
+ "tagalog": {
+  "c2h": [
+   "#else",
+   "#if",
+   "break",
+   "case",
+   "char",
+   "double",
+   "else",
+   "enum",
+   "if",
+   "inline",
+   "int",
+   "protected",
+   "register",
+   "return",
+   "signal",
+   "sizeof",
+   "struct",
+   "union",
+   "volatile",
+   "while"
+  ],
+  "cpp2h": [
+   "#else",
+   "#if",
+   "break",
+   "case",
+   "catch",
+   "char",
+   "double",
+   "else",
+   "enum",
+   "if",
+   "inline",
+   "int",
+   "pipe",
+   "protected",
+   "register",
+   "return",
+   "signal",
+   "sizeof",
+   "sleep",
+   "struct",
+   "throw",
+   "union",
+   "volatile",
+   "while"
+  ],
+  "py2h": [
+   "and",
+   "break",
+   "case",
+   "catch",
+   "char",
+   "double",
+   "else",
+   "extends",
+   "finally",
+   "from",
+   "if",
+   "implements",
+   "in",
+   "int",
+   "not",
+   "protected",
+   "return",
+   "sleep",
+   "throw",
+   "volatile",
+   "while"
+  ]
+ }
+}

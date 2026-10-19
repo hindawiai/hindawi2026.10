@@ -13,6 +13,9 @@ puts `hindawi` and `hindawicc` on your PATH, and proves the installation by comp
 Telugu. Then `hindawi --help`, `man hindawi`, and `docs/hindawi/MANUAL.md`, which says how to work on this and where
 every tool lives. `VERIFY.md` is the manual verification, step by step, with the result each step should give.
 
+- **Can a language survive the whole computing stack?** `docs/trace/` is the explainer site: one character, in any
+  script, followed from human language through encoding, compilers and machines to the physical signal and back, with
+  every layer's evidence state (AyeKnow) and the posters below.
 - **Trademarks, credits and the work.** `legal/TRADEMARKS.md` asserts the marks (AyeAI®, AyeCNSe® and AyeAM® are
   registered in India); code licences grant copyright permissions only. `CREDITS.md` keeps the originator's credit.
   `TASKS.md` is every open task and standing covenant; each open task is a work package anyone can claim from
@@ -50,10 +53,14 @@ every tool lives. `VERIFY.md` is the manual verification, step by step, with the
 The Sanskrit parser (Pushkalāvatī, Sūtram) that shares this tree has its own home in hindawiai/sanskrit; this
 tree's earlier README is kept at `docs/history/README-BUILD-0102.md`.
 
-<!-- trademarks:begin -->
----
-AyeAI®, AyeCNSe® and AyeAM® are registered trademarks of Abhishek Choudhary in India, used and claimed worldwide since
-2019. The names of his products and projects are his trademarks; see [legal/TRADEMARKS.md](legal/TRADEMARKS.md). Code
-licences in this repository grant copyright permissions only and no right in any mark.
-© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
-<!-- trademarks:end -->
+## Posters
+
+The posters state the intent of the work. Each claim on them is listed with its evidence state on the
+[explainer site](docs/trace/index.html#posters): verified where this repository shows it, open where it is not yet shown.
+Images made with generative tools are illustrations; their figures and console text are not measurements.
+
+| | |
+|---|---|
+| ![Parashakti](docs/trace/posters/web/parashakti.jpg) | ![Qwan-tum Tum Tum](docs/trace/posters/web/qwantum-tum-tum.jpg) |
+| ![AyeKnow: knowledge with evidence](docs/trace/posters/web/ayeknow-knowledge-with-evidence.jpg) | ![AyeKnow: from claims to evidence](docs/trace/posters/web/ayeknow-from-claims-to-evidence.jpg) |
+| ![AyeKnow: the stack in detail](docs/trace/posters/web/ayeknow-stack-detail.jpg) | |

@@ -125,6 +125,14 @@ def keyword_table(lang, rev):
         if src.exists():
             for k, v in load_rules(src).items():
                 table.setdefault(k, v)
+    # a binding is used only if the language's own transducer turns the word back into the keyword: the foundation
+    # check records the ones that do not (lang/hindawi/data/roundtrip.json), and those keywords stay in host form
+    rt = HIN / "data/roundtrip.json"
+    if rt.exists():
+        gone = json.loads(rt.read_text(encoding="utf-8")).get(lang, {})
+        for r in rev:
+            for k in gone.get(r, []):
+                table.pop(k, None)
     return table
 
 
@@ -260,6 +268,10 @@ class Ingestion:
         self.lang, self.args, self.external = lang, args, external
         self.tr = Translator(lang, args.translators.split(","))
         self.keep = [re.compile(k) for k in args.keep]
+        # names kept exactly as they are, from a file (one per line): for trees too large for a pattern (a kernel's
+        # assembly, linker scripts and build files name hundreds of thousands)
+        kf = getattr(args, "keep_file", None)
+        self.keep_set = set(Path(kf).read_text(encoding="utf-8").split()) if kf else set()
         self.d = {"language": lang, "identifiers": {}, "comments": {}, "files": {}, "sequences": {}}
         self.tables, self.natives = {}, set()
 
@@ -327,7 +339,7 @@ class Ingestion:
             if w in natives:            # a name spelled like one of the language's keywords stays itself on the way back
                 seq.append(w)
             if w.startswith("#") or w[0].isdigit() or style == "asm" or w in HOST_WORDS or (style == "vhdl" and w.lower() in VHDL_WORDS) or w in self.external["c++" if Path(rel).suffix in (".cpp", ".cc", ".cxx", ".hpp", ".hh") else "c"] \
-                    or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
+                    or w in self.keep_set or any(k.search(w) for k in self.keep) or not re.fullmatch(r"[A-Za-z_]\w*", w):
                 return w
             return self.name(w)
         out = scanner(style).sub(sub, text)
@@ -524,6 +536,7 @@ if __name__ == "__main__":
         s.add_argument("--out", required=(name == "ingest")); s.add_argument("--scripts")
         s.add_argument("--rename-files", action="store_true"); s.add_argument("--translators", default="glossary,argos,llm,cmd")
         s.add_argument("--keep", action="append", default=[r"^__"]); s.add_argument("-I", action="append", default=[])
+        s.add_argument("--keep-file", help="names to keep exactly, one per line")
         s.add_argument("-D", action="append", default=[]); s.add_argument("--jobs", type=int, default=os.cpu_count() or 2)
         if name == "check":
             s.add_argument("--json")

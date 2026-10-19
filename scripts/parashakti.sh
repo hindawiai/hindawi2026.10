@@ -1,188 +1,220 @@
 #!/usr/bin/env bash
-# parashakti.sh: Parashakti, the sovereign stack through Hindawi, proved on QEMU on this laptop.
-# Each stage fetches its upstream at a pinned point, ingests it with BURP into every chosen language (keywords and names),
-# lowers it through the original Hindawi pipeline (script filter, Romenagri, the language's transducer), cross-compiles it
-# under hindawicc, boots or runs it on QEMU, and checks what it prints. Nothing is claimed that the run does not show:
-# REPORT.md records, per stage and language, the pinned source, the result, and the console lines that prove it.
-#   bash parashakti.sh                                  every stage, the default languages
-#   bash parashakti.sh --langs urdu,tamil --stage xv6   one stage, chosen languages
-#   bash parashakti.sh --repo DIR                       an existing checkout of hindawiai/hindawi2026.10
-# Stages: shakti (bare metal on QEMU's SHAKTI C-class machine), xv6 (the xv6 kernel and shell on QEMU's RISC-V virt
-# machine), seabios (the x86 BIOS on QEMU), tinycc (a localised TinyCC that then compiles a program). Everything is
-# written under ./parashakti; sources are deleted after each stage's language builds, so disk use stays small.
+# parashakti.sh: Parashakti, the sovereign stack through Hindawi, proved on QEMU on this laptop. Parametric: the stack is
+# a manifest of projects (built in below; --manifest FILE replaces it), and every project goes through the same steps:
+# fetch at a pinned point, configure in host notation, ingest into a language with BURP, lower the whole tree through
+# the original Hindawi pipeline (script filter, Romenagri, the language's transducer), build with the project's own
+# tools, run on QEMU or its runtime, and check what it prints. Languages come from the foundation's readiness report
+# (lang/hindawi/tools/foundation.py): a language whose data is not ready is skipped with the reason, never patched here.
+#   bash parashakti.sh --list                                   the projects in the manifest
+#   bash parashakti.sh                                          the light projects, every ready default language
+#   bash parashakti.sh --stage xv6,minix --langs urdu,tamil     chosen projects and languages
+#   bash parashakti.sh --stage linux --langs hindi              a heavy project (Linux, GCC, LLVM, MINIX): hours, disk
+#   bash parashakti.sh --repo DIR                               an existing checkout of hindawiai/hindawi2026.10
+# One language at a time, everything under ./parashakti, each language's trees deleted as soon as it is done.
+# REPORT.md records per project and language: the pinned source, each step's result, and the lines that prove it.
 # © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. Parashakti™, Hindawi™ and BURP™ are his trademarks.
 set -uo pipefail
-W="$PWD/parashakti"; REPO=""; STAGES="shakti,xv6,seabios,tinycc"
-LANGS="hindi,sanskrit,urdu,arabic,persian,tamil,telugu,kannada,kashmiri,punjabi,punjabi_shahmukhi,sindhi,pashto,dari,bengali,marathi,gujarati,odia"
-while [ $# -gt 0 ]; do
-  case "$1" in --repo) REPO="$2"; shift 2 ;; --langs) LANGS="$2"; shift 2 ;; --stage) STAGES="$2"; shift 2 ;;
-    *) echo "parashakti: unknown option $1"; exit 2 ;; esac
-done
-mkdir -p "$W/logs"; LOG="$W/logs/parashakti.$(date -u +%Y%m%dT%H%M%SZ).log"; REPORT="$W/REPORT.md"
-b(){ printf '\n\033[1m%s\033[0m\n' "$*"; }; i(){ printf '   %s\n' "$*"; }
-# ---- prerequisites: installed here, not listed for the operator to fetch
-need=(git python3 gcc make flex bison gawk iconv qemu-system-riscv64 qemu-system-x86_64 riscv64-linux-gnu-gcc)
-pkg=(git python3 gcc make flex bison gawk libc-bin qemu-system-misc qemu-system-x86 gcc-riscv64-linux-gnu)
+W="$PWD/parashakti"; REPO=""; ARGS=("$@")
+for ((k = 0; k < $#; k++)); do [ "${ARGS[$k]}" = "--repo" ] && REPO="${ARGS[$((k + 1))]}"; done
+mkdir -p "$W/logs"; export PARASHAKTI_LOG="$W/logs/parashakti.$(date -u +%Y%m%dT%H%M%SZ).log"
+need=(git python3 gcc g++ make flex bison gawk iconv qemu-system-riscv64 qemu-system-x86_64 qemu-system-i386 riscv64-linux-gnu-gcc wat2wasm bc)
+pkg=(git python3 gcc g++ make flex bison gawk libc-bin qemu-system-misc qemu-system-x86 qemu-system-x86 gcc-riscv64-linux-gnu wabt bc)
 miss=(); for k in "${!need[@]}"; do command -v "${need[$k]}" >/dev/null || miss+=("${pkg[$k]}"); done
 if [ ${#miss[@]} -gt 0 ]; then
-  b "INSTALLING ${miss[*]} (sudo asks for your password once)"
-  sudo apt-get update -qq && sudo apt-get install -y -qq "${miss[@]}" python3-setuptools >>"$LOG" 2>&1 || { i "apt failed: see $LOG"; exit 1; }
+  printf '\n\033[1mINSTALLING %s (sudo asks once)\033[0m\n' "${miss[*]}"
+  sudo apt-get update -qq && sudo apt-get install -y -qq "${miss[@]}" libssl-dev libelf-dev cmake ninja-build >>"$PARASHAKTI_LOG" 2>&1 \
+    || { echo "apt failed: see $PARASHAKTI_LOG"; exit 1; }
 fi
-# ---- Hindawi, its toolchain, and the two capabilities this needs (patched in place only where the checkout lacks them)
 if [ -z "$REPO" ]; then
   REPO="$W/hindawi2026.10"
-  [ -d "$REPO/.git" ] || git clone -q --depth 1 https://github.com/hindawiai/hindawi2026.10 "$REPO" >>"$LOG" 2>&1
+  [ -d "$REPO/.git" ] || git clone -q --depth 1 https://github.com/hindawiai/hindawi2026.10 "$REPO" >>"$PARASHAKTI_LOG" 2>&1
 fi
-CC_H="$REPO/lang/hindawi/hindawicc"; BP="$REPO/lang/hindawi/tools/build_project.py"; BURP="$REPO/lang/hindawi/burp/burp.py"
-grep -q 'HINDAWI_GCC' "$CC_H" || sed -i 's|^exec gcc "\${args\[@\]}"|exec "${HINDAWI_GCC:-gcc}" "${args[@]}"|' "$CC_H"
-grep -q 'HINDAWI_GCC' "$CC_H" || { i "hindawicc cannot take a cross compiler and its anchor moved; stopping"; exit 1; }
-python3 - "$BP" <<'PY'
-import sys; p = sys.argv[1]; s = open(p).read()
-old = 'word = re.compile(r"\\b[A-Za-z_][A-Za-z0-9_]*\\b")'
-if old in s:   # a symbol in assembly or a linker script, never a piece of a path (kernel/entry.o stays itself)
-    open(p, "w").write(s.replace(old, 'word = re.compile(r"(?<![\\w/.])[A-Za-z_][A-Za-z0-9_]*(?![\\w/.])")'))
-PY
 if [ ! -x "$REPO/.build/chintamani/Romenagri/rmn2acii" ]; then
-  b "BUILDING the Hindawi toolchain: Romenagri and the original transducers"
-  (cd "$REPO" && bash scripts/build.sh) >>"$LOG" 2>&1 || { i "toolchain build failed: $LOG"; exit 1; }
+  printf '\n\033[1mBUILDING the Hindawi toolchain: Romenagri and the original transducers\033[0m\n'
+  (cd "$REPO" && bash scripts/build.sh) >>"$PARASHAKTI_LOG" 2>&1 || { echo "toolchain build failed: $PARASHAKTI_LOG"; exit 1; }
 fi
-# Lexicon words once made by shifting Devanagari code points into other scripts land on code points those scripts never
-# assigned (Tamil, Bengali, Gurmukhi); each is rewritten as the script writes that sound, and the affected cells rebuilt.
-fixed=$(python3 - "$REPO/lang/hindawi/pipeline/language_params.json" <<'FIX'
-import json, sys, unicodedata
-p = sys.argv[1]; d = json.load(open(p, encoding="utf-8"))
-fix = {"\u09b5": "\u09ac", "\u0a37": "\u0a36", "\u0a43": "\u0a4d\u0a30\u0a3f", "\u0a0b": "\u0a30\u0a3f", "\u0b96": "\u0b95",
-       "\u0b97": "\u0b95", "\u0b98": "\u0b95", "\u0b9b": "\u0b9a", "\u0ba0": "\u0b9f", "\u0ba1": "\u0b9f", "\u0ba5": "\u0ba4",
-       "\u0ba6": "\u0ba4", "\u0ba7": "\u0ba4", "\u0bac": "\u0baa", "\u0bad": "\u0baa", "\u0bc3": "\u0bcd\u0bb0\u0bc1", "\u0b8b": "\u0bb0\u0bc1"}
-langs = set()
-for lang, e in d.items():
-    for v in (e.values() if isinstance(e, dict) else []):
-        if isinstance(v, dict) and isinstance(v.get("native"), str) and any(unicodedata.category(c) == "Cn" for c in v["native"]):
-            w = v["native"]
-            for a, b in fix.items():
-                w = w.replace(a, "\u09f1" if (lang == "assamese" and a == "\u09b5") else b)
-            v["native"] = w; langs.add(lang)
-if langs:
-    json.dump(d, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print(",".join(sorted(langs)))
-FIX
-)
-[ -n "$fixed" ] && python3 "$REPO/lang/hindawi/tools/complete_cells.py" --langs "$fixed" >>"$LOG" 2>&1 && i "lexicon words corrected and cells rebuilt for: $fixed"
-export PATH="$REPO/.build/chintamani/Romenagri:$PATH" ROMENAGRI="$REPO/.build/chintamani/Romenagri"
-{ echo "# Parashakti report"; echo; echo "Run $(date -u +%Y-%m-%dT%H:%M:%SZ) on $(uname -srm); Hindawi $(git -C "$REPO" rev-parse --short HEAD 2>/dev/null);";
-  echo "$(qemu-system-riscv64 --version | head -1); $(riscv64-linux-gnu-gcc --version | head -1)."; echo;
-  echo "| Stage | Language | Ingested | Built | Ran on QEMU | Evidence |"; echo "|---|---|---|---|---|---|"; } > "$REPORT"
-row(){ echo "| $1 | $2 | $3 | $4 | $5 | $6 |" >> "$REPORT"; i "$1 · $2: ingest $3, build $4, run $5"; }
-keep_list(){ python3 - "$1" <<'PY'
-import re, sys, pathlib
-names = set()       # names the assembly, linker scripts, build files and generators refer to stay as they are
-for p in pathlib.Path(sys.argv[1]).rglob("*"):
-    if p.is_file() and (p.suffix in (".S", ".s", ".ld", ".lds", ".pl", ".py", ".mk", ".sh") or p.name.lower().startswith(("makefile", "gnumakefile", "kconfig"))):
-        names |= set(re.findall(r"[A-Za-z_][A-Za-z0-9_]*", p.read_text(errors="replace")))
-print("^(" + "|".join(sorted(names)) + ")$" if names else "^$")
-PY
+export PATH="$REPO/.build/chintamani/Romenagri:$PATH" ROMENAGRI="$REPO/.build/chintamani/Romenagri" PARASHAKTI_REPO="$REPO" PARASHAKTI_W="$W"
+exec python3 - "$@" <<'ENGINE'
+import argparse, json, os, re, shutil, subprocess, sys, time
+from pathlib import Path
+
+REPO, W, LOG = Path(os.environ["PARASHAKTI_REPO"]), Path(os.environ["PARASHAKTI_W"]), Path(os.environ["PARASHAKTI_LOG"])
+HIN = REPO / "lang/hindawi"
+DEFAULT_LANGS = "hindi,sanskrit,urdu,arabic,persian,tamil,telugu,kannada,kashmiri,punjabi,punjabi_shahmukhi,sindhi,pashto,dari,bengali,marathi,gujarati,odia,malayalam"
+SHAKTI_FILES = {
+    "main.c": "#define UART_TX ((volatile unsigned int *) 0x11304)\n"
+              "void put(const char *text) { while (*text) { *UART_TX = (unsigned char) *text; text++; } }\n"
+              "int sum(int count) { int total = 0; for (int index = 1; index <= count; index++) total += index; return total; }\n"
+              "int main(void) {\n  int value = sum(10);\n  put(\"Parashakti: Hindawi on SHAKTI, sum 1..10 = \");\n"
+              "  *UART_TX = (unsigned char) ('0' + value / 10);\n  *UART_TX = (unsigned char) ('0' + value % 10);\n"
+              "  put(\"\\n\");\n  for (;;) { }\n}\n",
+    "start.S": "  .section .text.start\n  .global _start\n_start:\n  la sp, stack_top\n  call main\n1: j 1b\n  .bss\n  .space 4096\nstack_top:\n",
+    "link.ld": "ENTRY(_start)\nSECTIONS { . = 0x80000000; .text : { *(.text.start) *(.text*) } .rodata : { *(.rodata*) } .data : { *(.data*) } .bss : { *(.bss*) } }\n",
 }
-restore_build_files(){ (cd "$1" && find . -type f \( -name "*.S" -o -name "*.s" -o -name "*.ld" -o -name "*.lds" -o -name "*.pl" -o -name "*.py" \
-  -o -name "*.sh" -o -iname "makefile*" -o -name "*.mk" -o -name "Kconfig*" -o -name "configure" -o -name "*.in" \) -exec cp --parents {} "$2/" \;); }
-ingest(){ # $1 upstream tree, $2 output: BURP into every language at once, names kept where non-C files refer to them
-  python3 "$BURP" ingest "$1" --langs "$LANGS" --out "$2" --translators glossary --keep "$(keep_list "$1")" >>"$LOG" 2>&1; }
-build(){ # $1 lang, $2 ingested tree, $3 work dir, rest: make arguments
-  local L="$1" N="$2" O="$3"; shift 3
-  HINDAWI_GCC="${HGCC:-gcc}" python3 "$BP" "$N" --lang "$L" --work "$O" -- "$@" >>"$LOG" 2>&1; }
-IFS=, read -ra LL <<< "$LANGS"
-has(){ [[ ",$STAGES," == *",$1,"* ]]; }
-
-# ---- shakti: a bare-metal program on QEMU's SHAKTI C-class board, through its UART
-if has shakti; then
-  b "STAGE shakti: bare metal on QEMU's SHAKTI C-class machine"
-  S="$W/shakti"; rm -rf "$S"; mkdir -p "$S/src"
-  cat > "$S/src/main.c" <<'EOF'
-#define UART_TX ((volatile unsigned int *) 0x11304)
-void put(const char *text) { while (*text) { *UART_TX = (unsigned char) *text; text++; } }
-int sum(int count) { int total = 0; for (int index = 1; index <= count; index++) total += index; return total; }
-int main(void) {
-  int value = sum(10);
-  put("Parashakti: Hindawi on SHAKTI, sum 1..10 = ");
-  *UART_TX = (unsigned char) ('0' + value / 10);
-  *UART_TX = (unsigned char) ('0' + value % 10);
-  put("\n");
-  for (;;) { }
+# The stack. Each project: where it comes from, how it is configured in host notation, whether names are translated
+# (small trees) or kept so the keywords alone are in the language (very large trees, first), how the lowered tree is
+# built, how it is run, and what it must print. "heavy" projects run only when named with --stage.
+MANIFEST = {
+  "shakti": {"title": "bare metal on QEMU's SHAKTI C-class machine", "files": SHAKTI_FILES,
+             "build": "riscv64-linux-gnu-gcc -march=rv64imac -mabi=lp64 -mcmodel=medany -nostdlib -ffreestanding -O2 -T link.ld -o prog.elf start.S main.c",
+             "run": "timeout 6 qemu-system-riscv64 -M shakti_c -nographic -bios prog.elf", "expect": [r"sum 1\.\.10 = 55"]},
+  "xv6": {"title": "the xv6 kernel and shell on QEMU's RISC-V machine", "repo": "https://github.com/mit-pdos/xv6-riscv",
+          "build": "make TOOLPREFIX=riscv64-linux-gnu- kernel/kernel fs.img",
+          "run": "timeout 18 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic "
+                 "-global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 "
+                 "-device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0",
+          "input": [6, "echo parashakti-{lang}", 3, "ls", 3], "expect": [r"parashakti-{lang}", r"README"], "never": [r"usertrap|panic"]},
+  "wasm3": {"title": "a WebAssembly runtime built from the language, running a WebAssembly module", "repo": "https://github.com/wasm3/wasm3",
+            "ref": "v0.5.0", "names": False, "build": "gcc -O2 -Dd_m3HasWASI -Isource source/*.c platforms/app/main.c -o wasm3 -lm",
+            "run": "timeout 30 ./wasm3 --func fib test/lang/fib64.wasm 20", "expect": [r"Result: 6765"]},
+  "seabios": {"title": "the x86 BIOS on QEMU", "repo": "https://github.com/coreboot/seabios", "ref": "rel-1.16.3",
+              "build": "make", "names": False,
+              "run": "timeout 8 qemu-system-x86_64 -bios out/bios.bin -display none -chardev stdio,id=s -device isa-debugcon,iobase=0x402,chardev=s",
+              "expect": [r"SeaBIOS \(version"]},
+  "tinycc": {"title": "a compiler built from the language that compiles and runs a program", "repo": "https://github.com/TinyCC/tinycc",
+             "ref": "release_0_9_27", "configure": "./configure", "build": "make tcc", "names": False,
+             "run": "printf '#include <stdio.h>\\nint main(void){int t=0;for(int i=1;i<=10;i++)t+=i;printf(\"tcc says %%d\\\\n\",t);return 0;}\\n' > t.c && ./tcc -B. -Iinclude -run t.c",
+             "expect": [r"tcc says 55"]},
+  "minix": {"title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
+            "heavy": True, "names": False, "build": "bash releasetools/x86_hdimage.sh",
+            "run": "timeout 900 qemu-system-i386 -m 512 -hda minix_x86.img -nographic -serial mon:stdio", "expect": [r"login:"]},
+  "linux": {"title": "the Linux kernel built and booted on QEMU's RISC-V machine", "repo": "https://github.com/torvalds/linux",
+            "ref": "v6.6", "heavy": True, "names": False, "keep": [r"^CONFIG_"],
+            "build": "make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- defconfig && make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- -j$(nproc) Image",
+            "run": "timeout 90 qemu-system-riscv64 -machine virt -m 512M -nographic -kernel arch/riscv/boot/Image -append 'console=ttyS0 panic=-1'",
+            "expect": [r"Linux version 6\.6"]},
+  "gcc": {"title": "GCC's C compiler built from the language", "repo": "https://github.com/gcc-mirror/gcc", "ref": "releases/gcc-13",
+          "heavy": True, "names": False, "cxx": True,
+          "build": "mkdir -p obj && cd obj && ../configure --disable-multilib --enable-languages=c --disable-bootstrap >/dev/null && make -j$(nproc) all-gcc",
+          "run": "printf 'int main(void){return 0;}\\n' > t.c && obj/gcc/xgcc -Bobj/gcc/ t.c -o t && ./t && echo gcc-from-language-ok",
+          "expect": [r"gcc-from-language-ok"]},
+  "llvm": {"title": "LLVM and clang built from the language", "repo": "https://github.com/llvm/llvm-project", "ref": "release/18.x",
+           "heavy": True, "names": False, "cxx": True,
+           "build": "cmake -S llvm -B obj -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang "
+                    "-DLLVM_TARGETS_TO_BUILD='RISCV;WebAssembly;X86' >/dev/null && ninja -C obj clang",
+           "run": "obj/bin/clang --version", "expect": [r"clang version 18"]},
 }
-EOF
-  printf '  .section .text.start\n  .global _start\n_start:\n  la sp, stack_top\n  call main\n1: j 1b\n  .bss\n  .space 4096\nstack_top:\n' > "$S/src/start.S"
-  printf 'ENTRY(_start)\nSECTIONS { . = 0x80000000; .text : { *(.text.start) *(.text*) } .rodata : { *(.rodata*) } .data : { *(.data*) } .bss : { *(.bss*) } }\n' > "$S/src/link.ld"
-  printf 'all: prog.elf\nprog.elf: start.S main.c link.ld\n\t$(CC) -march=rv64imac -mabi=lp64 -mcmodel=medany -nostdlib -ffreestanding -O2 -T link.ld -o prog.elf start.S main.c\n' > "$S/src/Makefile"
-  ingest "$S/src" "$S/n"
-  for L in "${LL[@]}"; do
-    [ -d "$S/n/$L" ] || { row shakti "$L" no - - "not ingested"; continue; }
-    restore_build_files "$S/src" "$S/n/$L"
-    if HGCC=riscv64-linux-gnu-gcc build "$L" "$S/n/$L" "$S/b/$L" CC="$CC_H"; then
-      out=$(timeout 5 qemu-system-riscv64 -M shakti_c -nographic -bios "$S/b/$L/prog.elf" 2>/dev/null | head -1)
-      [[ "$out" == *"= 55"* ]] && row shakti "$L" yes yes yes "\`$out\`" || row shakti "$L" yes yes NO "\`${out:-no output}\`"
-    else row shakti "$L" yes NO - "see the log"; fi
-  done
-fi
 
-# ---- xv6: the xv6-riscv kernel and its shell, on QEMU's RISC-V virt machine
-if has xv6; then
-  b "STAGE xv6: the xv6 kernel and shell on QEMU's RISC-V virt machine"
-  S="$W/xv6"; rm -rf "$S"; mkdir -p "$S"
-  git clone -q --depth 1 https://github.com/mit-pdos/xv6-riscv "$S/up" >>"$LOG" 2>&1 && PIN=$(git -C "$S/up" rev-parse --short HEAD)
-  ingest "$S/up" "$S/n"
-  for L in "${LL[@]}"; do
-    [ -d "$S/n/$L" ] || { row xv6 "$L" no - - "not ingested"; continue; }
-    restore_build_files "$S/up" "$S/n/$L"
-    if HGCC=riscv64-linux-gnu-gcc build "$L" "$S/n/$L" "$S/b/$L" TOOLPREFIX=riscv64-linux-gnu- kernel/kernel fs.img; then
-      out=$( (sleep 6; printf 'echo parashakti-%s\n' "$L"; sleep 3; printf 'ls\n'; sleep 3) | timeout 16 qemu-system-riscv64 -machine virt \
-        -bios none -kernel "$S/b/$L/kernel/kernel" -m 128M -smp 1 -nographic -global virtio-mmio.force-legacy=false \
-        -drive file="$S/b/$L/fs.img",if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 2>&1 )
-      sym=$(riscv64-linux-gnu-nm "$S/b/$L/kernel/kernel" | awk '$2 ~ /[Tt]/ {print $3}' | grep -E '^_?[a-z]+(_[a-z]+)+$' | head -3 | tr '\n' ' ')
-      if grep -q "parashakti-$L" <<<"$out" && grep -q README <<<"$out" && ! grep -q usertrap <<<"$out"; then
-        row xv6 "$L" yes yes yes "xv6 $PIN booted; the shell ran \`echo\` and \`ls\`; kernel symbols from $L names: \`$sym\`"
-      else row xv6 "$L" yes yes NO "xv6 $PIN: $(grep -a -m1 'usertrap\|panic' <<<"$out" | head -c 80)"; fi
-    else row xv6 "$L" yes NO - "xv6 $PIN: see the log"; fi
-    rm -rf "$S/b/$L"
-  done
-  rm -rf "$S/up" "$S/n"
-fi
 
-# ---- seabios: the x86 BIOS, built from the language, booted by QEMU; its banner read from the debug port
-if has seabios; then
-  b "STAGE seabios: the x86 BIOS on QEMU"
-  S="$W/seabios"; rm -rf "$S"; mkdir -p "$S"
-  git clone -q --depth 1 --branch rel-1.16.3 https://github.com/coreboot/seabios "$S/up" >>"$LOG" 2>&1
-  ingest "$S/up" "$S/n"
-  for L in "${LL[@]}"; do
-    [ -d "$S/n/$L" ] || { row seabios "$L" no - - "not ingested"; continue; }
-    restore_build_files "$S/up" "$S/n/$L"
-    if build "$L" "$S/n/$L" "$S/b/$L" && [ -f "$S/b/$L/out/bios.bin" ]; then
-      out=$(timeout 8 qemu-system-x86_64 -bios "$S/b/$L/out/bios.bin" -display none -chardev stdio,id=s \
-        -device isa-debugcon,iobase=0x402,chardev=s 2>/dev/null | grep -a -m1 "SeaBIOS (version")
-      [ -n "$out" ] && row seabios "$L" yes yes yes "\`$out\`" || row seabios "$L" yes yes NO "no banner"
-    else row seabios "$L" yes NO - "see the log"; fi
-    rm -rf "$S/b/$L"
-  done
-  rm -rf "$S/up" "$S/n"
-fi
+def log(*a):
+    with open(LOG, "a") as f:
+        print(*a, file=f)
 
-# ---- tinycc: TinyCC built from the language, then used to compile and run a program
-if has tinycc; then
-  b "STAGE tinycc: a localised compiler that compiles"
-  S="$W/tinycc"; rm -rf "$S"; mkdir -p "$S"
-  git clone -q --depth 1 --branch release_0_9_27 https://github.com/TinyCC/tinycc "$S/up" >>"$LOG" 2>&1
-  (cd "$S/up" && ./configure >>"$LOG" 2>&1)            # config.h and config.mak, in host notation, for every language
-  ingest "$S/up" "$S/n"
-  printf '#include <stdio.h>\nint main(void){ int t=0; for(int i=1;i<=10;i++) t+=i; printf("tcc says %%d\\n", t); return 0; }\n' > "$S/t.c"
-  for L in "${LL[@]}"; do
-    [ -d "$S/n/$L" ] || { row tinycc "$L" no - - "not ingested"; continue; }
-    restore_build_files "$S/up" "$S/n/$L"; cp "$S/up/config.h" "$S/up/config.mak" "$S/n/$L/" 2>/dev/null
-    if build "$L" "$S/n/$L" "$S/b/$L" tcc && [ -x "$S/b/$L/tcc" ]; then
-      out=$( "$S/b/$L/tcc" -B"$S/b/$L" -I"$S/b/$L/include" -run "$S/t.c" 2>&1 | head -1 )
-      [ "$out" = "tcc says 55" ] && row tinycc "$L" yes yes yes "the $L-built tcc compiled and ran a program: \`$out\`" \
-        || row tinycc "$L" yes yes NO "\`${out:-no output}\`"
-    else row tinycc "$L" yes NO - "see the log"; fi
-    rm -rf "$S/b/$L"
-  done
-  rm -rf "$S/up" "$S/n"
-fi
-b "DONE: $(grep -c '| yes | yes | yes |' "$REPORT") of $(grep -c '^| [a-z]' "$REPORT") stage-language runs proved; report $REPORT; log $LOG"
+
+def sh(cmd, cwd, env=None, inp=None, timeout=None):
+    r = subprocess.run(cmd, shell=True, cwd=cwd, env=env, input=inp, capture_output=True, text=True, errors="replace", timeout=timeout)
+    log(f"$ ({cwd}) {cmd}\n{r.stdout[-4000:]}{r.stderr[-4000:]}")
+    return r
+
+
+def ready_languages(requested):
+    f = HIN / "tools/foundation.py"
+    if not f.exists():
+        print("   the checkout has no foundation check (an update before 2026.10.7): every requested language is tried")
+        return requested, {}
+    subprocess.run([sys.executable, str(f)], capture_output=True)
+    rd = json.loads((REPO / "docs/hindawi/data/readiness.json").read_text(encoding="utf-8"))["languages"]
+    why = {l: ("not in this release" if l not in rd else
+               "script has no filter yet" if not rd[l]["script_ready"] else
+               "; ".join((rd[l]["errors"] + rd[l]["collisions"] + [f"word outside its script: {w}" for w in rd[l]["words_outside_script"]])[:2]))
+           for l in requested if l not in rd or not rd[l]["ready_to_compile"]}
+    return [l for l in requested if l not in why], why
+
+
+NONC = re.compile(r".*\.(S|s|ld|lds|pl|py|mk|sh|cmake|in|txt|json|y|l|def|inc|awk|sed|dts|dtsi|rs|go|asm)$|.*(Makefile|makefile|Kconfig|Kbuild|configure|CMakeLists\.txt)[^/]*$")
+
+
+def run_project(name, p, langs, rows):
+    base = W / name
+    shutil.rmtree(base, ignore_errors=True); base.mkdir(parents=True)
+    up = base / "up"
+    if "files" in p:
+        up.mkdir(); [(up / f).write_text(t) for f, t in p["files"].items()]; pin = "inline"
+    else:
+        ref = ["--branch", p["ref"]] if p.get("ref") else []
+        r = sh(" ".join(["git clone -q --depth 1"] + ref + [p["repo"], str(up)]), cwd=base)
+        if r.returncode:
+            rows.append((name, "-", "fetch failed", "", "", "", "see the log")); return
+        pin = (p.get("ref", "") + " " + sh("git rev-parse --short HEAD", cwd=up).stdout.strip()).strip()
+    if p.get("configure"):
+        sh(p["configure"], cwd=up)
+    keep = base / "keep.txt"                 # names the assembly, linker scripts and build files refer to
+    names = set()
+    for f in up.rglob("*"):
+        if f.is_file() and NONC.match(f.name) and f.stat().st_size < 4 << 20:
+            names |= set(re.findall(r"[A-Za-z_][A-Za-z0-9_]*", f.read_text(errors="replace")))
+    keep.write_text("\n".join(sorted(names)))
+    env = dict(os.environ)
+    for lang in langs:
+        n, work = base / "n", base / "work"
+        shutil.rmtree(n, ignore_errors=True); shutil.rmtree(work, ignore_errors=True)
+        cmd = [sys.executable, str(HIN / "burp/burp.py"), "ingest", str(up), "--langs", lang, "--out", str(n),
+               "--translators", "glossary", "--keep-file", str(keep)]
+        for k in p.get("keep", []) + ([] if p.get("names", True) else [".*"]):
+            cmd += ["--keep", k]
+        r = subprocess.run(cmd, capture_output=True, text=True); log(r.stdout, r.stderr)
+        if r.returncode or not (n / lang).exists():
+            rows.append((name, lang, pin, "no", "", "", "ingestion failed: see the log")); continue
+        for f in up.rglob("*"):                # build files and assembly stay in host notation
+            if f.is_file() and NONC.match(f.name):
+                dst = n / lang / f.relative_to(up); dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(f, dst)
+        low = [sys.executable, str(HIN / "tools/build_project.py"), str(n / lang), "--lang", lang, "--work", str(work), "--lower-only"]
+        r = subprocess.run(low + (["--cxx"] if p.get("cxx") else []), capture_output=True, text=True); log(r.stdout, r.stderr)
+        if r.returncode:
+            rows.append((name, lang, pin, "yes", "no", "", (r.stderr.strip().splitlines() or ["lowering failed"])[-1][:120])); continue
+        shutil.rmtree(n, ignore_errors=True)
+        b = sh(p["build"], cwd=work, env=env)
+        if b.returncode:
+            err = next((l for l in (b.stderr + b.stdout).splitlines() if "error" in l.lower()), "build failed")
+            rows.append((name, lang, pin, "yes", "yes", "no", err[:140])); shutil.rmtree(work, ignore_errors=True); continue
+        run = p["run"]
+        if p.get("input"):                    # typed into the console, with the pauses a person would leave
+            steps = "; ".join(f"sleep {x}" if isinstance(x, int) else f"printf '%s\\n' '{x.format(lang=lang)}'" for x in p["input"])
+            run = f"({steps}) | {run}"
+        try:
+            out = sh(run, cwd=work, env=env, timeout=1200).stdout
+        except subprocess.TimeoutExpired as e:
+            out = (e.stdout or b"").decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")
+        ok = all(re.search(e.format(lang=lang), out) for e in p["expect"]) and not any(re.search(e, out) for e in p.get("never", []))
+        line = next((l.strip() for l in out.splitlines() if re.search(p["expect"][0].format(lang=lang), l)), out.strip()[-120:])
+        rows.append((name, lang, pin, "yes", "yes", "yes" if ok else "NO", f"`{line[:150]}`"))
+        print(f"   {name} · {lang}: {'proved' if ok else 'ran, but did not print what it must'}")
+        shutil.rmtree(work, ignore_errors=True)
+    shutil.rmtree(base, ignore_errors=True)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--langs", default=DEFAULT_LANGS); ap.add_argument("--stage", default="")
+    ap.add_argument("--manifest"); ap.add_argument("--list", action="store_true"); ap.add_argument("--repo")
+    a = ap.parse_args()
+    man = json.loads(Path(a.manifest).read_text()) if a.manifest else MANIFEST
+    if a.list:
+        for k, v in man.items():
+            print(f"{k:8} {'heavy ' if v.get('heavy') else 'light '} {v['title']}")
+        return
+    stages = [s for s in a.stage.split(",") if s] or [k for k, v in man.items() if not v.get("heavy")]
+    langs, why = ready_languages(a.langs.split(","))
+    for l, w in why.items():
+        print(f"   skipped {l}: {w}")
+    rows = []
+    for s in stages:
+        print(f"\n\033[1mSTAGE {s}: {man[s]['title']}\033[0m", flush=True)
+        run_project(s, man[s], langs, rows)
+    rep = W / "REPORT.md"
+    with open(rep, "w") as f:
+        f.write(f"# Parashakti report\n\nRun {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}; Hindawi "
+                f"{subprocess.run(['git', '-C', str(REPO), 'rev-parse', '--short', 'HEAD'], capture_output=True, text=True).stdout.strip()}; "
+                f"{subprocess.run(['qemu-system-riscv64', '--version'], capture_output=True, text=True).stdout.splitlines()[0]}.\n\n"
+                "| Project | Language | Source | Ingested | Lowered | Built, ran and printed | Evidence | AyeKnow state |\n|---|---|---|---|---|---|---|---|\n")
+        for r in rows:   # AyeKnow: verified (ran and printed what it must), executed, implemented, defined
+            state = {"yes": "verified", "NO": "executed"}.get(r[5], "implemented" if r[4] == "yes" else "defined")
+            f.write("| " + " | ".join(r) + f" | {state} |\n")
+        for l, w in why.items():
+            f.write(f"\nSkipped {l}: {w}.")
+    proved = sum(1 for r in rows if r[5] == "yes")
+    print(f"\n\033[1mDONE: {proved} of {len(rows)} project-language runs proved; report {rep}\033[0m")
+
+
+main()
+ENGINE

@@ -585,3 +585,23 @@ passed; scripts/test_all.sh passes.
 - changed `legal/TRADEMARKS.md` (sha256 `dbcf83a16bc4063b`)
 
 **Verified.** test_all passes with the originals check first; tests/fundamental.py 12 passed; GATE: Urdu and Tamil 113 of 113 C programs and the Python program, 117 of 117 files reversed. Parashakti run here: bare metal in Urdu, Tamil and Hindi printed its result on QEMU's SHAKTI C-class machine; xv6 in Urdu, Tamil, Bengali and Punjabi booted on QEMU's RISC-V machine and its shell ran echo and ls; SeaBIOS and TinyCC stages not run here. The practice notebooks were driven headless in Urdu and Hindi: Build, Run, To C, From English and the Python path each gave the expected result. The robot sketches pass a C++ syntax check against stand-in Arduino headers, also after lowering from Urdu, Tamil and Hindi; they have not been compiled against the real cores or run on a robot.
+
+## C26. The foundation, parametric Parashakti, the explainer site with the posters, and gates only on what a release needs
+
+**Why.** He found the per-language fixes to be structures built without foundations, asked for Parashakti to cover MINIX, Linux, GCC, LLVM and WebAssembly and to be parametric, asked for an explainer site for every script with his posters on the description pages, and ruled that an unverified claim gets a disclaimer, that the intention is his, and that gates guard only what a release needs. The foundation: one normalisation (NFC, then whole-script rules: Arabic tatweel, Malayalam chillus, Assamese ra and wa) applied identically to the cells' rules and the compiled words (script_filters.normalize); one function gives every native word its C-level form (hindawi_chain.forms); lower_many lowers a whole tree with one transliteration and one transducer run per 32 MB, giving file for file what each file gives alone; foundation.py checks every script's characters and every language's words and computes readiness, and records keyword bindings that do not come back through the language's own transducer, which BURP then keeps in host form (lang/hindawi/data/roundtrip.json). Parashakti (scripts/parashakti.sh) is a manifest of projects, each fetched, configured, ingested, lowered as a whole tree with build_project.py --lower-only, built with its own tools, run and checked, languages chosen by readiness, the report giving each run its AyeKnow state. docs/trace/ is the explainer site: one character of any script followed from human language to the physical signal and back, representation versus encoding, the hexdump and mojibake, Qwan-tum quantisation, a 7-bit segment lab with its round trip, Romenagri forms and a program's stages computed by the real pipeline, every layer's evidence state, and the five posters with each claim's evidence state. The originals check and the standards and register audit now report without refusing a release; update_contract.sh adds the two rulings to the master contract.
+
+- added `lang/hindawi/tools/foundation.py` (sha256 `2cec080ae3dead3e`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `ce0c44df27d4b20c`)
+- changed `lang/hindawi/tools/script_filters.py` (sha256 `243b1655017e8ec0`)
+- changed `lang/hindawi/tools/build_project.py` (sha256 `a8f8a691d440515d`)
+- changed `lang/hindawi/burp/burp.py` (sha256 `8d22a9971544cc2e`)
+- added `lang/hindawi/data/roundtrip.json` (sha256 `d84abe4121aad842`)
+- changed `scripts/parashakti.sh` (sha256 `c1f320453ef57212`)
+- added `docs/trace/index.html` (sha256 `40ea6dc3c1262976`)
+- added `lang/hindawi/tools/trace_site.py` (sha256 `ca9dd16d0be13bf0`)
+- changed `tests/check_originals.sh` (sha256 `f4f88f7b6cca28ea`)
+- changed `scripts/test_all.sh` (sha256 `dc3221bca592602f`)
+- changed `README.md` (sha256 `b969fb839b87599b`)
+- changed `work-packages/tasks.json` (sha256 `c4592fea187fca57`)
+
+**Verified.** test_all passes (162 audit checks, the audit now reporting only); fundamental 12 passed; originals 96 of 96 byte for byte. lower_many against file by file on xv6: 65 of 65 files identical in Urdu, Tamil and Hindi, Urdu 0.1 s against 5.8 s. Foundation: 48 of 76 languages ready to compile, 8 complete, 113 bindings in 6 languages kept in host form by the round trip. Parashakti here: SHAKTI bare metal and xv6 verified in Urdu, Tamil and Hindi; Hebrew skipped by readiness; wasm3 changed to its own Fibonacci module, not yet rerun; MINIX, Linux, GCC, LLVM, SeaBIOS and TinyCC in the manifest, not run. The site was driven headless with its real data: no script errors, the 7-bit round trip verified in Devanagari, Arabic and Hangul, the trace complete.

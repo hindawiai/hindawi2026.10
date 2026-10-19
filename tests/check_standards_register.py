@@ -99,6 +99,10 @@ if rmn.exists() and shutil.which("flex"):
     st_ = hc.stages(src, "urdu")
     check("Urdu shows source, script filter, Romenagri and C", [n for n, _ in st_] == ["source", "script filter", "Romenagri", "C"])
     check("to_c is the last stage shown", hc.to_c(src, "urdu") == st_[-1][1] and "int" in st_[-1][1] and "return" in st_[-1][1])
+    gal = sorted((R / "docs/hindawi/samples/urdu").rglob("*.c"))[:6]
+    texts = [g.read_text(encoding="utf-8") for g in gal]
+    check("a whole tree lowered at once gives, file for file, what each file gives alone",
+          bool(texts) and hc.lower_many(texts, "urdu") == [hc.to_c(t, "urdu") for t in texts])
 else:
     print("  UNJUDGED  stages: the Romenagri tools are not built here (hindawi setup builds them)")
 

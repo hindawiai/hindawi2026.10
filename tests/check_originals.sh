@@ -3,10 +3,11 @@
 # as received (ORIGINALS.sha256, taken from the history before any normalisation), and nothing has been added among
 # them. Any change fails the build. Restore from the history; never edit them.
 # © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
-set -euo pipefail
+set -uo pipefail
+export LC_ALL=C           # byte order for sort and comm, the same on every machine
 cd "$(dirname "$0")/.."
 n=$(grep -c . ORIGINALS.sha256)
 sha256sum --quiet -c ORIGINALS.sha256 || { echo "originals: CHANGED (listed above)"; exit 1; }
-extra=$(comm -13 <(cut -c67- ORIGINALS.sha256 | sort) <(git ls-files lang/hindawi/upstream/chintamani lang/suktam docs/source-stages | sort))
+extra=$(comm -13 <(cut -c67- ORIGINALS.sha256 | sort -u) <(git ls-files lang/hindawi/upstream/chintamani lang/suktam docs/source-stages | sort -u))
 [ -z "$extra" ] || { echo "originals: files added among them:"; echo "$extra"; exit 1; }
 echo "originals: all $n files byte for byte as received, none added"

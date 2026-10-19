@@ -1,24 +1,41 @@
 token	meaning	word
 auto	automatic storage duration	
+break	leave the loop or switch	
+case	a branch of a switch	
+char	character type	
 const	read-only qualifier	
 continue	next iteration of the loop	
 default	the switch branch taken otherwise	
 do	loop whose test comes after its body	
+double	double-precision real type	
+else	otherwise	
+enum	enumeration type	
 extern	defined elsewhere	
 float	real type	
 for	counting loop	
 goto	jump to a label	
+if	if	
+inline	expand at the call	
+int	integer type	
 long	long integer type	
+register	keep in a register	
 restrict	the only pointer to its object	
+return	return from the function	
 short	short integer type	
 signed	signed integer type	
+sizeof	size of	
 static	static storage, or private to the file	
+struct	structure	
 switch	choose by value	
 typedef	name a type	
+union	union type	
 unsigned	unsigned integer type	
 void	no value	
+volatile	may change outside the program	
+while	loop while true	
 main	the program's entry function	
 bool	true-or-false type	
+catch	handle an exception	
 class	class	
 delete	free an object	
 explicit	no implicit conversion	
@@ -30,9 +47,11 @@ new	create an object
 nullptr	the null pointer	
 operator	operator function	
 private	private	
+protected	protected	
 public	public	
 template	template	
 this	this object	
+throw	raise an exception	
 true	true	
 try	try	
 typename	a type name	
@@ -60,15 +79,20 @@ System	the system class
 False	false	
 None	no value	
 True	true	
+and	and	
 as	as	
 def	define a function	
 del	delete	
 elif	otherwise if	
 except	on exception	
+finally	always run at the end	
+from	from	
 global	global	
+in	in	
 is	is the same object	
 lambda	anonymous function	
 nonlocal	from the enclosing function	
+not	not	
 or	or	
 pass	do nothing	
 raise	raise an exception	
@@ -102,8 +126,10 @@ home	go home
 clearscreen	clear the screen	
 #define	define a macro	
 #include	include a header	
+#if	compile if	
 #ifdef	compile if defined	
 #ifndef	compile if not defined	
+#else	otherwise compile	
 #elif	otherwise compile if	
 #endif	end of conditional compilation	
 #undef	remove a macro	
