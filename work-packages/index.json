@@ -272,20 +272,20 @@
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-47]+Hebrew,+Syriac,+Phoenician+and+Imperial+Aramaic+are+written+in+their+own+scripts+but+bound+to+the+Perso-Arabic+filter:+give+each+its+script&body=I+am+taking+WP-T-47:+work-packages/tasks/WP-T-47.md"
  },
  {
-  "id": "WP-T-51",
-  "kind": "task",
-  "title": "AyeCode: reuse what it has for the explainer site",
-  "size": "open",
-  "path": "work-packages/tasks/WP-T-51.md",
-  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-51]+AyeCode:+reuse+what+it+has+for+the+explainer+site&body=I+am+taking+WP-T-51:+work-packages/tasks/WP-T-51.md"
- },
- {
   "id": "WP-T-52",
   "kind": "task",
   "title": "The hardware layers below the ISA for Parashakti and Qwan-tum: RTL, simulation, synthesis, formal checks, FPGA (Spartan-3A) bitstream, GPIO and oscilloscope capture, and the measured round trip D(M(E(x))) = x",
   "size": "open",
   "path": "work-packages/tasks/WP-T-52.md",
   "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-52]+The+hardware+layers+below+the+ISA+for+Parashakti+and+Qwan-tum:+RTL,+simulation,+synthesis,+formal+checks,+FPGA+(Spartan-3A)+bitstream,+GPIO+and+oscilloscope+capture,+and+the+measured+round+trip+D(M(E(x)))+=+x&body=I+am+taking+WP-T-52:+work-packages/tasks/WP-T-52.md"
+ },
+ {
+  "id": "WP-T-54",
+  "kind": "task",
+  "title": "Productization: every product with its audience, how to get it, what is shown to work, and its release gap (PRODUCTS.md); Colab links for phones",
+  "size": "in progress",
+  "path": "work-packages/tasks/WP-T-54.md",
+  "claim": "https://github.com/hindawiai/hindawi2026.10/issues/new?title=[WP-T-54]+Productization:+every+product+with+its+audience,+how+to+get+it,+what+is+shown+to+work,+and+its+release+gap+(PRODUCTS.md);+Colab+links+for+phones&body=I+am+taking+WP-T-54:+work-packages/tasks/WP-T-54.md"
  },
  {
   "id": "WP-JS-01",

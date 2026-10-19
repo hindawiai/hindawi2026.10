@@ -475,9 +475,9 @@
   "id": "T-51",
   "title": "AyeCode: reuse what it has for the explainer site",
   "source": "19 Oct 2026",
-  "status": "open",
-  "evidence": "not found in past conversations or in the estate listings gathered so far",
-  "next": "where AyeCode lives"
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "AyeCode found in ayehandsum/ayehandsum (commit f338cba); its alphabets are reused by the explainer site, which writes the typed text in any of them and reads it back (round trip verified)",
+  "next": ""
  },
  {
   "id": "T-52",
@@ -486,5 +486,21 @@
   "status": "open",
   "evidence": "the layers are open in the explainer site's stack table",
   "next": ""
+ },
+ {
+  "id": "T-53",
+  "title": "UISA, the living research record: seed it in pvjournal/uisa and mint it",
+  "source": "19 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "uisa.json and uisa_payload.tar.gz for estate.sh: the record as authored, README and landing page with each claim's evidence state, its own gate (11 checks, refuses a record altered by one byte)",
+  "next": "his run of estate.sh seed uisa.json; the research package added when available"
+ },
+ {
+  "id": "T-54",
+  "title": "Productization: every product with its audience, how to get it, what is shown to work, and its release gap (PRODUCTS.md); Colab links for phones",
+  "source": "19 Oct 2026",
+  "status": "in progress",
+  "evidence": "PRODUCTS.md; README links each practice notebook to Colab",
+  "next": "close each release gap, product by product"
  }
 ]

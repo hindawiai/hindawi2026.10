@@ -1,10 +1,10 @@
-# WP-T-51: AyeCode: reuse what it has for the explainer site
+# WP-T-54: Productization: every product with its audience, how to get it, what is shown to work, and its release gap (PRODUCTS.md); Colab links for phones
 
-Asked: 19 Oct 2026. Status: open.
+Asked: 19 Oct 2026. Status: in progress.
 
-What exists: not found in past conversations or in the estate listings gathered so far.
+What exists: PRODUCTS.md; README links each practice notebook to Colab.
 
-Next step: where AyeCode lives.
+Next step: close each release gap, product by product.
 
 Done when the change is merged with its tests, every covenant in TASKS.md still holds, and `hindawi test` passes.
 

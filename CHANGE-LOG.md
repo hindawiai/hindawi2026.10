@@ -605,3 +605,16 @@ passed; scripts/test_all.sh passes.
 - changed `work-packages/tasks.json` (sha256 `c4592fea187fca57`)
 
 **Verified.** test_all passes (162 audit checks, the audit now reporting only); fundamental 12 passed; originals 96 of 96 byte for byte. lower_many against file by file on xv6: 65 of 65 files identical in Urdu, Tamil and Hindi, Urdu 0.1 s against 5.8 s. Foundation: 48 of 76 languages ready to compile, 8 complete, 113 bindings in 6 languages kept in host form by the round trip. Parashakti here: SHAKTI bare metal and xv6 verified in Urdu, Tamil and Hindi; Hebrew skipped by readiness; wasm3 changed to its own Fibonacci module, not yet rerun; MINIX, Linux, GCC, LLVM, SeaBIOS and TinyCC in the manifest, not run. The site was driven headless with its real data: no script errors, the 7-bit round trip verified in Devanagari, Arabic and Hangul, the trace complete.
+
+## C27. AyeCode reused in the explainer site, the products defined, and phones linked to the practice notebooks
+
+**Why.** He named where AyeCode lives (ayehandsum) and asked for focus on productization. The explainer site now writes the typed text in any AyeCode alphabet (NATO words, Egyptian and Anatolian hieroglyphs, Sa Re Ga notes, emoji, poem connectives), read back with its round trip checked; the alphabets are taken exactly from ayehandsum/ayehandsum at commit f338cba with its copyright. PRODUCTS.md defines six products (Practice on phones, the CLI, the robot kit, Parashakti, the Trace site, the UISA record), each with its audience, how to get it, what is shown to work and its release gap; the README links each practice notebook to Colab.
+
+- added `lang/hindawi/data/ayecode_alphabets.json` (sha256 `9a9147a1fe2b9234`)
+- changed `docs/trace/index.html` (sha256 `0ba0d441ec97744e`)
+- changed `docs/trace/data.js` (sha256 `ce1911fd15b5be60`)
+- added `PRODUCTS.md` (sha256 `44bdbf0f5ebe7e1b`)
+- changed `README.md` (sha256 `6e116e5a8025e4d1`)
+- changed `work-packages/tasks.json` (sha256 `737c1d1c368eccea`)
+
+**Verified.** The site driven headless: no errors; the AyeCode round trip verified in the Sa Re Ga alphabet. test_all passes.

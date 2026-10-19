@@ -111,6 +111,13 @@ a { color: var(--acc2); }
   <textarea id="hexin" rows="2">EFGHIJKL नमस्ते سلام 你好</textarea>
   <div class="row" id="hexreps"></div>
   <pre id="hexout"></pre>
+  <h3>Any alphabet at all: AyeCode</h3>
+  <p>Digits are only the smallest case. AyeCode (ayehandsum/ayehandsum, 2019) writes any number in any alphabet: the
+  NATO words, Egyptian or Anatolian hieroglyphs, the notes Sa Re Ga, emoji, even the connecting words of a poem. The
+  bytes above, read as one number, written in a base the size of the alphabet, and read back:</p>
+  <div class="row"><label class="small mut" for="ayeb">alphabet</label><select id="ayeb"></select><span id="ayen" class="small mut"></span></div>
+  <pre id="ayeout" style="white-space:pre-wrap"></pre>
+  <div class="card small" id="ayert"></div>
   <h3>When the decoder is wrong: mojibake</h3>
   <p>The same UTF-8 bytes, decoded as if they were another encoding. Nothing is lost in the bytes; the reader is wrong.</p>
   <div class="wrap"><table id="moji"></table></div>
@@ -286,7 +293,21 @@ function hexdump() { const b = utf8($("hexin").value), d = Array.from(DIGITS[hex
   const raw = new Uint8Array(b), dec = l => { try { return new TextDecoder(l).decode(raw); } catch (e) { return "(this browser has no " + l + " decoder)"; } };
   $("moji").innerHTML = [["UTF-8 (right)", dec("utf-8")], ["Windows-1252", dec("windows-1252")], ["ISO-8859-5 (Cyrillic)", dec("iso-8859-5")],
     ["Shift_JIS", dec("shift_jis")], ["UTF-16LE", dec("utf-16le")]].map(r => `<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join(""); }
-$("hexin").oninput = hexdump; hexdump();
+$("hexin").oninput = () => { hexdump(); ayecode(); }; hexdump();
+
+// ---- AyeCode: the bytes as one number, written in a base the size of the chosen alphabet, then read back
+const AY = T.ayecode.alphabets;
+$("ayeb").innerHTML = Object.keys(AY).map(k => `<option${k === "sarega" ? " selected" : ""}>${k}</option>`).join("");
+function ayecode() { const name = $("ayeb").value, A = AY[name], N = BigInt(A.length), bytes = utf8($("hexin").value);
+  let n = 0n; for (const b of bytes) n = n * 256n + BigInt(b);
+  const digits = []; let m = n; do { digits.unshift(Number(m % N)); m /= N; } while (m > 0n);
+  $("ayeout").textContent = digits.map(d => A[d]).join(" ");
+  let back = 0n; for (const d of digits) back = back * N + BigInt(d);
+  const out = []; let r = back; while (r > 0n) { out.unshift(Number(r % 256n)); r /= 256n; }
+  const text = new TextDecoder().decode(new Uint8Array(out));
+  $("ayen").textContent = `${A.length} symbols${name === "indus" ? "; private-use code points, shown only with an Indus font" : ""}`;
+  $("ayert").innerHTML = `Read back: ${esc(text)} · D(E(x)) = x: ${text === $("hexin").value ? STATE("verified") : STATE("open")} <span class="mut">(${digits.length} symbols for ${bytes.length} bytes; ${T.ayecode.source})</span>`; }
+$("ayeb").onchange = ayecode; ayecode();
 
 // ---- Unicode flow
 function uniflow() { const s = $("ch").value || "क", c = cps(s)[0], ch = String.fromCodePoint(c), b = utf8(ch);

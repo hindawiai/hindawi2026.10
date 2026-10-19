@@ -53,6 +53,11 @@ every tool lives. `VERIFY.md` is the manual verification, step by step, with the
 The Sanskrit parser (Pushkalāvatī, Sūtram) that shares this tree has its own home in hindawiai/sanskrit; this
 tree's earlier README is kept at `docs/history/README-BUILD-0102.md`.
 
+## Products
+
+What each product is for, how to get it, what is shown to work and what remains before release: `PRODUCTS.md`. To practise
+on a phone, open a notebook in Colab: [Urdu](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_urdu.ipynb), [Hindi](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_hindi.ipynb), [Punjabi](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi.ipynb), [Punjabi Shahmukhi](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_punjabi_shahmukhi.ipynb), [Sindhi](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sindhi.ipynb), [Telugu](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_telugu.ipynb), [Kannada](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_kannada.ipynb), [Sanskrit](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_sanskrit.ipynb), [Dari](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_dari.ipynb), [Pashto](https://colab.research.google.com/github/hindawiai/hindawi2026.10/blob/main/notebooks/practice/hindawi_pashto.ipynb).
+
 ## Posters
 
 The posters state the intent of the work. Each claim on them is listed with its evidence state on the

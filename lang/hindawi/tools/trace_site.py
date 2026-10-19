@@ -130,7 +130,8 @@ def main():
     for lang in ("urdu", "hindi", "tamil", "telugu"):
         src = native_program(lang)
         stages[lang] = [[n, t] for n, t in hc.stages(src, lang)]
-    data = {"built": time.strftime("%Y-%m-%d", time.gmtime()), "ranges": ranges(), "segments": segments(),
+    ayecode = json.loads((R / "lang/hindawi/data/ayecode_alphabets.json").read_text(encoding="utf-8"))
+    data = {"built": time.strftime("%Y-%m-%d", time.gmtime()), "ranges": ranges(), "segments": segments(), "ayecode": ayecode,
             "romenagri": romenagri, "stages": stages, "english_program": PROGRAM,
             "layers": [{"n": n, "name": a, "state": s, "evidence": e} for n, a, s, e in LAYERS],
             "posters": [{"file": f, "title": t, "about": a, "claims": [{"claim": c, "state": s, "evidence": e} for c, s, e in cl]}
