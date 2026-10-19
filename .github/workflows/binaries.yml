@@ -1,0 +1,35 @@
+name: binaries
+# Prebuilt tools for the notebooks and Colab's terminal, attached to each tagged release, so nobody compiles on opening.
+on:
+  push: {tags: ["hindawi2026.10.*"]}
+  workflow_dispatch: {}
+permissions: {contents: write}
+jobs:
+  tools:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq gawk flex bison
+      - run: bash scripts/build.sh
+      - name: prebuild the transducers of the notebook languages, every shaili
+        run: |
+          export PATH="$PWD/.build/chintamani/Romenagri:$PATH" ROMENAGRI="$PWD/.build/chintamani/Romenagri"
+          python3 - <<'PY'
+          import sys; sys.path.insert(0, "lang/hindawi/tools"); import hindawi_chain as hc
+          for lang in "urdu hindi punjabi punjabi_shahmukhi sindhi telugu kannada sanskrit dari pashto tamil bengali marathi gujarati malayalam odia".split():
+              for fw in ("h2c", "h2cpp", "h2py", "h2java", "h2b", "h2l", "h2yacc", "h2asm"):
+                  try:
+                      hc.fwd_lexer(lang, fw)
+                  except BaseException as e:
+                      print(lang, fw, "not built:", e)
+          PY
+      - run: tar -czf hindawi-tools-linux-x86_64.tar.gz bin lang samples docs/hindawi/samples scripts/colab_env.sh scripts/build.sh .build
+      - name: attach to the release
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          TAG="$GITHUB_REF_NAME"; case "$TAG" in hindawi2026.10.*) ;; *) TAG=$(git describe --tags --abbrev=0 --match 'hindawi2026.10.*') ;; esac
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "Hindawi $TAG" --notes "Prebuilt tools for the notebooks and the terminal: hin, hindawi, hindawicc, Romenagri and the transducers."
+          gh release upload "$TAG" hindawi-tools-linux-x86_64.tar.gz --clobber
+          gh release edit "$TAG" --latest

@@ -116,8 +116,35 @@ a { color: var(--acc2); }
   <p class="small mut">Cells outlined changed at this step; the columns marked M, L and P are the cursors. Below the numbers,
   the same working map drawn through APCISR's font substitution: the letter forming as the components arrive.</p>
   <h3>The result: three rows of font characters</h3>
+  <p class="small mut">The result is the original's, unchanged. Its font has one glyph for each combination of pieces above the
+  letter, and its author marked those past the value 129 as imperfect (in <a href="apcisr/src/cisr2asc.h">cisr2asc.h</a>,
+  beside <code>{129, 221}</code>): a ref together with a vowel sign and an anusvara (धर्मों) can come out looking like a
+  chandrabindu. The working maps above draw such a combination as its separate pieces, overlaid, so the composition is plain.</p>
   <canvas id="result" width="400" height="48"></canvas>
   <div class="wrap"><table class="wm" id="cells"></table></div>
+</section>
+
+<section id="otherscripts">
+  <h2>Building APCISR for another script</h2>
+  <p>The 9-grid is not tied to Devanagari. Any script whose letters are built from a consonant, a vowel sign above, below or
+  beside it, and marks above and below, fits the same three levels and three positions. To build it for another script:</p>
+  <ol>
+    <li><b>List the components:</b> consonants, independent vowels, vowel signs, the virama, nukta, anusvara, chandrabindu,
+      visarga and the special forms of ra. Each becomes one row of the table: its bytes in the encoding read (ISCII covers
+      Devanagari, Bengali, Gurmukhi, Gujarati, Odia, Tamil, Telugu, Kannada and Malayalam), its Romenagri name, its
+      <b>purna</b> (whether it completes a letter), and its nine grid values.</li>
+    <li><b>Give each piece a bit:</b> on each level, every piece that can stand above, in or below a letter gets a bit (1, 2,
+      4, … 128), so pieces that meet combine by OR without erasing each other.</li>
+    <li><b>Draw the pieces and their combinations</b> as 8 × 16 font cells, one per value that occurs, and fill the three
+      substitution tables (urdha, madhya, nimna) that turn each value into a font code.</li>
+    <li><b>Keep the algorithm:</b> the cursors, the deferred halant and ref, and the rules that move pieces are the same; only
+      the rules naming particular letters (ra, u, i) need their counterparts in the new script.</li>
+    <li><b>Test exhaustively:</b> every component, every pair and every triple through the engine (this page did 1,497 for
+      Devanagari against the original), and compare what is drawn with the script as it is written.</li>
+  </ol>
+  <p class="small">The sources: <a href="apcisr/src/acii2csr.c">acii2csr.c</a> (the algorithm), <a href="apcisr/src/apcisr.h">apcisr.h</a>
+  (the table), <a href="apcisr/src/cisr2asc.h">cisr2asc.h</a> (the substitution), the fonts <code>devnagri.f08</code> and
+  <code>devnagri.f16</code>, and <a href="apcisr/src/build.sh">build.sh</a> for the WebAssembly used here.</p>
 </section>
 
 <section id="textmode">
@@ -302,7 +329,9 @@ function showStep() {
 function drawMap(cv, rows, W, cur) {
   const sc = 2; cv.width = Math.max(3, W) * 8 * sc; cv.height = 48 * sc; const ctx = cv.getContext("2d");
   ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cv.width, cv.height);
-  rows.forEach((row, r) => { for (let c = 0; c < W; c++) if (row[c]) A.drawGlyph(ctx, A.wmGlyph(r, row[c]), c * 8 * sc, r * 16 * sc, sc, "#1d1b17", null, 16); });
+  // above the letter, a combination the original font draws imperfectly (its table says so past 129) is drawn as its pieces
+  const pieces = (r, v) => (r === 0 && v > 129) ? [128, 64, 32, 16, 8, 4, 2, 1].filter(b => v & b) : [v];
+  rows.forEach((row, r) => { for (let c = 0; c < W; c++) if (row[c]) pieces(r, row[c]).forEach(v => A.drawGlyph(ctx, A.wmGlyph(r, v), c * 8 * sc, r * 16 * sc, sc, "#1d1b17", null, 16)); });
   ctx.strokeStyle = "#ddd"; for (let c = 0; c <= W; c++) { ctx.beginPath(); ctx.moveTo(c * 8 * sc + 0.5, 0); ctx.lineTo(c * 8 * sc + 0.5, cv.height); ctx.stroke(); }
   if (cur) { ctx.strokeStyle = "#b4530a"; cur.forEach(c => ctx.strokeRect(c * 8 * sc + 0.5, 0.5, 8 * sc - 1, cv.height - 1)); }
 }

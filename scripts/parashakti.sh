@@ -18,7 +18,32 @@ W="$PWD/parashakti"; REPO=""; ARGS=("$@")
 for ((k = 0; k < $#; k++)); do [ "${ARGS[$k]}" = "--repo" ] && REPO="${ARGS[$((k + 1))]}"; done
 #   bash parashakti.sh --check                                 only the timed sanity check of this machine
 #   bash parashakti.sh --install                               also try to install what is missing, one package at a time
+#   bash parashakti.sh --fork-all ORG --publish ORG            fork (or mirror) every upstream into ORG first, then for each
+#                                                              repository in turn: ingest, test, publish its branches, move on
+#   bash parashakti.sh --from linux                            start from a project; finished runs are skipped on a rerun
+#   bash parashakti.sh --stop | --status | --reset             stop it, see where it is, or forget what has been done
+#   In a terminal with tmux, the run opens in a tmux layout: the run, htop, and a status pane (--no-ui for plain output).
 mkdir -p "$W/logs"; export PARASHAKTI_LOG="$W/logs/parashakti.$(date -u +%Y%m%dT%H%M%SZ).log"
+for a in "$@"; do
+  case "$a" in
+    --stop) tmux kill-session -t parashakti 2>/dev/null; [ -f "$W/run.pid" ] && kill -- -"$(cat "$W/run.pid")" 2>/dev/null
+            echo "parashakti stopped; run it again to continue from where it stopped"; exit 0 ;;
+    --status) cat "$W/status.txt" 2>/dev/null || echo "no run yet"; exit 0 ;;
+    --reset) rm -f "$W/state.json" "$W/status.txt"; echo "finished runs forgotten: the next run starts from the beginning"; exit 0 ;;
+  esac
+done
+UI=1; for a in "$@"; do case "$a" in --no-ui|--in-ui|--check|--list) UI=0 ;; esac; done
+if [ "$UI" = 1 ] && [ -z "${TMUX:-}" ] && [ -t 0 ] && command -v tmux >/dev/null; then
+  self="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"; touch "$W/status.txt"
+  tmux new-session -d -s parashakti -x 220 -y 50 "cd '$PWD' && bash '$self' --in-ui $* ; echo; echo 'parashakti: finished (this pane stays open)'; read -r _"
+  tmux split-window -h -t parashakti "$(command -v htop || echo top)"
+  tmux split-window -v -t parashakti "while :; do clear; cat '$W/status.txt'; sleep 2; done"
+  tmux select-pane -t parashakti:0.0
+  echo "parashakti runs in tmux: the run on the left, htop and the status on the right."
+  echo "Detach with Ctrl-b d; come back with: tmux attach -t parashakti; stop with: bash parashakti.sh --stop"
+  exec tmux attach -t parashakti
+fi
+echo $$ > "$W/run.pid"
 # ---- a timed sanity check of this machine: each probe has a time limit, nothing is installed unless --install is given,
 # and nothing here stops the run; each project later runs only if what it needs is present, and says what is missing
 INSTALL=0; CHECKONLY=0; for a in "$@"; do [ "$a" = "--install" ] && INSTALL=1; [ "$a" = "--check" ] && CHECKONLY=1; done
@@ -30,7 +55,7 @@ probe(){ # probe NAME SECONDS COMMAND...: PASS with the first line of output, or
   if [ "$rc" = 124 ]; then printf '   %-26s TIMEOUT after %ss\n' "$name" "$t"
   elif [ "$rc" = 0 ]; then printf '   %-26s ok   %s (%ss)\n' "$name" "${out:0:60}" "$((SECONDS - t0))"; HAVE="$HAVE,$name"
   else printf '   %-26s MISSING\n' "$name"; fi; }
-for t in git python3 gcc g++ make flex bison gawk iconv bc cmake ninja wat2wasm gh riscv64-linux-gnu-gcc riscv64-unknown-elf-gcc qemu-system-riscv64 qemu-system-x86_64 qemu-system-i386; do
+for t in git python3 gcc g++ make flex bison gawk iconv bc cmake ninja wat2wasm gh tmux htop riscv64-linux-gnu-gcc riscv64-unknown-elf-gcc qemu-system-riscv64 qemu-system-x86_64 qemu-system-i386; do
   if command -v "$t" >/dev/null; then probe "$t" 10 "$t" --version; else printf '   %-26s MISSING\n' "$t"; fi
 done
 probe "qemu shakti_c machine" 10 sh -c 'qemu-system-riscv64 -M help | grep -m1 shakti_c'
@@ -39,11 +64,12 @@ probe "network to gitlab.com" 20 git ls-remote https://gitlab.com/shaktiproject/
 probe "sudo without a password" 5 sudo -n true
 free=$(df -Pm "$W" | awk 'NR==2 {print $4}'); printf '   %-26s %s MB free\n' "disk at $W" "$free"
 [ "${free:-0}" -lt 3000 ] && printf '   %-26s under 3 GB free: the heavy projects (Linux, GCC, LLVM, MINIX) will not fit\n' "note"
-export PARASHAKTI_HAVE="$HAVE"
+export PARASHAKTI_HAVE="$HAVE" PARASHAKTI_JOBS="$(nproc)"
+printf '   %-26s %s\n' "cores" "$(nproc): every build uses all of them; one repository at a time"
 if [ "$INSTALL" = 1 ]; then      # one package at a time, each limited in time; a failure is reported and the next is tried
   sudo -v || echo "   sudo was not granted: nothing can be installed; carrying on with what is here"
   for pair in gcc-riscv64-linux-gnu:riscv64-linux-gnu-gcc gcc-riscv64-unknown-elf:riscv64-unknown-elf-gcc qemu-system-misc:qemu-system-riscv64 qemu-system-x86:qemu-system-x86_64 \
-              wabt:wat2wasm flex:flex bison:bison gawk:gawk bc:bc cmake:cmake ninja-build:ninja; do
+              wabt:wat2wasm flex:flex bison:bison gawk:gawk bc:bc cmake:cmake ninja-build:ninja tmux:tmux htop:htop gh:gh; do
     pk=${pair%%:*}; tool=${pair##*:}; command -v "$tool" >/dev/null && continue
     printf '   installing %-20s' "$pk"; timeout --foreground 600 sudo -n apt-get install -y -qq "$pk" >>"$PARASHAKTI_LOG" 2>&1 && echo " done" || echo " not installed (see the log); carrying on"
   done
@@ -86,23 +112,23 @@ MANIFEST = {
                  "build": "make software PROGRAM=loopback TARGET=artix7_100t",
                  "run": "timeout 12 qemu-system-riscv64 -M shakti_c -nographic -bios software/examples/uart_applns/loopback/output/loopback.shakti",
                  "input": [3, "parashakti {lang}", 3], "expect": [r"parashakti"]},
-  "shakti": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'qemu shakti_c machine'], "title": "bare metal on QEMU's SHAKTI C-class machine", "files": SHAKTI_FILES,
+  "shakti": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'qemu shakti_c machine'], "layer": 9, "title": "bare metal on QEMU's SHAKTI C-class machine", "files": SHAKTI_FILES,
              "build": "riscv64-linux-gnu-gcc -march=rv64imac -mabi=lp64 -mcmodel=medany -nostdlib -ffreestanding -O2 -T link.ld -o prog.elf start.S main.c",
              "run": "timeout 6 qemu-system-riscv64 -M shakti_c -nographic -bios prog.elf", "expect": [r"sum 1\.\.10 = 55"]},
-  "xv6": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'network to github.com'], "title": "the xv6 kernel and shell on QEMU's RISC-V machine", "repo": "https://github.com/mit-pdos/xv6-riscv",
+  "xv6": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'network to github.com'], "layer": 10, "title": "the xv6 kernel and shell on QEMU's RISC-V machine", "repo": "https://github.com/mit-pdos/xv6-riscv",
           "build": "make TOOLPREFIX=riscv64-linux-gnu- kernel/kernel fs.img",
           "run": "timeout 18 qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 1 -nographic "
                  "-global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 "
                  "-device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0",
           "input": [6, "echo parashakti-{lang}", 3, "ls", 3], "expect": [r"parashakti-{lang}", r"README"], "never": [r"usertrap|panic"]},
-  "wasm3": {"needs": ['gcc', 'network to github.com'], "title": "a WebAssembly runtime built from the language, running a WebAssembly module", "repo": "https://github.com/wasm3/wasm3",
+  "wasm3": {"needs": ['gcc', 'network to github.com'], "layer": 11, "title": "a WebAssembly runtime built from the language, running a WebAssembly module", "repo": "https://github.com/wasm3/wasm3",
             "ref": "v0.5.0", "names": False, "build": "gcc -O2 -Dd_m3HasWASI -Isource source/*.c platforms/app/main.c -o wasm3 -lm",
             "run": "timeout 30 ./wasm3 --func fib test/lang/fib64.wasm 20", "expect": [r"Result: 6765"]},
-  "seabios": {"needs": ['qemu-system-x86_64', 'python3', 'network to github.com'], "title": "the x86 BIOS on QEMU", "repo": "https://github.com/coreboot/seabios", "ref": "rel-1.16.3",
+  "seabios": {"needs": ['qemu-system-x86_64', 'python3', 'network to github.com'], "layer": 9, "title": "the x86 BIOS on QEMU", "repo": "https://github.com/coreboot/seabios", "ref": "rel-1.16.3",
               "build": "make", "names": False,
               "run": "timeout 8 qemu-system-x86_64 -bios out/bios.bin -display none -chardev stdio,id=s -device isa-debugcon,iobase=0x402,chardev=s",
               "expect": [r"SeaBIOS \(version"]},
-  "tinycc": {"needs": ['gcc', 'network to github.com'], "title": "a compiler built from the language that compiles and runs a program", "repo": "https://github.com/TinyCC/tinycc",
+  "tinycc": {"needs": ['gcc', 'network to github.com'], "layer": 12, "title": "a compiler built from the language that compiles and runs a program", "repo": "https://github.com/TinyCC/tinycc",
              "ref": "release_0_9_27", "configure": "./configure", "build": "make tcc", "names": False,
              "run": "printf '#include <stdio.h>\\nint main(void){int t=0;for(int i=1;i<=10;i++)t+=i;printf(\"tcc says %%d\\\\n\",t);return 0;}\\n' > t.c && ./tcc -B. -Iinclude -run t.c",
              "expect": [r"tcc says 55"]},
@@ -117,20 +143,31 @@ MANIFEST = {
   "qemu": {"needs": ["gcc", "make", "network to github.com"], "layer": 8, "heavy": True, "title": "QEMU, the machine emulator, built from the language",
            "repo": "https://github.com/qemu/qemu", "names": False,
            "build": "./configure --target-list=riscv64-softmmu >/dev/null && make -j$(nproc)", "run": "build/qemu-system-riscv64 --version", "expect": [r"QEMU emulator version"]},
-  "minix": {"needs": ['qemu-system-i386', 'network to github.com'], "title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
+  "u-boot": {"needs": ["riscv64-linux-gnu-gcc", "qemu-system-riscv64", "bc", "flex", "bison", "network to github.com"], "layer": 9, "heavy": True,
+             "title": "U-Boot, the bootloader, built from the language and started on QEMU", "repo": "https://github.com/u-boot/u-boot", "names": False,
+             "build": "make qemu-riscv64_defconfig CROSS_COMPILE=riscv64-linux-gnu- && make CROSS_COMPILE=riscv64-linux-gnu-",
+             "run": "timeout 15 qemu-system-riscv64 -M virt -nographic -bios u-boot", "expect": [r"U-Boot"]},
+  "busybox": {"needs": ["gcc", "make", "network to github.com"], "layer": 11, "title": "BusyBox, the userland, built from the language",
+              "repo": "https://github.com/mirror/busybox", "names": False, "build": "make defconfig >/dev/null && make",
+              "run": "./busybox echo parashakti-{lang}", "expect": [r"parashakti-{lang}"]},
+  "newlib": {"needs": ["riscv64-unknown-elf-gcc", "make", "network to github.com"], "layer": 11, "heavy": True,
+             "title": "newlib, the C library for bare metal, built from the language", "repo": "https://github.com/bminor/newlib", "names": False,
+             "build": "mkdir -p obj && cd obj && ../configure --target=riscv64-unknown-elf --disable-multilib >/dev/null && make all-target-newlib",
+             "run": "ls obj/riscv64-unknown-elf/newlib/libc.a", "expect": [r"libc\.a"]},
+  "minix": {"needs": ['qemu-system-i386', 'network to github.com'], "layer": 10, "title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
             "heavy": True, "names": False, "build": "bash releasetools/x86_hdimage.sh",
             "run": "timeout 900 qemu-system-i386 -m 512 -hda minix_x86.img -nographic -serial mon:stdio", "expect": [r"login:"]},
-  "linux": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'bc', 'flex', 'bison', 'network to github.com'], "title": "the Linux kernel built and booted on QEMU's RISC-V machine", "repo": "https://github.com/torvalds/linux",
+  "linux": {"needs": ['riscv64-linux-gnu-gcc', 'qemu-system-riscv64', 'bc', 'flex', 'bison', 'network to github.com'], "layer": 10, "title": "the Linux kernel built and booted on QEMU's RISC-V machine", "repo": "https://github.com/torvalds/linux",
             "ref": "v6.6", "heavy": True, "names": False, "keep": [r"^CONFIG_"],
             "build": "make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- defconfig && make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu- -j$(nproc) Image",
             "run": "timeout 90 qemu-system-riscv64 -machine virt -m 512M -nographic -kernel arch/riscv/boot/Image -append 'console=ttyS0 panic=-1'",
             "expect": [r"Linux version 6\.6"]},
-  "gcc": {"needs": ['g++', 'flex', 'bison', 'network to github.com'], "title": "GCC's C compiler built from the language", "repo": "https://github.com/gcc-mirror/gcc", "ref": "releases/gcc-13",
+  "gcc": {"needs": ['g++', 'flex', 'bison', 'network to github.com'], "layer": 12, "title": "GCC's C compiler built from the language", "repo": "https://github.com/gcc-mirror/gcc", "ref": "releases/gcc-13",
           "heavy": True, "names": False, "cxx": True,
           "build": "mkdir -p obj && cd obj && ../configure --disable-multilib --enable-languages=c --disable-bootstrap >/dev/null && make -j$(nproc) all-gcc",
           "run": "printf 'int main(void){return 0;}\\n' > t.c && obj/gcc/xgcc -Bobj/gcc/ t.c -o t && ./t && echo gcc-from-language-ok",
           "expect": [r"gcc-from-language-ok"]},
-  "llvm": {"needs": ['cmake', 'ninja', 'g++', 'network to github.com'], "title": "LLVM and clang built from the language", "repo": "https://github.com/llvm/llvm-project", "ref": "release/18.x",
+  "llvm": {"needs": ['cmake', 'ninja', 'g++', 'network to github.com'], "layer": 12, "title": "LLVM and clang built from the language", "repo": "https://github.com/llvm/llvm-project", "ref": "release/18.x",
            "heavy": True, "names": False, "cxx": True,
            "build": "cmake -S llvm -B obj -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang "
                     "-DLLVM_TARGETS_TO_BUILD='RISCV;WebAssembly;X86' >/dev/null && ninja -C obj clang",
@@ -186,6 +223,22 @@ NONC = re.compile(r".*\.(S|s|ld|lds|pl|py|mk|sh|cmake|in|txt|json|y|l|def|inc|aw
 
 
 VERIFIED, baseline = {}, {}
+STATE_FILE = W / "state.json"
+STATE = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {"done": [], "forked": []}
+T_START, RUNS_DONE, RUNS_TOTAL = time.time(), [0], [0]
+
+
+def save_state():
+    STATE_FILE.write_text(json.dumps(STATE, indent=1))
+
+
+def status(msg):
+    """The status pane: what is running, how much is done, how much remains, and roughly how long."""
+    el = time.time() - T_START; d, t = RUNS_DONE[0], RUNS_TOTAL[0]
+    eta = f"about {int(el / d * (t - d) / 60)} min left" if d and t > d else ""
+    (W / "status.txt").write_text(f"PARASHAKTI  {time.strftime('%H:%M:%S')}  running {int(el // 60)} min\n\n  now:   {msg}\n"
+        f"  runs:  {d} of {t} done  {eta}\n  cores: {os.environ.get('PARASHAKTI_JOBS', os.cpu_count())}\n\n  finished: "
+        + ", ".join(STATE["done"][-12:]) + "\n\n  stop: bash parashakti.sh --stop    resume: run it again\n")
 
 
 def english_baseline(name, p, up, env):
@@ -225,9 +278,12 @@ def run_project(name, p, langs, rows):
         if f.is_file() and NONC.match(f.name) and f.stat().st_size < 4 << 20:
             names |= set(re.findall(r"[A-Za-z_][A-Za-z0-9_]*", f.read_text(errors="replace")))
     keep.write_text("\n".join(sorted(names)))
-    env = dict(os.environ)
+    env = dict(os.environ, MAKEFLAGS=f"-j{os.environ.get('PARASHAKTI_JOBS') or os.cpu_count()}")
     english_baseline(name, p, up, env)
     for lang in langs:
+        if f"{name}/{lang}" in STATE["done"]:
+            print(f"   {name} · {lang}: done in an earlier run, skipped"); RUNS_DONE[0] += 1; continue
+        status(f"{name} · {lang}: fetching, ingesting")
         n, work = base / "n", base / "work"
         shutil.rmtree(n, ignore_errors=True); shutil.rmtree(work, ignore_errors=True)
         cmd = [sys.executable, str(HIN / "burp/burp.py"), "ingest", str(up), "--langs", lang, "--out", str(n),
@@ -237,6 +293,13 @@ def run_project(name, p, langs, rows):
         r = subprocess.run(cmd, capture_output=True, text=True); log(r.stdout, r.stderr)
         if r.returncode or not (n / lang).exists():
             rows.append((name, lang, pin, "no", "", "", "ingestion failed: see the log")); continue
+        lat = nat = 0                          # how much of the source is now in the language
+        for f in (n / lang).rglob("*"):
+            if f.is_file() and f.suffix in (".c", ".h", ".cc", ".cpp"):
+                t = f.read_text(encoding="utf-8", errors="replace")
+                lat += sum(c.isascii() and c.isalpha() for c in t); nat += sum((not c.isascii()) and c.isalpha() for c in t)
+        local = f"{100 * nat // max(1, nat + lat)}% of the letters in the language, {100 * lat // max(1, nat + lat)}% still Latin (names the build files need)"
+        status(f"{name} · {lang}: ingested; {local}")
         for f in up.rglob("*"):                # build files and assembly stay in host notation
             if f.is_file() and NONC.match(f.name):
                 dst = n / lang / f.relative_to(up); dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(f, dst)
@@ -270,10 +333,11 @@ def run_project(name, p, langs, rows):
         mine = sorted({l.strip().replace(lang, "{lang}") for l in out.splitlines() if any(re.search(e.format(lang=lang), l) for e in p["expect"])})
         english = baseline.get(name)
         as_english = "same lines as the English build" if english is not None and mine == english else "differs from the English build" if english is not None else ""
-        rows.append((name, lang, pin, "yes", "yes", "yes" if ok else "NO", f"`{line[:110]}`; {reverse_note}; {as_english}"))
+        rows.append((name, lang, pin, "yes", "yes", "yes" if ok else "NO", f"`{line[:110]}`; {reverse_note}; {as_english}; {local}"))
         if ok:
             VERIFIED.setdefault(name, []).append(lang)
         print(f"   {name} · {lang}: {'proved' if ok else 'ran, but did not print what it must'}")
+        STATE["done"].append(f"{name}/{lang}"); save_state(); RUNS_DONE[0] += 1
         shutil.rmtree(work, ignore_errors=True)
     shutil.rmtree(base, ignore_errors=True)
 
@@ -316,6 +380,40 @@ done < languages.txt
 """
 
 
+def fork_all(org, names):
+    """Provenance first: each upstream forked into ORG on GitHub, or, when it lives elsewhere (the SHAKTI SDK on GitLab),
+    mirrored there with its whole history. Its licence is read from the upstream and shown; a repository without a licence
+    file is not republished, since nothing then grants the right to redistribute it."""
+    if ask(f"   Fork or mirror {len(names)} upstreams into github.com/{org}? Type PUSH plus a reason.\n   > ").upper().startswith("PUSH") is False:
+        print("   nothing forked"); return
+    for name in names:
+        url = MANIFEST[name].get("repo")
+        if not url or name in STATE["forked"]:
+            continue
+        status(f"provenance: {name}")
+        if subprocess.run(["gh", "repo", "view", f"{org}/{name}"], capture_output=True).returncode == 0:
+            print(f"   {name}: already in {org}"); STATE["forked"].append(name); save_state(); continue
+        if "github.com/" in url:
+            r = sh(["gh", "repo", "fork", url.split("github.com/")[1].removesuffix(".git"), "--org", org, "--fork-name", name, "--clone=false"], cwd=W, label=f"forking {name}")
+        else:
+            m = W / "mirror" / f"{name}.git"; shutil.rmtree(m, ignore_errors=True); m.parent.mkdir(parents=True, exist_ok=True)
+            r = sh(["git", "clone", "-q", "--mirror", url, str(m)], cwd=W, label=f"mirroring {name}")
+            lic = subprocess.run(f"git -C '{m}' ls-tree --name-only HEAD | grep -iE '^(licen[cs]e|copying)'", shell=True, capture_output=True, text=True).stdout.split()
+            if not lic:
+                print(f"   {name}: the upstream has no licence file, so it is not republished"); shutil.rmtree(m, ignore_errors=True); continue
+            head = subprocess.run(["git", "-C", str(m), "show", f"HEAD:{lic[0]}"], capture_output=True, text=True).stdout.splitlines()[:3]
+            print(f"   {name}: licence {lic[0]}: {' '.join(head)[:100]}")
+            sh(["gh", "repo", "create", f"{org}/{name}", "--public", "--description", f"Mirror of {url}, kept by Parashakti; its licence travels with it"], cwd=W, label=f"creating {org}/{name}")
+            r = sh(["git", "-C", str(m), "push", "-q", "--mirror", f"https://github.com/{org}/{name}.git"], cwd=W, label=f"pushing the mirror of {name}")
+            shutil.rmtree(m, ignore_errors=True)
+        print(f"   {name}: " + ("in " + org if r.returncode == 0 else "not forked (see the log)"))
+        if r.returncode == 0:
+            STATE["forked"].append(name); save_state()
+
+
+GATE_ANSWER = {}
+
+
 def ask(question, rehearse=None):
     """A typed gate. The engine's own input is this script, so the answer is read from the terminal itself."""
     if rehearse and os.environ.get("PARASHAKTI_GATE"):
@@ -327,7 +425,7 @@ def ask(question, rehearse=None):
         return ""
 
 
-def publish(org, rehearse, do_mint):
+def publish(org, rehearse, do_mint, only=None):
     """For each project verified in at least one language: a fork of the upstream (or a mirror when it is not on GitHub)
     under ORG, each verified language on its own branch lang/<language>, and a default branch parashakti carrying the
     README, the report, the sync script and its scheduled workflow. One typed PUSH for all; MINT, typed, if asked."""
@@ -335,10 +433,12 @@ def publish(org, rehearse, do_mint):
         print("   nothing verified in this run: nothing to publish"); return
     b = "\n\033[1mPUBLISH\033[0m\n   " + "\n   ".join(f"{k}: {', '.join(v)}" for k, v in VERIFIED.items())
     print(b + f"\n   to {'the rehearsal folder ' + rehearse if rehearse else 'github.com/' + org}")
-    line = ask("   Type PUSH plus a reason.\n   > ", rehearse)
+    line = GATE_ANSWER.get("push") or ask("   Type PUSH plus a reason.\n   > ", rehearse); GATE_ANSWER["push"] = line
     if not line.upper().startswith("PUSH"):
         print("   nothing published"); return
     for name, langs in VERIFIED.items():
+        if only and name != only:
+            continue
         p = MANIFEST[name]; url = p.get("repo"); dest = f"{org}/{name}"
         if not url:
             continue
@@ -417,6 +517,8 @@ def main():
     ap.add_argument("--publish", metavar="ORG", help="publish each verified project as a fork under ORG, one branch per language")
     ap.add_argument("--publish-to", metavar="DIR", help="rehearse publishing into local bare repositories under DIR")
     ap.add_argument("--mint", action="store_true", help="after publishing, mint each with misty, behind a typed MINT")
+    ap.add_argument("--fork-all", metavar="ORG", help="fork (or mirror) every upstream into ORG before anything is built")
+    ap.add_argument("--from", dest="start", help="start from this project"); ap.add_argument("--no-ui", action="store_true"); ap.add_argument("--in-ui", action="store_true")
     a = ap.parse_args()
     man = json.loads(Path(a.manifest).read_text()) if a.manifest else MANIFEST
     if a.list:
@@ -424,6 +526,11 @@ def main():
             print(f"{k:8} {'heavy ' if v.get('heavy') else 'light '} {v['title']}")
         return
     stages = [s for s in a.stage.split(",") if s] or [k for k, v in man.items() if not v.get("heavy")]
+    stages.sort(key=lambda k: (0 if k == "shakti-sdk" else 1, man[k].get("layer", 99)))
+    if a.start and a.start in stages:
+        stages = stages[stages.index(a.start):]
+    if a.fork_all:
+        fork_all(a.fork_all, [k for k in stages if man[k].get("repo")])
     have = set(os.environ.get("PARASHAKTI_HAVE", "").split(","))
     for s_ in list(stages):         # a project runs only when this machine has what it needs; the rest is said, not failed
         missing = [n for n in man[s_].get("needs", []) if n not in have]
@@ -433,10 +540,16 @@ def main():
     langs, why = ready_languages(a.langs.split(","))
     for l, w in why.items():
         print(f"   skipped {l}: {w}")
-    rows = []
-    for s in stages:
-        print(f"\n\033[1mSTAGE {s}: {man[s]['title']}\033[0m", flush=True)
+    rows = []; RUNS_TOTAL[0] = len(stages) * len(langs)
+    for i, s in enumerate(stages, 1):            # one repository at a time: built, tested, published, then the next
+        print(f"\n\033[1mSTAGE {i} of {len(stages)}, {s} (layer {man[s].get('layer', '?')}): {man[s]['title']}\033[0m", flush=True)
+        status(f"{s}: starting ({i} of {len(stages)})")
         run_project(s, man[s], langs, rows)
+        if (a.publish or a.publish_to) and s in VERIFIED:
+            publish(a.publish or "rehearsal", a.publish_to, a.mint, only=s)
+    status("finished")
+    merged = {(r[0], r[1]): list(r) for r in STATE.get("rows", [])}     # the report keeps every run, across reruns
+    merged.update({(r[0], r[1]): list(r) for r in rows}); STATE["rows"] = list(merged.values()); save_state(); rows = STATE["rows"]
     rep = W / "REPORT.md"
     with open(rep, "w") as f:
         f.write(f"# Parashakti report\n\nRun {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}; Hindawi "
@@ -448,8 +561,6 @@ def main():
             f.write("| " + " | ".join(r) + f" | {state} |\n")
         for l, w in why.items():
             f.write(f"\nSkipped {l}: {w}.")
-    if a.publish or a.publish_to:
-        publish(a.publish or "rehearsal", a.publish_to, a.mint)
     proved = sum(1 for r in rows if r[5] == "yes")
     print(f"\n\033[1mDONE: {proved} of {len(rows)} project-language runs proved; report {rep}\033[0m")
 

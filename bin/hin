@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+# hin: write a program in your own language and run it, in any of Hindawi's shailis (styles).
+#   hin run LANG FILE            lower the program through the original pipeline, build it and run it (input from stdin)
+#   hin stages LANG FILE         show every stage: the source, the script filter, Romenagri, the host language
+#   hin host LANG FILE           show only the host-language program the compiler receives
+#   hin run english FILE         run an English program as it is, to compare
+# Shaili by extension: .c C (guru), .cpp C++ (shraeni), .java Java (kritrima), .py Python (soochee), .bas BASIC (praatha),
+# .l Lex (shabda), .y Yacc (wyaaka), .s assembly (yantra).
+# © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+import os, shutil, subprocess, sys, tempfile
+from pathlib import Path
+HOME = Path(os.environ.get("HINDAWI_HOME") or Path(__file__).resolve().parents[1])
+os.environ.setdefault("ROMENAGRI", str(HOME / ".build/chintamani/Romenagri"))
+os.environ["PATH"] = os.environ["ROMENAGRI"] + os.pathsep + os.environ["PATH"]
+sys.path.insert(0, str(HOME / "lang/hindawi/tools"))
+SHAILI = {".c": ["h2c"], ".cpp": ["h2cpp"], ".cc": ["h2cpp"], ".java": ["h2java"], ".py": ["h2py"], ".bas": ["h2b"],
+          ".l": ["h2l", "h2c"], ".y": ["h2yacc", "h2c"], ".s": ["h2asm"], ".asm": ["h2asm"]}
+
+
+def lower(text, lang, ext):
+    import hindawi_chain as hc
+    fw = SHAILI[ext]
+    out = hc.lower_many([text], lang, fw[0])[0]
+    for extra in fw[1:]:          # Lex and Yacc carry C inside them: the C keywords are lowered by the C transducer
+        out = hc.sh(f"'{hc.fwd_lexer(lang, extra)}'", out.encode("utf-8")).decode("utf-8", "replace")
+    return out
+
+
+def run(lang, f):
+    f = Path(f); ext = f.suffix
+    if ext not in SHAILI:
+        sys.exit(f"hin: {ext} is not a shaili hin knows: {' '.join(SHAILI)}")
+    text = f.read_text(encoding="utf-8")
+    host = text if lang == "english" else lower(text, lang, ext)
+    d = Path(tempfile.mkdtemp(prefix="hin-")); src = d / (f.stem + ext); src.write_text(host, encoding="utf-8"); exe = d / "program"
+    build = {".c": [["gcc", "-O2", "-o", exe, src, "-lm"]], ".cpp": [["g++", "-O2", "-o", exe, src]], ".cc": [["g++", "-O2", "-o", exe, src]],
+             ".l": [["flex", "-o", d / "lex.c", src], ["gcc", "-o", exe, d / "lex.c"]],
+             ".y": [["bison", "-o", d / "parse.c", src], ["gcc", "-o", exe, d / "parse.c"]],
+             ".s": [["as", "-o", d / "p.o", src], ["ld", "-o", exe, d / "p.o"]], ".asm": [["as", "-o", d / "p.o", src], ["ld", "-o", exe, d / "p.o"]],
+             ".java": [["javac", "-d", d, src]]}.get(ext, [])
+    for cmd in build:
+        if not shutil.which(str(cmd[0])):
+            print(f"hin: {cmd[0]} is not installed here; the host program is:\n\n{host}"); return 1
+        r = subprocess.run([str(c) for c in cmd], capture_output=True, text=True)
+        if r.returncode:
+            print(r.stderr or r.stdout); return r.returncode
+    if ext == ".py":
+        return subprocess.run([sys.executable, str(src)]).returncode
+    if ext == ".java":
+        return subprocess.run(["java", "-cp", str(d), f.stem]).returncode
+    if ext == ".bas":
+        if shutil.which("bwbasic"):
+            return subprocess.run(["bwbasic", str(src)]).returncode
+        print(f"BASIC, lowered (run it in any BASIC interpreter, for example: apt install bwbasic):\n\n{host}"); return 0
+    return subprocess.run([str(exe)]).returncode
+
+
+def main(a):
+    if len(a) < 3 or a[0] not in ("run", "stages", "host"):
+        print(__doc__ if __doc__ else open(__file__).read().split("\nimport")[0]); return 2
+    cmd, lang, f = a[0], a[1], a[2]
+    if cmd == "run":
+        return run(lang, f)
+    text, ext = Path(f).read_text(encoding="utf-8"), Path(f).suffix
+    if cmd == "host":
+        print(lower(text, lang, ext)); return 0
+    import hindawi_chain as hc
+    for name, t in hc.stages(text, lang, SHAILI[ext][0]):
+        print(f"===== {name}\n{t}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]) or 0)

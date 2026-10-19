@@ -660,3 +660,17 @@ passed; scripts/test_all.sh passes.
 - changed `work-packages/tasks.json` (sha256 `b175d2308f17eafd`)
 
 **Verified.** Rehearsed here: SHAKTI and xv6 proved in Urdu with progress shown; xv6 in Urdu reversing to its upstream in 65 of 65 C files and printing the same lines as the English build; published into a local repository with the branches riscv, lang/urdu and parashakti. The home page driven headless with the shared script: no errors, four doubt panels, a fingerprint and a pre-filled issue, badges awarded. test_all passes.
+
+## C31. Notebooks in the Chintamani design for every shaili, prebuilt tools for instant start and the terminal, and APCISR's imperfect combinations shown as their pieces
+
+**Why.** He found the notebooks unusable: code on show, only C and Python, a long build on every opening, the tools missing from Colab's terminal; and saw a chandrabindu where a ref should be. The notebooks now follow the Chintamani notebooks: a hidden one-cell installation, then for each shaili (C, C++, Python, Java, BASIC, Lex, Yacc, assembly) a program in the language to edit, with hidden cells that run it and show its stages, then the English programs for reference; a shaili is included for a language only after its program has run in that language. bin/hin runs a program of any shaili in any language; scripts/colab_env.sh puts hin, hindawi and hindawicc on the PATH of the notebook and of Colab's terminal; .github/workflows/binaries.yml builds the tools and the transducers on Ubuntu 22.04 for each tagged release and attaches them, and the installation fetches them instead of compiling. On the machine page, above-the-letter combinations the original's own table marks as imperfect (past 129) are drawn as their pieces in the working maps, the original's result unchanged and explained, and a section explains how to build APCISR for another script.
+
+- added `bin/hin` (sha256 `6068fa096e998715`)
+- added `scripts/colab_env.sh` (sha256 `a04a0357f96a2922`)
+- changed `scripts/seed_notebooks.sh` (sha256 `1a517b239bf05ece`)
+- added `samples/shailis/calculator.y` (sha256 `af4be1f06bad8ed8`)
+- changed `notebooks/practice/hindawi_urdu.ipynb` (sha256 `d9badfbe5b0fafd2`)
+- added `.github/workflows/binaries.yml` (sha256 `9bfaef4f5f58dfc6`)
+- changed `docs/trace/machine.html` (sha256 `061834d9f27bab55`)
+
+**Verified.** hin ran every shaili's program in Urdu and Telugu: C 5 -1, C++ 1 3 4 5 8, Python 5 -1, Lex 5 words 2 lines, Yacc 14, assembly hello, BASIC lowered, Java lowered where javac is absent; Hindi leaves out Java, Yacc and assembly, whose original tables do not run them yet. The release workflow is valid YAML and has not yet run on GitHub. test_all passes.
