@@ -1,14 +1,14 @@
-    .global _start
-    .text
+.intel_syntax noprefix
+.global _start
+.text
 _start:
-    mov $1, %rax
-    mov $1, %rdi
-    lea msg(%rip), %rsi
-    mov $len, %rdx
-    syscall
-    mov $60, %rax
-    xor %rdi, %rdi
-    syscall
-    .data
+    MOV EAX, 4
+    MOV EBX, 1
+    LEA ECX, msg
+    MOV EDX, 28
+    INT 0x80
+    MOV EAX, 1
+    XOR EBX, EBX
+    INT 0x80
+.data
 msg: .ascii "Hello from Hindawi assembly\n"
-len = . - msg

@@ -72,3 +72,5 @@ Images made with generative tools are illustrations; their figures and console t
 | ![Parashakti](docs/trace/posters/web/parashakti.jpg) | ![Qwan-tum Tum Tum](docs/trace/posters/web/qwantum-tum-tum.jpg) |
 | ![AyeKnow: knowledge with evidence](docs/trace/posters/web/ayeknow-knowledge-with-evidence.jpg) | ![AyeKnow: from claims to evidence](docs/trace/posters/web/ayeknow-from-claims-to-evidence.jpg) |
 | ![AyeKnow: the stack in detail](docs/trace/posters/web/ayeknow-stack-detail.jpg) | |
+
+**Related:** [Romenagri 2026.10](https://github.com/project-ilm/romenagri2026.10), the extended character set ([transliteration notes](https://github.com/project-ilm/romenagri2026.10/blob/main/Romenagri/TRANSLITERATION.md), under the author's review; seeded and timestamped, not yet minted). [Questions and answers](https://hindawiai.github.io/hindawi2026.10/faq/) (AI-generated, marked as such).

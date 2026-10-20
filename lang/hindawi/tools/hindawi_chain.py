@@ -122,13 +122,21 @@ def cform(form):
 
 
 def forms(words, lang):
-    """The C-level form of each native word: the whole set through the script filter and Romenagri in one call, each word
-    on its own line, as the cell's rules were built, so a word has one form wherever it stands (DEVIATIONS.md). A word
-    holding a code point Unicode never assigned is named and refused: it cannot be transliterated."""
+    """The C-level form of each native word (see _forms). A word holding a code point Unicode never assigned cannot be
+    transliterated: it is the source's own text (Unicode tables in llama.cpp, for one), so it is named and left as written."""
     import unicodedata
-    broken = [w for w in words if any(unicodedata.category(c) == "Cn" for c in w)]
-    if broken:
-        sys.exit(f"hindawi_chain: {lang}: these words hold code points Unicode never assigned: {' '.join(broken[:5])}")
+    words = list(words)
+    keep = {w: w for w in words if any(unicodedata.category(c) == "Cn" for c in w)}
+    if keep:
+        print(f"hindawi_chain: {lang}: left as written, holding code points Unicode never assigned: {' '.join(list(keep)[:5])}", file=sys.stderr)
+    out = _forms([w for w in words if w not in keep], lang)
+    out.update(keep)
+    return out
+
+
+def _forms(words, lang):
+    """The C-level form of each native word: the whole set through the script filter and Romenagri in one call, each word
+    on its own line, as the cell's rules were built, so a word has one form wherever it stands (DEVIATIONS.md)."""
     if not words:
         return {}
     # Unicode's canonical form first, so a word typed with a precomposed nukta letter and the same word typed with base
@@ -229,10 +237,11 @@ def fwd_lexer(lang, name):
         return lexers(lang)[1]
     if lang == "hindi":     # the original Hindawi, built by its own Makefile in a copy: the upstream copy is never written
         d = CACHE / "chintamani" / SHAILI_OF[name]
-        if not (d / name).exists():
+        orig = {"h2asm": "h2y", "h2java": "h2j"}.get(name, name)     # the original's own names for these two
+        if not (d / orig).exists():
             shutil.rmtree(d, ignore_errors=True); shutil.copytree(HINDAWI / "upstream/chintamani" / SHAILI_OF[name], d)
             sh(f"make -s -C '{d}'")
-        return d / name
+        return d / orig
     src = cell_dir(lang); out = CACHE / lang; exe = out / name
     deps = [src / f"{name}.uhin", HERE / "script_filters.py", HERE / "hindawi_chain.py"]   # rebuilt when the way changes
     if exe.exists() and all(p.stat().st_mtime <= exe.stat().st_mtime for p in deps if p.exists()):

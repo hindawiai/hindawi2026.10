@@ -36,7 +36,9 @@ def run(lang, f):
     build = {".c": [["gcc", "-O2", "-o", exe, src, "-lm"]], ".cpp": [["g++", "-O2", "-o", exe, src]], ".cc": [["g++", "-O2", "-o", exe, src]],
              ".l": [["flex", "-o", d / "lex.c", src], ["gcc", "-o", exe, d / "lex.c"]],
              ".y": [["bison", "-o", d / "parse.c", src], ["gcc", "-o", exe, d / "parse.c"]],
-             ".s": [["as", "-o", d / "p.o", src], ["ld", "-o", exe, d / "p.o"]], ".asm": [["as", "-o", d / "p.o", src], ["ld", "-o", exe, d / "p.o"]],
+             # the original yantra is 32-bit x86 in Intel syntax: assembled and linked as such
+             ".s": [["as", "--32", "-o", d / "p.o", src], ["ld", "-m", "elf_i386", "-o", exe, d / "p.o"]],
+             ".asm": [["as", "--32", "-o", d / "p.o", src], ["ld", "-m", "elf_i386", "-o", exe, d / "p.o"]],
              ".java": [["javac", "-d", d, src]]}.get(ext, [])
     for cmd in build:
         if not shutil.which(str(cmd[0])):

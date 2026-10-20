@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Questions and answers · ILM and Hindawi</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❓</text></svg>">
+<style>
+:root { --bg:#fbf7ef; --fg:#1d1b17; --mut:#6b6457; --card:#fff; --line:#e4dccb; --acc:#b4530a; --acc2:#1e4f8a; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14120f; --fg:#eee8dc; --mut:#a59d8d; --card:#1f1c17; --line:#3a342a; --acc:#f08a3c; --acc2:#7fb0ef; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+main { max-width: 920px; margin: 0 auto; padding: 0 16px 60px; } a { color: var(--acc2); }
+h1 { font: 700 clamp(28px, 6vw, 44px)/1.15 Georgia, serif; margin: 30px 0 10px; } h2, h3 { font-family: Georgia, serif; }
+.notice { border: 2px solid var(--acc); border-radius: 12px; padding: 12px 14px; background: var(--card); }
+.faq { border-top: 2px solid var(--line); margin-top: 34px; padding-top: 10px; } .tag { color: var(--acc); font-size: 14px; font-weight: 600; }
+table { border-collapse: collapse; display: block; overflow-x: auto; } td, th { border: 1px solid var(--line); padding: 6px 8px; vertical-align: top; }
+pre, code { white-space: pre-wrap; word-break: break-word; } img { max-width: 100%; }
+</style>
+</head>
+<body>
+<main>
+<h1>Questions and answers: ILM and Hindawi</h1>
+<p class="notice"><b>About this page.</b> These four FAQs were generated with AI. They may not reflect the views of the developer or
+the author, and nothing here is a claim made by them. Where an answer and the repository differ, the repository and its evidence
+decide. Doubt any section: every section can be fingerprinted, checked and reported as an issue.</p>
+<ol><li><a href="#master">The master FAQ: from linguistic representation to silicon, rendering, acceleration and AI</a></li><li><a href="#review">FAQ 2: a hostile technical and institutional review</a></li><li><a href="#reuse">FAQ 3: reuse, integration, automation and sovereignty</a></li><li><a href="#thesis">FAQ 4: the architectural thesis and its evidence map</a></li></ol>
+<section class="faq" id="master">
+<p class="tag">AI-generated text: it may not reflect the views of the developer or the author.</p>
+
+<header>
+  <div class="tag">Project ILM · Technical FAQ</div>
+  <h1>From Linguistic Representation to Silicon, Rendering, Acceleration and AI</h1>
+  <p class="lead">A verification-oriented FAQ for explaining what the Hindawi/ILM work is, what it is not, how it differs from superficial keyword localization, and how independent experts can test it.</p>
+</header>
+<nav>
+<a href="#master-core">Core</a><a href="#master-unicode">Unicode</a><a href="#master-rendering">Rendering</a><a href="#master-apcisr">APCISR</a><a href="#master-compiler">Compiler</a><a href="#master-rom">Romenagri</a><a href="#master-push">Pushkalāvatī</a><a href="#master-ai">GPU/AI</a><a href="#master-standards">Standards</a><a href="#master-tests">Tests</a><a href="#master-todo">TODO</a>
+</nav>
+<main>
+
+<section id="master-core">
+<h2>1. What is the central problem?</h2>
+<div class="card"><p>The problem is frequently reduced to “put Indian-language keywords into a programming language.” That is only the shallowest layer. The broader engineering question is how linguistic representations can be specified, transformed, rendered, compiled, executed, debugged, accelerated and maintained across a complete computing stack.</p>
+<pre>language
+  ↓
+script / representation
+  ↓
+encoding / transliteration
+  ↓
+compiler / IR
+  ↓
+runtime / OS
+  ↓
+firmware / debugging
+  ↓
+machine representation
+  ↓
+rendering / framebuffer
+  ↓
+GPU / accelerator
+  ↓
+AI / robotics / IoT</pre></div>
+
+<h2>2. Is this only about Indic languages?</h2>
+<div class="card"><p>No. Indic languages are a demanding and concrete test domain. The architecture is intended to be general: language/script-specific front ends and representations can feed common computational infrastructure.</p></div>
+
+<h2>3. Is the goal to replace Unicode?</h2>
+<div class="card"><p>No. Unicode is foundational. The Unicode Consortium describes Unicode as a universal character encoding standard for written text, and explicitly notes that encoding a script and providing complete language support are not the same thing. Language support also requires input tools, fonts, language data and other infrastructure.</p><p><a href="https://www.unicode.org/standard/standard.html">Unicode Standard</a> · <a href="https://www.unicode.org/reports/tr17/">Unicode Character Encoding Model (UTR #17)</a> · <a href="https://home.unicode.org/basic-info/faq/">Unicode FAQ</a></p></div>
+
+<h2>4. What is the key distinction between representation and encoding?</h2>
+<div class="card"><p>A numerical value, its hexadecimal notation, its binary notation, a Unicode code point, an encoded byte sequence, a glyph and the pixels used to display that glyph are different layers.</p><pre>क
+↓
+Unicode code point
+↓
+UTF-8 bytes
+↓
+machine-readable numerical data
+↓
+glyph selection / formation
+↓
+bitmap or vector representation
+↓
+pixels</pre></div>
+</section>
+
+<section id="master-unicode">
+<h2>5. Does the processor itself understand Unicode?</h2>
+<div class="card"><p>Not in the linguistic sense. General-purpose processors execute instructions over numerical data. Unicode semantics are supplied by software, data structures, libraries, compilers, operating systems and rendering systems.</p></div>
+
+<h2>6. Does Unicode guarantee that a language will work everywhere?</h2>
+<div class="card"><p>No. Unicode itself states that encoding a script is not equivalent to complete support on a computer or phone. The implementation stack still needs fonts, input, language data, rendering and related infrastructure.</p></div>
+
+<h2>7. Is hexadecimal a character encoding?</h2>
+<div class="card"><p>No. Hexadecimal is a base-16 notation for numbers. The same numerical value can be written in binary, decimal or hexadecimal. A useful teaching example is <code>0x41 = 65 = 01000001₂</code>. What those numbers mean depends on the layer interpreting them.</p></div>
+</section>
+
+<section id="master-rendering">
+<h2>8. Why distinguish text mode and graphics mode?</h2>
+<div class="card"><p>They expose different rendering models. In a traditional text-mode architecture, a character cell can contain a character code and attributes; a display subsystem obtains a bitmap glyph. In graphics mode, software ultimately supplies pixel values to a framebuffer.</p><pre>TEXT MODE
+character code + attributes
+          ↓
+      character cell
+          ↓
+       glyph bitmap
+          ↓
+        display
+
+GRAPHICS MODE
+text/vector/image description
+          ↓
+      rasterization
+          ↓
+      pixel matrix
+          ↓
+       framebuffer
+          ↓
+        display</pre></div>
+
+<h2>9. What is the framebuffer?</h2>
+<div class="card"><p>A framebuffer is a memory representation of display data. In a raster graphics path, the stored values correspond to pixels or groups of pixels. Color systems can represent components such as RGB, with additional representations possible.</p></div>
+
+<h2>10. Where does a DAC fit?</h2>
+<div class="card"><p>A DAC converts digital values to an analogue signal when an analogue display interface requires it. Digital display paths can transmit digital pixel data without the same DAC stage. The exact architecture depends on the hardware and interface.</p></div>
+</section>
+
+<section id="master-apcisr">
+<h2>11. What is APCISR?</h2>
+<div class="card"><p>APCISR is the rendering/character-formation work being explored in the Hindawi/Chintamani material. The educational demonstration should expose the algorithm rather than only showing its final glyph.</p><p>The intended interactive model uses a compact <strong>3×3 / nine-grid</strong> representation and progressively shows how structural components contribute to the resulting Indic character form.</p></div>
+
+<h2>12. What should the APCISR demonstration show?</h2>
+<div class="card"><ol>
+<li>User enters text in a normal input field.</li>
+<li>The system displays the source text and its numerical representation.</li>
+<li>The selected character is mapped into the APCISR working representation.</li>
+<li>A small grid shows the active cells/state.</li>
+<li>Intermediate states are animated step-by-step.</li>
+<li>The resulting bitmap/glyph is displayed.</li>
+<li>The same result is placed into a simulated text-mode character cell.</li>
+<li>A resolution control shows the relationship between coarse structural representation and higher-resolution raster output.</li>
+</ol><pre>input → representation → APCISR state → 3×3 grid → intermediate states → bitmap → text cell → pixels</pre></div>
+
+<h2>13. Why use a simulated 80×60 text-mode screen?</h2>
+<div class="card"><p>The 80×60 screen is an educational canvas, not a claim about one historical hardware mode. It gives enough rows to make Indic combining/formation behaviour visible while retaining the conceptual character-cell model.</p></div>
+
+<div class="card"><h3>Required interactive controls</h3><ul>
+<li>Text input</li><li>character selector</li><li>step / play / pause</li><li>grid-resolution selector</li><li>show numerical representation</li><li>show character cell</li><li>show glyph bitmap</li><li>show framebuffer pixels</li><li>show pipeline stage</li>
+</ul></div>
+</section>
+
+<section id="master-compiler">
+<h2>14. Is Hindawi merely Hindi syntax for another language?</h2>
+<div class="card"><p>The repository contains a much broader programming-system experiment. The important test is to inspect the frontend, representation, transformation and execution chain rather than judging the project from keyword examples.</p><p><a href="https://github.com/hindawiai/hindawi2026.10">Hindawi 2026.10 repository</a> · <a href="https://hindawiai.github.io/hindawi2026.10/">Hindawi project site</a></p></div>
+
+<h2>15. What would distinguish a serious language implementation from keyword replacement?</h2>
+<div class="card"><pre>keyword replacement:
+Indic spelling → existing language keyword
+
+deeper compiler architecture:
+source language
+    ↓
+lexing / parsing
+    ↓
+AST
+    ↓
+normalization / semantic representation
+    ↓
+canonical IR
+    ↓
+backend
+    ↓
+executable behaviour</pre><p>The exact status of each Hindawi component should be verified against the repository and tests, not inferred from the README.</p></div>
+
+<h2>16. Why are C, Python, assembly, C++, lex/yacc, BASIC and Logo relevant?</h2>
+<div class="card"><p>A broad language corpus is useful because it tests whether the representation/tooling is tied to one toy language or can support materially different programming paradigms and toolchains.</p></div>
+</section>
+
+<section id="master-rom">
+<h2>17. What is Romenagri doing?</h2>
+<div class="card"><p>Romenagri is treated as a human-readable transliteration/representation layer rather than as a replacement for Unicode. The engineering questions are reversibility, coverage, collision behaviour, canonicalization and fidelity.</p></div>
+
+<h2>18. What must a transliteration standard prove?</h2>
+<div class="card"><table><tr><th>Property</th><th>Test</th></tr>
+<tr><td>Coverage</td><td>Corpus characters/forms supported</td></tr>
+<tr><td>Round trip</td><td>A → B → A</td></tr>
+<tr><td>Collision behaviour</td><td>Different inputs producing the same output</td></tr>
+<tr><td>Canonicality</td><td>Whether equivalent inputs normalize consistently</td></tr>
+<tr><td>Script reconstruction</td><td>Whether target script can be recovered</td></tr>
+<tr><td>Linguistic fidelity</td><td>Explicitly define orthographic/phonological/phonetic properties claimed</td></tr>
+</table></div>
+
+<h2>19. Is transliteration the same as Unicode?</h2>
+<div class="card"><p>No. Unicode defines a standard encoding framework. Transliteration maps written forms between scripts or representations. Unicode itself distinguishes character encoding from higher-level language support.</p></div>
+
+<h2>20. What about Punycode?</h2>
+<div class="card"><p>Punycode is an algorithm for encoding Unicode strings using a restricted ASCII repertoire, particularly for internationalized domain names. It is not a phonetic transliteration standard.</p><p><a href="https://www.rfc-editor.org/rfc/rfc3492">RFC 3492 — Punycode</a></p></div>
+</section>
+
+<section id="master-push">
+<h2>21. What is Pushkalāvatī testing?</h2>
+<div class="card"><p>The important distinction is between corpus presence, structural conversion, definition resolution, derivability, executable operations and verified tests. A corpus containing thousands of rules is not the same thing as a corpus with thousands of executable rules.</p><pre>corpus
+ ↓
+structured rule
+ ↓
+resolved definition
+ ↓
+derivable
+ ↓
+executable
+ ↓
+tested
+ ↓
+verified</pre></div>
+
+<h2>22. What should independent Sanskrit experts test?</h2>
+<div class="card"><ul>
+<li>Rule interpretation</li><li>source provenance</li><li>derivation correctness</li><li>ordering/precedence</li><li>exceptions</li><li>attested examples</li><li>negative cases</li><li>round-trip/trace reproducibility</li>
+</ul><p>The ideal review is not “is this Sanskrit-themed?” but “can an independent expert reproduce and falsify each claimed derivation?”</p></div>
+</section>
+
+<section id="master-ai">
+<h2>23. Why does GPU/GPGPU matter here?</h2>
+<div class="card"><p>Graphics processing made large-scale parallel arithmetic practical for graphics workloads. The same broad hardware model is useful for general-purpose parallel computation, including matrix-heavy machine learning.</p><pre>pixels / image matrices
+       ↓
+parallel arithmetic
+       ↓
+GPU
+       ↓
+GPGPU programming
+       ↓
+matrix/tensor computation
+       ↓
+machine learning / AI</pre></div>
+
+<h2>24. Is CUDA the same thing as GPU acceleration?</h2>
+<div class="card"><p>No. CUDA is NVIDIA's programming platform/ecosystem for using NVIDIA GPUs. GPU acceleration is the broader architectural concept of using a processor/accelerator to execute suitable work faster or more efficiently.</p></div>
+</section>
+
+<section id="master-standards">
+<h2>25. What makes this a standards proposal rather than a project demo?</h2>
+<div class="card"><p>A standards-oriented submission needs a normative specification, terminology, reference behaviour, versioning, conformance requirements, test vectors, governance and maintenance. Existing standards ecosystems make this distinction very explicit.</p><p><a href="https://docs.riscv.org/">RISC-V Ratified Specifications Library</a> — includes ISA, ABI, platform and other specifications. <a href="https://openpowerfoundation.org/specifications/">OpenPOWER Technical Specifications</a> — includes ISA, platform, ABI and accelerator specifications. <a href="https://openpowerfoundation.org/compliance/">OpenPOWER Compliance Specifications</a> — provides a useful model for compliance definitions and test harnesses.</p></div>
+
+<h2>26. Why approach RISC-V and OpenPOWER?</h2>
+<div class="card"><p>They are relevant because they expose open or collaboratively governed architectural specifications where extensions, interfaces, ABI and compliance can be discussed in explicit technical terms. RISC-V describes itself as an open standard ISA, while OpenPOWER publishes specifications covering ISA, platform interfaces, ABI and accelerators.</p></div>
+
+<h2>27. What should a proposed extension contain?</h2>
+<div class="card"><ol>
+<li>Problem statement</li><li>scope</li><li>formal model</li><li>normative terminology</li><li>interface definition</li><li>reference implementation</li><li>test vectors</li><li>conformance suite</li><li>independent implementation</li><li>performance/resource measurements</li><li>compatibility analysis</li><li>maintenance/governance model</li>
+</ol></div>
+
+<h2>28. What does “institutional ownership” mean?</h2>
+<div class="card"><p>The objective is not permanent dependence on a single author. A mature infrastructure project should be transferable: specifications, source, tests, build system, documentation, issue process and release process should permit institutions and independent teams to maintain it.</p></div>
+</section>
+
+<section id="master-tests">
+<h2>29. What is the strongest way to evaluate the work?</h2>
+<div class="card"><p>Do not ask reviewers merely to praise or reject the proposition. Ask them to attempt independent reproduction and falsification.</p><table><tr><th>Domain</th><th>Minimum evidence</th></tr>
+<tr><td>Unicode/representation</td><td>Explicit mappings and round-trip tests</td></tr>
+<tr><td>Romenagri</td><td>Corpus coverage, collision and round-trip suite</td></tr>
+<tr><td>APCISR</td><td>Formal algorithm + reference vectors + independent implementation</td></tr>
+<tr><td>Rendering</td><td>Text-mode and graphics-mode reference outputs</td></tr>
+<tr><td>Compiler</td><td>Source → IR → executable traces</td></tr>
+<tr><td>Pushkalāvatī</td><td>Attested derivations + negative tests</td></tr>
+<tr><td>Hardware</td><td>Cross-architecture builds/tests</td></tr>
+<tr><td>GPU</td><td>Reference workload + CPU/GPU comparison</td></tr>
+<tr><td>Standards</td><td>Normative specification + conformance suite</td></tr>
+<tr><td>Maintenance</td><td>Independent clean-room build and handoff test</td></tr>
+</table></div>
+
+<h2>30. What is the most important test?</h2>
+<div class="card"><p><strong>Independent implementation.</strong> Give the specification to another competent team. Do not give them implementation details that the specification itself does not contain. Ask them to implement it and compare outputs against the conformance suite.</p></div>
+
+<h2>31. What should a reviewer be invited to do?</h2>
+<div class="card"><pre>“Try to break the claim.”
+
+1. Identify the exact claim.
+2. Find prior art.
+3. Produce a counterexample if one exists.
+4. Add a reproducible test.
+5. Record the result.
+6. If the claim survives, document the evidence.
+7. If it fails, patch or narrow the specification.</pre></div>
+
+<h2>32. What is the purpose of the interactive explainer?</h2>
+<div class="card"><p>It is not merely promotional material. It is a common visual laboratory in which beginners can understand the stack and experts can inspect the intermediate representations and implementation behaviour.</p><p>Machine-stack explainer: <a href="https://hindawiai.github.io/hindawi2026.10/trace/machine.html">machine.html</a><br>
+Trace site: <a href="https://hindawiai.github.io/hindawi2026.10/trace/">Hindawi trace</a><br>
+Process explainer: <a href="https://hindawiai.github.io/hindawi2026.10/process/index.html">process/index.html</a></p></div>
+</section>
+
+<section id="master-todo">
+<h2>33. TODO / evidence still required</h2>
+<div class="todo"><strong>These should not be silently converted into claims.</strong> They are explicit evidence tasks for the project.</div>
+<table><tr><th>Task</th><th>Required artifact</th></tr>
+<tr><td>APCISR formal specification</td><td>Normative algorithm, input/output domain, state transitions, invariants, complexity, reference vectors</td></tr>
+<tr><td>APCISR independent implementation</td><td>Second implementation by a party not authoring the reference code</td></tr>
+<tr><td>Romenagri formal standard</td><td>Normative mapping, canonicalization, collision and round-trip rules</td></tr>
+<tr><td>Romenagri benchmark</td><td>Public multilingual corpus + machine-readable results</td></tr>
+<tr><td>Hindawi compiler status</td><td>Per-stage implementation/status matrix with tests</td></tr>
+<tr><td>Cross-language toolchains</td><td>Build/test evidence for C, Python, C++, assembly, lex/yacc, BASIC, Logo as applicable</td></tr>
+<tr><td>Cross-architecture evidence</td><td>x86-64, ARM, POWER and RISC-V test matrix where supported</td></tr>
+<tr><td>Firmware/debug path</td><td>Reproducible demonstrations for BIOS/UEFI, kernel debugging and JTAG claims where applicable</td></tr>
+<tr><td>GPU/AI benchmark</td><td>Defined workload, CPU baseline, accelerator implementation and reproducible measurements</td></tr>
+<tr><td>Standards package</td><td>Normative documents, conformance tests, governance and maintenance proposal</td></tr>
+<tr><td>Independent institutional review</td><td>Named external reviewers and recorded issues/results</td></tr>
+<tr><td>Full provenance map</td><td>Source → rule → implementation → test → result for every normative linguistic claim</td></tr>
+</table>
+
+<h2>34. What should never be used as the primary evidence?</h2>
+<div class="card"><ul>
+<li>A screenshot alone</li>
+<li>An AI-generated explanation alone</li>
+<li>A keyword table alone</li>
+<li>A single successful example</li>
+<li>A repository existing on GitHub</li>
+<li>A claim that something is “sovereign” without a defined technical boundary</li>
+<li>A claim of execution when only structural conversion has occurred</li>
+<li>A claim of standardization without a normative specification and conformance mechanism</li>
+</ul></div>
+
+<h2>35. What should replace those?</h2>
+<div class="card"><pre>SPECIFICATION
+    +
+REFERENCE IMPLEMENTATION
+    +
+TEST VECTORS
+    +
+CONFORMANCE SUITE
+    +
+INDEPENDENT IMPLEMENTATION
+    +
+REPRODUCIBLE BUILD
+    +
+PROVENANCE
+    +
+MAINTENANCE PROCESS</pre></div>
+
+<h2>36. The one-line challenge</h2>
+<div class="card"><p style="font-size:22px"><strong>Don't ask people to believe the stack. Give them enough specification and tests to reproduce it, compare it, and try to break it.</strong></p></div>
+</section>
+
+<footer class="small">
+<p>Prepared as a technical FAQ/design artifact for the ILM/Hindawi work. Links marked TODO require project-specific evidence or a future normative specification.</p>
+</footer>
+</main>
+
+</section><section class="faq" id="review">
+<p class="tag">AI-generated text: it may not reflect the views of the developer or the author.</p>
+
+<header>
+<div class="num">Project ILM · FAQ2</div>
+<h1>Hostile Technical &amp; Institutional Review</h1>
+<p class="lead">The second-line FAQ: the questions a technically competent, skeptical, hostile, standards-oriented or institutional reviewer can still ask after the basic ILM/Hindawi claims have been explained.</p>
+</header>
+<nav>
+<a href="#review-purpose">Purpose</a>
+<a href="#review-questions">Questions</a>
+<a href="#review-evidence">Evidence</a>
+<a href="#review-bottomline">Bottom line</a>
+</nav>
+<main>
+<section id="review-purpose">
+<h2>Purpose of FAQ2</h2>
+<div class="card">
+<p>FAQ1 establishes the basic technical distinctions: Unicode versus complete language support, representation versus encoding, text mode versus graphics mode, compiler architecture versus keyword substitution, transliteration versus encoding, executable rules versus structural corpus conversion, GPU acceleration versus CUDA, and project claims versus standards-grade evidence.</p>
+<p>FAQ2 goes further. It asks the questions that remain when a reviewer already understands those distinctions and now wants to attack novelty, prior art, implementation status, falsifiability, reproducibility, portability, security, governance, institutional adoption and long-term survival.</p>
+</div>
+<div class="callout"><strong>Operating rule:</strong> do not answer hostile questions by increasing rhetoric. Convert the question into a specification, test, benchmark, comparison, provenance record or governance artifact wherever possible.</div>
+</section>
+
+<section id="review-questions">
+<article class="card" id="review-q01">
+<span class="num">FAQ2 · 01</span>
+<h2>What exactly is novel?</h2>
+<p>A serious reviewer will separate novelty from integration. The question is not whether Hindawi/ILM uses existing technologies, but which specific component contributes a new algorithm, formalization, implementation, interoperability layer, composition, or application.
+
+The project should explicitly classify each claim as: prior art; engineering integration; new formalization; new algorithm; new implementation; new standard proposal; or open research question.
+
+The defensible answer is not “everything is new.” It is: identify exactly what is claimed as new, identify the prior art, and state the boundary of the contribution.</p>
+</article>
+<article class="card" id="review-q02">
+<span class="num">FAQ2 · 02</span>
+<h2>Why isn&#x27;t existing infrastructure sufficient?</h2>
+<p>Unicode, ICU, HarfBuzz, OpenType, GCC, LLVM, Linux, existing transliteration systems, and existing language-processing infrastructure must be treated as prior art rather than ignored.
+
+The reviewer should be able to ask: What exact requirement is not satisfied by the existing stack? Can the requirement be met by extending an existing component? What is retained, what is added, and what is replaced?
+
+A credible proposal therefore needs an explicit delta against existing infrastructure.</p>
+</article>
+<article class="card" id="review-q03">
+<span class="num">FAQ2 · 03</span>
+<h2>What exactly is the boundary of each claim?</h2>
+<p>Every component needs both a claim and a non-claim. For example:
+
+Unicode — character encoding, not complete language support.
+Romenagri — transliteration/representation, not a universal theory of phonology.
+APCISR — a specified character-formation approach, not automatically a replacement for every rasterizer.
+Hindawi — programming infrastructure, not automatically a replacement for every compiler.
+Pushkalāvatī — verified executable rule subsets, not automatically all 3,983 sūtras.
+GPU work — acceleration, not invention of GPU architecture.
+Sovereignty — a defined technical/institutional property, not a political conclusion.
+
+Explicit non-claims prevent category errors.</p>
+</article>
+<article class="card" id="review-q04">
+<span class="num">FAQ2 · 04</span>
+<h2>What would falsify the claim?</h2>
+<p>A technical claim must have a possible failure condition.
+
+Examples include an independent implementation failing the conformance suite, a Romenagri mapping violating its stated round-trip requirements, an APCISR reference vector that cannot be reproduced, an attested Pushkalāvatī derivation that fails, or evidence that an existing technology already satisfies the claimed requirement more effectively.
+
+If no observation could cause a claim to be withdrawn or narrowed, the claim is not yet a properly falsifiable technical proposition.</p>
+</article>
+<article class="card" id="review-q05">
+<span class="num">FAQ2 · 05</span>
+<h2>How much is actually implemented?</h2>
+<p>Repository size, screenshots, examples, and documentation are not implementation-status measurements.
+
+Every component should have a status such as:
+
+SPECIFIED → IMPLEMENTED → TESTED → INDEPENDENTLY TESTED → PRODUCTION-READY
+
+The status must be recorded component by component. Partial implementation is acceptable; disguising partial implementation as complete implementation is not.</p>
+</article>
+<article class="card" id="review-q06">
+<span class="num">FAQ2 · 06</span>
+<h2>How do you prove this isn&#x27;t just renamed syntax?</h2>
+<p>The decisive evidence is the transformation path:
+
+source → lexer/parser → AST → semantic representation → canonical IR → backend → executable behaviour.
+
+The question is: where does the linguistic layer enter, what transformations occur, and where does it cease to matter?
+
+A localized keyword table is one thing. A reproducible compiler pipeline with intermediate representations, semantic transformations, diagnostics, tests and executable output is another. The distinction must be demonstrated rather than asserted.</p>
+</article>
+<article class="card" id="review-q07">
+<span class="num">FAQ2 · 07</span>
+<h2>Can another team implement it without the reference source?</h2>
+<p>This is stronger than reproducing the author&#x27;s implementation.
+
+Give an independent team the specification and conformance vectors, but not undocumented implementation knowledge. Ask them to create a separate implementation and compare the result.
+
+If independent implementations agree because the specification determines the behaviour, the specification—not the original source—is carrying the standard.</p>
+</article>
+<article class="card" id="review-q08">
+<span class="num">FAQ2 · 08</span>
+<h2>Can it survive if the authors disappear?</h2>
+<p>A mature infrastructure project must not depend permanently on the people who created it.
+
+The survivability test is:
+
+clean checkout → clean build → tests → documentation → issue process → release process → maintenance handoff.
+
+A second team should be able to take over the system without private oral knowledge. Specifications, source, tests, build instructions, provenance and governance must be sufficient for institutional continuity.</p>
+</article>
+<article class="card" id="review-q09">
+<span class="num">FAQ2 · 09</span>
+<h2>What happens when the system breaks?</h2>
+<p>A serious specification must define failure behaviour, not only successful examples.
+
+Test malformed input, unsupported characters, transliteration ambiguity, collisions, missing glyphs, invalid ASTs, unresolved linguistic rules, compiler errors, unavailable accelerators, corrupted data and incompatible versions.
+
+The question is not merely “does it work?” It is also “what does it do when it cannot work?”</p>
+</article>
+<article class="card" id="review-q10">
+<span class="num">FAQ2 · 10</span>
+<h2>What are the performance and resource costs?</h2>
+<p>A reviewer can accept functional correctness and still reject an architecture as impractical.
+
+Measure compilation latency, memory consumption, transliteration throughput, glyph-generation throughput, runtime overhead, accelerator speedup, scaling behaviour and low-resource-device behaviour where relevant.
+
+State explicitly what performance cost is accepted in exchange for the claimed capability and why.</p>
+</article>
+<article class="card" id="review-q11">
+<span class="num">FAQ2 · 11</span>
+<h2>Does this require special hardware?</h2>
+<p>The project must distinguish software capability from optional acceleration and from any proposed hardware or ISA extension.
+
+State which capabilities work on commodity CPUs, which benefit from GPU/accelerator execution, which could be expressed as an ISA extension, and which are purely educational visualizations.
+
+Do not imply that a processor natively understands linguistic semantics merely because software represents linguistic data numerically.</p>
+</article>
+<article class="card" id="review-q12">
+<span class="num">FAQ2 · 12</span>
+<h2>Can it run on infrastructure you did not control?</h2>
+<p>Portability is an important sovereignty test.
+
+Where applicable, demonstrate the same specified behaviour across x86-64, ARM, POWER and RISC-V, and across more than one operating-system/toolchain environment.
+
+The purpose is not to claim support before it exists. The purpose is to expose exactly which portability claims are demonstrated, partial, planned, or outside scope.</p>
+</article>
+<article class="card" id="review-q13">
+<span class="num">FAQ2 · 13</span>
+<h2>What does sovereignty mean technically?</h2>
+<p>“Sovereign” must have an engineering boundary.
+
+Possible dimensions include:
+
+data sovereignty; language sovereignty; toolchain sovereignty; build sovereignty; runtime sovereignty; firmware sovereignty; hardware sovereignty; model sovereignty; governance sovereignty; maintenance sovereignty.
+
+For every dimension, mark the state as achieved, partial, planned, or outside scope.
+
+A sovereignty claim without a technical boundary is rhetoric. A sovereignty claim with measurable boundaries can be evaluated.</p>
+</article>
+<article class="card" id="review-q14">
+<span class="num">FAQ2 · 14</span>
+<h2>Who owns and governs the standard?</h2>
+<p>A standards proposal must answer who can amend it, who resolves disputes, how versions are managed, what licensing applies, how implementations may interoperate, how trademarks or certification are handled where relevant, and how maintenance is funded and governed.
+
+The objective is institutional continuity rather than permanent dependence on a single author or organization.</p>
+</article>
+<article class="card" id="review-q15">
+<span class="num">FAQ2 · 15</span>
+<h2>Who has legitimate grounds to reject each claim?</h2>
+<p>Different claims require different reviewers.
+
+Computational linguists can review linguistic and transliteration claims. Sanskrit experts can review Pāṇinian derivations. Compiler researchers can review compiler architecture. OS and kernel engineers can review runtime claims. Firmware and architecture engineers can review low-level claims. Graphics experts can review rendering. GPU experts can review acceleration. Standards experts can review normative conformance. Security engineers can review trust and attack surfaces. Independent implementers can review reproducibility.
+
+The goal is not a fan club. It is a review map.</p>
+</article>
+<article class="card" id="review-q16">
+<span class="num">FAQ2 · 16</span>
+<h2>What about security?</h2>
+<p>A multilingual programming system introduces security questions around confusables, mixed scripts, canonicalization, identifier ambiguity, transliteration collisions, deceptive source presentation, diagnostics, build provenance and supply-chain integrity.
+
+Security analysis should therefore be part of the conformance and deployment story rather than an afterthought.</p>
+</article>
+<article class="card" id="review-q17">
+<span class="num">FAQ2 · 17</span>
+<h2>What about accessibility?</h2>
+<p>Language infrastructure should account for keyboards, screen readers, Braille, accessibility tooling, RTL behaviour, mixed-script documents, font availability, low-resource devices and other accessibility requirements where applicable.
+
+Language equity without accessibility would leave an obvious gap in the claim.</p>
+</article>
+<article class="card" id="review-q18">
+<span class="num">FAQ2 · 18</span>
+<h2>Is this a demo, research prototype, reference implementation, or production system?</h2>
+<p>These categories must not be conflated:
+
+DEMO
+RESEARCH PROTOTYPE
+REFERENCE IMPLEMENTATION
+EXPERIMENTAL TOOL
+CONFORMANCE IMPLEMENTATION
+PRODUCTION SYSTEM
+STANDARD
+
+A visual demonstration can establish understanding. A reference implementation can establish one executable interpretation. A conformance implementation establishes behaviour against a specification. A standard requires a normative specification and governance. Each is evidence of a different kind.</p>
+</article>
+<article class="card" id="review-q19">
+<span class="num">FAQ2 · 19</span>
+<h2>Why should anyone care?</h2>
+<p>Technical validity is not the same as practical significance.
+
+For each proposed use case—education, linguistic computing, programming accessibility, archival systems, multilingual programming, low-resource language tooling, sovereign infrastructure, research, robotics or embedded systems—identify the concrete problem and measurable improvement.
+
+“Interesting” is not an adoption argument. A measurable benefit is.</p>
+</article>
+<article class="card" id="review-q20">
+<span class="num">FAQ2 · 20</span>
+<h2>Why should an institution adopt it?</h2>
+<p>An institution will ask what it gains, what it must change, what it must maintain, what interoperability it receives, what evidence already exists, and what adoption costs.
+
+The proposal should therefore distinguish technical merit from institutional value and provide an adoption path rather than merely requesting endorsement.</p>
+</article>
+<article class="card" id="review-q21">
+<span class="num">FAQ2 · 21</span>
+<h2>What happens when experts disagree?</h2>
+<p>Linguistic and technical disputes are inevitable.
+
+The evidence chain should preserve:
+
+claim → source → interpretation → formalization → implementation → test → counterexample → resolution → version.
+
+The system should record disagreement rather than silently collapsing it into one undocumented interpretation.</p>
+</article>
+<article class="card" id="review-q22">
+<span class="num">FAQ2 · 22</span>
+<h2>What happens when the specification evolves?</h2>
+<p>Infrastructure needs explicit versioning and compatibility policy.
+
+Address backward compatibility, forward compatibility, deprecated mappings, revised transliteration rules, compiler semantic changes, corpus revisions, Unicode evolution, new scripts, new architectures and incompatible versions.
+
+A research artifact can change freely. Infrastructure needs a controlled evolution model.</p>
+</article>
+<article class="card" id="review-q23">
+<span class="num">FAQ2 · 23</span>
+<h2>Can it be reproduced ten years later?</h2>
+<p>Long-term reproducibility requires more than a repository URL.
+
+Preserve versioned specifications, corpora, hashes, dependency versions, deterministic or documented builds, test vectors, release artifacts and archival identifiers.
+
+The real question is whether an independent institution in 2036 can retrieve the exact evidence and reproduce the claimed result.</p>
+</article>
+<article class="card" id="review-q24">
+<span class="num">FAQ2 · 24</span>
+<h2>What happens outside Indic languages?</h2>
+<p>The strongest way to establish generality is not to assert it but to test it.
+
+Use structurally different writing systems and languages to determine which layers are language-specific and which remain invariant. Indic languages can remain an important stress domain while the architecture is tested beyond Indic where appropriate.
+
+The evidence should identify exactly what generalizes and what does not.</p>
+</article>
+<article class="card" id="review-q25">
+<span class="num">FAQ2 · 25</span>
+<h2>What is the minimum claim that survives if the larger proposition is rejected?</h2>
+<p>This is an important scientific discipline.
+
+If a reviewer rejects 80 percent of the architecture, identify the smallest independently reproducible proposition that remains true.
+
+For example, a defensible minimal proposition might be the existence of a specified, script-aware computational representation and transformation pipeline whose behaviour can be independently implemented and tested.
+
+Build larger claims on top of surviving smaller claims.</p>
+</article>
+<article class="card" id="review-q26">
+<span class="num">FAQ2 · 26</span>
+<h2>What are you explicitly NOT claiming to have invented?</h2>
+<p>The project should not claim invention of Unicode, CPUs, GPUs, compilers, rasterization, operating systems or other established technologies merely because they appear in the stack.
+
+The relevant question is whether there is a new contribution at a particular layer: algorithm, formalization, implementation, interoperability mechanism, composition, standard proposal, or application.
+
+Explicitly conceding established prior art makes the actual contribution easier to evaluate.</p>
+</article>
+<article class="card" id="review-q27">
+<span class="num">FAQ2 · 27</span>
+<h2>What is the evidence hierarchy?</h2>
+<p>A useful evidence chain is:
+
+CLAIM
+↓
+PRIOR-ART SEARCH
+↓
+FORMAL SPECIFICATION
+↓
+REFERENCE IMPLEMENTATION
+↓
+REFERENCE VECTORS
+↓
+AUTOMATED TESTS
+↓
+INDEPENDENT IMPLEMENTATION
+↓
+INDEPENDENT REVIEW
+↓
+INDEPENDENT DEPLOYMENT
+↓
+STANDARDIZATION / INSTITUTIONAL ADOPTION
+
+A higher level is stronger evidence, but a lower level does not become worthless merely because a higher level has not yet been reached.</p>
+</article>
+<article class="card" id="review-q28">
+<span class="num">FAQ2 · 28</span>
+<h2>What claim can you currently NOT prove?</h2>
+<p>This should be answered openly.
+
+Every unsupported claim should be marked TODO, experimental, partial, or otherwise appropriately qualified. Missing evidence must not silently become a positive claim.
+
+This is not weakness. It is the mechanism that keeps a technical project from turning assumptions into mythology.</p>
+</article>
+
+</section>
+
+<section id="review-evidence">
+<h2>Evidence Architecture</h2>
+<div class="card">
+<h3>The complete hostile-review chain</h3>
+<pre>CLAIM
+  ↓
+PRIOR-ART SEARCH
+  ↓
+FORMAL SPECIFICATION
+  ↓
+REFERENCE IMPLEMENTATION
+  ↓
+REFERENCE VECTORS
+  ↓
+AUTOMATED TESTS
+  ↓
+INDEPENDENT IMPLEMENTATION
+  ↓
+INDEPENDENT REVIEW
+  ↓
+INDEPENDENT DEPLOYMENT
+  ↓
+STANDARDIZATION / INSTITUTIONAL ADOPTION</pre>
+</div>
+
+<div class="card">
+<h3>Minimum evidence matrix</h3>
+<table>
+<tr><th>Question</th><th>Required evidence</th></tr>
+<tr><td>Novelty</td><td>Prior-art comparison + precise contribution statement</td></tr>
+<tr><td>Implementation</td><td>Component-level implementation/status matrix</td></tr>
+<tr><td>Correctness</td><td>Reference vectors + automated tests</td></tr>
+<tr><td>Reproducibility</td><td>Independent clean build</td></tr>
+<tr><td>Specification quality</td><td>Independent implementation from specification alone</td></tr>
+<tr><td>Portability</td><td>Cross-platform / cross-architecture test matrix</td></tr>
+<tr><td>Performance</td><td>Defined workload + baseline + reproducible measurements</td></tr>
+<tr><td>Security</td><td>Threat model + negative tests + canonicalization/confusable analysis</td></tr>
+<tr><td>Governance</td><td>Versioning + amendment + dispute + maintenance process</td></tr>
+<tr><td>Longevity</td><td>Archived versions + provenance + reproducible build environment</td></tr>
+<tr><td>Institutional adoption</td><td>External review + deployment evidence + defined adoption cost</td></tr>
+</table>
+</div>
+
+<div class="warn">
+<strong>Do not manufacture evidence.</strong> If an artifact does not exist, label it TODO, partial, experimental, or unsupported. FAQ2 is specifically designed to expose the boundary between demonstrated capability and intended capability.
+</div>
+</section>
+
+<section id="review-bottomline">
+<h2>The Final Hostile-Review Test</h2>
+<div class="good">
+<p style="font-size:22px"><strong>Identify the exact claim. Find the prior art. Try to falsify it. Build the counterexample. Reproduce the result. Implement the specification independently. Record the failure or the surviving evidence.</strong></p>
+</div>
+<div class="card">
+<h3>The question behind all 28 questions</h3>
+<p><strong>“What would an independent, competent person have to do to prove that we are wrong?”</strong></p>
+<p>If the answer is clear, the project is becoming technically reviewable. If the answer is impossible because the claim is vague, the next task is to make the claim precise.</p>
+</div>
+<div class="card">
+<h3>Relationship to FAQ1</h3>
+<p>FAQ1 explains the architecture and establishes the principal distinctions. FAQ2 is the hostile-review layer: novelty, prior art, falsification, implementation status, clean-room reproduction, survivability, failure modes, performance, portability, sovereignty boundaries, governance, security, accessibility, generality and institutional adoption.</p>
+</div>
+</section>
+
+<footer>
+<p>Prepared as FAQ2 for the ILM/Hindawi technical and institutional evidence system. This document deliberately distinguishes demonstrated evidence from claims that still require artifacts, tests, independent implementations or institutional review.</p>
+</footer>
+</main>
+
+</section><section class="faq" id="reuse">
+<p class="tag">AI-generated text: it may not reflect the views of the developer or the author.</p>
+
+<header>
+<div class="num">Project ILM · FAQ3</div>
+<h1>Reuse, Integration, Automation &amp; Sovereignty</h1>
+<p class="lead">The third FAQ corrects a central category error: using and crediting open-source infrastructure is not the same thing as merely renaming it. The evaluation target is the linguistic mechanism, integration architecture, automation, measurable system behaviour, provenance and resulting scalability.</p>
+</header>
+<nav><a href="#reuse-principle">Core principle</a><a href="#reuse-questions">28 questions</a><a href="#reuse-model">Architecture</a><a href="#reuse-evidence">Evidence</a></nav>
+<main>
+
+<section id="reuse-principle">
+<h2>Core Principle</h2>
+<div class="green">
+<p><strong>Reuse is not the opposite of innovation.</strong></p>
+<p>A sovereign or multilingual computing architecture does not become less legitimate because it uses open-source compilers, operating systems, libraries, standards, architectures, rendering systems or other established technologies. The critical questions are provenance, licensing, adaptation, integration, automation, new system behaviour and measurable benefit.</p>
+</div>
+<div class="card">
+<h3>The category error</h3>
+<pre>“Existing component was reused”
+        ≠
+“Nothing new was built”
+
+“Existing technology was renamed”
+        ≠
+“New architecture was created”
+
+“Open source was credited”
+        ≠
+“Contribution is derivative”
+
+“Does not replace every layer”
+        ≠
+“Does not create a new layer”</pre>
+</div>
+</section>
+
+<section id="reuse-questions">
+<article class="card" id="reuse-q01">
+<span class="num">FAQ3 · 01</span>
+<h2>Is reuse of open-source technology evidence against originality?</h2>
+<p>No. Reuse is a normal property of open-source engineering. The relevant questions are whether the reused components are correctly attributed and licensed, what has been changed or added, how the components are composed, and what new capability the resulting system provides.</p>
+<p>The project does not need to reinvent Unicode, compilers, operating systems, CPUs, GPUs, or every other underlying technology to make a systems contribution.</p>
+
+</article>
+<article class="card" id="reuse-q02">
+<span class="num">FAQ3 · 02</span>
+<h2>Does “you just renamed stuff” describe a real compiler or systems contribution?</h2>
+<p>Only if the evidence shows that the transformation is merely lexical substitution.</p>
+<p>A genuine compiler/toolchain contribution must be evaluated through the transformation path, semantics, intermediate representations, generated artifacts, diagnostics, tests, and executable behaviour. If the linguistic layer changes how source is represented, transformed, compiled, generated, or maintained, the question is whether those changes produce demonstrable capability beyond renaming.</p>
+
+</article>
+<article class="card" id="reuse-q03">
+<span class="num">FAQ3 · 03</span>
+<h2>What is the correct distinction between reuse and renaming?</h2>
+<p>Reuse takes an existing component and employs it as part of a larger system, with provenance and licensing preserved. Renaming changes labels while leaving the underlying behaviour materially unchanged.</p>
+<p>The test is therefore behavioural and architectural:</p>
+<p>existing component → integration/adaptation → new system behaviour</p>
+<p>rather than:</p>
+<p>existing component → renamed labels → same behaviour.</p>
+
+</article>
+<article class="card" id="reuse-q04">
+<span class="num">FAQ3 · 04</span>
+<h2>Does a new architecture have to invent every component it uses?</h2>
+<p>No. System architecture routinely composes existing components.</p>
+<p>A contribution may reside in the architecture, abstraction boundary, transformation mechanism, automation, interoperability, implementation, or resulting system properties. The correct question is what the new composition makes possible that the individual components did not provide together.</p>
+
+</article>
+<article class="card" id="reuse-q05">
+<span class="num">FAQ3 · 05</span>
+<h2>What exactly should be credited?</h2>
+<p>Credit should be explicit and component-specific.</p>
+<p>For reused open-source software, identify the project, version where relevant, licence, upstream repository, and material modifications. For external standards and specifications, identify the source. For algorithms or prior art, identify the relevant prior work. For newly created components, identify what was developed in the project.</p>
+<p>Provenance strengthens the work; it does not diminish it.</p>
+
+</article>
+<article class="card" id="reuse-q06">
+<span class="num">FAQ3 · 06</span>
+<h2>Does using many open-source components make the project less sovereign?</h2>
+<p>Not necessarily. Rebuilding the entire global software stack would often be the opposite of an efficient sovereignty strategy.</p>
+<p>A more scalable strategy can be to own the critical linguistic transformation, integration, automation, specifications, tests, build process, and maintenance mechanisms while deliberately reusing mature open infrastructure.</p>
+<p>Sovereignty therefore needs to be evaluated by dependency boundaries, control points, replaceability, maintenance capability, and institutional ownership—not by counting how many upstream projects were reused.</p>
+
+</article>
+<article class="card" id="reuse-q07">
+<span class="num">FAQ3 · 07</span>
+<h2>What is the actual architectural proposition?</h2>
+<p>The central proposition is not “replace every existing technology.”</p>
+<p>It is that a sufficiently efficient linguistic representation/transliteration mechanism can act as a transformation layer over existing computing infrastructure, allowing language-specific forms to be systematically mapped into a common computational substrate and enabling automation of much of the surrounding multilingual stack.</p>
+<p>The architectural question is whether this abstraction works and scales.</p>
+
+</article>
+<article class="card" id="reuse-q08">
+<span class="num">FAQ3 · 08</span>
+<h2>Why is efficient transliteration more important than simple keyword translation?</h2>
+<p>Simple keyword translation addresses visible syntax.</p>
+<p>A strategically useful transliteration/representation mechanism can address a deeper problem: how linguistic forms are represented, transformed, preserved, reversed where required, and fed into common computational infrastructure.</p>
+<p>If that mechanism is compact, systematic and automatable, it can reduce the amount of language-specific machinery that must be independently recreated for every language and every layer.</p>
+
+</article>
+<article class="card" id="reuse-q09">
+<span class="num">FAQ3 · 09</span>
+<h2>What is the scaling argument?</h2>
+<p>Consider the naive model:</p>
+<p>N languages × M manually maintained computing layers.</p>
+<p>A transformation-oriented architecture attempts to reduce this to a reusable linguistic layer plus common infrastructure and automated generation/conversion.</p>
+<p>The claim is not that every language becomes automatically solved. The claim is that the architecture can reduce duplicated language-specific engineering and make expansion tractable.</p>
+<p>This is an architectural scalability hypothesis that can be benchmarked.</p>
+
+</article>
+<article class="card" id="reuse-q10">
+<span class="num">FAQ3 · 10</span>
+<h2>Is the contribution the transliteration mechanism itself, the stack, or both?</h2>
+<p>It can be both, but the claims should be separated.</p>
+<p>One claim may concern the linguistic mechanism: its representation, reversibility, efficiency, coverage, collision behaviour, or formal properties.</p>
+<p>Another may concern the systems architecture: how that mechanism is composed with compilers, operating systems, rendering, build tooling, firmware, embedded systems, AI/ML infrastructure, or other layers.</p>
+<p>A strong evaluation measures each layer independently and then evaluates the integrated system.</p>
+
+</article>
+<article class="card" id="reuse-q11">
+<span class="num">FAQ3 · 11</span>
+<h2>Does integration count as a technical contribution?</h2>
+<p>Yes, when the integration is technically substantive and produces measurable new system behaviour.</p>
+<p>Integration can require new interfaces, data models, transformation rules, build systems, compatibility mechanisms, automated generation, conformance tests, performance engineering, and maintenance architecture.</p>
+<p>The correct standard is not “did every component originate here?” but “what technically meaningful system property results from the integration?”</p>
+
+</article>
+<article class="card" id="reuse-q12">
+<span class="num">FAQ3 · 12</span>
+<h2>What if every individual component already exists?</h2>
+<p>Then the strongest contribution may be the composition and the resulting system-level property.</p>
+<p>For example, an existing compiler, transliterator, operating system and build system may each be known technologies. A new architecture that makes them operate as an automated multilingual pipeline can still be technically meaningful if it provides a capability, efficiency, interoperability property, or maintenance model that did not previously exist in that form.</p>
+<p>That claim must be demonstrated, not assumed.</p>
+
+</article>
+<article class="card" id="reuse-q13">
+<span class="num">FAQ3 · 13</span>
+<h2>Is “all languages of the world” an overclaim?</h2>
+<p>It is important to distinguish architectural generality from current language coverage.</p>
+<p>“Designed to scale toward all languages” is an architectural objective. “Currently supports every language” is an empirical coverage claim.</p>
+<p>The project should publish current coverage honestly while separately demonstrating which mechanisms are language-independent and which require language-specific data or rules.</p>
+
+</article>
+<article class="card" id="reuse-q14">
+<span class="num">FAQ3 · 14</span>
+<h2>Does proving generality require implementing every script first?</h2>
+<p>No. A scalable architecture can be demonstrated through representative cases and by identifying the invariant mechanism.</p>
+<p>The important evidence is which parts remain constant, which parts vary by language or script, how new language data is introduced, and how much automation is achieved when adding another language.</p>
+<p>Coverage can then expand incrementally.</p>
+
+</article>
+<article class="card" id="reuse-q15">
+<span class="num">FAQ3 · 15</span>
+<h2>How should open-source provenance be presented?</h2>
+<p>Use a provenance ledger rather than defensive prose.</p>
+<p>For each dependency or reused technology, record:</p>
+<p>project → version/commit → licence → upstream URL → local modifications → integration point → generated or derived artifacts → tests.</p>
+<p>This makes reuse auditable and allows reviewers to distinguish upstream work from project-specific work.</p>
+
+</article>
+<article class="card" id="reuse-q16">
+<span class="num">FAQ3 · 16</span>
+<h2>What is the strongest response to “you didn&#x27;t invent the CPU/compiler/OS”?</h2>
+<p>Agree with the premise and reject the conclusion.</p>
+<p>The project does not claim invention of the CPU, compiler, OS, GPU, Unicode, or other established infrastructure unless a specific component genuinely constitutes such an invention.</p>
+<p>The contribution can instead be the linguistic transformation and systems architecture that makes established infrastructure systematically usable for a broader language space.</p>
+<p>Using an existing foundation is an engineering choice, not an admission that nothing new was built.</p>
+
+</article>
+<article class="card" id="reuse-q17">
+<span class="num">FAQ3 · 17</span>
+<h2>Can a system contribution be valuable without a new fundamental algorithm?</h2>
+<p>Yes. New algorithms are one form of contribution, not the only form.</p>
+<p>Other legitimate contributions include architecture, protocol, representation, compiler transformation, interoperability layer, automation system, conformance framework, implementation, optimization, integration, deployment methodology, or standardization proposal.</p>
+<p>The contribution should be stated precisely rather than inflated into algorithmic novelty when the actual contribution is architectural.</p>
+
+</article>
+<article class="card" id="reuse-q18">
+<span class="num">FAQ3 · 18</span>
+<h2>What does automation add?</h2>
+<p>Automation changes the economics of multilingual infrastructure.</p>
+<p>If language-specific transformations can be generated, converted, tested, built and maintained through common machinery, the marginal cost of adding or updating languages can potentially fall.</p>
+<p>That is a systems property that should be measured through build time, code generation volume, maintenance effort, defect rates, test coverage, and language-addition workflows where appropriate.</p>
+
+</article>
+<article class="card" id="reuse-q19">
+<span class="num">FAQ3 · 19</span>
+<h2>How do we distinguish the linguistic layer from the reused computing substrate?</h2>
+<p>Draw the dependency boundary.</p>
+<p>For each artifact, identify:</p>
+<p>linguistic input → linguistic transformation → intermediate representation → reused compiler/toolchain → generated machine artefact → runtime.</p>
+<p>Then identify which artefacts are upstream, which are adapted, which are newly created, and which are generated automatically.</p>
+<p>This makes both credit and contribution visible.</p>
+
+</article>
+<article class="card" id="reuse-q20">
+<span class="num">FAQ3 · 20</span>
+<h2>What evidence would prove that the integration adds capability?</h2>
+<p>Use before/after comparisons.</p>
+<p>Examples include:</p>
+<p>• language addition effort before versus after the mechanism;
+• amount of language-specific code;
+• transformation throughput;
+• round-trip fidelity;
+• number of toolchain components generated or adapted automatically;
+• build reproducibility;
+• cross-platform behaviour;
+• maintenance changes required when the linguistic layer changes;
+• independent implementation results.</p>
+<p>The strongest claim is a measurable delta, not a larger diagram.</p>
+
+</article>
+<article class="card" id="reuse-q21">
+<span class="num">FAQ3 · 21</span>
+<h2>What if the system is built almost entirely from existing FOSS?</h2>
+<p>That can be a strength.</p>
+<p>A system that can be assembled from mature, auditable, openly licensed infrastructure may have lower reinvention cost, stronger interoperability, and easier institutional adoption than a system that replaces everything.</p>
+<p>The critical issue is whether the project&#x27;s own contribution—the linguistic mechanism, integration architecture, automation, specifications, tests and resulting system behaviour—is identifiable and reproducible.</p>
+
+</article>
+<article class="card" id="reuse-q22">
+<span class="num">FAQ3 · 22</span>
+<h2>Does reuse make the project derivative?</h2>
+<p>All engineering builds on prior art. “Derivative” is not a useful binary category.</p>
+<p>The meaningful questions are:</p>
+<p>What was inherited?
+What was modified?
+What was newly designed?
+What was newly automated?
+What new behaviour resulted?
+What prior-art constraints remain?
+What can an independent party reproduce?</p>
+<p>A transparent provenance graph is stronger than either claiming total originality or apologizing for reuse.</p>
+
+</article>
+<article class="card" id="reuse-q23">
+<span class="num">FAQ3 · 23</span>
+<h2>What should reviewers compare?</h2>
+<p>Compare equivalent system properties, not labels.</p>
+<p>Do not compare “Hindi compiler” against “Hindawi” merely because both use Hindi words.</p>
+<p>Compare:</p>
+<p>representation;
+transformation semantics;
+compiler stages;
+IR;
+round-trip properties;
+language-addition workflow;
+generated artifacts;
+runtime behaviour;
+portability;
+performance;
+test coverage;
+maintenance burden;
+provenance;
+and reproducibility.</p>
+<p>That is the level at which “renaming” can actually be proven or disproven.</p>
+
+</article>
+<article class="card" id="reuse-q24">
+<span class="num">FAQ3 · 24</span>
+<h2>What is the right response if an existing system already does part of this?</h2>
+<p>Reuse it where appropriate.</p>
+<p>The discovery of prior art should cause the project to integrate, adapt, benchmark, or narrow its claim—not to pretend that the prior art does not exist.</p>
+<p>A mature architecture should be able to say:</p>
+<p>“This component is already solved; we use it.”</p>
+<p>and:</p>
+<p>“This interface is insufficient for our requirement; here is the additional mechanism.”</p>
+<p>Both are valid engineering outcomes.</p>
+
+</article>
+<article class="card" id="reuse-q25">
+<span class="num">FAQ3 · 25</span>
+<h2>What is the relationship between linguistic efficiency and system sovereignty?</h2>
+<p>If linguistic transformation is a bottleneck, improving its compactness, reversibility, automation, and interoperability can reduce the amount of language-specific infrastructure that must be independently maintained.</p>
+<p>That can shift sovereignty from “rebuild every layer” toward “control the critical transformation and integration layers while retaining the ability to replace dependencies.”</p>
+<p>This is an architectural strategy, not merely a political label.</p>
+
+</article>
+<article class="card" id="reuse-q26">
+<span class="num">FAQ3 · 26</span>
+<h2>What should be measured to test the sovereignty/scalability hypothesis?</h2>
+<p>Useful measurements include:</p>
+<p>• marginal effort to add a language;
+• language-specific lines of code;
+• generated versus manually maintained code;
+• number of reused upstream components;
+• dependency replacement cost;
+• build reproducibility;
+• portability;
+• round-trip fidelity;
+• test coverage;
+• maintenance effort;
+• time from linguistic specification to runnable artifact;
+• ability of another institution to reproduce the stack.</p>
+<p>These measurements turn the sovereignty argument into an engineering hypothesis.</p>
+
+</article>
+<article class="card" id="reuse-q27">
+<span class="num">FAQ3 · 27</span>
+<h2>What is the strongest institutional argument?</h2>
+<p>The institutional argument is not “please accept our terminology.”</p>
+<p>It is:</p>
+<p>Here is the open infrastructure we reuse.
+Here is the provenance.
+Here is the new linguistic mechanism.
+Here is the integration architecture.
+Here are the automated transformations.
+Here are the tests.
+Here is the measurable reduction in duplicated effort.
+Here is the portability.
+Here is how another institution can reproduce and maintain it.</p>
+<p>Institutional ownership can then be discussed on evidence rather than personality or rhetoric.</p>
+
+</article>
+<article class="card" id="reuse-q28">
+<span class="num">FAQ3 · 28</span>
+<h2>What is the final answer to “you just renamed stuff?”</h2>
+<p>Ask the reviewer to identify the exact layer at which the alleged renaming occurs.</p>
+<p>If the claim is merely lexical substitution, show the lexical mapping.</p>
+<p>If the project contains a new representation, transliteration mechanism, transformation pipeline, intermediate representation, automated generation process, compiler integration, build system, conformance suite, or system-level behaviour, evaluate those artifacts directly.</p>
+<p>The burden is no longer rhetorical:</p>
+<p><strong>Show the input, transformation, output, provenance, tests and resulting system behaviour.</strong></p>
+<p>If those are materially different, “renaming” is not an adequate description.</p>
+
+</article>
+
+</section>
+
+<section id="reuse-model">
+<h2>Reference Architecture</h2>
+<div class="card">
+<pre>LANGUAGE / SCRIPT
+        ↓
+LINGUISTIC REPRESENTATION
+        ↓
+EFFICIENT TRANSLITERATION / TRANSFORMATION
+        ↓
+COMMON INTERMEDIATE / COMPUTATIONAL SUBSTRATE
+        ↓
+AUTOMATED GENERATION / CONVERSION
+        ↓
+REUSED OPEN COMPUTING INFRASTRUCTURE
+        ↓
+COMPILER / OS / RUNTIME / FIRMWARE / GPU / EMBEDDED / AI
+        ↓
+EXECUTABLE SYSTEM</pre>
+</div>
+<div class="callout">
+<strong>The architectural hypothesis:</strong> instead of independently rebuilding every computing layer for every language, make the linguistic transformation layer efficient enough that common infrastructure can be reused and multilingual variants can be generated, adapted, tested and maintained systematically.
+</div>
+</section>
+
+<section id="reuse-evidence">
+<h2>Evidence Model</h2>
+<div class="card">
+<table>
+<tr><th>Question</th><th>Evidence</th></tr>
+<tr><td>What was reused?</td><td>Provenance, upstream project, version/commit, licence.</td></tr>
+<tr><td>What was changed?</td><td>Patch/diff, adaptation layer, configuration, generated artefact.</td></tr>
+<tr><td>What was newly designed?</td><td>Specification, algorithm, representation, architecture or transformation description.</td></tr>
+<tr><td>What was newly automated?</td><td>Build/generation/conversion pipeline and reproducible execution.</td></tr>
+<tr><td>What new capability results?</td><td>Before/after measurements and executable behaviour.</td></tr>
+<tr><td>Does it scale?</td><td>Language-addition and maintenance measurements.</td></tr>
+<tr><td>Can others reproduce it?</td><td>Clean build, tests, specification and independent implementation where appropriate.</td></tr>
+</table>
+</div>
+
+<div class="gold">
+<strong>Do not overclaim.</strong> “Architecturally capable of scaling toward all languages” and “currently supports all languages” are different claims. Publish current coverage and separately demonstrate the general mechanism.
+</div>
+
+<div class="green">
+<p><strong>The strongest answer is empirical:</strong> show the upstream component, its licence and provenance; show the new linguistic mechanism; show the integration boundary; show the automated transformation; show the generated artefacts; show the tests; show the measurable system-level result.</p>
+</div>
+</section>
+
+<footer>
+<p>FAQ3 is the corrective layer to FAQ1 and FAQ2. It preserves rigorous review while rejecting the false premise that open-source reuse, integration, composition or adaptation are inherently evidence against technical contribution.</p>
+</footer>
+</main>
+
+</section><section class="faq" id="thesis">
+<p class="tag">AI-generated text: it may not reflect the views of the developer or the author.</p>
+
+<header>
+<div class="kicker">Project ILM · FAQ4</div>
+<h1>Architectural Thesis &amp; Evidence Map</h1>
+<p class="lead">This FAQ captures the corrected position emerging from FAQ1–FAQ3: open-source reuse is deliberate infrastructure strategy; contribution is multidimensional; evidence maturity is distinct from contribution type; linguistic transformation and automation can form an architectural layer; and sovereignty means capability and agency rather than isolation.</p>
+</header>
+<nav><a href="#thesis-thesis">Thesis</a><a href="#thesis-questions">40 questions</a><a href="#thesis-architecture">Architecture</a><a href="#thesis-evidence">Evidence map</a><a href="#thesis-principles">Principles</a></nav>
+<main>
+<section id="thesis-thesis">
+<h2>Core Thesis</h2>
+<div class="green">
+<p><strong>The architectural claim:</strong> an efficient linguistic transformation layer can allow existing computing infrastructure to be reused, specialized and automated across languages, potentially reducing the duplicated engineering required to make each language computationally native.</p>
+<p>The question is not whether every underlying component was invented here. The question is whether the linguistic layer produces a demonstrable change in capability, scalability, maintainability, interoperability or sovereignty.</p>
+</div>
+<div class="card">
+<h2>Four provenance categories</h2>
+<table>
+<tr><th>Category</th><th>Question</th></tr>
+<tr><td><strong>REUSED</strong></td><td>What existing component is deliberately employed?</td></tr>
+<tr><td><strong>ADAPTED</strong></td><td>What was changed for the requirement?</td></tr>
+<tr><td><strong>INTEGRATED</strong></td><td>What previously separate components are made to operate together?</td></tr>
+<tr><td><strong>NEW</strong></td><td>What mechanism, representation, transformation, automation or implementation was newly developed?</td></tr>
+</table>
+</div>
+<div class="callout">
+<strong>Evidence maturity is a separate axis:</strong> idea → specification → implementation → testing → independent reproduction → deployment → standardization, where applicable.
+</div>
+</section>
+
+<section id="thesis-questions">
+<h2>40 Questions</h2>
+<article class="card" id="thesis-q01"><span class="num">FAQ4 · 01</span><h2>What is the central ILM architectural thesis?</h2><p>The claim is not that every layer of modern computing must be reinvented.</p><p>The claim is that an efficient linguistic transformation layer can allow existing computing infrastructure to be reused, specialized and automated across languages, potentially reducing the duplicated engineering required to make each language computationally native.</p><p>The decisive question is therefore not “Was every underlying component invented here?” but:</p><p><strong>Does the linguistic layer produce a demonstrable change in capability, scalability, maintainability, interoperability or sovereignty?</strong></p></article>
+<article class="card" id="thesis-q02"><span class="num">FAQ4 · 02</span><h2>Is reuse of open-source infrastructure evidence against originality?</h2><p>No.</p><p>Reuse is an ordinary and often strategically superior property of systems engineering. The project should explicitly identify what it reuses, where it came from, its licence, relevant version or commit, and any modifications.</p><p>The contribution can reside in the representation, transformation mechanism, architecture, integration, automation, implementation, optimization, deployment model or resulting system property.</p></article>
+<article class="card" id="thesis-q03"><span class="num">FAQ4 · 03</span><h2>What is the difference between reuse and renaming?</h2><p>Renaming changes labels while leaving the relevant computational behaviour materially unchanged.</p><p>Reuse incorporates an existing component into a system whose behaviour, interfaces, transformations or operating properties may be different.</p><p>The useful test is:</p><p><pre>existing component<br>        ↓<br>provenance + licence<br>        ↓<br>adaptation / integration<br>        ↓<br>new transformation or orchestration<br>        ↓<br>new system behaviour</pre></p><p>If the only change is lexical substitution, call it lexical substitution. If the system performs additional computation, transformation, generation or integration, evaluate those mechanisms directly.</p></article>
+<article class="card" id="thesis-q04"><span class="num">FAQ4 · 04</span><h2>Does ILM have to invent Unicode, the CPU, the compiler, the OS, the GPU or the whole software stack?</h2><p>No.</p><p>That would be unnecessary reinvention.</p><p>ILM can deliberately stand on mature open infrastructure. The technical contribution is then evaluated at the layers ILM actually changes or creates.</p><p>The correct statement is:</p><p><strong>We do not claim invention of established infrastructure where we reuse it. We claim the linguistic and systems mechanisms that make that infrastructure systematically usable, adaptable and automatable across a broader language space.</strong></p></article>
+<article class="card" id="thesis-q05"><span class="num">FAQ4 · 05</span><h2>Does integration count as a technical contribution?</h2><p>Yes, when the integration is technically substantive and produces measurable system properties.</p><p>Integration can require new interfaces, representations, transformation rules, intermediate forms, build systems, compatibility mechanisms, generated artefacts, conformance tests and maintenance mechanisms.</p><p>The contribution should not be ranked merely by whether it contains a new fundamental algorithm.</p></article>
+<article class="card" id="thesis-q06"><span class="num">FAQ4 · 06</span><h2>What kinds of contribution can ILM make?</h2><p>Contribution is multidimensional. It can include:</p><p>• linguistic representation;<br>• transliteration or transformation;<br>• intermediate representation;<br>• compiler transformation;<br>• architecture;<br>• integration;<br>• automation;<br>• implementation;<br>• optimization;<br>• interoperability;<br>• conformance infrastructure;<br>• deployment methodology;<br>• governance;<br>• standardization.</p><p>“Novel algorithm” is one contribution category, not the master definition of technical contribution.</p></article>
+<article class="card" id="thesis-q07"><span class="num">FAQ4 · 07</span><h2>What is the correct distinction between evidence maturity and contribution type?</h2><p>These are different axes.</p><p><strong>Evidence maturity:</strong></p><p><pre>idea → specification → implementation → testing<br>     → independent reproduction → deployment → standardization</pre></p><p><strong>Contribution type:</strong></p><p><pre>representation / algorithm / architecture / integration<br>/ automation / implementation / optimization<br>/ interoperability / application / governance / standardization</pre></p><p>Evidence maturity must not be mistaken for a hierarchy of intellectual contribution. A prototype can establish something real before standardization. A representation can be valuable before deployment. An architecture can be meaningful before an independent implementation exists.</p></article>
+<article class="card" id="thesis-q08"><span class="num">FAQ4 · 08</span><h2>Is independent implementation the ultimate test of everything?</h2><p>No.</p><p>Independent implementation is exceptionally strong evidence for specification completeness, interoperability and implementability.</p><p>But different claims require different evidence:</p><p>• linguistic claims → corpus and linguistic validation;<br>• transliteration claims → coverage, reversibility and collision tests;<br>• rendering claims → visual and algorithmic validation;<br>• compiler claims → semantic and executable tests;<br>• performance claims → controlled benchmarks;<br>• architecture claims → comparative system evidence;<br>• standards claims → independent implementation and conformance.</p><p>The evidence must match the claim.</p></article>
+<article class="card" id="thesis-q09"><span class="num">FAQ4 · 09</span><h2>Is institutional adoption the final source of legitimacy?</h2><p>No.</p><p>Institutional adoption is an important possible outcome, not the source of technical truth.</p><p>A system can be technically valid before an institution adopts it. Conversely, institutional adoption does not substitute for technical evidence.</p><p>The project should support an open path:</p><p><pre>implementation → reproduction → community testing<br>→ independent implementations → deployment<br>→ institutional adoption / standardization where useful</pre></p><p>Institutional ownership and distributed open-source ownership can coexist.</p></article>
+<article class="card" id="thesis-q10"><span class="num">FAQ4 · 10</span><h2>Does sovereignty mean merely controlling dependencies?</h2><p>No.</p><p>Dependency control is one dimension.</p><p>Sovereignty can also involve linguistic, computational, data, operational, maintenance, institutional, governance, economic and supply-chain dimensions.</p><p>The correct approach is to specify the dimensions separately rather than collapse sovereignty into a single technical definition.</p></article>
+<article class="card" id="thesis-q11"><span class="num">FAQ4 · 11</span><h2>How does ILM relate to the fork-and-seed model?</h2><p>The architecture is compatible with a distributed model of technical ownership.</p><p>A useful path is:</p><p><pre>open infrastructure<br>      ↓<br>fork / adapt<br>      ↓<br>seed implementation<br>      ↓<br>independent testing<br>      ↓<br>converging implementations<br>      ↓<br>community or institutional federation<br>      ↓<br>standardization where useful</pre></p><p>This differs from a model in which a technology becomes legitimate only after recognition by a central institution.</p></article>
+<article class="card" id="thesis-q12"><span class="num">FAQ4 · 12</span><h2>Is Indic computing being treated as a special case?</h2><p>Indic computing can be a demanding test domain without being treated as a lesser or provincial domain.</p><p>Complex script formation, multiple scripts, linguistic diversity, transliteration requirements and other Indic cases can expose architectural properties that are useful beyond Indic.</p><p>The appropriate claim is:</p><p><strong>Indic is a high-information test domain for a potentially general architecture.</strong></p><p>Current empirical language coverage and architectural generality must nevertheless be reported separately.</p></article>
+<article class="card" id="thesis-q13"><span class="num">FAQ4 · 13</span><h2>Does generality require implementing every language?</h2><p>No.</p><p>Architectural generality can be demonstrated by identifying invariant mechanisms and measuring what changes when another language or script is added.</p><p>The evidence should distinguish:</p><p>• language-independent machinery;<br>• script-specific machinery;<br>• language-specific data;<br>• language-specific rules;<br>• automatically generated components;<br>• manually maintained components.</p><p>“Architecturally scalable toward many languages” is not the same claim as “currently implements every language.”</p></article>
+<article class="card" id="thesis-q14"><span class="num">FAQ4 · 14</span><h2>Why must language and script be kept separate?</h2><p>Because they are different computational dimensions.</p><p>A language can be represented in multiple scripts. A script can represent multiple languages. Orthography, linguistic structure, transliteration, encoding, representation and rendering are also distinct layers.</p><p>The architecture must therefore avoid collapsing:</p><p><pre>language ≠ script<br>script ≠ encoding<br>encoding ≠ representation<br>representation ≠ transliteration<br>transliteration ≠ rendering<br>rendering ≠ language semantics</pre></p><p>This distinction is technically necessary, not merely terminological.</p></article>
+<article class="card" id="thesis-q15"><span class="num">FAQ4 · 15</span><h2>Does Unicode already solve this problem?</h2><p>Unicode solves an important foundational problem: standardized character encoding.</p><p>It does not, by itself, constitute the entire computational stack required for a language. Input methods, language data, fonts, shaping, rendering, compilers, runtimes, operating systems and other infrastructure remain separate concerns.</p><p>ILM does not need to replace Unicode to investigate what lies above, beside or around character encoding.</p></article>
+<article class="card" id="thesis-q16"><span class="num">FAQ4 · 16</span><h2>What is different about efficient transliteration?</h2><p>Simple keyword translation changes visible syntax.</p><p>A deeper linguistic transformation mechanism can address representation, reversibility, preservation, transformation, machine manipulation and systematic conversion between linguistic forms.</p><p>If it is sufficiently efficient and automatable, it can become infrastructure rather than merely a user-interface translation trick.</p></article>
+<article class="card" id="thesis-q17"><span class="num">FAQ4 · 17</span><h2>Why is transliteration potentially an architectural layer?</h2><p>Because the linguistic transformation can sit between language-specific forms and common computational infrastructure.</p><p>A simplified model is:</p><p><pre>language / script<br>       ↓<br>linguistic representation<br>       ↓<br>efficient transformation / transliteration<br>       ↓<br>common computational substrate<br>       ↓<br>automated generation / conversion<br>       ↓<br>existing open infrastructure<br>       ↓<br>executable system</pre></p><p>The hypothesis is that this can reduce the need to manually rebuild equivalent infrastructure for each language.</p></article>
+<article class="card" id="thesis-q18"><span class="num">FAQ4 · 18</span><h2>What does automation change?</h2><p>Automation can change the production model itself.</p><p>Instead of:</p><p><pre>language A → manually build stack A<br>language B → manually build stack B<br>language C → manually build stack C</pre></p><p>the architecture can seek:</p><p><pre>linguistic specification<br>        ↓<br>common transformation machinery<br>        ↓<br>generated / adapted artefacts<br>        ↓<br>automated tests and builds<br>        ↓<br>language-specific computational system</pre></p><p>The resulting benefit is not merely convenience. It can change the marginal engineering cost of adding and maintaining languages.</p></article>
+<article class="card" id="thesis-q19"><span class="num">FAQ4 · 19</span><h2>How should the scaling claim be stated?</h2><p>A simplified teaching model is:</p><p><pre>N languages × M manually maintained layers</pre></p><p>The architectural hypothesis is that a reusable linguistic transformation layer can reduce the coupling between those dimensions.</p><p>The real system is richer:</p><p><pre>languages × scripts × orthographies × representations<br>× toolchains × platforms × architectures × versions<br>× interfaces × maintenance states</pre></p><p>Therefore the N×M expression should be treated as a pedagogical simplification, not as the formal system model.</p></article>
+<article class="card" id="thesis-q20"><span class="num">FAQ4 · 20</span><h2>What should be measured to prove the scaling hypothesis?</h2><p>Useful measurements include:</p><p>• marginal effort to add a language;<br>• language-specific lines of code;<br>• generated versus manually maintained code;<br>• transformation throughput;<br>• round-trip fidelity;<br>• collision behaviour;<br>• build time;<br>• test coverage;<br>• maintenance effort;<br>• time from linguistic specification to runnable artefact;<br>• cross-platform behaviour;<br>• dependency replacement cost;<br>• reproducibility by another institution.</p><p>The strongest evidence is a measurable before/after difference.</p></article>
+<article class="card" id="thesis-q21"><span class="num">FAQ4 · 21</span><h2>What is the role of open-source provenance?</h2><p>Provenance should be treated as an architectural data structure, not a disclaimer.</p><p>For every significant reused component, record:</p><p><pre>upstream project<br>→ version / commit<br>→ licence<br>→ local modification<br>→ integration point<br>→ generated / derived artefacts<br>→ tests</pre></p><p>This makes it possible to distinguish inherited capability from project-specific capability without diminishing either.</p></article>
+<article class="card" id="thesis-q22"><span class="num">FAQ4 · 22</span><h2>What should reviewers compare with existing “language programming” projects?</h2><p>They should compare system properties rather than labels.</p><p>A keyword-transpiler and a deeper language infrastructure project may both be called a “Hindi programming language.” That label is insufficient.</p><p>Compare:</p><p>• representation;<br>• lexical transformation;<br>• parsing;<br>• semantics;<br>• intermediate representation;<br>• compiler stages;<br>• generated artefacts;<br>• runtime behaviour;<br>• language-addition workflow;<br>• automation;<br>• portability;<br>• performance;<br>• maintenance burden;<br>• provenance;<br>• reproducibility.</p><p>The comparison should identify exactly which layer each project solves.</p></article>
+<article class="card" id="thesis-q23"><span class="num">FAQ4 · 23</span><h2>What if an existing project already solves part of the problem?</h2><p>Reuse it where appropriate.</p><p>Prior art should cause integration, adaptation, benchmarking or claim refinement—not denial of the prior art.</p><p>A mature architecture can state:</p><p><strong>“This component is already solved; we use it.”</strong></p><p>and:</p><p><strong>“This interface is insufficient for our requirement; here is the additional mechanism.”</strong></p><p>Both statements are legitimate engineering outcomes.</p></article>
+<article class="card" id="thesis-q24"><span class="num">FAQ4 · 24</span><h2>What is the relationship between linguistic efficiency and sovereignty?</h2><p>If linguistic transformation is a bottleneck, improving its compactness, reversibility, automation and interoperability can reduce the language-specific infrastructure that must be independently maintained.</p><p>That can shift sovereignty from:</p><p><pre>rebuild every layer</pre></p><p>toward:</p><p><pre>control the critical linguistic transformation<br>+ control the integration and generation mechanisms<br>+ retain replaceability of dependencies<br>+ retain the ability to build and maintain the system</pre></p><p>That is an architectural sovereignty strategy.</p></article>
+<article class="card" id="thesis-q25"><span class="num">FAQ4 · 25</span><h2>Is “all languages of the world” currently being claimed?</h2><p>No such empirical claim should be made unless the evidence exists.</p><p>The appropriate distinction is:</p><p><strong>architectural objective:</strong> the mechanism is designed to scale across languages and scripts.</p><p><strong>empirical coverage:</strong> these specific languages/scripts have been implemented and tested.</p><p>The project should publish the second honestly while demonstrating why the first is plausible.</p></article>
+<article class="card" id="thesis-q26"><span class="num">FAQ4 · 26</span><h2>What is the correct relationship between ILM and existing standards?</h2><p>Existing standards are infrastructure and prior art to be composed with, adapted to or extended where necessary.</p><p>The objective is not to reject standards merely because they are external.</p><p>The objective is to determine:</p><p>• what the standard already solves;<br>• what ILM can directly reuse;<br>• where the standard&#x27;s abstraction ends;<br>• what additional mechanism is required;<br>• whether an extension or new standard is actually justified.</p></article>
+<article class="card" id="thesis-q27"><span class="num">FAQ4 · 27</span><h2>What is the correct way to handle claims that ILM is “just localization”?</h2><p>Ask which layer is being localized.</p><p>If only keywords are translated, the claim may be correct.</p><p>If the project changes representation, transliteration, intermediate forms, transformation semantics, generated artefacts, compiler integration, build processes, rendering construction, or system-level behaviour, then “localization” is incomplete.</p><p>The classification must follow the mechanism, not the language used to describe it.</p></article>
+<article class="card" id="thesis-q28"><span class="num">FAQ4 · 28</span><h2>What is the correct way to handle the claim that ILM “did not invent anything”?</h2><p>Agree with the parts that are true.</p><p>ILM does not need to claim invention of everything it uses.</p><p>Instead, identify:</p><p><pre>REUSED<br>ADAPTED<br>INTEGRATED<br>AUTOMATED<br>NEW<br></pre></p><p>Then show what system property emerges from that composition.</p><p>The absence of invention at one layer does not eliminate contribution at another.</p></article>
+<article class="card" id="thesis-q29"><span class="num">FAQ4 · 29</span><h2>What is the strongest possible response to “you just renamed stuff?”</h2><p>Identify the exact layer at which the alleged renaming occurs.</p><p>Then expose:</p><p><pre>input<br>↓<br>representation<br>↓<br>transformation<br>↓<br>intermediate state<br>↓<br>generated artefact<br>↓<br>execution<br>↓<br>measured behaviour</pre></p><p>If the transformation is only lexical, demonstrate that.</p><p>If additional computation occurs, the reviewer must evaluate that computation rather than collapsing the entire architecture into lexical renaming.</p></article>
+<article class="card" id="thesis-q30"><span class="num">FAQ4 · 30</span><h2>What should the evidence architecture look like?</h2><p>Evidence should be claim-specific rather than one universal ladder.</p><p>For each claim:</p><p><pre>CLAIM<br> ↓<br>PRIOR ART / PROVENANCE<br> ↓<br>SPECIFICATION<br> ↓<br>IMPLEMENTATION<br> ↓<br>TEST / MEASUREMENT<br> ↓<br>APPROPRIATE INDEPENDENT VALIDATION<br> ↓<br>DEPLOYMENT, REPLICATION OR STANDARDIZATION<br>       where applicable</pre></p><p>The phrase “where applicable” is important. Not every claim requires every downstream stage.</p></article>
+<article class="card" id="thesis-q31"><span class="num">FAQ4 · 31</span><h2>What should be called demonstrated, partial, experimental or proposed?</h2><p>Evidence status should be versioned explicitly.</p><p>Use categories such as:</p><p>• demonstrated;<br>• tested;<br>• independently reproduced;<br>• partially implemented;<br>• experimental;<br>• proposed;<br>• untested;<br>• unsupported.</p><p>This is better than repeatedly writing defensive disclaimers. It makes uncertainty a property of the artifact rather than an insinuation about the author.</p></article>
+<article class="card" id="thesis-q32"><span class="num">FAQ4 · 32</span><h2>What should not be confused with contribution?</h2><p>The following should not be used as automatic proxies for technical value:</p><p>• number of proprietary components invented;<br>• number of lines of code;<br>• number of GitHub repositories;<br>• number of institutions that have heard of the project;<br>• whether a standard already exists;<br>• whether a component is open-source;<br>• whether a project uses familiar terminology;<br>• whether a project contains a new fundamental algorithm.</p><p>The relevant question is what capability the complete system provides and how that capability is evidenced.</p></article>
+<article class="card" id="thesis-q33"><span class="num">FAQ4 · 33</span><h2>What is the correct place for falsification?</h2><p>Falsification remains essential, but it should be symmetric with positive evidence.</p><p>For each major claim ask:</p><p><strong>What demonstrates the capability?</strong></p><p>and:</p><p><strong>What observation would show that the claim is false or too broad?</strong></p><p>A rigorous architecture needs both directions. Otherwise the review process becomes a catalogue of ways to reject rather than a method for establishing what works.</p></article>
+<article class="card" id="thesis-q34"><span class="num">FAQ4 · 34</span><h2>How should institutional review be framed?</h2><p>Institutions should be treated as valuable validators, collaborators, adopters, standards participants and maintainers—not as the exclusive source of legitimacy.</p><p>The strongest institutional package is:</p><p><pre>open infrastructure<br>+ transparent provenance<br>+ precise specification<br>+ executable implementation<br>+ reproducible tests<br>+ measurable system benefit<br>+ independent validation<br>+ maintainable governance</pre></p><p>The institution then has something concrete to review, adopt, challenge or extend.</p></article>
+<article class="card" id="thesis-q35"><span class="num">FAQ4 · 35</span><h2>What is the deeper sovereignty proposition?</h2><p>The deeper proposition is not isolation from the global computing ecosystem.</p><p>It is the ability to participate in that ecosystem without surrendering control over the linguistic and computational mechanisms that determine whether a language can be represented, transformed, programmed, rendered, compiled, executed, maintained and extended.</p><p>Sovereignty therefore means capability and agency across relevant layers—not rejection of external technology.</p></article>
+<article class="card" id="thesis-q36"><span class="num">FAQ4 · 36</span><h2>What is the correct architectural relationship between open infrastructure and sovereignty?</h2><p>Open infrastructure can strengthen sovereignty when it provides inspectability, forkability, replaceability and local maintenance capability.</p><p>The strategic objective is not:</p><p><strong>“use nothing made elsewhere.”</strong></p><p>It is:</p><p><strong>“do not make critical capability permanently dependent on an opaque or uncontrollable boundary.”</strong></p><p>That allows mature global infrastructure to be reused while critical linguistic and computational control remains reproducible and maintainable.</p></article>
+<article class="card" id="thesis-q37"><span class="num">FAQ4 · 37</span><h2>What does the architecture actually need to prove?</h2><p>It needs to prove the claims it actually makes.</p><p>For example:</p><p>• if it claims reversible representation → prove round-trip behaviour;<br>• if it claims linguistic fidelity → test linguistic corpus coverage;<br>• if it claims efficient transformation → benchmark it;<br>• if it claims compiler integration → execute generated programs;<br>• if it claims automation → measure manual versus generated work;<br>• if it claims scalability → add languages and measure marginal cost;<br>• if it claims portability → test architectures/platforms;<br>• if it claims standardizability → produce an implementable specification;<br>• if it claims sovereignty → identify the controlled and replaceable boundaries.</p></article>
+<article class="card" id="thesis-q38"><span class="num">FAQ4 · 38</span><h2>What is the minimum surviving claim if the largest claims are challenged?</h2><p>A strong architecture should be able to survive partial rejection.</p><p>For example:</p><p><strong>Even if a universal-language claim is not yet proven, the project may still demonstrate a particular linguistic transformation, an implementation, an automation mechanism, a measurable reduction in duplication, or a working cross-layer integration.</strong></p><p>The objective is not to protect one grand narrative at all costs. It is to preserve every technically demonstrated result independently.</p></article>
+<article class="card" id="thesis-q39"><span class="num">FAQ4 · 39</span><h2>What is the correct posture toward prior art?</h2><p>Prior art should be mapped, credited and used intelligently.</p><p>The response to prior art is not:</p><p><strong>“Then nothing here is new.”</strong></p><p>Nor:</p><p><strong>“We invented it independently.”</strong></p><p>The correct response is:</p><p><strong>“This part already exists. We use it. This part is adapted. This part is integrated. This part is automated. This part is newly developed. Here is the resulting capability.”</strong></p></article>
+<article class="card" id="thesis-q40"><span class="num">FAQ4 · 40</span><h2>What is the final ILM principle?</h2><p>Do not ask the world to accept a label.</p><p>Do not ask the world to ignore prior art.</p><p>Do not pretend reuse is invention.</p><p>Do not reduce architecture to novelty of individual components.</p><p>Do not reduce linguistic infrastructure to keyword localization.</p><p>Do not reduce sovereignty to isolation.</p><p>Do not reduce evidence to institutional approval.</p><p>Instead:</p><p><strong>Expose the lineage. Expose the transformation. Expose the automation. Expose the interfaces. Expose the generated artefacts. Expose the tests. Measure the resulting capability. Let independent people reproduce, extend, challenge and fork it.</strong></p><p>That is the architectural case for ILM.</p></article>
+
+</section>
+
+<section id="thesis-architecture">
+<h2>Reference Architecture</h2>
+<div class="card">
+<pre>LANGUAGE / SCRIPT
+        ↓
+LINGUISTIC REPRESENTATION
+        ↓
+EFFICIENT TRANSFORMATION / TRANSLITERATION
+        ↓
+COMMON COMPUTATIONAL SUBSTRATE
+        ↓
+AUTOMATED GENERATION / CONVERSION
+        ↓
+REUSED / ADAPTED OPEN INFRASTRUCTURE
+        ↓
+COMPILER / OS / RUNTIME / FIRMWARE / RENDERING
+        ↓
+CPU / GPU / ACCELERATOR / EMBEDDED / AI
+        ↓
+EXECUTABLE SYSTEM
+        ↕
+TESTING / VALIDATION / MAINTENANCE / REGENERATION</pre>
+</div>
+<div class="gold">
+<strong>Important:</strong> this is an architectural map, not a claim that every language currently traverses every layer or that every layer is implemented. Current implementation status must be stated separately from the architecture's intended scope.
+</div>
+</section>
+
+<section id="thesis-evidence">
+<h2>Evidence Map</h2>
+<div class="card">
+<table>
+<tr><th>Claim type</th><th>Primary evidence</th></tr>
+<tr><td>Linguistic representation</td><td>Corpus, formal mapping, reconstruction/round-trip evidence.</td></tr>
+<tr><td>Transliteration</td><td>Coverage, reversibility, collisions, fidelity and performance.</td></tr>
+<tr><td>Compiler integration</td><td>Parser/IR/backend path, executable outputs and tests.</td></tr>
+<tr><td>Rendering / character formation</td><td>Algorithm, intermediate states, rendered output and reproducible test cases.</td></tr>
+<tr><td>Automation</td><td>Generated artefacts, build workflow, manual-vs-automated effort.</td></tr>
+<tr><td>Scalability</td><td>Marginal language-addition cost and maintenance measurements.</td></tr>
+<tr><td>Portability</td><td>Cross-platform and cross-architecture results where claimed.</td></tr>
+<tr><td>Sovereignty</td><td>Explicit control, replacement, maintenance and reproducibility boundaries.</td></tr>
+<tr><td>Standardization</td><td>Normative specification, conformance tests and implementability.</td></tr>
+</table>
+</div>
+<div class="green">
+<p><strong>Evidence must be claim-specific.</strong> No single reviewer, benchmark, independent implementation or institutional adoption event is the universal measure of every claim.</p>
+</div>
+</section>
+
+<section id="thesis-principles">
+<h2>Architectural Principles</h2>
+<div class="card">
+<ol>
+<li><strong>Reuse is not the opposite of innovation.</strong></li>
+<li><strong>Integration is not inherently second-class.</strong></li>
+<li><strong>Contribution type and evidence maturity are different axes.</strong></li>
+<li><strong>Language, script, encoding, representation, transliteration and rendering are different layers.</strong></li>
+<li><strong>Automation can change the production model, not merely reduce effort.</strong></li>
+<li><strong>Indic can be a demanding test domain without being treated as a provincial exception.</strong></li>
+<li><strong>Sovereignty means capability and agency, not isolation.</strong></li>
+<li><strong>Institutional adoption is an outcome, not the source of technical truth.</strong></li>
+<li><strong>Prior art should be mapped and reused, not hidden or treated as disproof of contribution.</strong></li>
+<li><strong>Every major claim should expose its lineage, mechanism, evidence status and failure condition.</strong></li>
+</ol>
+</div>
+
+<div class="callout">
+<strong>Final principle:</strong> Do not ask the world to accept a label. Expose the lineage, transformation, automation, interfaces, generated artefacts and tests. Measure the resulting capability. Let independent people reproduce, extend, challenge and fork it.
+</div>
+</section>
+
+<footer>
+<p>FAQ4 consolidates the corrected architectural framing derived from FAQ1, FAQ2 and FAQ3. It is deliberately not another “hostile reviewer” checklist. It separates contribution from evidence maturity, preserves open-source provenance, and treats linguistic transformation, automation, integration and sovereignty as architectural questions.</p>
+</footer>
+</main>
+
+</section>
+<footer style="color:var(--mut);font-size:14px;padding:30px 0">© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. AI-generated text, kept with this notice.</footer>
+</main>
+<script src="../assets/aye.js" defer></script>
+</body>
+</html>

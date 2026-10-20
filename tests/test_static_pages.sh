@@ -46,7 +46,7 @@ class P(HTMLParser):
     def handle_starttag(self, tag, attrs):
         for k,v in attrs:
             if k in ("href","src") and v and not v.startswith(("#","http://","https://","mailto:","data:","javascript:")):
-                self.refs.append(v.split("#",1)[0])
+                self.refs.append(v.split("#",1)[0].split("?",1)[0])   # an anchor or a query string names the same file
 root=Path("docs")
 missing=[]
 for path in root.rglob("*.html"):

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-label="The Hindawi IDE inside a notebook: a program in Urdu, built and run">
+<rect width="900" height="560" rx="14" fill="#ffffff" stroke="#d9d2c3"/>
+<rect width="900" height="40" rx="14" fill="#f3ede1"/><rect y="26" width="900" height="14" fill="#f3ede1"/>
+<circle cx="22" cy="20" r="6" fill="#e06c5d"/><circle cx="42" cy="20" r="6" fill="#e6b450"/><circle cx="62" cy="20" r="6" fill="#62b26b"/>
+<text x="90" y="25" font-family="system-ui,sans-serif" font-size="14" fill="#6b6457">hindawi_urdu.ipynb · The Hindawi IDE</text>
+<rect x="20" y="56" width="230" height="30" rx="6" fill="#fff" stroke="#bbb"/><text x="30" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#1d1b17">Language: urdu ▾</text>
+<rect x="20" y="96" width="23" height="28" rx="5" fill="#1e4f8a" stroke="#c9d3df"/><text x="31.5" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#fff">C</text>
+<rect x="49" y="96" width="41" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="69.5" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">C++</text>
+<rect x="96" y="96" width="68" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="130.0" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Python</text>
+<rect x="170" y="96" width="50" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="195.0" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Java</text>
+<rect x="226" y="96" width="59" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="255.5" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">BASIC</text>
+<rect x="291" y="96" width="41" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="311.5" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Lex</text>
+<rect x="338" y="96" width="50" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="363.0" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Yacc</text>
+<rect x="394" y="96" width="86" height="28" rx="5" fill="#eef2f7" stroke="#c9d3df"/><text x="437.0" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Assembly</text>
+<rect x="20" y="134" width="300" height="28" rx="6" fill="#fff" stroke="#bbb"/><text x="30" y="153" font-family="system-ui,sans-serif" font-size="13">Section: algorithms/searching ▾</text>
+<rect x="330" y="134" width="300" height="28" rx="6" fill="#fff" stroke="#bbb"/><text x="340" y="153" font-family="system-ui,sans-serif" font-size="13">Program: binary_search.c ▾</text>
+<rect x="20" y="172" width="132" height="30" rx="6" fill="#2e7d32"/><text x="86" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#fff">▶ Build and run</text>
+<rect x="158.0" y="172" width="64" height="30" rx="6" fill="#e9e3d6"/><text x="190" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Stages</text>
+<rect x="227.6" y="172" width="109" height="30" rx="6" fill="#e9e3d6"/><text x="282" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Host program</text>
+<rect x="342.79999999999995" y="172" width="109" height="30" rx="6" fill="#e9e3d6"/><text x="397" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">From English</text>
+<rect x="457.99999999999994" y="172" width="41" height="30" rx="6" fill="#e9e3d6"/><text x="478" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">New</text>
+<rect x="504.79999999999995" y="172" width="79" height="30" rx="6" fill="#e9e3d6"/><text x="544" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Download</text>
+<rect x="589.5999999999999" y="172" width="64" height="30" rx="6" fill="#e9e3d6"/><text x="621" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1d1b17">Upload</text>
+<rect x="20" y="212" width="860" height="236" rx="6" fill="#fbfaf7" stroke="#bbb"/>
+<text x="868" y="236" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">#شامل &lt;stdio.h&gt;</text>
+<text x="868" y="256" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">/* binary search in a sorted array */</text>
+<text x="868" y="276" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">صحیح ثنائی_تلاش(صحیح اقدار[], صحیح گنتی, صحیح کلید) {</text>
+<text x="868" y="296" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">  صحیح کم = 0, بلند = گنتی - 1;</text>
+<text x="868" y="316" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">  جب (کم &lt;= بلند) {</text>
+<text x="868" y="336" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">    صحیح درمیان = کم + (بلند - کم) / 2;</text>
+<text x="868" y="356" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">    اگر (اقدار[درمیان] == کلید) واپس درمیان;</text>
+<text x="868" y="376" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">    اگر (اقدار[درمیان] &lt; کلید) کم = درمیان + 1; ورنہ بلند = درمیان - 1;</text>
+<text x="868" y="396" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">  }</text>
+<text x="868" y="416" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">  واپس -1;</text>
+<text x="868" y="436" direction="rtl" text-anchor="start" unicode-bidi="plaintext" font-family="Noto Nastaliq Urdu,Noto Naskh Arabic,ui-monospace,monospace" font-size="14" fill="#1d1b17">}</text>
+<rect x="20" y="458" width="425" height="84" rx="6" fill="#fff" stroke="#bbb"/><text x="30" y="480" font-family="system-ui,sans-serif" font-size="13" fill="#6b6457">input for the program</text>
+<rect x="455" y="458" width="425" height="84" rx="6" fill="#fff" stroke="#bbb"/><text x="465" y="480" font-family="ui-monospace,monospace" font-size="15" fill="#1d1b17">5 -1</text><text x="465" y="502" font-family="system-ui,sans-serif" font-size="12" fill="#6b6457">built from Urdu through the original Hindawi pipeline, and run</text></svg>

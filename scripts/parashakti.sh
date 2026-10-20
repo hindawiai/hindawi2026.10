@@ -14,14 +14,70 @@
 # REPORT.md records per project and language: the pinned source, each step's result, and the lines that prove it.
 # © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. Parashakti™, Hindawi™ and BURP™ are his trademarks.
 set -uo pipefail
+case " $* " in
+  *" --help "*|*" -h "*) cat <<'HELP'
+Parashakti 2026.10 · software put into your language and proved to work, from the chip to AI, IoT and robotics.
+
+Usage: parashakti [TARGET] [options]
+
+TARGET  any Git URL (GitHub, GitLab, Bitbucket, your own server) or a local folder (a Git checkout or a plain
+        directory). Without a TARGET, Parashakti runs its own stack, layer by layer (see --list).
+
+The steps, for any target (--steps chooses; the default is every step that applies):
+  ingest    BURP puts the whole tree into each language: keywords, numerals, and names through a dictionary
+  check     the language tree must convert back to the original, byte for byte, file by file
+  build     lowered through the original Hindawi pipeline, then built with the project's own build system
+            (found by itself: Makefile, CMake, configure or Meson; or give --build "command")
+  run       the program run (--run "command") and what it prints compared with the English build (--expect "regex")
+  report    REPORT.md: each step's evidence, how much of the source is now in the language, the words still without a
+            dictionary entry, and a ready-made issue to file
+  publish   a fork or mirror of the upstream with each language on its own branch (--publish [ORG], default hmnsq)
+
+Options
+  --langs L1,L2         the languages (default: every language ready to compile; --languages lists them)
+  --steps S1,S2         some of: ingest,check,build,run,report,publish
+  --build CMD           how to build, when it is not found by itself
+  --run CMD             how to run what was built      --expect REGEX   what it must print
+  --publish [ORG]       publish each verified language as a branch (default ORG: hmnsq)    --mint   then mint a DOI
+  --list                the built-in stack, layer by layer      --stage P1,P2   only those projects of the stack
+  --fork-all [ORG]      fork or mirror every upstream of the stack first (default ORG: hmnsq)
+  --check               check this machine, each probe limited in time; nothing is installed
+  --install             install what is missing, one package at a time
+  --hindawi DIR         use an existing checkout of Hindawi (by default it is fetched once into ./parashakti)
+  --from PROJECT        start the stack from a project       --stop | --status | --reset   stop, progress, start over
+  --no-ui               plain output (otherwise, with tmux: the run, htop and a status pane side by side)
+  --self-install        install this script as the command `parashakti` in ~/.local/bin
+  --version | --help
+
+Examples
+  parashakti https://gitlab.com/OWNER/REPO --langs urdu,tamil
+  parashakti ./my-project --run ./my-program --expect "ok"
+  parashakti --stage shakti-sdk,xv6 --langs hindi,telugu
+  parashakti --fork-all --publish
+
+Work, logs and REPORT.md are kept in ./parashakti; a rerun resumes. Docker: parashakti_docker.sh has every tool.
+© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI. Parashakti, Hindawi and BURP are his trademarks.
+HELP
+    exit 0 ;;
+  *" --version "*) echo "Parashakti 2026.10.0"; exit 0 ;;
+  *" --self-install "*) mkdir -p "$HOME/.local/bin" && install -m 755 "$0" "$HOME/.local/bin/parashakti" \
+      && echo "installed: $HOME/.local/bin/parashakti (make sure ~/.local/bin is on your PATH)"; exit $? ;;
+esac
+# a TARGET first (a Git URL or a local folder) is the same as --url TARGET; --hindawi is the same as --repo
+if [ $# -gt 0 ] && [ "${1#-}" = "$1" ]; then T="$1"; shift; [ -e "$T" ] && T="$(cd "$T" && pwd)"; set -- --url "$T" "$@"; fi
+A=(); for x in "$@"; do [ "$x" = "--hindawi" ] && x="--repo"; A+=("$x"); done; set -- "${A[@]}"
 W="$PWD/parashakti"; REPO=""; ARGS=("$@")
 for ((k = 0; k < $#; k++)); do [ "${ARGS[$k]}" = "--repo" ] && REPO="${ARGS[$((k + 1))]}"; done
 #   bash parashakti.sh --check                                 only the timed sanity check of this machine
 #   bash parashakti.sh --install                               also try to install what is missing, one package at a time
-#   bash parashakti.sh --fork-all ORG --publish ORG            fork (or mirror) every upstream into ORG first, then for each
-#                                                              repository in turn: ingest, test, publish its branches, move on
+#   bash parashakti.sh --fork-all --publish                    fork (or mirror) every upstream into hmnsq, the Humanesque core
+#                                                              organisation, first; then for each repository in turn: ingest,
+#                                                              test, publish its language branches there, move on
 #   bash parashakti.sh --from linux                            start from a project; finished runs are skipped on a rerun
 #   bash parashakti.sh --stop | --status | --reset             stop it, see where it is, or forget what has been done
+#   bash parashakti.sh --url https://github.com/OWNER/REPO     any repository: ingested into every language with its names
+#        [--build "make" --run "./prog" --expect "regex"]      translated (the dictionary), checked, and reported: what is
+#                                                              still pending, and how to file it as an issue
 #   In a terminal with tmux, the run opens in a tmux layout: the run, htop, and a status pane (--no-ui for plain output).
 mkdir -p "$W/logs"; export PARASHAKTI_LOG="$W/logs/parashakti.$(date -u +%Y%m%dT%H%M%SZ).log"
 for a in "$@"; do
@@ -64,7 +120,14 @@ probe "network to gitlab.com" 20 git ls-remote https://gitlab.com/shaktiproject/
 probe "sudo without a password" 5 sudo -n true
 free=$(df -Pm "$W" | awk 'NR==2 {print $4}'); printf '   %-26s %s MB free\n' "disk at $W" "$free"
 [ "${free:-0}" -lt 3000 ] && printf '   %-26s under 3 GB free: the heavy projects (Linux, GCC, LLVM, MINIX) will not fit\n' "note"
-export PARASHAKTI_HAVE="$HAVE" PARASHAKTI_JOBS="$(nproc)"
+GPU_MB=0; CUDA=""
+if command -v nvidia-smi >/dev/null; then
+  g=$(timeout 10 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader,nounits 2>/dev/null | head -1)
+  [ -n "$g" ] && GPU_MB=${g##*, } && printf '   %-26s ok   %s MB (%s)\n' "GPU" "$GPU_MB" "${g%%,*}" && HAVE="$HAVE,gpu"
+fi
+command -v nvcc >/dev/null && CUDA=1 && HAVE="$HAVE,nvcc" && printf '   %-26s ok   %s\n' "CUDA compiler (nvcc)" "$(nvcc --version | tail -1 | cut -c1-50)"
+[ "$GPU_MB" = 0 ] && printf '   %-26s none: models run on the CPU, the smallest that fits\n' "GPU"
+export PARASHAKTI_HAVE="$HAVE" PARASHAKTI_JOBS="$(nproc)" PARASHAKTI_GPU_MB="$GPU_MB" PARASHAKTI_CUDA="$CUDA"
 printf '   %-26s %s\n' "cores" "$(nproc): every build uses all of them; one repository at a time"
 if [ "$INSTALL" = 1 ]; then      # one package at a time, each limited in time; a failure is reported and the next is tried
   sudo -v || echo "   sudo was not granted: nothing can be installed; carrying on with what is here"
@@ -154,6 +217,27 @@ MANIFEST = {
              "title": "newlib, the C library for bare metal, built from the language", "repo": "https://github.com/bminor/newlib", "names": False,
              "build": "mkdir -p obj && cd obj && ../configure --target=riscv64-unknown-elf --disable-multilib >/dev/null && make all-target-newlib",
              "run": "ls obj/riscv64-unknown-elf/newlib/libc.a", "expect": [r"libc\.a"]},
+  "llama.cpp": {"needs": ["cmake", "g++", "network to github.com"], "layer": 14, "cxx": True, "names": False,
+                "title": "llama.cpp built from the language, running a model sized to this machine's GPU (or CPU), compared with the English build",
+                "repo": "https://github.com/ggml-org/llama.cpp",
+                "build": "cmake -B build -DLLAMA_CURL=OFF -DGGML_CUDA=$([ -n \"$PARASHAKTI_CUDA\" ] && echo ON || echo OFF) >/dev/null && cmake --build build -j$(nproc) --target llama-cli",
+                "run": 'M="$PARASHAKTI_W/models"; mkdir -p "$M"; G=${PARASHAKTI_GPU_MB:-0}; if [ "$G" -ge 7000 ]; then U=https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF/resolve/main/Qwen2.5-7B-Instruct-Q4_K_M.gguf; elif [ "$G" -ge 3000 ]; then U=https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/resolve/main/qwen2.5-3b-instruct-q4_k_m.gguf; else U=https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf; fi; F="$M/$(basename $U)"; [ -s "$F" ] || curl -fsSL -o "$F" "$U"; NGL=$([ "$G" -gt 0 ] && echo 99 || echo 0); build/bin/llama-cli -m "$F" -ngl $NGL -p "The capital of India is" -n 24 --temp 0 --seed 1 -no-cnv --no-display-prompt 2>/dev/null | head -c 600 | tr \'\\n\' \' \' | sed \'s/^/GEN: /\'; echo', "expect": [r"GEN: \S"]},
+  "llm.c": {"needs": ["gcc", "make", "network to github.com"], "layer": 14,
+            "title": "llm.c built from the language, training GPT-2 (124M) for a few steps, compared with the English build",
+            "repo": "https://github.com/karpathy/llm.c", "names": False, "build": "make train_gpt2",
+            "run": "bash dev/download_starter_pack.sh >/dev/null 2>&1; OMP_NUM_THREADS=$(nproc) timeout 900 ./train_gpt2 2>&1 | grep -m3 'train loss' | sed 's/(took.*//'",
+            "expect": [r"step \d+: train loss"]},
+  "darknet": {"needs": ["gcc", "make", "network to github.com"], "layer": 14,
+              "title": "darknet, the C neural-network framework with AlexNet among its networks, built from the language",
+              "repo": "https://github.com/pjreddie/darknet", "names": False,
+              "build": "make GPU=$([ -n \"$PARASHAKTI_CUDA\" ] && echo 1 || echo 0) OPENMP=1",
+              "run": "./darknet 2>&1 | head -2; ls cfg/alexnet.cfg", "expect": [r"usage", r"alexnet\.cfg"]},
+  "pytorch": {"needs": ["network to github.com"], "layer": 14, "heavy": True, "cxx": True, "names": False,
+              "title": "PyTorch, ingested and checked (its build needs its own toolchain and many gigabytes)", "repo": "https://github.com/pytorch/pytorch"},
+  "caffe": {"needs": ["network to github.com"], "layer": 14, "heavy": True, "cxx": True, "names": False,
+            "title": "Caffe, ingested and checked", "repo": "https://github.com/BVLC/caffe"},
+  "tensorflow": {"needs": ["network to github.com"], "layer": 14, "heavy": True, "cxx": True, "names": False,
+                 "title": "TensorFlow, ingested and checked (its build needs Bazel)", "repo": "https://github.com/tensorflow/tensorflow"},
   "minix": {"needs": ['qemu-system-i386', 'network to github.com'], "layer": 10, "title": "MINIX 3 built and booted on QEMU (x86)", "repo": "https://github.com/Stichting-MINIX-Research-Foundation/minix",
             "heavy": True, "names": False, "build": "bash releasetools/x86_hdimage.sh",
             "run": "timeout 900 qemu-system-i386 -m 512 -hda minix_x86.img -nographic -serial mon:stdio", "expect": [r"login:"]},
@@ -222,7 +306,7 @@ def ready_languages(requested):
 NONC = re.compile(r".*\.(S|s|ld|lds|pl|py|mk|sh|cmake|in|txt|json|y|l|def|inc|awk|sed|dts|dtsi|rs|go|asm)$|.*(Makefile|makefile|Kconfig|Kbuild|configure|CMakeLists\.txt)[^/]*$")
 
 
-VERIFIED, baseline = {}, {}
+VERIFIED, baseline, PENDING = {}, {}, {}
 STATE_FILE = W / "state.json"
 STATE = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {"done": [], "forked": []}
 T_START, RUNS_DONE, RUNS_TOTAL = time.time(), [0], [0]
@@ -243,6 +327,8 @@ def status(msg):
 
 def english_baseline(name, p, up, env):
     """The upstream, built and run in English the same way: what each language's build must match."""
+    if not p.get("build"):
+        return
     eng = up.parent / "english"; shutil.rmtree(eng, ignore_errors=True); shutil.copytree(up, eng, symlinks=True)
     try:
         if sh(p["build"], cwd=eng, env=env, timeout=21600 if p.get("heavy") else 1800, label=f"{name}: the English build").returncode == 0:
@@ -266,10 +352,24 @@ def run_project(name, p, langs, rows):
         up.mkdir(); [(up / f).write_text(t) for f, t in p["files"].items()]; pin = "inline"
     else:
         ref = ["--branch", p["ref"]] if p.get("ref") else []
-        r = sh(" ".join(["git clone -q --depth 1"] + ref + [p["repo"], str(up)]), cwd=base)
+        src = Path(p["repo"])
+        if src.is_dir() and not (src / ".git").exists():          # a plain local folder: copied as it is
+            shutil.copytree(src, up, symlinks=True); subprocess.run("git init -q && git add -A && git -c user.name=p -c user.email=p@p commit -qm local",
+                                                                     shell=True, cwd=up, capture_output=True)
+            r = subprocess.CompletedProcess([], 0)
+        else:
+            url = f"file://{src.resolve()}" if src.is_dir() else p["repo"]
+            r = sh(" ".join(["git clone -q --depth 1"] + ref + [f"'{url}'", str(up)]), cwd=base)
         if r.returncode:
             rows.append((name, "-", "fetch failed", "", "", "", "see the log")); return
         pin = (p.get("ref", "") + " " + sh("git rev-parse --short HEAD", cwd=up).stdout.strip()).strip()
+    if p.get("build") == "auto":                 # the project's own build system, found by itself
+        found = next((cmd for f, cmd in (("CMakeLists.txt", "cmake -B build >/dev/null && cmake --build build -j$(nproc)"),
+                                         ("meson.build", "meson setup build >/dev/null && ninja -C build"),
+                                         ("configure", "./configure >/dev/null && make -j$(nproc)"),
+                                         ("Makefile", "make -j$(nproc)"), ("makefile", "make -j$(nproc)")) if (up / f).exists()), None)
+        p["build"] = found
+        print(f"   {name}: build " + (f"found: {found}" if found else "not found: ingested and checked only (give --build to build)"))
     if p.get("configure"):
         sh(p["configure"], cwd=up)
     keep = base / "keep.txt"                 # names the assembly, linker scripts and build files refer to
@@ -307,6 +407,19 @@ def run_project(name, p, langs, rows):
         r = subprocess.run(low + (["--cxx"] if p.get("cxx") else []), capture_output=True, text=True); log(r.stdout, r.stderr)
         if r.returncode:
             rows.append((name, lang, pin, "yes", "no", "", (r.stderr.strip().splitlines() or ["lowering failed"])[-1][:120])); continue
+        if not p.get("build"):                 # ingested and checked, not built here
+            rv = base / "rev"; shutil.rmtree(rv, ignore_errors=True)
+            subprocess.run([sys.executable, str(HIN / "burp/burp.py"), "reverse", str(n / lang), "--out", str(rv)], capture_output=True)
+            srcs = [f for f in up.rglob("*") if f.is_file() and f.suffix in (".c", ".h", ".cc", ".cpp") and ".git" not in f.parts]
+            same = sum(1 for f in srcs if (rv / f.relative_to(up)).exists() and (rv / f.relative_to(up)).read_bytes() == f.read_bytes())
+            rows.append((name, lang, pin, "yes", "not built here", "", f"reverses to upstream byte for byte: {same} of {len(srcs)} C and C++ files; {local}"))
+            from collections import Counter                # the words still without a dictionary entry: what is pending
+            HOSTKW = set("auto break case char const continue default do double else enum extern float for goto if int long register return short signed sizeof static struct switch typedef union unsigned void volatile while include define ifdef ifndef endif class public private protected namespace template typename new delete this true false nullptr bool".split())
+            cnt = Counter(w for f in (n / lang).rglob("*") if f.is_file() and f.suffix in (".c", ".h", ".cc", ".cpp")
+                          for w in re.findall(r"\b[A-Za-z_][A-Za-z0-9_]{2,}\b", f.read_text(encoding="utf-8", errors="replace")) if w not in HOSTKW)
+            PENDING.setdefault(name, {})[lang] = cnt.most_common(30)
+            shutil.rmtree(rv, ignore_errors=True); shutil.rmtree(n, ignore_errors=True)
+            STATE["done"].append(f"{name}/{lang}"); save_state(); RUNS_DONE[0] += 1; print(f"   {name} · {lang}: ingested and checked"); continue
         rv = base / "rev"; shutil.rmtree(rv, ignore_errors=True)   # stricter than upstream: the language tree reverses to upstream
         subprocess.run([sys.executable, str(HIN / "burp/burp.py"), "reverse", str(n / lang), "--out", str(rv)], capture_output=True)
         srcs = [f for f in up.rglob("*") if f.is_file() and f.suffix in (".c", ".h") and ".git" not in f.parts]
@@ -514,18 +627,38 @@ def main():
     ap.add_argument("--langs", default=DEFAULT_LANGS); ap.add_argument("--stage", default="")
     ap.add_argument("--manifest"); ap.add_argument("--list", action="store_true"); ap.add_argument("--repo")
     ap.add_argument("--install", action="store_true"); ap.add_argument("--check", action="store_true")
-    ap.add_argument("--publish", metavar="ORG", help="publish each verified project as a fork under ORG, one branch per language")
+    ap.add_argument("--publish", metavar="ORG", nargs="?", const="hmnsq", help="publish each verified project under ORG (default hmnsq, the Humanesque core), one branch per language")
     ap.add_argument("--publish-to", metavar="DIR", help="rehearse publishing into local bare repositories under DIR")
     ap.add_argument("--mint", action="store_true", help="after publishing, mint each with misty, behind a typed MINT")
-    ap.add_argument("--fork-all", metavar="ORG", help="fork (or mirror) every upstream into ORG before anything is built")
+    ap.add_argument("--fork-all", metavar="ORG", nargs="?", const="hmnsq", help="fork (or mirror) every upstream into ORG (default hmnsq) before anything is built")
+    ap.add_argument("--url", help="any GitHub repository: sovereignty ingestion and a report of what is pending")
+    ap.add_argument("--build"); ap.add_argument("--run"); ap.add_argument("--expect"); ap.add_argument("--steps")
+    ap.add_argument("--languages", action="store_true", help="list the languages ready to compile")
     ap.add_argument("--from", dest="start", help="start from this project"); ap.add_argument("--no-ui", action="store_true"); ap.add_argument("--in-ui", action="store_true")
     a = ap.parse_args()
     man = json.loads(Path(a.manifest).read_text()) if a.manifest else MANIFEST
     if a.list:
-        for k, v in man.items():
-            print(f"{k:8} {'heavy ' if v.get('heavy') else 'light '} {v['title']}")
+        for k, v in sorted(man.items(), key=lambda kv: (0 if kv[0] == "shakti-sdk" else 1, kv[1].get("layer", 99))):
+            print(f"layer {v.get('layer', '?'):>2}  {k:11} {'heavy ' if v.get('heavy') else 'light '} {v['title']}")
+        return
+    if a.languages:
+        f = REPO / "docs/hindawi/data/readiness.json"
+        if f.exists():
+            rd = json.loads(f.read_text(encoding="utf-8"))["languages"]
+            print("ready to compile:", ", ".join(sorted(k for k, v in rd.items() if v.get("ready_to_compile"))))
+            print("in progress:     ", ", ".join(sorted(k for k, v in rd.items() if not v.get("ready_to_compile"))))
         return
     stages = [s for s in a.stage.split(",") if s] or [k for k, v in man.items() if not v.get("heavy")]
+    if a.url:                                    # any repository, named on the command line
+        nm = a.url.rstrip("/").split("/")[-1].removesuffix(".git")
+        steps = set((a.steps or "ingest,check,build,run,report,publish").split(","))
+        man[nm] = {"repo": a.url, "needs": [], "layer": 99,   # any Git URL or local folder
+                   "title": f"{nm}: ingested into each language, checked, built and run where it can be"}
+        if "build" in steps:
+            man[nm].update(build=a.build or "auto", run=a.run or "echo built", expect=[a.expect] if a.expect else (["."] if a.run else ["built"]))
+        if "publish" in steps and not a.publish and a.steps:
+            a.publish = "hmnsq"
+        stages = [nm]
     stages.sort(key=lambda k: (0 if k == "shakti-sdk" else 1, man[k].get("layer", 99)))
     if a.start and a.start in stages:
         stages = stages[stages.index(a.start):]
@@ -551,16 +684,26 @@ def main():
     merged = {(r[0], r[1]): list(r) for r in STATE.get("rows", [])}     # the report keeps every run, across reruns
     merged.update({(r[0], r[1]): list(r) for r in rows}); STATE["rows"] = list(merged.values()); save_state(); rows = STATE["rows"]
     rep = W / "REPORT.md"
+    pend = ""
+    for proj, by in PENDING.items():
+        import urllib.parse
+        lines = [f"- **{l}**: " + ", ".join(f"`{w}` ({c})" for w, c in top[:15]) for l, top in by.items()]
+        body = urllib.parse.quote(f"Parashakti ingested {proj} ({man.get(proj, {}).get('repo', '')}).\n\nWords still without a dictionary entry:\n"
+                                  + "\n".join(lines)[:5000] + "\n\nWhat I would like: ")
+        pend += (f"\n## Pending in {proj}: words without a dictionary entry yet\n\n" + "\n".join(lines)
+                 + f"\n\nTo ask for them, file an issue: https://github.com/hindawiai/hindawi2026.10/issues/new?title="
+                 + urllib.parse.quote(f"Parashakti: {proj}") + f"&body={body}\n")
     with open(rep, "w") as f:
         f.write(f"# Parashakti report\n\nRun {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}; Hindawi "
                 f"{subprocess.run(['git', '-C', str(REPO), 'rev-parse', '--short', 'HEAD'], capture_output=True, text=True).stdout.strip()}; "
-                f"{subprocess.run(['qemu-system-riscv64', '--version'], capture_output=True, text=True).stdout.splitlines()[0]}.\n\n"
+                f"{(subprocess.run('qemu-system-riscv64 --version 2>/dev/null', shell=True, capture_output=True, text=True).stdout.splitlines() or ['QEMU not installed'])[0]}.\n\n"
                 "| Project | Language | Source | Ingested | Lowered | Built, ran and printed | Evidence | AyeKnow state |\n|---|---|---|---|---|---|---|---|\n")
         for r in rows:   # AyeKnow: verified (ran and printed what it must), executed, implemented, defined
-            state = {"yes": "verified", "NO": "executed"}.get(r[5], "implemented" if r[4] == "yes" else "defined")
+            state = {"yes": "verified", "NO": "executed"}.get(r[5], "implemented" if r[4] in ("yes", "not built here") else "defined")
             f.write("| " + " | ".join(r) + f" | {state} |\n")
         for l, w in why.items():
             f.write(f"\nSkipped {l}: {w}.")
+        f.write(pend)
     proved = sum(1 for r in rows if r[5] == "yes")
     print(f"\n\033[1mDONE: {proved} of {len(rows)} project-language runs proved; report {rep}\033[0m")
 

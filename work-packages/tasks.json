@@ -566,5 +566,61 @@
   "status": "in progress",
   "evidence": "rehearsed here: xv6 in Urdu published to a local repository, 65 of 65 C files reversing byte for byte, the same lines as English; docs/parashakti/PROCESS.md",
   "next": "his run with --publish; the SHAKTI SDK, OpenSBI, QEMU and binutils run; the workflow on GitHub"
+ },
+ {
+  "id": "T-63",
+  "title": "Assembly (yantra) mnemonics in every language: the dictionary entries for the x86 mnemonics and registers, as the original Hindi table has them",
+  "source": "20 Oct 2026",
+  "status": "open",
+  "evidence": "Hindi's assembly is native from the original table; the other languages keep English mnemonics",
+  "next": "the yantra entries per language"
+ },
+ {
+  "id": "T-64",
+  "title": "Yacc in Hindi through the original wyaaka table",
+  "source": "20 Oct 2026",
+  "status": "open",
+  "evidence": "the notebook leaves Hindi Yacc out: its original table does not lower the sample yet",
+  "next": ""
+ },
+ {
+  "id": "T-65",
+  "title": "Prebuilt tools published from his laptop (scripts/release_tools.sh, built in Ubuntu 22.04), one package per language, so notebooks start in seconds",
+  "source": "20 Oct 2026",
+  "status": "delivered, awaiting his run",
+  "evidence": "scripts/release_tools.sh",
+  "next": "his first run"
+ },
+ {
+  "id": "T-66",
+  "title": "Parashakti in a container with every tool (scripts/parashakti_docker.sh), GitHub and Zenodo handed over, the GPU passed through",
+  "source": "20 Oct 2026",
+  "status": "delivered, awaiting his run",
+  "evidence": "scripts/parashakti_docker.sh",
+  "next": "his first run"
+ },
+ {
+  "id": "T-67",
+  "title": "Parashakti as a command for any GitHub repository (--url): ingestion with names translated, checks, and a report of pending dictionary words with a pre-filled issue",
+  "source": "20 Oct 2026",
+  "status": "delivered, awaiting his acceptance",
+  "evidence": "xv6 ingested into Urdu and Telugu with the pending words reported",
+  "next": ""
+ },
+ {
+  "id": "T-68",
+  "title": "The AI stack through Parashakti: llama.cpp on a model sized to the GPU, llm.c training GPT-2, darknet with AlexNet, PyTorch, Caffe and TensorFlow ingested; a Colab notebook for larger models",
+  "source": "20 Oct 2026",
+  "status": "in progress",
+  "evidence": "darknet verified in Urdu (118 of 118 C files reversing, same output as English); llm.c built in Urdu",
+  "next": "llama.cpp and llm.c runs on his laptop; the notebook's first Colab run"
+ },
+ {
+  "id": "T-69",
+  "title": "The Romenagri 2026.10 transliteration notes reviewed for complete IPA coverage; a DOI for romenagri2026.10",
+  "source": "20 Oct 2026",
+  "status": "open",
+  "evidence": "seeded and timestamped by him; linked from the site, README and audit",
+  "next": "his review"
  }
 ]

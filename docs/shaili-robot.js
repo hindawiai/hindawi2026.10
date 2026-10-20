@@ -14,9 +14,23 @@
     HOME:'HOME', CLEARSCREEN:'CLEARSCREEN', CS:'CLEARSCREEN',
     SETHEADING:'SETHEADING', SETPENCOLOR:'SETPENCOLOR', REPEAT:'REPEAT'
   };
+  // the language: its robot words become the canonical commands, its digits become ASCII digits
+  const G = typeof window !== 'undefined' ? window : globalThis;
+  const W = G.ROBOT_WORDS || {}, Z = G.DIGIT_ZEROS || [];
+  const sel = $('logo-lang') || (() => {                 // a page without a language list gets one; a bare test context gets a stand-in
+    if (!document.createElement || !source || !source.parentNode) return {value: 'english', addEventListener() {}};
+    const s = document.createElement('select'); s.id = 'logo-lang'; s.setAttribute('aria-label', 'Language');
+    source.parentNode.insertBefore(s, source); return s; })();
+  if ('innerHTML' in sel) sel.innerHTML = '<option value="english">English</option>' + Object.keys(W).sort().map(l => `<option value="${l}">${l.replace(/_/g, ' ')}</option>`).join('');
+  const want = typeof location !== 'undefined' && location.search ? new URLSearchParams(location.search).get('lang') : null;
+  if (want && W[want]) sel.value = want;
+  const toAscii = t => t.replace(/\p{Nd}/gu, c => { const cp = c.codePointAt(0); for (const z of Z) if (cp >= z && cp <= z + 9) return String(cp - z); return c; });
+  const native = en => { const m = W[sel.value] || {}; return Object.keys(m).find(k => m[k] === en) || en; };
+  const say = prog => prog.replace(/[A-Z]+/g, w => native(w));
   function tokenize(s) {
+    const m = W[sel.value] || {};
     return s.replace(/;.*$/gm, '').replace(/\[/g, ' [ ').replace(/\]/g, ' ] ')
-      .split(/\s+/).filter(Boolean);
+      .split(/\s+/).filter(Boolean).map(t => m[t] || toAscii(t));
   }
   function parse(tokens) {
     let i = 0;
@@ -105,8 +119,10 @@
     }
   }
   $('logo-run').addEventListener('click', runSource);
-  $('logo-clear').addEventListener('click', () => { source.value='CLEARSCREEN'; runSource(); });
-  $('logo-square').addEventListener('click', () => { source.value='REPEAT 4 [ FORWARD 100 RIGHT 90 ]'; runSource(); });
-  $('logo-star').addEventListener('click', () => { source.value='REPEAT 36 [ FORWARD 140 RIGHT 170 ]'; runSource(); });
+  $('logo-clear').addEventListener('click', () => { source.value=say('CLEARSCREEN'); runSource(); });
+  $('logo-square').addEventListener('click', () => { source.value=say('REPEAT 4 [ FORWARD 100 RIGHT 90 ]'); runSource(); });
+  $('logo-star').addEventListener('click', () => { source.value=say('REPEAT 36 [ FORWARD 140 RIGHT 170 ]'); runSource(); });
+  sel.addEventListener('change', () => { source.value = say('REPEAT 4 [ FORWARD 100 RIGHT 90 ]'); runSource(); });
+  if (want && W[want]) source.value = say('REPEAT 36 [ FORWARD 140 RIGHT 170 ]');
   render();
 })();

@@ -674,3 +674,22 @@ passed; scripts/test_all.sh passes.
 - changed `docs/trace/machine.html` (sha256 `061834d9f27bab55`)
 
 **Verified.** hin ran every shaili's program in Urdu and Telugu: C 5 -1, C++ 1 3 4 5 8, Python 5 -1, Lex 5 words 2 lines, Yacc 14, assembly hello, BASIC lowered, Java lowered where javac is absent; Hindi leaves out Java, Yacc and assembly, whose original tables do not run them yet. The release workflow is valid YAML and has not yet run on GitHub. test_all passes.
+
+## C32. Every language in the notebooks, each opening with the IDE; prebuilt tools per language; Parashakti a public tool; the Shaili Robot in every language; one FAQ
+
+**Why.** He found the published notebooks without the IDE, assembly left in English, only a handful of languages, and every notebook compiling on opening. Every one of the 48 languages ready to compile now has a practice notebook (the Indian and Perso-Arabic languages first), each opening with the IDE: a language, all eight shailis (C, C++, Python, Java, BASIC, Lex, Yacc, assembly), the GATE syllabus and introductory programs, and buttons to build and run, show the stages and the host program, bring a program in from English, start new, upload and download; then the Shaili Robot, then the Chintamani-style practice cells and the English reference. A shaili is kept for a language only after its program ran in that language. Installation fetches the prebuilt tools for the notebook's language from the release tools, which scripts/release_tools.sh builds on his laptop inside Ubuntu 22.04 and publishes as one common and one package per language; the tools, Parashakti among them, are on the PATH of Colab's terminal. Assembly samples follow the original yantra (32-bit, Intel syntax), and Hindi's assembly and Java now use the original tables. The large-model notebook is one per language. The landing page lists all 76 languages (48 ready, each opening its notebook), shows the IDE, and carries the Shaili Robot, which now takes programs in 75 languages from their LOGO tables, digits included. The four FAQs are one page marked as AI-generated; Romenagri 2026.10 is linked. Parashakti is a public tool: any Git URL or local folder, its build system found by itself, steps chosen, help, self-install, a container script.
+
+- added `notebooks/practice/hindawi_kashmiri.ipynb` (sha256 `a13493f92253974b`)
+- added `lang/hindawi/tools/nb_ide.py` (sha256 `30902102328d4768`)
+- added `scripts/release_tools.sh` (sha256 `23985b52f3453cb5`)
+- changed `scripts/parashakti.sh` (sha256 `27a4b34a8d6d5c27`)
+- added `scripts/parashakti_docker.sh` (sha256 `501d3529f1a47b18`)
+- changed `docs/index.html` (sha256 `68cd00c1564a1600`)
+- added `docs/faq/index.html` (sha256 `9bfbee71c0bd350b`)
+- added `docs/robot-words.js` (sha256 `e54328dfccce7417`)
+- changed `docs/shaili-robot.js` (sha256 `affc4c19b606e68c`)
+- added `docs/assets/ide.svg` (sha256 `2d2995185989f2c6`)
+- changed `lang/hindawi/tools/hindawi_chain.py` (sha256 `789418e1b7519500`)
+- changed `work-packages/tasks.json` (sha256 `158cd44362320add`)
+
+**Verified.** 48 notebooks generated: 45 with all eight shailis, Hindi and Bengali without Yacc, Tagalog without assembly. The IDE's functions driven headless in Urdu and Hindi. The robot drawn in Urdu, Tamil and Kashmiri. Parashakti on a plain local folder: build found, Urdu and Tamil proved against the English build. test_all passes; the originals check passes with yantra and kritrima added.

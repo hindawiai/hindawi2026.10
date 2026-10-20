@@ -69,3 +69,7 @@ AyeKnow: defined, implemented, executed, verified, open. Nothing is called done 
    ideas, the files and AI section, Start here, this audit).
 2. `bash parashakti.sh --check`, then `bash parashakti.sh`.
 3. Build Stage 1, upload, the first test, and open an issue with the result.
+
+## Related, not yet minted
+
+- **Romenagri 2026.10** (github.com/project-ilm/romenagri2026.10): the extended Romenagri with the missing Sanskrit characters, seeded and timestamped (OTS) by the author; no DOI yet. Its `Romenagri/TRANSLITERATION.md` was drafted with AI and is under the author's review: its description of Romenagri as "phonetic, not orthographic" is questioned, since Romenagri is phonetic by definition; the aim is complete IPA coverage.
